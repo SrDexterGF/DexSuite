@@ -15,6 +15,7 @@ public partial class MainViewModel : ObservableObject
     private readonly IBatRunner _runner;
     private readonly IPerformanceAnalyzer _analyzer;
     private readonly IUpdateService _updateService;
+    private readonly ILocalizationService _loc;
     private readonly ILogger<MainViewModel> _logger;
 
     private const string DefaultScriptFolder =
@@ -89,6 +90,23 @@ public partial class MainViewModel : ObservableObject
     private void SelectRecommended()
     {
         foreach (var m in Modules) m.IsEnabled = m.Module.RecommendedDefault;
+    }
+
+    // ---- Idioma ----------------------------------------------------------
+
+    /// <summary>Idiomas disponibles en la app (10).</summary>
+    public IReadOnlyList<LanguageOption> AvailableLanguages => _loc.AvailableLanguages;
+
+    /// <summary>Idioma activo, two-way con el servicio de localización.</summary>
+    public string CurrentLanguage
+    {
+        get => _loc.CurrentLanguage;
+        set
+        {
+            if (_loc.CurrentLanguage == value) return;
+            _loc.CurrentLanguage = value;
+            OnPropertyChanged();
+        }
     }
 
     // ---- Ajustes ---------------------------------------------------------
@@ -354,11 +372,13 @@ public partial class MainViewModel : ObservableObject
         IBatRunner runner,
         IPerformanceAnalyzer analyzer,
         IUpdateService updateService,
+        ILocalizationService loc,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
         _analyzer = analyzer;
         _updateService = updateService;
+        _loc = loc;
         _logger = logger;
 
         LogsFolder = Path.Combine(

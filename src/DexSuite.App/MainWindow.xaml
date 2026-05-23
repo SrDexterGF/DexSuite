@@ -7,6 +7,7 @@
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="clr-namespace:DexSuite.App.ViewModels"
+    xmlns:loc="clr-namespace:DexSuite.App.Markup"
     mc:Ignorable="d"
     Title="DexSuite"
     Icon="pack://application:,,,/Assets/AppIcon.png"
@@ -223,7 +224,7 @@
                             </Border>
                             <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
                                 <ui:TextBlock Text="DexSuite" FontTypography="BodyStrong"/>
-                                <ui:TextBlock Text="Performance Series"
+                                <ui:TextBlock Text="{loc:T Key=App.Tagline}"
                                               FontTypography="Caption"
                                               Opacity="0.55"/>
                             </StackPanel>
@@ -246,7 +247,7 @@
                     </Border>
 
                     <StackPanel>
-                        <ui:TextBlock Text="PANEL" Style="{StaticResource SidebarCaption}"/>
+                        <ui:TextBlock Text="{loc:T Key=Navigation.Panel}" Style="{StaticResource SidebarCaption}"/>
 
                         <RadioButton Style="{StaticResource NavItemStyle}"
                                      GroupName="MainNav"
@@ -255,7 +256,7 @@
                                      CommandParameter="Home">
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Symbol="Home24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="Inicio" Style="{StaticResource NavItemTextStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.Home}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
 
@@ -266,7 +267,7 @@
                                      CommandParameter="Modules">
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Symbol="AppsList24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="Módulos" Style="{StaticResource NavItemTextStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.Modules}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
 
@@ -277,7 +278,7 @@
                                      CommandParameter="Log">
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Symbol="DocumentText24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="Registro" Style="{StaticResource NavItemTextStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.Log}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
 
@@ -286,7 +287,7 @@
                                 Margin="20,14,20,6"
                                 Background="{DynamicResource ControlStrokeColorDefaultBrush}"/>
 
-                        <ui:TextBlock Text="SISTEMA" Style="{StaticResource SidebarCaption}"/>
+                        <ui:TextBlock Text="{loc:T Key=Navigation.System}" Style="{StaticResource SidebarCaption}"/>
 
                         <RadioButton Style="{StaticResource NavItemStyle}"
                                      GroupName="MainNav"
@@ -295,7 +296,7 @@
                                      CommandParameter="Settings">
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Symbol="Settings24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="Ajustes" Style="{StaticResource NavItemTextStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.Settings}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
 
@@ -306,7 +307,7 @@
                                      CommandParameter="Updates">
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Symbol="ArrowDownload24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="Actualizaciones" Style="{StaticResource NavItemTextStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.Updates}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
 
@@ -317,7 +318,7 @@
                                      CommandParameter="About">
                             <StackPanel Orientation="Horizontal">
                                 <ui:SymbolIcon Symbol="Info24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="Acerca de" Style="{StaticResource NavItemTextStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.About}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
                     </StackPanel>
@@ -751,6 +752,35 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                 Las opciones se aplican en caliente.<LineBreak/>
                                 De momento no se guardan al cerrar la app (eso llegará con SQLite).
                             </ui:TextBlock>
+
+                            <!-- Idioma -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,16,0">
+                                        <ui:TextBlock Text="{loc:T Key=Settings.Language.Title}"
+                                                      FontTypography="Subtitle"
+                                                      Margin="0,0,0,4"/>
+                                        <ui:TextBlock Text="{loc:T Key=Settings.Language.Description}"
+                                                      Opacity="0.7"
+                                                      TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                    <ComboBox Grid.Column="1"
+                                              Width="200"
+                                              VerticalAlignment="Center"
+                                              ItemsSource="{Binding AvailableLanguages}"
+                                              SelectedValuePath="Code"
+                                              DisplayMemberPath="NativeName"
+                                              SelectedValue="{Binding CurrentLanguage, Mode=TwoWay}"/>
+                                </Grid>
+                            </Border>
 
                             <!-- Tier del usuario -->
                             <Border Padding="20,16" CornerRadius="10"
