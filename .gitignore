@@ -1,0 +1,28 @@
+## Visual Studio / .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+*.swp
+
+## Build outputs
+[Dd]ebug/
+[Rr]elease/
+[Bb]uild/
+artifacts/
+publish/
+
+## Velopack output
+Releases/
+*.nupkg
+
+## Logs runtime de DexSuite (instalado)
+logs/
+
+## Misc
+*.log
+Thumbs.db
+.DS_Store

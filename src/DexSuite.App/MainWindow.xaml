@@ -1,0 +1,1195 @@
+<ui:FluentWindow
+    x:Class="DexSuite.App.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:vm="clr-namespace:DexSuite.App.ViewModels"
+    mc:Ignorable="d"
+    Title="DexSuite"
+    Icon="pack://application:,,,/Assets/AppIcon.png"
+    Width="1280"
+    Height="820"
+    MinWidth="1080"
+    MinHeight="640"
+    ExtendsContentIntoTitleBar="True"
+    WindowBackdropType="Mica"
+    WindowCornerPreference="Round"
+    WindowStartupLocation="CenterScreen">
+
+    <ui:FluentWindow.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+        <!-- Estilo de los items de la sidebar. Acepta cualquier Content (texto o icono+texto). -->
+        <Style x:Key="NavItemStyle" TargetType="RadioButton">
+            <Setter Property="Margin" Value="8,2"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Barrita de acento a la izquierda cuando está checked -->
+                            <Border x:Name="Accent"
+                                    Grid.Column="0"
+                                    Width="3"
+                                    Margin="0,6"
+                                    CornerRadius="2"
+                                    Background="Transparent"/>
+
+                            <Border x:Name="Bd"
+                                    Grid.Column="1"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background"
+                                        Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Bd" Property="Background"
+                                        Value="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                <Setter TargetName="Accent" Property="Background"
+                                        Value="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Texto del nav item: icono + label en horizontal -->
+        <Style x:Key="NavItemIconStyle" TargetType="ui:SymbolIcon">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="0,0,12,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="NavItemTextStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="SidebarCaption" TargetType="ui:TextBlock">
+            <Setter Property="Margin" Value="20,14,16,4"/>
+            <Setter Property="Opacity" Value="0.55"/>
+            <Setter Property="FontTypography" Value="Caption"/>
+        </Style>
+
+        <!-- Card de módulo (sin "MODULO ##", sin badge de tier porque ya está en columnas) -->
+        <DataTemplate x:Key="ModuleCardTemplate">
+            <Border Margin="0,0,0,8"
+                    Padding="12,10"
+                    CornerRadius="8"
+                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    BorderThickness="1">
+                <StackPanel>
+                    <!-- Fila 1: checkbox + nombre + chip seguridad -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0"
+                                  IsChecked="{Binding IsEnabled, Mode=TwoWay}"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,8,0"/>
+                        <ui:TextBlock Grid.Column="1"
+                                      Text="{Binding Name}"
+                                      FontTypography="BodyStrong"
+                                      VerticalAlignment="Center"
+                                      TextWrapping="Wrap"/>
+                        <Border Grid.Column="2"
+                                Padding="6,2"
+                                CornerRadius="4"
+                                VerticalAlignment="Center"
+                                Margin="6,0,0,0"
+                                Cursor="Help"
+                                ToolTip="{Binding SafetyReason}"
+                                ToolTipService.InitialShowDelay="200"
+                                ToolTipService.ShowDuration="20000">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background"
+                                            Value="{DynamicResource SystemFillColorCautionBackgroundBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Module.Reversible}" Value="True">
+                                            <Setter Property="Background"
+                                                    Value="{DynamicResource SystemFillColorSuccessBackgroundBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <ui:TextBlock Text="{Binding SafetyLabel}"
+                                          FontTypography="Caption"/>
+                        </Border>
+                    </Grid>
+
+                    <!-- Fila 2: descripción -->
+                    <ui:TextBlock Text="{Binding Description}"
+                                  Opacity="0.7"
+                                  TextWrapping="Wrap"
+                                  Margin="0,6,0,0"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <!-- Card de categoría del test de rendimiento -->
+        <DataTemplate x:Key="CategoryRowTemplate">
+            <Border Margin="0,0,0,6"
+                    Padding="12,8"
+                    CornerRadius="6"
+                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock Grid.Column="0"
+                                  Text="{Binding Name}"
+                                  FontTypography="BodyStrong"
+                                  VerticalAlignment="Center"/>
+                    <ui:TextBlock Grid.Column="1"
+                                  Text="{Binding Detail}"
+                                  Opacity="0.7"
+                                  VerticalAlignment="Center"/>
+                    <ui:TextBlock Grid.Column="2"
+                                  Text="{Binding Score, StringFormat={}{0}/100}"
+                                  FontTypography="BodyStrong"
+                                  VerticalAlignment="Center"
+                                  Margin="12,0,0,0"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </ui:FluentWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="DexSuite — Performance Series"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="248"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- ================== SIDEBAR ================== -->
+            <Border Grid.Column="0"
+                    Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    BorderThickness="0,0,1,0">
+                <DockPanel LastChildFill="True">
+
+                    <!-- Header: mini-logo + nombre -->
+                    <Border DockPanel.Dock="Top"
+                            Margin="14,14,14,8"
+                            Padding="10,10"
+                            CornerRadius="10"
+                            Background="{DynamicResource ControlFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="38" Height="38" CornerRadius="7" ClipToBounds="True">
+                                <Image Source="pack://application:,,,/Assets/AppIcon.png"
+                                       Stretch="UniformToFill"/>
+                            </Border>
+                            <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                                <ui:TextBlock Text="DexSuite" FontTypography="BodyStrong"/>
+                                <ui:TextBlock Text="Performance Series"
+                                              FontTypography="Caption"
+                                              Opacity="0.55"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Footer: versión -->
+                    <Border DockPanel.Dock="Bottom" Margin="20,6,20,16">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:SymbolIcon Symbol="CheckmarkCircle24"
+                                           FontSize="14"
+                                           Opacity="0.5"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,6,0"/>
+                            <ui:TextBlock Text="{Binding CurrentVersion, StringFormat='v{0}'}"
+                                          FontTypography="Caption"
+                                          Opacity="0.5"
+                                          VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel>
+                        <ui:TextBlock Text="PANEL" Style="{StaticResource SidebarCaption}"/>
+
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsHomeView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Home">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="Home24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="Inicio" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
+                        </RadioButton>
+
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsModulesView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Modules">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="AppsList24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="Módulos" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
+                        </RadioButton>
+
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsLogView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Log">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="DocumentText24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="Registro" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
+                        </RadioButton>
+
+                        <!-- Separador -->
+                        <Border Height="1"
+                                Margin="20,14,20,6"
+                                Background="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+
+                        <ui:TextBlock Text="SISTEMA" Style="{StaticResource SidebarCaption}"/>
+
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsSettingsView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Settings">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="Settings24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="Ajustes" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
+                        </RadioButton>
+
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsUpdatesView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Updates">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="ArrowDownload24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="Actualizaciones" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
+                        </RadioButton>
+
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsAboutView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="About">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="Info24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="Acerca de" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
+                        </RadioButton>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <!-- ================== CONTENT ================== -->
+            <Grid Grid.Column="1">
+
+                <!-- =========== VISTA INICIO =========== -->
+                <ScrollViewer Visibility="{Binding IsHomeView, Converter={StaticResource BoolToVis}}"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid MaxWidth="980" HorizontalAlignment="Center" Margin="32,28,32,24">
+                        <StackPanel>
+
+                            <!-- Hero: logo centrado (el PNG ya incluye el texto "DexSuite") -->
+                            <StackPanel HorizontalAlignment="Center" Margin="0,0,0,24">
+                                <Image Source="pack://application:,,,/Assets/AppIcon.png"
+                                       Width="220" Height="220"
+                                       Stretch="Uniform"/>
+                                <ui:TextBlock Text="Limpieza, optimización y seguridad para Windows"
+                                              Opacity="0.7"
+                                              HorizontalAlignment="Center"
+                                              Margin="0,8,0,0"/>
+                            </StackPanel>
+
+                            <ui:TextBlock Text="¿Qué quieres hacer?"
+                                          FontTypography="Subtitle"
+                                          Margin="0,0,0,12"/>
+                            <Grid Margin="0,0,0,28">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" Margin="0,0,8,0"
+                                        Padding="18,16" CornerRadius="10"
+                                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                        BorderThickness="1">
+                                    <StackPanel>
+                                        <ui:SymbolIcon Symbol="Pulse24" FontSize="28"
+                                                       Foreground="{DynamicResource SystemFillColorSuccessBrush}"/>
+                                        <ui:TextBlock Text="Analizar rendimiento"
+                                                      FontTypography="BodyStrong"
+                                                      Margin="0,10,0,4"/>
+                                        <ui:TextBlock Opacity="0.7"
+                                                      TextWrapping="Wrap"
+                                                      Margin="0,0,0,12">
+                                            Mide el estado actual de tu equipo.<LineBreak/>
+                                            Obtén una puntuación sobre 100.
+                                        </ui:TextBlock>
+                                        <ui:Button Appearance="Primary"
+                                                   Content="Analizar"
+                                                   Icon="{ui:SymbolIcon Symbol=Play24}"
+                                                   Command="{Binding AnalyzeCommand}"
+                                                   HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Column="1" Margin="8,0,8,0"
+                                        Padding="18,16" CornerRadius="10"
+                                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                        BorderThickness="1">
+                                    <StackPanel>
+                                        <ui:SymbolIcon Symbol="Broom24" FontSize="28"
+                                                       Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                        <ui:TextBlock Text="Optimizar sistema"
+                                                      FontTypography="BodyStrong"
+                                                      Margin="0,10,0,4"/>
+                                        <ui:TextBlock Opacity="0.7"
+                                                      TextWrapping="Wrap"
+                                                      Margin="0,0,0,12">
+                                            Elige los módulos que quieras.<LineBreak/>
+                                            Lanza la limpieza y los ajustes.
+                                        </ui:TextBlock>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="Ir a Módulos"
+                                                   Icon="{ui:SymbolIcon Symbol=AppsList24}"
+                                                   Command="{Binding NavigateCommand}"
+                                                   CommandParameter="Modules"
+                                                   HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Column="2" Margin="8,0,0,0"
+                                        Padding="18,16" CornerRadius="10"
+                                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                        BorderThickness="1">
+                                    <StackPanel>
+                                        <ui:SymbolIcon Symbol="DocumentBulletList24" FontSize="28"
+                                                       Foreground="{DynamicResource SystemFillColorCautionBrush}"/>
+                                        <ui:TextBlock Text="Ver registro"
+                                                      FontTypography="BodyStrong"
+                                                      Margin="0,10,0,4"/>
+                                        <ui:TextBlock Opacity="0.7"
+                                                      TextWrapping="Wrap"
+                                                      Margin="0,0,0,12">
+                                            Mira la salida en vivo del .bat.<LineBreak/>
+                                            Consulta la última ejecución.
+                                        </ui:TextBlock>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="Ir a Registro"
+                                                   Icon="{ui:SymbolIcon Symbol=DocumentText24}"
+                                                   Command="{Binding NavigateCommand}"
+                                                   CommandParameter="Log"
+                                                   HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                            <ui:InfoBar Severity="Informational"
+                                        Title="Aún no has analizado tu equipo"
+                                        IsClosable="False"
+                                        IsOpen="True">
+                                <ui:InfoBar.Message>Pulsa Analizar para obtener una puntuación.
+Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoBar.Message>
+                                <ui:InfoBar.Style>
+                                    <Style TargetType="ui:InfoBar">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding HasScoreBefore}" Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ui:InfoBar.Style>
+                            </ui:InfoBar>
+
+                            <!-- Bloque de puntuación -->
+                            <Border Padding="24,22" CornerRadius="12"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Visibility="{Binding HasScoreBefore, Converter={StaticResource BoolToVis}}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0"
+                                            Width="140" Height="140"
+                                            CornerRadius="70"
+                                            Background="{DynamicResource AccentFillColorDefaultBrush}"
+                                            VerticalAlignment="Center">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <ui:TextBlock Text="{Binding ScoreBefore.Total}"
+                                                          FontTypography="Display"
+                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
+                                                          HorizontalAlignment="Center"/>
+                                            <ui:TextBlock Text="/ 100"
+                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
+                                                          Opacity="0.75"
+                                                          HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <StackPanel Grid.Column="1" Margin="24,0,12,0" VerticalAlignment="Center">
+                                        <ui:TextBlock Text="Estado inicial"
+                                                      FontTypography="Caption"
+                                                      Opacity="0.6"/>
+                                        <ui:TextBlock Text="{Binding ScoreBefore.Verdict}"
+                                                      FontTypography="TitleLarge"/>
+                                        <ui:TextBlock Text="{Binding ScoreBefore.Timestamp, StringFormat='Medido el {0:dd/MM/yyyy HH:mm}'}"
+                                                      Opacity="0.55"
+                                                      Margin="0,2,0,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="2" VerticalAlignment="Center"
+                                                Visibility="{Binding HasComparison, Converter={StaticResource BoolToVis}}">
+                                        <Border Width="140" Height="140"
+                                                CornerRadius="70"
+                                                Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}">
+                                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <ui:TextBlock Text="{Binding ScoreAfter.Total}"
+                                                              FontTypography="Display"
+                                                              HorizontalAlignment="Center"/>
+                                                <ui:TextBlock Text="/ 100"
+                                                              Opacity="0.75"
+                                                              HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <ui:TextBlock Text="{Binding ScoreDeltaLabel, StringFormat='{}{0} puntos'}"
+                                                      FontTypography="BodyStrong"
+                                                      HorizontalAlignment="Center"
+                                                      Margin="0,8,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <StackPanel Margin="0,18,0,0"
+                                        Visibility="{Binding HasScoreBefore, Converter={StaticResource BoolToVis}}">
+                                <ui:TextBlock Text="Desglose del análisis inicial"
+                                              FontTypography="Subtitle"
+                                              Margin="0,0,0,8"/>
+                                <ItemsControl ItemsSource="{Binding ScoreBefore.Categories}"
+                                              ItemTemplate="{StaticResource CategoryRowTemplate}"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,18,0,0"
+                                        Visibility="{Binding HasComparison, Converter={StaticResource BoolToVis}}">
+                                <ui:TextBlock Text="Desglose tras optimizar"
+                                              FontTypography="Subtitle"
+                                              Margin="0,0,0,8"/>
+                                <ItemsControl ItemsSource="{Binding ScoreAfter.Categories}"
+                                              ItemTemplate="{StaticResource CategoryRowTemplate}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,18,0,8"
+                                        Visibility="{Binding HasScoreBefore, Converter={StaticResource BoolToVis}}">
+                                <ui:Button Appearance="Secondary"
+                                           Content="Reiniciar puntuaciones"
+                                           Icon="{ui:SymbolIcon Symbol=ArrowReset24}"
+                                           Command="{Binding ResetScoresCommand}"
+                                           Margin="0,0,8,0"/>
+                                <ui:Button Appearance="Primary"
+                                           Content="Analizar de nuevo"
+                                           Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
+                                           Command="{Binding AnalyzeCommand}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+
+                <!-- =========== VISTA MÓDULOS =========== -->
+                <Grid Visibility="{Binding IsModulesView, Converter={StaticResource BoolToVis}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0" Margin="24,20,24,12">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+                            <ui:Button Appearance="Secondary"
+                                       Content="Recomendado"
+                                       Command="{Binding SelectRecommendedCommand}"
+                                       Margin="0,0,6,0"/>
+                            <ui:Button Appearance="Secondary"
+                                       Content="Marcar todo"
+                                       Command="{Binding SelectAllCommand}"
+                                       Margin="0,0,6,0"/>
+                            <ui:Button Appearance="Secondary"
+                                       Content="Desmarcar"
+                                       Command="{Binding DeselectAllCommand}"/>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Center">
+                            <ui:TextBlock Text="Módulos disponibles"
+                                          FontTypography="TitleLarge"/>
+                            <ui:TextBlock Opacity="0.65"
+                                          Margin="0,2,0,0">
+                                Marca los módulos que quieras ejecutar.<LineBreak/>
+                                Pasa el ratón por encima del chip Seguro/Riesgo para saber por qué.
+                            </ui:TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+
+                    <ScrollViewer Grid.Row="1"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <Grid MaxWidth="1020" HorizontalAlignment="Center" Margin="16,0,16,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="6,0">
+                                <Border Padding="10,6"
+                                        Margin="0,0,0,10"
+                                        CornerRadius="6"
+                                        Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <ui:TextBlock Text="FREE" FontTypography="BodyStrong"/>
+                                        <ui:TextBlock Text="{Binding FreeModules.Count, StringFormat=' · {0} módulos'}"
+                                                      Opacity="0.6"/>
+                                    </StackPanel>
+                                </Border>
+                                <ItemsControl ItemsSource="{Binding FreeModules}"
+                                              ItemTemplate="{StaticResource ModuleCardTemplate}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="6,0">
+                                <Border Padding="10,6"
+                                        Margin="0,0,0,10"
+                                        CornerRadius="6"
+                                        Background="{DynamicResource AccentFillColorDefaultBrush}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <ui:TextBlock Text="AVANZADO"
+                                                      FontTypography="BodyStrong"
+                                                      Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
+                                        <ui:TextBlock Text="{Binding AdvancedModules.Count, StringFormat=' · {0} módulos'}"
+                                                      Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
+                                                      Opacity="0.75"/>
+                                    </StackPanel>
+                                </Border>
+                                <ItemsControl ItemsSource="{Binding AdvancedModules}"
+                                              ItemTemplate="{StaticResource ModuleCardTemplate}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2" Margin="6,0">
+                                <Border Padding="10,6"
+                                        Margin="0,0,0,10"
+                                        CornerRadius="6"
+                                        Background="{DynamicResource SystemFillColorCautionBackgroundBrush}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <ui:TextBlock Text="PRO" FontTypography="BodyStrong"/>
+                                        <ui:TextBlock Text="{Binding ProModules.Count, StringFormat=' · {0} módulos'}"
+                                                      Opacity="0.6"/>
+                                    </StackPanel>
+                                </Border>
+                                <ItemsControl ItemsSource="{Binding ProModules}"
+                                              ItemTemplate="{StaticResource ModuleCardTemplate}"/>
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+
+                    <Border Grid.Row="2"
+                            Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="0,1,0,0"
+                            Padding="24,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ui:TextBlock Grid.Column="0"
+                                          Text="{Binding StatusMessage}"
+                                          VerticalAlignment="Center"
+                                          Opacity="0.8"
+                                          TextWrapping="Wrap"
+                                          MaxHeight="48"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                <ui:Button Appearance="Secondary"
+                                           Content="Cancelar"
+                                           Icon="{ui:SymbolIcon Symbol=Stop24}"
+                                           Command="{Binding CancelCommand}"
+                                           Margin="0,0,8,0"/>
+                                <ui:Button Appearance="Primary"
+                                           Content="Ejecutar"
+                                           Icon="{ui:SymbolIcon Symbol=Play24}"
+                                           Command="{Binding RunCommand}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- =========== VISTA REGISTRO =========== -->
+                <Grid Visibility="{Binding IsLogView, Converter={StaticResource BoolToVis}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="24,20,24,12">
+                        <ui:TextBlock Text="Registro de ejecución"
+                                      FontTypography="TitleLarge"/>
+                        <ui:TextBlock Opacity="0.65"
+                                      Margin="0,2,0,0">
+                            Salida en vivo del .bat.<LineBreak/>
+                            Se va actualizando mientras se ejecuta.
+                        </ui:TextBlock>
+                    </StackPanel>
+
+                    <Border Grid.Row="1"
+                            Margin="24,0,24,0"
+                            Background="{DynamicResource ControlFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6">
+                        <TextBox Text="{Binding OutputLog, Mode=OneWay}"
+                                 IsReadOnly="True"
+                                 AcceptsReturn="True"
+                                 VerticalScrollBarVisibility="Auto"
+                                 HorizontalScrollBarVisibility="Auto"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 FontFamily="Consolas"
+                                 FontSize="12"
+                                 Padding="12"/>
+                    </Border>
+
+                    <Border Grid.Row="2"
+                            Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="0,1,0,0"
+                            Padding="24,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ui:TextBlock Grid.Column="0"
+                                          Text="{Binding StatusMessage}"
+                                          VerticalAlignment="Center"
+                                          Opacity="0.8"
+                                          TextWrapping="Wrap"
+                                          MaxHeight="48"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                <ui:Button Appearance="Secondary"
+                                           Content="Cancelar"
+                                           Icon="{ui:SymbolIcon Symbol=Stop24}"
+                                           Command="{Binding CancelCommand}"
+                                           Margin="0,0,8,0"/>
+                                <ui:Button Appearance="Primary"
+                                           Content="Ejecutar"
+                                           Icon="{ui:SymbolIcon Symbol=Play24}"
+                                           Command="{Binding RunCommand}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- =========== VISTA AJUSTES =========== -->
+                <ScrollViewer Visibility="{Binding IsSettingsView, Converter={StaticResource BoolToVis}}"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
+                        <StackPanel>
+                            <ui:TextBlock Text="Ajustes" FontTypography="TitleLarge"/>
+                            <ui:TextBlock Opacity="0.65"
+                                          Margin="0,2,0,18">
+                                Las opciones se aplican en caliente.<LineBreak/>
+                                De momento no se guardan al cerrar la app (eso llegará con SQLite).
+                            </ui:TextBlock>
+
+                            <!-- Tier del usuario -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Tier activo"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,4"/>
+                                    <ui:TextBlock Opacity="0.7"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,0,0,12">
+                                        Limita qué módulos puedes ejecutar.<LineBreak/>
+                                        Por ahora es informativo; en la próxima versión desactivará los módulos no incluidos en tu tier.
+                                    </ui:TextBlock>
+                                    <ComboBox Width="200" HorizontalAlignment="Left"
+                                              ItemsSource="{Binding AvailableTiers}"
+                                              SelectedItem="{Binding UserTier, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Ruta del script -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Carpeta del script .bat"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,4"/>
+                                    <ui:TextBlock Opacity="0.7"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,0,0,10">
+                                        DexSuite busca DexSuite_CleanUp_v*.bat en esta carpeta.<LineBreak/>
+                                        Ejecuta el de versión más alta.
+                                    </ui:TextBlock>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBox Grid.Column="0"
+                                                    Text="{Binding ScriptFolder, UpdateSourceTrigger=PropertyChanged}"
+                                                    PlaceholderText="Ruta a la carpeta del .bat"/>
+                                        <ui:Button Grid.Column="1"
+                                                   Appearance="Secondary"
+                                                   Content="Abrir"
+                                                   Icon="{ui:SymbolIcon Symbol=FolderOpen24}"
+                                                   Command="{Binding OpenScriptFolderCommand}"
+                                                   Margin="8,0,0,0"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Comportamiento -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Comportamiento"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,8"/>
+
+                                    <Grid Margin="0,6,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="Marcar módulos recomendados al abrir"/>
+                                            <ui:TextBlock Text="Se aplica al iniciar la app."
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"/>
+                                        </StackPanel>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding AutoSelectRecommended, Mode=TwoWay}"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,6,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="Saltar al Registro al ejecutar"/>
+                                            <ui:TextBlock Text="Cambia de vista automáticamente para ver la salida del .bat."
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"/>
+                                        </StackPanel>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding JumpToLogOnRun, Mode=TwoWay}"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,6,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="Avisar antes de ejecutar módulos no reversibles"/>
+                                            <ui:TextBlock Text="Pedirá confirmación para los módulos marcados como Riesgo (futuro)."
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"/>
+                                        </StackPanel>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding WarnBeforeNonReversible, Mode=TwoWay}"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,6,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="Notificar al terminar una ejecución"/>
+                                            <ui:TextBlock Text="Aviso del sistema cuando acabe la limpieza (futuro)."
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"/>
+                                        </StackPanel>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding NotifyOnFinish, Mode=TwoWay}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,12,0,0">
+                                <ui:Button Appearance="Secondary"
+                                           Content="Restablecer ajustes"
+                                           Icon="{ui:SymbolIcon Symbol=ArrowReset24}"
+                                           Command="{Binding ResetSettingsCommand}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+
+                <!-- =========== VISTA ACTUALIZACIONES =========== -->
+                <ScrollViewer Visibility="{Binding IsUpdatesView, Converter={StaticResource BoolToVis}}"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid MaxWidth="780" HorizontalAlignment="Center" Margin="32,24,32,32">
+                        <StackPanel>
+                            <ui:TextBlock Text="Actualizaciones" FontTypography="TitleLarge"/>
+                            <ui:TextBlock Opacity="0.65"
+                                          Margin="0,2,0,18">
+                                DexSuite usa Velopack para actualizarse.<LineBreak/>
+                                La comprobación real estará disponible cuando publiquemos la primera release.
+                            </ui:TextBlock>
+
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <ui:TextBlock Text="Versión instalada"
+                                                      FontTypography="Caption"
+                                                      Opacity="0.6"/>
+                                        <ui:TextBlock Text="{Binding CurrentVersion, StringFormat='v{0}'}"
+                                                      FontTypography="TitleLarge"
+                                                      Margin="0,2,0,4"/>
+                                        <ui:TextBlock Text="{Binding LastUpdateCheck, StringFormat='Última comprobación: {0}'}"
+                                                      Opacity="0.6"
+                                                      FontTypography="Caption"/>
+                                    </StackPanel>
+                                    <ui:Button Grid.Column="1"
+                                               Appearance="Primary"
+                                               Content="Buscar actualizaciones"
+                                               Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
+                                               Command="{Binding CheckForUpdatesCommand}"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Preferencias"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,10"/>
+
+                                    <Grid Margin="0,4,0,8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="Actualizar automáticamente"/>
+                                            <ui:TextBlock Text="Descarga e instala nuevas versiones en segundo plano."
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"/>
+                                        </StackPanel>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding AutoUpdateEnabled, Mode=TwoWay}"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,8,0,4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="Canal"/>
+                                            <ui:TextBlock Opacity="0.55"
+                                                          FontTypography="Caption">
+                                                Stable es la rama estable.<LineBreak/>
+                                                Beta recibe versiones nuevas antes, pero pueden tener fallos.
+                                            </ui:TextBlock>
+                                        </StackPanel>
+                                        <ComboBox Grid.Column="1"
+                                                  Width="140"
+                                                  ItemsSource="{Binding AvailableChannels}"
+                                                  SelectedItem="{Binding UpdateChannel, Mode=TwoWay}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <ui:InfoBar Severity="Informational"
+                                        Title="Velopack pendiente"
+                                        IsClosable="False"
+                                        IsOpen="True">
+                                <ui:InfoBar.Message>La integración real con Velopack se cablea cuando subamos la primera release a un repositorio público.</ui:InfoBar.Message>
+                            </ui:InfoBar>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+
+                <!-- =========== VISTA ACERCA DE =========== -->
+                <ScrollViewer Visibility="{Binding IsAboutView, Converter={StaticResource BoolToVis}}"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,28,32,32">
+                        <StackPanel>
+
+                            <Border Padding="28,28" CornerRadius="14"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,18">
+                                <StackPanel HorizontalAlignment="Center">
+                                    <Image Source="pack://application:,,,/Assets/AppIcon.png"
+                                           Width="180" Height="180"
+                                           Stretch="Uniform"/>
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Center"
+                                                Margin="0,14,0,0">
+                                        <Border Padding="8,3" CornerRadius="4"
+                                                Background="{DynamicResource AccentFillColorDefaultBrush}"
+                                                Margin="0,0,6,0">
+                                            <ui:TextBlock Text="{Binding CurrentVersion, StringFormat='v{0}'}"
+                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
+                                                          FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,3" CornerRadius="4"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="Requiere administrador"
+                                                          FontTypography="Caption"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="El proyecto"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,6"/>
+                                    <ui:TextBlock TextWrapping="Wrap" Opacity="0.85">
+                                        DexSuite es una suite de limpieza, optimización y seguridad para Windows.<LineBreak/>
+                                        En esta versión envuelve un script de mantenimiento (DexSuite_CleanUp_v*.bat) como subproceso elevado, conduciendo su menú vía stdin y capturando la salida en vivo.<LineBreak/>
+                                        En próximas iteraciones los módulos irán migrando a código C# nativo, manteniendo paridad funcional con el .bat.
+                                    </ui:TextBlock>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Novedades en v0.1.0"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,8"/>
+                                    <StackPanel Margin="0,2,0,2">
+                                        <ui:TextBlock Text="• Pantalla de Inicio con logo y atajos rápidos"/>
+                                        <ui:TextBlock Text="• Test de rendimiento con 8 categorías (CPU, RAM, GPU, Disco, Procesos, Inicio, Temp, Red)"/>
+                                        <ui:TextBlock Text="• Comparativa antes/después con delta de puntos"/>
+                                        <ui:TextBlock Text="• Módulos agrupados por tier (Free / Avanzado / Pro) en 3 columnas"/>
+                                        <ui:TextBlock Text="• Tooltip explicativo en cada chip Seguro/Riesgo"/>
+                                        <ui:TextBlock Text="• Heartbeat y botón Cancelar durante la ejecución del .bat"/>
+                                        <ui:TextBlock Text="• Resolución del .bat por glob (sobrevive a actualizaciones de versión)"/>
+                                        <ui:TextBlock Text="• Icono real en taskbar y barra de título"/>
+                                        <ui:TextBlock Text="• Sidebar con iconos y separadores entre grupos"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Créditos"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,8"/>
+                                    <Grid Margin="0,0,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBlock Grid.Column="0" Text="Script original" Opacity="0.6"/>
+                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter (DexSuite_CleanUp v0.9.0)"/>
+                                    </Grid>
+                                    <Grid Margin="0,0,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBlock Grid.Column="0" Text="App de escritorio" Opacity="0.6"/>
+                                        <ui:TextBlock Grid.Column="1" Text="Mateo · DexSuite Performance Series"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBlock Grid.Column="0" Text="Módulo videojuegos" Opacity="0.6"/>
+                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter · Game_Configs (IWR.ps1)"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Stack técnico"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,10"/>
+                                    <WrapPanel>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text=".NET 8" FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="C# 12" FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="WPF" FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="Wpf.Ui (Lepoco)" FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="CommunityToolkit.Mvvm" FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="EF Core SQLite" FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="Serilog" FontTypography="Caption"/>
+                                        </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="Velopack" FontTypography="Caption"/>
+                                        </Border>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="Utilidades y enlaces"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,10"/>
+                                    <WrapPanel>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="Abrir carpeta de logs"
+                                                   Icon="{ui:SymbolIcon Symbol=FolderOpen24}"
+                                                   Command="{Binding OpenLogsFolderCommand}"
+                                                   Margin="0,0,8,8"/>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="Carpeta del script"
+                                                   Icon="{ui:SymbolIcon Symbol=Document24}"
+                                                   Command="{Binding OpenScriptFolderCommand}"
+                                                   Margin="0,0,8,8"/>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="Buscar actualizaciones"
+                                                   Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
+                                                   Command="{Binding CheckForUpdatesCommand}"
+                                                   Margin="0,0,8,8"/>
+                                    </WrapPanel>
+                                    <ui:TextBlock Text="Web, GitHub y reporte de bugs llegarán cuando el proyecto esté publicado."
+                                                  Opacity="0.55"
+                                                  FontTypography="Caption"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,4,0,0"/>
+                                </StackPanel>
+                            </Border>
+
+                            <ui:TextBlock Text="© 2026 DexSuite · Solo para Windows · Requiere permisos de administrador"
+                                          Opacity="0.5"
+                                          FontTypography="Caption"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,8,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</ui:FluentWindow>
