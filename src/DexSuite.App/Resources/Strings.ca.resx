@@ -113,6 +113,212 @@ S'actualitza en temps real mentre s'executa.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Desmarca-ho tot</value>
   </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>Esborra Prefetch, Temp del sistema i de l'usuari, miniatures, IconCache i shaders DirectX.
+Tot es regenera sol.</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Prefetch, memòria cau i D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>Només esborra memòries cau que Windows regenera automàticament en usar l'equip.
+No afecta les teves dades ni programes.</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>Neteja registres antics de Windows, SoftwareDistribution, Windows Update, CBS, DISM i la carpeta WER.</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>Registres del sistema</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>Només esborra arxius de registre de diagnòstic.
+No afecta el funcionament ni les dades personals.</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>Buida les carpetes Temp persistents, l'historial recent, la paperera i Windows.old si existeix.</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>Temporals, recents i paperera</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>Buida la paperera i els arxius temporals.
+Si havies enviat alguna cosa important a la paperera, recupera-la abans.</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>Crash dumps, cua d'impressió, compactació de WMI i buidatge del Visor d'esdeveniments.
+Els esdeveniments no es poden recuperar.</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>Neteja profunda</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>Buida el Visor d'esdeveniments: un cop esborrats els esdeveniments del sistema, no es poden recuperar.
+Útil per a la privacitat, però pensa-t'ho abans.</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>Atura wuauserv i BITS, esborra SoftwareDistribution\Download i Delivery Optimization, i reinicia els serveis.</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Memòria cau de Windows Update</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>Només buida la memòria cau de descàrregues de Windows Update.
+Si una actualització havia fallat, aquest mòdul ho arregla.</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>Neteja components obsolets del sistema.
+Triga 5-20 minuts i és irreversible (no podràs desinstal·lar actualitzacions prèvies).</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>DISM Component Store</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>Després d'aquesta neteja ja no podràs desinstal·lar les actualitzacions de Windows ja aplicades.
+És segur, però permanent.</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>Buida la memòria cau d'Edge, Chrome, Firefox, Brave, Opera i Vivaldi.
+No toca perfils ni contrasenyes.</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>Memòria cau de navegadors</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>Només buida la memòria cau dels navegadors.
+NO toca contrasenyes, marcadors, historial ni galetes de sessió.</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>Buida la memòria cau DNS, registra l'equip al DNS i força l'actualització de directives de grup.</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>Xarxa (DNS i gpupdate)</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>Només refresca la memòria cau DNS i les directives de grup.
+No canvia la configuració de xarxa persistent.</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>Reinicia la memòria cau de Microsoft Store, buida els registres d'OneDrive i la memòria cau de Teams.</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store, OneDrive i Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>Neteja les memòries cau de Microsoft Store, OneDrive i Teams.
+Els teus arxius sincronitzats i converses es conserven.</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>Comprova els arxius protegits del sistema i repara la imatge de Windows.
+Reparador, no destructiu.</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM (reparació)</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>Repara arxius del sistema danyats.
+És lent (10-30 min), però NO modifica dades de l'usuari.</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>Desactiva l'acceleració del ratolí, posa el teclat al màxim, desactiva sticky keys i llegeix els Hz màxims dels monitors.</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>Ratolí, teclat i monitors</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>Toca preferències de ratolí i teclat al registre.
+Si no t'agraden els canvis, es poden revertir des de Configuració de Windows.</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>Executa 'winget upgrade --all'.
+Pot trigar segons el nombre d'apps. Sense undo per mòdul.</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget (actualitzar apps)</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>Actualitza TOTES les teves apps a la darrera versió.
+Si una nova versió porta un canvi que no t'agrada, no es pot desfer des d'aquí.</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>Desactiva Windows Copilot, Cortana, DiagTrack, Timeline, AdvertisingID i CEIP.</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Copilot, Cortana i telemetria</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>Canvia la configuració del registre per desactivar Copilot, Cortana i la telemetria.
+Reversible reactivant cada opció.</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>Bloqueja apps suggerides, ubicació, widgets, WPBT i desactiva serveis poc útils.</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>Privacitat i serveis</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>Modifica polítiques de privacitat i desactiva diversos serveis de Windows.
+Reversible, però afecta funcions com Widgets o ubicació.</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>Power Throttling off, MMCSS prioritari, hibernació off, HAGS on, BCD platform tick (cal reiniciar).</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>Rendiment i latència</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>Canvia BCD, MMCSS, hibernació i HAGS.
+Cal reiniciar. Són canvis forts però reversibles.</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>Optimitza NIC (RSS, offload, EEE off), stack TCP (Nagle off, MaxUserPort 65534) i DNS Google/Cloudflare.</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet (optimització de xarxa)</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>Modifica paràmetres de l'adaptador de xarxa i la pila TCP.
+Si perds connexió, executa 'netsh int ip reset'.</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT, Defender quick scan, SMBv1 off, AutoRun off, DEP AlwaysOn, LLMNR/NetBIOS off, RDP off, UAC nivell 2.</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>Seguretat</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>Endureix la seguretat del sistema.
+Desactiva RDP: si l'usaves per connectar-te en remot, activa'l de nou manualment.</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>S'assegura que TRIM estigui actiu a NTFS/ReFS, llança TRIM als SSD detectats i llegeix temperatura i desgast SMART.</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD (TRIM i salut SMART)</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>Només llegeix l'estat SMART i executa TRIM (operació estàndard d'SSD).
+No modifica dades.</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>pnputil scan, llista els drivers OEM i executa Windows Update per cercar drivers nous.</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>Drivers (Windows Update + pnputil)</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>Només cerca drivers.
+NO els instal·la automàticament: tu decideixes si actualitzar-los des de Windows Update.</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>Descarrega i executa un menú remot de PowerShell amb optimitzacions per joc.</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>Optimització de videojocs</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>Descarrega i executa codi al teu PC.
+Només activa'l si confies en la font (Sr. Dexter / Game_Configs).</value>
+  </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Risc</value>
   </data>

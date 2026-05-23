@@ -421,7 +421,7 @@ public partial class MainViewModel : ObservableObject
 
         foreach (var m in catalog.GetAll())
         {
-            var vm = new ModuleItemViewModel(m, initiallyEnabled: AutoSelectRecommended && m.RecommendedDefault);
+            var vm = new ModuleItemViewModel(m, initiallyEnabled: AutoSelectRecommended && m.RecommendedDefault, _loc);
             Modules.Add(vm);
             switch (m.Tier)
             {

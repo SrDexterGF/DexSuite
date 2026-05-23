@@ -13,6 +13,17 @@ New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 $jsonText = [System.IO.File]::ReadAllText($jsonPath, [System.Text.Encoding]::UTF8)
 $data = $jsonText | ConvertFrom-Json
 
+# Merge in modules.json if it exists (translations of the 20 modules)
+$modulesPath = Join-Path $PSScriptRoot "modules.json"
+if (Test-Path $modulesPath) {
+    $modulesText = [System.IO.File]::ReadAllText($modulesPath, [System.Text.Encoding]::UTF8)
+    $modulesData = $modulesText | ConvertFrom-Json
+    foreach ($prop in $modulesData.keys.PSObject.Properties) {
+        $data.keys | Add-Member -NotePropertyName $prop.Name -NotePropertyValue $prop.Value -Force
+    }
+    Write-Host "  Merged modules.json ($($modulesData.keys.PSObject.Properties.Count) module keys)"
+}
+
 $languages = $data.languages
 
 $header = @'

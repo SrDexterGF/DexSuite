@@ -113,6 +113,212 @@
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>取消全选</value>
   </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>清除 Prefetch、系统和用户 Temp、缩略图、IconCache 和 DirectX 着色器。
+所有内容会自动重新生成。</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Prefetch、缓存与 D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>仅清除 Windows 在使用时会自动重新生成的缓存。
+不影响你的数据或程序。</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>清理 Windows、SoftwareDistribution、Windows Update、CBS、DISM 旧日志以及 WER 文件夹。</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>系统日志</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>仅删除诊断日志文件。
+不影响系统运行或个人数据。</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>清空顽固的 Temp 文件夹、最近使用记录、回收站以及 Windows.old（如存在）。</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>临时文件、最近项与回收站</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>清空回收站和临时文件。
+如果你将重要文件移到回收站，请先恢复。</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>崩溃转储、打印队列、WMI 压缩和清空事件查看器。
+事件不可恢复。</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>深度清理</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>清空事件查看器：系统事件一旦删除便无法恢复。
+有利于隐私，但请三思。</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>停止 wuauserv 与 BITS，清除 SoftwareDistribution\Download 和 Delivery Optimization，然后重启服务。</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Windows Update 缓存</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>仅清空 Windows Update 下载缓存。
+如果之前的更新失败，本模块可修复。</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>清理系统中过时的组件。
+耗时 5-20 分钟，不可逆（无法卸载之前的更新）。</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>DISM 组件存储</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>执行后将无法卸载已应用的 Windows 更新。
+安全但不可撤销。</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>清除 Edge、Chrome、Firefox、Brave、Opera 和 Vivaldi 的缓存。
+不影响配置文件和密码。</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>浏览器缓存</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>仅清空浏览器缓存。
+不影响密码、书签、历史记录或会话 Cookie。</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>刷新 DNS 缓存，在 DNS 中注册本机，并强制刷新组策略。</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>网络（DNS 与 gpupdate）</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>仅刷新 DNS 缓存和组策略。
+不改变持久的网络配置。</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>重置 Microsoft Store 缓存，清空 OneDrive 日志和 Teams 缓存。</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store、OneDrive 与 Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>清理 Microsoft Store、OneDrive 和 Teams 的缓存。
+你同步的文件和聊天记录会保留。</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>检查受保护的系统文件并修复 Windows 映像。
+修复性操作，非破坏性。</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM（修复）</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>修复损坏的系统文件。
+较慢（10-30 分钟），但不会修改用户数据。</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>关闭鼠标加速，将键盘调至最高，关闭粘滞键，并读取显示器最大 Hz。</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>鼠标、键盘与显示器</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>在注册表中调整鼠标和键盘偏好。
+如不满意，可在 Windows 设置中恢复。</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>执行 'winget upgrade --all'。
+时间取决于应用数量。本模块不可撤销。</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget（更新应用）</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>将所有应用更新到最新版本。
+如果新版本带来不喜欢的变化，这里无法回退。</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>禁用 Windows Copilot、Cortana、DiagTrack、Timeline、AdvertisingID 和 CEIP。</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Copilot、Cortana 与遥测</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>通过修改注册表禁用 Copilot、Cortana 和遥测。
+可通过重新启用每项还原。</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>屏蔽推荐应用、定位、小组件、WPBT，并禁用不常用服务。</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>隐私与服务</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>调整隐私策略并禁用多个 Windows 服务。
+可还原，但会影响小组件或定位等功能。</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>关闭 Power Throttling、MMCSS 优先、关闭休眠、启用 HAGS、BCD 平台时钟（需要重启）。</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>性能与延迟</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>修改 BCD、MMCSS、休眠和 HAGS。
+需要重启。变更强力但可还原。</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>调优网卡（RSS、Offload、关闭 EEE）、TCP 栈（关闭 Nagle、MaxUserPort 65534）以及 Google/Cloudflare DNS。</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet（网络优化）</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>修改网卡参数和 TCP 协议栈。
+若失去连接，请运行 'netsh int ip reset'。</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT、Defender 快速扫描、关闭 SMBv1/AutoRun/LLMNR/NetBIOS/RDP，DEP AlwaysOn，UAC 第 2 级。</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>强化系统安全。
+禁用 RDP：如果你需要远程连接，请手动重新启用。</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>确保 NTFS/ReFS 上启用 TRIM，对检测到的 SSD 执行 TRIM，并读取 SMART 温度和磨损。</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD（TRIM 与 SMART 健康）</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>仅读取 SMART 状态并执行 TRIM（SSD 标准操作）。
+不修改数据。</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>执行 pnputil 扫描，列出 OEM 驱动程序，并启动 Windows Update 查找新驱动。</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>驱动程序（Windows Update + pnputil）</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>仅查找驱动程序。
+不会自动安装：是否通过 Windows Update 更新由你决定。</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>下载并运行远程 PowerShell 菜单，按游戏进行优化。</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>游戏优化</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>在你的电脑上下载并执行代码。
+仅在信任来源（Sr. Dexter / Game_Configs）时启用。</value>
+  </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>风险</value>
   </data>

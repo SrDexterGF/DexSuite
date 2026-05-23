@@ -1,10 +1,11 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using DexSuite.App.Models;
+using DexSuite.App.Services;
 
 namespace DexSuite.App.ViewModels;
 
 /// <summary>
-/// Estado de ejecucion de un modulo dentro de un run.
+/// Estado de ejecución de un módulo dentro de un run.
 /// </summary>
 public enum ModuleStatus
 {
@@ -16,50 +17,70 @@ public enum ModuleStatus
 }
 
 /// <summary>
-/// Item de la lista de modulos en la UI. Envuelve un <see cref="CleanupModule"/>
-/// y anade el estado mutable (marcado, estado de ejecucion).
+/// Item de la lista de módulos en la UI. Envuelve un <see cref="CleanupModule"/>
+/// y traduce los textos al idioma activo vía <see cref="ILocalizationService"/>.
+/// Cuando el usuario cambia el idioma, las propiedades Name/Description/SafetyReason
+/// notifican PropertyChanged y la UI se refresca al instante.
 /// </summary>
-public partial class ModuleItemViewModel : ObservableObject
+public partial class ModuleItemViewModel : ObservableObject, IDisposable
 {
+    private readonly ILocalizationService _loc;
+    private readonly EventHandler _languageChangedHandler;
+
     public CleanupModule Module { get; }
 
-    public ModuleItemViewModel(CleanupModule module, bool initiallyEnabled)
+    public ModuleItemViewModel(CleanupModule module, bool initiallyEnabled, ILocalizationService loc)
     {
         Module = module;
+        _loc = loc;
         isEnabled = initiallyEnabled;
+
+        _languageChangedHandler = (_, _) =>
+        {
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(Description));
+            OnPropertyChanged(nameof(SafetyReason));
+            OnPropertyChanged(nameof(SafetyLabel));
+            OnPropertyChanged(nameof(TierLabel));
+        };
+        _loc.LanguageChanged += _languageChangedHandler;
     }
 
     public int Id => Module.Id;
-    public string Name => Module.Name;
-    public string Description => Module.Description;
+    public string Name => _loc.Get(Module.NameKey);
+    public string Description => _loc.Get(Module.DescriptionKey);
     public string CategoryName => Module.Category.ToString();
 
-    /// <summary>Etiqueta visible del tier (Free / Avanzado / Pro).</summary>
+    /// <summary>Etiqueta visible del tier (Free / Avanzado / Pro / …) traducida.</summary>
     public string TierLabel => Module.Tier switch
     {
-        ModuleTier.Free => "Free",
-        ModuleTier.Advanced => "Avanzado",
-        ModuleTier.Pro => "Pro",
+        ModuleTier.Free => _loc.Get("Modules.Tier.Free"),
+        ModuleTier.Advanced => _loc.Get("Modules.Tier.Advanced"),
+        ModuleTier.Pro => _loc.Get("Modules.Tier.Pro"),
         _ => Module.Tier.ToString(),
     };
 
-    /// <summary>Texto del Id en formato visual: "MODULO 03".</summary>
-    public string IdLabel => $"MODULO {Id:00}";
+    /// <summary>Texto del chip Seguro/Riesgo, traducido al idioma activo.</summary>
+    public string SafetyLabel => Module.Reversible
+        ? _loc.Get("Modules.Safety.Safe")
+        : _loc.Get("Modules.Safety.Risk");
 
-    /// <summary>Texto de seguridad: reversible vs irreversible (sin localizar, uso interno).</summary>
-    public string SafetyLabel => Module.Reversible ? "Seguro" : "Riesgo";
-
-    /// <summary>Clave i18n del chip Seguro/Riesgo, para usar con KeyToTranslationConverter.</summary>
+    /// <summary>Clave i18n del chip, para usar con el converter (compatibilidad).</summary>
     public string SafetyLabelKey => Module.Reversible ? "Modules.Safety.Safe" : "Modules.Safety.Risk";
 
-    /// <summary>Explicacion de por que es Seguro o Riesgo. Se muestra como tooltip del chip.</summary>
-    public string SafetyReason => Module.SafetyReason;
+    /// <summary>Explicación de por qué es Seguro o Riesgo, traducida.</summary>
+    public string SafetyReason => _loc.Get(Module.SafetyReasonKey);
 
-    /// <summary>Si esta marcado para ejecutarse.</summary>
+    /// <summary>Si está marcado para ejecutarse.</summary>
     [ObservableProperty]
     private bool isEnabled;
 
-    /// <summary>Estado actual de ejecucion (para futura fase 2 con tracking por modulo).</summary>
+    /// <summary>Estado actual de ejecución (para futura fase 2 con tracking por módulo).</summary>
     [ObservableProperty]
     private ModuleStatus status = ModuleStatus.Pending;
+
+    public void Dispose()
+    {
+        _loc.LanguageChanged -= _languageChangedHandler;
+    }
 }

@@ -113,6 +113,212 @@ Se actualiza en tiempo real mientras se ejecuta.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Desmarcar</value>
   </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>Borra Prefetch, Temp del sistema y del usuario, miniaturas, IconCache y shaders DirectX.
+Todo se regenera solo.</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Prefetch, caché y D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>Solo borra cachés que Windows regenera automáticamente al usar el equipo.
+No afecta a tus datos ni programas.</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>Limpia logs antiguos de Windows, SoftwareDistribution, Windows Update, CBS, DISM y la carpeta WER.</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>Logs del sistema</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>Solo borra archivos de log diagnósticos.
+No afecta al funcionamiento ni a datos personales.</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>Vacía las carpetas Temp resistentes, el historial reciente, la papelera y Windows.old si existe.</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>Temporales, recientes y papelera</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>Vacía la papelera y los archivos temporales.
+Si habías enviado algo importante a la papelera, recupéralo antes.</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>Crash dumps, cola de impresión, compactación de WMI y vaciado del Visor de Eventos.
+Los eventos no son recuperables.</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>Limpieza profunda</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>Vacía el Visor de Eventos: una vez borrados los eventos del sistema, no se pueden recuperar.
+Útil para privacidad, pero piénsalo antes.</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>Detiene wuauserv y BITS, borra SoftwareDistribution\Download y Delivery Optimization, y reinicia los servicios.</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Caché de Windows Update</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>Solo vacía la caché de descargas de Windows Update.
+Si una actualización había fallado, este módulo la arregla.</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>Limpia componentes obsoletos del sistema.
+Tarda 5-20 minutos y es irreversible (no podrás desinstalar actualizaciones previas).</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>DISM Component Store</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>Tras esta limpieza ya no podrás desinstalar las actualizaciones de Windows que ya tenías aplicadas.
+Es seguro, pero permanente.</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>Vacía la caché de Edge, Chrome, Firefox, Brave, Opera y Vivaldi.
+No toca perfiles ni contraseñas.</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>Caché de navegadores</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>Solo vacía la caché de los navegadores.
+NO toca contraseñas, marcadores, historial ni cookies de sesión.</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>Vacía la caché DNS, registra el equipo en DNS y fuerza la actualización de directivas de grupo.</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>Red (DNS y gpupdate)</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>Solo refresca la caché DNS y las directivas de grupo.
+No cambia la configuración de red persistente.</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>Resetea la caché de Microsoft Store, vacía los logs de OneDrive y limpia la caché de Teams.</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store, OneDrive y Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>Limpia las cachés de Microsoft Store, OneDrive y Teams.
+Tus archivos sincronizados y conversaciones se conservan.</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>Comprueba los archivos protegidos del sistema y repara la imagen de Windows.
+Reparativo, no destructivo.</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM (reparación)</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>Repara archivos del sistema dañados.
+Es lento (10-30 minutos), pero NO modifica datos del usuario.</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>Desactiva la aceleración del ratón, pone el teclado a máximo, desactiva sticky keys y lee los Hz máximos de los monitores.</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>Ratón, teclado y monitores</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>Toca preferencias de ratón y teclado en el registro.
+Si no te gustan los cambios, se pueden revertir desde Configuración de Windows.</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>Lanza 'winget upgrade --all'.
+Puede tardar según el número de apps. Sin undo por módulo.</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget (actualizar apps)</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>Actualiza TODAS tus apps a la última versión.
+Si una versión nueva trae un cambio que no te gusta, no se puede deshacer desde aquí.</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>Desactiva Windows Copilot, Cortana, DiagTrack, Timeline, AdvertisingID y CEIP.</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Copilot, Cortana y telemetría</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>Cambia la configuración del registro para desactivar Copilot, Cortana y la telemetría.
+Reversible volviendo a activar cada opción.</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>Bloquea apps sugeridas, ubicación, widgets, WPBT y desactiva servicios poco útiles.</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>Privacidad y servicios</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>Modifica políticas de privacidad y deshabilita varios servicios de Windows.
+Reversible, pero afecta a funciones como Widgets o ubicación.</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>Power Throttling off, MMCSS prioritario, hibernación off, HAGS on, BCD platform tick (necesita reinicio).</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>Rendimiento y latencia</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>Cambia BCD, MMCSS, hibernación y HAGS.
+Necesita reinicio. Son cambios fuertes pero reversibles.</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>Tunea NIC (RSS, offload, EEE off), stack TCP (Nagle off, MaxUserPort 65534) y DNS Google/Cloudflare.</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet (optimización de red)</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>Modifica parámetros del adaptador de red y el stack TCP.
+Si tras esto pierdes conexión, ejecuta 'netsh int ip reset'.</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT, Defender quick scan, SMBv1 off, AutoRun off, DEP AlwaysOn, LLMNR/NetBIOS off, RDP off, UAC nivel 2.</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>Endurece la seguridad del sistema.
+Desactiva RDP: si lo usabas para conectarte en remoto, actívalo de nuevo manualmente.</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>Asegura que TRIM esté activo en NTFS/ReFS, lanza TRIM en los SSDs detectados y lee temperatura y desgaste SMART.</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD (TRIM y salud SMART)</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>Solo lee el estado SMART y lanza TRIM (operación estándar de SSD).
+No modifica datos.</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>pnputil scan, lista los drivers OEM y lanza Windows Update para buscar drivers nuevos.</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>Drivers (Windows Update + pnputil)</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>Solo busca drivers.
+NO los instala automáticamente: tú decides si actualizarlos desde Windows Update.</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>Descarga y ejecuta un menú remoto de PowerShell con optimizaciones por juego.</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>Optimización de videojuegos</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>Descarga y ejecuta código en tu PC.
+Solo actívalo si confías en la fuente (Sr. Dexter / Game_Configs).</value>
+  </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Riesgo</value>
   </data>

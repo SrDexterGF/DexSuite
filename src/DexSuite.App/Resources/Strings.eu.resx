@@ -113,6 +113,212 @@ Denbora errealean eguneratzen da exekuzioan.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Kendu denak</value>
   </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>Prefetch, sistemaren eta erabiltzailearen Temp, miniaturak, IconCache eta DirectX shader-ak ezabatzen ditu.
+Dena bere kabuz birsortzen da.</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Prefetch, cachea eta D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>Windowsek ekipoa erabiltzean automatikoki birsortzen dituen cacheak soilik ezabatzen ditu.
+Ez dio eraginik egiten zure datuei edo programei.</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>Windows-en erregistro zaharrak garbitzen ditu, SoftwareDistribution, Windows Update, CBS, DISM eta WER karpeta.</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>Sistemaren erregistroak</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>Diagnostiko-erregistroen fitxategiak soilik ezabatzen ditu.
+Ez dio eraginik egiten funtzionamenduari edo datu pertsonalei.</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>Garbitu Temp karpeta gogorrak, oraintsuko historia, zakarrontzia eta Windows.old, badago.</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>Aldi baterakoak, oraintsukoak eta zakarrontzia</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>Zakarrontzia eta aldi baterako fitxategiak husten ditu.
+Garrantzitsuren bat zakarrontzira bidali baduzu, lehenago berreskuratu.</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>Crash dumps, inprimaketa-ilara, WMI trinkotzea eta Gertaeren ikustailea hustea.
+Gertaerak ezin dira berreskuratu.</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>Garbiketa sakona</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>Gertaeren ikustailea hustu: behin sistemaren gertaerak ezabatuta, ezin dira berreskuratu.
+Pribatutasunerako baliagarria, baina pentsatu ondo.</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>wuauserv eta BITS gelditzen ditu, SoftwareDistribution\Download eta Delivery Optimization ezabatu eta zerbitzuak berrabiarazten ditu.</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Windows Update cachea</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>Windows Update-en deskarga cachea soilik husten du.
+Eguneraketaren batek huts egin badu, modulu honek konpontzen du.</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>Sistemaren osagai zaharkituak garbitzen ditu.
+5-20 minutu hartzen du eta itzulezina da (ezin izango duzu aurreko eguneraketarik desinstalatu).</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>DISM Component Store</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>Garbiketa honen ondoren, ezin izango dituzu jada aplikatutako Windows-en eguneraketak desinstalatu.
+Segurua da, baina behin betikoa.</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>Edge, Chrome, Firefox, Brave, Opera eta Vivaldiren cachea hustu.
+Profilak eta pasahitzak ez ditu ukitzen.</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>Nabigatzaileen cachea</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>Nabigatzaileen cachea soilik husten du.
+EZ ditu pasahitzak, gogoko-orriak, historia edo saio cookieak ukitzen.</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>DNS cachea husten du, ekipoa DNSn erregistratzen du eta talde-direktiben eguneratzea behartzen du.</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>Sarea (DNS eta gpupdate)</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>DNS cachea eta talde-direktibak soilik freskatzen ditu.
+Ez du sare-konfigurazio iraunkorra aldatzen.</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>Microsoft Store-ren cachea berrabiarazi, OneDrive-en erregistroak hustu eta Teams-en cachea garbitu.</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store, OneDrive eta Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>Microsoft Store, OneDrive eta Teams-en cacheak garbitzen ditu.
+Sinkronizatutako fitxategi eta elkarrizketak gordeko dira.</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>Sistemaren fitxategi babestuak egiaztatu eta Windows-en irudia konpontzen du.
+Konpontzailea, ez suntsitzailea.</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM (konponketa)</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>Sistemaren fitxategi hondatuak konpontzen ditu.
+Mantsoa da (10-30 min), baina EZ ditu erabiltzailearen datuak aldatzen.</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>Saguaren azelerazioa desgaitu, teklatua maximora ezarri, sticky keys desgaitu eta monitoreen Hz maximoak irakurri.</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>Sagua, teklatua eta monitoreak</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>Sagua eta teklatuaren hobespenak erregistroan aldatzen ditu.
+Aldaketak gustuko ez badituzu, Windows-en Konfigurazio bidez aldatu.</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>'winget upgrade --all' exekutatzen du.
+Denbora behar du aplikazio-kopuruaren arabera. Modulu honek ez du desegite-aukerarik.</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget (aplikazioak eguneratu)</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>Zure aplikazio GUZTIAK azken bertsiora eguneratzen ditu.
+Bertsio berriak gustuko ez duzun aldaketarik badakar, hemendik ezin da desegin.</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>Windows Copilot, Cortana, DiagTrack, Timeline, AdvertisingID eta CEIP desgaitzen ditu.</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Copilot, Cortana eta telemetria</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>Erregistroan aldaketak Copilot, Cortana eta telemetria desgaitzeko.
+Itzulgarria aukera bakoitza berriz aktibatuz.</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>Iradokitako aplikazioak, kokapena, widgetak, WPBT blokeatu eta zerbitzu gutxi erabiliak desgaitzen ditu.</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>Pribatutasuna eta zerbitzuak</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>Pribatutasun politikak eta Windowsen hainbat zerbitzu desgaitzen ditu.
+Itzulgarria, baina Widgets edo kokapen-funtzioei eragiten die.</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>Power Throttling off, MMCSS lehentasunezkoa, hibernazioa off, HAGS on, BCD platform tick (berrabiarazi behar).</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>Errendimendua eta latentzia</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>BCD, MMCSS, hibernazioa eta HAGS aldatzen ditu.
+Berrabiarazi behar da. Aldaketa indartsuak baina itzulgarriak.</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>NIC (RSS, offload, EEE off), TCP stack (Nagle off, MaxUserPort 65534) eta Google/Cloudflare DNS doitzen ditu.</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet (sare optimizazioa)</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>Sare-egokitzaile parametroak eta TCP stack aldatzen ditu.
+Konexioa galtzen baduzu, exekutatu 'netsh int ip reset'.</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT, Defender quick scan, SMBv1 off, AutoRun off, DEP AlwaysOn, LLMNR/NetBIOS off, RDP off, UAC 2. maila.</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>Segurtasuna</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>Sistemaren segurtasuna indartzen du.
+RDP desgaitzen du: urrutiko konexiorako erabiltzen bazenuen, eskuz aktibatu.</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>TRIM aktibo dagoela ziurtatzen du NTFS/ReFS-en, atzemandako SSDetan TRIM exekutatzen du eta SMART tenperatura eta higadura irakurtzen ditu.</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD (TRIM eta SMART osasuna)</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>SMART egoera soilik irakurtzen du eta TRIM exekutatzen du (SSDetarako eragiketa estandarra).
+Ez du daturik aldatzen.</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>pnputil scan, OEM driver-en zerrenda eta Windows Update exekutatzen du driver berriak bilatzeko.</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>Drivers (Windows Update + pnputil)</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>Driver-ak bilatzen ditu soilik.
+EZ ditu automatikoki instalatzen: zuk erabakitzen duzu Windows Update bidez eguneratu nahi dituzun.</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>Urrutiko PowerShell menua deskargatzen eta exekutatzen du, joko bakoitzerako optimizazioekin.</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>Bideojokoen optimizazioa</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>Zure PCan kodea deskargatu eta exekutatzen du.
+Iturburua sinesten baduzu soilik aktibatu (Sr. Dexter / Game_Configs).</value>
+  </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Arriskua</value>
   </data>
