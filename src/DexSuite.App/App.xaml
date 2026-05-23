@@ -8,6 +8,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemesDictionary Theme="Dark" />
                 <ui:ControlsDictionary />
+                <!-- Tema CYBERNETIC: sobreescribe los brushes principales
+                     (acento cian, surface azul oscuro, texto blanco azulado).
+                     Debe ir DESPUÉS del ThemesDictionary para tener prioridad. -->
+                <ResourceDictionary Source="/Themes/Cybernetic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

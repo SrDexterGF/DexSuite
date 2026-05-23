@@ -2,16 +2,16 @@
   "languages": ["en", "es", "gl", "ca", "eu", "pt", "fr", "de", "it", "zh"],
   "keys": {
     "App.Tagline": {
-      "en": "Performance Series",
-      "es": "Performance Series",
-      "gl": "Performance Series",
-      "ca": "Performance Series",
-      "eu": "Performance Series",
-      "pt": "Performance Series",
-      "fr": "Performance Series",
-      "de": "Performance Series",
-      "it": "Performance Series",
-      "zh": "性能系列"
+      "en": "PUSH THE LIMITS",
+      "es": "AL LÍMITE",
+      "gl": "AO LÍMITE",
+      "ca": "AL LÍMIT",
+      "eu": "MUGAREN MUGAN",
+      "pt": "NO LIMITE",
+      "fr": "AU MAXIMUM",
+      "de": "AM LIMIT",
+      "it": "AL LIMITE",
+      "zh": "突破极限"
     },
     "App.Subtitle": {
       "en": "Cleanup, optimization and security for Windows",
