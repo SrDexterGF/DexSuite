@@ -899,13 +899,13 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                     <Grid MaxWidth="780" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
                             <ui:TextBlock Text="Actualizaciones" FontTypography="TitleLarge"/>
-                            <ui:TextBlock Opacity="0.65"
-                                          Margin="0,2,0,18">
-                                DexSuite usa Velopack para actualizarse.<LineBreak/>
-                                La comprobación real estará disponible cuando publiquemos la primera release.
+                            <ui:TextBlock Opacity="0.65" Margin="0,2,0,18">
+                                DexSuite se actualiza automáticamente desde GitHub Releases.<LineBreak/>
+                                Instala siempre la última versión para obtener las mejoras más recientes.
                             </ui:TextBlock>
 
-                            <Border Padding="20,16" CornerRadius="10"
+                            <!-- Tarjeta: versión actual + botón buscar -->
+                            <Border Padding="20,18" CornerRadius="10"
                                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                     BorderThickness="1"
@@ -915,7 +915,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0">
+                                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
                                         <ui:TextBlock Text="Versión instalada"
                                                       FontTypography="Caption"
                                                       Opacity="0.6"/>
@@ -923,7 +923,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                                       FontTypography="TitleLarge"
                                                       Margin="0,2,0,4"/>
                                         <ui:TextBlock Text="{Binding LastUpdateCheck, StringFormat='Última comprobación: {0}'}"
-                                                      Opacity="0.6"
+                                                      Opacity="0.55"
                                                       FontTypography="Caption"/>
                                     </StackPanel>
                                     <ui:Button Grid.Column="1"
@@ -935,6 +935,57 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                 </Grid>
                             </Border>
 
+                            <!-- Banner: actualización disponible (visible solo cuando hay update) -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Margin="0,0,0,12"
+                                    Visibility="{Binding HasAvailableUpdate, Converter={StaticResource BoolToVis}}">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background"
+                                                Value="{DynamicResource SystemFillColorSuccessBackgroundBrush}"/>
+                                        <Setter Property="BorderBrush"
+                                                Value="{DynamicResource SystemFillColorSuccessBrush}"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" VerticalAlignment="Center"
+                                                Margin="0,0,16,0">
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                            <ui:SymbolIcon Symbol="CheckmarkCircle24"
+                                                           FontSize="16"
+                                                           Margin="0,0,8,0"
+                                                           VerticalAlignment="Center"/>
+                                            <ui:TextBlock Text="¡Nueva versión disponible!"
+                                                          FontTypography="BodyStrong"
+                                                          VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                        <ui:TextBlock Text="{Binding AvailableUpdateVersion, StringFormat='Versión v{0} lista para descargar e instalar.'}"
+                                                      Opacity="0.85"
+                                                      Margin="0,0,0,8"/>
+                                        <ProgressBar Value="{Binding UpdateDownloadProgress}"
+                                                     Maximum="100"
+                                                     Height="4"/>
+                                        <ui:TextBlock Text="{Binding UpdateDownloadProgress, StringFormat='{}{0}%'}"
+                                                      FontTypography="Caption"
+                                                      Opacity="0.65"
+                                                      Margin="0,4,0,0"
+                                                      Visibility="{Binding HasAvailableUpdate, Converter={StaticResource BoolToVis}}"/>
+                                    </StackPanel>
+                                    <ui:Button Grid.Column="1"
+                                               Appearance="Primary"
+                                               Content="Actualizar ahora"
+                                               Icon="{ui:SymbolIcon Symbol=ArrowDownload24}"
+                                               Command="{Binding ApplyUpdateCommand}"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Preferencias -->
                             <Border Padding="20,16" CornerRadius="10"
                                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -945,47 +996,52 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,10"/>
 
-                                    <Grid Margin="0,4,0,8">
+                                    <Grid Margin="0,4,0,10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
                                             <ui:TextBlock Text="Actualizar automáticamente"/>
-                                            <ui:TextBlock Text="Descarga e instala nuevas versiones en segundo plano."
-                                                          Opacity="0.55"
-                                                          FontTypography="Caption"/>
+                                            <ui:TextBlock Opacity="0.55"
+                                                          FontTypography="Caption">
+                                                Descarga e instala nuevas versiones en segundo plano.<LineBreak/>
+                                                Solo cuando DexSuite está inactivo.
+                                            </ui:TextBlock>
                                         </StackPanel>
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding AutoUpdateEnabled, Mode=TwoWay}"/>
                                     </Grid>
 
-                                    <Grid Margin="0,8,0,4">
+                                    <Grid Margin="0,0,0,4">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <ui:TextBlock Text="Canal"/>
+                                            <ui:TextBlock Text="Canal de actualización"/>
                                             <ui:TextBlock Opacity="0.55"
                                                           FontTypography="Caption">
-                                                Stable es la rama estable.<LineBreak/>
-                                                Beta recibe versiones nuevas antes, pero pueden tener fallos.
+                                                Stable: versiones probadas y estables.<LineBreak/>
+                                                Beta: versiones nuevas antes, con posibles fallos.
                                             </ui:TextBlock>
                                         </StackPanel>
                                         <ComboBox Grid.Column="1"
                                                   Width="140"
+                                                  VerticalAlignment="Center"
                                                   ItemsSource="{Binding AvailableChannels}"
                                                   SelectedItem="{Binding UpdateChannel, Mode=TwoWay}"/>
                                     </Grid>
                                 </StackPanel>
                             </Border>
 
+                            <!-- Nota informativa sobre Velopack -->
                             <ui:InfoBar Severity="Informational"
-                                        Title="Velopack pendiente"
+                                        Title="Cómo funcionan las actualizaciones"
                                         IsClosable="False"
                                         IsOpen="True">
-                                <ui:InfoBar.Message>La integración real con Velopack se cablea cuando subamos la primera release a un repositorio público.</ui:InfoBar.Message>
+                                <ui:InfoBar.Message>DexSuite usa Velopack. Pulsa «Buscar actualizaciones» para comprobar si hay una versión nueva.
+Si la app no está instalada via Setup, las actualizaciones automáticas no están disponibles.</ui:InfoBar.Message>
                             </ui:InfoBar>
                         </StackPanel>
                     </Grid>
