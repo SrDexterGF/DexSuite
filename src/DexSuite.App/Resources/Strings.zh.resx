@@ -12,6 +12,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Windows 的清理、优化与安全</value>
+  </data>
   <data name="App.Tagline" xml:space="preserve">
     <value>性能系列</value>
   </data>
@@ -26,6 +29,117 @@
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>确定</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>执行</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>重新分析</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>优化后详情</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>初始分析详情</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>分析</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>测量你设备的当前状态。
+获得 100 分制评分。</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>分析性能</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>前往日志</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>在执行过程中查看实时输出。
+回顾上一次运行。</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>查看日志</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>前往模块</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>选择你想要的模块。
+启动清理与调整。</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>优化系统</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>点击「分析」以获得评分。
+之后可以优化并再次分析以查看差异。</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>你还没有分析过你的设备</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>重置评分</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>初始状态</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>测量时间 {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} 分</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>你想做什么？</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>当前进程的实时输出。
+执行过程中实时更新。</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>执行日志</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>个模块</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>取消全选</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>风险</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>全选</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>推荐</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>勾选要运行的模块。
+将鼠标悬停在「安全 / 风险」标签上以了解原因。</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>FREE</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>可用模块</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>关于</value>
@@ -51,6 +165,21 @@
   <data name="Navigation.Updates" xml:space="preserve">
     <value>更新</value>
   </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>应用启动时生效。</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>启动时预选推荐模块</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>行为</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>自动切换视图以查看进程输出。</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>执行时跳转到日志</value>
+  </data>
   <data name="Settings.Language.Description" xml:space="preserve">
     <value>更改应用程序语言。
 界面将即时更新。</value>
@@ -58,10 +187,167 @@
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>语言</value>
   </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>清理结束时显示系统通知（将来）。</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>执行结束时通知</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>重置设置</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>选项即时生效。
+目前关闭后不会保存（将随 SQLite 加入）。</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>限制你可执行的模块。
+目前仅供参考；下一版本将禁用等级之外的模块。</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>当前等级</value>
+  </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>设置</value>
   </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>对标记为「风险」的模块要求确认（将来）。</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>执行不可逆模块前提示</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>分析出错：{0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>最终分析：{0}/100（{1}）。
+差值：{2}{3} 分。</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>初始分析：{0}/100（{1}）。
+你现在可以优化了。</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>正在分析性能……</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>正在取消……</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>开发模式 — 此环境下无法更新。</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>正在下载更新…… {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>正在执行 {0} 个模块……（可取消）</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>执行已被用户取消。</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>执行已完成。
+返回主页并重新分析以进行对比。</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>错误：{0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>有新版本可用：v{0}！
+点击「立即更新」进行安装。</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>就绪。选择模块并点击「执行」。</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>评分已重置。点击「分析」重新开始。</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>正在检查更新……</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>执行前请至少选择一个模块。</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>设置已恢复为默认值。</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>应用更新时出错：
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>更新已下载。
+应用将自动重启。</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>检查更新时出错：
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>你已是最新版本（v{0}）。</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>在后台下载并安装新版本。
+仅当 DexSuite 空闲时。</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>自动更新</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Stable：经过测试的稳定版本。
+Beta：更早获得新版本，但可能存在问题。</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>更新通道</value>
+  </data>
   <data name="Updates.CheckForUpdates" xml:space="preserve">
     <value>检查更新</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite 使用 Velopack。点击「检查更新」查看是否有新版本。
+如果应用不是通过 Setup 安装，则无法自动更新。</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>更新如何工作</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>已安装版本</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>上次检查：{0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>有新版本可用！</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>v{0} 版已准备好下载并安装。</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>偏好设置</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite 会自动更新到最新版本。
+保持更新以获取最新的优化。</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>立即更新</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>可接受</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>严重</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>优秀</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>良好</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>可改进</value>
   </data>
 </root>

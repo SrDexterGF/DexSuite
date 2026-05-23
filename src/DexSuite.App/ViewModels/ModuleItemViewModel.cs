@@ -46,8 +46,11 @@ public partial class ModuleItemViewModel : ObservableObject
     /// <summary>Texto del Id en formato visual: "MODULO 03".</summary>
     public string IdLabel => $"MODULO {Id:00}";
 
-    /// <summary>Texto de seguridad: reversible vs irreversible.</summary>
+    /// <summary>Texto de seguridad: reversible vs irreversible (sin localizar, uso interno).</summary>
     public string SafetyLabel => Module.Reversible ? "Seguro" : "Riesgo";
+
+    /// <summary>Clave i18n del chip Seguro/Riesgo, para usar con KeyToTranslationConverter.</summary>
+    public string SafetyLabelKey => Module.Reversible ? "Modules.Safety.Safe" : "Modules.Safety.Risk";
 
     /// <summary>Explicacion de por que es Seguro o Riesgo. Se muestra como tooltip del chip.</summary>
     public string SafetyReason => Module.SafetyReason;

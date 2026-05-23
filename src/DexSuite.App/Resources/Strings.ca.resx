@@ -12,6 +12,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Neteja, optimització i seguretat per a Windows</value>
+  </data>
   <data name="App.Tagline" xml:space="preserve">
     <value>Performance Series</value>
   </data>
@@ -26,6 +29,117 @@
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>D'acord</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>Obre</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Restableix</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>Executa</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>Analitza de nou</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>Desglossament després d'optimitzar</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>Desglossament de l'anàlisi inicial</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>Analitza</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>Mesura l'estat actual del teu equip.
+Obtén una puntuació sobre 100.</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>Analitza el rendiment</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>Ves al Registre</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>Mira la sortida en directe durant l'execució.
+Revisa la darrera execució.</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>Mostra el registre</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>Ves a Mòduls</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>Tria els mòduls que vulguis.
+Llença la neteja i els ajustos.</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>Optimitza el sistema</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>Clica Analitza per obtenir una puntuació.
+Després podràs optimitzar i analitzar de nou per veure la diferència.</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>Encara no has analitzat el teu equip</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>Reinicia les puntuacions</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>Estat inicial</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>Mesurat el {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} punts</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>Què vols fer?</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>Sortida en directe del procés actual.
+S'actualitza en temps real mentre s'executa.</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>Registre d'execució</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>mòduls</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>Desmarca-ho tot</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>Risc</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>Segur</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>Marca-ho tot</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>Recomanat</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>Marca els mòduls que vulguis executar.
+Passa el ratolí pel xip Segur/Risc per saber per què.</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>AVANÇAT</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>FREE</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>Mòduls disponibles</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Quant a</value>
@@ -51,6 +165,21 @@
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Actualitzacions</value>
   </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>S'aplica en iniciar l'aplicació.</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>Marca mòduls recomanats en obrir</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>Comportament</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>Canvia de vista automàticament per veure la sortida del procés.</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>Salta al Registre en executar</value>
+  </data>
   <data name="Settings.Language.Description" xml:space="preserve">
     <value>Canvia l'idioma de l'aplicació.
 La interfície s'actualitza a l'instant.</value>
@@ -58,10 +187,167 @@ La interfície s'actualitza a l'instant.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Idioma</value>
   </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>Avís del sistema en acabar la neteja (futur).</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>Notifica en acabar una execució</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>Restableix la configuració</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>Les opcions s'apliquen a l'instant.
+De moment no es desen en tancar l'aplicació (arribarà amb SQLite).</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>Limita quins mòduls pots executar.
+De moment és informatiu; a la propera versió desactivarà els mòduls no inclosos al teu tier.</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>Tier actiu</value>
+  </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Configuració</value>
   </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>Demanarà confirmació per als mòduls marcats com a Risc (futur).</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>Avisa abans d'executar mòduls no reversibles</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>Error en analitzar: {0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>Anàlisi final: {0}/100 ({1}).
+Diferència: {2}{3} punts.</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>Anàlisi inicial: {0}/100 ({1}).
+Ja pots optimitzar.</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>Analitzant el rendiment...</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>Cancel·lant...</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>Mode desenvolupament — actualitzacions no disponibles en aquest entorn.</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>Baixant l'actualització... {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>Executant {0} mòdul(s)... (pots cancel·lar)</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>Execució cancel·lada per l'usuari.</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>Execució completada.
+Torna a Inici i analitza per comparar.</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>Nova versió disponible: v{0}!
+Clica «Actualitza ara» per instal·lar-la.</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>A punt. Selecciona mòduls i clica Executa.</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>Puntuacions reiniciades. Clica Analitza per començar de nou.</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>Cercant actualitzacions...</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>Selecciona almenys un mòdul abans d'executar.</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>Configuració restablerta als valors per defecte.</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>Error en aplicar l'actualització:
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>Actualització baixada.
+L'aplicació es reiniciarà automàticament.</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>Error en cercar actualitzacions:
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>Tens la darrera versió disponible (v{0}).</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>Descarrega i instal·la noves versions en segon pla.
+Només quan DexSuite està inactiu.</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>Actualitza automàticament</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Stable: versions provades i estables.
+Beta: versions noves abans, amb possibles errors.</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>Canal d'actualització</value>
+  </data>
   <data name="Updates.CheckForUpdates" xml:space="preserve">
     <value>Cerca actualitzacions</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite utilitza Velopack. Clica «Cerca actualitzacions» per comprovar si hi ha una versió nova.
+Si l'app no està instal·lada via Setup, les actualitzacions automàtiques no estan disponibles.</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>Com funcionen les actualitzacions</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>Versió instal·lada</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>Darrera comprovació: {0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>Nova versió disponible!</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>Versió v{0} llesta per descarregar i instal·lar.</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>Preferències</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite s'actualitza automàticament a la darrera versió.
+Mantén-la al dia per obtenir totes les optimitzacions.</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>Actualitzacions</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>Actualitza ara</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>Acceptable</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>Crític</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>Excel·lent</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>Bo</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>Millorable</value>
   </data>
 </root>

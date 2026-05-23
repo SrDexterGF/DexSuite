@@ -8,6 +8,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="clr-namespace:DexSuite.App.ViewModels"
     xmlns:loc="clr-namespace:DexSuite.App.Markup"
+    xmlns:conv="clr-namespace:DexSuite.App.Converters"
     mc:Ignorable="d"
     Title="DexSuite"
     Icon="pack://application:,,,/Assets/AppIcon.png"
@@ -22,6 +23,7 @@
 
     <ui:FluentWindow.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <conv:KeyToTranslationConverter x:Key="Loc"/>
 
         <!-- Estilo de los items de la sidebar. Acepta cualquier Content (texto o icono+texto). -->
         <Style x:Key="NavItemStyle" TargetType="RadioButton">
@@ -141,7 +143,7 @@
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
-                            <ui:TextBlock Text="{Binding SafetyLabel}"
+                            <ui:TextBlock Text="{Binding SafetyLabelKey, Converter={StaticResource Loc}}"
                                           FontTypography="Caption"/>
                         </Border>
                     </Grid>
@@ -339,13 +341,13 @@
                                 <Image Source="pack://application:,,,/Assets/AppIcon.png"
                                        Width="220" Height="220"
                                        Stretch="Uniform"/>
-                                <ui:TextBlock Text="Limpieza, optimización y seguridad para Windows"
+                                <ui:TextBlock Text="{loc:T Key=App.Subtitle}"
                                               Opacity="0.7"
                                               HorizontalAlignment="Center"
                                               Margin="0,8,0,0"/>
                             </StackPanel>
 
-                            <ui:TextBlock Text="¿Qué quieres hacer?"
+                            <ui:TextBlock Text="{loc:T Key=Home.WhatDoYouWantTo}"
                                           FontTypography="Subtitle"
                                           Margin="0,0,0,12"/>
                             <Grid Margin="0,0,0,28">
@@ -363,17 +365,15 @@
                                     <StackPanel>
                                         <ui:SymbolIcon Symbol="Pulse24" FontSize="28"
                                                        Foreground="{DynamicResource SystemFillColorSuccessBrush}"/>
-                                        <ui:TextBlock Text="Analizar rendimiento"
+                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Analyze.Title}"
                                                       FontTypography="BodyStrong"
                                                       Margin="0,10,0,4"/>
-                                        <ui:TextBlock Opacity="0.7"
+                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Analyze.Desc}"
+                                                      Opacity="0.7"
                                                       TextWrapping="Wrap"
-                                                      Margin="0,0,0,12">
-                                            Mide el estado actual de tu equipo.<LineBreak/>
-                                            Obtén una puntuación sobre 100.
-                                        </ui:TextBlock>
+                                                      Margin="0,0,0,12"/>
                                         <ui:Button Appearance="Primary"
-                                                   Content="Analizar"
+                                                   Content="{loc:T Key=Home.Card.Analyze.Button}"
                                                    Icon="{ui:SymbolIcon Symbol=Play24}"
                                                    Command="{Binding AnalyzeCommand}"
                                                    HorizontalAlignment="Left"/>
@@ -388,17 +388,15 @@
                                     <StackPanel>
                                         <ui:SymbolIcon Symbol="Broom24" FontSize="28"
                                                        Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
-                                        <ui:TextBlock Text="Optimizar sistema"
+                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Optimize.Title}"
                                                       FontTypography="BodyStrong"
                                                       Margin="0,10,0,4"/>
-                                        <ui:TextBlock Opacity="0.7"
+                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Optimize.Desc}"
+                                                      Opacity="0.7"
                                                       TextWrapping="Wrap"
-                                                      Margin="0,0,0,12">
-                                            Elige los módulos que quieras.<LineBreak/>
-                                            Lanza la limpieza y los ajustes.
-                                        </ui:TextBlock>
+                                                      Margin="0,0,0,12"/>
                                         <ui:Button Appearance="Secondary"
-                                                   Content="Ir a Módulos"
+                                                   Content="{loc:T Key=Home.Card.Optimize.Button}"
                                                    Icon="{ui:SymbolIcon Symbol=AppsList24}"
                                                    Command="{Binding NavigateCommand}"
                                                    CommandParameter="Modules"
@@ -414,17 +412,15 @@
                                     <StackPanel>
                                         <ui:SymbolIcon Symbol="DocumentBulletList24" FontSize="28"
                                                        Foreground="{DynamicResource SystemFillColorCautionBrush}"/>
-                                        <ui:TextBlock Text="Ver registro"
+                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Log.Title}"
                                                       FontTypography="BodyStrong"
                                                       Margin="0,10,0,4"/>
-                                        <ui:TextBlock Opacity="0.7"
+                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Log.Desc}"
+                                                      Opacity="0.7"
                                                       TextWrapping="Wrap"
-                                                      Margin="0,0,0,12">
-                                            Mira la salida en vivo del .bat.<LineBreak/>
-                                            Consulta la última ejecución.
-                                        </ui:TextBlock>
+                                                      Margin="0,0,0,12"/>
                                         <ui:Button Appearance="Secondary"
-                                                   Content="Ir a Registro"
+                                                   Content="{loc:T Key=Home.Card.Log.Button}"
                                                    Icon="{ui:SymbolIcon Symbol=DocumentText24}"
                                                    Command="{Binding NavigateCommand}"
                                                    CommandParameter="Log"
@@ -434,11 +430,10 @@
                             </Grid>
 
                             <ui:InfoBar Severity="Informational"
-                                        Title="Aún no has analizado tu equipo"
+                                        Title="{loc:T Key=Home.NotYetAnalyzed.Title}"
+                                        Message="{loc:T Key=Home.NotYetAnalyzed.Message}"
                                         IsClosable="False"
                                         IsOpen="True">
-                                <ui:InfoBar.Message>Pulsa Analizar para obtener una puntuación.
-Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoBar.Message>
                                 <ui:InfoBar.Style>
                                     <Style TargetType="ui:InfoBar">
                                         <Setter Property="Visibility" Value="Visible"/>
@@ -482,12 +477,12 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                     </Border>
 
                                     <StackPanel Grid.Column="1" Margin="24,0,12,0" VerticalAlignment="Center">
-                                        <ui:TextBlock Text="Estado inicial"
+                                        <ui:TextBlock Text="{loc:T Key=Home.ScoreInitial.Label}"
                                                       FontTypography="Caption"
                                                       Opacity="0.6"/>
-                                        <ui:TextBlock Text="{Binding ScoreBefore.Verdict}"
+                                        <ui:TextBlock Text="{Binding ScoreBefore.Verdict, Converter={StaticResource Loc}}"
                                                       FontTypography="TitleLarge"/>
-                                        <ui:TextBlock Text="{Binding ScoreBefore.Timestamp, StringFormat='Medido el {0:dd/MM/yyyy HH:mm}'}"
+                                        <ui:TextBlock Text="{Binding ScoreBefore.Timestamp, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}"
                                                       Opacity="0.55"
                                                       Margin="0,2,0,0"/>
                                     </StackPanel>
@@ -506,7 +501,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                                               HorizontalAlignment="Center"/>
                                             </StackPanel>
                                         </Border>
-                                        <ui:TextBlock Text="{Binding ScoreDeltaLabel, StringFormat='{}{0} puntos'}"
+                                        <ui:TextBlock Text="{Binding ScoreDeltaLabel}"
                                                       FontTypography="BodyStrong"
                                                       HorizontalAlignment="Center"
                                                       Margin="0,8,0,0"/>
@@ -516,7 +511,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
 
                             <StackPanel Margin="0,18,0,0"
                                         Visibility="{Binding HasScoreBefore, Converter={StaticResource BoolToVis}}">
-                                <ui:TextBlock Text="Desglose del análisis inicial"
+                                <ui:TextBlock Text="{loc:T Key=Home.Breakdown.Initial}"
                                               FontTypography="Subtitle"
                                               Margin="0,0,0,8"/>
                                 <ItemsControl ItemsSource="{Binding ScoreBefore.Categories}"
@@ -525,7 +520,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
 
                             <StackPanel Margin="0,18,0,0"
                                         Visibility="{Binding HasComparison, Converter={StaticResource BoolToVis}}">
-                                <ui:TextBlock Text="Desglose tras optimizar"
+                                <ui:TextBlock Text="{loc:T Key=Home.Breakdown.After}"
                                               FontTypography="Subtitle"
                                               Margin="0,0,0,8"/>
                                 <ItemsControl ItemsSource="{Binding ScoreAfter.Categories}"
@@ -537,12 +532,12 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                         Margin="0,18,0,8"
                                         Visibility="{Binding HasScoreBefore, Converter={StaticResource BoolToVis}}">
                                 <ui:Button Appearance="Secondary"
-                                           Content="Reiniciar puntuaciones"
+                                           Content="{loc:T Key=Home.ResetScores}"
                                            Icon="{ui:SymbolIcon Symbol=ArrowReset24}"
                                            Command="{Binding ResetScoresCommand}"
                                            Margin="0,0,8,0"/>
                                 <ui:Button Appearance="Primary"
-                                           Content="Analizar de nuevo"
+                                           Content="{loc:T Key=Home.AnalyzeAgain}"
                                            Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
                                            Command="{Binding AnalyzeCommand}"/>
                             </StackPanel>
@@ -561,25 +556,24 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                     <DockPanel Grid.Row="0" Margin="24,20,24,12">
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
                             <ui:Button Appearance="Secondary"
-                                       Content="Recomendado"
+                                       Content="{loc:T Key=Modules.SelectRecommended}"
                                        Command="{Binding SelectRecommendedCommand}"
                                        Margin="0,0,6,0"/>
                             <ui:Button Appearance="Secondary"
-                                       Content="Marcar todo"
+                                       Content="{loc:T Key=Modules.SelectAll}"
                                        Command="{Binding SelectAllCommand}"
                                        Margin="0,0,6,0"/>
                             <ui:Button Appearance="Secondary"
-                                       Content="Desmarcar"
+                                       Content="{loc:T Key=Modules.DeselectAll}"
                                        Command="{Binding DeselectAllCommand}"/>
                         </StackPanel>
                         <StackPanel VerticalAlignment="Center">
-                            <ui:TextBlock Text="Módulos disponibles"
+                            <ui:TextBlock Text="{loc:T Key=Modules.Title}"
                                           FontTypography="TitleLarge"/>
-                            <ui:TextBlock Opacity="0.65"
-                                          Margin="0,2,0,0">
-                                Marca los módulos que quieras ejecutar.<LineBreak/>
-                                Pasa el ratón por encima del chip Seguro/Riesgo para saber por qué.
-                            </ui:TextBlock>
+                            <ui:TextBlock Text="{loc:T Key=Modules.Subtitle}"
+                                          Opacity="0.65"
+                                          TextWrapping="Wrap"
+                                          Margin="0,2,0,0"/>
                         </StackPanel>
                     </DockPanel>
 
@@ -599,8 +593,8 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                         CornerRadius="6"
                                         Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}">
                                     <StackPanel Orientation="Horizontal">
-                                        <ui:TextBlock Text="FREE" FontTypography="BodyStrong"/>
-                                        <ui:TextBlock Text="{Binding FreeModules.Count, StringFormat=' · {0} módulos'}"
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Free}" FontTypography="BodyStrong"/>
+                                        <ui:TextBlock Text="{Binding FreeModules.Count, StringFormat=' · {0}'}"
                                                       Opacity="0.6"/>
                                     </StackPanel>
                                 </Border>
@@ -614,10 +608,10 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                         CornerRadius="6"
                                         Background="{DynamicResource AccentFillColorDefaultBrush}">
                                     <StackPanel Orientation="Horizontal">
-                                        <ui:TextBlock Text="AVANZADO"
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Advanced}"
                                                       FontTypography="BodyStrong"
                                                       Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
-                                        <ui:TextBlock Text="{Binding AdvancedModules.Count, StringFormat=' · {0} módulos'}"
+                                        <ui:TextBlock Text="{Binding AdvancedModules.Count, StringFormat=' · {0}'}"
                                                       Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
                                                       Opacity="0.75"/>
                                     </StackPanel>
@@ -632,8 +626,8 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                         CornerRadius="6"
                                         Background="{DynamicResource SystemFillColorCautionBackgroundBrush}">
                                     <StackPanel Orientation="Horizontal">
-                                        <ui:TextBlock Text="PRO" FontTypography="BodyStrong"/>
-                                        <ui:TextBlock Text="{Binding ProModules.Count, StringFormat=' · {0} módulos'}"
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Pro}" FontTypography="BodyStrong"/>
+                                        <ui:TextBlock Text="{Binding ProModules.Count, StringFormat=' · {0}'}"
                                                       Opacity="0.6"/>
                                     </StackPanel>
                                 </Border>
@@ -661,12 +655,12 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                           MaxHeight="48"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
                                 <ui:Button Appearance="Secondary"
-                                           Content="Cancelar"
+                                           Content="{loc:T Key=Common.Cancel}"
                                            Icon="{ui:SymbolIcon Symbol=Stop24}"
                                            Command="{Binding CancelCommand}"
                                            Margin="0,0,8,0"/>
                                 <ui:Button Appearance="Primary"
-                                           Content="Ejecutar"
+                                           Content="{loc:T Key=Common.Run}"
                                            Icon="{ui:SymbolIcon Symbol=Play24}"
                                            Command="{Binding RunCommand}"/>
                             </StackPanel>
@@ -683,13 +677,12 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" Margin="24,20,24,12">
-                        <ui:TextBlock Text="Registro de ejecución"
+                        <ui:TextBlock Text="{loc:T Key=Log.Title}"
                                       FontTypography="TitleLarge"/>
-                        <ui:TextBlock Opacity="0.65"
-                                      Margin="0,2,0,0">
-                            Salida en vivo del .bat.<LineBreak/>
-                            Se va actualizando mientras se ejecuta.
-                        </ui:TextBlock>
+                        <ui:TextBlock Text="{loc:T Key=Log.Subtitle}"
+                                      Opacity="0.65"
+                                      TextWrapping="Wrap"
+                                      Margin="0,2,0,0"/>
                     </StackPanel>
 
                     <Border Grid.Row="1"
@@ -728,12 +721,12 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                           MaxHeight="48"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
                                 <ui:Button Appearance="Secondary"
-                                           Content="Cancelar"
+                                           Content="{loc:T Key=Common.Cancel}"
                                            Icon="{ui:SymbolIcon Symbol=Stop24}"
                                            Command="{Binding CancelCommand}"
                                            Margin="0,0,8,0"/>
                                 <ui:Button Appearance="Primary"
-                                           Content="Ejecutar"
+                                           Content="{loc:T Key=Common.Run}"
                                            Icon="{ui:SymbolIcon Symbol=Play24}"
                                            Command="{Binding RunCommand}"/>
                             </StackPanel>
@@ -746,12 +739,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
-                            <ui:TextBlock Text="Ajustes" FontTypography="TitleLarge"/>
-                            <ui:TextBlock Opacity="0.65"
-                                          Margin="0,2,0,18">
-                                Las opciones se aplican en caliente.<LineBreak/>
-                                De momento no se guardan al cerrar la app (eso llegará con SQLite).
-                            </ui:TextBlock>
+                            <ui:TextBlock Text="{loc:T Key=Settings.Title}" FontTypography="TitleLarge"/>
+                            <ui:TextBlock Text="{loc:T Key=Settings.Subtitle}"
+                                          Opacity="0.65"
+                                          TextWrapping="Wrap"
+                                          Margin="0,2,0,18"/>
 
                             <!-- Idioma -->
                             <Border Padding="20,16" CornerRadius="10"
@@ -789,15 +781,13 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="Tier activo"
+                                    <ui:TextBlock Text="{loc:T Key=Settings.Tier.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,4"/>
-                                    <ui:TextBlock Opacity="0.7"
+                                    <ui:TextBlock Text="{loc:T Key=Settings.Tier.Description}"
+                                                  Opacity="0.7"
                                                   TextWrapping="Wrap"
-                                                  Margin="0,0,0,12">
-                                        Limita qué módulos puedes ejecutar.<LineBreak/>
-                                        Por ahora es informativo; en la próxima versión desactivará los módulos no incluidos en tu tier.
-                                    </ui:TextBlock>
+                                                  Margin="0,0,0,12"/>
                                     <ComboBox Width="200" HorizontalAlignment="Left"
                                               ItemsSource="{Binding AvailableTiers}"
                                               SelectedItem="{Binding UserTier, Mode=TwoWay}"/>
@@ -845,7 +835,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="Comportamiento"
+                                    <ui:TextBlock Text="{loc:T Key=Settings.Behavior.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,8"/>
 
@@ -855,10 +845,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <ui:TextBlock Text="Marcar módulos recomendados al abrir"/>
-                                            <ui:TextBlock Text="Se aplica al iniciar la app."
+                                            <ui:TextBlock Text="{loc:T Key=Settings.AutoSelect.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.AutoSelect.Desc}"
                                                           Opacity="0.55"
-                                                          FontTypography="Caption"/>
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding AutoSelectRecommended, Mode=TwoWay}"/>
@@ -870,10 +861,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <ui:TextBlock Text="Saltar al Registro al ejecutar"/>
-                                            <ui:TextBlock Text="Cambia de vista automáticamente para ver la salida del .bat."
+                                            <ui:TextBlock Text="{loc:T Key=Settings.JumpToLog.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.JumpToLog.Desc}"
                                                           Opacity="0.55"
-                                                          FontTypography="Caption"/>
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding JumpToLogOnRun, Mode=TwoWay}"/>
@@ -885,10 +877,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <ui:TextBlock Text="Avisar antes de ejecutar módulos no reversibles"/>
-                                            <ui:TextBlock Text="Pedirá confirmación para los módulos marcados como Riesgo (futuro)."
+                                            <ui:TextBlock Text="{loc:T Key=Settings.WarnNonReversible.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.WarnNonReversible.Desc}"
                                                           Opacity="0.55"
-                                                          FontTypography="Caption"/>
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding WarnBeforeNonReversible, Mode=TwoWay}"/>
@@ -900,10 +893,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <ui:TextBlock Text="Notificar al terminar una ejecución"/>
-                                            <ui:TextBlock Text="Aviso del sistema cuando acabe la limpieza (futuro)."
+                                            <ui:TextBlock Text="{loc:T Key=Settings.NotifyOnFinish.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.NotifyOnFinish.Desc}"
                                                           Opacity="0.55"
-                                                          FontTypography="Caption"/>
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding NotifyOnFinish, Mode=TwoWay}"/>
@@ -915,7 +909,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                         HorizontalAlignment="Right"
                                         Margin="0,12,0,0">
                                 <ui:Button Appearance="Secondary"
-                                           Content="Restablecer ajustes"
+                                           Content="{loc:T Key=Settings.Reset}"
                                            Icon="{ui:SymbolIcon Symbol=ArrowReset24}"
                                            Command="{Binding ResetSettingsCommand}"/>
                             </StackPanel>
@@ -928,11 +922,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="780" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
-                            <ui:TextBlock Text="Actualizaciones" FontTypography="TitleLarge"/>
-                            <ui:TextBlock Opacity="0.65" Margin="0,2,0,18">
-                                DexSuite se actualiza automáticamente desde GitHub Releases.<LineBreak/>
-                                Instala siempre la última versión para obtener las mejoras más recientes.
-                            </ui:TextBlock>
+                            <ui:TextBlock Text="{loc:T Key=Updates.Title}" FontTypography="TitleLarge"/>
+                            <ui:TextBlock Text="{loc:T Key=Updates.Subtitle}"
+                                          Opacity="0.65"
+                                          TextWrapping="Wrap"
+                                          Margin="0,2,0,18"/>
 
                             <!-- Tarjeta: versión actual + botón buscar -->
                             <Border Padding="20,18" CornerRadius="10"
@@ -946,19 +940,19 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                        <ui:TextBlock Text="Versión instalada"
+                                        <ui:TextBlock Text="{loc:T Key=Updates.InstalledVersion}"
                                                       FontTypography="Caption"
                                                       Opacity="0.6"/>
                                         <ui:TextBlock Text="{Binding CurrentVersion, StringFormat='v{0}'}"
                                                       FontTypography="TitleLarge"
                                                       Margin="0,2,0,4"/>
-                                        <ui:TextBlock Text="{Binding LastUpdateCheck, StringFormat='Última comprobación: {0}'}"
+                                        <ui:TextBlock Text="{Binding LastUpdateCheckLabel}"
                                                       Opacity="0.55"
                                                       FontTypography="Caption"/>
                                     </StackPanel>
                                     <ui:Button Grid.Column="1"
                                                Appearance="Primary"
-                                               Content="Buscar actualizaciones"
+                                               Content="{loc:T Key=Updates.CheckForUpdates}"
                                                Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
                                                Command="{Binding CheckForUpdatesCommand}"
                                                VerticalAlignment="Center"/>
@@ -990,11 +984,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                                            FontSize="16"
                                                            Margin="0,0,8,0"
                                                            VerticalAlignment="Center"/>
-                                            <ui:TextBlock Text="¡Nueva versión disponible!"
+                                            <ui:TextBlock Text="{loc:T Key=Updates.NewVersionAvailable}"
                                                           FontTypography="BodyStrong"
                                                           VerticalAlignment="Center"/>
                                         </StackPanel>
-                                        <ui:TextBlock Text="{Binding AvailableUpdateVersion, StringFormat='Versión v{0} lista para descargar e instalar.'}"
+                                        <ui:TextBlock Text="{Binding AvailableUpdateVersionLabel}"
                                                       Opacity="0.85"
                                                       Margin="0,0,0,8"/>
                                         <ProgressBar Value="{Binding UpdateDownloadProgress}"
@@ -1008,7 +1002,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                     </StackPanel>
                                     <ui:Button Grid.Column="1"
                                                Appearance="Primary"
-                                               Content="Actualizar ahora"
+                                               Content="{loc:T Key=Updates.UpdateNow}"
                                                Icon="{ui:SymbolIcon Symbol=ArrowDownload24}"
                                                Command="{Binding ApplyUpdateCommand}"
                                                VerticalAlignment="Center"/>
@@ -1022,7 +1016,7 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="Preferencias"
+                                    <ui:TextBlock Text="{loc:T Key=Updates.Preferences}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,10"/>
 
@@ -1032,12 +1026,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <ui:TextBlock Text="Actualizar automáticamente"/>
-                                            <ui:TextBlock Opacity="0.55"
-                                                          FontTypography="Caption">
-                                                Descarga e instala nuevas versiones en segundo plano.<LineBreak/>
-                                                Solo cuando DexSuite está inactivo.
-                                            </ui:TextBlock>
+                                            <ui:TextBlock Text="{loc:T Key=Updates.AutoUpdate.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Updates.AutoUpdate.Desc}"
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding AutoUpdateEnabled, Mode=TwoWay}"/>
@@ -1049,12 +1042,11 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
-                                            <ui:TextBlock Text="Canal de actualización"/>
-                                            <ui:TextBlock Opacity="0.55"
-                                                          FontTypography="Caption">
-                                                Stable: versiones probadas y estables.<LineBreak/>
-                                                Beta: versiones nuevas antes, con posibles fallos.
-                                            </ui:TextBlock>
+                                            <ui:TextBlock Text="{loc:T Key=Updates.Channel.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Updates.Channel.Desc}"
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <ComboBox Grid.Column="1"
                                                   Width="140"
@@ -1067,12 +1059,10 @@ Después podrás optimizar y volver a analizar para ver la diferencia.</ui:InfoB
 
                             <!-- Nota informativa sobre Velopack -->
                             <ui:InfoBar Severity="Informational"
-                                        Title="Cómo funcionan las actualizaciones"
+                                        Title="{loc:T Key=Updates.HowItWorks.Title}"
+                                        Message="{loc:T Key=Updates.HowItWorks.Message}"
                                         IsClosable="False"
-                                        IsOpen="True">
-                                <ui:InfoBar.Message>DexSuite usa Velopack. Pulsa «Buscar actualizaciones» para comprobar si hay una versión nueva.
-Si la app no está instalada via Setup, las actualizaciones automáticas no están disponibles.</ui:InfoBar.Message>
-                            </ui:InfoBar>
+                                        IsOpen="True"/>
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>

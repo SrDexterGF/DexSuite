@@ -19,13 +19,16 @@ public sealed record PerformanceScore(
     IReadOnlyList<PerformanceCategoryScore> Categories,
     DateTime Timestamp)
 {
-    /// <summary>Etiqueta humana de la puntuación total.</summary>
+    /// <summary>
+    /// Clave i18n del veredicto. El consumidor (VM, XAML) la traduce con
+    /// ILocalizationService.Get(VerdictKey) o el converter KeyToTranslationConverter.
+    /// </summary>
     public string Verdict => Total switch
     {
-        >= 85 => "Excelente",
-        >= 70 => "Bueno",
-        >= 55 => "Aceptable",
-        >= 40 => "Mejorable",
-        _ => "Crítico",
+        >= 85 => "Verdict.Excellent",
+        >= 70 => "Verdict.Good",
+        >= 55 => "Verdict.Acceptable",
+        >= 40 => "Verdict.Improvable",
+        _ => "Verdict.Critical",
     };
 }

@@ -12,6 +12,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Bereinigung, Optimierung und Sicherheit für Windows</value>
+  </data>
   <data name="App.Tagline" xml:space="preserve">
     <value>Performance Series</value>
   </data>
@@ -26,6 +29,117 @@
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>Erneut analysieren</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>Aufschlüsselung nach Optimierung</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>Aufschlüsselung der ersten Analyse</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>Analysieren</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>Miss den aktuellen Zustand deines Rechners.
+Erhalte eine Bewertung von 100.</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>Leistung analysieren</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>Zum Protokoll</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>Live-Ausgabe während der Ausführung anzeigen.
+Letzten Lauf überprüfen.</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>Protokoll ansehen</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>Zu den Modulen</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>Wähle die gewünschten Module aus.
+Starte Bereinigung und Anpassungen.</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>System optimieren</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>Klicke auf Analysieren, um eine Bewertung zu erhalten.
+Danach kannst du optimieren und erneut analysieren, um den Unterschied zu sehen.</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>Du hast deinen Rechner noch nicht analysiert</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>Bewertungen zurücksetzen</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>Ausgangszustand</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>Gemessen am {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} Punkte</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>Was möchtest du tun?</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>Live-Ausgabe des aktuellen Prozesses.
+Aktualisiert in Echtzeit während der Ausführung.</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>Ausführungsprotokoll</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>Auswahl aufheben</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>Risiko</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>Sicher</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>Alle auswählen</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>Empfohlen</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>Wähle die Module, die du ausführen möchtest.
+Fahre über das Sicher/Risiko-Chip, um zu erfahren warum.</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>ADVANCED</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>FREE</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>Verfügbare Module</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Über</value>
@@ -51,6 +165,21 @@
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Aktualisierungen</value>
   </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>Wird beim Start der App angewendet.</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>Empfohlene Module beim Start vorauswählen</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>Verhalten</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>Wechselt die Ansicht automatisch zur Prozessausgabe.</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>Beim Ausführen zum Protokoll wechseln</value>
+  </data>
   <data name="Settings.Language.Description" xml:space="preserve">
     <value>Ändert die Sprache der Anwendung.
 Die Oberfläche wird sofort aktualisiert.</value>
@@ -58,10 +187,167 @@ Die Oberfläche wird sofort aktualisiert.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Sprache</value>
   </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>Systembenachrichtigung am Ende der Bereinigung (zukünftig).</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>Bei Beendigung der Ausführung benachrichtigen</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>Einstellungen zurücksetzen</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>Optionen werden sofort angewendet.
+Werden aktuell beim Schließen nicht gespeichert (kommt mit SQLite).</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>Begrenzt, welche Module du ausführen kannst.
+Aktuell nur Anzeige; die nächste Version deaktiviert Module außerhalb deiner Stufe.</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>Aktive Stufe</value>
+  </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>Fragt bei als Risiko markierten Modulen nach (zukünftig).</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>Vor nicht umkehrbaren Modulen warnen</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>Fehler beim Analysieren: {0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>Endanalyse: {0}/100 ({1}).
+Differenz: {2}{3} Punkte.</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>Erste Analyse: {0}/100 ({1}).
+Du kannst jetzt optimieren.</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>Leistung wird analysiert...</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>Wird abgebrochen...</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>Entwicklungsmodus — Updates in dieser Umgebung nicht verfügbar.</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>Update wird heruntergeladen... {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>{0} Modul(e) werden ausgeführt... (du kannst abbrechen)</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>Ausführung vom Benutzer abgebrochen.</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>Ausführung abgeschlossen.
+Zurück zu Start und erneut analysieren zum Vergleichen.</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>Fehler: {0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>Neue Version verfügbar: v{0}!
+Klicke «Jetzt aktualisieren», um sie zu installieren.</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>Bereit. Module auswählen und Ausführen klicken.</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>Bewertungen zurückgesetzt. Klicke Analysieren, um neu zu beginnen.</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>Suche nach Updates...</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>Wähle mindestens ein Modul vor dem Ausführen.</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>Einstellungen auf Standardwerte zurückgesetzt.</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>Fehler beim Anwenden des Updates:
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>Update heruntergeladen.
+Die Anwendung wird automatisch neu gestartet.</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>Fehler bei der Suche nach Updates:
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>Du hast die neueste verfügbare Version (v{0}).</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>Lädt und installiert neue Versionen im Hintergrund.
+Nur wenn DexSuite untätig ist.</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>Automatisch aktualisieren</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Stable: getestete, stabile Versionen.
+Beta: neue Versionen früher, evtl. Fehler.</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>Aktualisierungskanal</value>
+  </data>
   <data name="Updates.CheckForUpdates" xml:space="preserve">
     <value>Nach Updates suchen</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite verwendet Velopack. Klicke «Nach Updates suchen», um eine neue Version zu prüfen.
+Ist die App nicht über Setup installiert, sind automatische Updates nicht verfügbar.</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>Wie Updates funktionieren</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>Installierte Version</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>Letzte Prüfung: {0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>Neue Version verfügbar!</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>Version v{0} bereit zum Herunterladen und Installieren.</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite aktualisiert sich automatisch auf die neueste Version.
+Halte es aktuell für alle neuen Optimierungen.</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>Aktualisierungen</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>Jetzt aktualisieren</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>Akzeptabel</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>Kritisch</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>Ausgezeichnet</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>Gut</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>Verbesserungswürdig</value>
   </data>
 </root>

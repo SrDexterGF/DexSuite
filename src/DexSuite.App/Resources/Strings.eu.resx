@@ -12,6 +12,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Garbiketa, optimizazioa eta segurtasuna Windowsentzat</value>
+  </data>
   <data name="App.Tagline" xml:space="preserve">
     <value>Performance Series</value>
   </data>
@@ -26,6 +29,117 @@
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>Ados</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>Ireki</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Berrezarri</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>Exekutatu</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>Analizatu berriro</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>Optimizatu ondorengo banakapena</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>Hasierako analisia banakatuta</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>Analizatu</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>Neurtu zure ekipoaren egungo egoera.
+Lortu puntuazio bat 100etik.</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>Analizatu errendimendua</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>Joan Erregistrora</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>Ikusi irteera zuzenean exekuzioan.
+Berrikusi azken exekuzioa.</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>Ikusi erregistroa</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>Joan Moduluetara</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>Aukeratu nahi dituzun moduluak.
+Abiarazi garbiketa eta doikuntzak.</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>Optimizatu sistema</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>Sakatu Analizatu puntuazio bat lortzeko.
+Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>Oraindik ez duzu zure ekipoa analizatu</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>Berrabiarazi puntuazioak</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>Hasierako egoera</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>Neurtua {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} puntu</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>Zer egin nahi duzu?</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>Uneko prozesuaren irteera zuzena.
+Denbora errealean eguneratzen da exekuzioan.</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>Exekuzio erregistroa</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>modulu</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>Kendu denak</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>Arriskua</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>Seguru</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>Hautatu denak</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>Gomendatua</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>Markatu exekutatu nahi dituzun moduluak.
+Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>AURRERATUA</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>FREE</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>Modulu erabilgarriak</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Honi buruz</value>
@@ -51,17 +165,189 @@
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Eguneraketak</value>
   </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>Aplikazioa abiaraztean aplikatzen da.</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>Markatu gomendatutako moduluak hastean</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>Portaera</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>Bistaratzea automatikoki aldatzen du prozesuaren irteera ikusteko.</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>Joan Erregistrora exekutatzean</value>
+  </data>
   <data name="Settings.Language.Description" xml:space="preserve">
-    <value>Aplikazioaren hizkuntza aldatzen du.
+    <value>Aldatu aplikazioaren hizkuntza.
 Interfazea berehala eguneratzen da.</value>
   </data>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Hizkuntza</value>
   </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>Sistemaren oharra garbiketa amaitzean (etorkizunean).</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>Jakinarazi exekuzioa amaitzean</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>Berrezarri ezarpenak</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>Aukerak berehala aplikatzen dira.
+Oraingoz ez dira gordetzen aplikazioa ixtean (SQLite-rekin etorriko da).</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>Zein modulu exekutatu ditzakezun mugatzen du.
+Oraingoz informatiboa da; hurrengo bertsioan zure mailan ez dauden moduluak desgaituko ditu.</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>Maila aktiboa</value>
+  </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Ezarpenak</value>
   </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>Berrespena eskatuko du Arrisku gisa markatutako moduluetarako (etorkizunean).</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>Abisatu modulu ez itzulgarriak exekutatu aurretik</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>Errorea analizatzean: {0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>Azken analisia: {0}/100 ({1}).
+Aldea: {2}{3} puntu.</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>Hasierako analisia: {0}/100 ({1}).
+Orain optimiza dezakezu.</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>Errendimendua analizatzen...</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>Uzten...</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>Garapen modua — eguneraketak ez daude eskuragarri ingurune honetan.</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>Eguneraketa deskargatzen... {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>{0} modulu exekutatzen... (utz dezakezu)</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>Erabiltzaileak exekuzioa utzi du.</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>Exekuzioa amaituta.
+Itzuli Hasierara eta analizatu konparatzeko.</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>Errorea: {0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>Bertsio berria eskuragarri: v{0}!
+Sakatu «Eguneratu orain» instalatzeko.</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>Prest. Aukeratu moduluak eta sakatu Exekutatu.</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>Puntuazioak berrabiarazita. Sakatu Analizatu berriz hasteko.</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>Eguneraketak bilatzen...</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>Aukeratu gutxienez modulu bat exekutatu aurretik.</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>Ezarpenak balio lehenetsietara berrezarrita.</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>Errorea eguneraketa aplikatzean:
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>Eguneraketa deskargatuta.
+Aplikazioa automatikoki berrabiaraziko da.</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>Errorea eguneraketak bilatzean:
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>Eskuragarri dagoen azken bertsioa duzu (v{0}).</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>Bertsio berriak atzeko planoan deskargatu eta instalatzen ditu.
+DexSuite geldirik dagoenean soilik.</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>Eguneratu automatikoki</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Stable: probatutako bertsio egonkorrak.
+Beta: bertsio berriak lehenago, akatsak izan ditzakete.</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>Eguneraketa kanala</value>
+  </data>
   <data name="Updates.CheckForUpdates" xml:space="preserve">
     <value>Bilatu eguneraketak</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite-k Velopack erabiltzen du. Sakatu «Bilatu eguneraketak» bertsio berririk dagoen ikusteko.
+Aplikazioa Setup bidez instalatuta ez badago, eguneraketa automatikoak ez daude eskuragarri.</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>Nola funtzionatzen duten eguneraketek</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>Instalatutako bertsioa</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>Azken egiaztapena: {0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>Bertsio berria eskuragarri!</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>v{0} bertsioa deskargatzeko eta instalatzeko prest.</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>Hobespenak</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite automatikoki eguneratzen da azken bertsiora.
+Mantendu eguneratuta optimizazio guztiak lortzeko.</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>Eguneraketak</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>Eguneratu orain</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>Onargarria</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>Larria</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>Bikaina</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>Ona</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>Hobetzeko modukoa</value>
   </data>
 </root>

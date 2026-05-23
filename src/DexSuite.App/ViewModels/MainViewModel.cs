@@ -45,7 +45,17 @@ public partial class MainViewModel : ObservableObject
     public bool IsIdle => !IsRunning && !IsAnalyzing;
 
     [ObservableProperty]
-    private string statusMessage = "Listo. Selecciona módulos y pulsa Ejecutar.";
+    private string statusMessage = string.Empty;
+
+    // ---- Helper i18n -----------------------------------------------------
+    // T() = "translate", abreviado para no inflar las asignaciones de StatusMessage.
+
+    /// <summary>Traduce una clave i18n al idioma activo.</summary>
+    private string T(string key) => _loc.Get(key);
+
+    /// <summary>Traduce una clave i18n y aplica string.Format con los argumentos.</summary>
+    private string T(string key, params object?[] args)
+        => string.Format(_loc.Get(key), args);
 
     // ---- Navegación entre secciones (sidebar) ----------------------------
 
@@ -193,7 +203,7 @@ public partial class MainViewModel : ObservableObject
         NotifyOnFinish = false;
         UserTier = "Pro";
         ScriptFolder = DefaultScriptFolder;
-        StatusMessage = "Ajustes restablecidos a sus valores por defecto.";
+        StatusMessage = T("Status.SettingsReset");
     }
 
     // ---- Actualizaciones -------------------------------------------------
@@ -202,7 +212,11 @@ public partial class MainViewModel : ObservableObject
     public string CurrentVersion => _updateService.CurrentVersion;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(LastUpdateCheckLabel))]
     private string lastUpdateCheck = "Nunca";
+
+    /// <summary>Etiqueta localizada "Última comprobación: ...".</summary>
+    public string LastUpdateCheckLabel => T("Updates.LastCheck", LastUpdateCheck);
 
     [ObservableProperty]
     private bool autoUpdateEnabled = true;
@@ -213,10 +227,17 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Versión disponible para descargar, null si no hay actualización.</summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasAvailableUpdate))]
+    [NotifyPropertyChangedFor(nameof(AvailableUpdateVersionLabel))]
     private string? availableUpdateVersion;
 
     /// <summary>True cuando hay una actualización descargable lista.</summary>
     public bool HasAvailableUpdate => AvailableUpdateVersion is not null;
+
+    /// <summary>Etiqueta localizada "Versión v{x} lista para descargar..."</summary>
+    public string AvailableUpdateVersionLabel
+        => AvailableUpdateVersion is null
+            ? string.Empty
+            : T("Updates.NewVersionReady", AvailableUpdateVersion);
 
     [ObservableProperty]
     private int updateDownloadProgress;
@@ -224,7 +245,7 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private async Task CheckForUpdatesAsync()
     {
-        StatusMessage = "Buscando actualizaciones...";
+        StatusMessage = T("Status.Searching");
         try
         {
             var newVersion = await _updateService.CheckForUpdatesAsync();
@@ -233,22 +254,22 @@ public partial class MainViewModel : ObservableObject
             if (newVersion is not null)
             {
                 AvailableUpdateVersion = newVersion;
-                StatusMessage = $"¡Nueva versión disponible: v{newVersion}!\nPulsa «Actualizar ahora» para instalarla.";
+                StatusMessage = T("Status.NewVersion", newVersion);
             }
             else if (!_updateService.IsInstalledBuild)
             {
-                StatusMessage = "Modo desarrollo — actualizaciones no disponibles en este entorno.";
+                StatusMessage = T("Status.DevMode");
                 LastUpdateCheck = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             }
             else
             {
                 AvailableUpdateVersion = null;
-                StatusMessage = $"Estás en la última versión disponible (v{CurrentVersion}).";
+                StatusMessage = T("Status.UpToDate", CurrentVersion);
             }
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Error al buscar actualizaciones:\n{ex.Message}";
+            StatusMessage = T("Status.UpdateError", ex.Message);
             _logger.LogError(ex, "Fallo al buscar actualizaciones");
         }
         ApplyUpdateCommand.NotifyCanExecuteChanged();
@@ -257,22 +278,22 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand(CanExecute = nameof(HasAvailableUpdate))]
     private async Task ApplyUpdateAsync()
     {
-        StatusMessage = "Descargando actualización...";
+        StatusMessage = T("Status.Downloading", 0);
         UpdateDownloadProgress = 0;
         try
         {
             var progress = new Progress<int>(p =>
             {
                 UpdateDownloadProgress = p;
-                StatusMessage = $"Descargando actualización... {p}%";
+                StatusMessage = T("Status.Downloading", p);
             });
             await _updateService.DownloadAndApplyAsync(progress);
             // Si llegamos aquí es que no se reinició (entorno no instalado).
-            StatusMessage = "Actualización descargada.\nLa aplicación se reiniciará automáticamente.";
+            StatusMessage = T("Status.UpdateDownloaded");
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Error al aplicar la actualización:\n{ex.Message}";
+            StatusMessage = T("Status.UpdateApplyError", ex.Message);
             _logger.LogError(ex, "Fallo al aplicar actualización");
         }
     }
@@ -314,7 +335,7 @@ public partial class MainViewModel : ObservableObject
         ResetScoresCommand.NotifyCanExecuteChanged();
         RunCommand.NotifyCanExecuteChanged();
 
-        StatusMessage = "Analizando rendimiento...";
+        StatusMessage = T("Status.Analyzing");
 
         try
         {
@@ -322,19 +343,19 @@ public partial class MainViewModel : ObservableObject
             if (ScoreBefore is null)
             {
                 ScoreBefore = score;
-                StatusMessage = $"Análisis inicial: {score.Total}/100 ({score.Verdict}).\nYa puedes optimizar.";
+                StatusMessage = T("Status.AnalysisInitial", score.Total, T(score.Verdict));
             }
             else
             {
                 ScoreAfter = score;
                 var delta = score.Total - ScoreBefore.Total;
                 var sign = delta >= 0 ? "+" : "";
-                StatusMessage = $"Análisis final: {score.Total}/100 ({score.Verdict}).\nDiferencia: {sign}{delta} puntos.";
+                StatusMessage = T("Status.AnalysisFinal", score.Total, T(score.Verdict), sign, delta);
             }
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Error al analizar: {ex.Message}";
+            StatusMessage = T("Status.AnalysisError", ex.Message);
             _logger.LogError(ex, "Fallo el analisis de rendimiento");
         }
         finally
@@ -351,7 +372,7 @@ public partial class MainViewModel : ObservableObject
     {
         ScoreBefore = null;
         ScoreAfter = null;
-        StatusMessage = "Puntuaciones reiniciadas. Pulsa Analizar para empezar de nuevo.";
+        StatusMessage = T("Status.ScoresReset");
         AnalyzeCommand.NotifyCanExecuteChanged();
         ResetScoresCommand.NotifyCanExecuteChanged();
     }
@@ -381,6 +402,19 @@ public partial class MainViewModel : ObservableObject
         _loc = loc;
         _logger = logger;
 
+        // Mensaje inicial localizado. Cuando el usuario cambia el idioma,
+        // re-emitimos el mensaje de "Listo" si seguimos en ese estado.
+        StatusMessage = T("Status.Ready");
+        _loc.LanguageChanged += (_, _) =>
+        {
+            // Re-emitimos propiedades cuyo texto depende del idioma:
+            OnPropertyChanged(nameof(CurrentLanguage));
+            OnPropertyChanged(nameof(LastUpdateCheckLabel));
+            OnPropertyChanged(nameof(AvailableUpdateVersionLabel));
+            // El StatusMessage es un mensaje puntual; no lo refrescamos.
+            // Las próximas asignaciones ya saldrán en el idioma nuevo.
+        };
+
         LogsFolder = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "DexSuite", "logs");
@@ -406,7 +440,7 @@ public partial class MainViewModel : ObservableObject
         var selected = Modules.Where(m => m.IsEnabled).Select(m => m.Id).OrderBy(id => id).ToList();
         if (selected.Count == 0)
         {
-            StatusMessage = "Selecciona al menos un módulo antes de ejecutar.";
+            StatusMessage = T("Status.SelectModulesFirst");
             return;
         }
 
@@ -425,7 +459,7 @@ public partial class MainViewModel : ObservableObject
         IsRunning = true;
         OutputLog = string.Empty;
         lock (_bufferLock) _pendingBuffer.Clear();
-        StatusMessage = $"Ejecutando {selected.Count} módulo(s)... (puedes cancelar)";
+        StatusMessage = T("Status.Executing", selected.Count);
         if (JumpToLogOnRun)
             CurrentSection = AppSection.Log;
 
@@ -456,15 +490,15 @@ public partial class MainViewModel : ObservableObject
             {
                 lock (_bufferLock) _pendingBuffer.AppendLine(line);
             }
-            StatusMessage = "Ejecución completada.\nVuelve a Inicio y analiza para comparar.";
+            StatusMessage = T("Status.ExecutionDone");
         }
         catch (OperationCanceledException)
         {
-            StatusMessage = "Ejecución cancelada por el usuario.";
+            StatusMessage = T("Status.ExecutionCancelled");
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Error: {ex.Message}";
+            StatusMessage = T("Status.ExecutionError", ex.Message);
             _logger.LogError(ex, "Fallo al ejecutar el .bat");
         }
         finally
@@ -486,7 +520,7 @@ public partial class MainViewModel : ObservableObject
     private void Cancel()
     {
         try { _runCts?.Cancel(); } catch { /* ya disposed */ }
-        StatusMessage = "Cancelando...";
+        StatusMessage = T("Status.Cancelling");
     }
 
     private bool CanRun() => !IsRunning && !IsAnalyzing;
