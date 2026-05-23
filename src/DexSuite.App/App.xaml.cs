@@ -67,6 +67,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IModuleCatalog, ModuleCatalog>();
         services.AddSingleton<IBatRunner, BatRunner>();
         services.AddSingleton<IPerformanceAnalyzer, PerformanceAnalyzer>();
+        services.AddSingleton<IUpdateService, VelopackUpdateService>();
 
         // ViewModels
         services.AddSingleton<MainViewModel>();

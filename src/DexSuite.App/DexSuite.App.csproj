@@ -10,6 +10,8 @@
     <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
     <RootNamespace>DexSuite.App</RootNamespace>
     <Version>0.1.0</Version>
+    <!-- TFM net8.0-windows10.0.19041 para WinRT (toasts nativas); SupportedOSPlatformVersion 7.0 para compatibilidad con Win10 -->
+    <StartupObject>DexSuite.App.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

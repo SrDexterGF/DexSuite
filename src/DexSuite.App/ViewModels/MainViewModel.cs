@@ -14,6 +14,7 @@ public partial class MainViewModel : ObservableObject
 {
     private readonly IBatRunner _runner;
     private readonly IPerformanceAnalyzer _analyzer;
+    private readonly IUpdateService _updateService;
     private readonly ILogger<MainViewModel> _logger;
 
     private const string DefaultScriptFolder =
@@ -179,7 +180,8 @@ public partial class MainViewModel : ObservableObject
 
     // ---- Actualizaciones -------------------------------------------------
 
-    public string CurrentVersion => "0.1.0";
+    /// <summary>Versión instalada actual, reportada por Velopack (o "0.1.0" en dev).</summary>
+    public string CurrentVersion => _updateService.CurrentVersion;
 
     [ObservableProperty]
     private string lastUpdateCheck = "Nunca";
@@ -190,13 +192,71 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private string updateChannel = "Stable";
 
+    /// <summary>Versión disponible para descargar, null si no hay actualización.</summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasAvailableUpdate))]
+    private string? availableUpdateVersion;
+
+    /// <summary>True cuando hay una actualización descargable lista.</summary>
+    public bool HasAvailableUpdate => AvailableUpdateVersion is not null;
+
+    [ObservableProperty]
+    private int updateDownloadProgress;
+
     [RelayCommand]
     private async Task CheckForUpdatesAsync()
     {
         StatusMessage = "Buscando actualizaciones...";
-        await Task.Delay(800);
-        LastUpdateCheck = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-        StatusMessage = $"Estás en la última versión disponible (v{CurrentVersion}).";
+        try
+        {
+            var newVersion = await _updateService.CheckForUpdatesAsync();
+            LastUpdateCheck = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+            if (newVersion is not null)
+            {
+                AvailableUpdateVersion = newVersion;
+                StatusMessage = $"¡Nueva versión disponible: v{newVersion}!\nPulsa «Actualizar ahora» para instalarla.";
+            }
+            else if (!_updateService.IsInstalledBuild)
+            {
+                StatusMessage = "Modo desarrollo — actualizaciones no disponibles en este entorno.";
+                LastUpdateCheck = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+            }
+            else
+            {
+                AvailableUpdateVersion = null;
+                StatusMessage = $"Estás en la última versión disponible (v{CurrentVersion}).";
+            }
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Error al buscar actualizaciones:\n{ex.Message}";
+            _logger.LogError(ex, "Fallo al buscar actualizaciones");
+        }
+        ApplyUpdateCommand.NotifyCanExecuteChanged();
+    }
+
+    [RelayCommand(CanExecute = nameof(HasAvailableUpdate))]
+    private async Task ApplyUpdateAsync()
+    {
+        StatusMessage = "Descargando actualización...";
+        UpdateDownloadProgress = 0;
+        try
+        {
+            var progress = new Progress<int>(p =>
+            {
+                UpdateDownloadProgress = p;
+                StatusMessage = $"Descargando actualización... {p}%";
+            });
+            await _updateService.DownloadAndApplyAsync(progress);
+            // Si llegamos aquí es que no se reinició (entorno no instalado).
+            StatusMessage = "Actualización descargada.\nLa aplicación se reiniciará automáticamente.";
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Error al aplicar la actualización:\n{ex.Message}";
+            _logger.LogError(ex, "Fallo al aplicar actualización");
+        }
     }
 
     // ---- Test de rendimiento --------------------------------------------
@@ -293,10 +353,12 @@ public partial class MainViewModel : ObservableObject
         IModuleCatalog catalog,
         IBatRunner runner,
         IPerformanceAnalyzer analyzer,
+        IUpdateService updateService,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
         _analyzer = analyzer;
+        _updateService = updateService;
         _logger = logger;
 
         LogsFolder = Path.Combine(
