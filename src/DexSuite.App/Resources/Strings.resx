@@ -625,10 +625,10 @@ They don't persist across restarts yet (coming with SQLite).</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Limits which modules you can run.
-For now it's informative; the next version will disable modules not in your tier.</value>
+For now it's informative; the next version will disable modules not in your plan.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
-    <value>Active tier</value>
+    <value>Active plan</value>
   </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Settings</value>

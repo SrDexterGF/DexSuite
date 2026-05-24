@@ -270,7 +270,7 @@ Atualiza-se em tempo real durante a execução.</value>
     <value>Sem impacto</value>
   </data>
   <data name="Modules.Impact.Notable" xml:space="preserve">
-    <value>Notable</value>
+    <value>Notável</value>
   </data>
   <data name="Modules.Impact.Soft" xml:space="preserve">
     <value>Suave</value>
@@ -562,7 +562,7 @@ Passa o rato pelo chip Seguro/Risco para saberes porquê.</value>
     <value>Carregado de sessão anterior</value>
   </data>
   <data name="Score.LoadedAt" xml:space="preserve">
-    <value>Baseline guardado — {0}</value>
+    <value>Referência guardada — {0}</value>
   </data>
   <data name="Score.MeasuredAt" xml:space="preserve">
     <value>Medido — {0}</value>
@@ -625,10 +625,10 @@ Por agora não são guardadas ao fechar a app (chegará com SQLite).</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Limita os módulos que podes executar.
-Por agora é informativo; na próxima versão desativará os módulos fora do teu tier.</value>
+Por agora é informativo; na próxima versão desativará os módulos fora do teu plano.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
-    <value>Tier ativo</value>
+    <value>Plano ativo</value>
   </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Definições</value>
@@ -652,7 +652,7 @@ Por agora é informativo; na próxima versão desativará os módulos fora do te
     <value>Placa gráfica</value>
   </data>
   <data name="Specs.Loading" xml:space="preserve">
-    <value>A detectar hardware…</value>
+    <value>A detetar hardware…</value>
   </data>
   <data name="Specs.OS" xml:space="preserve">
     <value>Sistema operativo</value>
@@ -670,7 +670,7 @@ Por agora é informativo; na próxima versão desativará os módulos fora do te
     <value>Armazenamento</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Hardware e sistema operativo detectados</value>
+    <value>Hardware e sistema operativo detetados</value>
   </data>
   <data name="Specs.Title" xml:space="preserve">
     <value>Especificações do sistema</value>

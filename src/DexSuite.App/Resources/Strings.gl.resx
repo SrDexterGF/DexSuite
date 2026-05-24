@@ -562,7 +562,7 @@ Pasa o rato polo chip Seguro/Risco para saber por que.</value>
     <value>Cargado de sesión anterior</value>
   </data>
   <data name="Score.LoadedAt" xml:space="preserve">
-    <value>Baseline gardado — {0}</value>
+    <value>Referencia gardada — {0}</value>
   </data>
   <data name="Score.MeasuredAt" xml:space="preserve">
     <value>Medido — {0}</value>
@@ -625,10 +625,10 @@ De momento non se gardan ao pechar a app (chegará con SQLite).</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Limita que módulos podes executar.
-De momento é informativo; na próxima versión desactivará os módulos non incluídos no teu tier.</value>
+De momento é informativo; na próxima versión desactivará os módulos non incluídos no teu plan.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
-    <value>Tier activo</value>
+    <value>Plan activo</value>
   </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Axustes</value>

@@ -625,10 +625,10 @@
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>限制你可执行的模块。
-目前仅供参考；下一版本将禁用等级之外的模块。</value>
+目前仅供参考；下一版本将禁用套餐之外的模块。</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
-    <value>当前等级</value>
+    <value>当前套餐</value>
   </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>设置</value>

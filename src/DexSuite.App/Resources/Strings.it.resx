@@ -562,7 +562,7 @@ Passa il mouse sul chip Sicuro/Rischio per scoprire perché.</value>
     <value>Caricato dalla sessione precedente</value>
   </data>
   <data name="Score.LoadedAt" xml:space="preserve">
-    <value>Baseline salvato — {0}</value>
+    <value>Riferimento salvato — {0}</value>
   </data>
   <data name="Score.MeasuredAt" xml:space="preserve">
     <value>Misurato — {0}</value>
@@ -625,10 +625,10 @@ Per ora non si salvano alla chiusura (arriverà con SQLite).</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Limita quali moduli puoi eseguire.
-Per ora è informativo; la prossima versione disattiverà i moduli fuori dal tuo tier.</value>
+Per ora è informativo; la prossima versione disattiverà i moduli fuori dal tuo piano.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
-    <value>Tier attivo</value>
+    <value>Piano attivo</value>
   </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Impostazioni</value>

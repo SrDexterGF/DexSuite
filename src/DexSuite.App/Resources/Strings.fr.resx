@@ -625,10 +625,10 @@ Elles ne sont pas encore sauvegardées à la fermeture (avec SQLite).</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Limite les modules exécutables.
-Pour l'instant informatif ; la prochaine version désactivera les modules hors de votre niveau.</value>
+Pour l'instant informatif ; la prochaine version désactivera les modules hors de votre plan.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
-    <value>Niveau actif</value>
+    <value>Plan actif</value>
   </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Paramètres</value>

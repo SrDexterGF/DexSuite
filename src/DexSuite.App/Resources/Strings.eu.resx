@@ -550,7 +550,7 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
     <value>DexSuite — {0} modulu exekutatu aurretik</value>
   </data>
   <data name="RestorePoint.Description" xml:space="preserve">
-    <value>DexSuite — optimizazio manuala babeskopia</value>
+    <value>DexSuite — eskuzko optimizazioaren babeskopia</value>
   </data>
   <data name="RestorePoint.Failed" xml:space="preserve">
     <value>Ezin izan da berrezarpen-puntua sortu: {0}</value>
@@ -562,7 +562,7 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
     <value>Aurreko saioko kargua</value>
   </data>
   <data name="Score.LoadedAt" xml:space="preserve">
-    <value>Gordetako baseline — {0}</value>
+    <value>Gordetako erreferentzia — {0}</value>
   </data>
   <data name="Score.MeasuredAt" xml:space="preserve">
     <value>Neurtua — {0}</value>
@@ -625,10 +625,10 @@ Oraingoz ez dira gordetzen aplikazioa ixtean (SQLite-rekin etorriko da).</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Zein modulu exekutatu ditzakezun mugatzen du.
-Oraingoz informatiboa da; hurrengo bertsioan zure mailan ez dauden moduluak desgaituko ditu.</value>
+Oraingoz informatiboa da; hurrengo bertsioan zure planean ez dauden moduluak desgaituko ditu.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
-    <value>Maila aktiboa</value>
+    <value>Plan aktiboa</value>
   </data>
   <data name="Settings.Title" xml:space="preserve">
     <value>Ezarpenak</value>

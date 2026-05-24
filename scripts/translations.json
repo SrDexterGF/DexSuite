@@ -378,7 +378,7 @@
     },
     "Modules.Tier.Advanced": {
       "en": "ADVANCED", "es": "AVANZADO", "gl": "AVANZADO", "ca": "AVANÇAT",
-      "eu": "AURRERATUA", "pt": "AVANÇADO", "fr": "AVANCÉ", "de": "ADVANCED",
+      "eu": "AURRERATUA", "pt": "AVANÇADO", "fr": "AVANCÉ", "de": "ERWEITERT",
       "it": "AVANZATO", "zh": "高级"
     },
     "Modules.Tier.Pro": {
@@ -462,28 +462,28 @@
       "zh": "更改应用程序语言。\n界面将即时更新。"
     },
     "Settings.Tier.Title": {
-      "en": "Active tier",
-      "es": "Tier activo",
-      "gl": "Tier activo",
-      "ca": "Tier actiu",
-      "eu": "Maila aktiboa",
-      "pt": "Tier ativo",
-      "fr": "Niveau actif",
-      "de": "Aktive Stufe",
-      "it": "Tier attivo",
-      "zh": "当前等级"
+      "en": "Active plan",
+      "es": "Plan activo",
+      "gl": "Plan activo",
+      "ca": "Pla actiu",
+      "eu": "Plan aktiboa",
+      "pt": "Plano ativo",
+      "fr": "Plan actif",
+      "de": "Aktiver Plan",
+      "it": "Piano attivo",
+      "zh": "当前套餐"
     },
     "Settings.Tier.Description": {
-      "en": "Limits which modules you can run.\nFor now it's informative; the next version will disable modules not in your tier.",
-      "es": "Limita qué módulos puedes ejecutar.\nPor ahora es informativo; en la próxima versión desactivará los módulos no incluidos en tu tier.",
-      "gl": "Limita que módulos podes executar.\nDe momento é informativo; na próxima versión desactivará os módulos non incluídos no teu tier.",
-      "ca": "Limita quins mòduls pots executar.\nDe moment és informatiu; a la propera versió desactivarà els mòduls no inclosos al teu tier.",
-      "eu": "Zein modulu exekutatu ditzakezun mugatzen du.\nOraingoz informatiboa da; hurrengo bertsioan zure mailan ez dauden moduluak desgaituko ditu.",
-      "pt": "Limita os módulos que podes executar.\nPor agora é informativo; na próxima versão desativará os módulos fora do teu tier.",
-      "fr": "Limite les modules exécutables.\nPour l'instant informatif ; la prochaine version désactivera les modules hors de votre niveau.",
-      "de": "Begrenzt, welche Module du ausführen kannst.\nAktuell nur Anzeige; die nächste Version deaktiviert Module außerhalb deiner Stufe.",
-      "it": "Limita quali moduli puoi eseguire.\nPer ora è informativo; la prossima versione disattiverà i moduli fuori dal tuo tier.",
-      "zh": "限制你可执行的模块。\n目前仅供参考；下一版本将禁用等级之外的模块。"
+      "en": "Limits which modules you can run.\nFor now it's informative; the next version will disable modules not in your plan.",
+      "es": "Limita qué módulos puedes ejecutar.\nPor ahora es informativo; en la próxima versión desactivará los módulos no incluidos en tu plan.",
+      "gl": "Limita que módulos podes executar.\nDe momento é informativo; na próxima versión desactivará os módulos non incluídos no teu plan.",
+      "ca": "Limita quins mòduls pots executar.\nDe moment és informatiu; a la propera versió desactivarà els mòduls no inclosos al teu pla.",
+      "eu": "Zein modulu exekutatu ditzakezun mugatzen du.\nOraingoz informatiboa da; hurrengo bertsioan zure planean ez dauden moduluak desgaituko ditu.",
+      "pt": "Limita os módulos que podes executar.\nPor agora é informativo; na próxima versão desativará os módulos fora do teu plano.",
+      "fr": "Limite les modules exécutables.\nPour l'instant informatif ; la prochaine version désactivera les modules hors de votre plan.",
+      "de": "Begrenzt, welche Module du ausführen kannst.\nAktuell nur Anzeige; die nächste Version deaktiviert Module außerhalb deines Plans.",
+      "it": "Limita quali moduli puoi eseguire.\nPer ora è informativo; la prossima versione disattiverà i moduli fuori dal tuo piano.",
+      "zh": "限制你可执行的模块。\n目前仅供参考；下一版本将禁用套餐之外的模块。"
     },
     "Settings.Behavior.Title": {
       "en": "Behavior", "es": "Comportamiento", "gl": "Comportamento", "ca": "Comportament",
@@ -1064,7 +1064,7 @@
     },
     "Modules.Impact.Notable": {
       "en": "Notable", "es": "Notable", "gl": "Notable", "ca": "Notable",
-      "eu": "Nabarmena", "pt": "Notable", "fr": "Notable", "de": "Spürbar",
+      "eu": "Nabarmena", "pt": "Notável", "fr": "Notable", "de": "Spürbar",
       "it": "Notevole", "zh": "显著"
     },
     "Modules.Impact.Strong": {
@@ -1128,7 +1128,7 @@
       "gl": "Hardware e sistema operativo detectados",
       "ca": "Maquinari i sistema operatiu detectats",
       "eu": "Hautemandako hardware eta sistema eragilea",
-      "pt": "Hardware e sistema operativo detectados",
+      "pt": "Hardware e sistema operativo detetados",
       "fr": "Matériel et système d'exploitation détectés",
       "de": "Erkannte Hardware und Betriebssystem",
       "it": "Hardware e sistema operativo rilevati",
@@ -1171,7 +1171,7 @@
       "gl": "Detectando hardware…",
       "ca": "Detectant maquinari…",
       "eu": "Hardware hautematen…",
-      "pt": "A detectar hardware…",
+      "pt": "A detetar hardware…",
       "fr": "Détection du matériel…",
       "de": "Hardware wird erkannt…",
       "it": "Rilevamento hardware…",
@@ -1831,7 +1831,7 @@
       "es": "DexSuite — copia de seguridad de optimización manual",
       "gl": "DexSuite — copia de seguridade de optimización manual",
       "ca": "DexSuite — còpia de seguretat d'optimització manual",
-      "eu": "DexSuite — optimizazio manuala babeskopia",
+      "eu": "DexSuite — eskuzko optimizazioaren babeskopia",
       "pt": "DexSuite — cópia de segurança de otimização manual",
       "fr": "DexSuite — sauvegarde d'optimisation manuelle",
       "de": "DexSuite — manuelle Optimierungssicherung",
@@ -1937,14 +1937,14 @@
 
     "Score.LoadedAt": {
       "en": "Saved baseline — {0}",
-      "es": "Baseline guardado — {0}",
-      "gl": "Baseline gardado — {0}",
-      "ca": "Baseline guardat — {0}",
-      "eu": "Gordetako baseline — {0}",
-      "pt": "Baseline guardado — {0}",
+      "es": "Referencia guardada — {0}",
+      "gl": "Referencia gardada — {0}",
+      "ca": "Referència desada — {0}",
+      "eu": "Gordetako erreferentzia — {0}",
+      "pt": "Referência guardada — {0}",
       "fr": "Référence enregistrée — {0}",
       "de": "Gespeicherter Referenzwert — {0}",
-      "it": "Baseline salvato — {0}",
+      "it": "Riferimento salvato — {0}",
       "zh": "已保存的基准 — {0}"
     },
     "Score.MeasuredAt": {
