@@ -1104,6 +1104,45 @@
       "zh": "EXTRA PRO · 游戏"
     },
 
+    "Search.Placeholder": {
+      "en": "Search setting…",
+      "es": "Buscar ajuste…",
+      "gl": "Buscar axuste…",
+      "ca": "Cercar ajust…",
+      "eu": "Bilatu ezarpena…",
+      "pt": "Pesquisar ajuste…",
+      "fr": "Rechercher un réglage…",
+      "de": "Einstellung suchen…",
+      "it": "Cerca impostazione…",
+      "zh": "搜索设置…"
+    },
+
+    "Search.ResultsCount": {
+      "en": "{0} result(s) for «{1}»",
+      "es": "{0} resultado(s) para «{1}»",
+      "gl": "{0} resultado(s) para «{1}»",
+      "ca": "{0} resultat(s) per a «{1}»",
+      "eu": "{0} emaitza «{1}» bilaketarako",
+      "pt": "{0} resultado(s) para «{1}»",
+      "fr": "{0} résultat(s) pour «{1}»",
+      "de": "{0} Ergebnis(se) für «{1}»",
+      "it": "{0} risultato/i per «{1}»",
+      "zh": "「{1}」的搜索结果：{0} 条"
+    },
+
+    "Search.NoResults": {
+      "en": "No settings found for «{0}»",
+      "es": "Sin resultados para «{0}»",
+      "gl": "Sen resultados para «{0}»",
+      "ca": "Sense resultats per a «{0}»",
+      "eu": "Ez da emaitzarik aurkitu «{0}» bilaketarako",
+      "pt": "Nenhum resultado para «{0}»",
+      "fr": "Aucun résultat pour «{0}»",
+      "de": "Keine Ergebnisse für «{0}»",
+      "it": "Nessun risultato per «{0}»",
+      "zh": "未找到「{0}」的结果"
+    },
+
     "QuickClean.Button": {
       "en": "Quick clean",
       "es": "Limpieza rápida",

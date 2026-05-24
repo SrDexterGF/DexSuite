@@ -399,6 +399,15 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Garbiketa azkarra</value>
   </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>Ez da emaitzarik aurkitu «{0}» bilaketarako</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Bilatu ezarpena…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} emaitza «{1}» bilaketarako</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Aplikazioa abiaraztean aplikatzen da.</value>
   </data>

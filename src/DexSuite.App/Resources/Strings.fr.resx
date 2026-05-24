@@ -399,6 +399,15 @@ Survolez la puce Sûr/Risque pour savoir pourquoi.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Nettoyage rapide</value>
   </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>Aucun résultat pour «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Rechercher un réglage…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} résultat(s) pour «{1}»</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Appliqué au lancement de l'application.</value>
   </data>

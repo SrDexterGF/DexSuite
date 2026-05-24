@@ -399,6 +399,15 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Quick clean</value>
   </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>No settings found for «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Search setting…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} result(s) for «{1}»</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Applied when the app launches.</value>
   </data>

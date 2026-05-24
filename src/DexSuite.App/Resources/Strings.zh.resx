@@ -399,6 +399,15 @@
   <data name="QuickClean.Button" xml:space="preserve">
     <value>快速清理</value>
   </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>未找到「{0}」的结果</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>搜索设置…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>「{1}」的搜索结果：{0} 条</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>应用启动时生效。</value>
   </data>

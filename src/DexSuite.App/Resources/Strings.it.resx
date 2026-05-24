@@ -399,6 +399,15 @@ Passa il mouse sul chip Sicuro/Rischio per scoprire perché.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Pulizia rapida</value>
   </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>Nessun risultato per «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Cerca impostazione…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} risultato/i per «{1}»</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Si applica all'avvio dell'app.</value>
   </data>

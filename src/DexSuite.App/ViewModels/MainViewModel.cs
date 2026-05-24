@@ -90,6 +90,49 @@ public partial class MainViewModel : ObservableObject
             CurrentSection = section;
     }
 
+    // ---- Búsqueda de módulos --------------------------------------------
+
+    public ObservableCollection<ModuleItemViewModel> SearchResults { get; } = new();
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsSearchActive))]
+    [NotifyPropertyChangedFor(nameof(IsNormalView))]
+    [NotifyPropertyChangedFor(nameof(SearchResultsLabel))]
+    [NotifyPropertyChangedFor(nameof(HasSearchResults))]
+    private string searchText = string.Empty;
+
+    public bool IsSearchActive   => !string.IsNullOrWhiteSpace(SearchText);
+    public bool IsNormalView     => string.IsNullOrWhiteSpace(SearchText);
+    public bool HasSearchResults => SearchResults.Count > 0;
+
+    /// <summary>Etiqueta de resultados: cuenta o "sin resultados", localizada.</summary>
+    public string SearchResultsLabel => IsSearchActive
+        ? (HasSearchResults
+            ? T("Search.ResultsCount", SearchResults.Count, SearchText.Trim())
+            : T("Search.NoResults", SearchText.Trim()))
+        : string.Empty;
+
+    partial void OnSearchTextChanged(string value)
+    {
+        SearchResults.Clear();
+        var q = value?.Trim() ?? string.Empty;
+        if (!string.IsNullOrEmpty(q))
+        {
+            foreach (var m in Modules)
+            {
+                if (m.Name.Contains(q, StringComparison.OrdinalIgnoreCase) ||
+                    m.Description.Contains(q, StringComparison.OrdinalIgnoreCase))
+                    SearchResults.Add(m);
+            }
+        }
+        // Notify computed after collection rebuild
+        OnPropertyChanged(nameof(HasSearchResults));
+        OnPropertyChanged(nameof(SearchResultsLabel));
+    }
+
+    [RelayCommand]
+    private void ClearSearch() => SearchText = string.Empty;
+
     // ---- Acciones rápidas sobre la lista de módulos ----------------------
 
     [RelayCommand]

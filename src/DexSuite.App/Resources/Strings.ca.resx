@@ -399,6 +399,15 @@ Passa el ratolí pel xip Segur/Risc per saber per què.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Neteja ràpida</value>
   </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>Sense resultats per a «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Cercar ajust…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} resultat(s) per a «{1}»</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>S'aplica en iniciar l'aplicació.</value>
   </data>
