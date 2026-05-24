@@ -88,6 +88,10 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     [ObservableProperty]
     private bool isEnabled;
 
+    /// <summary>True cuando el tier del módulo supera el tier activo del usuario. Lo fija MainViewModel.</summary>
+    [ObservableProperty]
+    private bool isLocked;
+
     /// <summary>Estado actual de ejecución (para futura fase 2 con tracking por módulo).</summary>
     [ObservableProperty]
     private ModuleStatus status = ModuleStatus.Pending;

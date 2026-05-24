@@ -139,7 +139,26 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>Tier activo del usuario. Controla qué módulos puede ejecutar.</summary>
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(UserTierEnum))]
     private string userTier = "Pro";
+
+    /// <summary>Tier activo como enum comparable con <see cref="ModuleTier"/>.</summary>
+    public ModuleTier UserTierEnum => UserTier switch
+    {
+        "Avanzado" => ModuleTier.Advanced,
+        "Pro"      => ModuleTier.Pro,
+        _          => ModuleTier.Free,
+    };
+
+    /// <summary>Cada vez que cambia el tier, recalcula qué módulos quedan bloqueados.</summary>
+    partial void OnUserTierChanged(string value) => UpdateModuleLockStates();
+
+    private void UpdateModuleLockStates()
+    {
+        var currentTier = UserTierEnum;
+        foreach (var m in Modules)
+            m.IsLocked = m.Module.Tier > currentTier;
+    }
 
     /// <summary>Opciones disponibles para el ComboBox de tier.</summary>
     public IReadOnlyList<string> AvailableTiers { get; } = new[] { "Free", "Avanzado", "Pro" };
@@ -430,6 +449,9 @@ public partial class MainViewModel : ObservableObject
                 case ModuleTier.Pro: ProModules.Add(vm); break;
             }
         }
+
+        // Estado inicial de bloqueo según el tier configurado.
+        UpdateModuleLockStates();
     }
 
     // ---- Ejecutar / Cancelar --------------------------------------------

@@ -120,19 +120,40 @@
                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                     BorderThickness="1">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <!-- Dimming cuando el módulo está bloqueado por tier -->
+                            <DataTrigger Binding="{Binding IsLocked}" Value="True">
+                                <Setter Property="Opacity" Value="0.48"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Checkbox -->
+                    <!-- Checkbox: deshabilitado cuando está bloqueado -->
                     <CheckBox Grid.Column="0"
                               IsChecked="{Binding IsEnabled, Mode=TwoWay}"
                               VerticalAlignment="Center"
-                              Margin="0,0,8,0"/>
+                              Margin="0,0,8,0">
+                        <CheckBox.Style>
+                            <Style TargetType="CheckBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
 
                     <!-- Nombre del módulo -->
                     <ui:TextBlock Grid.Column="1"
@@ -232,6 +253,43 @@
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center"
                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                    </Border>
+
+                    <!-- Candado: visible solo cuando el módulo está bloqueado por tier -->
+                    <Border Grid.Column="4"
+                            Width="22" Height="22"
+                            CornerRadius="11"
+                            VerticalAlignment="Center"
+                            Margin="4,0,0,0"
+                            Background="#1A9D4EDD"
+                            BorderBrush="#3A9D4EDD"
+                            BorderThickness="1"
+                            ToolTipService.ShowDuration="8000"
+                            ToolTipService.InitialShowDelay="300">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Border.ToolTip>
+                            <ToolTip MaxWidth="260" Padding="10,8">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding TierLabel}"
+                                               FontWeight="SemiBold"
+                                               FontSize="12"/>
+                                </StackPanel>
+                            </ToolTip>
+                        </Border.ToolTip>
+                        <ui:SymbolIcon Symbol="Lock24"
+                                       FontSize="12"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="#FFB026FF"/>
                     </Border>
                 </Grid>
             </Border>
@@ -714,49 +772,146 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
+                            <!-- ── Columna FREE (siempre desbloqueada) ── -->
                             <StackPanel Grid.Column="0" Margin="6,0">
                                 <Border Padding="10,6"
                                         Margin="0,0,0,10"
                                         CornerRadius="6"
                                         Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Free}" FontTypography="BodyStrong"/>
-                                        <ui:TextBlock Text="{Binding FreeModules.Count, StringFormat=' · {0}'}"
-                                                      Opacity="0.6"/>
-                                    </StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                            <ui:TextBlock Text="{loc:T Key=Modules.Tier.Free}" FontTypography="BodyStrong"/>
+                                            <ui:TextBlock Text="{Binding FreeModules.Count, StringFormat=' · {0}'}"
+                                                          Opacity="0.6"/>
+                                        </StackPanel>
+                                        <!-- Siempre desbloqueado: icono de check -->
+                                        <ui:SymbolIcon Grid.Column="1"
+                                                       Symbol="CheckmarkCircle24"
+                                                       FontSize="14"
+                                                       Foreground="#FF4CAF50"
+                                                       VerticalAlignment="Center"/>
+                                    </Grid>
                                 </Border>
                                 <ItemsControl ItemsSource="{Binding FreeModules}"
                                               ItemTemplate="{StaticResource ModuleCardTemplate}"/>
                             </StackPanel>
 
+                            <!-- ── Columna AVANZADO (bloqueada si tier = Free) ── -->
                             <StackPanel Grid.Column="1" Margin="6,0">
                                 <Border Padding="10,6"
                                         Margin="0,0,0,10"
                                         CornerRadius="6"
                                         Background="{DynamicResource AccentFillColorDefaultBrush}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Advanced}"
-                                                      FontTypography="BodyStrong"
-                                                      Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
-                                        <ui:TextBlock Text="{Binding AdvancedModules.Count, StringFormat=' · {0}'}"
-                                                      Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
-                                                      Opacity="0.75"/>
-                                    </StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                            <ui:TextBlock Text="{loc:T Key=Modules.Tier.Advanced}"
+                                                          FontTypography="BodyStrong"
+                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
+                                            <ui:TextBlock Text="{Binding AdvancedModules.Count, StringFormat=' · {0}'}"
+                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
+                                                          Opacity="0.75"/>
+                                        </StackPanel>
+                                        <!-- Candado visible solo cuando tier = Free -->
+                                        <ui:SymbolIcon Grid.Column="1"
+                                                       Symbol="Lock24"
+                                                       FontSize="14"
+                                                       Foreground="White"
+                                                       Opacity="0.8"
+                                                       VerticalAlignment="Center">
+                                            <ui:SymbolIcon.Style>
+                                                <Style TargetType="ui:SymbolIcon">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Free">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ui:SymbolIcon.Style>
+                                        </ui:SymbolIcon>
+                                        <!-- Check visible cuando tier >= Avanzado -->
+                                        <ui:SymbolIcon Grid.Column="1"
+                                                       Symbol="CheckmarkCircle24"
+                                                       FontSize="14"
+                                                       Foreground="White"
+                                                       Opacity="0.8"
+                                                       VerticalAlignment="Center">
+                                            <ui:SymbolIcon.Style>
+                                                <Style TargetType="ui:SymbolIcon">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Free">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ui:SymbolIcon.Style>
+                                        </ui:SymbolIcon>
+                                    </Grid>
                                 </Border>
                                 <ItemsControl ItemsSource="{Binding AdvancedModules}"
                                               ItemTemplate="{StaticResource ModuleCardTemplate}"/>
                             </StackPanel>
 
+                            <!-- ── Columna PRO (bloqueada si tier ≠ Pro) ── -->
                             <StackPanel Grid.Column="2" Margin="6,0">
                                 <Border Padding="10,6"
                                         Margin="0,0,0,10"
                                         CornerRadius="6"
                                         Background="{DynamicResource SystemFillColorCautionBackgroundBrush}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Pro}" FontTypography="BodyStrong"/>
-                                        <ui:TextBlock Text="{Binding ProModules.Count, StringFormat=' · {0}'}"
-                                                      Opacity="0.6"/>
-                                    </StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                            <ui:TextBlock Text="{loc:T Key=Modules.Tier.Pro}" FontTypography="BodyStrong"/>
+                                            <ui:TextBlock Text="{Binding ProModules.Count, StringFormat=' · {0}'}"
+                                                          Opacity="0.6"/>
+                                        </StackPanel>
+                                        <!-- Candado visible cuando tier ≠ Pro -->
+                                        <ui:SymbolIcon Grid.Column="1"
+                                                       Symbol="Lock24"
+                                                       FontSize="14"
+                                                       Foreground="#FFB026FF"
+                                                       VerticalAlignment="Center">
+                                            <ui:SymbolIcon.Style>
+                                                <Style TargetType="ui:SymbolIcon">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ui:SymbolIcon.Style>
+                                        </ui:SymbolIcon>
+                                        <!-- Check visible solo cuando tier = Pro -->
+                                        <ui:SymbolIcon Grid.Column="1"
+                                                       Symbol="CheckmarkCircle24"
+                                                       FontSize="14"
+                                                       Foreground="#FFB026FF"
+                                                       VerticalAlignment="Center">
+                                            <ui:SymbolIcon.Style>
+                                                <Style TargetType="ui:SymbolIcon">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ui:SymbolIcon.Style>
+                                        </ui:SymbolIcon>
+                                    </Grid>
                                 </Border>
                                 <ItemsControl ItemsSource="{Binding ProModules}"
                                               ItemTemplate="{StaticResource ModuleCardTemplate}"/>
