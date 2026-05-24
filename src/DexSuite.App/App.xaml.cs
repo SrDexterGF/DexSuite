@@ -76,6 +76,18 @@ public partial class App : System.Windows.Application
     {
         if (_host is not null)
         {
+            // Flush de ajustes pendientes antes de cerrar el host (evita perder
+            // cambios escritos en los últimos 400 ms del debounce).
+            try
+            {
+                var settingsService = _host.Services.GetService<ISettingsService>();
+                settingsService?.FlushAsync().GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                Log.Warning(ex, "Fallo al hacer flush de settings al salir");
+            }
+
             _host.StopAsync(TimeSpan.FromSeconds(3)).GetAwaiter().GetResult();
             _host.Dispose();
         }
@@ -108,6 +120,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IPerformanceBaselineService, PerformanceBaselineService>();
         services.AddSingleton<IRestorePointService, RestorePointService>();
         services.AddSingleton<IThemeService, ThemeService>();
+        services.AddSingleton<ISettingsService, SettingsService>();
 
         // i18n: el singleton estático es el mismo que usa la markup extension {loc:T}.
         services.AddSingleton<ILocalizationService>(LocalizationService.Instance);

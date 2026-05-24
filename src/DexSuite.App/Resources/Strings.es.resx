@@ -699,7 +699,7 @@ La interfaz se actualiza al instante.</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Las opciones se aplican al instante.
-De momento no se guardan al cerrar la app (llegará con SQLite).</value>
+Tus preferencias se guardan automáticamente.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Activo</value>

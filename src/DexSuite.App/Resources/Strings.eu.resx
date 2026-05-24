@@ -699,7 +699,7 @@ Interfazea berehala eguneratzen da.</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Aukerak berehala aplikatzen dira.
-Oraingoz ez dira gordetzen aplikazioa ixtean (SQLite-rekin etorriko da).</value>
+Zure hobespenak automatikoki gordetzen dira.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Aktibo</value>

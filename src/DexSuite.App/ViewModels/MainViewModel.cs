@@ -24,9 +24,39 @@ public partial class MainViewModel : ObservableObject
     private readonly IPerformanceBaselineService _baseline;
     private readonly IRestorePointService _restorePoint;
     private readonly IThemeService _themeService;
+    private readonly ISettingsService _settingsService;
 
-    private const string DefaultScriptFolder =
-        @"C:\Users\mgf74\Documents\Claude Environment W11\DexSuite (Script)";
+    // Mientras es false, los OnXxxChanged no llaman a PersistSettings (evita
+    // escrituras espurias al hidratar valores desde settings.json al arrancar).
+    private bool _settingsHydrated;
+
+    /// <summary>
+    /// Ruta por defecto de la carpeta donde vive el .bat de DexSuite.
+    /// Se resuelve dinámicamente al primer arranque buscando en (orden):
+    ///   1. Carpeta hermana del .exe: "../DexSuite (Script)"
+    ///   2. %Documents%/DexSuite (Script)
+    ///   3. %Documents%/Claude Environment W11/DexSuite (Script) (compat. dev)
+    /// Si nada existe, se usa el último valor para que el error de ResolveBatPath
+    /// muestre una ruta razonable al usuario.
+    /// </summary>
+    private static readonly string DefaultScriptFolder = ResolveDefaultScriptFolder();
+
+    private static string ResolveDefaultScriptFolder()
+    {
+        var docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        var candidates = new[]
+        {
+            Path.Combine(AppContext.BaseDirectory, "..", "DexSuite (Script)"),
+            Path.Combine(docs, "DexSuite (Script)"),
+            Path.Combine(docs, "Claude Environment W11", "DexSuite (Script)"),
+        };
+        foreach (var raw in candidates)
+        {
+            var full = Path.GetFullPath(raw);
+            if (Directory.Exists(full)) return full;
+        }
+        return candidates[^1]; // fallback con mensaje de error útil
+    }
 
     // CTS del run en curso, para que el botón Cancelar pueda matarlo.
     private CancellationTokenSource? _runCts;
@@ -359,7 +389,41 @@ public partial class MainViewModel : ObservableObject
     {
         UpdateModuleLockStates();
         RefreshThemeItems(); // El bloqueo del selector de temas también depende del tier.
+        PersistSettings();
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.TierChanged", value));
+    }
+
+    // ── Persistencia (todos los toggles de Ajustes llaman aquí) ───────────────
+
+    partial void OnAutoSelectRecommendedChanged(bool value)       => PersistSettings();
+    partial void OnJumpToLogOnRunChanged(bool value)              => PersistSettings();
+    partial void OnWarnBeforeNonReversibleChanged(bool value)     => PersistSettings();
+    partial void OnCreateRestorePointBeforeRunChanged(bool value) => PersistSettings();
+    partial void OnNotifyOnFinishChanged(bool value)              => PersistSettings();
+    partial void OnAutoUpdateEnabledChanged(bool value)           => PersistSettings();
+    partial void OnUpdateChannelChanged(string value)             => PersistSettings();
+    partial void OnScriptFolderChanged(string value)              => PersistSettings();
+
+    /// <summary>
+    /// Toma un snapshot del estado actual y lo manda a guardar (con debounce).
+    /// No-op durante la hidratación inicial para no escribir N veces seguidas.
+    /// </summary>
+    private void PersistSettings()
+    {
+        if (!_settingsHydrated) return;
+        _settingsService.ScheduleSave(new AppSettings
+        {
+            Language                    = CurrentLanguage,
+            UserTier                    = UserTier,
+            UpdateChannel               = UpdateChannel,
+            AutoSelectRecommended       = AutoSelectRecommended,
+            JumpToLogOnRun              = JumpToLogOnRun,
+            WarnBeforeNonReversible     = WarnBeforeNonReversible,
+            CreateRestorePointBeforeRun = CreateRestorePointBeforeRun,
+            NotifyOnFinish              = NotifyOnFinish,
+            AutoUpdateEnabled           = AutoUpdateEnabled,
+            ScriptFolder                = ScriptFolder,
+        });
     }
 
     private void UpdateModuleLockStates()
@@ -855,6 +919,7 @@ public partial class MainViewModel : ObservableObject
         IPerformanceBaselineService baseline,
         IRestorePointService restorePoint,
         IThemeService themeService,
+        ISettingsService settingsService,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
@@ -867,7 +932,26 @@ public partial class MainViewModel : ObservableObject
         _baseline = baseline;
         _restorePoint = restorePoint;
         _themeService = themeService;
+        _settingsService = settingsService;
         _logger = logger;
+
+        // Hidrata valores persistidos antes de enganchar la lógica de save.
+        // El flag _settingsHydrated permanece en false durante este bloque
+        // para que cada SetXxx no dispare ScheduleSave una y otra vez.
+        var persisted = _settingsService.Load();
+        AutoSelectRecommended       = persisted.AutoSelectRecommended;
+        JumpToLogOnRun              = persisted.JumpToLogOnRun;
+        WarnBeforeNonReversible     = persisted.WarnBeforeNonReversible;
+        CreateRestorePointBeforeRun = persisted.CreateRestorePointBeforeRun;
+        NotifyOnFinish              = persisted.NotifyOnFinish;
+        UserTier                    = persisted.UserTier;
+        AutoUpdateEnabled           = persisted.AutoUpdateEnabled;
+        UpdateChannel               = persisted.UpdateChannel;
+        if (!string.IsNullOrWhiteSpace(persisted.ScriptFolder))
+            ScriptFolder = persisted.ScriptFolder!;
+        if (!string.IsNullOrWhiteSpace(persisted.Language))
+            _loc.CurrentLanguage = persisted.Language;
+        _settingsHydrated = true;
 
         // Sincroniza el tema actual al que cargó App.xaml.cs antes de mostrar la
         // ventana. Si en runtime se cambia, ThemeChanged actualizará la UI.
@@ -895,6 +979,8 @@ public partial class MainViewModel : ObservableObject
             OnPropertyChanged(nameof(LastUpdateCheckLabel));
             OnPropertyChanged(nameof(AvailableUpdateVersionLabel));
             OnPropertyChanged(nameof(ChangelogTitle));
+            // El idioma forma parte de los ajustes persistidos.
+            PersistSettings();
             // Registramos el cambio en el historial interno.
             _ = _appLog.InfoAsync(AppLogCategory.Language,
                 T("Log.Event.LanguageChanged", CurrentLanguage));

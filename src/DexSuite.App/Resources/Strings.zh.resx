@@ -699,7 +699,7 @@
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>选项即时生效。
-目前关闭后不会保存（将随 SQLite 加入）。</value>
+你的偏好会自动保存。</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>已启用</value>

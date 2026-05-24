@@ -699,7 +699,7 @@ The interface updates instantly.</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Options apply instantly.
-They don't persist across restarts yet (coming with SQLite).</value>
+Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>

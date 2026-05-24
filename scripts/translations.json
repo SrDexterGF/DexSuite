@@ -438,16 +438,16 @@
       "it": "Impostazioni", "zh": "设置"
     },
     "Settings.Subtitle": {
-      "en": "Options apply instantly.\nThey don't persist across restarts yet (coming with SQLite).",
-      "es": "Las opciones se aplican al instante.\nDe momento no se guardan al cerrar la app (llegará con SQLite).",
-      "gl": "As opcións aplícanse ao instante.\nDe momento non se gardan ao pechar a app (chegará con SQLite).",
-      "ca": "Les opcions s'apliquen a l'instant.\nDe moment no es desen en tancar l'aplicació (arribarà amb SQLite).",
-      "eu": "Aukerak berehala aplikatzen dira.\nOraingoz ez dira gordetzen aplikazioa ixtean (SQLite-rekin etorriko da).",
-      "pt": "As opções aplicam-se instantaneamente.\nPor agora não são guardadas ao fechar a app (chegará com SQLite).",
-      "fr": "Les options s'appliquent instantanément.\nElles ne sont pas encore sauvegardées à la fermeture (avec SQLite).",
-      "de": "Optionen werden sofort angewendet.\nWerden aktuell beim Schließen nicht gespeichert (kommt mit SQLite).",
-      "it": "Le opzioni si applicano istantaneamente.\nPer ora non si salvano alla chiusura (arriverà con SQLite).",
-      "zh": "选项即时生效。\n目前关闭后不会保存（将随 SQLite 加入）。"
+      "en": "Options apply instantly.\nYour preferences are saved automatically.",
+      "es": "Las opciones se aplican al instante.\nTus preferencias se guardan automáticamente.",
+      "gl": "As opcións aplícanse ao instante.\nAs túas preferencias gárdanse automaticamente.",
+      "ca": "Les opcions s'apliquen a l'instant.\nLes teves preferències es desen automàticament.",
+      "eu": "Aukerak berehala aplikatzen dira.\nZure hobespenak automatikoki gordetzen dira.",
+      "pt": "As opções aplicam-se instantaneamente.\nAs tuas preferências guardam-se automaticamente.",
+      "fr": "Les options s'appliquent instantanément.\nVos préférences sont enregistrées automatiquement.",
+      "de": "Optionen werden sofort angewendet.\nDeine Einstellungen werden automatisch gespeichert.",
+      "it": "Le opzioni si applicano istantaneamente.\nLe tue preferenze vengono salvate automaticamente.",
+      "zh": "选项即时生效。\n你的偏好会自动保存。"
     },
     "Settings.Language.Title": {
       "en": "Language", "es": "Idioma", "gl": "Idioma", "ca": "Idioma",

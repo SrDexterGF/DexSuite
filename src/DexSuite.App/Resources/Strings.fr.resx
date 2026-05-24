@@ -699,7 +699,7 @@ L'interface se met à jour instantanément.</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Les options s'appliquent instantanément.
-Elles ne sont pas encore sauvegardées à la fermeture (avec SQLite).</value>
+Vos préférences sont enregistrées automatiquement.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Actif</value>
