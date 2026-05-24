@@ -100,6 +100,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<ISystemInfoService, SystemInfoService>();
         services.AddSingleton<IAppLogService, AppLogService>();
         services.AddSingleton<IPerformanceBaselineService, PerformanceBaselineService>();
+        services.AddSingleton<IRestorePointService, RestorePointService>();
 
         // i18n: el singleton estático es el mismo que usa la markup extension {loc:T}.
         services.AddSingleton<ILocalizationService>(LocalizationService.Instance);

@@ -172,6 +172,12 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
     <value>Quick clean: {0} MB freed, {1} files removed.</value>
   </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Restore point created: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Restore point failed: {0}</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Optimization cancelled by user.</value>
   </data>
@@ -540,6 +546,18 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Quick clean</value>
   </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — before running {0} modules</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — manual optimization backup</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Could not create restore point: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Restore point created successfully.</value>
+  </data>
   <data name="Score.BaselineFromFile" xml:space="preserve">
     <value>Loaded from previous session</value>
   </data>
@@ -588,6 +606,18 @@ The interface updates instantly.</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Reset settings</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Create automatically before each run</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Create restore point now</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Create a restore point before running optimizations, so you can undo any change from Windows settings.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>System restore point</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Options apply instantly.
@@ -662,6 +692,9 @@ You can optimize now.</value>
   <data name="Status.Cancelling" xml:space="preserve">
     <value>Cancelling...</value>
   </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Creating restore point…</value>
+  </data>
   <data name="Status.DevMode" xml:space="preserve">
     <value>Development mode — updates are unavailable in this environment.</value>
   </data>
@@ -696,6 +729,12 @@ Click «Update now» to install it.</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Ready. Select modules and click Run.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Restore point created.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Restore point failed: {0}</value>
   </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Scores reset. Click Analyze to start over.</value>

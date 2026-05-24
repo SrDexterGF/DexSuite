@@ -172,6 +172,12 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
     <value>Garbiketa azkarra: {0} MB askatu, {1} fitxategi ezabatu.</value>
   </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Berrezarpen-puntua sortu da: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Errorea berrezarpen-puntua sortzean: {0}</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Erabiltzaileak optimizazioa bertan behera utzi du.</value>
   </data>
@@ -540,6 +546,18 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Garbiketa azkarra</value>
   </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — {0} modulu exekutatu aurretik</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — optimizazio manuala babeskopia</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Ezin izan da berrezarpen-puntua sortu: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Berrezarpen-puntua arrakastaz sortu da.</value>
+  </data>
   <data name="Score.BaselineFromFile" xml:space="preserve">
     <value>Aurreko saioko kargua</value>
   </data>
@@ -588,6 +606,18 @@ Interfazea berehala eguneratzen da.</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Berrezarri ezarpenak</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Sortu automatikoki exekuzio bakoitzaren aurretik</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Sortu berrezarpen-puntua orain</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Sortu berrezarpen-puntu bat optimizazioak exekutatu aurretik, Windowsen ezarpenetatik edozein aldaketa desegin ahal izateko.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Sistemaren berrezarpen-puntua</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Aukerak berehala aplikatzen dira.
@@ -662,6 +692,9 @@ Orain optimiza dezakezu.</value>
   <data name="Status.Cancelling" xml:space="preserve">
     <value>Uzten...</value>
   </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Berrezarpen-puntua sortzen…</value>
+  </data>
   <data name="Status.DevMode" xml:space="preserve">
     <value>Garapen modua — eguneraketak ez daude eskuragarri ingurune honetan.</value>
   </data>
@@ -696,6 +729,12 @@ Sakatu «Eguneratu orain» instalatzeko.</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Prest. Aukeratu moduluak eta sakatu Exekutatu.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Berrezarpen-puntua sortu da.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Errorea berrezarpen-puntua sortzean: {0}</value>
   </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Puntuazioak berrabiarazita. Sakatu Analizatu berriz hasteko.</value>

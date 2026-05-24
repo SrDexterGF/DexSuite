@@ -22,6 +22,7 @@ public partial class MainViewModel : ObservableObject
     private readonly ISystemInfoService _systemInfo;
     private readonly IAppLogService _appLog;
     private readonly IPerformanceBaselineService _baseline;
+    private readonly IRestorePointService _restorePoint;
 
     private const string DefaultScriptFolder =
         @"C:\Users\mgf74\Documents\Claude Environment W11\DexSuite (Script)";
@@ -53,8 +54,8 @@ public partial class MainViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IsIdle))]
     private bool isQuickCleaning;
 
-    /// <summary>True cuando la app no está ejecutando el .bat, analizando ni limpiando.</summary>
-    public bool IsIdle => !IsRunning && !IsAnalyzing && !IsQuickCleaning;
+    /// <summary>True cuando la app no está ejecutando el .bat, analizando, limpiando ni creando restore point.</summary>
+    public bool IsIdle => !IsRunning && !IsAnalyzing && !IsQuickCleaning && !IsCreatingRestorePoint;
 
     [ObservableProperty]
     private string statusMessage = string.Empty;
@@ -322,6 +323,19 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private bool warnBeforeNonReversible = true;
 
+    /// <summary>Crear punto de restauración automáticamente antes de ejecutar módulos.</summary>
+    [ObservableProperty]
+    private bool createRestorePointBeforeRun = true;
+
+    /// <summary>True mientras se está creando el punto de restauración.</summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsIdle))]
+    private bool isCreatingRestorePoint;
+
+    /// <summary>Mensaje del último intento de restauración (ok o error).</summary>
+    [ObservableProperty]
+    private string restorePointStatusMessage = string.Empty;
+
     /// <summary>Mostrar notificación de Windows al terminar (futuro).</summary>
     [ObservableProperty]
     private bool notifyOnFinish;
@@ -412,11 +426,104 @@ public partial class MainViewModel : ObservableObject
         AutoSelectRecommended = true;
         JumpToLogOnRun = true;
         WarnBeforeNonReversible = true;
+        CreateRestorePointBeforeRun = true;
         NotifyOnFinish = false;
         UserTier = "Pro";
         ScriptFolder = DefaultScriptFolder;
         StatusMessage = T("Status.SettingsReset");
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.SettingsReset"));
+    }
+
+    // ---- Punto de restauración ------------------------------------------
+
+    /// <summary>
+    /// Crea un punto de restauración de Windows de forma manual (desde Ajustes).
+    /// </summary>
+    [RelayCommand(CanExecute = nameof(CanCreateRestorePoint))]
+    private async Task CreateRestorePointAsync()
+    {
+        IsCreatingRestorePoint = true;
+        CreateRestorePointCommand.NotifyCanExecuteChanged();
+        RunCommand.NotifyCanExecuteChanged();
+        StatusMessage = T("Status.CreatingRestorePoint");
+        RestorePointStatusMessage = string.Empty;
+
+        var desc = T("RestorePoint.Description");
+        try
+        {
+            var result = await _restorePoint.CreateAsync(desc);
+            if (result.Success)
+            {
+                StatusMessage = T("Status.RestorePointCreated");
+                RestorePointStatusMessage = T("RestorePoint.Success");
+                await _appLog.SuccessAsync(AppLogCategory.Settings,
+                    T("Log.Event.RestorePointCreated", desc));
+            }
+            else
+            {
+                StatusMessage = T("Status.RestorePointFailed", result.Message);
+                RestorePointStatusMessage = T("RestorePoint.Failed", result.Message);
+                await _appLog.WarningAsync(AppLogCategory.Settings,
+                    T("Log.Event.RestorePointFailed", result.Message));
+            }
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = T("Status.RestorePointFailed", ex.Message);
+            RestorePointStatusMessage = T("RestorePoint.Failed", ex.Message);
+            _logger.LogError(ex, "No se pudo crear el punto de restauración");
+        }
+        finally
+        {
+            IsCreatingRestorePoint = false;
+            CreateRestorePointCommand.NotifyCanExecuteChanged();
+            RunCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    private bool CanCreateRestorePoint() => !IsRunning && !IsAnalyzing && !IsCreatingRestorePoint;
+
+    /// <summary>
+    /// Intenta crear un punto de restauración antes de ejecutar, si la opción está activa.
+    /// Devuelve true si se debe continuar con la ejecución (éxito o usuario acepta el riesgo).
+    /// </summary>
+    private async Task<bool> TryAutoRestorePointAsync(int moduleCount)
+    {
+        if (!CreateRestorePointBeforeRun) return true;
+
+        IsCreatingRestorePoint = true;
+        RunCommand.NotifyCanExecuteChanged();
+        StatusMessage = T("Status.CreatingRestorePoint");
+
+        var desc = T("RestorePoint.AutoDescription", moduleCount);
+        try
+        {
+            var result = await _restorePoint.CreateAsync(desc);
+            if (result.Success)
+            {
+                await _appLog.SuccessAsync(AppLogCategory.Settings,
+                    T("Log.Event.RestorePointCreated", desc));
+                return true;
+            }
+
+            // Si falla, loggeamos como warning pero NO abortamos la ejecución.
+            // El usuario quería optimizar; no lo bloqueamos por un restore fallido.
+            await _appLog.WarningAsync(AppLogCategory.Settings,
+                T("Log.Event.RestorePointFailed", result.Message));
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo crear restore point automático");
+            await _appLog.WarningAsync(AppLogCategory.Settings,
+                T("Log.Event.RestorePointFailed", ex.Message));
+            return true; // continuamos igualmente
+        }
+        finally
+        {
+            IsCreatingRestorePoint = false;
+            RunCommand.NotifyCanExecuteChanged();
+        }
     }
 
     // ---- Actualizaciones -------------------------------------------------
@@ -701,6 +808,7 @@ public partial class MainViewModel : ObservableObject
         ISystemInfoService systemInfo,
         IAppLogService appLog,
         IPerformanceBaselineService baseline,
+        IRestorePointService restorePoint,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
@@ -711,6 +819,7 @@ public partial class MainViewModel : ObservableObject
         _systemInfo = systemInfo;
         _appLog = appLog;
         _baseline = baseline;
+        _restorePoint = restorePoint;
         _logger = logger;
 
         // Mensaje inicial localizado. Cuando el usuario cambia el idioma,
@@ -814,6 +923,9 @@ public partial class MainViewModel : ObservableObject
             _logger.LogError(ex, "No se encontró ningún .bat de DexSuite");
             return;
         }
+
+        // Crear punto de restauración automáticamente antes de ejecutar (si la opción está activa).
+        await TryAutoRestorePointAsync(selected.Count);
 
         IsRunning = true;
         OutputLog = string.Empty;

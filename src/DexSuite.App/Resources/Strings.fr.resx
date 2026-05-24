@@ -172,6 +172,12 @@ Ensuite, optimisez et analysez à nouveau pour voir la différence.</value>
   <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
     <value>Nettoyage rapide : {0} Mo libérés, {1} fichiers supprimés.</value>
   </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Point de restauration créé : {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Échec du point de restauration : {0}</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Optimisation annulée par l'utilisateur.</value>
   </data>
@@ -540,6 +546,18 @@ Survolez la puce Sûr/Risque pour savoir pourquoi.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Nettoyage rapide</value>
   </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — avant l'exécution de {0} modules</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — sauvegarde d'optimisation manuelle</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Impossible de créer le point de restauration : {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Point de restauration créé avec succès.</value>
+  </data>
   <data name="Score.BaselineFromFile" xml:space="preserve">
     <value>Chargé depuis une session précédente</value>
   </data>
@@ -588,6 +606,18 @@ L'interface se met à jour instantanément.</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Réinitialiser les paramètres</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Créer automatiquement avant chaque exécution</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Créer le point de restauration maintenant</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Crée un point de restauration avant d'exécuter les optimisations, afin de pouvoir annuler toute modification depuis les paramètres Windows.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Point de restauration du système</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Les options s'appliquent instantanément.
@@ -662,6 +692,9 @@ Vous pouvez optimiser maintenant.</value>
   <data name="Status.Cancelling" xml:space="preserve">
     <value>Annulation...</value>
   </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Création du point de restauration…</value>
+  </data>
   <data name="Status.DevMode" xml:space="preserve">
     <value>Mode développement — mises à jour indisponibles dans cet environnement.</value>
   </data>
@@ -696,6 +729,12 @@ Cliquez sur «Mettre à jour maintenant» pour l'installer.</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Prêt. Sélectionnez des modules et cliquez sur Exécuter.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Point de restauration créé.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Erreur lors de la création du point de restauration : {0}</value>
   </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Scores réinitialisés. Cliquez sur Analyser pour recommencer.</value>

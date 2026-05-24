@@ -1842,6 +1842,68 @@
                                 </StackPanel>
                             </Border>
 
+                            <!-- Card: Punto de restauración del sistema (F5.5) -->
+                            <Border Padding="20,18" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,16,0,0">
+                                <StackPanel>
+                                    <!-- Encabezado con icono de escudo -->
+                                    <DockPanel Margin="0,0,0,12">
+                                        <ui:SymbolIcon DockPanel.Dock="Left"
+                                                        Symbol="Shield24"
+                                                        FontSize="20"
+                                                        Margin="0,0,10,0"
+                                                        VerticalAlignment="Center"
+                                                        Foreground="#FF00C853"/>
+                                        <StackPanel>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.RestorePoint.Title}"
+                                                          FontTypography="BodyStrong"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.RestorePoint.Desc}"
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"
+                                                          Margin="0,2,0,0"/>
+                                        </StackPanel>
+                                    </DockPanel>
+
+                                    <!-- Toggle: crear automáticamente antes de cada run -->
+                                    <Grid Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBlock Grid.Column="0"
+                                                      Text="{loc:T Key=Settings.RestorePoint.AutoLabel}"
+                                                      VerticalAlignment="Center"/>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding CreateRestorePointBeforeRun, Mode=TwoWay}"/>
+                                    </Grid>
+
+                                    <!-- Botón manual + mensaje de estado -->
+                                    <DockPanel>
+                                        <ui:Button DockPanel.Dock="Left"
+                                                   Appearance="Secondary"
+                                                   Content="{loc:T Key=Settings.RestorePoint.CreateNow}"
+                                                   Icon="{ui:SymbolIcon Symbol=Shield24}"
+                                                   Command="{Binding CreateRestorePointCommand}"
+                                                   Margin="0,0,12,0"/>
+                                        <!-- Spinner mientras se crea -->
+                                        <ui:ProgressRing IsIndeterminate="True"
+                                                         Width="18" Height="18"
+                                                         Margin="0,0,8,0"
+                                                         VerticalAlignment="Center"
+                                                         Visibility="{Binding IsCreatingRestorePoint, Converter={StaticResource BoolToVis}}"/>
+                                        <!-- Resultado del último intento -->
+                                        <ui:TextBlock Text="{Binding RestorePointStatusMessage}"
+                                                      VerticalAlignment="Center"
+                                                      Opacity="0.75"
+                                                      TextWrapping="Wrap"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </Border>
+
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right"
                                         Margin="0,12,0,0">

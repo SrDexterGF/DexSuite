@@ -172,6 +172,12 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
     <value>Limpeza rápida: {0} MB libertados, {1} ficheiros eliminados.</value>
   </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Ponto de restauração criado: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Erro ao criar ponto de restauração: {0}</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Otimização cancelada pelo utilizador.</value>
   </data>
@@ -540,6 +546,18 @@ Passa o rato pelo chip Seguro/Risco para saberes porquê.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Limpeza rápida</value>
   </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — antes de executar {0} módulos</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — cópia de segurança de otimização manual</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Não foi possível criar o ponto de restauração: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Ponto de restauração criado com sucesso.</value>
+  </data>
   <data name="Score.BaselineFromFile" xml:space="preserve">
     <value>Carregado de sessão anterior</value>
   </data>
@@ -588,6 +606,18 @@ A interface atualiza-se instantaneamente.</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Repor definições</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Criar automaticamente antes de cada execução</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Criar ponto de restauração agora</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Cria um ponto de restauração antes de executar otimizações, para poderes desfazer qualquer alteração a partir das definições do Windows.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Ponto de restauração do sistema</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>As opções aplicam-se instantaneamente.
@@ -662,6 +692,9 @@ Já podes otimizar.</value>
   <data name="Status.Cancelling" xml:space="preserve">
     <value>A cancelar...</value>
   </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>A criar ponto de restauração…</value>
+  </data>
   <data name="Status.DevMode" xml:space="preserve">
     <value>Modo desenvolvimento — atualizações indisponíveis neste ambiente.</value>
   </data>
@@ -696,6 +729,12 @@ Clica em «Atualizar agora» para a instalar.</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Pronto. Seleciona módulos e clica em Executar.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Ponto de restauração criado.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Erro ao criar ponto de restauração: {0}</value>
   </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Pontuações repostas. Clica em Analisar para recomeçar.</value>

@@ -172,6 +172,12 @@ Dopo potrai ottimizzare e analizzare di nuovo per vedere la differenza.</value>
   <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
     <value>Pulizia rapida: {0} MB liberati, {1} file rimossi.</value>
   </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Punto di ripristino creato: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Punto di ripristino non riuscito: {0}</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Ottimizzazione annullata dall'utente.</value>
   </data>
@@ -540,6 +546,18 @@ Passa il mouse sul chip Sicuro/Rischio per scoprire perché.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Pulizia rapida</value>
   </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — prima di eseguire {0} moduli</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — backup di ottimizzazione manuale</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Impossibile creare il punto di ripristino: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Punto di ripristino creato correttamente.</value>
+  </data>
   <data name="Score.BaselineFromFile" xml:space="preserve">
     <value>Caricato dalla sessione precedente</value>
   </data>
@@ -588,6 +606,18 @@ L'interfaccia si aggiorna istantaneamente.</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Ripristina impostazioni</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Crea automaticamente prima di ogni esecuzione</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Crea il punto di ripristino adesso</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Crea un punto di ripristino prima di eseguire le ottimizzazioni, per poter annullare qualsiasi modifica dalle impostazioni di Windows.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Punto di ripristino del sistema</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Le opzioni si applicano istantaneamente.
@@ -662,6 +692,9 @@ Ora puoi ottimizzare.</value>
   <data name="Status.Cancelling" xml:space="preserve">
     <value>Annullamento...</value>
   </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Creazione del punto di ripristino…</value>
+  </data>
   <data name="Status.DevMode" xml:space="preserve">
     <value>Modalità sviluppo — aggiornamenti non disponibili in questo ambiente.</value>
   </data>
@@ -696,6 +729,12 @@ Premi «Aggiorna ora» per installarla.</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Pronto. Seleziona moduli e premi Esegui.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Punto di ripristino creato.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Errore nella creazione del punto di ripristino: {0}</value>
   </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Punteggi reimpostati. Premi Analizza per ricominciare.</value>

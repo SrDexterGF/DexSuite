@@ -172,6 +172,12 @@
   <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
     <value>快速清理：释放 {0} MB，删除 {1} 个文件。</value>
   </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>还原点已创建：{0}。</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>创建还原点失败：{0}</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>用户已取消优化。</value>
   </data>
@@ -540,6 +546,18 @@
   <data name="QuickClean.Button" xml:space="preserve">
     <value>快速清理</value>
   </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — 运行 {0} 个模块之前</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — 手动优化备份</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>无法创建还原点：{0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>还原点已成功创建。</value>
+  </data>
   <data name="Score.BaselineFromFile" xml:space="preserve">
     <value>从上次会话加载</value>
   </data>
@@ -588,6 +606,18 @@
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>重置设置</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>每次运行前自动创建</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>立即创建还原点</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>在运行优化前创建还原点，以便通过 Windows 设置撤销任何更改。</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>系统还原点</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>选项即时生效。
@@ -662,6 +692,9 @@
   <data name="Status.Cancelling" xml:space="preserve">
     <value>正在取消……</value>
   </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>正在创建还原点…</value>
+  </data>
   <data name="Status.DevMode" xml:space="preserve">
     <value>开发模式 — 此环境下无法更新。</value>
   </data>
@@ -696,6 +729,12 @@
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>就绪。选择模块并点击「执行」。</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>还原点已创建。</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>创建还原点失败：{0}</value>
   </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>评分已重置。点击「分析」重新开始。</value>

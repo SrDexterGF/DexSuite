@@ -172,6 +172,12 @@ Danach kannst du optimieren und erneut analysieren, um den Unterschied zu sehen.
   <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
     <value>Schnellbereinigung: {0} MB freigegeben, {1} Dateien entfernt.</value>
   </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Wiederherstellungspunkt erstellt: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Wiederherstellungspunkt fehlgeschlagen: {0}</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Optimierung vom Benutzer abgebrochen.</value>
   </data>
@@ -540,6 +546,18 @@ Fahre über das Sicher/Risiko-Chip, um zu erfahren warum.</value>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Schnellbereinigung</value>
   </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — vor Ausführung von {0} Modulen</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — manuelle Optimierungssicherung</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Wiederherstellungspunkt konnte nicht erstellt werden: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Wiederherstellungspunkt erfolgreich erstellt.</value>
+  </data>
   <data name="Score.BaselineFromFile" xml:space="preserve">
     <value>Aus vorheriger Sitzung geladen</value>
   </data>
@@ -588,6 +606,18 @@ Die Oberfläche wird sofort aktualisiert.</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Einstellungen zurücksetzen</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Automatisch vor jeder Ausführung erstellen</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Jetzt Wiederherstellungspunkt erstellen</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Erstellt einen Wiederherstellungspunkt vor der Ausführung von Optimierungen, damit du alle Änderungen über die Windows-Einstellungen rückgängig machen kannst.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Systemwiederherstellungspunkt</value>
   </data>
   <data name="Settings.Subtitle" xml:space="preserve">
     <value>Optionen werden sofort angewendet.
@@ -662,6 +692,9 @@ Du kannst jetzt optimieren.</value>
   <data name="Status.Cancelling" xml:space="preserve">
     <value>Wird abgebrochen...</value>
   </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Wiederherstellungspunkt wird erstellt…</value>
+  </data>
   <data name="Status.DevMode" xml:space="preserve">
     <value>Entwicklungsmodus — Updates in dieser Umgebung nicht verfügbar.</value>
   </data>
@@ -696,6 +729,12 @@ Klicke «Jetzt aktualisieren», um sie zu installieren.</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Bereit. Module auswählen und Ausführen klicken.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Wiederherstellungspunkt erstellt.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Fehler beim Erstellen des Wiederherstellungspunkts: {0}</value>
   </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Bewertungen zurückgesetzt. Klicke Analysieren, um neu zu beginnen.</value>
