@@ -27,6 +27,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <conv:InverseBoolToVisibilityConverter x:Key="InverseBoolToVis"/>
         <conv:KeyToTranslationConverter x:Key="Loc"/>
+        <conv:LocFormatMultiConverter x:Key="LocFormat"/>
 
         <!-- Converters del historial interno (F5.4) -->
         <conv:LogLevelToBrushConverter    x:Key="LogLevelBrush"/>
@@ -292,7 +293,7 @@
                                 </StackPanel>
                             </ToolTip>
                         </Border.ToolTip>
-                        <ui:SymbolIcon Symbol="Lock24"
+                        <ui:SymbolIcon Symbol="LockClosed24"
                                        FontSize="12"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
@@ -966,7 +967,7 @@
                                         </StackPanel>
                                         <!-- Candado visible solo cuando tier = Free -->
                                         <ui:SymbolIcon Grid.Column="1"
-                                                       Symbol="Lock24"
+                                                       Symbol="LockClosed24"
                                                        FontSize="14"
                                                        Foreground="White"
                                                        Opacity="0.8"
@@ -1024,7 +1025,7 @@
                                         </StackPanel>
                                         <!-- Candado visible cuando tier ≠ Pro -->
                                         <ui:SymbolIcon Grid.Column="1"
-                                                       Symbol="Lock24"
+                                                       Symbol="LockClosed24"
                                                        FontSize="14"
                                                        Foreground="#FFB026FF"
                                                        VerticalAlignment="Center">
@@ -1092,7 +1093,7 @@
 
                                         <!-- Icono gaming -->
                                         <ui:SymbolIcon Grid.Column="0"
-                                                       Symbol="Gamepad24"
+                                                       Symbol="Games24"
                                                        FontSize="22"
                                                        Foreground="#FF00C853"
                                                        VerticalAlignment="Center"
@@ -1125,7 +1126,7 @@
                                                               FontWeight="Bold"/>
                                             </Border>
                                             <!-- Candado: visible cuando tier ≠ Pro -->
-                                            <ui:SymbolIcon Symbol="Lock24"
+                                            <ui:SymbolIcon Symbol="LockClosed24"
                                                            FontSize="17"
                                                            Foreground="#FF00C853"
                                                            VerticalAlignment="Center">
@@ -1551,7 +1552,7 @@
                                             BorderThickness="1">
                                         <StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <ui:SymbolIcon Symbol="Cpu24" FontSize="20"
+                                                <ui:SymbolIcon Symbol="DeveloperBoard24" FontSize="20"
                                                                Foreground="#FF00B8D9"
                                                                Margin="0,0,8,0"/>
                                                 <ui:TextBlock Text="{loc:T Key=Specs.CPU}"
@@ -1563,7 +1564,7 @@
                                                           Margin="0,0,0,4"/>
                                             <ui:TextBlock Opacity="0.65" FontTypography="Caption">
                                                 <ui:TextBlock.Text>
-                                                    <MultiBinding StringFormat="{loc:T Key=Specs.CoresLabel}">
+                                                    <MultiBinding Converter="{StaticResource LocFormat}" ConverterParameter="Specs.CoresLabel">
                                                         <Binding Path="SystemSpecs.CpuCores"/>
                                                         <Binding Path="SystemSpecs.CpuLogical"/>
                                                     </MultiBinding>
@@ -1582,7 +1583,7 @@
                                             BorderThickness="1">
                                         <StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <ui:SymbolIcon Symbol="Memory16Regular" FontSize="20"
+                                                <ui:SymbolIcon Symbol="Memory16" FontSize="20"
                                                                Foreground="#FF9D4EDD"
                                                                Margin="0,0,8,0"/>
                                                 <ui:TextBlock Text="{loc:T Key=Specs.RAM}"
@@ -1591,7 +1592,7 @@
                                             </StackPanel>
                                             <ui:TextBlock Opacity="0.9" TextWrapping="Wrap" Margin="0,0,0,4">
                                                 <ui:TextBlock.Text>
-                                                    <MultiBinding StringFormat="{loc:T Key=Specs.RamLabel}">
+                                                    <MultiBinding Converter="{StaticResource LocFormat}" ConverterParameter="Specs.RamLabel">
                                                         <Binding Path="SystemSpecs.RamTotalGb"/>
                                                         <Binding Path="SystemSpecs.RamAvailableGb"/>
                                                     </MultiBinding>
@@ -1635,7 +1636,7 @@
                                             BorderThickness="1">
                                         <StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <ui:SymbolIcon Symbol="WindowsLogo" FontSize="20"
+                                                <ui:SymbolIcon Symbol="WindowApps24" FontSize="20"
                                                                Foreground="#FF0078D4"
                                                                Margin="0,0,8,0"/>
                                                 <ui:TextBlock Text="{loc:T Key=Specs.OS}"
@@ -1686,7 +1687,7 @@
                                                             <ui:TextBlock Opacity="0.6"
                                                                           FontTypography="Caption">
                                                                 <ui:TextBlock.Text>
-                                                                    <MultiBinding StringFormat="{loc:T Key=Specs.DiskLabel}">
+                                                                    <MultiBinding Converter="{StaticResource LocFormat}" ConverterParameter="Specs.DiskLabel">
                                                                         <Binding Path="TotalGb"/>
                                                                         <Binding Path="FreeGb"/>
                                                                         <Binding Path="FileSystem"/>
@@ -1835,7 +1836,7 @@
                                                             </Border>
 
                                                             <!-- Candado en el centro si está bloqueado -->
-                                                            <ui:SymbolIcon Symbol="Lock24"
+                                                            <ui:SymbolIcon Symbol="LockClosed24"
                                                                            Filled="True"
                                                                            FontSize="32"
                                                                            Foreground="White"
