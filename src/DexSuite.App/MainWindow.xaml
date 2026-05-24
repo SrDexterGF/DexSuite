@@ -2093,7 +2093,7 @@
                                         </Border>
                                         <Border Padding="8,3" CornerRadius="4"
                                                 Background="{DynamicResource SubtleFillColorSecondaryBrush}">
-                                            <ui:TextBlock Text="Requiere administrador"
+                                            <ui:TextBlock Text="{loc:T Key=About.RequiresAdmin}"
                                                           FontTypography="Caption"/>
                                         </Border>
                                     </StackPanel>
@@ -2106,14 +2106,17 @@
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="El proyecto"
+                                    <ui:TextBlock Text="{loc:T Key=About.Project.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,6"/>
-                                    <ui:TextBlock TextWrapping="Wrap" Opacity="0.85">
-                                        DexSuite es un sistema de optimización extrema para Windows.<LineBreak/>
-                                        Analiza tu equipo, aplica ajustes de alto impacto y empuja el rendimiento al límite físicamente posible.<LineBreak/>
-                                        Cada versión incorpora nuevos módulos nativos C# orientados a maximizar FPS y reducir latencias.
-                                    </ui:TextBlock>
+                                    <ui:TextBlock Text="{loc:T Key=About.Project.Line1}"
+                                                  TextWrapping="Wrap" Opacity="0.85"/>
+                                    <ui:TextBlock Text="{loc:T Key=About.Project.Line2}"
+                                                  TextWrapping="Wrap" Opacity="0.85"
+                                                  Margin="0,4,0,0"/>
+                                    <ui:TextBlock Text="{loc:T Key=About.Project.Line3}"
+                                                  TextWrapping="Wrap" Opacity="0.85"
+                                                  Margin="0,4,0,0"/>
                                 </StackPanel>
                             </Border>
 
@@ -2123,19 +2126,19 @@
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="Novedades en v0.1.0"
+                                    <ui:TextBlock Text="{Binding ChangelogTitle}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,8"/>
                                     <StackPanel Margin="0,2,0,2">
-                                        <ui:TextBlock Text="• Pantalla de inicio con logo y accesos rápidos"/>
-                                        <ui:TextBlock Text="• Test de rendimiento con 8 categorías: CPU, RAM, GPU, Disco, Procesos, Inicio, Temperatura, Red"/>
-                                        <ui:TextBlock Text="• Comparativa antes/después con delta de puntuación"/>
-                                        <ui:TextBlock Text="• Módulos agrupados por tier (Free / Avanzado / Pro) en 3 columnas"/>
-                                        <ui:TextBlock Text="• Chip Seguro/Riesgo con explicación de impacto en cada módulo"/>
-                                        <ui:TextBlock Text="• Monitoreo en tiempo real y botón Cancelar durante la ejecución"/>
-                                        <ui:TextBlock Text="• Actualización automática integrada"/>
-                                        <ui:TextBlock Text="• Tema CYBERNETIC con paleta cian + violeta y logo exclusivo"/>
-                                        <ui:TextBlock Text="• Sidebar con iconos, separadores y selector de idioma (10 idiomas)"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item1}"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item2}" TextWrapping="Wrap"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item3}"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item4}"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item5}" TextWrapping="Wrap"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item6}"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item7}"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item8}" TextWrapping="Wrap"/>
+                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item9}" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
@@ -2146,32 +2149,32 @@
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="Créditos"
+                                    <ui:TextBlock Text="{loc:T Key=About.Credits.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,8"/>
                                     <Grid Margin="0,0,0,6">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="160"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <ui:TextBlock Grid.Column="0" Text="Diseño y concepto" Opacity="0.6"/>
+                                        <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.Design}" Opacity="0.6"/>
                                         <ui:TextBlock Grid.Column="1" Text="Sr. Dexter"/>
                                     </Grid>
                                     <Grid Margin="0,0,0,6">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="160"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <ui:TextBlock Grid.Column="0" Text="Desarrollo" Opacity="0.6"/>
+                                        <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.Development}" Opacity="0.6"/>
                                         <ui:TextBlock Grid.Column="1" Text="Mateo · DexSuite Performance Series"/>
                                     </Grid>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="160"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <ui:TextBlock Grid.Column="0" Text="Módulo videojuegos" Opacity="0.6"/>
-                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter · Configuración avanzada de juegos"/>
+                                        <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.GamingModule}" Opacity="0.6"/>
+                                        <ui:TextBlock Grid.Column="1" Text="{loc:T Key=About.Credits.GamingModuleAuthor}"/>
                                     </Grid>
                                 </StackPanel>
                             </Border>
@@ -2182,7 +2185,7 @@
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="Stack técnico"
+                                    <ui:TextBlock Text="{loc:T Key=About.Stack.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,10"/>
                                     <WrapPanel>
@@ -2228,17 +2231,17 @@
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="Utilidades"
+                                    <ui:TextBlock Text="{loc:T Key=About.Utilities.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,10"/>
                                     <WrapPanel>
                                         <ui:Button Appearance="Secondary"
-                                                   Content="Abrir carpeta de logs"
+                                                   Content="{loc:T Key=About.Utilities.OpenLogs}"
                                                    Icon="{ui:SymbolIcon Symbol=FolderOpen24}"
                                                    Command="{Binding OpenLogsFolderCommand}"
                                                    Margin="0,0,8,8"/>
                                         <ui:Button Appearance="Secondary"
-                                                   Content="Buscar actualizaciones"
+                                                   Content="{loc:T Key=Updates.CheckForUpdates}"
                                                    Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
                                                    Command="{Binding CheckForUpdatesCommand}"
                                                    Margin="0,0,8,8"/>
@@ -2246,7 +2249,7 @@
                                 </StackPanel>
                             </Border>
 
-                            <ui:TextBlock Text="© 2026 DexSuite · Solo para Windows · Requiere permisos de administrador"
+                            <ui:TextBlock Text="{loc:T Key=About.Footer}"
                                           Opacity="0.5"
                                           FontTypography="Caption"
                                           HorizontalAlignment="Center"

@@ -61,6 +61,11 @@
       "eu": "Berrezarri", "pt": "Repor", "fr": "Réinitialiser", "de": "Zurücksetzen",
       "it": "Ripristina", "zh": "重置"
     },
+    "Common.Never": {
+      "en": "Never", "es": "Nunca", "gl": "Nunca", "ca": "Mai",
+      "eu": "Inoiz ez", "pt": "Nunca", "fr": "Jamais", "de": "Nie",
+      "it": "Mai", "zh": "从未"
+    },
 
     "Navigation.Panel": {
       "en": "PANEL", "es": "PANEL", "gl": "PANEL", "ca": "PANELL",
@@ -1898,6 +1903,18 @@
       "it": "Punto di ripristino creato.",
       "zh": "还原点已创建。"
     },
+    "Status.FolderOpenError": {
+      "en": "Could not open the folder: {0}",
+      "es": "No se pudo abrir la carpeta: {0}",
+      "gl": "Non se puido abrir o cartafol: {0}",
+      "ca": "No s'ha pogut obrir la carpeta: {0}",
+      "eu": "Ezin izan da karpeta ireki: {0}",
+      "pt": "Não foi possível abrir a pasta: {0}",
+      "fr": "Impossible d'ouvrir le dossier : {0}",
+      "de": "Ordner konnte nicht geöffnet werden: {0}",
+      "it": "Impossibile aprire la cartella: {0}",
+      "zh": "无法打开文件夹：{0}"
+    },
     "Status.RestorePointFailed": {
       "en": "Restore point failed: {0}",
       "es": "Error al crear punto de restauración: {0}",
@@ -1983,6 +2000,296 @@
       "de": "Verlauf geleert ({0} Einträge).",
       "it": "Cronologia svuotata ({0} voci).",
       "zh": "历史记录已清空（{0} 条）。"
+    },
+
+    "About.RequiresAdmin": {
+      "en": "Requires administrator",
+      "es": "Requiere administrador",
+      "gl": "Require administrador",
+      "ca": "Requereix administrador",
+      "eu": "Administratzailea behar du",
+      "pt": "Requer administrador",
+      "fr": "Nécessite administrateur",
+      "de": "Erfordert Administrator",
+      "it": "Richiede amministratore",
+      "zh": "需要管理员权限"
+    },
+    "About.Project.Title": {
+      "en": "The project",
+      "es": "El proyecto",
+      "gl": "O proxecto",
+      "ca": "El projecte",
+      "eu": "Proiektua",
+      "pt": "O projeto",
+      "fr": "Le projet",
+      "de": "Das Projekt",
+      "it": "Il progetto",
+      "zh": "项目"
+    },
+    "About.Project.Line1": {
+      "en": "DexSuite is an extreme optimization system for Windows.",
+      "es": "DexSuite es un sistema de optimización extrema para Windows.",
+      "gl": "DexSuite é un sistema de optimización extrema para Windows.",
+      "ca": "DexSuite és un sistema d'optimització extrema per a Windows.",
+      "eu": "DexSuite Windowserako optimizazio muturreko sistema da.",
+      "pt": "O DexSuite é um sistema de otimização extrema para Windows.",
+      "fr": "DexSuite est un système d'optimisation extrême pour Windows.",
+      "de": "DexSuite ist ein System zur extremen Optimierung für Windows.",
+      "it": "DexSuite è un sistema di ottimizzazione estrema per Windows.",
+      "zh": "DexSuite 是面向 Windows 的极限优化系统。"
+    },
+    "About.Project.Line2": {
+      "en": "It analyzes your PC, applies high-impact tweaks and pushes performance to the physical limit.",
+      "es": "Analiza tu equipo, aplica ajustes de alto impacto y empuja el rendimiento al límite físicamente posible.",
+      "gl": "Analiza o teu equipo, aplica axustes de alto impacto e empurra o rendemento ao límite fisicamente posible.",
+      "ca": "Analitza el teu equip, aplica ajustos d'alt impacte i empeny el rendiment al límit físicament possible.",
+      "eu": "Zure ekipoa aztertu, eragin handiko doikuntzak aplikatu eta errendimendua fisikoki posible den mugara eramaten du.",
+      "pt": "Analisa o teu PC, aplica ajustes de alto impacto e leva o desempenho ao limite fisicamente possível.",
+      "fr": "Il analyse votre ordinateur, applique des réglages à fort impact et pousse les performances à la limite physiquement possible.",
+      "de": "Es analysiert deinen Rechner, wendet wirkungsstarke Anpassungen an und treibt die Leistung an die physikalisch mögliche Grenze.",
+      "it": "Analizza il tuo PC, applica regolazioni ad alto impatto e spinge le prestazioni al limite fisicamente possibile.",
+      "zh": "分析你的电脑，应用高影响调整，将性能推向物理极限。"
+    },
+    "About.Project.Line3": {
+      "en": "Each version adds new native C# modules focused on maxing FPS and slashing latency.",
+      "es": "Cada versión incorpora nuevos módulos nativos C# orientados a maximizar FPS y reducir latencias.",
+      "gl": "Cada versión incorpora novos módulos nativos C# orientados a maximizar FPS e reducir latencias.",
+      "ca": "Cada versió incorpora nous mòduls natius C# orientats a maximitzar FPS i reduir latències.",
+      "eu": "Bertsio bakoitzak C# modulu natibo berriak ditu, FPSak maximizatzeko eta latentziak murrizteko.",
+      "pt": "Cada versão integra novos módulos nativos C# orientados a maximizar FPS e reduzir latências.",
+      "fr": "Chaque version intègre de nouveaux modules natifs C# axés sur la maximisation des FPS et la réduction des latences.",
+      "de": "Jede Version bringt neue native C#-Module zur Maximierung der FPS und Minimierung der Latenzen.",
+      "it": "Ogni versione aggiunge nuovi moduli nativi C# orientati a massimizzare gli FPS e ridurre le latenze.",
+      "zh": "每个版本都加入新的 C# 原生模块,以最大化 FPS 并降低延迟。"
+    },
+    "About.Changelog.Title": {
+      "en": "What's new in v{0}",
+      "es": "Novedades en v{0}",
+      "gl": "Novidades en v{0}",
+      "ca": "Novetats a v{0}",
+      "eu": "v{0} berritasunak",
+      "pt": "Novidades na v{0}",
+      "fr": "Nouveautés de la v{0}",
+      "de": "Neuerungen in v{0}",
+      "it": "Novità della v{0}",
+      "zh": "v{0} 新功能"
+    },
+    "About.Credits.Title": {
+      "en": "Credits",
+      "es": "Créditos",
+      "gl": "Créditos",
+      "ca": "Crèdits",
+      "eu": "Kredituak",
+      "pt": "Créditos",
+      "fr": "Crédits",
+      "de": "Mitwirkende",
+      "it": "Crediti",
+      "zh": "致谢"
+    },
+    "About.Credits.Design": {
+      "en": "Design and concept",
+      "es": "Diseño y concepto",
+      "gl": "Deseño e concepto",
+      "ca": "Disseny i concepte",
+      "eu": "Diseinua eta kontzeptua",
+      "pt": "Design e conceito",
+      "fr": "Design et concept",
+      "de": "Design und Konzept",
+      "it": "Design e concetto",
+      "zh": "设计与概念"
+    },
+    "About.Credits.Development": {
+      "en": "Development",
+      "es": "Desarrollo",
+      "gl": "Desenvolvemento",
+      "ca": "Desenvolupament",
+      "eu": "Garapena",
+      "pt": "Desenvolvimento",
+      "fr": "Développement",
+      "de": "Entwicklung",
+      "it": "Sviluppo",
+      "zh": "开发"
+    },
+    "About.Credits.GamingModule": {
+      "en": "Gaming module",
+      "es": "Módulo videojuegos",
+      "gl": "Módulo videoxogos",
+      "ca": "Mòdul videojocs",
+      "eu": "Bideojoko modulua",
+      "pt": "Módulo videojogos",
+      "fr": "Module jeux vidéo",
+      "de": "Gaming-Modul",
+      "it": "Modulo videogiochi",
+      "zh": "游戏模块"
+    },
+    "About.Credits.GamingModuleAuthor": {
+      "en": "Sr. Dexter · Advanced game configuration",
+      "es": "Sr. Dexter · Configuración avanzada de juegos",
+      "gl": "Sr. Dexter · Configuración avanzada de xogos",
+      "ca": "Sr. Dexter · Configuració avançada de jocs",
+      "eu": "Sr. Dexter · Joko-konfigurazio aurreratua",
+      "pt": "Sr. Dexter · Configuração avançada de jogos",
+      "fr": "Sr. Dexter · Configuration avancée des jeux",
+      "de": "Sr. Dexter · Erweiterte Spielkonfiguration",
+      "it": "Sr. Dexter · Configurazione avanzata dei giochi",
+      "zh": "Sr. Dexter · 高级游戏配置"
+    },
+    "About.Stack.Title": {
+      "en": "Tech stack",
+      "es": "Stack técnico",
+      "gl": "Stack técnico",
+      "ca": "Stack tècnic",
+      "eu": "Pila teknikoa",
+      "pt": "Stack técnica",
+      "fr": "Stack technique",
+      "de": "Tech-Stack",
+      "it": "Stack tecnico",
+      "zh": "技术栈"
+    },
+    "About.Utilities.Title": {
+      "en": "Utilities",
+      "es": "Utilidades",
+      "gl": "Utilidades",
+      "ca": "Utilitats",
+      "eu": "Utilitateak",
+      "pt": "Utilitários",
+      "fr": "Utilitaires",
+      "de": "Hilfsprogramme",
+      "it": "Utilità",
+      "zh": "实用工具"
+    },
+    "About.Utilities.OpenLogs": {
+      "en": "Open logs folder",
+      "es": "Abrir carpeta de logs",
+      "gl": "Abrir cartafol de logs",
+      "ca": "Obre carpeta de logs",
+      "eu": "Ireki erregistro-karpeta",
+      "pt": "Abrir pasta de registos",
+      "fr": "Ouvrir le dossier des journaux",
+      "de": "Log-Ordner öffnen",
+      "it": "Apri cartella log",
+      "zh": "打开日志文件夹"
+    },
+    "About.Footer": {
+      "en": "© 2026 DexSuite · Windows only · Requires administrator privileges",
+      "es": "© 2026 DexSuite · Solo para Windows · Requiere permisos de administrador",
+      "gl": "© 2026 DexSuite · Só para Windows · Require permisos de administrador",
+      "ca": "© 2026 DexSuite · Només per a Windows · Requereix permisos d'administrador",
+      "eu": "© 2026 DexSuite · Windowserako soilik · Administratzaile-baimenak behar ditu",
+      "pt": "© 2026 DexSuite · Apenas Windows · Requer permissões de administrador",
+      "fr": "© 2026 DexSuite · Windows uniquement · Nécessite des privilèges administrateur",
+      "de": "© 2026 DexSuite · Nur Windows · Erfordert Administratorrechte",
+      "it": "© 2026 DexSuite · Solo Windows · Richiede privilegi di amministratore",
+      "zh": "© 2026 DexSuite · 仅限 Windows · 需要管理员权限"
+    },
+
+    "About.Changelog.Item1": {
+      "en": "• Home screen with logo and quick actions",
+      "es": "• Pantalla de inicio con logo y accesos rápidos",
+      "gl": "• Pantalla de inicio con logo e accesos rápidos",
+      "ca": "• Pantalla d'inici amb logo i accessos ràpids",
+      "eu": "• Hasiera-pantaila logo eta sarbide azkarrekin",
+      "pt": "• Ecrã de início com logótipo e atalhos",
+      "fr": "• Écran d'accueil avec logo et accès rapides",
+      "de": "• Startbildschirm mit Logo und Schnellzugriffen",
+      "it": "• Schermata iniziale con logo e accessi rapidi",
+      "zh": "• 主屏幕带有徽标和快捷入口"
+    },
+    "About.Changelog.Item2": {
+      "en": "• Performance test with 8 categories: CPU, RAM, GPU, Disk, Processes, Startup, Temperature, Network",
+      "es": "• Test de rendimiento con 8 categorías: CPU, RAM, GPU, Disco, Procesos, Inicio, Temperatura, Red",
+      "gl": "• Test de rendemento con 8 categorías: CPU, RAM, GPU, Disco, Procesos, Inicio, Temperatura, Rede",
+      "ca": "• Test de rendiment amb 8 categories: CPU, RAM, GPU, Disc, Processos, Inici, Temperatura, Xarxa",
+      "eu": "• Errendimendu-proba 8 kategoriarekin: CPU, RAM, GPU, Diskoa, Prozesuak, Hasiera, Tenperatura, Sarea",
+      "pt": "• Teste de desempenho com 8 categorias: CPU, RAM, GPU, Disco, Processos, Arranque, Temperatura, Rede",
+      "fr": "• Test de performance avec 8 catégories : CPU, RAM, GPU, Disque, Processus, Démarrage, Température, Réseau",
+      "de": "• Leistungstest mit 8 Kategorien: CPU, RAM, GPU, Festplatte, Prozesse, Autostart, Temperatur, Netzwerk",
+      "it": "• Test prestazioni con 8 categorie: CPU, RAM, GPU, Disco, Processi, Avvio, Temperatura, Rete",
+      "zh": "• 性能测试涵盖 8 个类别：CPU、RAM、GPU、磁盘、进程、启动项、温度、网络"
+    },
+    "About.Changelog.Item3": {
+      "en": "• Before/after comparison with score delta",
+      "es": "• Comparativa antes/después con delta de puntuación",
+      "gl": "• Comparativa antes/despois con delta de puntuación",
+      "ca": "• Comparativa abans/després amb delta de puntuació",
+      "eu": "• Aurretik/ondoren konparaketa puntuazio-deltarekin",
+      "pt": "• Comparação antes/depois com delta de pontuação",
+      "fr": "• Comparaison avant/après avec différence de score",
+      "de": "• Vorher/Nachher-Vergleich mit Punktedifferenz",
+      "it": "• Confronto prima/dopo con delta del punteggio",
+      "zh": "• 前后对比显示分数差异"
+    },
+    "About.Changelog.Item4": {
+      "en": "• Modules grouped by plan (Free / Advanced / Pro) in 3 columns",
+      "es": "• Módulos agrupados por plan (Free / Avanzado / Pro) en 3 columnas",
+      "gl": "• Módulos agrupados por plan (Free / Avanzado / Pro) en 3 columnas",
+      "ca": "• Mòduls agrupats per pla (Free / Avançat / Pro) en 3 columnes",
+      "eu": "• Moduluak planaren arabera taldekatuta (Free / Aurreratua / Pro) 3 zutabetan",
+      "pt": "• Módulos agrupados por plano (Free / Avançado / Pro) em 3 colunas",
+      "fr": "• Modules regroupés par plan (Free / Avancé / Pro) en 3 colonnes",
+      "de": "• Module nach Plan gruppiert (Free / Erweitert / Pro) in 3 Spalten",
+      "it": "• Moduli raggruppati per piano (Free / Avanzato / Pro) in 3 colonne",
+      "zh": "• 模块按套餐分为 3 列（Free / 高级 / Pro）"
+    },
+    "About.Changelog.Item5": {
+      "en": "• Safe/Risk chip with impact explanation on each module",
+      "es": "• Chip Seguro/Riesgo con explicación de impacto en cada módulo",
+      "gl": "• Chip Seguro/Risco con explicación de impacto en cada módulo",
+      "ca": "• Xip Segur/Risc amb explicació de l'impacte a cada mòdul",
+      "eu": "• Seguru/Arrisku txipa modulu bakoitzaren eraginaren azalpenarekin",
+      "pt": "• Chip Seguro/Risco com explicação do impacto em cada módulo",
+      "fr": "• Puce Sûr/Risque avec explication de l'impact sur chaque module",
+      "de": "• Sicher/Risiko-Chip mit Wirkungserklärung an jedem Modul",
+      "it": "• Chip Sicuro/Rischio con spiegazione dell'impatto su ogni modulo",
+      "zh": "• 每个模块都带「安全/风险」标签及影响说明"
+    },
+    "About.Changelog.Item6": {
+      "en": "• Real-time monitoring and Cancel button during execution",
+      "es": "• Monitoreo en tiempo real y botón Cancelar durante la ejecución",
+      "gl": "• Monitorización en tempo real e botón Cancelar durante a execución",
+      "ca": "• Monitoratge en temps real i botó Cancel·la durant l'execució",
+      "eu": "• Denbora errealeko monitorizazioa eta Utzi botoia exekuzioan",
+      "pt": "• Monitorização em tempo real e botão Cancelar durante a execução",
+      "fr": "• Surveillance en temps réel et bouton Annuler pendant l'exécution",
+      "de": "• Echtzeitüberwachung und Abbruch-Schaltfläche während der Ausführung",
+      "it": "• Monitoraggio in tempo reale e pulsante Annulla durante l'esecuzione",
+      "zh": "• 执行期间实时监控,并可一键取消"
+    },
+    "About.Changelog.Item7": {
+      "en": "• Built-in automatic updates",
+      "es": "• Actualización automática integrada",
+      "gl": "• Actualización automática integrada",
+      "ca": "• Actualització automàtica integrada",
+      "eu": "• Eguneraketa automatiko integratua",
+      "pt": "• Atualização automática integrada",
+      "fr": "• Mises à jour automatiques intégrées",
+      "de": "• Integrierte automatische Updates",
+      "it": "• Aggiornamenti automatici integrati",
+      "zh": "• 内置自动更新"
+    },
+    "About.Changelog.Item8": {
+      "en": "• CYBERNETIC theme with cyan + violet palette and exclusive logo",
+      "es": "• Tema CYBERNETIC con paleta cian + violeta y logo exclusivo",
+      "gl": "• Tema CYBERNETIC con paleta cian + violeta e logo exclusivo",
+      "ca": "• Tema CYBERNETIC amb paleta cian + violeta i logo exclusiu",
+      "eu": "• CYBERNETIC gaia ziano + bioleta paletarekin eta logo esklusiboarekin",
+      "pt": "• Tema CYBERNETIC com paleta ciano + violeta e logótipo exclusivo",
+      "fr": "• Thème CYBERNETIC avec palette cyan + violet et logo exclusif",
+      "de": "• CYBERNETIC-Theme mit Cyan-Violett-Palette und exklusivem Logo",
+      "it": "• Tema CYBERNETIC con palette ciano + viola e logo esclusivo",
+      "zh": "• CYBERNETIC 主题：青色 + 紫色配色方案及专属徽标"
+    },
+    "About.Changelog.Item9": {
+      "en": "• Sidebar with icons, separators and language selector (10 languages)",
+      "es": "• Sidebar con iconos, separadores y selector de idioma (10 idiomas)",
+      "gl": "• Sidebar con iconas, separadores e selector de idioma (10 idiomas)",
+      "ca": "• Barra lateral amb icones, separadors i selector d'idioma (10 idiomes)",
+      "eu": "• Alboko barra ikonoekin, banatzaileekin eta hizkuntza-hautatzailearekin (10 hizkuntza)",
+      "pt": "• Barra lateral com ícones, separadores e seletor de idioma (10 idiomas)",
+      "fr": "• Barre latérale avec icônes, séparateurs et sélecteur de langue (10 langues)",
+      "de": "• Seitenleiste mit Icons, Trennlinien und Sprachauswahl (10 Sprachen)",
+      "it": "• Barra laterale con icone, separatori e selettore di lingua (10 lingue)",
+      "zh": "• 侧边栏含图标、分隔线和语言选择器（10 种语言）"
     }
   }
 }

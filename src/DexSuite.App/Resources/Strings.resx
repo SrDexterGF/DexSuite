@@ -12,6 +12,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• Home screen with logo and quick actions</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• Performance test with 8 categories: CPU, RAM, GPU, Disk, Processes, Startup, Temperature, Network</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Before/after comparison with score delta</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• Modules grouped by plan (Free / Advanced / Pro) in 3 columns</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Safe/Risk chip with impact explanation on each module</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Real-time monitoring and Cancel button during execution</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Built-in automatic updates</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• CYBERNETIC theme with cyan + violet palette and exclusive logo</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• Sidebar with icons, separators and language selector (10 languages)</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>What's new in v{0}</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Design and concept</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>Development</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Gaming module</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · Advanced game configuration</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Windows only · Requires administrator privileges</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite is an extreme optimization system for Windows.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>It analyzes your PC, applies high-impact tweaks and pushes performance to the physical limit.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Each version adds new native C# modules focused on maxing FPS and slashing latency.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>The project</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Requires administrator</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Tech stack</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Open logs folder</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Utilities</value>
+  </data>
   <data name="App.Subtitle" xml:space="preserve">
     <value>Cleanup, optimization and security for Windows</value>
   </data>
@@ -26,6 +98,9 @@
   </data>
   <data name="Common.Close" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Never</value>
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>OK</value>
@@ -713,6 +788,9 @@ Go to Home and analyze again to compare.</value>
   </data>
   <data name="Status.ExecutionError" xml:space="preserve">
     <value>Error: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>Could not open the folder: {0}</value>
   </data>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>New version available: v{0}!

@@ -12,6 +12,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• Hasiera-pantaila logo eta sarbide azkarrekin</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• Errendimendu-proba 8 kategoriarekin: CPU, RAM, GPU, Diskoa, Prozesuak, Hasiera, Tenperatura, Sarea</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Aurretik/ondoren konparaketa puntuazio-deltarekin</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• Moduluak planaren arabera taldekatuta (Free / Aurreratua / Pro) 3 zutabetan</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Seguru/Arrisku txipa modulu bakoitzaren eraginaren azalpenarekin</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Denbora errealeko monitorizazioa eta Utzi botoia exekuzioan</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Eguneraketa automatiko integratua</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• CYBERNETIC gaia ziano + bioleta paletarekin eta logo esklusiboarekin</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• Alboko barra ikonoekin, banatzaileekin eta hizkuntza-hautatzailearekin (10 hizkuntza)</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>v{0} berritasunak</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Diseinua eta kontzeptua</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>Garapena</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Bideojoko modulua</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · Joko-konfigurazio aurreratua</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Kredituak</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Windowserako soilik · Administratzaile-baimenak behar ditu</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite Windowserako optimizazio muturreko sistema da.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>Zure ekipoa aztertu, eragin handiko doikuntzak aplikatu eta errendimendua fisikoki posible den mugara eramaten du.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Bertsio bakoitzak C# modulu natibo berriak ditu, FPSak maximizatzeko eta latentziak murrizteko.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>Proiektua</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Administratzailea behar du</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Pila teknikoa</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Ireki erregistro-karpeta</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Utilitateak</value>
+  </data>
   <data name="App.Subtitle" xml:space="preserve">
     <value>Garbiketa, optimizazioa eta segurtasuna Windowsentzat</value>
   </data>
@@ -26,6 +98,9 @@
   </data>
   <data name="Common.Close" xml:space="preserve">
     <value>Itxi</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Inoiz ez</value>
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>Ados</value>
@@ -713,6 +788,9 @@ Itzuli Hasierara eta analizatu konparatzeko.</value>
   </data>
   <data name="Status.ExecutionError" xml:space="preserve">
     <value>Errorea: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>Ezin izan da karpeta ireki: {0}</value>
   </data>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Bertsio berria eskuragarri: v{0}!

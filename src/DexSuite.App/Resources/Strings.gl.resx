@@ -12,6 +12,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• Pantalla de inicio con logo e accesos rápidos</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• Test de rendemento con 8 categorías: CPU, RAM, GPU, Disco, Procesos, Inicio, Temperatura, Rede</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Comparativa antes/despois con delta de puntuación</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• Módulos agrupados por plan (Free / Avanzado / Pro) en 3 columnas</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Chip Seguro/Risco con explicación de impacto en cada módulo</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Monitorización en tempo real e botón Cancelar durante a execución</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Actualización automática integrada</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• Tema CYBERNETIC con paleta cian + violeta e logo exclusivo</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• Sidebar con iconas, separadores e selector de idioma (10 idiomas)</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>Novidades en v{0}</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Deseño e concepto</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>Desenvolvemento</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Módulo videoxogos</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · Configuración avanzada de xogos</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Créditos</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Só para Windows · Require permisos de administrador</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite é un sistema de optimización extrema para Windows.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>Analiza o teu equipo, aplica axustes de alto impacto e empurra o rendemento ao límite fisicamente posible.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Cada versión incorpora novos módulos nativos C# orientados a maximizar FPS e reducir latencias.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>O proxecto</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Require administrador</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Stack técnico</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Abrir cartafol de logs</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Utilidades</value>
+  </data>
   <data name="App.Subtitle" xml:space="preserve">
     <value>Limpeza, optimización e seguridade para Windows</value>
   </data>
@@ -26,6 +98,9 @@
   </data>
   <data name="Common.Close" xml:space="preserve">
     <value>Pechar</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Nunca</value>
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>Aceptar</value>
@@ -713,6 +788,9 @@ Volve a Inicio e analiza para comparar.</value>
   </data>
   <data name="Status.ExecutionError" xml:space="preserve">
     <value>Erro: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>Non se puido abrir o cartafol: {0}</value>
   </data>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Nova versión dispoñible: v{0}!

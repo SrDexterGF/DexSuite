@@ -12,6 +12,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• Écran d'accueil avec logo et accès rapides</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• Test de performance avec 8 catégories : CPU, RAM, GPU, Disque, Processus, Démarrage, Température, Réseau</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Comparaison avant/après avec différence de score</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• Modules regroupés par plan (Free / Avancé / Pro) en 3 colonnes</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Puce Sûr/Risque avec explication de l'impact sur chaque module</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Surveillance en temps réel et bouton Annuler pendant l'exécution</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Mises à jour automatiques intégrées</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• Thème CYBERNETIC avec palette cyan + violet et logo exclusif</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• Barre latérale avec icônes, séparateurs et sélecteur de langue (10 langues)</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>Nouveautés de la v{0}</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Design et concept</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>Développement</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Module jeux vidéo</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · Configuration avancée des jeux</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Crédits</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Windows uniquement · Nécessite des privilèges administrateur</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite est un système d'optimisation extrême pour Windows.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>Il analyse votre ordinateur, applique des réglages à fort impact et pousse les performances à la limite physiquement possible.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Chaque version intègre de nouveaux modules natifs C# axés sur la maximisation des FPS et la réduction des latences.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>Le projet</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Nécessite administrateur</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Stack technique</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Ouvrir le dossier des journaux</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Utilitaires</value>
+  </data>
   <data name="App.Subtitle" xml:space="preserve">
     <value>Nettoyage, optimisation et sécurité pour Windows</value>
   </data>
@@ -26,6 +98,9 @@
   </data>
   <data name="Common.Close" xml:space="preserve">
     <value>Fermer</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Jamais</value>
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>OK</value>
@@ -713,6 +788,9 @@ Retournez à Accueil et analysez pour comparer.</value>
   </data>
   <data name="Status.ExecutionError" xml:space="preserve">
     <value>Erreur : {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>Impossible d'ouvrir le dossier : {0}</value>
   </data>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Nouvelle version disponible : v{0} !

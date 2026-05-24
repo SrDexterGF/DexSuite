@@ -394,29 +394,7 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            StatusMessage = $"No se pudo abrir la carpeta: {ex.Message}";
-        }
-    }
-
-    [RelayCommand]
-    private void OpenScriptFolder()
-    {
-        try
-        {
-            if (!Directory.Exists(ScriptFolder))
-            {
-                StatusMessage = $"La carpeta no existe: {ScriptFolder}";
-                return;
-            }
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-            {
-                FileName = ScriptFolder,
-                UseShellExecute = true,
-            });
-        }
-        catch (Exception ex)
-        {
-            StatusMessage = $"No se pudo abrir la carpeta: {ex.Message}";
+            StatusMessage = T("Status.FolderOpenError", ex.Message);
         }
     }
 
@@ -531,12 +509,16 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Versión instalada actual, reportada por Velopack (o "0.1.0" en dev).</summary>
     public string CurrentVersion => _updateService.CurrentVersion;
 
+    /// <summary>Título localizado del changelog en Acerca de, p.ej. "Novedades en v0.1.0".</summary>
+    public string ChangelogTitle => T("About.Changelog.Title", CurrentVersion);
+
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(LastUpdateCheckLabel))]
-    private string lastUpdateCheck = "Nunca";
+    private string? lastUpdateCheck = null;
 
     /// <summary>Etiqueta localizada "Última comprobación: ...".</summary>
-    public string LastUpdateCheckLabel => T("Updates.LastCheck", LastUpdateCheck);
+    public string LastUpdateCheckLabel =>
+        T("Updates.LastCheck", LastUpdateCheck ?? T("Common.Never"));
 
     [ObservableProperty]
     private bool autoUpdateEnabled = true;
@@ -831,6 +813,7 @@ public partial class MainViewModel : ObservableObject
             OnPropertyChanged(nameof(CurrentLanguage));
             OnPropertyChanged(nameof(LastUpdateCheckLabel));
             OnPropertyChanged(nameof(AvailableUpdateVersionLabel));
+            OnPropertyChanged(nameof(ChangelogTitle));
             // Registramos el cambio en el historial interno.
             _ = _appLog.InfoAsync(AppLogCategory.Language,
                 T("Log.Event.LanguageChanged", CurrentLanguage));

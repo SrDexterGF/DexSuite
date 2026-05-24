@@ -12,6 +12,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• Pantalla d'inici amb logo i accessos ràpids</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• Test de rendiment amb 8 categories: CPU, RAM, GPU, Disc, Processos, Inici, Temperatura, Xarxa</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Comparativa abans/després amb delta de puntuació</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• Mòduls agrupats per pla (Free / Avançat / Pro) en 3 columnes</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Xip Segur/Risc amb explicació de l'impacte a cada mòdul</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Monitoratge en temps real i botó Cancel·la durant l'execució</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Actualització automàtica integrada</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• Tema CYBERNETIC amb paleta cian + violeta i logo exclusiu</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• Barra lateral amb icones, separadors i selector d'idioma (10 idiomes)</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>Novetats a v{0}</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Disseny i concepte</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>Desenvolupament</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Mòdul videojocs</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · Configuració avançada de jocs</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Crèdits</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Només per a Windows · Requereix permisos d'administrador</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite és un sistema d'optimització extrema per a Windows.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>Analitza el teu equip, aplica ajustos d'alt impacte i empeny el rendiment al límit físicament possible.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Cada versió incorpora nous mòduls natius C# orientats a maximitzar FPS i reduir latències.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>El projecte</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Requereix administrador</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Stack tècnic</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Obre carpeta de logs</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Utilitats</value>
+  </data>
   <data name="App.Subtitle" xml:space="preserve">
     <value>Neteja, optimització i seguretat per a Windows</value>
   </data>
@@ -26,6 +98,9 @@
   </data>
   <data name="Common.Close" xml:space="preserve">
     <value>Tanca</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Mai</value>
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>D'acord</value>
@@ -713,6 +788,9 @@ Torna a Inici i analitza per comparar.</value>
   </data>
   <data name="Status.ExecutionError" xml:space="preserve">
     <value>Error: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>No s'ha pogut obrir la carpeta: {0}</value>
   </data>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Nova versió disponible: v{0}!

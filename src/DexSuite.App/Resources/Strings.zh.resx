@@ -12,6 +12,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• 主屏幕带有徽标和快捷入口</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• 性能测试涵盖 8 个类别：CPU、RAM、GPU、磁盘、进程、启动项、温度、网络</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• 前后对比显示分数差异</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• 模块按套餐分为 3 列（Free / 高级 / Pro）</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• 每个模块都带「安全/风险」标签及影响说明</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• 执行期间实时监控,并可一键取消</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• 内置自动更新</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• CYBERNETIC 主题：青色 + 紫色配色方案及专属徽标</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• 侧边栏含图标、分隔线和语言选择器（10 种语言）</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>v{0} 新功能</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>设计与概念</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>开发</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>游戏模块</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · 高级游戏配置</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>致谢</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · 仅限 Windows · 需要管理员权限</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite 是面向 Windows 的极限优化系统。</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>分析你的电脑，应用高影响调整，将性能推向物理极限。</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>每个版本都加入新的 C# 原生模块,以最大化 FPS 并降低延迟。</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>需要管理员权限</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>技术栈</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>打开日志文件夹</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>实用工具</value>
+  </data>
   <data name="App.Subtitle" xml:space="preserve">
     <value>Windows 的清理、优化与安全</value>
   </data>
@@ -26,6 +98,9 @@
   </data>
   <data name="Common.Close" xml:space="preserve">
     <value>关闭</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>从未</value>
   </data>
   <data name="Common.OK" xml:space="preserve">
     <value>确定</value>
@@ -713,6 +788,9 @@
   </data>
   <data name="Status.ExecutionError" xml:space="preserve">
     <value>错误：{0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>无法打开文件夹：{0}</value>
   </data>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>有新版本可用：v{0}！
