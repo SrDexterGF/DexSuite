@@ -1089,6 +1089,32 @@
       "de": "Diese Optimierungen sind ausgewählt, weil sie sicher, umkehrbar sind und auf den meisten Systemen eine sichtbare Verbesserung bringen.\nSie sind der beste Einstiegspunkt, bevor du die erweiterten oder Pro-Einstellungen erkundest.",
       "it": "Queste ottimizzazioni sono selezionate perché sono sicure, reversibili e producono un miglioramento visibile sulla maggior parte dei sistemi.\nSono il miglior punto di partenza prima di esplorare le impostazioni avanzate o pro.",
       "zh": "这些优化被选中是因为它们安全、可还原，并且在大多数系统上产生明显改善。\n它们是在探索高级或专业设置之前的最佳起点。"
+    },
+
+    "Modules.Extra.Title": {
+      "en": "EXTRA PRO · Gaming",
+      "es": "EXTRA PRO · Videojuegos",
+      "gl": "EXTRA PRO · Videoxogos",
+      "ca": "EXTRA PRO · Videojocs",
+      "eu": "EXTRA PRO · Jokoak",
+      "pt": "EXTRA PRO · Videojogos",
+      "fr": "EXTRA PRO · Jeux vidéo",
+      "de": "EXTRA PRO · Gaming",
+      "it": "EXTRA PRO · Videogiochi",
+      "zh": "EXTRA PRO · 游戏"
+    },
+
+    "Modules.Extra.Subtitle": {
+      "en": "Specific optimizations to push gaming performance to the absolute limit",
+      "es": "Optimizaciones específicas para llevar el rendimiento en juegos al límite absoluto",
+      "gl": "Optimizacións específicas para levar o rendemento en xogos ao límite absoluto",
+      "ca": "Optimitzacions específiques per portar el rendiment en jocs al límit absolut",
+      "eu": "Joko-errendimendua muga absolutura eramateko optimizazio espezifikoak",
+      "pt": "Otimizações específicas para levar o desempenho em jogos ao limite absoluto",
+      "fr": "Optimisations spécifiques pour pousser les performances en jeu à la limite absolue",
+      "de": "Spezifische Optimierungen, um die Gaming-Leistung an die absolute Grenze zu treiben",
+      "it": "Ottimizzazioni specifiche per portare le prestazioni di gioco al limite assoluto",
+      "zh": "将游戏性能推向绝对极限的专项优化"
     }
   }
 }

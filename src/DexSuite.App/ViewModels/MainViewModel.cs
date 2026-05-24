@@ -32,7 +32,10 @@ public partial class MainViewModel : ObservableObject
     public ObservableCollection<ModuleItemViewModel> Modules { get; } = new();
     public ObservableCollection<ModuleItemViewModel> FreeModules { get; } = new();
     public ObservableCollection<ModuleItemViewModel> AdvancedModules { get; } = new();
+    /// <summary>Módulos Pro estándar (excluye Extras/Gaming).</summary>
     public ObservableCollection<ModuleItemViewModel> ProModules { get; } = new();
+    /// <summary>Módulos Pro de categoría Extras (videojuegos), con sección visual propia.</summary>
+    public ObservableCollection<ModuleItemViewModel> ProExtraModules { get; } = new();
 
     [ObservableProperty]
     private string outputLog = string.Empty;
@@ -444,9 +447,19 @@ public partial class MainViewModel : ObservableObject
             Modules.Add(vm);
             switch (m.Tier)
             {
-                case ModuleTier.Free: FreeModules.Add(vm); break;
-                case ModuleTier.Advanced: AdvancedModules.Add(vm); break;
-                case ModuleTier.Pro: ProModules.Add(vm); break;
+                case ModuleTier.Free:
+                    FreeModules.Add(vm);
+                    break;
+                case ModuleTier.Advanced:
+                    AdvancedModules.Add(vm);
+                    break;
+                case ModuleTier.Pro:
+                    // Los módulos Extras (videojuegos) van a su propia sección visual.
+                    if (m.Category == ModuleCategory.Extras)
+                        ProExtraModules.Add(vm);
+                    else
+                        ProModules.Add(vm);
+                    break;
             }
         }
 

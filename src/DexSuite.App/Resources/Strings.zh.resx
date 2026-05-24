@@ -113,6 +113,12 @@
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>取消全选</value>
   </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>将游戏性能推向绝对极限的专项优化</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>EXTRA PRO · 游戏</value>
+  </data>
   <data name="Modules.Impact.Extreme" xml:space="preserve">
     <value>极限</value>
   </data>

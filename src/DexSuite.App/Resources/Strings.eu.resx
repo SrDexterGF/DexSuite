@@ -113,6 +113,12 @@ Denbora errealean eguneratzen da exekuzioan.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Kendu denak</value>
   </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>Joko-errendimendua muga absolutura eramateko optimizazio espezifikoak</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>EXTRA PRO · Jokoak</value>
+  </data>
   <data name="Modules.Impact.Extreme" xml:space="preserve">
     <value>MUTURREKOA</value>
   </data>

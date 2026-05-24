@@ -765,7 +765,8 @@
                     <ScrollViewer Grid.Row="1"
                                   VerticalScrollBarVisibility="Auto"
                                   HorizontalScrollBarVisibility="Disabled">
-                        <Grid MaxWidth="1020" HorizontalAlignment="Center" Margin="16,0,16,0">
+                        <StackPanel MaxWidth="1020" HorizontalAlignment="Center" Margin="16,0,16,20">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -917,6 +918,113 @@
                                               ItemTemplate="{StaticResource ModuleCardTemplate}"/>
                             </StackPanel>
                         </Grid>
+
+                        <!-- ═══════════════════════════════════════════════ -->
+                        <!--   EXTRA PRO · Gaming  — sección visualmente    -->
+                        <!--   diferenciada del resto del plan Pro           -->
+                        <!-- ═══════════════════════════════════════════════ -->
+                        <Border Margin="0,18,0,0"
+                                CornerRadius="10"
+                                BorderThickness="1"
+                                BorderBrush="#3A00C853"
+                                Background="#0A0F0A">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Header gaming -->
+                                <Border Grid.Row="0"
+                                        Padding="14,12"
+                                        CornerRadius="9,9,0,0"
+                                        Background="#1500C853">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Icono gaming -->
+                                        <ui:SymbolIcon Grid.Column="0"
+                                                       Symbol="Gamepad24"
+                                                       FontSize="22"
+                                                       Foreground="#FF00C853"
+                                                       VerticalAlignment="Center"
+                                                       Margin="0,0,14,0"/>
+
+                                        <!-- Título y descripción -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <ui:TextBlock Text="{loc:T Key=Modules.Extra.Title}"
+                                                          FontTypography="BodyStrong"
+                                                          Foreground="#FF00C853"/>
+                                            <ui:TextBlock Text="{loc:T Key=Modules.Extra.Subtitle}"
+                                                          FontTypography="Caption"
+                                                          Opacity="0.65"
+                                                          TextWrapping="Wrap"
+                                                          Margin="0,2,0,0"/>
+                                        </StackPanel>
+
+                                        <!-- Badge PRO + candado/check -->
+                                        <StackPanel Grid.Column="2"
+                                                    Orientation="Horizontal"
+                                                    VerticalAlignment="Center">
+                                            <Border Padding="6,2" CornerRadius="4"
+                                                    Background="#1A9D4EDD"
+                                                    BorderBrush="#3A9D4EDD"
+                                                    BorderThickness="1"
+                                                    Margin="0,0,10,0">
+                                                <ui:TextBlock Text="PRO"
+                                                              FontTypography="Caption"
+                                                              Foreground="#FFB026FF"
+                                                              FontWeight="Bold"/>
+                                            </Border>
+                                            <!-- Candado: visible cuando tier ≠ Pro -->
+                                            <ui:SymbolIcon Symbol="Lock24"
+                                                           FontSize="17"
+                                                           Foreground="#FF00C853"
+                                                           VerticalAlignment="Center">
+                                                <ui:SymbolIcon.Style>
+                                                    <Style TargetType="ui:SymbolIcon">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ui:SymbolIcon.Style>
+                                            </ui:SymbolIcon>
+                                            <!-- Check: visible solo cuando tier = Pro -->
+                                            <ui:SymbolIcon Symbol="CheckmarkCircle24"
+                                                           FontSize="17"
+                                                           Foreground="#FF00C853"
+                                                           VerticalAlignment="Center">
+                                                <ui:SymbolIcon.Style>
+                                                    <Style TargetType="ui:SymbolIcon">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ui:SymbolIcon.Style>
+                                            </ui:SymbolIcon>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Módulos gaming -->
+                                <ItemsControl Grid.Row="1"
+                                              ItemsSource="{Binding ProExtraModules}"
+                                              ItemTemplate="{StaticResource ModuleCardTemplate}"
+                                              Margin="10,8,10,10"/>
+                            </Grid>
+                        </Border>
+
+                        </StackPanel>
                     </ScrollViewer>
 
                     <Border Grid.Row="2"

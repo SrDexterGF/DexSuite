@@ -113,6 +113,12 @@ Mise à jour en temps réel pendant l'exécution.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Tout désélectionner</value>
   </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>Optimisations spécifiques pour pousser les performances en jeu à la limite absolue</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>EXTRA PRO · Jeux vidéo</value>
+  </data>
   <data name="Modules.Impact.Extreme" xml:space="preserve">
     <value>EXTRÊME</value>
   </data>
