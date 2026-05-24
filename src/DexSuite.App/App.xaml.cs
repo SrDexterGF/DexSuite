@@ -68,6 +68,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IBatRunner, BatRunner>();
         services.AddSingleton<IPerformanceAnalyzer, PerformanceAnalyzer>();
         services.AddSingleton<IUpdateService, VelopackUpdateService>();
+        services.AddSingleton<IQuickCleanService, QuickCleanService>();
 
         // i18n: el singleton estático es el mismo que usa la markup extension {loc:T}.
         services.AddSingleton<ILocalizationService>(LocalizationService.Instance);

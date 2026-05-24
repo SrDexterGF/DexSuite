@@ -396,6 +396,9 @@ Pasa o rato polo chip Seguro/Risco para saber por que.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Actualizacións</value>
   </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Limpeza rápida</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Aplícase ao iniciar a app.</value>
   </data>
@@ -486,6 +489,15 @@ Volve a Inicio e analiza para comparar.</value>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Nova versión dispoñible: v{0}!
 Preme «Actualizar agora» para instalala.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>Limpeza completada: {0} MB liberados, {1} arquivos eliminados</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Erro na limpeza rápida: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Limpando arquivos temporais e papeleira...</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Listo. Selecciona módulos e preme Executar.</value>

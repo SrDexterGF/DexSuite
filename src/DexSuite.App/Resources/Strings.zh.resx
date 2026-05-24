@@ -396,6 +396,9 @@
   <data name="Navigation.Updates" xml:space="preserve">
     <value>更新</value>
   </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>快速清理</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>应用启动时生效。</value>
   </data>
@@ -486,6 +489,15 @@
   <data name="Status.NewVersion" xml:space="preserve">
     <value>有新版本可用：v{0}！
 点击「立即更新」进行安装。</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>清理完成：释放 {0} MB，删除 {1} 个文件</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>快速清理出错：{0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>正在清理临时文件和回收站...</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>就绪。选择模块并点击「执行」。</value>

@@ -396,6 +396,9 @@ Fahre über das Sicher/Risiko-Chip, um zu erfahren warum.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Aktualisierungen</value>
   </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Schnellbereinigung</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Wird beim Start der App angewendet.</value>
   </data>
@@ -486,6 +489,15 @@ Zurück zu Start und erneut analysieren zum Vergleichen.</value>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Neue Version verfügbar: v{0}!
 Klicke «Jetzt aktualisieren», um sie zu installieren.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>Bereinigung abgeschlossen: {0} MB freigegeben, {1} Dateien gelöscht</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Fehler bei der Schnellbereinigung: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Temp-Dateien und Papierkorb werden bereinigt...</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Bereit. Module auswählen und Ausführen klicken.</value>

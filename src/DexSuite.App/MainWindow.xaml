@@ -716,6 +716,20 @@
 
                     <DockPanel Grid.Row="0" Margin="24,20,24,12">
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+
+                            <!-- Limpieza rápida — papelera + temps -->
+                            <ui:Button Appearance="Secondary"
+                                       Content="{loc:T Key=QuickClean.Button}"
+                                       Icon="{ui:SymbolIcon Symbol=Broom24}"
+                                       Command="{Binding QuickCleanCommand}"
+                                       Margin="0,0,6,0"/>
+
+                            <!-- Separador visual -->
+                            <Border Width="1" Height="20"
+                                    Background="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,8,0"/>
+
                             <ui:Button Appearance="Secondary"
                                        Content="{loc:T Key=Modules.SelectRecommended}"
                                        Command="{Binding SelectRecommendedCommand}"

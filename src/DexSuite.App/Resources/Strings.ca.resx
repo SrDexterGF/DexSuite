@@ -396,6 +396,9 @@ Passa el ratolí pel xip Segur/Risc per saber per què.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Actualitzacions</value>
   </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Neteja ràpida</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>S'aplica en iniciar l'aplicació.</value>
   </data>
@@ -486,6 +489,15 @@ Torna a Inici i analitza per comparar.</value>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Nova versió disponible: v{0}!
 Clica «Actualitza ara» per instal·lar-la.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>Neteja completada: {0} MB alliberats, {1} arxius eliminats</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Error en neteja ràpida: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Netejant arxius temporals i paperera...</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>A punt. Selecciona mòduls i clica Executa.</value>

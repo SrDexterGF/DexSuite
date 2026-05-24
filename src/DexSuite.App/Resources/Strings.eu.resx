@@ -396,6 +396,9 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Eguneraketak</value>
   </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Garbiketa azkarra</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Aplikazioa abiaraztean aplikatzen da.</value>
   </data>
@@ -486,6 +489,15 @@ Itzuli Hasierara eta analizatu konparatzeko.</value>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Bertsio berria eskuragarri: v{0}!
 Sakatu «Eguneratu orain» instalatzeko.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>Garbiketa osatu da: {0} MB askatu, {1} fitxategi ezabatu</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Garbiketa azkarraren errorea: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Aldi baterako fitxategiak eta zakarrontzia garbitzen...</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Prest. Aukeratu moduluak eta sakatu Exekutatu.</value>

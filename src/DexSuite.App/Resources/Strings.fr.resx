@@ -396,6 +396,9 @@ Survolez la puce Sûr/Risque pour savoir pourquoi.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Mises à jour</value>
   </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Nettoyage rapide</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Appliqué au lancement de l'application.</value>
   </data>
@@ -486,6 +489,15 @@ Retournez à Accueil et analysez pour comparer.</value>
   <data name="Status.NewVersion" xml:space="preserve">
     <value>Nouvelle version disponible : v{0} !
 Cliquez sur «Mettre à jour maintenant» pour l'installer.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>Nettoyage terminé : {0} Mo libérés, {1} fichiers supprimés</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Erreur de nettoyage rapide : {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Nettoyage des fichiers temporaires et de la corbeille...</value>
   </data>
   <data name="Status.Ready" xml:space="preserve">
     <value>Prêt. Sélectionnez des modules et cliquez sur Exécuter.</value>

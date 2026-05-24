@@ -17,6 +17,7 @@ public partial class MainViewModel : ObservableObject
     private readonly IUpdateService _updateService;
     private readonly ILocalizationService _loc;
     private readonly ILogger<MainViewModel> _logger;
+    private readonly IQuickCleanService _quickClean;
 
     private const string DefaultScriptFolder =
         @"C:\Users\mgf74\Documents\Claude Environment W11\DexSuite (Script)";
@@ -44,8 +45,12 @@ public partial class MainViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IsIdle))]
     private bool isRunning;
 
-    /// <summary>True cuando la app no está ejecutando el .bat ni analizando rendimiento.</summary>
-    public bool IsIdle => !IsRunning && !IsAnalyzing;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsIdle))]
+    private bool isQuickCleaning;
+
+    /// <summary>True cuando la app no está ejecutando el .bat, analizando ni limpiando.</summary>
+    public bool IsIdle => !IsRunning && !IsAnalyzing && !IsQuickCleaning;
 
     [ObservableProperty]
     private string statusMessage = string.Empty;
@@ -408,6 +413,39 @@ public partial class MainViewModel : ObservableObject
     partial void OnScoreAfterChanged(PerformanceScore? value)
         => ResetScoresCommand.NotifyCanExecuteChanged();
 
+    // ---- Limpieza rápida ------------------------------------------------
+
+    [RelayCommand(CanExecute = nameof(CanQuickClean))]
+    private async Task QuickCleanAsync()
+    {
+        IsQuickCleaning = true;
+        QuickCleanCommand.NotifyCanExecuteChanged();
+        RunCommand.NotifyCanExecuteChanged();
+        AnalyzeCommand.NotifyCanExecuteChanged();
+        StatusMessage = T("Status.QuickCleaning");
+
+        try
+        {
+            var result = await _quickClean.CleanAsync();
+            var mb = Math.Round(result.BytesFreed / 1_048_576.0, 1);
+            StatusMessage = T("Status.QuickCleanDone", mb, result.FilesDeleted);
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = T("Status.QuickCleanError", ex.Message);
+            _logger.LogError(ex, "Fallo en limpieza rápida");
+        }
+        finally
+        {
+            IsQuickCleaning = false;
+            QuickCleanCommand.NotifyCanExecuteChanged();
+            RunCommand.NotifyCanExecuteChanged();
+            AnalyzeCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    private bool CanQuickClean() => !IsRunning && !IsAnalyzing && !IsQuickCleaning;
+
     // ---- Constructor -----------------------------------------------------
 
     public MainViewModel(
@@ -416,12 +454,14 @@ public partial class MainViewModel : ObservableObject
         IPerformanceAnalyzer analyzer,
         IUpdateService updateService,
         ILocalizationService loc,
+        IQuickCleanService quickClean,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
         _analyzer = analyzer;
         _updateService = updateService;
         _loc = loc;
+        _quickClean = quickClean;
         _logger = logger;
 
         // Mensaje inicial localizado. Cuando el usuario cambia el idioma,

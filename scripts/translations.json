@@ -1104,6 +1104,58 @@
       "zh": "EXTRA PRO · 游戏"
     },
 
+    "QuickClean.Button": {
+      "en": "Quick clean",
+      "es": "Limpieza rápida",
+      "gl": "Limpeza rápida",
+      "ca": "Neteja ràpida",
+      "eu": "Garbiketa azkarra",
+      "pt": "Limpeza rápida",
+      "fr": "Nettoyage rapide",
+      "de": "Schnellbereinigung",
+      "it": "Pulizia rapida",
+      "zh": "快速清理"
+    },
+
+    "Status.QuickCleaning": {
+      "en": "Cleaning temp files and recycle bin...",
+      "es": "Limpiando archivos temporales y papelera...",
+      "gl": "Limpando arquivos temporais e papeleira...",
+      "ca": "Netejant arxius temporals i paperera...",
+      "eu": "Aldi baterako fitxategiak eta zakarrontzia garbitzen...",
+      "pt": "A limpar ficheiros temporários e reciclagem...",
+      "fr": "Nettoyage des fichiers temporaires et de la corbeille...",
+      "de": "Temp-Dateien und Papierkorb werden bereinigt...",
+      "it": "Pulizia file temporanei e cestino...",
+      "zh": "正在清理临时文件和回收站..."
+    },
+
+    "Status.QuickCleanDone": {
+      "en": "Clean complete: {0} MB freed, {1} files removed",
+      "es": "Limpieza completada: {0} MB liberados, {1} archivos eliminados",
+      "gl": "Limpeza completada: {0} MB liberados, {1} arquivos eliminados",
+      "ca": "Neteja completada: {0} MB alliberats, {1} arxius eliminats",
+      "eu": "Garbiketa osatu da: {0} MB askatu, {1} fitxategi ezabatu",
+      "pt": "Limpeza concluída: {0} MB libertados, {1} ficheiros eliminados",
+      "fr": "Nettoyage terminé : {0} Mo libérés, {1} fichiers supprimés",
+      "de": "Bereinigung abgeschlossen: {0} MB freigegeben, {1} Dateien gelöscht",
+      "it": "Pulizia completata: {0} MB liberati, {1} file rimossi",
+      "zh": "清理完成：释放 {0} MB，删除 {1} 个文件"
+    },
+
+    "Status.QuickCleanError": {
+      "en": "Quick clean error: {0}",
+      "es": "Error en limpieza rápida: {0}",
+      "gl": "Erro na limpeza rápida: {0}",
+      "ca": "Error en neteja ràpida: {0}",
+      "eu": "Garbiketa azkarraren errorea: {0}",
+      "pt": "Erro na limpeza rápida: {0}",
+      "fr": "Erreur de nettoyage rapide : {0}",
+      "de": "Fehler bei der Schnellbereinigung: {0}",
+      "it": "Errore nella pulizia rapida: {0}",
+      "zh": "快速清理出错：{0}"
+    },
+
     "Modules.Extra.Subtitle": {
       "en": "Specific optimizations to push gaming performance to the absolute limit",
       "es": "Optimizaciones específicas para llevar el rendimiento en juegos al límite absoluto",
