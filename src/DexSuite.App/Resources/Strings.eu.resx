@@ -100,9 +100,147 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Zer egin nahi duzu?</value>
   </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>Errendimendua</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>Aplikazioa</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>Hizkuntza</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>Garbiketa azkarra</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>Exekuzioa</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>Ezarpenak</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>Eguneraketa</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>Garbitu historia</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>Historia garbitu da ({0} sarrera ezabatuta).</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>Ezin izan da historia garbitu: {0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>Kategoria</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>Maila</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>Mezua</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>Ordua</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>Egiten dituzun ekintzak hemen agertuko dira automatikoki.</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>Oraindik ez dago gertaerarik</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>Hasierako puntuazioa: {0} ({1}).</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>Errendimendu-probaren errorea: {0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>Azken puntuazioa: {0} ({1}). Aldakuntza: {2}{3}.</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite abiarazi da (v{0}).</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>Historia garbitu da ({0} sarrera).</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>Hizkuntza {0}-ra aldatu da.</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>Garbiketa azkarraren errorea: {0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>Garbiketa azkarra: {0} MB askatu, {1} fitxategi ezabatu.</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>Erabiltzaileak optimizazioa bertan behera utzi du.</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>Optimizazio-errorea: {0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>Optimizazioa amaitu da ({0} modulu).</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>Optimizazioa hasi da {0} modulurekin.</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>Ezarpenak balio lehenetsietara berrezarri dira.</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>Plan aktiboa {0}-ra aldatu da.</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>v{0} eguneraketa aplikatu da.</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>Ezin izan da eguneraketa aplikatu: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>Errorea eguneraketak bilatzean: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>Bertsio berria eskuragarri: v{0}.</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>Azken bertsioan zaude jada (v{0}).</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>.txt-ra esportatu</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>Esportazio-errorea: {0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>Historia hona esportatu da: {0}</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>Errorea</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>Arrakasta</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>Oharra</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>Historia kargatzen…</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>Eguneratu</value>
+  </data>
   <data name="Log.Subtitle" xml:space="preserve">
     <value>Uneko prozesuaren irteera zuzena.
 Denbora errealean eguneratzen da exekuzioan.</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>Historia</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>Zuzeneko irteera</value>
   </data>
   <data name="Log.Title" xml:space="preserve">
     <value>Exekuzio erregistroa</value>
@@ -401,6 +539,15 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   </data>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Garbiketa azkarra</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>Aurreko saioko kargua</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>Gordetako baseline — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>Neurtua — {0}</value>
   </data>
   <data name="Search.NoResults" xml:space="preserve">
     <value>Ez da emaitzarik aurkitu «{0}» bilaketarako</value>

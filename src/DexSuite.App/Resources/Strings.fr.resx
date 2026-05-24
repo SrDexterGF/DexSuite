@@ -100,9 +100,147 @@ Ensuite, optimisez et analysez à nouveau pour voir la différence.</value>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Que voulez-vous faire ?</value>
   </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>Nettoyage rapide</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>Exécution</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>Mise à jour</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>Vider l'historique</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>Historique vidé ({0} entrées supprimées).</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>Impossible de vider l'historique : {0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>Heure</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>Les actions que vous lancez apparaîtront ici automatiquement.</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>Aucun événement pour l'instant</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>Score initial : {0} ({1}).</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>Échec du test de performance : {0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>Score final : {0} ({1}). Variation : {2}{3}.</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite démarré (v{0}).</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>Historique vidé ({0} entrées).</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>Langue changée en {0}.</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>Échec du nettoyage rapide : {0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>Nettoyage rapide : {0} Mo libérés, {1} fichiers supprimés.</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>Optimisation annulée par l'utilisateur.</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>Échec de l'optimisation : {0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>Optimisation terminée ({0} modules).</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>Optimisation lancée avec {0} modules.</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>Paramètres réinitialisés aux valeurs par défaut.</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>Plan actif changé en {0}.</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>Mise à jour v{0} appliquée.</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>Impossible d'appliquer la mise à jour : {0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>Échec de la recherche de mises à jour : {0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>Nouvelle version disponible : v{0}.</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>Vous avez déjà la dernière version (v{0}).</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>Exporter en .txt</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>Échec de l'export : {0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>Historique exporté vers {0}</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>Succès</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>Avertissement</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>Chargement de l'historique…</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>Actualiser</value>
+  </data>
   <data name="Log.Subtitle" xml:space="preserve">
     <value>Sortie en direct du processus en cours.
 Mise à jour en temps réel pendant l'exécution.</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>Historique</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>Sortie en direct</value>
   </data>
   <data name="Log.Title" xml:space="preserve">
     <value>Journal d'exécution</value>
@@ -401,6 +539,15 @@ Survolez la puce Sûr/Risque pour savoir pourquoi.</value>
   </data>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Nettoyage rapide</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>Chargé depuis une session précédente</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>Référence enregistrée — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>Mesuré — {0}</value>
   </data>
   <data name="Search.NoResults" xml:space="preserve">
     <value>Aucun résultat pour «{0}»</value>

@@ -1,8 +1,10 @@
 using System.IO;
 using System.Text;
 using System.Windows;
+using DexSuite.App.Data;
 using DexSuite.App.Services;
 using DexSuite.App.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -46,6 +48,20 @@ public partial class App : System.Windows.Application
 
         _host.Start();
 
+        // Asegura que la BD SQLite existe (crea esquema si es la 1ª ejecución).
+        // EnsureCreated es suficiente porque por ahora no usamos migraciones.
+        try
+        {
+            using var scope = _host.Services.CreateScope();
+            var factory = scope.ServiceProvider.GetRequiredService<IDbContextFactory<DexSuiteDbContext>>();
+            using var db = factory.CreateDbContext();
+            db.Database.EnsureCreated();
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "No se pudo inicializar la base de datos del historial");
+        }
+
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
         mainWindow.Show();
     }
@@ -63,6 +79,18 @@ public partial class App : System.Windows.Application
 
     private static void ConfigureServices(IServiceCollection services)
     {
+        // Carpeta %LocalAppData%/DexSuite (compartida por logs Serilog y BD).
+        var dataDir = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "DexSuite");
+        Directory.CreateDirectory(dataDir);
+        var dbPath = Path.Combine(dataDir, "dexsuite.db");
+
+        // EF Core: factory para que el servicio cree DbContext por operación,
+        // evitando compartir contexto entre hilos.
+        services.AddDbContextFactory<DexSuiteDbContext>(opt =>
+            opt.UseSqlite($"Data Source={dbPath}"));
+
         // Services
         services.AddSingleton<IModuleCatalog, ModuleCatalog>();
         services.AddSingleton<IBatRunner, BatRunner>();
@@ -70,6 +98,8 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IUpdateService, VelopackUpdateService>();
         services.AddSingleton<IQuickCleanService, QuickCleanService>();
         services.AddSingleton<ISystemInfoService, SystemInfoService>();
+        services.AddSingleton<IAppLogService, AppLogService>();
+        services.AddSingleton<IPerformanceBaselineService, PerformanceBaselineService>();
 
         // i18n: el singleton estático es el mismo que usa la markup extension {loc:T}.
         services.AddSingleton<ILocalizationService>(LocalizationService.Instance);

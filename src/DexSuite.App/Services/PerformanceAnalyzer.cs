@@ -8,97 +8,115 @@ using Microsoft.Win32;
 namespace DexSuite.App.Services;
 
 /// <summary>
-/// Mide el estado del equipo en 8 dimensiones y devuelve un score 0-100 por cada una.
-/// Total = promedio simple. Las medidas son una foto instantanea, asi que dos analisis
-/// seguidos pueden variar unos puntos: lo importante es comparar antes/despues.
+/// Mide el rendimiento del equipo en 8 dimensiones y devuelve un score 0-100 por cada una.
 ///
-/// Categorias (peso igual):
-///   1) CPU       - % CPU en uso, medido con GetSystemTimes en dos muestras.
-///   2) Memoria   - % de RAM en uso, GlobalMemoryStatusEx.
-///   3) GPU       - % uso GPU, PerformanceCounter "GPU Engine" sumando todas las instancias.
-///   4) Disco C   - % libre del disco del sistema, DriveInfo.
-///   5) Procesos  - Process.GetProcesses().Length.
-///   6) Inicio    - Cuantas apps arrancan con Windows (HKLM + HKCU \Run).
-///   7) Temp      - Tamano del directorio TEMP del usuario.
-///   8) Red       - RTT a 1.1.1.1 (Cloudflare).
+/// ESTABILIDAD (F5.6):
+///   Las métricas volátiles (CPU, GPU, Red) se miden con 3 muestras independientes
+///   espaciadas 600 ms y se usa la MEDIANA. Esto elimina picos puntuales del SO,
+///   antivirus, etc. y hace que el "Antes / Después" sea significativo.
+///
+///   CPU, GPU y Red se ejecutan en paralelo para que el tiempo total sea ≈ 2 s
+///   (el máximo de los tres) en lugar de suma de todos.
+///
+/// Categorías y pesos:
+///   1) CPU       – % CPU en uso  (mediana de 3 muestras × 600 ms)
+///   2) Memoria   – % RAM en uso  (single snapshot — muy estable)
+///   3) GPU       – % GPU en uso  (mediana de 3 muestras × 600 ms)
+///   4) Disco C   – % libre       (single snapshot — muy estable)
+///   5) Procesos  – nº procesos   (single snapshot — moderadamente estable)
+///   6) Inicio    – apps startup  (single snapshot — muy estable)
+///   7) Temp      – MB en %TEMP% (single snapshot — estable)
+///   8) Red       – RTT ping      (mediana de 3 pings)
 ///
 /// Todo es lectura: no modifica nada del sistema.
 /// </summary>
 public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
 {
+    /// <summary>Número de muestras para métricas volátiles (CPU, GPU, Red).</summary>
+    private const int Samples = 3;
+
+    /// <summary>Ventana de medición por muestra (ms).</summary>
+    private const int SampleMs = 600;
+
     public async Task<PerformanceScore> AnalyzeAsync(CancellationToken ct = default)
     {
-        return await Task.Run(() =>
+        // Métricas volátiles: CPU, GPU y Red se miden en PARALELO.
+        // Cada una toma Samples × SampleMs = 1.8 s internamente,
+        // pero como corren a la vez el tiempo total es ≈ 1.8 s + overhead.
+        var cpuTask     = Task.Run(() => MeasureCpuMultiSample(ct), ct);
+        var gpuTask     = Task.Run(() => MeasureGpuMultiSample(ct), ct);
+        var networkTask = Task.Run(() => MeasureNetworkMultiSample(ct), ct);
+
+        // Métricas estables: se miden directamente (rápido).
+        var ram       = MeasureRam();
+        var disk      = MeasureDisk();
+        var processes = MeasureProcesses();
+        var startup   = MeasureStartup();
+        var temp      = await Task.Run(() => MeasureTemp(ct), ct);
+
+        // Esperamos las tres tareas volátiles en paralelo.
+        await Task.WhenAll(cpuTask, gpuTask, networkTask).ConfigureAwait(false);
+
+        var cats = new List<PerformanceCategoryScore>
         {
-            var cats = new List<PerformanceCategoryScore>
+            cpuTask.Result,
+            ram,
+            gpuTask.Result,
+            disk,
+            processes,
+            startup,
+            temp,
+            networkTask.Result,
+        };
+
+        var total = (int)Math.Round(cats.Average(c => c.Score));
+        return new PerformanceScore(total, cats, DateTime.Now);
+    }
+
+    // ── CPU (multi-muestra, mediana) ─────────────────────────────────────────
+
+    private static PerformanceCategoryScore MeasureCpuMultiSample(CancellationToken ct)
+    {
+        var samples = new List<double>(Samples);
+
+        for (int i = 0; i < Samples; i++)
+        {
+            ct.ThrowIfCancellationRequested();
+
+            if (!GetSystemTimes(out var idle1, out var kernel1, out var user1))
             {
-                MeasureCpu(ct),
-                MeasureRam(),
-                MeasureGpu(ct),
-                MeasureDisk(),
-                MeasureProcesses(),
-                MeasureStartup(),
-                MeasureTemp(ct),
-                MeasureNetwork(ct),
-            };
+                samples.Add(50.0); // fallback neutro
+                continue;
+            }
 
-            var total = (int)Math.Round(cats.Average(c => c.Score));
-            return new PerformanceScore(total, cats, DateTime.Now);
-        }, ct);
+            Task.Delay(SampleMs, ct).Wait(ct);
+
+            if (!GetSystemTimes(out var idle2, out var kernel2, out var user2))
+            {
+                samples.Add(50.0);
+                continue;
+            }
+
+            var idleDiff   = ToUInt64(idle2)   - ToUInt64(idle1);
+            var kernelDiff = ToUInt64(kernel2) - ToUInt64(kernel1);
+            var userDiff   = ToUInt64(user2)   - ToUInt64(user1);
+            var totalDiff  = kernelDiff + userDiff;
+
+            var usage = totalDiff == 0 ? 0.0 : (1.0 - (double)idleDiff / totalDiff) * 100.0;
+            samples.Add(Math.Clamp(usage, 0.0, 100.0));
+        }
+
+        var medianUsage = Median(samples);
+        var score = (int)Math.Round(100 - medianUsage);
+        return new PerformanceCategoryScore("CPU", score, $"{medianUsage:0}% en uso");
     }
 
-    // ---- CPU ---------------------------------------------------------------
+    // ── GPU (multi-muestra, mediana) ─────────────────────────────────────────
 
-    private static PerformanceCategoryScore MeasureCpu(CancellationToken ct)
-    {
-        if (!GetSystemTimes(out var idle1, out var kernel1, out var user1))
-            return new PerformanceCategoryScore("CPU", 50, "No se pudo medir");
-
-        Task.Delay(500, ct).Wait(ct);
-
-        if (!GetSystemTimes(out var idle2, out var kernel2, out var user2))
-            return new PerformanceCategoryScore("CPU", 50, "No se pudo medir");
-
-        var idleDiff = FileTimeToUInt64(idle2) - FileTimeToUInt64(idle1);
-        var kernelDiff = FileTimeToUInt64(kernel2) - FileTimeToUInt64(kernel1);
-        var userDiff = FileTimeToUInt64(user2) - FileTimeToUInt64(user1);
-        var totalDiff = kernelDiff + userDiff;
-
-        if (totalDiff == 0)
-            return new PerformanceCategoryScore("CPU", 100, "0% en uso");
-
-        var cpuUsage = (1.0 - (double)idleDiff / totalDiff) * 100.0;
-        cpuUsage = Math.Clamp(cpuUsage, 0, 100);
-        var score = (int)Math.Round(100 - cpuUsage);
-        return new PerformanceCategoryScore("CPU", score, $"{cpuUsage:0}% en uso");
-    }
-
-    // ---- Memoria -----------------------------------------------------------
-
-    private static PerformanceCategoryScore MeasureRam()
-    {
-        var status = new MEMORYSTATUSEX();
-        if (!GlobalMemoryStatusEx(status))
-            return new PerformanceCategoryScore("Memoria", 50, "No se pudo medir");
-
-        var load = (int)status.dwMemoryLoad;
-        var totalGb = status.ullTotalPhys / 1024.0 / 1024.0 / 1024.0;
-        var availGb = status.ullAvailPhys / 1024.0 / 1024.0 / 1024.0;
-        var score = Math.Clamp(100 - load, 0, 100);
-        return new PerformanceCategoryScore(
-            "Memoria", score,
-            $"{load}% en uso ({availGb:0.0} GB libres de {totalGb:0.0} GB)");
-    }
-
-    // ---- GPU ---------------------------------------------------------------
-
-    private static PerformanceCategoryScore MeasureGpu(CancellationToken ct)
+    private static PerformanceCategoryScore MeasureGpuMultiSample(CancellationToken ct)
     {
         try
         {
-            // La categoria "GPU Engine" tiene una instancia por cada motor de cada GPU
-            // (3D, VideoEncode, VideoDecode, Copy, ...). Sumamos todas las instancias
-            // del contador "Utilization Percentage" y nos quedamos con el maximo.
             if (!PerformanceCounterCategory.Exists("GPU Engine"))
                 return new PerformanceCategoryScore("GPU", 90, "No detectada (sin contador)");
 
@@ -113,31 +131,38 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
                 try
                 {
                     var c = new PerformanceCounter("GPU Engine", "Utilization Percentage", inst, readOnly: true);
-                    c.NextValue(); // primera lectura suele dar 0
+                    c.NextValue(); // lectura inicial siempre da 0; descartada.
                     counters.Add(c);
                 }
-                catch { /* instancia con permisos raros */ }
+                catch { /* instancia sin permisos */ }
             }
 
             if (counters.Count == 0)
                 return new PerformanceCategoryScore("GPU", 90, "No medible");
 
-            Task.Delay(500, ct).Wait(ct);
+            // Warm-up: un intervalo inicial para que los contadores acumulen.
+            Task.Delay(SampleMs, ct).Wait(ct);
 
-            float total = 0;
-            foreach (var c in counters)
+            var samples = new List<double>(Samples);
+            for (int i = 0; i < Samples; i++)
             {
-                try { total += c.NextValue(); } catch { }
+                ct.ThrowIfCancellationRequested();
+
+                if (i > 0) Task.Delay(SampleMs, ct).Wait(ct);
+
+                float total = 0;
+                foreach (var c in counters)
+                {
+                    try { total += c.NextValue(); } catch { }
+                }
+                samples.Add(Math.Clamp(total, 0.0, 100.0));
             }
 
-            // Cierro los counters para liberar handles.
             foreach (var c in counters) c.Dispose();
 
-            // total puede superar 100 si varios motores estan al maximo a la vez,
-            // pero como "uso de GPU" lo cap al 100.
-            var usage = Math.Clamp(total, 0, 100);
-            var score = (int)Math.Round(100 - usage);
-            return new PerformanceCategoryScore("GPU", score, $"{usage:0}% en uso");
+            var medianUsage = Median(samples);
+            var score = (int)Math.Round(100 - medianUsage);
+            return new PerformanceCategoryScore("GPU", score, $"{medianUsage:0}% en uso");
         }
         catch (Exception ex)
         {
@@ -145,19 +170,67 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ---- Disco -------------------------------------------------------------
+    // ── Red (multi-muestra, mediana) ─────────────────────────────────────────
+
+    private static PerformanceCategoryScore MeasureNetworkMultiSample(CancellationToken ct)
+    {
+        var rtts = new List<long>(Samples);
+
+        for (int i = 0; i < Samples; i++)
+        {
+            ct.ThrowIfCancellationRequested();
+            try
+            {
+                using var ping = new Ping();
+                var reply = ping.Send("1.1.1.1", timeout: 2000);
+                if (reply.Status == IPStatus.Success)
+                    rtts.Add(reply.RoundtripTime);
+            }
+            catch { /* sin red o error transitorio */ }
+        }
+
+        if (rtts.Count == 0)
+            return new PerformanceCategoryScore("Red", 50, "Sin respuesta (1.1.1.1)");
+
+        var medianRtt = (long)Median(rtts.Select(r => (double)r).ToList());
+        int score;
+        if (medianRtt <= 20)       score = 100;
+        else if (medianRtt >= 300) score = 0;
+        else score = (int)Math.Round(100 - (medianRtt - 20) / 280.0 * 100);
+
+        return new PerformanceCategoryScore("Red", score, $"{medianRtt} ms hasta 1.1.1.1");
+    }
+
+    // ── RAM (snapshot — muy estable) ─────────────────────────────────────────
+
+    private static PerformanceCategoryScore MeasureRam()
+    {
+        var status = new MEMORYSTATUSEX();
+        if (!GlobalMemoryStatusEx(status))
+            return new PerformanceCategoryScore("Memoria", 50, "No se pudo medir");
+
+        var load    = (int)status.dwMemoryLoad;
+        var totalGb = status.ullTotalPhys / 1024.0 / 1024.0 / 1024.0;
+        var availGb = status.ullAvailPhys / 1024.0 / 1024.0 / 1024.0;
+        var score   = Math.Clamp(100 - load, 0, 100);
+        return new PerformanceCategoryScore(
+            "Memoria", score,
+            $"{load}% en uso ({availGb:0.0} GB libres de {totalGb:0.0} GB)");
+    }
+
+    // ── Disco (snapshot — muy estable) ───────────────────────────────────────
 
     private static PerformanceCategoryScore MeasureDisk()
     {
         try
         {
-            var sys = Path.GetPathRoot(Environment.SystemDirectory) ?? "C:\\";
+            var sys   = Path.GetPathRoot(Environment.SystemDirectory) ?? "C:\\";
             var drive = new DriveInfo(sys);
             if (!drive.IsReady)
                 return new PerformanceCategoryScore("Disco", 50, "Disco no listo");
 
-            var totalGb = drive.TotalSize / 1024.0 / 1024.0 / 1024.0;
-            var freeGb = drive.AvailableFreeSpace / 1024.0 / 1024.0 / 1024.0;
+            var totalGb = drive.TotalSize            / 1024.0 / 1024.0 / 1024.0;
+            var freeGb  = drive.AvailableFreeSpace   / 1024.0 / 1024.0 / 1024.0;
             var freePct = freeGb / totalGb * 100.0;
 
             int score;
@@ -175,7 +248,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ---- Procesos ----------------------------------------------------------
+    // ── Procesos (snapshot — moderadamente estable) ──────────────────────────
 
     private static PerformanceCategoryScore MeasureProcesses()
     {
@@ -183,7 +256,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         {
             var count = Process.GetProcesses().Length;
             int score;
-            if (count <= 80) score = 100;
+            if (count <= 80)       score = 100;
             else if (count >= 300) score = 0;
             else score = (int)Math.Round(100 - (count - 80) / 220.0 * 100);
 
@@ -195,7 +268,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ---- Apps al inicio ----------------------------------------------------
+    // ── Apps de inicio (snapshot — muy estable) ──────────────────────────────
 
     private static PerformanceCategoryScore MeasureStartup()
     {
@@ -203,7 +276,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         {
             var count = CountStartupEntries();
             int score;
-            if (count <= 8) score = 100;
+            if (count <= 8)       score = 100;
             else if (count >= 30) score = 0;
             else score = (int)Math.Round(100 - (count - 8) / 22.0 * 100);
 
@@ -231,7 +304,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
             try
             {
                 using var root = RegistryKey.OpenBaseKey(hive, RegistryView.Registry64);
-                using var key = root.OpenSubKey(path);
+                using var key  = root.OpenSubKey(path);
                 if (key is null) continue;
                 total += key.GetValueNames().Length;
             }
@@ -240,7 +313,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         return total;
     }
 
-    // ---- Temp --------------------------------------------------------------
+    // ── Temp (snapshot — estable) ────────────────────────────────────────────
 
     private static PerformanceCategoryScore MeasureTemp(CancellationToken ct)
     {
@@ -266,7 +339,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
 
             var mb = bytes / 1024.0 / 1024.0;
             int score;
-            if (mb <= 0) score = 100;
+            if (mb <= 0)         score = 100;
             else if (mb >= 2000) score = 0;
             else score = (int)Math.Round(100 - mb / 2000.0 * 100);
 
@@ -282,33 +355,20 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ---- Red (ping Cloudflare) --------------------------------------------
+    // ── Helpers matemáticos ──────────────────────────────────────────────────
 
-    private static PerformanceCategoryScore MeasureNetwork(CancellationToken ct)
+    /// <summary>Devuelve la mediana de una lista de valores. La lista puede estar desordenada.</summary>
+    private static double Median(List<double> values)
     {
-        try
-        {
-            using var ping = new Ping();
-            var reply = ping.Send("1.1.1.1", timeout: 1500);
-            if (reply.Status != IPStatus.Success)
-                return new PerformanceCategoryScore("Red", 30, $"No responde ({reply.Status})");
-
-            var rtt = reply.RoundtripTime;
-            // <=20ms = 100, >=300ms = 0, lineal en medio.
-            int score;
-            if (rtt <= 20) score = 100;
-            else if (rtt >= 300) score = 0;
-            else score = (int)Math.Round(100 - (rtt - 20) / 280.0 * 100);
-
-            return new PerformanceCategoryScore("Red", score, $"{rtt} ms hasta 1.1.1.1");
-        }
-        catch (Exception ex)
-        {
-            return new PerformanceCategoryScore("Red", 50, $"No medible: {ex.Message}");
-        }
+        if (values.Count == 0) return 0;
+        var sorted = values.OrderBy(v => v).ToList();
+        int mid = sorted.Count / 2;
+        return sorted.Count % 2 == 0
+            ? (sorted[mid - 1] + sorted[mid]) / 2.0
+            : sorted[mid];
     }
 
-    // ---- P/Invoke ----------------------------------------------------------
+    // ── P/Invoke ─────────────────────────────────────────────────────────────
 
     [StructLayout(LayoutKind.Sequential)]
     private struct FILETIME
@@ -317,7 +377,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         public uint dwHighDateTime;
     }
 
-    private static ulong FileTimeToUInt64(FILETIME ft) =>
+    private static ulong ToUInt64(FILETIME ft) =>
         ((ulong)ft.dwHighDateTime << 32) | ft.dwLowDateTime;
 
     [DllImport("kernel32.dll", SetLastError = true)]

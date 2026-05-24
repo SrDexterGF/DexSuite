@@ -27,6 +27,12 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <conv:KeyToTranslationConverter x:Key="Loc"/>
 
+        <!-- Converters del historial interno (F5.4) -->
+        <conv:LogLevelToBrushConverter    x:Key="LogLevelBrush"/>
+        <conv:LogLevelToTextConverter     x:Key="LogLevelText"/>
+        <conv:LogCategoryToTextConverter  x:Key="LogCategoryText"/>
+        <conv:UtcToLocalTimeConverter     x:Key="UtcToLocalTime"/>
+
         <!-- ===== Sidebar: nav items con profundidad, acento cian y glow ===== -->
         <Style x:Key="NavItemStyle" TargetType="RadioButton">
             <Setter Property="Margin" Value="8,2"/>
@@ -654,9 +660,32 @@
                                                       Opacity="0.6"/>
                                         <ui:TextBlock Text="{Binding ScoreBefore.Verdict, Converter={StaticResource Loc}}"
                                                       FontTypography="TitleLarge"/>
-                                        <ui:TextBlock Text="{Binding ScoreBefore.Timestamp, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}"
-                                                      Opacity="0.55"
-                                                      Margin="0,2,0,0"/>
+                                        <!-- Timestamp + badge "sesión anterior" si baseline es del disco -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <ui:TextBlock Text="{Binding BaselineTimestampLabel}"
+                                                          Opacity="0.6"
+                                                          FontSize="12"/>
+                                            <!-- Badge "sesión anterior" solo si IsBaselineFromFile -->
+                                            <Border Margin="8,0,0,0"
+                                                    Background="#FF1E3A5F"
+                                                    CornerRadius="4"
+                                                    Padding="6,2"
+                                                    VerticalAlignment="Center">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsBaselineFromFile}" Value="True">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <TextBlock Text="{loc:T Key=Score.BaselineFromFile}"
+                                                           FontSize="10"
+                                                           Foreground="#FF7AB8F5"/>
+                                            </Border>
+                                        </StackPanel>
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="2" VerticalAlignment="Center"
@@ -1237,33 +1266,200 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Margin="24,20,24,12">
-                        <ui:TextBlock Text="{loc:T Key=Log.Title}"
-                                      FontTypography="TitleLarge"/>
-                        <ui:TextBlock Text="{loc:T Key=Log.Subtitle}"
-                                      Opacity="0.65"
-                                      TextWrapping="Wrap"
-                                      Margin="0,2,0,0"/>
-                    </StackPanel>
+                    <!-- Header con título + acciones (Refrescar / Vaciar / Exportar) -->
+                    <DockPanel Grid.Row="0" Margin="24,20,24,12">
+                        <StackPanel DockPanel.Dock="Right"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <ui:Button Appearance="Secondary"
+                                       Content="{loc:T Key=Log.Refresh}"
+                                       Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
+                                       Command="{Binding RefreshAppLogCommand}"
+                                       Margin="0,0,8,0"/>
+                            <ui:Button Appearance="Secondary"
+                                       Content="{loc:T Key=Log.Export}"
+                                       Icon="{ui:SymbolIcon Symbol=ArrowDownload24}"
+                                       Command="{Binding ExportAppLogCommand}"
+                                       Margin="0,0,8,0"/>
+                            <ui:Button Appearance="Caution"
+                                       Content="{loc:T Key=Log.ClearAll}"
+                                       Icon="{ui:SymbolIcon Symbol=Delete24}"
+                                       Command="{Binding ClearAppLogCommand}"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <ui:TextBlock Text="{loc:T Key=Log.Title}"
+                                          FontTypography="TitleLarge"/>
+                            <ui:TextBlock Text="{loc:T Key=Log.Subtitle}"
+                                          Opacity="0.65"
+                                          TextWrapping="Wrap"
+                                          Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </DockPanel>
 
-                    <Border Grid.Row="1"
-                            Margin="24,0,24,0"
-                            Background="{DynamicResource ControlFillColorDefaultBrush}"
-                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                            BorderThickness="1"
-                            CornerRadius="6">
-                        <TextBox Text="{Binding OutputLog, Mode=OneWay}"
-                                 IsReadOnly="True"
-                                 AcceptsReturn="True"
-                                 VerticalScrollBarVisibility="Auto"
-                                 HorizontalScrollBarVisibility="Auto"
-                                 Background="Transparent"
-                                 BorderThickness="0"
-                                 FontFamily="Consolas"
-                                 FontSize="12"
-                                 Padding="12"/>
-                    </Border>
+                    <!-- TabControl: Historial (DataGrid persistido) + Salida en directo -->
+                    <TabControl Grid.Row="1"
+                                Margin="24,0,24,0"
+                                Background="Transparent"
+                                BorderThickness="0">
 
+                        <!-- TAB 1: Historial interno (persistido en SQLite) -->
+                        <TabItem Header="{loc:T Key=Log.Tab.History}">
+                            <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Padding="0">
+                                <Grid>
+                                    <!-- Cabecera de columnas estilo "tabla" -->
+                                    <Grid VerticalAlignment="Top" Height="34"
+                                          Background="{DynamicResource SubtleFillColorTertiaryBrush}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="140"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{loc:T Key=Log.Column.Time}"
+                                                   Margin="14,0,0,0" VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" FontSize="12" Opacity="0.75"/>
+                                        <TextBlock Grid.Column="1" Text="{loc:T Key=Log.Column.Level}"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" FontSize="12" Opacity="0.75"/>
+                                        <TextBlock Grid.Column="2" Text="{loc:T Key=Log.Column.Category}"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" FontSize="12" Opacity="0.75"/>
+                                        <TextBlock Grid.Column="3" Text="{loc:T Key=Log.Column.Message}"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="SemiBold" FontSize="12" Opacity="0.75"/>
+                                    </Grid>
+
+                                    <!-- Lista virtualizada de entradas -->
+                                    <ScrollViewer Margin="0,34,0,0"
+                                                  VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Disabled">
+                                        <ItemsControl ItemsSource="{Binding AppLogEntries}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate DataType="{x:Type mdl:LogEntry}">
+                                                    <Grid Margin="0,2" Height="36">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="130"/>
+                                                            <ColumnDefinition Width="100"/>
+                                                            <ColumnDefinition Width="140"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <!-- Hora local -->
+                                                        <TextBlock Grid.Column="0"
+                                                                   Text="{Binding TimestampUtc, Converter={StaticResource UtcToLocalTime}}"
+                                                                   Margin="14,0,0,0"
+                                                                   VerticalAlignment="Center"
+                                                                   FontFamily="Consolas"
+                                                                   FontSize="12"
+                                                                   Opacity="0.85"/>
+
+                                                        <!-- Badge de nivel coloreado -->
+                                                        <Border Grid.Column="1"
+                                                                Background="{Binding Level, Converter={StaticResource LogLevelBrush}}"
+                                                                CornerRadius="4"
+                                                                Padding="8,2"
+                                                                Margin="0,6,8,6"
+                                                                HorizontalAlignment="Left"
+                                                                VerticalAlignment="Center">
+                                                            <TextBlock Text="{Binding Level, Converter={StaticResource LogLevelText}}"
+                                                                       FontSize="11"
+                                                                       FontWeight="SemiBold"
+                                                                       Foreground="White"/>
+                                                        </Border>
+
+                                                        <!-- Categoría localizada -->
+                                                        <TextBlock Grid.Column="2"
+                                                                   Text="{Binding Category, Converter={StaticResource LogCategoryText}}"
+                                                                   VerticalAlignment="Center"
+                                                                   FontSize="12"
+                                                                   Opacity="0.85"/>
+
+                                                        <!-- Mensaje (con tooltip de details si existen) -->
+                                                        <TextBlock Grid.Column="3"
+                                                                   Text="{Binding Message}"
+                                                                   VerticalAlignment="Center"
+                                                                   TextTrimming="CharacterEllipsis"
+                                                                   FontSize="13"
+                                                                   Margin="0,0,12,0"
+                                                                   ToolTip="{Binding Details}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                            <!-- Separador sutil entre filas -->
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style TargetType="ContentPresenter">
+                                                    <Setter Property="Margin" Value="0"/>
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+
+                                    <!-- Overlay "cargando" -->
+                                    <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                            Visibility="{Binding IsLoadingAppLog, Converter={StaticResource BoolToVis}}">
+                                        <StackPanel HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Orientation="Horizontal">
+                                            <ui:ProgressRing IsIndeterminate="True"
+                                                             Width="22" Height="22"
+                                                             Margin="0,0,12,0"/>
+                                            <TextBlock Text="{loc:T Key=Log.Loading}"
+                                                       VerticalAlignment="Center"
+                                                       Opacity="0.85"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Estado vacío (sin entradas) -->
+                                    <StackPanel HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Visibility="{Binding IsAppLogEmpty, Converter={StaticResource BoolToVis}}">
+                                        <ui:SymbolIcon Symbol="DocumentText24"
+                                                       FontSize="40"
+                                                       Opacity="0.35"
+                                                       HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{loc:T Key=Log.Empty.Title}"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   HorizontalAlignment="Center"
+                                                   Margin="0,8,0,0"
+                                                   Opacity="0.85"/>
+                                        <TextBlock Text="{loc:T Key=Log.Empty.Subtitle}"
+                                                   HorizontalAlignment="Center"
+                                                   Margin="0,4,0,0"
+                                                   Opacity="0.6"
+                                                   TextWrapping="Wrap"
+                                                   MaxWidth="320"
+                                                   TextAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </TabItem>
+
+                        <!-- TAB 2: Salida en directo (output del .bat en ejecución) -->
+                        <TabItem Header="{loc:T Key=Log.Tab.LiveOutput}">
+                            <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="6">
+                                <TextBox Text="{Binding OutputLog, Mode=OneWay}"
+                                         IsReadOnly="True"
+                                         AcceptsReturn="True"
+                                         VerticalScrollBarVisibility="Auto"
+                                         HorizontalScrollBarVisibility="Auto"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         FontFamily="Consolas"
+                                         FontSize="12"
+                                         Padding="12"/>
+                            </Border>
+                        </TabItem>
+                    </TabControl>
+
+                    <!-- Pie con StatusMessage + Cancelar / Ejecutar -->
                     <Border Grid.Row="2"
                             Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
                             BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"

@@ -1316,6 +1316,516 @@
       "de": "Spezifische Optimierungen, um die Gaming-Leistung an die absolute Grenze zu treiben",
       "it": "Ottimizzazioni specifiche per portare le prestazioni di gioco al limite assoluto",
       "zh": "将游戏性能推向绝对极限的专项优化"
+    },
+
+    "Log.Tab.History": {
+      "en": "History",
+      "es": "Historial",
+      "gl": "Historial",
+      "ca": "Historial",
+      "eu": "Historia",
+      "pt": "Histórico",
+      "fr": "Historique",
+      "de": "Verlauf",
+      "it": "Cronologia",
+      "zh": "历史记录"
+    },
+    "Log.Tab.LiveOutput": {
+      "en": "Live output",
+      "es": "Salida en directo",
+      "gl": "Saída en directo",
+      "ca": "Sortida en directe",
+      "eu": "Zuzeneko irteera",
+      "pt": "Saída em direto",
+      "fr": "Sortie en direct",
+      "de": "Live-Ausgabe",
+      "it": "Output in diretta",
+      "zh": "实时输出"
+    },
+    "Log.Empty.Title": {
+      "en": "No events yet",
+      "es": "Aún no hay eventos",
+      "gl": "Aínda non hai eventos",
+      "ca": "Encara no hi ha esdeveniments",
+      "eu": "Oraindik ez dago gertaerarik",
+      "pt": "Ainda não há eventos",
+      "fr": "Aucun événement pour l'instant",
+      "de": "Noch keine Ereignisse",
+      "it": "Ancora nessun evento",
+      "zh": "暂无事件"
+    },
+    "Log.Empty.Subtitle": {
+      "en": "Actions you run will appear here automatically.",
+      "es": "Las acciones que ejecutes aparecerán aquí automáticamente.",
+      "gl": "As accións que executes aparecerán aquí automaticamente.",
+      "ca": "Les accions que executis apareixeran aquí automàticament.",
+      "eu": "Egiten dituzun ekintzak hemen agertuko dira automatikoki.",
+      "pt": "As ações que executar aparecerão aqui automaticamente.",
+      "fr": "Les actions que vous lancez apparaîtront ici automatiquement.",
+      "de": "Aktionen, die du ausführst, erscheinen hier automatisch.",
+      "it": "Le azioni che esegui appariranno qui automaticamente.",
+      "zh": "你执行的操作会自动显示在这里。"
+    },
+    "Log.Loading": {
+      "en": "Loading history…",
+      "es": "Cargando historial…",
+      "gl": "Cargando historial…",
+      "ca": "Carregant historial…",
+      "eu": "Historia kargatzen…",
+      "pt": "A carregar histórico…",
+      "fr": "Chargement de l'historique…",
+      "de": "Verlauf wird geladen…",
+      "it": "Caricamento cronologia…",
+      "zh": "正在加载历史记录…"
+    },
+    "Log.Refresh": {
+      "en": "Refresh",
+      "es": "Actualizar",
+      "gl": "Actualizar",
+      "ca": "Actualitza",
+      "eu": "Eguneratu",
+      "pt": "Atualizar",
+      "fr": "Actualiser",
+      "de": "Aktualisieren",
+      "it": "Aggiorna",
+      "zh": "刷新"
+    },
+    "Log.ClearAll": {
+      "en": "Clear history",
+      "es": "Vaciar historial",
+      "gl": "Baleirar historial",
+      "ca": "Buida l'historial",
+      "eu": "Garbitu historia",
+      "pt": "Limpar histórico",
+      "fr": "Vider l'historique",
+      "de": "Verlauf leeren",
+      "it": "Svuota cronologia",
+      "zh": "清空历史记录"
+    },
+    "Log.Export": {
+      "en": "Export to .txt",
+      "es": "Exportar a .txt",
+      "gl": "Exportar a .txt",
+      "ca": "Exporta a .txt",
+      "eu": ".txt-ra esportatu",
+      "pt": "Exportar para .txt",
+      "fr": "Exporter en .txt",
+      "de": "Als .txt exportieren",
+      "it": "Esporta in .txt",
+      "zh": "导出为 .txt"
+    },
+    "Log.Cleared": {
+      "en": "History cleared ({0} entries removed).",
+      "es": "Historial vaciado ({0} entradas eliminadas).",
+      "gl": "Historial baleirado ({0} entradas eliminadas).",
+      "ca": "Historial buidat ({0} entrades eliminades).",
+      "eu": "Historia garbitu da ({0} sarrera ezabatuta).",
+      "pt": "Histórico limpo ({0} entradas eliminadas).",
+      "fr": "Historique vidé ({0} entrées supprimées).",
+      "de": "Verlauf geleert ({0} Einträge entfernt).",
+      "it": "Cronologia svuotata ({0} voci rimosse).",
+      "zh": "历史记录已清空（删除 {0} 条）。"
+    },
+    "Log.ClearError": {
+      "en": "Could not clear history: {0}",
+      "es": "No se pudo vaciar el historial: {0}",
+      "gl": "Non se puido baleirar o historial: {0}",
+      "ca": "No s'ha pogut buidar l'historial: {0}",
+      "eu": "Ezin izan da historia garbitu: {0}",
+      "pt": "Não foi possível limpar o histórico: {0}",
+      "fr": "Impossible de vider l'historique : {0}",
+      "de": "Verlauf konnte nicht geleert werden: {0}",
+      "it": "Impossibile svuotare la cronologia: {0}",
+      "zh": "无法清空历史记录：{0}"
+    },
+    "Log.ExportSuccess": {
+      "en": "History exported to {0}",
+      "es": "Historial exportado a {0}",
+      "gl": "Historial exportado a {0}",
+      "ca": "Historial exportat a {0}",
+      "eu": "Historia hona esportatu da: {0}",
+      "pt": "Histórico exportado para {0}",
+      "fr": "Historique exporté vers {0}",
+      "de": "Verlauf exportiert nach {0}",
+      "it": "Cronologia esportata in {0}",
+      "zh": "历史记录已导出至 {0}"
+    },
+    "Log.ExportError": {
+      "en": "Export failed: {0}",
+      "es": "Error al exportar: {0}",
+      "gl": "Erro ao exportar: {0}",
+      "ca": "Error en exportar: {0}",
+      "eu": "Esportazio-errorea: {0}",
+      "pt": "Falha ao exportar: {0}",
+      "fr": "Échec de l'export : {0}",
+      "de": "Export fehlgeschlagen: {0}",
+      "it": "Esportazione non riuscita: {0}",
+      "zh": "导出失败：{0}"
+    },
+    "Log.Column.Time": {
+      "en": "Time",
+      "es": "Hora",
+      "gl": "Hora",
+      "ca": "Hora",
+      "eu": "Ordua",
+      "pt": "Hora",
+      "fr": "Heure",
+      "de": "Zeit",
+      "it": "Ora",
+      "zh": "时间"
+    },
+    "Log.Column.Level": {
+      "en": "Level",
+      "es": "Nivel",
+      "gl": "Nivel",
+      "ca": "Nivell",
+      "eu": "Maila",
+      "pt": "Nível",
+      "fr": "Niveau",
+      "de": "Stufe",
+      "it": "Livello",
+      "zh": "级别"
+    },
+    "Log.Column.Category": {
+      "en": "Category",
+      "es": "Categoría",
+      "gl": "Categoría",
+      "ca": "Categoria",
+      "eu": "Kategoria",
+      "pt": "Categoria",
+      "fr": "Catégorie",
+      "de": "Kategorie",
+      "it": "Categoria",
+      "zh": "类别"
+    },
+    "Log.Column.Message": {
+      "en": "Message",
+      "es": "Mensaje",
+      "gl": "Mensaxe",
+      "ca": "Missatge",
+      "eu": "Mezua",
+      "pt": "Mensagem",
+      "fr": "Message",
+      "de": "Nachricht",
+      "it": "Messaggio",
+      "zh": "消息"
+    },
+
+    "Log.Level.Info": {
+      "en": "Info", "es": "Info", "gl": "Info", "ca": "Info", "eu": "Info",
+      "pt": "Info", "fr": "Info", "de": "Info", "it": "Info", "zh": "信息"
+    },
+    "Log.Level.Success": {
+      "en": "Success", "es": "Éxito", "gl": "Éxito", "ca": "Èxit", "eu": "Arrakasta",
+      "pt": "Sucesso", "fr": "Succès", "de": "Erfolg", "it": "Successo", "zh": "成功"
+    },
+    "Log.Level.Warning": {
+      "en": "Warning", "es": "Aviso", "gl": "Aviso", "ca": "Avís", "eu": "Oharra",
+      "pt": "Aviso", "fr": "Avertissement", "de": "Warnung", "it": "Avviso", "zh": "警告"
+    },
+    "Log.Level.Error": {
+      "en": "Error", "es": "Error", "gl": "Erro", "ca": "Error", "eu": "Errorea",
+      "pt": "Erro", "fr": "Erreur", "de": "Fehler", "it": "Errore", "zh": "错误"
+    },
+
+    "Log.Category.App": {
+      "en": "App", "es": "App", "gl": "App", "ca": "App", "eu": "Aplikazioa",
+      "pt": "App", "fr": "App", "de": "App", "it": "App", "zh": "应用"
+    },
+    "Log.Category.Run": {
+      "en": "Run", "es": "Ejecución", "gl": "Execución", "ca": "Execució", "eu": "Exekuzioa",
+      "pt": "Execução", "fr": "Exécution", "de": "Ausführung", "it": "Esecuzione", "zh": "执行"
+    },
+    "Log.Category.QuickClean": {
+      "en": "Quick clean", "es": "Limpieza rápida", "gl": "Limpeza rápida", "ca": "Neteja ràpida",
+      "eu": "Garbiketa azkarra", "pt": "Limpeza rápida", "fr": "Nettoyage rapide",
+      "de": "Schnellbereinigung", "it": "Pulizia rapida", "zh": "快速清理"
+    },
+    "Log.Category.Analyze": {
+      "en": "Performance", "es": "Rendimiento", "gl": "Rendemento", "ca": "Rendiment",
+      "eu": "Errendimendua", "pt": "Desempenho", "fr": "Performance",
+      "de": "Leistung", "it": "Prestazioni", "zh": "性能"
+    },
+    "Log.Category.Update": {
+      "en": "Update", "es": "Actualización", "gl": "Actualización", "ca": "Actualització",
+      "eu": "Eguneraketa", "pt": "Atualização", "fr": "Mise à jour",
+      "de": "Update", "it": "Aggiornamento", "zh": "更新"
+    },
+    "Log.Category.Settings": {
+      "en": "Settings", "es": "Ajustes", "gl": "Axustes", "ca": "Configuració",
+      "eu": "Ezarpenak", "pt": "Definições", "fr": "Paramètres",
+      "de": "Einstellungen", "it": "Impostazioni", "zh": "设置"
+    },
+    "Log.Category.Language": {
+      "en": "Language", "es": "Idioma", "gl": "Idioma", "ca": "Idioma",
+      "eu": "Hizkuntza", "pt": "Idioma", "fr": "Langue",
+      "de": "Sprache", "it": "Lingua", "zh": "语言"
+    },
+
+    "Log.Event.AppStarted": {
+      "en": "DexSuite started (v{0}).",
+      "es": "DexSuite iniciado (v{0}).",
+      "gl": "DexSuite iniciado (v{0}).",
+      "ca": "DexSuite iniciat (v{0}).",
+      "eu": "DexSuite abiarazi da (v{0}).",
+      "pt": "DexSuite iniciado (v{0}).",
+      "fr": "DexSuite démarré (v{0}).",
+      "de": "DexSuite gestartet (v{0}).",
+      "it": "DexSuite avviato (v{0}).",
+      "zh": "DexSuite 已启动（v{0}）。"
+    },
+    "Log.Event.RunStarted": {
+      "en": "Optimization started with {0} modules.",
+      "es": "Optimización iniciada con {0} módulos.",
+      "gl": "Optimización iniciada con {0} módulos.",
+      "ca": "Optimització iniciada amb {0} mòduls.",
+      "eu": "Optimizazioa hasi da {0} modulurekin.",
+      "pt": "Otimização iniciada com {0} módulos.",
+      "fr": "Optimisation lancée avec {0} modules.",
+      "de": "Optimierung mit {0} Modulen gestartet.",
+      "it": "Ottimizzazione avviata con {0} moduli.",
+      "zh": "已使用 {0} 个模块开始优化。"
+    },
+    "Log.Event.RunFinished": {
+      "en": "Optimization finished ({0} modules).",
+      "es": "Optimización finalizada ({0} módulos).",
+      "gl": "Optimización rematada ({0} módulos).",
+      "ca": "Optimització finalitzada ({0} mòduls).",
+      "eu": "Optimizazioa amaitu da ({0} modulu).",
+      "pt": "Otimização concluída ({0} módulos).",
+      "fr": "Optimisation terminée ({0} modules).",
+      "de": "Optimierung abgeschlossen ({0} Module).",
+      "it": "Ottimizzazione completata ({0} moduli).",
+      "zh": "优化完成（{0} 个模块）。"
+    },
+    "Log.Event.RunCancelled": {
+      "en": "Optimization cancelled by user.",
+      "es": "Optimización cancelada por el usuario.",
+      "gl": "Optimización cancelada polo usuario.",
+      "ca": "Optimització cancel·lada per l'usuari.",
+      "eu": "Erabiltzaileak optimizazioa bertan behera utzi du.",
+      "pt": "Otimização cancelada pelo utilizador.",
+      "fr": "Optimisation annulée par l'utilisateur.",
+      "de": "Optimierung vom Benutzer abgebrochen.",
+      "it": "Ottimizzazione annullata dall'utente.",
+      "zh": "用户已取消优化。"
+    },
+    "Log.Event.RunFailed": {
+      "en": "Optimization failed: {0}",
+      "es": "Error en la optimización: {0}",
+      "gl": "Erro na optimización: {0}",
+      "ca": "Error en l'optimització: {0}",
+      "eu": "Optimizazio-errorea: {0}",
+      "pt": "Falha na otimização: {0}",
+      "fr": "Échec de l'optimisation : {0}",
+      "de": "Optimierung fehlgeschlagen: {0}",
+      "it": "Ottimizzazione non riuscita: {0}",
+      "zh": "优化失败：{0}"
+    },
+    "Log.Event.QuickCleanFinished": {
+      "en": "Quick clean: {0} MB freed, {1} files removed.",
+      "es": "Limpieza rápida: {0} MB liberados, {1} archivos eliminados.",
+      "gl": "Limpeza rápida: {0} MB liberados, {1} arquivos eliminados.",
+      "ca": "Neteja ràpida: {0} MB alliberats, {1} arxius eliminats.",
+      "eu": "Garbiketa azkarra: {0} MB askatu, {1} fitxategi ezabatu.",
+      "pt": "Limpeza rápida: {0} MB libertados, {1} ficheiros eliminados.",
+      "fr": "Nettoyage rapide : {0} Mo libérés, {1} fichiers supprimés.",
+      "de": "Schnellbereinigung: {0} MB freigegeben, {1} Dateien entfernt.",
+      "it": "Pulizia rapida: {0} MB liberati, {1} file rimossi.",
+      "zh": "快速清理：释放 {0} MB，删除 {1} 个文件。"
+    },
+    "Log.Event.QuickCleanFailed": {
+      "en": "Quick clean failed: {0}",
+      "es": "Error en limpieza rápida: {0}",
+      "gl": "Erro na limpeza rápida: {0}",
+      "ca": "Error en neteja ràpida: {0}",
+      "eu": "Garbiketa azkarraren errorea: {0}",
+      "pt": "Falha na limpeza rápida: {0}",
+      "fr": "Échec du nettoyage rapide : {0}",
+      "de": "Schnellbereinigung fehlgeschlagen: {0}",
+      "it": "Pulizia rapida non riuscita: {0}",
+      "zh": "快速清理失败：{0}"
+    },
+    "Log.Event.AnalyzeBaseline": {
+      "en": "Baseline score: {0} ({1}).",
+      "es": "Puntuación inicial: {0} ({1}).",
+      "gl": "Puntuación inicial: {0} ({1}).",
+      "ca": "Puntuació inicial: {0} ({1}).",
+      "eu": "Hasierako puntuazioa: {0} ({1}).",
+      "pt": "Pontuação inicial: {0} ({1}).",
+      "fr": "Score initial : {0} ({1}).",
+      "de": "Anfangswert: {0} ({1}).",
+      "it": "Punteggio iniziale: {0} ({1}).",
+      "zh": "基准分数：{0}（{1}）。"
+    },
+    "Log.Event.AnalyzeFinal": {
+      "en": "Final score: {0} ({1}). Variation: {2}{3}.",
+      "es": "Puntuación final: {0} ({1}). Variación: {2}{3}.",
+      "gl": "Puntuación final: {0} ({1}). Variación: {2}{3}.",
+      "ca": "Puntuació final: {0} ({1}). Variació: {2}{3}.",
+      "eu": "Azken puntuazioa: {0} ({1}). Aldakuntza: {2}{3}.",
+      "pt": "Pontuação final: {0} ({1}). Variação: {2}{3}.",
+      "fr": "Score final : {0} ({1}). Variation : {2}{3}.",
+      "de": "Endwert: {0} ({1}). Veränderung: {2}{3}.",
+      "it": "Punteggio finale: {0} ({1}). Variazione: {2}{3}.",
+      "zh": "最终分数：{0}（{1}）。变化：{2}{3}。"
+    },
+    "Log.Event.AnalyzeFailed": {
+      "en": "Performance test failed: {0}",
+      "es": "Error en el test de rendimiento: {0}",
+      "gl": "Erro no test de rendemento: {0}",
+      "ca": "Error al test de rendiment: {0}",
+      "eu": "Errendimendu-probaren errorea: {0}",
+      "pt": "Falha no teste de desempenho: {0}",
+      "fr": "Échec du test de performance : {0}",
+      "de": "Leistungstest fehlgeschlagen: {0}",
+      "it": "Test prestazioni non riuscito: {0}",
+      "zh": "性能测试失败：{0}"
+    },
+    "Log.Event.UpdateFound": {
+      "en": "New version available: v{0}.",
+      "es": "Nueva versión disponible: v{0}.",
+      "gl": "Nova versión dispoñible: v{0}.",
+      "ca": "Nova versió disponible: v{0}.",
+      "eu": "Bertsio berria eskuragarri: v{0}.",
+      "pt": "Nova versão disponível: v{0}.",
+      "fr": "Nouvelle version disponible : v{0}.",
+      "de": "Neue Version verfügbar: v{0}.",
+      "it": "Nuova versione disponibile: v{0}.",
+      "zh": "有可用的新版本：v{0}。"
+    },
+    "Log.Event.UpdateNone": {
+      "en": "Already up to date (v{0}).",
+      "es": "Ya estás en la última versión (v{0}).",
+      "gl": "Xa estás na última versión (v{0}).",
+      "ca": "Ja estàs a l'última versió (v{0}).",
+      "eu": "Azken bertsioan zaude jada (v{0}).",
+      "pt": "Já estás na versão mais recente (v{0}).",
+      "fr": "Vous avez déjà la dernière version (v{0}).",
+      "de": "Du hast bereits die neueste Version (v{0}).",
+      "it": "Hai già l'ultima versione (v{0}).",
+      "zh": "已是最新版本（v{0}）。"
+    },
+    "Log.Event.UpdateCheckFailed": {
+      "en": "Update check failed: {0}",
+      "es": "Error al buscar actualizaciones: {0}",
+      "gl": "Erro ao buscar actualizacións: {0}",
+      "ca": "Error en cercar actualitzacions: {0}",
+      "eu": "Errorea eguneraketak bilatzean: {0}",
+      "pt": "Erro ao procurar atualizações: {0}",
+      "fr": "Échec de la recherche de mises à jour : {0}",
+      "de": "Suche nach Updates fehlgeschlagen: {0}",
+      "it": "Errore nella ricerca aggiornamenti: {0}",
+      "zh": "检查更新失败：{0}"
+    },
+    "Log.Event.UpdateApplied": {
+      "en": "Update v{0} applied.",
+      "es": "Actualización v{0} aplicada.",
+      "gl": "Actualización v{0} aplicada.",
+      "ca": "Actualització v{0} aplicada.",
+      "eu": "v{0} eguneraketa aplikatu da.",
+      "pt": "Atualização v{0} aplicada.",
+      "fr": "Mise à jour v{0} appliquée.",
+      "de": "Update v{0} angewendet.",
+      "it": "Aggiornamento v{0} applicato.",
+      "zh": "已应用 v{0} 更新。"
+    },
+    "Log.Event.UpdateApplyFailed": {
+      "en": "Could not apply update: {0}",
+      "es": "No se pudo aplicar la actualización: {0}",
+      "gl": "Non se puido aplicar a actualización: {0}",
+      "ca": "No s'ha pogut aplicar l'actualització: {0}",
+      "eu": "Ezin izan da eguneraketa aplikatu: {0}",
+      "pt": "Não foi possível aplicar a atualização: {0}",
+      "fr": "Impossible d'appliquer la mise à jour : {0}",
+      "de": "Update konnte nicht angewendet werden: {0}",
+      "it": "Impossibile applicare l'aggiornamento: {0}",
+      "zh": "无法应用更新：{0}"
+    },
+    "Log.Event.LanguageChanged": {
+      "en": "Language changed to {0}.",
+      "es": "Idioma cambiado a {0}.",
+      "gl": "Idioma cambiado a {0}.",
+      "ca": "Idioma canviat a {0}.",
+      "eu": "Hizkuntza {0}-ra aldatu da.",
+      "pt": "Idioma alterado para {0}.",
+      "fr": "Langue changée en {0}.",
+      "de": "Sprache geändert zu {0}.",
+      "it": "Lingua cambiata in {0}.",
+      "zh": "语言已切换为 {0}。"
+    },
+    "Log.Event.TierChanged": {
+      "en": "Active plan changed to {0}.",
+      "es": "Plan activo cambiado a {0}.",
+      "gl": "Plan activo cambiado a {0}.",
+      "ca": "Pla actiu canviat a {0}.",
+      "eu": "Plan aktiboa {0}-ra aldatu da.",
+      "pt": "Plano ativo alterado para {0}.",
+      "fr": "Plan actif changé en {0}.",
+      "de": "Aktiver Plan geändert zu {0}.",
+      "it": "Piano attivo cambiato in {0}.",
+      "zh": "已切换至 {0} 套餐。"
+    },
+    "Log.Event.SettingsReset": {
+      "en": "Settings reset to defaults.",
+      "es": "Ajustes restablecidos a los valores por defecto.",
+      "gl": "Axustes restablecidos aos valores por defecto.",
+      "ca": "Configuració restablerta als valors per defecte.",
+      "eu": "Ezarpenak balio lehenetsietara berrezarri dira.",
+      "pt": "Definições repostas para os valores predefinidos.",
+      "fr": "Paramètres réinitialisés aux valeurs par défaut.",
+      "de": "Einstellungen auf Standardwerte zurückgesetzt.",
+      "it": "Impostazioni ripristinate ai valori predefiniti.",
+      "zh": "已将设置恢复为默认值。"
+    },
+    "Score.LoadedAt": {
+      "en": "Saved baseline — {0}",
+      "es": "Baseline guardado — {0}",
+      "gl": "Baseline gardado — {0}",
+      "ca": "Baseline guardat — {0}",
+      "eu": "Gordetako baseline — {0}",
+      "pt": "Baseline guardado — {0}",
+      "fr": "Référence enregistrée — {0}",
+      "de": "Gespeicherter Referenzwert — {0}",
+      "it": "Baseline salvato — {0}",
+      "zh": "已保存的基准 — {0}"
+    },
+    "Score.MeasuredAt": {
+      "en": "Measured — {0}",
+      "es": "Medido — {0}",
+      "gl": "Medido — {0}",
+      "ca": "Mesurat — {0}",
+      "eu": "Neurtua — {0}",
+      "pt": "Medido — {0}",
+      "fr": "Mesuré — {0}",
+      "de": "Gemessen — {0}",
+      "it": "Misurato — {0}",
+      "zh": "测量于 — {0}"
+    },
+    "Score.BaselineFromFile": {
+      "en": "Loaded from previous session",
+      "es": "Cargado de sesión anterior",
+      "gl": "Cargado de sesión anterior",
+      "ca": "Carregat de sessió anterior",
+      "eu": "Aurreko saioko kargua",
+      "pt": "Carregado de sessão anterior",
+      "fr": "Chargé depuis une session précédente",
+      "de": "Aus vorheriger Sitzung geladen",
+      "it": "Caricato dalla sessione precedente",
+      "zh": "从上次会话加载"
+    },
+
+    "Log.Event.HistoryCleared": {
+      "en": "History cleared ({0} entries).",
+      "es": "Historial vaciado ({0} entradas).",
+      "gl": "Historial baleirado ({0} entradas).",
+      "ca": "Historial buidat ({0} entrades).",
+      "eu": "Historia garbitu da ({0} sarrera).",
+      "pt": "Histórico limpo ({0} entradas).",
+      "fr": "Historique vidé ({0} entrées).",
+      "de": "Verlauf geleert ({0} Einträge).",
+      "it": "Cronologia svuotata ({0} voci).",
+      "zh": "历史记录已清空（{0} 条）。"
     }
   }
 }

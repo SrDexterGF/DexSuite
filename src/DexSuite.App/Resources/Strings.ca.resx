@@ -100,9 +100,147 @@ Després podràs optimitzar i analitzar de nou per veure la diferència.</value>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Què vols fer?</value>
   </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>Rendiment</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>Neteja ràpida</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>Execució</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>Actualització</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>Buida l'historial</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>Historial buidat ({0} entrades eliminades).</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>No s'ha pogut buidar l'historial: {0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>Nivell</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>Missatge</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>Les accions que executis apareixeran aquí automàticament.</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>Encara no hi ha esdeveniments</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>Puntuació inicial: {0} ({1}).</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>Error al test de rendiment: {0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>Puntuació final: {0} ({1}). Variació: {2}{3}.</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite iniciat (v{0}).</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>Historial buidat ({0} entrades).</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>Idioma canviat a {0}.</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>Error en neteja ràpida: {0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>Neteja ràpida: {0} MB alliberats, {1} arxius eliminats.</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>Optimització cancel·lada per l'usuari.</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>Error en l'optimització: {0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>Optimització finalitzada ({0} mòduls).</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>Optimització iniciada amb {0} mòduls.</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>Configuració restablerta als valors per defecte.</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>Pla actiu canviat a {0}.</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>Actualització v{0} aplicada.</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>No s'ha pogut aplicar l'actualització: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>Error en cercar actualitzacions: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>Nova versió disponible: v{0}.</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>Ja estàs a l'última versió (v{0}).</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>Exporta a .txt</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>Error en exportar: {0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>Historial exportat a {0}</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>Èxit</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>Avís</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>Carregant historial…</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
   <data name="Log.Subtitle" xml:space="preserve">
     <value>Sortida en directe del procés actual.
 S'actualitza en temps real mentre s'executa.</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>Historial</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>Sortida en directe</value>
   </data>
   <data name="Log.Title" xml:space="preserve">
     <value>Registre d'execució</value>
@@ -401,6 +539,15 @@ Passa el ratolí pel xip Segur/Risc per saber per què.</value>
   </data>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Neteja ràpida</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>Carregat de sessió anterior</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>Baseline guardat — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>Mesurat — {0}</value>
   </data>
   <data name="Search.NoResults" xml:space="preserve">
     <value>Sense resultats per a «{0}»</value>

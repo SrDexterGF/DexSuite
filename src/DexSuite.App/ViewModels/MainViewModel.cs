@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DexSuite.App.Models;
@@ -19,6 +20,8 @@ public partial class MainViewModel : ObservableObject
     private readonly ILogger<MainViewModel> _logger;
     private readonly IQuickCleanService _quickClean;
     private readonly ISystemInfoService _systemInfo;
+    private readonly IAppLogService _appLog;
+    private readonly IPerformanceBaselineService _baseline;
 
     private const string DefaultScriptFolder =
         @"C:\Users\mgf74\Documents\Claude Environment W11\DexSuite (Script)";
@@ -94,6 +97,8 @@ public partial class MainViewModel : ObservableObject
             CurrentSection = section;
             if (section == AppSection.Specs && SystemSpecs is null)
                 _ = LoadSystemInfoAsync();
+            if (section == AppSection.Log)
+                _ = RefreshAppLogAsync();
         }
     }
 
@@ -121,6 +126,106 @@ public partial class MainViewModel : ObservableObject
         {
             IsLoadingSpecs = false;
         }
+    }
+
+    // ---- Historial interno (SQLite) -------------------------------------
+
+    /// <summary>Entradas del historial cargadas, más recientes primero.</summary>
+    public ObservableCollection<LogEntry> AppLogEntries { get; } = new();
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasAppLogEntries))]
+    [NotifyPropertyChangedFor(nameof(IsAppLogEmpty))]
+    private bool isLoadingAppLog;
+
+    public bool HasAppLogEntries => AppLogEntries.Count > 0;
+    public bool IsAppLogEmpty    => !IsLoadingAppLog && AppLogEntries.Count == 0;
+
+    [RelayCommand]
+    private async Task RefreshAppLogAsync()
+    {
+        IsLoadingAppLog = true;
+        try
+        {
+            var items = await _appLog.GetRecentAsync(500);
+            AppLogEntries.Clear();
+            foreach (var e in items) AppLogEntries.Add(e);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudo cargar el historial interno");
+        }
+        finally
+        {
+            IsLoadingAppLog = false;
+            OnPropertyChanged(nameof(HasAppLogEntries));
+            OnPropertyChanged(nameof(IsAppLogEmpty));
+        }
+    }
+
+    [RelayCommand]
+    private async Task ClearAppLogAsync()
+    {
+        try
+        {
+            var n = await _appLog.ClearAllAsync();
+            AppLogEntries.Clear();
+            StatusMessage = T("Log.Cleared", n);
+            await _appLog.InfoAsync(AppLogCategory.App, T("Log.Event.HistoryCleared", n));
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = T("Log.ClearError", ex.Message);
+            _logger.LogError(ex, "No se pudo vaciar el historial interno");
+        }
+        OnPropertyChanged(nameof(HasAppLogEntries));
+        OnPropertyChanged(nameof(IsAppLogEmpty));
+    }
+
+    [RelayCommand]
+    private async Task ExportAppLogAsync()
+    {
+        try
+        {
+            var dir = Path.Combine(LogsFolder, "history-exports");
+            var name = $"dexsuite-history-{DateTime.Now:yyyyMMdd-HHmmss}.txt";
+            var target = Path.Combine(dir, name);
+            var finalPath = await _appLog.ExportToTextAsync(target);
+            StatusMessage = T("Log.ExportSuccess", finalPath);
+
+            // Abrir la carpeta destino para que el usuario localice el archivo.
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "explorer.exe",
+                    Arguments = $"/select,\"{finalPath}\"",
+                    UseShellExecute = true,
+                });
+            }
+            catch { /* no crítico */ }
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = T("Log.ExportError", ex.Message);
+            _logger.LogError(ex, "No se pudo exportar el historial interno");
+        }
+    }
+
+    private void OnAppLogEntryAdded(object? sender, LogEntry entry)
+    {
+        // El evento se dispara desde un hilo de pool; marshalling al UI thread.
+        Application.Current?.Dispatcher.BeginInvoke(() =>
+        {
+            AppLogEntries.Insert(0, entry);
+            // Tope visual para no inflar la UI sin límite. Persistido sigue intacto.
+            const int MaxInMemory = 500;
+            while (AppLogEntries.Count > MaxInMemory)
+                AppLogEntries.RemoveAt(AppLogEntries.Count - 1);
+
+            OnPropertyChanged(nameof(HasAppLogEntries));
+            OnPropertyChanged(nameof(IsAppLogEmpty));
+        });
     }
 
     // ---- Búsqueda de módulos --------------------------------------------
@@ -235,7 +340,11 @@ public partial class MainViewModel : ObservableObject
     };
 
     /// <summary>Cada vez que cambia el tier, recalcula qué módulos quedan bloqueados.</summary>
-    partial void OnUserTierChanged(string value) => UpdateModuleLockStates();
+    partial void OnUserTierChanged(string value)
+    {
+        UpdateModuleLockStates();
+        _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.TierChanged", value));
+    }
 
     private void UpdateModuleLockStates()
     {
@@ -307,6 +416,7 @@ public partial class MainViewModel : ObservableObject
         UserTier = "Pro";
         ScriptFolder = DefaultScriptFolder;
         StatusMessage = T("Status.SettingsReset");
+        _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.SettingsReset"));
     }
 
     // ---- Actualizaciones -------------------------------------------------
@@ -358,6 +468,8 @@ public partial class MainViewModel : ObservableObject
             {
                 AvailableUpdateVersion = newVersion;
                 StatusMessage = T("Status.NewVersion", newVersion);
+                await _appLog.SuccessAsync(AppLogCategory.Update,
+                    T("Log.Event.UpdateFound", newVersion));
             }
             else if (!_updateService.IsInstalledBuild)
             {
@@ -368,12 +480,16 @@ public partial class MainViewModel : ObservableObject
             {
                 AvailableUpdateVersion = null;
                 StatusMessage = T("Status.UpToDate", CurrentVersion);
+                await _appLog.InfoAsync(AppLogCategory.Update,
+                    T("Log.Event.UpdateNone", CurrentVersion));
             }
         }
         catch (Exception ex)
         {
             StatusMessage = T("Status.UpdateError", ex.Message);
             _logger.LogError(ex, "Fallo al buscar actualizaciones");
+            await _appLog.ErrorAsync(AppLogCategory.Update,
+                T("Log.Event.UpdateCheckFailed", ex.Message), ex.ToString());
         }
         ApplyUpdateCommand.NotifyCanExecuteChanged();
     }
@@ -393,11 +509,15 @@ public partial class MainViewModel : ObservableObject
             await _updateService.DownloadAndApplyAsync(progress);
             // Si llegamos aquí es que no se reinició (entorno no instalado).
             StatusMessage = T("Status.UpdateDownloaded");
+            await _appLog.SuccessAsync(AppLogCategory.Update,
+                T("Log.Event.UpdateApplied", AvailableUpdateVersion ?? "?"));
         }
         catch (Exception ex)
         {
             StatusMessage = T("Status.UpdateApplyError", ex.Message);
             _logger.LogError(ex, "Fallo al aplicar actualización");
+            await _appLog.ErrorAsync(AppLogCategory.Update,
+                T("Log.Event.UpdateApplyFailed", ex.Message), ex.ToString());
         }
     }
 
@@ -409,7 +529,13 @@ public partial class MainViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(HasComparison))]
     [NotifyPropertyChangedFor(nameof(ScoreDelta))]
     [NotifyPropertyChangedFor(nameof(ScoreDeltaLabel))]
+    [NotifyPropertyChangedFor(nameof(BaselineTimestampLabel))]
     private PerformanceScore? scoreBefore;
+
+    /// <summary>True cuando el baseline fue cargado de disco (no medido en esta sesión).</summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(BaselineTimestampLabel))]
+    private bool isBaselineFromFile;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasScoreAfter))]
@@ -430,6 +556,22 @@ public partial class MainViewModel : ObservableObject
         ? (ScoreDelta >= 0 ? $"+{ScoreDelta}" : ScoreDelta.ToString())
         : string.Empty;
 
+    /// <summary>
+    /// Etiqueta que indica cuándo se obtuvo el baseline y si procede del disco.
+    /// Ejemplo: "Guardado el 12/05 14:30" o "Medido el 12/05 14:30".
+    /// </summary>
+    public string BaselineTimestampLabel
+    {
+        get
+        {
+            if (ScoreBefore is null) return string.Empty;
+            var ts = ScoreBefore.Timestamp.ToString("dd/MM/yyyy HH:mm");
+            return IsBaselineFromFile
+                ? T("Score.LoadedAt", ts)
+                : T("Score.MeasuredAt", ts);
+        }
+    }
+
     [RelayCommand(CanExecute = nameof(CanAnalyze))]
     private async Task AnalyzeAsync()
     {
@@ -443,10 +585,16 @@ public partial class MainViewModel : ObservableObject
         try
         {
             var score = await _analyzer.AnalyzeAsync();
-            if (ScoreBefore is null)
+            if (ScoreBefore is null || IsBaselineFromFile)
             {
+                // Primera medición de la sesión (o el baseline venía del disco:
+                // ahora lo sustituimos por una medición en vivo).
+                IsBaselineFromFile = false;
+                ScoreAfter = null;
                 ScoreBefore = score;
                 StatusMessage = T("Status.AnalysisInitial", score.Total, T(score.Verdict));
+                await _appLog.InfoAsync(AppLogCategory.Analyze,
+                    T("Log.Event.AnalyzeBaseline", score.Total, T(score.Verdict)));
             }
             else
             {
@@ -454,12 +602,17 @@ public partial class MainViewModel : ObservableObject
                 var delta = score.Total - ScoreBefore.Total;
                 var sign = delta >= 0 ? "+" : "";
                 StatusMessage = T("Status.AnalysisFinal", score.Total, T(score.Verdict), sign, delta);
+                var level = delta >= 0 ? AppLogLevel.Success : AppLogLevel.Warning;
+                await _appLog.WriteAsync(level, AppLogCategory.Analyze,
+                    T("Log.Event.AnalyzeFinal", score.Total, T(score.Verdict), sign, delta));
             }
         }
         catch (Exception ex)
         {
             StatusMessage = T("Status.AnalysisError", ex.Message);
             _logger.LogError(ex, "Fallo el analisis de rendimiento");
+            await _appLog.ErrorAsync(AppLogCategory.Analyze,
+                T("Log.Event.AnalyzeFailed", ex.Message), ex.ToString());
         }
         finally
         {
@@ -475,16 +628,26 @@ public partial class MainViewModel : ObservableObject
     {
         ScoreBefore = null;
         ScoreAfter = null;
+        IsBaselineFromFile = false;
         StatusMessage = T("Status.ScoresReset");
         AnalyzeCommand.NotifyCanExecuteChanged();
         ResetScoresCommand.NotifyCanExecuteChanged();
+        // Borra también el archivo persistido.
+        _ = _baseline.ClearAsync();
     }
 
     private bool CanAnalyze() => !IsAnalyzing && !IsRunning;
     private bool CanResetScores() => !IsAnalyzing && (ScoreBefore is not null || ScoreAfter is not null);
 
     partial void OnScoreBeforeChanged(PerformanceScore? value)
-        => ResetScoresCommand.NotifyCanExecuteChanged();
+    {
+        ResetScoresCommand.NotifyCanExecuteChanged();
+        if (value is not null && !IsBaselineFromFile)
+        {
+            // Auto-guardar en disco cuando el usuario mide un nuevo baseline.
+            _ = _baseline.SaveAsync(value);
+        }
+    }
 
     partial void OnScoreAfterChanged(PerformanceScore? value)
         => ResetScoresCommand.NotifyCanExecuteChanged();
@@ -505,11 +668,15 @@ public partial class MainViewModel : ObservableObject
             var result = await _quickClean.CleanAsync();
             var mb = Math.Round(result.BytesFreed / 1_048_576.0, 1);
             StatusMessage = T("Status.QuickCleanDone", mb, result.FilesDeleted);
+            await _appLog.SuccessAsync(AppLogCategory.QuickClean,
+                T("Log.Event.QuickCleanFinished", mb, result.FilesDeleted));
         }
         catch (Exception ex)
         {
             StatusMessage = T("Status.QuickCleanError", ex.Message);
             _logger.LogError(ex, "Fallo en limpieza rápida");
+            await _appLog.ErrorAsync(AppLogCategory.QuickClean,
+                T("Log.Event.QuickCleanFailed", ex.Message), ex.ToString());
         }
         finally
         {
@@ -532,6 +699,8 @@ public partial class MainViewModel : ObservableObject
         ILocalizationService loc,
         IQuickCleanService quickClean,
         ISystemInfoService systemInfo,
+        IAppLogService appLog,
+        IPerformanceBaselineService baseline,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
@@ -540,6 +709,8 @@ public partial class MainViewModel : ObservableObject
         _loc = loc;
         _quickClean = quickClean;
         _systemInfo = systemInfo;
+        _appLog = appLog;
+        _baseline = baseline;
         _logger = logger;
 
         // Mensaje inicial localizado. Cuando el usuario cambia el idioma,
@@ -551,9 +722,15 @@ public partial class MainViewModel : ObservableObject
             OnPropertyChanged(nameof(CurrentLanguage));
             OnPropertyChanged(nameof(LastUpdateCheckLabel));
             OnPropertyChanged(nameof(AvailableUpdateVersionLabel));
+            // Registramos el cambio en el historial interno.
+            _ = _appLog.InfoAsync(AppLogCategory.Language,
+                T("Log.Event.LanguageChanged", CurrentLanguage));
             // El StatusMessage es un mensaje puntual; no lo refrescamos.
             // Las próximas asignaciones ya saldrán en el idioma nuevo.
         };
+
+        // Suscripción al historial para refresco en vivo de la vista.
+        _appLog.EntryAdded += OnAppLogEntryAdded;
 
         LogsFolder = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -583,6 +760,35 @@ public partial class MainViewModel : ObservableObject
 
         // Estado inicial de bloqueo según el tier configurado.
         UpdateModuleLockStates();
+
+        // Carga el baseline guardado en disco (fire-and-forget — no bloquea la UI).
+        _ = LoadPersistedBaselineAsync();
+
+        // Evento de arranque en el historial interno (fire-and-forget).
+        _ = _appLog.InfoAsync(AppLogCategory.App,
+            T("Log.Event.AppStarted", _updateService.CurrentVersion));
+    }
+
+    private async Task LoadPersistedBaselineAsync()
+    {
+        try
+        {
+            var saved = await _baseline.LoadAsync().ConfigureAwait(false);
+            if (saved is null) return;
+
+            // Dispatch al hilo de UI para modificar propiedades observables.
+            Application.Current?.Dispatcher.BeginInvoke(() =>
+            {
+                // Marcamos como "desde archivo" ANTES de asignar ScoreBefore
+                // para que OnScoreBeforeChanged no reescriba el archivo.
+                IsBaselineFromFile = true;
+                ScoreBefore = saved;
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo cargar el baseline persistido");
+        }
     }
 
     // ---- Ejecutar / Cancelar --------------------------------------------
@@ -639,20 +845,28 @@ public partial class MainViewModel : ObservableObject
         try
         {
             _logger.LogInformation("Lanzando .bat {Path} con módulos: {Modules}", batPath, string.Join(",", selected));
+            var modulesStr = string.Join(", ", Modules.Where(m => m.IsEnabled).Select(m => m.Name));
+            await _appLog.InfoAsync(AppLogCategory.Run,
+                T("Log.Event.RunStarted", selected.Count),
+                modulesStr);
+
             await foreach (var line in _runner.RunAsync(batPath, selected, ct).WithCancellation(ct))
             {
                 lock (_bufferLock) _pendingBuffer.AppendLine(line);
             }
             StatusMessage = T("Status.ExecutionDone");
+            await _appLog.SuccessAsync(AppLogCategory.Run, T("Log.Event.RunFinished", selected.Count));
         }
         catch (OperationCanceledException)
         {
             StatusMessage = T("Status.ExecutionCancelled");
+            await _appLog.WarningAsync(AppLogCategory.Run, T("Log.Event.RunCancelled"));
         }
         catch (Exception ex)
         {
             StatusMessage = T("Status.ExecutionError", ex.Message);
             _logger.LogError(ex, "Fallo al ejecutar el .bat");
+            await _appLog.ErrorAsync(AppLogCategory.Run, T("Log.Event.RunFailed", ex.Message), ex.ToString());
         }
         finally
         {

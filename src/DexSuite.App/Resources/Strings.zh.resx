@@ -100,9 +100,147 @@
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>你想做什么？</value>
   </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>性能</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>快速清理</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>执行</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>清空历史记录</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>历史记录已清空（删除 {0} 条）。</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>无法清空历史记录：{0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>级别</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>消息</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>你执行的操作会自动显示在这里。</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>暂无事件</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>基准分数：{0}（{1}）。</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>性能测试失败：{0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>最终分数：{0}（{1}）。变化：{2}{3}。</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite 已启动（v{0}）。</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>历史记录已清空（{0} 条）。</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>语言已切换为 {0}。</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>快速清理失败：{0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>快速清理：释放 {0} MB，删除 {1} 个文件。</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>用户已取消优化。</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>优化失败：{0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>优化完成（{0} 个模块）。</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>已使用 {0} 个模块开始优化。</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>已将设置恢复为默认值。</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>已切换至 {0} 套餐。</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>已应用 v{0} 更新。</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>无法应用更新：{0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>检查更新失败：{0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>有可用的新版本：v{0}。</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>已是最新版本（v{0}）。</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>导出为 .txt</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>导出失败：{0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>历史记录已导出至 {0}</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>正在加载历史记录…</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
   <data name="Log.Subtitle" xml:space="preserve">
     <value>当前进程的实时输出。
 执行过程中实时更新。</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>历史记录</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>实时输出</value>
   </data>
   <data name="Log.Title" xml:space="preserve">
     <value>执行日志</value>
@@ -401,6 +539,15 @@
   </data>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>快速清理</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>从上次会话加载</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>已保存的基准 — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>测量于 — {0}</value>
   </data>
   <data name="Search.NoResults" xml:space="preserve">
     <value>未找到「{0}」的结果</value>
