@@ -1104,6 +1104,116 @@
       "zh": "EXTRA PRO · 游戏"
     },
 
+    "Navigation.Specs": {
+      "en": "System specs", "es": "Especificaciones", "gl": "Especificacións",
+      "ca": "Especificacions", "eu": "Zehaztapenak", "pt": "Especificações",
+      "fr": "Spécifications", "de": "Systeminfo", "it": "Specifiche", "zh": "系统规格"
+    },
+
+    "Specs.Title": {
+      "en": "System specifications",
+      "es": "Especificaciones del sistema",
+      "gl": "Especificacións do sistema",
+      "ca": "Especificacions del sistema",
+      "eu": "Sistemaren zehaztapenak",
+      "pt": "Especificações do sistema",
+      "fr": "Spécifications du système",
+      "de": "Systemspezifikationen",
+      "it": "Specifiche del sistema",
+      "zh": "系统规格"
+    },
+    "Specs.Subtitle": {
+      "en": "Detected hardware and operating system",
+      "es": "Hardware y sistema operativo detectados",
+      "gl": "Hardware e sistema operativo detectados",
+      "ca": "Maquinari i sistema operatiu detectats",
+      "eu": "Hautemandako hardware eta sistema eragilea",
+      "pt": "Hardware e sistema operativo detectados",
+      "fr": "Matériel et système d'exploitation détectés",
+      "de": "Erkannte Hardware und Betriebssystem",
+      "it": "Hardware e sistema operativo rilevati",
+      "zh": "检测到的硬件和操作系统"
+    },
+    "Specs.CPU": {
+      "en": "Processor", "es": "Procesador", "gl": "Procesador", "ca": "Processador",
+      "eu": "Prozesadorea", "pt": "Processador", "fr": "Processeur",
+      "de": "Prozessor", "it": "Processore", "zh": "处理器"
+    },
+    "Specs.RAM": {
+      "en": "Memory", "es": "Memoria", "gl": "Memoria", "ca": "Memòria",
+      "eu": "Memoria", "pt": "Memória", "fr": "Mémoire",
+      "de": "Arbeitsspeicher", "it": "Memoria", "zh": "内存"
+    },
+    "Specs.GPU": {
+      "en": "Graphics", "es": "Gráfica", "gl": "Gráfica", "ca": "Gràfica",
+      "eu": "Grafikoa", "pt": "Placa gráfica", "fr": "Carte graphique",
+      "de": "Grafik", "it": "Scheda grafica", "zh": "显卡"
+    },
+    "Specs.OS": {
+      "en": "Operating system", "es": "Sistema operativo", "gl": "Sistema operativo",
+      "ca": "Sistema operatiu", "eu": "Sistema eragilea", "pt": "Sistema operativo",
+      "fr": "Système d'exploitation", "de": "Betriebssystem",
+      "it": "Sistema operativo", "zh": "操作系统"
+    },
+    "Specs.Storage": {
+      "en": "Storage", "es": "Almacenamiento", "gl": "Almacenamento",
+      "ca": "Emmagatzematge", "eu": "Biltegiratzea", "pt": "Armazenamento",
+      "fr": "Stockage", "de": "Speicher", "it": "Archiviazione", "zh": "存储"
+    },
+    "Specs.Refresh": {
+      "en": "Refresh", "es": "Actualizar", "gl": "Actualizar", "ca": "Actualitza",
+      "eu": "Eguneratu", "pt": "Atualizar", "fr": "Actualiser",
+      "de": "Aktualisieren", "it": "Aggiorna", "zh": "刷新"
+    },
+    "Specs.Loading": {
+      "en": "Detecting hardware…",
+      "es": "Detectando hardware…",
+      "gl": "Detectando hardware…",
+      "ca": "Detectant maquinari…",
+      "eu": "Hardware hautematen…",
+      "pt": "A detectar hardware…",
+      "fr": "Détection du matériel…",
+      "de": "Hardware wird erkannt…",
+      "it": "Rilevamento hardware…",
+      "zh": "正在检测硬件…"
+    },
+    "Specs.CoresLabel": {
+      "en": "{0} cores / {1} logical",
+      "es": "{0} núcleos / {1} lógicos",
+      "gl": "{0} núcleos / {1} lóxicos",
+      "ca": "{0} nuclis / {1} lògics",
+      "eu": "{0} nukleo / {1} logiko",
+      "pt": "{0} núcleos / {1} lógicos",
+      "fr": "{0} cœurs / {1} logiques",
+      "de": "{0} Kerne / {1} logische",
+      "it": "{0} core / {1} logici",
+      "zh": "{0} 核心 / {1} 逻辑处理器"
+    },
+    "Specs.RamLabel": {
+      "en": "{0} GB total · {1} GB available",
+      "es": "{0} GB totales · {1} GB disponibles",
+      "gl": "{0} GB totais · {1} GB dispoñibles",
+      "ca": "{0} GB totals · {1} GB disponibles",
+      "eu": "{0} GB guztira · {1} GB erabilgarri",
+      "pt": "{0} GB total · {1} GB disponíveis",
+      "fr": "{0} Go total · {1} Go disponibles",
+      "de": "{0} GB gesamt · {1} GB verfügbar",
+      "it": "{0} GB totali · {1} GB disponibili",
+      "zh": "{0} GB 共计 · {1} GB 可用"
+    },
+    "Specs.DiskLabel": {
+      "en": "{0} GB total · {1} GB free · {2}",
+      "es": "{0} GB totales · {1} GB libres · {2}",
+      "gl": "{0} GB totais · {1} GB libres · {2}",
+      "ca": "{0} GB totals · {1} GB lliures · {2}",
+      "eu": "{0} GB guztira · {1} GB libre · {2}",
+      "pt": "{0} GB total · {1} GB livres · {2}",
+      "fr": "{0} Go total · {1} Go libres · {2}",
+      "de": "{0} GB gesamt · {1} GB frei · {2}",
+      "it": "{0} GB totali · {1} GB liberi · {2}",
+      "zh": "{0} GB 共计 · {1} GB 可用 · {2}"
+    },
+
     "Search.Placeholder": {
       "en": "Search setting…",
       "es": "Buscar ajuste…",

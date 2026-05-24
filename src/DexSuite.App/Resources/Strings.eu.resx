@@ -390,6 +390,9 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Ezarpenak</value>
   </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>Zehaztapenak</value>
+  </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEMA</value>
   </data>
@@ -458,6 +461,42 @@ Oraingoz informatiboa da; hurrengo bertsioan zure mailan ez dauden moduluak desg
   </data>
   <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
     <value>Abisatu modulu ez itzulgarriak exekutatu aurretik</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} nukleo / {1} logiko</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Prozesadorea</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB guztira · {1} GB libre · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Grafikoa</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Hardware hautematen…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Sistema eragilea</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>Memoria</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB guztira · {1} GB erabilgarri</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Eguneratu</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Biltegiratzea</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Hautemandako hardware eta sistema eragilea</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>Sistemaren zehaztapenak</value>
   </data>
   <data name="Status.AnalysisError" xml:space="preserve">
     <value>Errorea analizatzean: {0}</value>

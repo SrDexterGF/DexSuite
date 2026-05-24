@@ -9,6 +9,7 @@ public enum AppSection
     Home,
     Modules,
     Log,
+    Specs,
     Settings,
     Updates,
     About,

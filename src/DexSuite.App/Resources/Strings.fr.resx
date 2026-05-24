@@ -390,6 +390,9 @@ Survolez la puce Sûr/Risque pour savoir pourquoi.</value>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Paramètres</value>
   </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>Spécifications</value>
+  </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SYSTÈME</value>
   </data>
@@ -458,6 +461,42 @@ Pour l'instant informatif ; la prochaine version désactivera les modules hors d
   </data>
   <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
     <value>Avertir avant d'exécuter des modules non réversibles</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} cœurs / {1} logiques</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Processeur</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} Go total · {1} Go libres · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Carte graphique</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Détection du matériel…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Système d'exploitation</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>Mémoire</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} Go total · {1} Go disponibles</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Actualiser</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Stockage</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Matériel et système d'exploitation détectés</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>Spécifications du système</value>
   </data>
   <data name="Status.AnalysisError" xml:space="preserve">
     <value>Erreur lors de l'analyse : {0}</value>

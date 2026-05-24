@@ -18,6 +18,7 @@ public partial class MainViewModel : ObservableObject
     private readonly ILocalizationService _loc;
     private readonly ILogger<MainViewModel> _logger;
     private readonly IQuickCleanService _quickClean;
+    private readonly ISystemInfoService _systemInfo;
 
     private const string DefaultScriptFolder =
         @"C:\Users\mgf74\Documents\Claude Environment W11\DexSuite (Script)";
@@ -71,23 +72,55 @@ public partial class MainViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IsHomeView))]
     [NotifyPropertyChangedFor(nameof(IsModulesView))]
     [NotifyPropertyChangedFor(nameof(IsLogView))]
+    [NotifyPropertyChangedFor(nameof(IsSpecsView))]
     [NotifyPropertyChangedFor(nameof(IsSettingsView))]
     [NotifyPropertyChangedFor(nameof(IsUpdatesView))]
     [NotifyPropertyChangedFor(nameof(IsAboutView))]
     private AppSection currentSection = AppSection.Home;
 
-    public bool IsHomeView => CurrentSection == AppSection.Home;
-    public bool IsModulesView => CurrentSection == AppSection.Modules;
-    public bool IsLogView => CurrentSection == AppSection.Log;
+    public bool IsHomeView     => CurrentSection == AppSection.Home;
+    public bool IsModulesView  => CurrentSection == AppSection.Modules;
+    public bool IsLogView      => CurrentSection == AppSection.Log;
+    public bool IsSpecsView    => CurrentSection == AppSection.Specs;
     public bool IsSettingsView => CurrentSection == AppSection.Settings;
-    public bool IsUpdatesView => CurrentSection == AppSection.Updates;
-    public bool IsAboutView => CurrentSection == AppSection.About;
+    public bool IsUpdatesView  => CurrentSection == AppSection.Updates;
+    public bool IsAboutView    => CurrentSection == AppSection.About;
 
     [RelayCommand]
     private void Navigate(string sectionName)
     {
         if (Enum.TryParse<AppSection>(sectionName, ignoreCase: true, out var section))
+        {
             CurrentSection = section;
+            if (section == AppSection.Specs && SystemSpecs is null)
+                _ = LoadSystemInfoAsync();
+        }
+    }
+
+    // ---- Especificaciones del sistema -----------------------------------
+
+    [ObservableProperty]
+    private DexSuite.App.Models.SystemInfo? systemSpecs;
+
+    [ObservableProperty]
+    private bool isLoadingSpecs;
+
+    [RelayCommand]
+    private async Task LoadSystemInfoAsync()
+    {
+        IsLoadingSpecs = true;
+        try
+        {
+            SystemSpecs = await _systemInfo.GetSystemInfoAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudieron obtener las especificaciones del sistema");
+        }
+        finally
+        {
+            IsLoadingSpecs = false;
+        }
     }
 
     // ---- Búsqueda de módulos --------------------------------------------
@@ -498,6 +531,7 @@ public partial class MainViewModel : ObservableObject
         IUpdateService updateService,
         ILocalizationService loc,
         IQuickCleanService quickClean,
+        ISystemInfoService systemInfo,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
@@ -505,6 +539,7 @@ public partial class MainViewModel : ObservableObject
         _updateService = updateService;
         _loc = loc;
         _quickClean = quickClean;
+        _systemInfo = systemInfo;
         _logger = logger;
 
         // Mensaje inicial localizado. Cuando el usuario cambia el idioma,

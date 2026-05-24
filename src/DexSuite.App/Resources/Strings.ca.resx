@@ -390,6 +390,9 @@ Passa el ratolí pel xip Segur/Risc per saber per què.</value>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Configuració</value>
   </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>Especificacions</value>
+  </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEMA</value>
   </data>
@@ -458,6 +461,42 @@ De moment és informatiu; a la propera versió desactivarà els mòduls no inclo
   </data>
   <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
     <value>Avisa abans d'executar mòduls no reversibles</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} nuclis / {1} lògics</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB totals · {1} GB lliures · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Gràfica</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Detectant maquinari…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Sistema operatiu</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>Memòria</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB totals · {1} GB disponibles</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Emmagatzematge</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Maquinari i sistema operatiu detectats</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>Especificacions del sistema</value>
   </data>
   <data name="Status.AnalysisError" xml:space="preserve">
     <value>Error en analitzar: {0}</value>

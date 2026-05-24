@@ -390,6 +390,9 @@ Pasa el ratón por el chip Seguro/Riesgo para saber por qué.</value>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Ajustes</value>
   </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>Especificaciones</value>
+  </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEMA</value>
   </data>
@@ -458,6 +461,42 @@ Por ahora es informativo; en la próxima versión desactivará los módulos no i
   </data>
   <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
     <value>Avisar antes de ejecutar módulos no reversibles</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} núcleos / {1} lógicos</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Procesador</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB totales · {1} GB libres · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Gráfica</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Detectando hardware…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Sistema operativo</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>Memoria</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB totales · {1} GB disponibles</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Almacenamiento</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Hardware y sistema operativo detectados</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>Especificaciones del sistema</value>
   </data>
   <data name="Status.AnalysisError" xml:space="preserve">
     <value>Error al analizar: {0}</value>

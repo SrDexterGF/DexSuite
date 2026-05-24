@@ -390,6 +390,9 @@
   <data name="Navigation.Settings" xml:space="preserve">
     <value>设置</value>
   </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>系统规格</value>
+  </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>系统</value>
   </data>
@@ -458,6 +461,42 @@
   </data>
   <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
     <value>执行不可逆模块前提示</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} 核心 / {1} 逻辑处理器</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>处理器</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB 共计 · {1} GB 可用 · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>显卡</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>正在检测硬件…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>操作系统</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>内存</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB 共计 · {1} GB 可用</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>存储</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>检测到的硬件和操作系统</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>系统规格</value>
   </data>
   <data name="Status.AnalysisError" xml:space="preserve">
     <value>分析出错：{0}</value>

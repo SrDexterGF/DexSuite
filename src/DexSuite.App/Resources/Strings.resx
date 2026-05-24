@@ -390,6 +390,9 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>System specs</value>
+  </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SYSTEM</value>
   </data>
@@ -458,6 +461,42 @@ For now it's informative; the next version will disable modules not in your tier
   </data>
   <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
     <value>Warn before running non-reversible modules</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} cores / {1} logical</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB total · {1} GB free · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Graphics</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Detecting hardware…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Operating system</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB total · {1} GB available</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Detected hardware and operating system</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>System specifications</value>
   </data>
   <data name="Status.AnalysisError" xml:space="preserve">
     <value>Error analyzing: {0}</value>
