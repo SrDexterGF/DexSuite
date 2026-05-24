@@ -25,4 +25,5 @@ public sealed record CleanupModule(
     ModuleTier Tier,
     bool RecommendedDefault,
     bool Reversible,
-    string SafetyReasonKey);
+    string SafetyReasonKey,
+    ImpactLevel Impact = ImpactLevel.None);

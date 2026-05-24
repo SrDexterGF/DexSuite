@@ -1050,6 +1050,45 @@
       "en": "Critical", "es": "Crítico", "gl": "Crítico", "ca": "Crític",
       "eu": "Larria", "pt": "Crítico", "fr": "Critique", "de": "Kritisch",
       "it": "Critico", "zh": "严重"
+    },
+
+    "Modules.Impact.None": {
+      "en": "No impact", "es": "Sin impacto", "gl": "Sen impacto", "ca": "Sense impacte",
+      "eu": "Eraginik gabe", "pt": "Sem impacto", "fr": "Sans impact", "de": "Kein Einfluss",
+      "it": "Nessun impatto", "zh": "无影响"
+    },
+    "Modules.Impact.Soft": {
+      "en": "Soft", "es": "Suave", "gl": "Suave", "ca": "Suau",
+      "eu": "Leuna", "pt": "Suave", "fr": "Léger", "de": "Gering",
+      "it": "Leggero", "zh": "轻微"
+    },
+    "Modules.Impact.Notable": {
+      "en": "Notable", "es": "Notable", "gl": "Notable", "ca": "Notable",
+      "eu": "Nabarmena", "pt": "Notable", "fr": "Notable", "de": "Spürbar",
+      "it": "Notevole", "zh": "显著"
+    },
+    "Modules.Impact.Strong": {
+      "en": "Strong", "es": "Fuerte", "gl": "Forte", "ca": "Fort",
+      "eu": "Indartsua", "pt": "Forte", "fr": "Fort", "de": "Stark",
+      "it": "Forte", "zh": "强效"
+    },
+    "Modules.Impact.Extreme": {
+      "en": "EXTREME", "es": "EXTREMO", "gl": "EXTREMO", "ca": "EXTREM",
+      "eu": "MUTURREKOA", "pt": "EXTREMO", "fr": "EXTRÊME", "de": "EXTREM",
+      "it": "ESTREMO", "zh": "极限"
+    },
+
+    "Modules.Recommended.Why": {
+      "en": "These optimizations have been selected because they are safe, reversible and produce a visible improvement on most systems.\nThey are the best starting point before diving into advanced or pro settings.",
+      "es": "Estas optimizaciones están seleccionadas porque son seguras, reversibles y producen una mejora visible en la mayoría de equipos.\nSon el mejor punto de partida antes de explorar los ajustes avanzados o pro.",
+      "gl": "Estas optimizacións están seleccionadas porque son seguras, reversibles e producen unha mellora visible na maioría dos equipos.\nSon o mellor punto de partida antes de explorar os axustes avanzados ou pro.",
+      "ca": "Aquestes optimitzacions estan seleccionades perquè són segures, reversibles i produeixen una millora visible a la majoria d'equips.\nSón el millor punt de partida abans d'explorar els ajustos avançats o pro.",
+      "eu": "Optimizazio hauek hautatuta daude seguruak, itzulgarriak eta ekipo gehienetan hobekuntza nabaria eragiten dutelako.\nAurreratu edo pro ezarpenak aztertu aurretik, abiapuntu onena dira.",
+      "pt": "Estas otimizações estão selecionadas por serem seguras, reversíveis e produzirem uma melhoria visível na maioria dos equipamentos.\nSão o melhor ponto de partida antes de explorar as definições avançadas ou pro.",
+      "fr": "Ces optimisations sont sélectionnées car elles sont sûres, réversibles et produisent une amélioration visible sur la plupart des systèmes.\nElles constituent le meilleur point de départ avant d'explorer les réglages avancés ou pro.",
+      "de": "Diese Optimierungen sind ausgewählt, weil sie sicher, umkehrbar sind und auf den meisten Systemen eine sichtbare Verbesserung bringen.\nSie sind der beste Einstiegspunkt, bevor du die erweiterten oder Pro-Einstellungen erkundest.",
+      "it": "Queste ottimizzazioni sono selezionate perché sono sicure, reversibili e producono un miglioramento visibile sulla maggior parte dei sistemi.\nSono il miglior punto di partenza prima di esplorare le impostazioni avanzate o pro.",
+      "zh": "这些优化被选中是因为它们安全、可还原，并且在大多数系统上产生明显改善。\n它们是在探索高级或专业设置之前的最佳起点。"
     }
   }
 }

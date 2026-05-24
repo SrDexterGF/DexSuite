@@ -3,99 +3,154 @@ using DexSuite.App.Models;
 namespace DexSuite.App.Services;
 
 /// <summary>
-/// Inventario de los 20 módulos del .bat DexSuite_CleanUp_v*.bat.
-/// El Id corresponde al número del menú manual del .bat.
+/// Catálogo de los 20 módulos de DexSuite.
+/// Distribución de tiers:
+///   FREE (5)     — limpieza básica, 100 % segura, reversible.
+///   AVANZADO (8) — limpieza profunda y ajustes; puede afectar funcionalidades.
+///   PRO (7)      — optimización extrema de rendimiento, seguridad y hardware.
 ///
 /// Todos los textos visibles son CLAVES i18n; las traducciones reales viven
-/// en <c>scripts/modules.json</c> y se compilan a satellite assemblies.
+/// en scripts/modules.json y se compilan a satellite assemblies.
 /// </summary>
 public sealed class ModuleCatalog : IModuleCatalog
 {
     private static readonly IReadOnlyList<CleanupModule> _modules = new CleanupModule[]
     {
-        // ----- LIMPIEZA Y MANTENIMIENTO -----
+        // ══════════════════════════════════════════════════════════════
+        //  FREE — Limpieza básica (5 módulos)
+        // ══════════════════════════════════════════════════════════════
+
         new(1,  "Modules.M01.Name", "Modules.M01.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M01.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Free,
+            RecommendedDefault: true, Reversible: true,
+            SafetyReasonKey: "Modules.M01.SafetyReason",
+            Impact: ImpactLevel.Soft),
 
         new(2,  "Modules.M02.Name", "Modules.M02.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M02.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Free,
+            RecommendedDefault: true, Reversible: true,
+            SafetyReasonKey: "Modules.M02.SafetyReason",
+            Impact: ImpactLevel.Soft),
 
         new(3,  "Modules.M03.Name", "Modules.M03.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M03.SafetyReason"),
-
-        new(4,  "Modules.M04.Name", "Modules.M04.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: false, Reversible: false,
-            SafetyReasonKey: "Modules.M04.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Free,
+            RecommendedDefault: false, Reversible: false,
+            SafetyReasonKey: "Modules.M03.SafetyReason",
+            Impact: ImpactLevel.Soft),
 
         new(5,  "Modules.M05.Name", "Modules.M05.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M05.SafetyReason"),
-
-        new(6,  "Modules.M06.Name", "Modules.M06.Description",
-            ModuleCategory.Cleanup, ModuleTier.Advanced, RecommendedDefault: false, Reversible: false,
-            SafetyReasonKey: "Modules.M06.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Free,
+            RecommendedDefault: true, Reversible: true,
+            SafetyReasonKey: "Modules.M05.SafetyReason",
+            Impact: ImpactLevel.Soft),
 
         new(7,  "Modules.M07.Name", "Modules.M07.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M07.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Free,
+            RecommendedDefault: true, Reversible: true,
+            SafetyReasonKey: "Modules.M07.SafetyReason",
+            Impact: ImpactLevel.Soft),
+
+        // ══════════════════════════════════════════════════════════════
+        //  AVANZADO — Limpieza profunda + tweaks (8 módulos)
+        // ══════════════════════════════════════════════════════════════
+
+        new(4,  "Modules.M04.Name", "Modules.M04.Description",
+            ModuleCategory.Cleanup, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: false,
+            SafetyReasonKey: "Modules.M04.SafetyReason",
+            Impact: ImpactLevel.Notable),
+
+        new(6,  "Modules.M06.Name", "Modules.M06.Description",
+            ModuleCategory.Cleanup, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: false,
+            SafetyReasonKey: "Modules.M06.SafetyReason",
+            Impact: ImpactLevel.Notable),
 
         new(8,  "Modules.M08.Name", "Modules.M08.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M08.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M08.SafetyReason",
+            Impact: ImpactLevel.Soft),
 
         new(9,  "Modules.M09.Name", "Modules.M09.Description",
-            ModuleCategory.Cleanup, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M09.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M09.SafetyReason",
+            Impact: ImpactLevel.Soft),
 
         new(10, "Modules.M10.Name", "Modules.M10.Description",
-            ModuleCategory.Cleanup, ModuleTier.Advanced, RecommendedDefault: false, Reversible: true,
-            SafetyReasonKey: "Modules.M10.SafetyReason"),
+            ModuleCategory.Cleanup, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M10.SafetyReason",
+            Impact: ImpactLevel.Notable),
 
-        // ----- AJUSTES, RENDIMIENTO Y SEGURIDAD -----
         new(11, "Modules.M11.Name", "Modules.M11.Description",
-            ModuleCategory.Settings, ModuleTier.Advanced, RecommendedDefault: false, Reversible: true,
-            SafetyReasonKey: "Modules.M11.SafetyReason"),
+            ModuleCategory.Settings, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M11.SafetyReason",
+            Impact: ImpactLevel.Strong),
 
         new(12, "Modules.M12.Name", "Modules.M12.Description",
-            ModuleCategory.Settings, ModuleTier.Advanced, RecommendedDefault: false, Reversible: false,
-            SafetyReasonKey: "Modules.M12.SafetyReason"),
+            ModuleCategory.Settings, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: false,
+            SafetyReasonKey: "Modules.M12.SafetyReason",
+            Impact: ImpactLevel.Soft),
 
         new(13, "Modules.M13.Name", "Modules.M13.Description",
-            ModuleCategory.Settings, ModuleTier.Advanced, RecommendedDefault: false, Reversible: true,
-            SafetyReasonKey: "Modules.M13.SafetyReason"),
+            ModuleCategory.Settings, ModuleTier.Advanced,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M13.SafetyReason",
+            Impact: ImpactLevel.Strong),
+
+        // ══════════════════════════════════════════════════════════════
+        //  PRO — Optimización extrema (7 módulos)
+        // ══════════════════════════════════════════════════════════════
 
         new(14, "Modules.M14.Name", "Modules.M14.Description",
-            ModuleCategory.Settings, ModuleTier.Pro, RecommendedDefault: false, Reversible: true,
-            SafetyReasonKey: "Modules.M14.SafetyReason"),
+            ModuleCategory.Settings, ModuleTier.Pro,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M14.SafetyReason",
+            Impact: ImpactLevel.Strong),
 
         new(15, "Modules.M15.Name", "Modules.M15.Description",
-            ModuleCategory.Settings, ModuleTier.Pro, RecommendedDefault: false, Reversible: true,
-            SafetyReasonKey: "Modules.M15.SafetyReason"),
+            ModuleCategory.Settings, ModuleTier.Pro,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M15.SafetyReason",
+            Impact: ImpactLevel.Extreme),
 
         new(16, "Modules.M16.Name", "Modules.M16.Description",
-            ModuleCategory.Settings, ModuleTier.Pro, RecommendedDefault: false, Reversible: true,
-            SafetyReasonKey: "Modules.M16.SafetyReason"),
+            ModuleCategory.Settings, ModuleTier.Pro,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M16.SafetyReason",
+            Impact: ImpactLevel.Strong),
 
         new(17, "Modules.M17.Name", "Modules.M17.Description",
-            ModuleCategory.Settings, ModuleTier.Pro, RecommendedDefault: false, Reversible: true,
-            SafetyReasonKey: "Modules.M17.SafetyReason"),
+            ModuleCategory.Settings, ModuleTier.Pro,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M17.SafetyReason",
+            Impact: ImpactLevel.Strong),
 
-        // ----- HARDWARE -----
         new(18, "Modules.M18.Name", "Modules.M18.Description",
-            ModuleCategory.Hardware, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M18.SafetyReason"),
+            ModuleCategory.Hardware, ModuleTier.Pro,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M18.SafetyReason",
+            Impact: ImpactLevel.Notable),
 
         new(19, "Modules.M19.Name", "Modules.M19.Description",
-            ModuleCategory.Hardware, ModuleTier.Free, RecommendedDefault: true, Reversible: true,
-            SafetyReasonKey: "Modules.M19.SafetyReason"),
+            ModuleCategory.Hardware, ModuleTier.Pro,
+            RecommendedDefault: false, Reversible: true,
+            SafetyReasonKey: "Modules.M19.SafetyReason",
+            Impact: ImpactLevel.Notable),
 
-        // ----- EXTRAS -----
+        // ══════════════════════════════════════════════════════════════
+        //  PRO EXTRA — Videojuegos (separado visualmente en la UI)
+        // ══════════════════════════════════════════════════════════════
+
         new(20, "Modules.M20.Name", "Modules.M20.Description",
-            ModuleCategory.Extras, ModuleTier.Pro, RecommendedDefault: false, Reversible: false,
-            SafetyReasonKey: "Modules.M20.SafetyReason"),
+            ModuleCategory.Extras, ModuleTier.Pro,
+            RecommendedDefault: false, Reversible: false,
+            SafetyReasonKey: "Modules.M20.SafetyReason",
+            Impact: ImpactLevel.Extreme),
     };
 
     public IReadOnlyList<CleanupModule> GetAll() => _modules;

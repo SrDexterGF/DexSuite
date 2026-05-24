@@ -113,6 +113,21 @@ Updates in real time while running.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Deselect all</value>
   </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>EXTREME</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>No impact</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>Notable</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>Soft</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>Strong</value>
+  </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>Clears Prefetch, system and user Temp, thumbnails, IconCache and DirectX shaders.
 Everything regenerates on its own.</value>
@@ -318,6 +333,10 @@ Does NOT install them automatically: you decide whether to update them from Wind
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
     <value>Downloads and runs code on your PC.
 Only enable it if you trust the source (Sr. Dexter / Game_Configs).</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>These optimizations have been selected because they are safe, reversible and produce a visible improvement on most systems.
+They are the best starting point before diving into advanced or pro settings.</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Risk</value>

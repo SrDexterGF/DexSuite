@@ -113,6 +113,21 @@ S'actualitza en temps real mentre s'executa.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Desmarca-ho tot</value>
   </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>EXTREM</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>Sense impacte</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>Notable</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>Suau</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>Fort</value>
+  </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>Esborra Prefetch, Temp del sistema i de l'usuari, miniatures, IconCache i shaders DirectX.
 Tot es regenera sol.</value>
@@ -318,6 +333,10 @@ NO els instal·la automàticament: tu decideixes si actualitzar-los des de Windo
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
     <value>Descarrega i executa codi al teu PC.
 Només activa'l si confies en la font (Sr. Dexter / Game_Configs).</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>Aquestes optimitzacions estan seleccionades perquè són segures, reversibles i produeixen una millora visible a la majoria d'equips.
+Són el millor punt de partida abans d'explorar els ajustos avançats o pro.</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Risc</value>

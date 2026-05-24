@@ -113,6 +113,21 @@ Denbora errealean eguneratzen da exekuzioan.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Kendu denak</value>
   </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>MUTURREKOA</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>Eraginik gabe</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>Nabarmena</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>Leuna</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>Indartsua</value>
+  </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>Prefetch, sistemaren eta erabiltzailearen Temp, miniaturak, IconCache eta DirectX shader-ak ezabatzen ditu.
 Dena bere kabuz birsortzen da.</value>
@@ -318,6 +333,10 @@ EZ ditu automatikoki instalatzen: zuk erabakitzen duzu Windows Update bidez egun
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
     <value>Zure PCan kodea deskargatu eta exekutatzen du.
 Iturburua sinesten baduzu soilik aktibatu (Sr. Dexter / Game_Configs).</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>Optimizazio hauek hautatuta daude seguruak, itzulgarriak eta ekipo gehienetan hobekuntza nabaria eragiten dutelako.
+Aurreratu edo pro ezarpenak aztertu aurretik, abiapuntu onena dira.</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Arriskua</value>

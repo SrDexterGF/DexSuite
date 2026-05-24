@@ -113,6 +113,21 @@ Actualízase en tempo real mentres se executa.</value>
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>Desmarcar</value>
   </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>EXTREMO</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>Sen impacto</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>Notable</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>Suave</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>Forte</value>
+  </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>Borra Prefetch, Temp do sistema e do usuario, miniaturas, IconCache e shaders DirectX.
 Todo se rexenera só.</value>
@@ -318,6 +333,10 @@ NON os instala automaticamente: ti decides se actualizalos dende Windows Update.
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
     <value>Descarga e executa código no teu PC.
 Só actívao se confías na fonte (Sr. Dexter / Game_Configs).</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>Estas optimizacións están seleccionadas porque son seguras, reversibles e producen unha mellora visible na maioría dos equipos.
+Son o mellor punto de partida antes de explorar os axustes avanzados ou pro.</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Risco</value>

@@ -71,6 +71,19 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     /// <summary>Explicación de por qué es Seguro o Riesgo, traducida.</summary>
     public string SafetyReason => _loc.Get(Module.SafetyReasonKey);
 
+    /// <summary>Nivel de impacto en rendimiento del módulo.</summary>
+    public ImpactLevel Impact => Module.Impact;
+
+    /// <summary>Clave i18n del badge de impacto (Suave / Notable / Fuerte / Extremo).</summary>
+    public string ImpactLabelKey => Module.Impact switch
+    {
+        ImpactLevel.Soft    => "Modules.Impact.Soft",
+        ImpactLevel.Notable => "Modules.Impact.Notable",
+        ImpactLevel.Strong  => "Modules.Impact.Strong",
+        ImpactLevel.Extreme => "Modules.Impact.Extreme",
+        _                   => "Modules.Impact.None",
+    };
+
     /// <summary>Si está marcado para ejecutarse.</summary>
     [ObservableProperty]
     private bool isEnabled;

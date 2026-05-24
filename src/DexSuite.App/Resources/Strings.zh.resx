@@ -113,6 +113,21 @@
   <data name="Modules.DeselectAll" xml:space="preserve">
     <value>取消全选</value>
   </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>极限</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>无影响</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>显著</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>轻微</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>强效</value>
+  </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>清除 Prefetch、系统和用户 Temp、缩略图、IconCache 和 DirectX 着色器。
 所有内容会自动重新生成。</value>
@@ -318,6 +333,10 @@
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
     <value>在你的电脑上下载并执行代码。
 仅在信任来源（Sr. Dexter / Game_Configs）时启用。</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>这些优化被选中是因为它们安全、可还原，并且在大多数系统上产生明显改善。
+它们是在探索高级或专业设置之前的最佳起点。</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>风险</value>

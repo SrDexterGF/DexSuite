@@ -9,6 +9,8 @@
     xmlns:vm="clr-namespace:DexSuite.App.ViewModels"
     xmlns:loc="clr-namespace:DexSuite.App.Markup"
     xmlns:conv="clr-namespace:DexSuite.App.Converters"
+    xmlns:svc="clr-namespace:DexSuite.App.Services"
+    xmlns:mdl="clr-namespace:DexSuite.App.Models"
     mc:Ignorable="d"
     Title="DexSuite"
     Icon="pack://application:,,,/Assets/AppIcon.png"
@@ -110,63 +112,128 @@
             <Setter Property="FontTypography" Value="Caption"/>
         </Style>
 
-        <!-- Card de módulo (sin "MODULO ##", sin badge de tier porque ya está en columnas) -->
+        <!-- Card de módulo: acción + badge de impacto + "?" con tooltip completo -->
         <DataTemplate x:Key="ModuleCardTemplate">
-            <Border Margin="0,0,0,8"
-                    Padding="12,10"
+            <Border Margin="0,0,0,5"
+                    Padding="10,9"
                     CornerRadius="8"
                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                     BorderThickness="1">
-                <StackPanel>
-                    <!-- Fila 1: checkbox + nombre + chip seguridad -->
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0"
-                                  IsChecked="{Binding IsEnabled, Mode=TwoWay}"
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Checkbox -->
+                    <CheckBox Grid.Column="0"
+                              IsChecked="{Binding IsEnabled, Mode=TwoWay}"
+                              VerticalAlignment="Center"
+                              Margin="0,0,8,0"/>
+
+                    <!-- Nombre del módulo -->
+                    <ui:TextBlock Grid.Column="1"
+                                  Text="{Binding Name}"
+                                  FontTypography="BodyStrong"
                                   VerticalAlignment="Center"
-                                  Margin="0,0,8,0"/>
-                        <ui:TextBlock Grid.Column="1"
-                                      Text="{Binding Name}"
-                                      FontTypography="BodyStrong"
-                                      VerticalAlignment="Center"
-                                      TextWrapping="Wrap"/>
-                        <Border Grid.Column="2"
-                                Padding="6,2"
-                                CornerRadius="4"
-                                VerticalAlignment="Center"
-                                Margin="6,0,0,0"
-                                Cursor="Help"
-                                ToolTip="{Binding SafetyReason}"
-                                ToolTipService.InitialShowDelay="200"
-                                ToolTipService.ShowDuration="20000">
-                            <Border.Style>
-                                <Style TargetType="Border">
-                                    <Setter Property="Background"
-                                            Value="{DynamicResource SystemFillColorCautionBackgroundBrush}"/>
+                                  TextWrapping="Wrap"/>
+
+                    <!-- Badge de impacto en rendimiento (colored chip) -->
+                    <Border Grid.Column="2"
+                            Padding="5,2"
+                            CornerRadius="4"
+                            VerticalAlignment="Center"
+                            Margin="6,0,5,0"
+                            BorderThickness="1">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="#1A6B7280"/>
+                                <Setter Property="BorderBrush" Value="#2A6B7280"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Impact}" Value="Soft">
+                                        <Setter Property="Background" Value="#1A4CAF50"/>
+                                        <Setter Property="BorderBrush" Value="#3A4CAF50"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Impact}" Value="Notable">
+                                        <Setter Property="Background" Value="#20FFB800"/>
+                                        <Setter Property="BorderBrush" Value="#40FFB800"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Impact}" Value="Strong">
+                                        <Setter Property="Background" Value="#20FF8C00"/>
+                                        <Setter Property="BorderBrush" Value="#40FF8C00"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Impact}" Value="Extreme">
+                                        <Setter Property="Background" Value="#20FF5470"/>
+                                        <Setter Property="BorderBrush" Value="#42FF5470"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <ui:TextBlock Text="{Binding ImpactLabelKey, Converter={StaticResource Loc}}"
+                                      FontTypography="Caption"
+                                      FontWeight="SemiBold">
+                            <ui:TextBlock.Style>
+                                <Style TargetType="ui:TextBlock">
+                                    <Setter Property="Foreground" Value="#FF6B7280"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Module.Reversible}" Value="True">
-                                            <Setter Property="Background"
-                                                    Value="{DynamicResource SystemFillColorSuccessBackgroundBrush}"/>
+                                        <DataTrigger Binding="{Binding Impact}" Value="Soft">
+                                            <Setter Property="Foreground" Value="#FF66BB6A"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Impact}" Value="Notable">
+                                            <Setter Property="Foreground" Value="#FFFFCC00"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Impact}" Value="Strong">
+                                            <Setter Property="Foreground" Value="#FFFF9500"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Impact}" Value="Extreme">
+                                            <Setter Property="Foreground" Value="#FFFF5470"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </Border.Style>
-                            <ui:TextBlock Text="{Binding SafetyLabelKey, Converter={StaticResource Loc}}"
-                                          FontTypography="Caption"/>
-                        </Border>
-                    </Grid>
+                            </ui:TextBlock.Style>
+                        </ui:TextBlock>
+                    </Border>
 
-                    <!-- Fila 2: descripción -->
-                    <ui:TextBlock Text="{Binding Description}"
-                                  Opacity="0.7"
-                                  TextWrapping="Wrap"
-                                  Margin="0,6,0,0"/>
-                </StackPanel>
+                    <!-- Botón ? — tooltip con nombre, descripción y nota de seguridad -->
+                    <Border Grid.Column="3"
+                            Width="22" Height="22"
+                            CornerRadius="11"
+                            Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            VerticalAlignment="Center"
+                            Cursor="Help"
+                            ToolTipService.ShowDuration="30000"
+                            ToolTipService.InitialShowDelay="200">
+                        <Border.ToolTip>
+                            <ToolTip MaxWidth="370" Padding="12,10">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"
+                                               FontWeight="SemiBold"
+                                               FontSize="13"
+                                               Margin="0,0,0,8"/>
+                                    <TextBlock Text="{Binding Description}"
+                                               TextWrapping="Wrap"
+                                               FontSize="12"
+                                               Margin="0,0,0,10"/>
+                                    <Separator Margin="0,0,0,8"/>
+                                    <TextBlock Text="{Binding SafetyReason}"
+                                               TextWrapping="Wrap"
+                                               FontSize="11"
+                                               Opacity="0.75"/>
+                                </StackPanel>
+                            </ToolTip>
+                        </Border.ToolTip>
+                        <ui:TextBlock Text="?"
+                                      FontTypography="Caption"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                    </Border>
+                </Grid>
             </Border>
         </DataTemplate>
 
@@ -594,7 +661,31 @@
                             <ui:Button Appearance="Secondary"
                                        Content="{loc:T Key=Modules.SelectRecommended}"
                                        Command="{Binding SelectRecommendedCommand}"
-                                       Margin="0,0,6,0"/>
+                                       Margin="0,0,4,0"/>
+                            <!-- ? junto a Recomendado — explica los criterios de selección -->
+                            <Border Width="20" Height="20"
+                                    CornerRadius="10"
+                                    Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,10,0"
+                                    Cursor="Help"
+                                    ToolTipService.ShowDuration="30000"
+                                    ToolTipService.InitialShowDelay="200">
+                                <Border.ToolTip>
+                                    <ToolTip MaxWidth="380" Padding="12,10">
+                                        <TextBlock Text="{Binding [Modules.Recommended.Why], Source={x:Static svc:LocalizationService.Instance}}"
+                                                   TextWrapping="Wrap"
+                                                   FontSize="12"/>
+                                    </ToolTip>
+                                </Border.ToolTip>
+                                <ui:TextBlock Text="?"
+                                              FontTypography="Caption"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                            </Border>
                             <ui:Button Appearance="Secondary"
                                        Content="{loc:T Key=Modules.SelectAll}"
                                        Command="{Binding SelectAllCommand}"
