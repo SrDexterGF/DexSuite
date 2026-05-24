@@ -39,4 +39,9 @@ public interface ILocalizationService : INotifyPropertyChanged
 /// <param name="Code">Código ISO (p. ej. "es", "zh").</param>
 /// <param name="NativeName">Nombre en el propio idioma (p. ej. "Español", "中文").</param>
 /// <param name="EnglishName">Nombre en inglés, para logs y debugging.</param>
-public sealed record LanguageOption(string Code, string NativeName, string EnglishName);
+/// <param name="Flag">Emoji de la bandera del país/región (p. ej. "🇪🇸").</param>
+public sealed record LanguageOption(string Code, string NativeName, string EnglishName, string Flag)
+{
+    /// <summary>Texto que se muestra en el ComboBox: bandera + nombre nativo.</summary>
+    public string DisplayName => $"{Flag}  {NativeName}";
+}

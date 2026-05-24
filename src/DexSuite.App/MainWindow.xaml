@@ -1740,7 +1740,7 @@
                                               VerticalAlignment="Center"
                                               ItemsSource="{Binding AvailableLanguages}"
                                               SelectedValuePath="Code"
-                                              DisplayMemberPath="NativeName"
+                                              DisplayMemberPath="DisplayName"
                                               SelectedValue="{Binding CurrentLanguage, Mode=TwoWay}"/>
                                 </Grid>
                             </Border>

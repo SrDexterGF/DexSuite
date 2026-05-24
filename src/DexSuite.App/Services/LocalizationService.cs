@@ -38,16 +38,16 @@ public sealed class LocalizationService : ILocalizationService
     /// </summary>
     public IReadOnlyList<LanguageOption> AvailableLanguages { get; } = new[]
     {
-        new LanguageOption("es", "Español",   "Spanish"),
-        new LanguageOption("gl", "Galego",    "Galician"),
-        new LanguageOption("ca", "Català",    "Catalan"),
-        new LanguageOption("eu", "Euskara",   "Basque"),
-        new LanguageOption("en", "English",   "English"),
-        new LanguageOption("pt", "Português", "Portuguese"),
-        new LanguageOption("fr", "Français",  "French"),
-        new LanguageOption("de", "Deutsch",   "German"),
-        new LanguageOption("it", "Italiano",  "Italian"),
-        new LanguageOption("zh", "中文",       "Chinese"),
+        new LanguageOption("es", "Español",   "Spanish",    "🇪🇸"),
+        new LanguageOption("gl", "Galego",    "Galician",   "🇪🇸"),
+        new LanguageOption("ca", "Català",    "Catalan",    "🇪🇸"),
+        new LanguageOption("eu", "Euskara",   "Basque",     "🇪🇸"),
+        new LanguageOption("en", "English",   "English",    "🇬🇧"),
+        new LanguageOption("pt", "Português", "Portuguese", "🇵🇹"),
+        new LanguageOption("fr", "Français",  "French",     "🇫🇷"),
+        new LanguageOption("de", "Deutsch",   "German",     "🇩🇪"),
+        new LanguageOption("it", "Italiano",  "Italian",    "🇮🇹"),
+        new LanguageOption("zh", "中文",       "Chinese",    "🇨🇳"),
     };
 
     public string CurrentLanguage
