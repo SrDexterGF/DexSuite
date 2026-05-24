@@ -1,0 +1,15 @@
+<!-- =====================================================================
+     DEFAULT — Paleta neutra (sin overrides).
+     Carga después del ThemesDictionary Dark de Wpf.Ui SIN modificar nada.
+     Existe como entrada vacía para que el ThemeService pueda volver al
+     look puro de Wpf.Ui al cambiar de tema.
+===================================================================== -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Colores de preview que el selector usa para pintar las muestras -->
+    <Color x:Key="Theme.Preview.Color1">#FF1B1B1B</Color>
+    <Color x:Key="Theme.Preview.Color2">#FF60CDFF</Color>
+    <Color x:Key="Theme.Preview.Color3">#FFFFFFFF</Color>
+
+</ResourceDictionary>

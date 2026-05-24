@@ -268,6 +268,9 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
   </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>Theme changed to {0}.</value>
+  </data>
   <data name="Log.Event.TierChanged" xml:space="preserve">
     <value>Active plan changed to {0}.</value>
   </data>
@@ -698,6 +701,19 @@ The interface updates instantly.</value>
     <value>Options apply instantly.
 They don't persist across restarts yet (coming with SQLite).</value>
   </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>Visual identity of the app.
+Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>Requires Pro plan</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>Theme</value>
+  </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Limits which modules you can run.
 For now it's informative; the next version will disable modules not in your plan.</value>
@@ -840,6 +856,36 @@ The application will restart automatically.</value>
   </data>
   <data name="Status.UpToDate" xml:space="preserve">
     <value>You're on the latest version (v{0}).</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>Cyberpunk cyan + violet</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>Neutral Fluent palette</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>Ultraminimal monochrome</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>CYBERNETIC</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>DEFAULT</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>REDLINE</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>ZERO LAG</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.

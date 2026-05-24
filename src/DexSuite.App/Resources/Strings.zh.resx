@@ -268,6 +268,9 @@
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>已将设置恢复为默认值。</value>
   </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>主题已切换为 {0}。</value>
+  </data>
   <data name="Log.Event.TierChanged" xml:space="preserve">
     <value>已切换至 {0} 套餐。</value>
   </data>
@@ -698,6 +701,19 @@
     <value>选项即时生效。
 目前关闭后不会保存（将随 SQLite 加入）。</value>
   </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>应用视觉标识。
+专属主题仅限 Pro 用户。</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>需要 Pro 套餐</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>主题</value>
+  </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>限制你可执行的模块。
 目前仅供参考；下一版本将禁用套餐之外的模块。</value>
@@ -840,6 +856,36 @@
   </data>
   <data name="Status.UpToDate" xml:space="preserve">
     <value>你已是最新版本（v{0}）。</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>尊享金 + 暖黑</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>赛博朋克：青 + 紫</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>中性 Fluent 配色</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>赛道红 + 深邃黑</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>极简单色</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>CYBERNETIC</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>DEFAULT</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>REDLINE</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>ZERO LAG</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>在后台下载并安装新版本。

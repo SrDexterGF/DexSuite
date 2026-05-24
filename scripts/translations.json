@@ -2279,6 +2279,152 @@
       "it": "• Tema CYBERNETIC con palette ciano + viola e logo esclusivo",
       "zh": "• CYBERNETIC 主题：青色 + 紫色配色方案及专属徽标"
     },
+    "Settings.Theme.Title": {
+      "en": "Theme",
+      "es": "Tema",
+      "gl": "Tema",
+      "ca": "Tema",
+      "eu": "Gaia",
+      "pt": "Tema",
+      "fr": "Thème",
+      "de": "Theme",
+      "it": "Tema",
+      "zh": "主题"
+    },
+    "Settings.Theme.Description": {
+      "en": "Visual identity of the app.\nExclusive themes for Pro users.",
+      "es": "Identidad visual de la app.\nTemas exclusivos para usuarios Pro.",
+      "gl": "Identidade visual da app.\nTemas exclusivos para usuarios Pro.",
+      "ca": "Identitat visual de l'app.\nTemes exclusius per a usuaris Pro.",
+      "eu": "Aplikazioaren itxura.\nGai esklusiboak Pro erabiltzaileentzat.",
+      "pt": "Identidade visual da app.\nTemas exclusivos para utilizadores Pro.",
+      "fr": "Identité visuelle de l'app.\nThèmes exclusifs pour les utilisateurs Pro.",
+      "de": "Visuelle Identität der App.\nExklusive Themes für Pro-Nutzer.",
+      "it": "Identità visiva dell'app.\nTemi esclusivi per utenti Pro.",
+      "zh": "应用视觉标识。\n专属主题仅限 Pro 用户。"
+    },
+    "Settings.Theme.LockedHint": {
+      "en": "Requires Pro plan",
+      "es": "Requiere plan Pro",
+      "gl": "Require plan Pro",
+      "ca": "Requereix pla Pro",
+      "eu": "Pro plana behar du",
+      "pt": "Requer plano Pro",
+      "fr": "Nécessite le plan Pro",
+      "de": "Erfordert Pro-Plan",
+      "it": "Richiede piano Pro",
+      "zh": "需要 Pro 套餐"
+    },
+    "Settings.Theme.Active": {
+      "en": "Active",
+      "es": "Activo",
+      "gl": "Activo",
+      "ca": "Actiu",
+      "eu": "Aktibo",
+      "pt": "Ativo",
+      "fr": "Actif",
+      "de": "Aktiv",
+      "it": "Attivo",
+      "zh": "已启用"
+    },
+    "Theme.Name.Default": {
+      "en": "DEFAULT", "es": "DEFAULT", "gl": "DEFAULT", "ca": "DEFAULT",
+      "eu": "DEFAULT", "pt": "DEFAULT", "fr": "DEFAULT", "de": "DEFAULT",
+      "it": "DEFAULT", "zh": "DEFAULT"
+    },
+    "Theme.Name.Cybernetic": {
+      "en": "CYBERNETIC", "es": "CYBERNETIC", "gl": "CYBERNETIC", "ca": "CYBERNETIC",
+      "eu": "CYBERNETIC", "pt": "CYBERNETIC", "fr": "CYBERNETIC", "de": "CYBERNETIC",
+      "it": "CYBERNETIC", "zh": "CYBERNETIC"
+    },
+    "Theme.Name.Redline": {
+      "en": "REDLINE", "es": "REDLINE", "gl": "REDLINE", "ca": "REDLINE",
+      "eu": "REDLINE", "pt": "REDLINE", "fr": "REDLINE", "de": "REDLINE",
+      "it": "REDLINE", "zh": "REDLINE"
+    },
+    "Theme.Name.ZeroLag": {
+      "en": "ZERO LAG", "es": "ZERO LAG", "gl": "ZERO LAG", "ca": "ZERO LAG",
+      "eu": "ZERO LAG", "pt": "ZERO LAG", "fr": "ZERO LAG", "de": "ZERO LAG",
+      "it": "ZERO LAG", "zh": "ZERO LAG"
+    },
+    "Theme.Name.Apex": {
+      "en": "APEX", "es": "APEX", "gl": "APEX", "ca": "APEX",
+      "eu": "APEX", "pt": "APEX", "fr": "APEX", "de": "APEX",
+      "it": "APEX", "zh": "APEX"
+    },
+    "Theme.Desc.Default": {
+      "en": "Neutral Fluent palette",
+      "es": "Paleta Fluent neutra",
+      "gl": "Paleta Fluent neutra",
+      "ca": "Paleta Fluent neutra",
+      "eu": "Fluent paleta neutroa",
+      "pt": "Paleta Fluent neutra",
+      "fr": "Palette Fluent neutre",
+      "de": "Neutrale Fluent-Palette",
+      "it": "Palette Fluent neutra",
+      "zh": "中性 Fluent 配色"
+    },
+    "Theme.Desc.Cybernetic": {
+      "en": "Cyberpunk cyan + violet",
+      "es": "Cyberpunk cian + violeta",
+      "gl": "Cyberpunk cian + violeta",
+      "ca": "Cyberpunk cian + violeta",
+      "eu": "Cyberpunk ziano + bioleta",
+      "pt": "Cyberpunk ciano + violeta",
+      "fr": "Cyberpunk cyan + violet",
+      "de": "Cyberpunk Cyan + Violett",
+      "it": "Cyberpunk ciano + viola",
+      "zh": "赛博朋克：青 + 紫"
+    },
+    "Theme.Desc.Redline": {
+      "en": "Racing red + deep black",
+      "es": "Rojo carrera + negro profundo",
+      "gl": "Vermello carreira + negro profundo",
+      "ca": "Vermell cursa + negre profund",
+      "eu": "Lasterketako gorria + beltz sakona",
+      "pt": "Vermelho corrida + preto profundo",
+      "fr": "Rouge course + noir profond",
+      "de": "Renn-Rot + Tiefschwarz",
+      "it": "Rosso da corsa + nero profondo",
+      "zh": "赛道红 + 深邃黑"
+    },
+    "Theme.Desc.ZeroLag": {
+      "en": "Ultraminimal monochrome",
+      "es": "Monocromo ultraminimalista",
+      "gl": "Monocromo ultraminimalista",
+      "ca": "Monocrom ultraminimalista",
+      "eu": "Monokromo ultraminimalista",
+      "pt": "Monocromático ultraminimalista",
+      "fr": "Monochrome ultraminimaliste",
+      "de": "Ultraminimal monochrom",
+      "it": "Monocromatico ultraminimalista",
+      "zh": "极简单色"
+    },
+    "Theme.Desc.Apex": {
+      "en": "Premium gold + warm black",
+      "es": "Oro premium + negro cálido",
+      "gl": "Ouro premium + negro cálido",
+      "ca": "Or premium + negre càlid",
+      "eu": "Urre premium + beltz beroa",
+      "pt": "Ouro premium + preto quente",
+      "fr": "Or premium + noir chaud",
+      "de": "Premium-Gold + warmes Schwarz",
+      "it": "Oro premium + nero caldo",
+      "zh": "尊享金 + 暖黑"
+    },
+    "Log.Event.ThemeChanged": {
+      "en": "Theme changed to {0}.",
+      "es": "Tema cambiado a {0}.",
+      "gl": "Tema cambiado a {0}.",
+      "ca": "Tema canviat a {0}.",
+      "eu": "Gaia {0}-ra aldatu da.",
+      "pt": "Tema alterado para {0}.",
+      "fr": "Thème changé en {0}.",
+      "de": "Theme geändert zu {0}.",
+      "it": "Tema cambiato in {0}.",
+      "zh": "主题已切换为 {0}。"
+    },
+
     "About.Changelog.Item9": {
       "en": "• Sidebar with icons, separators and language selector (10 languages)",
       "es": "• Sidebar con iconos, separadores y selector de idioma (10 idiomas)",

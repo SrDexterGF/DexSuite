@@ -268,6 +268,9 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Definições repostas para os valores predefinidos.</value>
   </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>Tema alterado para {0}.</value>
+  </data>
   <data name="Log.Event.TierChanged" xml:space="preserve">
     <value>Plano ativo alterado para {0}.</value>
   </data>
@@ -698,6 +701,19 @@ A interface atualiza-se instantaneamente.</value>
     <value>As opções aplicam-se instantaneamente.
 Por agora não são guardadas ao fechar a app (chegará com SQLite).</value>
   </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>Ativo</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>Identidade visual da app.
+Temas exclusivos para utilizadores Pro.</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>Requer plano Pro</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>Tema</value>
+  </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Limita os módulos que podes executar.
 Por agora é informativo; na próxima versão desativará os módulos fora do teu plano.</value>
@@ -840,6 +856,36 @@ A aplicação irá reiniciar automaticamente.</value>
   </data>
   <data name="Status.UpToDate" xml:space="preserve">
     <value>Tens a versão mais recente (v{0}).</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>Ouro premium + preto quente</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>Cyberpunk ciano + violeta</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>Paleta Fluent neutra</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>Vermelho corrida + preto profundo</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>Monocromático ultraminimalista</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>CYBERNETIC</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>DEFAULT</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>REDLINE</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>ZERO LAG</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Transfere e instala novas versões em segundo plano.

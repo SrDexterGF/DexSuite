@@ -23,6 +23,7 @@ public partial class MainViewModel : ObservableObject
     private readonly IAppLogService _appLog;
     private readonly IPerformanceBaselineService _baseline;
     private readonly IRestorePointService _restorePoint;
+    private readonly IThemeService _themeService;
 
     private const string DefaultScriptFolder =
         @"C:\Users\mgf74\Documents\Claude Environment W11\DexSuite (Script)";
@@ -357,6 +358,7 @@ public partial class MainViewModel : ObservableObject
     partial void OnUserTierChanged(string value)
     {
         UpdateModuleLockStates();
+        RefreshThemeItems(); // El bloqueo del selector de temas también depende del tier.
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.TierChanged", value));
     }
 
@@ -375,6 +377,67 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>Carpeta donde Serilog escribe los logs (calculada al construir el VM).</summary>
     public string LogsFolder { get; }
+
+    // ── Temas (F_THEMES) ──────────────────────────────────────────────────
+
+    /// <summary>Items observables para el selector de temas en Ajustes.</summary>
+    public ObservableCollection<ThemeItemViewModel> ThemeItems { get; } = new();
+
+    [ObservableProperty]
+    private AppTheme currentTheme;
+
+    /// <summary>
+    /// Refresca el flag IsActive/IsUnlocked de cada item del selector.
+    /// Llamar cuando cambia <see cref="CurrentTheme"/> o <see cref="UserTier"/>.
+    /// </summary>
+    private void RefreshThemeItems()
+    {
+        foreach (var item in ThemeItems)
+        {
+            item.IsActive = item.Theme == CurrentTheme;
+            item.IsUnlocked = IsThemeUnlocked(item.MinTier);
+        }
+    }
+
+    /// <summary>
+    /// Aplica un tema y lo persiste a disco. Si el plan del usuario no lo
+    /// desbloquea, no hace nada (la UI ya muestra el candado).
+    /// </summary>
+    [RelayCommand]
+    private async Task SelectThemeAsync(ThemeItemViewModel? item)
+    {
+        if (item is null) return;
+        if (!item.IsUnlocked) return;
+        if (_themeService.CurrentTheme == item.Theme) return;
+
+        _themeService.ApplyTheme(item.Theme);
+        await _themeService.PersistAsync();
+
+        var localizedName = T(item.NameKey);
+        await _appLog.InfoAsync(AppLogCategory.Settings,
+            T("Log.Event.ThemeChanged", localizedName));
+    }
+
+    /// <summary>
+    /// True si el plan actual del usuario desbloquea un tema cuyo requisito
+    /// es <paramref name="minTier"/>. Jerarquía: Free &lt; Avanzado &lt; Pro.
+    /// </summary>
+    public bool IsThemeUnlocked(string minTier)
+    {
+        var current = TierRank(UserTier);
+        var required = TierRank(minTier);
+        return current >= required;
+    }
+
+    private static int TierRank(string tier) => tier switch
+    {
+        "Pro" => 3,
+        "Avanzado" => 2,
+        "Free" => 1,
+        _ => 0,
+    };
+
+    partial void OnCurrentThemeChanged(AppTheme value) => RefreshThemeItems();
 
     /// <summary>Carpeta donde busca el .bat de DexSuite. Editable en Ajustes.</summary>
     [ObservableProperty]
@@ -791,6 +854,7 @@ public partial class MainViewModel : ObservableObject
         IAppLogService appLog,
         IPerformanceBaselineService baseline,
         IRestorePointService restorePoint,
+        IThemeService themeService,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
@@ -802,7 +866,24 @@ public partial class MainViewModel : ObservableObject
         _appLog = appLog;
         _baseline = baseline;
         _restorePoint = restorePoint;
+        _themeService = themeService;
         _logger = logger;
+
+        // Sincroniza el tema actual al que cargó App.xaml.cs antes de mostrar la
+        // ventana. Si en runtime se cambia, ThemeChanged actualizará la UI.
+        CurrentTheme = _themeService.CurrentTheme;
+        foreach (var desc in _themeService.AvailableThemes)
+        {
+            ThemeItems.Add(new ThemeItemViewModel(
+                desc,
+                isActive:   desc.Theme == CurrentTheme,
+                isUnlocked: IsThemeUnlocked(desc.MinTier)));
+        }
+        _themeService.ThemeChanged += (_, theme) =>
+        {
+            // El setter dispara OnCurrentThemeChanged → RefreshThemeItems.
+            CurrentTheme = theme;
+        };
 
         // Mensaje inicial localizado. Cuando el usuario cambia el idioma,
         // re-emitimos el mensaje de "Listo" si seguimos en ese estado.

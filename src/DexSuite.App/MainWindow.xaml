@@ -25,6 +25,7 @@
 
     <ui:FluentWindow.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <conv:InverseBoolToVisibilityConverter x:Key="InverseBoolToVis"/>
         <conv:KeyToTranslationConverter x:Key="Loc"/>
 
         <!-- Converters del historial interno (F5.4) -->
@@ -1743,6 +1744,128 @@
                                               DisplayMemberPath="DisplayName"
                                               SelectedValue="{Binding CurrentLanguage, Mode=TwoWay}"/>
                                 </Grid>
+                            </Border>
+
+                            <!-- Tema visual (F_THEMES) — selector de paletas con candado por plan -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="{loc:T Key=Settings.Theme.Title}"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,4"/>
+                                    <ui:TextBlock Text="{loc:T Key=Settings.Theme.Description}"
+                                                  Opacity="0.7"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,0,0,14"/>
+                                    <ItemsControl ItemsSource="{Binding ThemeItems}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Button Width="170" Height="120"
+                                                        Margin="0,0,10,10"
+                                                        Padding="0"
+                                                        BorderThickness="2"
+                                                        Cursor="Hand"
+                                                        HorizontalContentAlignment="Stretch"
+                                                        VerticalContentAlignment="Stretch"
+                                                        Command="{Binding DataContext.SelectThemeCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                        CommandParameter="{Binding}">
+                                                    <Button.Style>
+                                                        <Style TargetType="Button">
+                                                            <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+                                                            <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                                    <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding IsUnlocked}" Value="False">
+                                                                    <Setter Property="Opacity" Value="0.55"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <!-- Bloque superior: 3 muestras de color en gradiente vertical -->
+                                                        <Grid Grid.Row="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border Grid.Column="0">
+                                                                <Border.Background>
+                                                                    <SolidColorBrush Color="{Binding PreviewColor1}"/>
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <Border Grid.Column="1">
+                                                                <Border.Background>
+                                                                    <SolidColorBrush Color="{Binding PreviewColor2}"/>
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <Border Grid.Column="2">
+                                                                <Border.Background>
+                                                                    <SolidColorBrush Color="{Binding PreviewColor3}"/>
+                                                                </Border.Background>
+                                                            </Border>
+
+                                                            <!-- Badge "Activo" en esquina superior derecha -->
+                                                            <Border HorizontalAlignment="Right"
+                                                                    VerticalAlignment="Top"
+                                                                    Margin="0,6,6,0"
+                                                                    Padding="6,2"
+                                                                    CornerRadius="4"
+                                                                    Background="{DynamicResource AccentFillColorDefaultBrush}"
+                                                                    Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}">
+                                                                <ui:TextBlock Text="{loc:T Key=Settings.Theme.Active}"
+                                                                              FontTypography="Caption"
+                                                                              FontWeight="Bold"
+                                                                              Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
+                                                            </Border>
+
+                                                            <!-- Candado en el centro si está bloqueado -->
+                                                            <ui:SymbolIcon Symbol="Lock24"
+                                                                           Filled="True"
+                                                                           FontSize="32"
+                                                                           Foreground="White"
+                                                                           HorizontalAlignment="Center"
+                                                                           VerticalAlignment="Center">
+                                                                <ui:SymbolIcon.Visibility>
+                                                                    <Binding Path="IsUnlocked" Converter="{StaticResource InverseBoolToVis}"/>
+                                                                </ui:SymbolIcon.Visibility>
+                                                            </ui:SymbolIcon>
+                                                        </Grid>
+
+                                                        <!-- Bloque inferior: nombre + hint del plan si bloqueado -->
+                                                        <StackPanel Grid.Row="1" Margin="10,6,10,8">
+                                                            <ui:TextBlock Text="{Binding NameKey, Converter={StaticResource Loc}}"
+                                                                          FontTypography="BodyStrong"/>
+                                                            <ui:TextBlock Text="{loc:T Key=Settings.Theme.LockedHint}"
+                                                                          FontTypography="Caption"
+                                                                          Opacity="0.7"
+                                                                          Visibility="{Binding IsUnlocked, Converter={StaticResource InverseBoolToVis}}"/>
+                                                            <ui:TextBlock Text="{Binding DescriptionKey, Converter={StaticResource Loc}}"
+                                                                          FontTypography="Caption"
+                                                                          Opacity="0.6"
+                                                                          Visibility="{Binding IsUnlocked, Converter={StaticResource BoolToVis}}"/>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Button>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
                             </Border>
 
                             <!-- Tier del usuario -->

@@ -268,6 +268,9 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Ezarpenak balio lehenetsietara berrezarri dira.</value>
   </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>Gaia {0}-ra aldatu da.</value>
+  </data>
   <data name="Log.Event.TierChanged" xml:space="preserve">
     <value>Plan aktiboa {0}-ra aldatu da.</value>
   </data>
@@ -698,6 +701,19 @@ Interfazea berehala eguneratzen da.</value>
     <value>Aukerak berehala aplikatzen dira.
 Oraingoz ez dira gordetzen aplikazioa ixtean (SQLite-rekin etorriko da).</value>
   </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>Aktibo</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>Aplikazioaren itxura.
+Gai esklusiboak Pro erabiltzaileentzat.</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>Pro plana behar du</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>Gaia</value>
+  </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
     <value>Zein modulu exekutatu ditzakezun mugatzen du.
 Oraingoz informatiboa da; hurrengo bertsioan zure planean ez dauden moduluak desgaituko ditu.</value>
@@ -840,6 +856,36 @@ Aplikazioa automatikoki berrabiaraziko da.</value>
   </data>
   <data name="Status.UpToDate" xml:space="preserve">
     <value>Eskuragarri dagoen azken bertsioa duzu (v{0}).</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>Urre premium + beltz beroa</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>Cyberpunk ziano + bioleta</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>Fluent paleta neutroa</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>Lasterketako gorria + beltz sakona</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>Monokromo ultraminimalista</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>CYBERNETIC</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>DEFAULT</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>REDLINE</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>ZERO LAG</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Bertsio berriak atzeko planoan deskargatu eta instalatzen ditu.

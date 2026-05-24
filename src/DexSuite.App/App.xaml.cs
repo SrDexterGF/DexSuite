@@ -62,6 +62,12 @@ public partial class App : System.Windows.Application
             Log.Error(ex, "No se pudo inicializar la base de datos del historial");
         }
 
+        // Aplica el tema persistido (o Default si es la primera ejecución).
+        // Se hace antes de mostrar la ventana para evitar el "flash" del tema antiguo.
+        var themeService = _host.Services.GetRequiredService<IThemeService>();
+        var persistedTheme = themeService.LoadPersistedTheme();
+        themeService.ApplyTheme(persistedTheme);
+
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
         mainWindow.Show();
     }
@@ -101,6 +107,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IAppLogService, AppLogService>();
         services.AddSingleton<IPerformanceBaselineService, PerformanceBaselineService>();
         services.AddSingleton<IRestorePointService, RestorePointService>();
+        services.AddSingleton<IThemeService, ThemeService>();
 
         // i18n: el singleton estático es el mismo que usa la markup extension {loc:T}.
         services.AddSingleton<ILocalizationService>(LocalizationService.Instance);
