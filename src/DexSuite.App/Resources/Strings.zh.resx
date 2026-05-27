@@ -217,8 +217,7 @@
     <value>更新应用</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
-    <value>一次性更新所有已安装的应用。
-使用 Windows 包管理器 (winget)。</value>
+    <value>一次性更新所有已安装的应用。</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
     <value>更新应用</value>
@@ -926,8 +925,7 @@
     <value>「{1}」的搜索结果：{0} 条</value>
   </data>
   <data name="Security.CardDesc" xml:space="preserve">
-    <value>运行 Windows Defender、SFC、DISM 或 MRT。
-原生工具，无需额外下载。</value>
+    <value>运行 Windows Defender、SFC、DISM 或 MRT。</value>
   </data>
   <data name="Security.CardTitle" xml:space="preserve">
     <value>安全和完整性检查</value>
@@ -970,7 +968,7 @@
     <value>工具不可用</value>
   </data>
   <data name="Security.RunButton" xml:space="preserve">
-    <value>运行检查</value>
+    <value>运行</value>
   </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>应用启动时生效。</value>

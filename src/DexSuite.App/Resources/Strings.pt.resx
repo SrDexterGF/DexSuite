@@ -217,8 +217,7 @@ Liberta espaço em segundos.</value>
     <value>Atualizar apps</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
-    <value>Atualiza todas as aplicações instaladas de uma vez.
-Usa o Gestor de Pacotes do Windows (winget).</value>
+    <value>Atualiza todas as aplicações instaladas de uma vez.</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
     <value>Atualizar aplicações</value>
@@ -926,8 +925,7 @@ Demora apenas alguns segundos.</value>
     <value>{0} resultado(s) para «{1}»</value>
   </data>
   <data name="Security.CardDesc" xml:space="preserve">
-    <value>Executa Windows Defender, SFC, DISM ou MRT.
-Ferramentas nativas, sem downloads extra.</value>
+    <value>Executa Windows Defender, SFC, DISM ou MRT.</value>
   </data>
   <data name="Security.CardTitle" xml:space="preserve">
     <value>Verificação de segurança e integridade</value>
@@ -970,7 +968,7 @@ Verifica e repara ficheiros de sistema danificados. Demora 10–20 minutos.</val
     <value>Ferramenta não disponível</value>
   </data>
   <data name="Security.RunButton" xml:space="preserve">
-    <value>Executar verificação</value>
+    <value>Executar</value>
   </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Aplica-se ao iniciar a app.</value>

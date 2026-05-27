@@ -217,8 +217,7 @@ Allibera espai en segons.</value>
     <value>Actualitzar apps</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
-    <value>Actualitza totes les aplicacions instal·lades alhora.
-Usa el Gestor de paquets de Windows (winget).</value>
+    <value>Actualitza totes les aplicacions instal·lades alhora.</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
     <value>Actualitzar aplicacions</value>
@@ -926,8 +925,7 @@ Només triga uns segons.</value>
     <value>{0} resultat(s) per a «{1}»</value>
   </data>
   <data name="Security.CardDesc" xml:space="preserve">
-    <value>Executa Windows Defender, SFC, DISM o MRT.
-Eines natives, sense descàrregues extres.</value>
+    <value>Executa Windows Defender, SFC, DISM o MRT.</value>
   </data>
   <data name="Security.CardTitle" xml:space="preserve">
     <value>Comprovació de seguretat i integritat</value>
@@ -970,7 +968,7 @@ Analitza i repara fitxers de sistema malmesos. Triga 10–20 minuts.</value>
     <value>Eina no disponible</value>
   </data>
   <data name="Security.RunButton" xml:space="preserve">
-    <value>Executar comprovació</value>
+    <value>Executar</value>
   </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>S'aplica en iniciar l'aplicació.</value>

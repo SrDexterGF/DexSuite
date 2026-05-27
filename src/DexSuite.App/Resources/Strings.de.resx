@@ -217,8 +217,7 @@ Gibt Speicherplatz in Sekunden frei.</value>
     <value>Apps aktualisieren</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
-    <value>Aktualisiert alle installierten Apps auf einmal.
-Verwendet den Windows-Paket-Manager (winget).</value>
+    <value>Aktualisiert alle installierten Apps auf einmal.</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
     <value>Apps aktualisieren</value>
@@ -926,8 +925,7 @@ Dauert nur wenige Sekunden.</value>
     <value>{0} Ergebnis(se) für «{1}»</value>
   </data>
   <data name="Security.CardDesc" xml:space="preserve">
-    <value>Startet Windows Defender, SFC, DISM oder MRT.
-Native Tools, keine Downloads.</value>
+    <value>Startet Windows Defender, SFC, DISM oder MRT.</value>
   </data>
   <data name="Security.CardTitle" xml:space="preserve">
     <value>Sicherheits- und Integritätsprüfung</value>
@@ -970,7 +968,7 @@ Scannt und repariert beschädigte Systemdateien. 10–20 Minuten.</value>
     <value>Tool nicht verfügbar</value>
   </data>
   <data name="Security.RunButton" xml:space="preserve">
-    <value>Prüfung starten</value>
+    <value>Starten</value>
   </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Wird beim Start der App angewendet.</value>
