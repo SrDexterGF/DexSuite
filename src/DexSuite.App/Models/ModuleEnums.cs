@@ -1,7 +1,7 @@
 namespace DexSuite.App.Models;
 
 /// <summary>
-/// Agrupacion logica de los modulos, paralela a los bloques del .bat original
+/// Agrupación lógica de los módulos nativos de DexSuite
 /// (LIMPIEZA / AJUSTES / HARDWARE / EXTRAS).
 /// </summary>
 public enum ModuleCategory

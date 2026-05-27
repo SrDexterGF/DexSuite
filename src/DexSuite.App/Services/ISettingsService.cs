@@ -30,7 +30,6 @@ public interface ISettingsService
 public sealed class AppSettings
 {
     public string Language { get; set; } = "es";
-    public string UserTier { get; set; } = "Pro";
     public string UpdateChannel { get; set; } = "Stable";
 
     public bool AutoSelectRecommended { get; set; } = true;
@@ -39,6 +38,4 @@ public sealed class AppSettings
     public bool CreateRestorePointBeforeRun { get; set; } = true;
     public bool NotifyOnFinish { get; set; }
     public bool AutoUpdateEnabled { get; set; } = true;
-
-    public string? ScriptFolder { get; set; }
 }

@@ -35,6 +35,10 @@
         <conv:LogCategoryToTextConverter  x:Key="LogCategoryText"/>
         <conv:UtcToLocalTimeConverter     x:Key="UtcToLocalTime"/>
 
+        <!-- Converters F5: tipo de check de seguridad + tipo de cambio revertible -->
+        <conv:SecurityKindConverter       x:Key="SecurityKind"/>
+        <conv:ChangeTypeConverter         x:Key="ChangeTypeText"/>
+
         <!-- ===== Sidebar: nav items con profundidad, acento cian y glow ===== -->
         <Style x:Key="NavItemStyle" TargetType="RadioButton">
             <Setter Property="Margin" Value="8,2"/>
@@ -120,6 +124,29 @@
             <Setter Property="FontTypography" Value="Caption"/>
         </Style>
 
+        <!-- ===== Estilo compartido para botones de barra superior =====
+             Unifica altura, padding, margen y alineación vertical de todos
+             los botones de acción que aparecen en las cabeceras de cada
+             vista. Hereda del estilo base de ui:Button para conservar el
+             ControlTemplate y la lógica de Appearance="Secondary"/"Primary".
+             SIN BasedOn, los setters pisan el template y los botones pierden
+             color/bordes (aparecen planos en blanco). -->
+        <Style x:Key="ToolbarButton" TargetType="ui:Button" BasedOn="{StaticResource {x:Type ui:Button}}">
+            <Setter Property="MinHeight" Value="34"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <!-- ===== Pinceles del Sidebar =====
+             Versión simple: el sidebar usa el mismo brush que arrancaba
+             en el primer diseño (LayerOnAcrylicFillColorDefaultBrush) y un
+             borde derecho 1 px sutil. Sin banda de fade superpuesta sobre
+             el contenido (el "blanco" que se veía arriba era ese overlay).
+        -->
+        <SolidColorBrush x:Key="SidebarBorderBrush" Color="#1A00B8D9"/>
+
         <!-- Card de módulo: acción + badge de impacto + "?" con tooltip completo -->
         <DataTemplate x:Key="ModuleCardTemplate">
             <Border Margin="0,0,0,5"
@@ -142,6 +169,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- Indicador de estado del módulo (Idle / Running / Success / Error) -->
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -170,13 +199,17 @@
                                   VerticalAlignment="Center"
                                   TextWrapping="Wrap"/>
 
-                    <!-- Badge de impacto en rendimiento (colored chip) -->
+                    <!-- Badge de impacto en rendimiento (colored chip).
+                         El tooltip describe qué significa el nivel de impacto. -->
                     <Border Grid.Column="2"
                             Padding="5,2"
                             CornerRadius="4"
                             VerticalAlignment="Center"
                             Margin="6,0,5,0"
-                            BorderThickness="1">
+                            BorderThickness="1"
+                            ToolTipService.ShowDuration="8000"
+                            ToolTipService.InitialShowDelay="300"
+                            ToolTip="{Binding [Modules.Impact.TooltipDesc], Source={x:Static svc:LocalizationService.Instance}}">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Setter Property="Background" Value="#1A6B7280"/>
@@ -226,8 +259,112 @@
                         </ui:TextBlock>
                     </Border>
 
+                    <!-- Indicador de estado de ejecución del módulo (F2.2).
+                         Visualmente:
+                           Idle    → guion gris  (— ) opacity 0.4
+                           Running → spinner cian indeterminado
+                           Success → checkmark verde
+                           Error   → triángulo ámbar con tooltip del último error -->
+                    <Grid Grid.Column="3"
+                          Width="20" Height="20"
+                          VerticalAlignment="Center"
+                          Margin="2,0,6,0"
+                          ToolTipService.ShowDuration="8000"
+                          ToolTipService.InitialShowDelay="200">
+                        <!-- Idle: guion -->
+                        <ui:TextBlock Text="—"
+                                      FontSize="14"
+                                      FontWeight="SemiBold"
+                                      Opacity="0.4"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      ToolTip="{Binding [Modules.Run.IdleTooltip], Source={x:Static svc:LocalizationService.Instance}}">
+                            <ui:TextBlock.Style>
+                                <Style TargetType="ui:TextBlock">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RunStatus}" Value="Running">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RunStatus}" Value="Success">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RunStatus}" Value="Error">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:TextBlock.Style>
+                        </ui:TextBlock>
+                        <!-- Running: spinner -->
+                        <ui:ProgressRing IsIndeterminate="True"
+                                         Width="18" Height="18"
+                                         ToolTip="{Binding [Modules.Run.RunningTooltip], Source={x:Static svc:LocalizationService.Instance}}">
+                            <ui:ProgressRing.Style>
+                                <Style TargetType="ui:ProgressRing">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RunStatus}" Value="Running">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:ProgressRing.Style>
+                        </ui:ProgressRing>
+                        <!-- Success: checkmark verde -->
+                        <ui:SymbolIcon Symbol="CheckmarkCircle24"
+                                       FontSize="18"
+                                       Foreground="#FF00C853"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       ToolTip="{Binding [Modules.Run.SuccessTooltip], Source={x:Static svc:LocalizationService.Instance}}">
+                            <ui:SymbolIcon.Style>
+                                <Style TargetType="ui:SymbolIcon">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RunStatus}" Value="Success">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:SymbolIcon.Style>
+                        </ui:SymbolIcon>
+                        <!-- Error: triángulo ámbar — el tooltip se compone con
+                             el mensaje real del último error si existe. -->
+                        <ui:SymbolIcon Symbol="Warning24"
+                                       FontSize="18"
+                                       Foreground="#FFFF6E40"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                            <ui:SymbolIcon.Style>
+                                <Style TargetType="ui:SymbolIcon">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RunStatus}" Value="Error">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:SymbolIcon.Style>
+                            <ui:SymbolIcon.ToolTip>
+                                <ToolTip MaxWidth="320" Padding="10,8">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding [Modules.Run.ErrorTooltip], Source={x:Static svc:LocalizationService.Instance}}"
+                                                   FontWeight="SemiBold"
+                                                   FontSize="12"/>
+                                        <TextBlock Text="{Binding LastError}"
+                                                   TextWrapping="Wrap"
+                                                   FontSize="11"
+                                                   Opacity="0.85"
+                                                   Margin="0,4,0,0"/>
+                                    </StackPanel>
+                                </ToolTip>
+                            </ui:SymbolIcon.ToolTip>
+                        </ui:SymbolIcon>
+                    </Grid>
+
                     <!-- Botón ? — tooltip con nombre, descripción y nota de seguridad -->
-                    <Border Grid.Column="3"
+                    <Border Grid.Column="4"
                             Width="22" Height="22"
                             CornerRadius="11"
                             Background="{DynamicResource SubtleFillColorSecondaryBrush}"
@@ -256,15 +393,18 @@
                                 </StackPanel>
                             </ToolTip>
                         </Border.ToolTip>
-                        <ui:TextBlock Text="?"
-                                      FontTypography="Caption"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                        <TextBlock Text="?"
+                                   FontSize="11"
+                                   FontWeight="SemiBold"
+                                   LineHeight="22"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
                     </Border>
 
                     <!-- Candado: visible solo cuando el módulo está bloqueado por tier -->
-                    <Border Grid.Column="4"
+                    <Border Grid.Column="5"
                             Width="22" Height="22"
                             CornerRadius="11"
                             VerticalAlignment="Center"
@@ -353,7 +493,7 @@
             <!-- ================== SIDEBAR ================== -->
             <Border Grid.Column="0"
                     Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
-                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    BorderBrush="{StaticResource SidebarBorderBrush}"
                     BorderThickness="0,0,1,0">
                 <DockPanel LastChildFill="True">
 
@@ -368,7 +508,10 @@
                         <StackPanel Orientation="Horizontal">
                             <Border Width="38" Height="38" CornerRadius="7" ClipToBounds="True">
                                 <Image Source="pack://application:,,,/Assets/AppIcon.png"
-                                       Stretch="UniformToFill"/>
+                                       Stretch="UniformToFill"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       RenderOptions.EdgeMode="Aliased"
+                                       SnapsToDevicePixels="True"/>
                             </Border>
                             <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
                                 <ui:TextBlock Text="DexSuite" FontTypography="BodyStrong"/>
@@ -457,6 +600,37 @@
                             </StackPanel>
                         </RadioButton>
 
+                        <!-- Revertir cambios: badge con número de pendientes en la derecha -->
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsRestoreView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Restore">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                    <ui:SymbolIcon Symbol="ArrowUndo24" Style="{StaticResource NavItemIconStyle}"/>
+                                    <TextBlock Text="{loc:T Key=Navigation.Restore}" Style="{StaticResource NavItemTextStyle}"/>
+                                </StackPanel>
+                                <Border Grid.Column="1"
+                                        Padding="6,1" CornerRadius="9"
+                                        Background="#1A00B8D9"
+                                        BorderBrush="#3A00B8D9"
+                                        BorderThickness="1"
+                                        VerticalAlignment="Center"
+                                        Margin="0,0,2,0"
+                                        Visibility="{Binding HasPendingChanges, Converter={StaticResource BoolToVis}}">
+                                    <ui:TextBlock Text="{Binding PendingChangesCount}"
+                                                  FontTypography="Caption"
+                                                  FontWeight="Bold"
+                                                  Foreground="#FF00B8D9"/>
+                                </Border>
+                            </Grid>
+                        </RadioButton>
+
                         <!-- Separador con gradiente -->
                         <Border Height="1" Margin="16,14,16,6">
                             <Border.Background>
@@ -488,7 +662,18 @@
                                      Command="{Binding NavigateCommand}"
                                      CommandParameter="Updates">
                             <StackPanel Orientation="Horizontal">
-                                <ui:SymbolIcon Symbol="ArrowDownload24" Style="{StaticResource NavItemIconStyle}"/>
+                                <!-- Flecha verde cuando hay actualización disponible -->
+                                <ui:SymbolIcon Symbol="ArrowDownload24">
+                                    <ui:SymbolIcon.Style>
+                                        <Style TargetType="ui:SymbolIcon" BasedOn="{StaticResource NavItemIconStyle}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsUpdateAvailable}" Value="True">
+                                                    <Setter Property="Foreground" Value="#FF00C853"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ui:SymbolIcon.Style>
+                                </ui:SymbolIcon>
                                 <TextBlock Text="{loc:T Key=Navigation.Updates}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
@@ -510,6 +695,7 @@
             <!-- ================== CONTENT ================== -->
             <Grid Grid.Column="1">
 
+
                 <!-- =========== VISTA INICIO =========== -->
                 <ScrollViewer Visibility="{Binding IsHomeView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
@@ -520,7 +706,10 @@
                             <StackPanel HorizontalAlignment="Center" Margin="0,0,0,24">
                                 <Image Source="pack://application:,,,/Assets/AppIcon.png"
                                        Width="220" Height="220"
-                                       Stretch="Uniform"/>
+                                       Stretch="Uniform"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       SnapsToDevicePixels="True"
+                                       UseLayoutRounding="True"/>
                                 <ui:TextBlock Text="{loc:T Key=App.Subtitle}"
                                               Opacity="0.7"
                                               HorizontalAlignment="Center"
@@ -542,22 +731,30 @@
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                         BorderThickness="1">
-                                    <StackPanel>
-                                        <ui:SymbolIcon Symbol="Pulse24" FontSize="28"
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="Pulse24" FontSize="28"
+                                                       HorizontalAlignment="Left"
                                                        Foreground="{DynamicResource SystemFillColorSuccessBrush}"/>
-                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Analyze.Title}"
+                                        <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.Analyze.Title}"
                                                       FontTypography="BodyStrong"
                                                       Margin="0,10,0,4"/>
-                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Analyze.Desc}"
+                                        <ui:TextBlock Grid.Row="2" Text="{loc:T Key=Home.Card.Analyze.Desc}"
                                                       Opacity="0.7"
                                                       TextWrapping="Wrap"
+                                                      VerticalAlignment="Top"
                                                       Margin="0,0,0,12"/>
-                                        <ui:Button Appearance="Primary"
+                                        <ui:Button Grid.Row="3" Appearance="Secondary"
                                                    Content="{loc:T Key=Home.Card.Analyze.Button}"
                                                    Icon="{ui:SymbolIcon Symbol=Play24}"
                                                    Command="{Binding AnalyzeCommand}"
                                                    HorizontalAlignment="Left"/>
-                                    </StackPanel>
+                                    </Grid>
                                 </Border>
 
                                 <Border Grid.Column="1" Margin="8,0,8,0"
@@ -565,23 +762,31 @@
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                         BorderThickness="1">
-                                    <StackPanel>
-                                        <ui:SymbolIcon Symbol="Broom24" FontSize="28"
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="Broom24" FontSize="28"
+                                                       HorizontalAlignment="Left"
                                                        Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
-                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Optimize.Title}"
+                                        <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.Optimize.Title}"
                                                       FontTypography="BodyStrong"
                                                       Margin="0,10,0,4"/>
-                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Optimize.Desc}"
+                                        <ui:TextBlock Grid.Row="2" Text="{loc:T Key=Home.Card.Optimize.Desc}"
                                                       Opacity="0.7"
                                                       TextWrapping="Wrap"
+                                                      VerticalAlignment="Top"
                                                       Margin="0,0,0,12"/>
-                                        <ui:Button Appearance="Secondary"
+                                        <ui:Button Grid.Row="3" Appearance="Secondary"
                                                    Content="{loc:T Key=Home.Card.Optimize.Button}"
                                                    Icon="{ui:SymbolIcon Symbol=AppsList24}"
                                                    Command="{Binding NavigateCommand}"
                                                    CommandParameter="Modules"
                                                    HorizontalAlignment="Left"/>
-                                    </StackPanel>
+                                    </Grid>
                                 </Border>
 
                                 <Border Grid.Column="2" Margin="8,0,0,0"
@@ -589,23 +794,178 @@
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                         BorderThickness="1">
-                                    <StackPanel>
-                                        <ui:SymbolIcon Symbol="DocumentBulletList24" FontSize="28"
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="DocumentBulletList24" FontSize="28"
+                                                       HorizontalAlignment="Left"
                                                        Foreground="{DynamicResource SystemFillColorCautionBrush}"/>
-                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Log.Title}"
+                                        <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.Log.Title}"
                                                       FontTypography="BodyStrong"
                                                       Margin="0,10,0,4"/>
-                                        <ui:TextBlock Text="{loc:T Key=Home.Card.Log.Desc}"
+                                        <ui:TextBlock Grid.Row="2" Text="{loc:T Key=Home.Card.Log.Desc}"
                                                       Opacity="0.7"
                                                       TextWrapping="Wrap"
+                                                      VerticalAlignment="Top"
                                                       Margin="0,0,0,12"/>
-                                        <ui:Button Appearance="Secondary"
+                                        <ui:Button Grid.Row="3" Appearance="Secondary"
                                                    Content="{loc:T Key=Home.Card.Log.Button}"
                                                    Icon="{ui:SymbolIcon Symbol=DocumentText24}"
                                                    Command="{Binding NavigateCommand}"
                                                    CommandParameter="Log"
                                                    HorizontalAlignment="Left"/>
-                                    </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <!-- Fila 2: Limpieza rápida + Actualizar aplicaciones -->
+                            <Grid Margin="0,0,0,28">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Card: Limpieza rápida -->
+                                <Border Grid.Column="0" Margin="0,0,8,0"
+                                        Padding="18,16" CornerRadius="10"
+                                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                        BorderThickness="1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="Broom24" FontSize="28"
+                                                       HorizontalAlignment="Left"
+                                                       Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                        <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.QuickClean.Title}"
+                                                      FontTypography="BodyStrong"
+                                                      Margin="0,10,0,4"/>
+                                        <ui:TextBlock Grid.Row="2" Text="{loc:T Key=Home.Card.QuickClean.Desc}"
+                                                      Opacity="0.7"
+                                                      TextWrapping="Wrap"
+                                                      VerticalAlignment="Top"
+                                                      Margin="0,0,0,12"/>
+                                        <ui:Button Grid.Row="3" Appearance="Secondary"
+                                                   Padding="14,4,10,4"
+                                                   Command="{Binding QuickCleanCommand}"
+                                                   HorizontalAlignment="Left">
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                <ui:SymbolIcon Symbol="Broom24" FontSize="14"
+                                                               Margin="0,0,6,0" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{loc:T Key=Home.Card.QuickClean.Button}"
+                                                           VerticalAlignment="Center"/>
+                                                <Border Width="16" Height="16"
+                                                        Margin="8,0,0,0"
+                                                        CornerRadius="8"
+                                                        Background="{DynamicResource SubtleFillColorTertiaryBrush}"
+                                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                                        BorderThickness="1"
+                                                        VerticalAlignment="Center"
+                                                        Cursor="Help"
+                                                        PreviewMouseLeftButtonDown="OnQuestionMarkPreventClick"
+                                                        ToolTipService.ShowDuration="30000"
+                                                        ToolTipService.InitialShowDelay="200">
+                                                    <Border.ToolTip>
+                                                        <ToolTip MaxWidth="360" Padding="12,10">
+                                                            <TextBlock Text="{Binding [QuickClean.Tooltip], Source={x:Static svc:LocalizationService.Instance}}"
+                                                                       TextWrapping="Wrap"/>
+                                                        </ToolTip>
+                                                    </Border.ToolTip>
+                                                    <TextBlock Text="?" FontSize="10" FontWeight="SemiBold"
+                                                               LineHeight="16" TextAlignment="Center"
+                                                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                                                </Border>
+                                            </StackPanel>
+                                        </ui:Button>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Card: Actualizar aplicaciones (winget) -->
+                                <Border Grid.Column="1" Margin="8,0,8,0"
+                                        Padding="18,16" CornerRadius="10"
+                                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                        BorderThickness="1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="ArrowDownload24" FontSize="28"
+                                                       HorizontalAlignment="Left"
+                                                       Foreground="{DynamicResource SystemFillColorSuccessBrush}"/>
+                                        <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.WingetUpgrade.Title}"
+                                                      FontTypography="BodyStrong"
+                                                      Margin="0,10,0,4"/>
+                                        <ui:TextBlock Grid.Row="2" Text="{loc:T Key=Home.Card.WingetUpgrade.Desc}"
+                                                      Opacity="0.7"
+                                                      TextWrapping="Wrap"
+                                                      VerticalAlignment="Top"
+                                                      Margin="0,0,0,12"/>
+                                        <ui:Button Grid.Row="3" Appearance="Secondary"
+                                                   Content="{loc:T Key=Home.Card.WingetUpgrade.Button}"
+                                                   Icon="{ui:SymbolIcon Symbol=ArrowDownload24}"
+                                                   Command="{Binding WingetUpgradeCommand}"
+                                                   IsEnabled="{Binding IsWingetAvailable}"
+                                                   HorizontalAlignment="Left"/>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Card: Comprobación de seguridad (Defender / SFC / DISM / MRT) -->
+                                <Border Grid.Column="2" Margin="8,0,0,0"
+                                        Padding="18,16" CornerRadius="10"
+                                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                        BorderThickness="1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="ShieldCheckmark24" FontSize="28"
+                                                       HorizontalAlignment="Left"
+                                                       Foreground="{DynamicResource SystemFillColorAttentionBrush}"/>
+                                        <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Security.CardTitle}"
+                                                      FontTypography="BodyStrong"
+                                                      Margin="0,10,0,4"/>
+                                        <ui:TextBlock Grid.Row="2" Text="{loc:T Key=Security.CardDesc}"
+                                                      Opacity="0.7"
+                                                      TextWrapping="Wrap"
+                                                      VerticalAlignment="Top"
+                                                      Margin="0,0,0,12"/>
+                                        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom">
+                                            <ComboBox MinWidth="140"
+                                                      Margin="0,0,8,0"
+                                                      VerticalAlignment="Center"
+                                                      ItemsSource="{Binding AvailableSecurityChecks}"
+                                                      SelectedItem="{Binding SelectedSecurityCheck, Mode=TwoWay}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Converter={StaticResource SecurityKind}}"/>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                            <ui:Button Appearance="Secondary"
+                                                       Content="{loc:T Key=Security.RunButton}"
+                                                       Icon="{ui:SymbolIcon Symbol=Play24}"
+                                                       Command="{Binding RunSecurityCheckCommand}"
+                                                       VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
                                 </Border>
                             </Grid>
 
@@ -760,52 +1120,96 @@
                     <DockPanel Margin="24,20,24,8">
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
 
-                            <!-- Limpieza rápida — papelera + temps -->
+                            <!-- Limpieza rápida — (?) embebido dentro del botón -->
                             <ui:Button Appearance="Secondary"
-                                       Content="{loc:T Key=QuickClean.Button}"
-                                       Icon="{ui:SymbolIcon Symbol=Broom24}"
-                                       Command="{Binding QuickCleanCommand}"
-                                       Margin="0,0,6,0"/>
+                                       Style="{StaticResource ToolbarButton}"
+                                       Padding="14,4,10,4"
+                                       Command="{Binding QuickCleanCommand}">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <ui:SymbolIcon Symbol="Broom24" FontSize="14"
+                                                   Margin="0,0,6,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{loc:T Key=QuickClean.Button}" VerticalAlignment="Center"/>
+                                    <Border Width="16" Height="16"
+                                            Margin="8,0,0,0"
+                                            CornerRadius="8"
+                                            Background="{DynamicResource SubtleFillColorTertiaryBrush}"
+                                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                            BorderThickness="1"
+                                            VerticalAlignment="Center"
+                                            Cursor="Help"
+                                            PreviewMouseLeftButtonDown="OnQuestionMarkPreventClick"
+                                            ToolTipService.ShowDuration="30000"
+                                            ToolTipService.InitialShowDelay="200">
+                                        <Border.ToolTip>
+                                            <ToolTip MaxWidth="380" Padding="12,10">
+                                                <TextBlock Text="{Binding [QuickClean.Tooltip], Source={x:Static svc:LocalizationService.Instance}}"
+                                                           TextWrapping="Wrap"/>
+                                            </ToolTip>
+                                        </Border.ToolTip>
+                                        <TextBlock Text="?" FontSize="10" FontWeight="SemiBold"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                                    </Border>
+                                </StackPanel>
+                            </ui:Button>
 
                             <!-- Separador visual -->
                             <Border Width="1" Height="20"
                                     Background="{DynamicResource ControlStrokeColorDefaultBrush}"
                                     VerticalAlignment="Center"
-                                    Margin="0,0,8,0"/>
+                                    Margin="0,0,10,0"/>
+
+                            <!-- Recomendado: la burbuja "?" va embebida en el contenido
+                                 del botón. Click en cualquier parte = SelectRecommended;
+                                 hover sobre la burbuja = tooltip con el criterio. La
+                                 burbuja es un Border decorativo (no Button), así que el
+                                 click se propaga al ui:Button padre sin doble handler. -->
+                            <!-- Recomendado: tooltip SOLO en la burbuja "?", no en el botón completo.
+                                 PreviewMouseLeftButtonDown en la burbuja evita ejecutar SelectRecommended al clicar "?". -->
+                            <ui:Button Appearance="Secondary"
+                                       Style="{StaticResource ToolbarButton}"
+                                       Padding="14,4,10,4"
+                                       Command="{Binding SelectRecommendedCommand}">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="{loc:T Key=Modules.SelectRecommended}"
+                                               VerticalAlignment="Center"/>
+                                    <Border Width="16" Height="16"
+                                            Margin="9,0,0,0"
+                                            CornerRadius="8"
+                                            Background="{DynamicResource SubtleFillColorTertiaryBrush}"
+                                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                            BorderThickness="1"
+                                            VerticalAlignment="Center"
+                                            Cursor="Help"
+                                            PreviewMouseLeftButtonDown="OnQuestionMarkPreventClick"
+                                            ToolTipService.ShowDuration="30000"
+                                            ToolTipService.InitialShowDelay="200">
+                                        <Border.ToolTip>
+                                            <ToolTip MaxWidth="380" Padding="12,10">
+                                                <TextBlock Text="{Binding [Modules.Recommended.Why], Source={x:Static svc:LocalizationService.Instance}}"
+                                                           TextWrapping="Wrap"
+                                                           FontSize="12"/>
+                                            </ToolTip>
+                                        </Border.ToolTip>
+                                        <TextBlock Text="?"
+                                                   FontSize="10"
+                                                   FontWeight="SemiBold"
+                                                   LineHeight="16"
+                                                   TextAlignment="Center"
+                                                   HorizontalAlignment="Stretch"
+                                                   VerticalAlignment="Stretch"
+                                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                                    </Border>
+                                </StackPanel>
+                            </ui:Button>
 
                             <ui:Button Appearance="Secondary"
-                                       Content="{loc:T Key=Modules.SelectRecommended}"
-                                       Command="{Binding SelectRecommendedCommand}"
-                                       Margin="0,0,4,0"/>
-                            <!-- ? junto a Recomendado — explica los criterios de selección -->
-                            <Border Width="20" Height="20"
-                                    CornerRadius="10"
-                                    Background="{DynamicResource SubtleFillColorSecondaryBrush}"
-                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                                    BorderThickness="1"
-                                    VerticalAlignment="Center"
-                                    Margin="0,0,10,0"
-                                    Cursor="Help"
-                                    ToolTipService.ShowDuration="30000"
-                                    ToolTipService.InitialShowDelay="200">
-                                <Border.ToolTip>
-                                    <ToolTip MaxWidth="380" Padding="12,10">
-                                        <TextBlock Text="{Binding [Modules.Recommended.Why], Source={x:Static svc:LocalizationService.Instance}}"
-                                                   TextWrapping="Wrap"
-                                                   FontSize="12"/>
-                                    </ToolTip>
-                                </Border.ToolTip>
-                                <ui:TextBlock Text="?"
-                                              FontTypography="Caption"
-                                              HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
-                            </Border>
-                            <ui:Button Appearance="Secondary"
+                                       Style="{StaticResource ToolbarButton}"
                                        Content="{loc:T Key=Modules.SelectAll}"
-                                       Command="{Binding SelectAllCommand}"
-                                       Margin="0,0,6,0"/>
+                                       Command="{Binding SelectAllCommand}"/>
                             <ui:Button Appearance="Secondary"
+                                       Style="{StaticResource ToolbarButton}"
+                                       Margin="0"
                                        Content="{loc:T Key=Modules.DeselectAll}"
                                        Command="{Binding DeselectAllCommand}"/>
                         </StackPanel>
@@ -1161,11 +1565,41 @@
                                     </Grid>
                                 </Border>
 
-                                <!-- Módulos gaming -->
-                                <ItemsControl Grid.Row="1"
-                                              ItemsSource="{Binding ProExtraModules}"
-                                              ItemTemplate="{StaticResource ModuleCardTemplate}"
-                                              Margin="10,8,10,10"/>
+                                <!-- Acceso a la ventana modal de selección de juegos
+                                     (F2.8). Sustituye al antiguo card M20: aquí no hay
+                                     checkbox ni ejecución por lotes, solo un botón
+                                     grande que abre la ventana con la lista de juegos
+                                     del repositorio Game_Configs. -->
+                                <Border Grid.Row="1" Margin="14,10,14,14"
+                                        Padding="14,12"
+                                        CornerRadius="8"
+                                        Background="#0F00C853"
+                                        BorderBrush="#3A00C853"
+                                        BorderThickness="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                            <ui:TextBlock Text="{loc:T Key=Gaming.CardTitle}"
+                                                          FontTypography="BodyStrong"
+                                                          Foreground="#FF00C853"/>
+                                            <ui:TextBlock Text="{loc:T Key=Gaming.CardDesc}"
+                                                          Opacity="0.7"
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"
+                                                          Margin="0,3,12,0"/>
+                                        </StackPanel>
+                                        <ui:Button Grid.Column="1"
+                                                   Appearance="Primary"
+                                                   VerticalAlignment="Center"
+                                                   Padding="14,8"
+                                                   Icon="{ui:SymbolIcon Symbol=Games24}"
+                                                   Content="{loc:T Key=Gaming.OpenSelector}"
+                                                   Command="{Binding OpenGameSelectorCommand}"/>
+                                    </Grid>
+                                </Border>
                             </Grid>
                         </Border>
 
@@ -1274,16 +1708,18 @@
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
                             <ui:Button Appearance="Secondary"
+                                       Style="{StaticResource ToolbarButton}"
                                        Content="{loc:T Key=Log.Refresh}"
                                        Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
-                                       Command="{Binding RefreshAppLogCommand}"
-                                       Margin="0,0,8,0"/>
+                                       Command="{Binding RefreshAppLogCommand}"/>
                             <ui:Button Appearance="Secondary"
+                                       Style="{StaticResource ToolbarButton}"
                                        Content="{loc:T Key=Log.Export}"
                                        Icon="{ui:SymbolIcon Symbol=ArrowDownload24}"
-                                       Command="{Binding ExportAppLogCommand}"
-                                       Margin="0,0,8,0"/>
+                                       Command="{Binding ExportAppLogCommand}"/>
                             <ui:Button Appearance="Caution"
+                                       Style="{StaticResource ToolbarButton}"
+                                       Margin="0"
                                        Content="{loc:T Key=Log.ClearAll}"
                                        Icon="{ui:SymbolIcon Symbol=Delete24}"
                                        Command="{Binding ClearAppLogCommand}"/>
@@ -1441,7 +1877,7 @@
                             </Border>
                         </TabItem>
 
-                        <!-- TAB 2: Salida en directo (output del .bat en ejecución) -->
+                        <!-- TAB 2: Salida en directo (stream de progreso de los módulos nativos) -->
                         <TabItem Header="{loc:T Key=Log.Tab.LiveOutput}">
                             <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -1499,15 +1935,16 @@
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
 
-                            <!-- Header -->
-                            <DockPanel Margin="0,0,0,18">
+                            <!-- Header con separación amplia entre título y botón Refrescar -->
+                            <DockPanel Margin="0,0,0,22">
                                 <ui:Button DockPanel.Dock="Right"
                                            Appearance="Secondary"
+                                           Style="{StaticResource ToolbarButton}"
+                                           Margin="24,0,0,0"
                                            Content="{loc:T Key=Specs.Refresh}"
                                            Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
-                                           Command="{Binding LoadSystemInfoCommand}"
-                                           VerticalAlignment="Center"/>
-                                <StackPanel>
+                                           Command="{Binding LoadSystemInfoCommand}"/>
+                                <StackPanel VerticalAlignment="Center">
                                     <ui:TextBlock Text="{loc:T Key=Specs.Title}" FontTypography="TitleLarge"/>
                                     <ui:TextBlock Text="{loc:T Key=Specs.Subtitle}"
                                                   Opacity="0.65"
@@ -1707,6 +2144,157 @@
                     </Grid>
                 </ScrollViewer>
 
+                <!-- =========== VISTA REVERTIR CAMBIOS (F5.5) =========== -->
+                <ScrollViewer Visibility="{Binding IsRestoreView, Converter={StaticResource BoolToVis}}"
+                              VerticalScrollBarVisibility="Auto">
+                    <Grid MaxWidth="980" HorizontalAlignment="Center" Margin="32,24,32,32">
+                        <StackPanel>
+                            <!-- Header: título + acciones (Refresh, Revert all) -->
+                            <Grid Margin="0,0,0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <ui:TextBlock Text="{loc:T Key=Restore.Title}"
+                                                  FontTypography="TitleLarge"/>
+                                    <ui:TextBlock Text="{loc:T Key=Restore.Subtitle}"
+                                                  Opacity="0.7"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,4,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal"
+                                            VerticalAlignment="Center">
+                                    <ui:Button Appearance="Secondary"
+                                               Content="{loc:T Key=Restore.Refresh}"
+                                               Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
+                                               Command="{Binding RefreshChangesCommand}"
+                                               Margin="0,0,8,0"/>
+                                    <ui:Button Appearance="Primary"
+                                               Content="{loc:T Key=Restore.RevertAll}"
+                                               Icon="{ui:SymbolIcon Symbol=ArrowUndo24}"
+                                               Command="{Binding RevertAllChangesCommand}"
+                                               IsEnabled="{Binding HasPendingChanges}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- Contador -->
+                            <ui:TextBlock Margin="0,12,0,12"
+                                          Opacity="0.7"
+                                          FontTypography="Caption">
+                                <Run Text="{Binding PendingChangesCount, Mode=OneWay}"/>
+                                <Run Text=" — "/>
+                                <Run Text="{loc:T Key=Restore.PendingCount}"/>
+                            </ui:TextBlock>
+
+                            <!-- Estado vacío -->
+                            <ui:InfoBar Severity="Informational"
+                                        Title="{loc:T Key=Restore.Empty.Title}"
+                                        Message="{loc:T Key=Restore.Empty.Message}"
+                                        IsClosable="False"
+                                        IsOpen="True">
+                                <ui:InfoBar.Style>
+                                    <Style TargetType="ui:InfoBar">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding HasPendingChanges}" Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ui:InfoBar.Style>
+                            </ui:InfoBar>
+
+                            <!-- Tabla de cambios pendientes -->
+                            <Border Margin="0,12,0,0"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="8"
+                                    Visibility="{Binding HasPendingChanges, Converter={StaticResource BoolToVis}}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Cabecera -->
+                                    <Grid Grid.Row="0" Height="34"
+                                          Background="{DynamicResource SubtleFillColorTertiaryBrush}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="180"/>
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="140"/>
+                                            <ColumnDefinition Width="120"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBlock Grid.Column="0" Margin="14,0,0,0"
+                                                      VerticalAlignment="Center" FontWeight="SemiBold"
+                                                      Text="{loc:T Key=Restore.Column.Module}"/>
+                                        <ui:TextBlock Grid.Column="1" VerticalAlignment="Center"
+                                                      FontWeight="SemiBold"
+                                                      Text="{loc:T Key=Restore.Column.Type}"/>
+                                        <ui:TextBlock Grid.Column="2" VerticalAlignment="Center"
+                                                      FontWeight="SemiBold"
+                                                      Text="{loc:T Key=Restore.Column.Target}"/>
+                                        <ui:TextBlock Grid.Column="3" VerticalAlignment="Center"
+                                                      FontWeight="SemiBold"
+                                                      Text="{loc:T Key=Restore.Column.AppliedAt}"/>
+                                    </Grid>
+
+                                    <!-- Filas -->
+                                    <ItemsControl Grid.Row="1" ItemsSource="{Binding PendingChanges}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BorderThickness="0,0,0,1"
+                                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                                        Padding="0,8">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="180"/>
+                                                            <ColumnDefinition Width="120"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="140"/>
+                                                            <ColumnDefinition Width="120"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <ui:TextBlock Grid.Column="0" Margin="14,0,0,0"
+                                                                      VerticalAlignment="Center"
+                                                                      Text="{Binding ModuleName}"
+                                                                      TextTrimming="CharacterEllipsis"/>
+                                                        <ui:TextBlock Grid.Column="1"
+                                                                      VerticalAlignment="Center"
+                                                                      Opacity="0.75"
+                                                                      Text="{Binding ChangeType, Converter={StaticResource ChangeTypeText}}"/>
+                                                        <ui:TextBlock Grid.Column="2"
+                                                                      VerticalAlignment="Center"
+                                                                      Opacity="0.75"
+                                                                      FontFamily="Consolas, Cascadia Mono"
+                                                                      FontSize="11"
+                                                                      Text="{Binding Target}"
+                                                                      TextTrimming="CharacterEllipsis"
+                                                                      ToolTip="{Binding Target}"/>
+                                                        <ui:TextBlock Grid.Column="3"
+                                                                      VerticalAlignment="Center"
+                                                                      Opacity="0.75"
+                                                                      FontSize="11"
+                                                                      Text="{Binding AppliedAtUtc, Converter={StaticResource UtcToLocalTime}, StringFormat='{}{0:yyyy-MM-dd HH:mm}'}"/>
+                                                        <ui:Button Grid.Column="4"
+                                                                   Appearance="Secondary"
+                                                                   Content="{loc:T Key=Restore.RevertOne}"
+                                                                   Icon="{ui:SymbolIcon Symbol=ArrowUndo24}"
+                                                                   Margin="0,0,10,0"
+                                                                   Command="{Binding DataContext.RevertChangeCommand, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"
+                                                                   CommandParameter="{Binding}"/>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+
                 <!-- =========== VISTA AJUSTES =========== -->
                 <ScrollViewer Visibility="{Binding IsSettingsView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
@@ -1737,13 +2325,40 @@
                                                       Opacity="0.7"
                                                       TextWrapping="Wrap"/>
                                     </StackPanel>
+                                    <!-- Selector de idioma:
+                                           - Windows no incluye una fuente con glifos de
+                                             banderas (Segoe UI Emoji solo combina los pares
+                                             "regional indicator" en mayúsculas; el resultado
+                                             son dos letras, no una bandera).
+                                           - En lugar de luchar contra el SO, mostramos el
+                                             código ISO en un chip compacto + el nombre
+                                             nativo. Es lo mismo que hace Settings de Windows
+                                             y queda limpio y reconocible.
+                                           - MaxDropDownHeight obliga al ScrollViewer interno
+                                             del ComboBox a aparecer cuando hay 30 idiomas. -->
                                     <ComboBox Grid.Column="1"
-                                              Width="200"
+                                              Width="220"
                                               VerticalAlignment="Center"
+                                              MaxDropDownHeight="220"
                                               ItemsSource="{Binding AvailableLanguages}"
                                               SelectedValuePath="Code"
-                                              DisplayMemberPath="DisplayName"
-                                              SelectedValue="{Binding CurrentLanguage, Mode=TwoWay}"/>
+                                              SelectedValue="{Binding CurrentLanguage, Mode=TwoWay}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <!-- Bandera PNG cargada desde flagcdn.com (20×15 px) -->
+                                                    <Image Source="{Binding FlagImageUrl}"
+                                                           Width="20" Height="15"
+                                                           RenderOptions.BitmapScalingMode="HighQuality"
+                                                           VerticalAlignment="Center"
+                                                           Margin="0,0,9,0"
+                                                           SnapsToDevicePixels="True"/>
+                                                    <TextBlock Text="{Binding NativeName}"
+                                                               VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
                                 </Grid>
                             </Border>
 
@@ -1869,23 +2484,92 @@
                                 </StackPanel>
                             </Border>
 
-                            <!-- Tier del usuario -->
+                            <!-- F7 — Licencia (HWID + activación) -->
                             <Border Padding="20,16" CornerRadius="10"
                                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
-                                    <ui:TextBlock Text="{loc:T Key=Settings.Tier.Title}"
+                                    <ui:TextBlock Text="{loc:T Key=License.Section.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,4"/>
-                                    <ui:TextBlock Text="{loc:T Key=Settings.Tier.Description}"
+                                    <ui:TextBlock Text="{loc:T Key=License.Section.Description}"
                                                   Opacity="0.7"
                                                   TextWrapping="Wrap"
                                                   Margin="0,0,0,12"/>
-                                    <ComboBox Width="200" HorizontalAlignment="Left"
-                                              ItemsSource="{Binding AvailableTiers}"
-                                              SelectedItem="{Binding UserTier, Mode=TwoWay}"/>
+
+                                    <!-- Tier actual -->
+                                    <Grid Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ui:TextBlock Grid.Column="0"
+                                                      Text="{loc:T Key=License.CurrentTier.Label}"
+                                                      VerticalAlignment="Center"/>
+                                        <Border Grid.Column="1"
+                                                Padding="10,4" CornerRadius="6"
+                                                Background="{DynamicResource AccentFillColorDefaultBrush}">
+                                            <ui:TextBlock Text="{Binding UserTier}"
+                                                          Foreground="White"
+                                                          FontWeight="SemiBold"/>
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- HWID con botón Copiar -->
+                                    <ui:TextBlock Text="{loc:T Key=License.Hwid.Label}"
+                                                  FontWeight="SemiBold"
+                                                  Margin="0,4,0,4"/>
+                                    <Grid Margin="0,0,0,12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Grid.Column="0"
+                                                 Text="{Binding HardwareId, Mode=OneWay}"
+                                                 IsReadOnly="True"
+                                                 FontFamily="Consolas"
+                                                 VerticalAlignment="Center"
+                                                 Padding="8,6"
+                                                 Margin="0,0,8,0"/>
+                                        <ui:Button Grid.Column="1"
+                                                   Content="{loc:T Key=License.Hwid.Copy}"
+                                                   Command="{Binding CopyHardwareIdCommand}"
+                                                   Appearance="Secondary"/>
+                                    </Grid>
+
+                                    <!-- TextBox de clave + botón Activar -->
+                                    <ui:TextBlock Text="{loc:T Key=License.Activation.Label}"
+                                                  FontWeight="SemiBold"
+                                                  Margin="0,4,0,4"/>
+                                    <ui:TextBlock Text="{loc:T Key=License.Activation.Help}"
+                                                  Opacity="0.55"
+                                                  FontTypography="Caption"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,0,0,8"/>
+                                    <TextBox Text="{Binding ActivationKeyInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             AcceptsReturn="False"
+                                             FontFamily="Consolas"
+                                             FontSize="11"
+                                             TextWrapping="Wrap"
+                                             Height="80"
+                                             VerticalScrollBarVisibility="Auto"
+                                             Padding="8,6"
+                                             Margin="0,0,0,8"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,8">
+                                        <ui:Button Content="{loc:T Key=License.Activation.Activate}"
+                                                   Command="{Binding ActivateLicenseCommand}"
+                                                   Appearance="Primary"
+                                                   Margin="0,0,8,0"/>
+                                        <ui:Button Content="{loc:T Key=License.Activation.Deactivate}"
+                                                   Command="{Binding DeactivateLicenseCommand}"
+                                                   Appearance="Secondary"/>
+                                    </StackPanel>
+                                    <ui:TextBlock Text="{Binding LicenseStatusMessage}"
+                                                  TextWrapping="Wrap"
+                                                  Opacity="0.85"
+                                                  FontTypography="Caption"/>
                                 </StackPanel>
                             </Border>
 
@@ -1992,18 +2676,18 @@
                                         </StackPanel>
                                     </DockPanel>
 
-                                    <!-- Toggle: crear automáticamente antes de cada run -->
-                                    <Grid Margin="0,0,0,12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <ui:TextBlock Grid.Column="0"
-                                                      Text="{loc:T Key=Settings.RestorePoint.AutoLabel}"
-                                                      VerticalAlignment="Center"/>
-                                        <ui:ToggleSwitch Grid.Column="1"
-                                                         IsChecked="{Binding CreateRestorePointBeforeRun, Mode=TwoWay}"/>
-                                    </Grid>
+                                    <!-- El toggle "crear automáticamente" se eliminó porque
+                                         ahora la app SIEMPRE pregunta antes de ejecutar
+                                         (sí/no/cancelar). La preferencia persistida
+                                         CreateRestorePointBeforeRun sigue existiendo en
+                                         AppSettings por compatibilidad pero ya no se
+                                         expone en la UI. -->
+                                    <ui:InfoBar Severity="Informational"
+                                                Title="{loc:T Key=Settings.RestorePoint.AlwaysAsksTitle}"
+                                                Message="{loc:T Key=Settings.RestorePoint.AlwaysAsksMessage}"
+                                                IsClosable="False"
+                                                IsOpen="True"
+                                                Margin="0,0,0,12"/>
 
                                     <!-- Botón manual + mensaje de estado -->
                                     <DockPanel>
@@ -2180,7 +2864,7 @@
                                 </StackPanel>
                             </Border>
 
-                            <!-- Nota informativa sobre Velopack -->
+                            <!-- Nota informativa sobre cómo se entregan las actualizaciones -->
                             <ui:InfoBar Severity="Informational"
                                         Title="{loc:T Key=Updates.HowItWorks.Title}"
                                         Message="{loc:T Key=Updates.HowItWorks.Message}"
@@ -2204,7 +2888,10 @@
                                 <StackPanel HorizontalAlignment="Center">
                                     <Image Source="pack://application:,,,/Assets/AppIcon.png"
                                            Width="180" Height="180"
-                                           Stretch="Uniform"/>
+                                           Stretch="Uniform"
+                                           RenderOptions.BitmapScalingMode="HighQuality"
+                                           SnapsToDevicePixels="True"
+                                           UseLayoutRounding="True"/>
                                     <StackPanel Orientation="Horizontal"
                                                 HorizontalAlignment="Center"
                                                 Margin="0,14,0,0">
@@ -2220,6 +2907,20 @@
                                             <ui:TextBlock Text="{loc:T Key=About.RequiresAdmin}"
                                                           FontTypography="Caption"/>
                                         </Border>
+                                    </StackPanel>
+
+                                    <!-- Botón "Reportar un fallo" (F5.6) — mailto pre-rellenado -->
+                                    <StackPanel HorizontalAlignment="Center" Margin="0,18,0,0">
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="{loc:T Key=BugReport.Button}"
+                                                   Icon="{ui:SymbolIcon Symbol=Mail24}"
+                                                   Command="{Binding ReportBugCommand}"
+                                                   HorizontalAlignment="Center"/>
+                                        <ui:TextBlock Text="{loc:T Key=BugReport.Subtitle}"
+                                                      Opacity="0.6"
+                                                      FontTypography="Caption"
+                                                      HorizontalAlignment="Center"
+                                                      Margin="0,6,0,0"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
@@ -2290,7 +2991,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.Development}" Opacity="0.6"/>
-                                        <ui:TextBlock Grid.Column="1" Text="Mateo · DexSuite Performance Series"/>
+                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter · DexSuite Performance Series"/>
                                     </Grid>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -2341,10 +3042,6 @@
                                                 Background="{DynamicResource SubtleFillColorSecondaryBrush}">
                                             <ui:TextBlock Text="Serilog" FontTypography="Caption"/>
                                         </Border>
-                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
-                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
-                                            <ui:TextBlock Text="Velopack" FontTypography="Caption"/>
-                                        </Border>
                                     </WrapPanel>
                                 </StackPanel>
                             </Border>
@@ -2381,6 +3078,22 @@
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>
+
+                <!-- ===== Botón flotante "Reportar un fallo" (bicho) ===== -->
+                <!-- Flota sobre todas las vistas en la esquina inferior derecha.
+                     Panel.ZIndex alto garantiza que quede encima del contenido. -->
+                <ui:Button HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom"
+                           Margin="0,0,20,20"
+                           Panel.ZIndex="99"
+                           Appearance="Secondary"
+                           Padding="11"
+                           Icon="{ui:SymbolIcon Symbol=Bug24, FontSize=18}"
+                           ToolTipService.ShowDuration="5000"
+                           ToolTipService.InitialShowDelay="400"
+                           ToolTip="{Binding [BugReport.Button], Source={x:Static svc:LocalizationService.Instance}}"
+                           Command="{Binding ReportBugCommand}"/>
+
             </Grid>
         </Grid>
     </Grid>

@@ -3,8 +3,9 @@
   <assemblyIdentity version="0.1.0.0" name="DexSuite.App"/>
 
   <!--
-    Pedimos elevacion administrativa al arrancar para tener paridad con el .bat
-    (que sin admin se relanza con UAC y rompe la redireccion de stdout/stderr).
+    Pedimos elevacion administrativa al arrancar: los executors nativos (DISM,
+    SFC, registro HKLM, servicios, bcdedit, etc.) requieren admin para operar
+    sin que el sistema relance la app con UAC en medio de una ejecucion.
   -->
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>

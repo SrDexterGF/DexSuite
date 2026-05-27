@@ -4,13 +4,18 @@ using Microsoft.EntityFrameworkCore;
 namespace DexSuite.App.Data;
 
 /// <summary>
-/// DbContext de DexSuite. Por ahora solo aloja el historial interno
-/// (<see cref="LogEntry"/>); a futuro alojará puntos de restauración,
-/// baselines de rendimiento, etc.
+/// DbContext de DexSuite. Aloja:
+///  - Historial interno (<see cref="LogEntry"/>).
+///  - Registro de cambios por módulo (<see cref="ModuleChangeRecord"/>),
+///    base para la función "Revertir cambios" (F5.5).
+///  - Licencia activa del equipo (<see cref="LicenseEntity"/>) — solo se
+///    guarda una fila a la vez, persistida por <c>LicenseService</c>.
 /// </summary>
 public sealed class DexSuiteDbContext : DbContext
 {
     public DbSet<LogEntry> Logs => Set<LogEntry>();
+    public DbSet<ModuleChangeRecord> ModuleChanges => Set<ModuleChangeRecord>();
+    public DbSet<LicenseEntity> Licenses => Set<LicenseEntity>();
 
     public DexSuiteDbContext(DbContextOptions<DexSuiteDbContext> options) : base(options) { }
 
@@ -27,5 +32,25 @@ public sealed class DexSuiteDbContext : DbContext
 
         // Índice por fecha para acelerar el listado "más recientes primero".
         log.HasIndex(e => e.TimestampUtc).IsDescending(true);
+
+        var ch = modelBuilder.Entity<ModuleChangeRecord>();
+        ch.HasKey(e => e.Id);
+        ch.Property(e => e.ModuleId).IsRequired().HasMaxLength(80);
+        ch.Property(e => e.ModuleName).IsRequired().HasMaxLength(200);
+        ch.Property(e => e.ChangeType).IsRequired();
+        ch.Property(e => e.Target).IsRequired().HasMaxLength(500);
+        ch.Property(e => e.AppliedAtUtc).IsRequired();
+        // Índices: por módulo (para revertir un módulo entero) + por estado pendiente.
+        ch.HasIndex(e => e.ModuleId);
+        ch.HasIndex(e => new { e.IsReverted, e.AppliedAtUtc }).IsDescending(false, true);
+
+        var lic = modelBuilder.Entity<LicenseEntity>();
+        lic.HasKey(e => e.Id);
+        lic.Property(e => e.Hwid).IsRequired().HasMaxLength(64);
+        lic.Property(e => e.Tier).IsRequired();
+        lic.Property(e => e.LicenseId).IsRequired().HasMaxLength(64);
+        lic.Property(e => e.Blob).IsRequired();
+        lic.Property(e => e.IssuedAtUtc).IsRequired();
+        lic.Property(e => e.AppliedAtUtc).IsRequired();
     }
 }

@@ -37,7 +37,7 @@
     <value>• CYBERNETIC theme with cyan + violet palette and exclusive logo</value>
   </data>
   <data name="About.Changelog.Item9" xml:space="preserve">
-    <value>• Sidebar with icons, separators and language selector (10 languages)</value>
+    <value>• Sidebar with icons, separators and language selector (30 languages)</value>
   </data>
   <data name="About.Changelog.Title" xml:space="preserve">
     <value>What's new in v{0}</value>
@@ -85,10 +85,29 @@
     <value>Utilities</value>
   </data>
   <data name="App.Subtitle" xml:space="preserve">
-    <value>Cleanup, optimization and security for Windows</value>
+    <value>Performance optimization and security for Windows</value>
   </data>
   <data name="App.Tagline" xml:space="preserve">
     <value>PUSH THE LIMITS</value>
+  </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>Auto-collected diagnostic info (helps us reproduce):</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>Please describe what happened, what you expected, and the steps to reproduce:</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>Report a bug</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>Send your report manually to suitedex@gmail.com.
+Error: {0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>Could not open email client</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>Opens your email client with diagnostic info pre-filled.</value>
   </data>
   <data name="Common.Apply" xml:space="preserve">
     <value>Apply</value>
@@ -113,6 +132,37 @@
   </data>
   <data name="Common.Run" xml:space="preserve">
     <value>Run</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>Per-game optimization profiles</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>Each profile applies targeted tweaks for maximum FPS and minimum latency.</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>Gaming optimization failed ({0}): {1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>Could not open game selector: {0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>Choose a game to optimize</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>Optimize</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>Tailored tweaks for peak FPS and minimum input lag.
+Each game has its own profile.</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>Select a game to optimize</value>
   </data>
   <data name="Home.AnalyzeAgain" xml:space="preserve">
     <value>Analyze again</value>
@@ -153,6 +203,25 @@ Launch cleanup and tweaks.</value>
   <data name="Home.Card.Optimize.Title" xml:space="preserve">
     <value>Optimize system</value>
   </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>Empty temp folders and Recycle Bin.
+Free up space in seconds.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>Quick clean</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>Update apps</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>Update all installed apps at once.</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>Update apps</value>
+  </data>
   <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
     <value>Click Analyze to get a score.
 Later, optimize and analyze again to see the difference.</value>
@@ -174,6 +243,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>What do you want to do?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Remove license</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Please paste a valid activation key.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Activation failed: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Paste the activation key you received with your purchase. The key is locked to this hardware (HWID above).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Activation key</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>License activated. Plan: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Current plan</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>Hardware ID (HWID) — send this to the developer to receive your key</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID copied to clipboard.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite uses a hardware-bound license. The HWID identifies this PC; the key you receive is signed and only works here.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Free plan active.</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Advanced plan active.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Pro plan active.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -235,11 +352,32 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.AppStarted" xml:space="preserve">
     <value>DexSuite started (v{0}).</value>
   </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>Bug report email opened in client.</value>
+  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>License activated — plan {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>License activation rejected: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>License removed — back to Free.</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] — Completed</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — Error: {1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — Started</value>
   </data>
   <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
     <value>Quick clean failed: {0}</value>
@@ -253,6 +391,15 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.RestorePointFailed" xml:space="preserve">
     <value>Restore point failed: {0}</value>
   </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>Bulk revert finished — {0} reverted, {1} failed out of {2}.</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>Revert failed — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>Change reverted — {0} [{1}]</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Optimization cancelled by user.</value>
   </data>
@@ -264,6 +411,18 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.RunStarted" xml:space="preserve">
     <value>Optimization started with {0} modules.</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>Security check failed: {0}: {1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>Security check completed: {0} (exit {1})</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>Security check finished with non-zero exit: {0} (exit {1})</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>Security check started: {0}</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
@@ -288,6 +447,15 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.UpdateNone" xml:space="preserve">
     <value>Already up to date (v{0}).</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>App update failed: {0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>App update completed — {0} packages updated.</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>App update started (winget upgrade --all)</value>
   </data>
   <data name="Log.Export" xml:space="preserve">
     <value>Export to .txt</value>
@@ -355,6 +523,9 @@ Updates in real time while running.</value>
   </data>
   <data name="Modules.Impact.Strong" xml:space="preserve">
     <value>Strong</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>Performance impact level this action will have on your system.</value>
   </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>Clears Prefetch, system and user Temp, thumbnails, IconCache and DirectX shaders.
@@ -553,18 +724,31 @@ Does not modify data.</value>
 Does NOT install them automatically: you decide whether to update them from Windows Update.</value>
   </data>
   <data name="Modules.M20.Description" xml:space="preserve">
-    <value>Downloads and runs a remote PowerShell menu with per-game optimizations.</value>
+    <value>Opens a curated selection of per-game tuning profiles.
+Pick your title and get a tailored optimization aimed at maximum FPS and minimum input lag.</value>
   </data>
   <data name="Modules.M20.Name" xml:space="preserve">
     <value>Game optimization</value>
   </data>
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
-    <value>Downloads and runs code on your PC.
-Only enable it if you trust the source (Sr. Dexter / Game_Configs).</value>
+    <value>Applies game-specific tweaks targeting peak FPS and reduced latency.
+Revert any change later from Windows settings if needed.</value>
   </data>
   <data name="Modules.Recommended.Why" xml:space="preserve">
     <value>These optimizations have been selected because they are safe, reversible and produce a visible improvement on most systems.
 They are the best starting point before diving into advanced or pro settings.</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>Error during execution.</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>Not applied yet.</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>Running…</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>Applied successfully.</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Risk</value>
@@ -609,6 +793,9 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.Panel" xml:space="preserve">
     <value>PANEL</value>
   </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>Restore changes</value>
+  </data>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -621,11 +808,94 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Updates</value>
   </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>{0} modules applied successfully.</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite — Optimization finished</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>{0} modules attempted — some reported errors. Check the Log tab.</value>
+  </data>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Quick clean</value>
   </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>This will empty the Recycle Bin and clear Windows temp folders.
+No personal files will be touched.</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>Run quick clean?</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>Deletes temporary files from %TEMP%, C:\Windows\Temp and C:\Windows\Prefetch.
+Also empties the Recycle Bin.
+No personal files are touched.</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>Applied</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>Run optimization modules to start logging changes here.
+Each native action is tracked automatically for one-click revert.</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} pending change(s)</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>This will revert {0} pending change(s).
+The operation cannot be undone in DexSuite.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>This will revert the change applied by '{0}'.
+The original value will be restored.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Revert change?</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>Revert all</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>Revert</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>Every change DexSuite applies natively is logged here.
+Revert individually or all at once.</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>Restore changes</value>
+  </data>
   <data name="RestorePoint.AutoDescription" xml:space="preserve">
     <value>DexSuite — before running {0} modules</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>Creating a restore point allows you to undo every change from Windows if anything goes wrong.
+It only takes a few seconds.</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>No, run without it</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>Create a restore point first?</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>Yes, create it</value>
   </data>
   <data name="RestorePoint.Description" xml:space="preserve">
     <value>DexSuite — manual optimization backup</value>
@@ -654,6 +924,52 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Search.ResultsCount" xml:space="preserve">
     <value>{0} result(s) for «{1}»</value>
   </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>Run Windows Defender, SFC, DISM or MRT.</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>Security &amp; integrity check</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>Run a Windows Defender quick scan?
+It usually takes 5–10 minutes.</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>Run DISM /RestoreHealth?
+Repairs the Windows image using Windows Update. Requires internet and may take 10–20 minutes.</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>Run the Malicious Software Removal Tool (MRT /Q)?
+Runs silently in the background.</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>Run System File Checker (SFC /scannow)?
+It scans and repairs corrupted system files. Takes 10–20 minutes.</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>Run check?</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>Defender · Quick scan</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · Restore image</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · Malware removal</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · System File Check</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>{0} is not installed on this system.</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>Tool not available</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>Run</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Applied when the app launches.</value>
   </data>
@@ -677,13 +993,19 @@ The interface updates instantly.</value>
     <value>Language</value>
   </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
-    <value>System toast when cleanup finishes (future).</value>
+    <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
   <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
     <value>Notify when execution finishes</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Reset settings</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>Each time you start an optimization, DexSuite asks if you want to create a restore point first. You can answer Yes, No or Cancel.</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>DexSuite always asks before optimizing</value>
   </data>
   <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
     <value>Create automatically before each run</value>
@@ -715,8 +1037,8 @@ Exclusive themes for Pro users.</value>
     <value>Theme</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
-    <value>Limits which modules you can run.
-For now it's informative; the next version will disable modules not in your plan.</value>
+    <value>Determines which modules you can run.
+Activate a license in the License section to unlock Advanced or Pro modules.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
     <value>Active plan</value>
@@ -762,6 +1084,16 @@ For now it's informative; the next version will disable modules not in your plan
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
     <value>Detected hardware and operating system</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>Administrator mode active</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>Data read from Windows.
+Use the Refresh button to update if hardware changes.</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>System summary</value>
   </data>
   <data name="Specs.Title" xml:space="preserve">
     <value>System specifications</value>
@@ -830,11 +1162,23 @@ Click «Update now» to install it.</value>
   <data name="Status.RestorePointFailed" xml:space="preserve">
     <value>Restore point failed: {0}</value>
   </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>Revert completed: {0}/{1}.</value>
+  </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Scores reset. Click Analyze to start over.</value>
   </data>
   <data name="Status.Searching" xml:space="preserve">
     <value>Searching for updates...</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} completed.</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>{0} finished with errors: {1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>Running {0}…</value>
   </data>
   <data name="Status.SelectModulesFirst" xml:space="preserve">
     <value>Select at least one module before running.</value>
@@ -856,6 +1200,15 @@ The application will restart automatically.</value>
   </data>
   <data name="Status.UpToDate" xml:space="preserve">
     <value>You're on the latest version (v{0}).</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>Apps updated — {0} packages.</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>App update failed: {0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>Updating apps…</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
@@ -905,8 +1258,8 @@ Beta: new versions earlier, but may have bugs.</value>
     <value>Check for updates</value>
   </data>
   <data name="Updates.HowItWorks.Message" xml:space="preserve">
-    <value>DexSuite uses Velopack. Click «Check for updates» to look for a new version.
-If the app is not installed via Setup, automatic updates are unavailable.</value>
+    <value>DexSuite checks our release server for new versions and installs them in-place.
+If you are running a development build, automatic updates stay disabled.</value>
   </data>
   <data name="Updates.HowItWorks.Title" xml:space="preserve">
     <value>How updates work</value>
@@ -950,5 +1303,17 @@ Keep it up-to-date to get every new optimization.</value>
   </data>
   <data name="Verdict.Improvable" xml:space="preserve">
     <value>Improvable</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>This will run winget upgrade --all.
+It may take several minutes depending on the number of pending updates.
+The progress will be shown in the log.</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>Update all apps?</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>Windows Package Manager (winget) is not available on this system.
+Update your system or install the App Installer from the Microsoft Store.</value>
   </data>
 </root>

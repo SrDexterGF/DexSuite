@@ -37,7 +37,7 @@
     <value>• Tema CYBERNETIC com paleta ciano + violeta e logótipo exclusivo</value>
   </data>
   <data name="About.Changelog.Item9" xml:space="preserve">
-    <value>• Barra lateral com ícones, separadores e seletor de idioma (10 idiomas)</value>
+    <value>• Barra lateral com ícones, separadores e seletor de idioma (30 idiomas)</value>
   </data>
   <data name="About.Changelog.Title" xml:space="preserve">
     <value>Novidades na v{0}</value>
@@ -90,6 +90,25 @@
   <data name="App.Tagline" xml:space="preserve">
     <value>NO LIMITE</value>
   </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>Informação de diagnóstico auto-recolhida (ajuda a reproduzir):</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>Por favor descreve o que aconteceu, o que esperavas e os passos para reproduzir:</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>Reportar um erro</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>Envia o teu relatório manualmente para suitedex@gmail.com.
+Erro: {0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>Não foi possível abrir o cliente de email</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>Abre o teu cliente de email com informação de diagnóstico já preenchida.</value>
+  </data>
   <data name="Common.Apply" xml:space="preserve">
     <value>Aplicar</value>
   </data>
@@ -113,6 +132,37 @@
   </data>
   <data name="Common.Run" xml:space="preserve">
     <value>Executar</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>Escolhe um jogo e aplica um ajuste à medida focado em FPS máximos e latência mínima.</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>Perfis de otimização por jogo</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>Cada perfil aplica ajustes precisos para FPS máximo e latência mínima.</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>Falha na otimização do jogo ({0}): {1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>Otimização de videojogos iniciada: {0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>Não foi possível abrir o seletor de jogos: {0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>Escolher jogo a otimizar</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>Otimizar</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>Ajustes à medida para FPS de pico e latência mínima.
+Cada jogo tem o seu próprio perfil.</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>Seleciona um jogo para otimizar</value>
   </data>
   <data name="Home.AnalyzeAgain" xml:space="preserve">
     <value>Analisar novamente</value>
@@ -153,6 +203,26 @@ Inicia a limpeza e os ajustes.</value>
   <data name="Home.Card.Optimize.Title" xml:space="preserve">
     <value>Otimizar sistema</value>
   </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>Limpar agora</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>Esvazia pastas temporárias e reciclagem.
+Liberta espaço em segundos.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>Limpeza rápida</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>Atualizar apps</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>Atualiza todas as aplicações instaladas de uma vez.
+Usa o Gestor de Pacotes do Windows (winget).</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>Atualizar aplicações</value>
+  </data>
   <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
     <value>Clica Analisar para obteres uma pontuação.
 Depois poderás otimizar e analisar de novo para veres a diferença.</value>
@@ -174,6 +244,54 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>O que queres fazer?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Ativar</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Remover licença</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Cola uma chave de ativação válida.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Falha na ativação: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Cola a chave de ativação recebida com a tua compra. A chave está vinculada a este hardware (HWID acima).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Chave de ativação</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Licença ativada. Plano: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Plano atual</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>ID de hardware (HWID) — envia ao programador para receber a tua chave</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID copiado para a área de transferência.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>O DexSuite usa uma licença vinculada ao hardware. O HWID identifica este PC; a chave recebida é assinada e só funciona aqui.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Licença</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Plano Advanced ativo.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Plano gratuito ativo.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Plano Pro ativo.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Desempenho</value>
@@ -235,11 +353,32 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   <data name="Log.Event.AppStarted" xml:space="preserve">
     <value>DexSuite iniciado (v{0}).</value>
   </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>Email de reporte de bug aberto no cliente.</value>
+  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Histórico limpo ({0} entradas).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Idioma alterado para {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Licença ativada — plano {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Ativação de licença rejeitada: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Licença removida — regressou ao plano gratuito.</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] — Concluído</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — Erro: {1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — Iniciado</value>
   </data>
   <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
     <value>Falha na limpeza rápida: {0}</value>
@@ -253,6 +392,15 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   <data name="Log.Event.RestorePointFailed" xml:space="preserve">
     <value>Erro ao criar ponto de restauração: {0}</value>
   </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>Reversão em massa terminada — {0} revertidas, {1} falhadas de {2}.</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>Erro ao reverter — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>Alteração revertida — {0} [{1}]</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Otimização cancelada pelo utilizador.</value>
   </data>
@@ -264,6 +412,18 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   </data>
   <data name="Log.Event.RunStarted" xml:space="preserve">
     <value>Otimização iniciada com {0} módulos.</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>Erro na verificação de segurança: {0}: {1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>Verificação de segurança concluída: {0} (saída {1})</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>Verificação de segurança terminou com código não zero: {0} (saída {1})</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>Verificação de segurança iniciada: {0}</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Definições repostas para os valores predefinidos.</value>
@@ -288,6 +448,15 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   </data>
   <data name="Log.Event.UpdateNone" xml:space="preserve">
     <value>Já estás na versão mais recente (v{0}).</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>Erro na atualização de aplicações: {0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>Atualização de aplicações concluída — {0} pacotes atualizados.</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>Atualização de aplicações iniciada (winget upgrade --all)</value>
   </data>
   <data name="Log.Export" xml:space="preserve">
     <value>Exportar para .txt</value>
@@ -355,6 +524,9 @@ Atualiza-se em tempo real durante a execução.</value>
   </data>
   <data name="Modules.Impact.Strong" xml:space="preserve">
     <value>Forte</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>Nível de impacto que esta ação terá no desempenho do equipamento.</value>
   </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>Apaga Prefetch, Temp do sistema e do utilizador, miniaturas, IconCache e shaders DirectX.
@@ -553,18 +725,31 @@ Não modifica dados.</value>
 NÃO os instala automaticamente: decides se os atualizas via Windows Update.</value>
   </data>
   <data name="Modules.M20.Description" xml:space="preserve">
-    <value>Transfere e executa um menu remoto em PowerShell com otimizações por jogo.</value>
+    <value>Abre uma seleção curada de perfis de ajuste por jogo.
+Escolhe o teu título e obtém uma otimização à medida focada em FPS máximos e mínima latência de entrada.</value>
   </data>
   <data name="Modules.M20.Name" xml:space="preserve">
     <value>Otimização de videojogos</value>
   </data>
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
-    <value>Transfere e executa código no teu PC.
-Ativa-o apenas se confias na fonte (Sr. Dexter / Game_Configs).</value>
+    <value>Aplica ajustes específicos de cada jogo focados em FPS de pico e menor latência.
+Qualquer alteração pode ser revertida mais tarde nas definições do Windows.</value>
   </data>
   <data name="Modules.Recommended.Why" xml:space="preserve">
     <value>Estas otimizações estão selecionadas por serem seguras, reversíveis e produzirem uma melhoria visível na maioria dos equipamentos.
 São o melhor ponto de partida antes de explorar as definições avançadas ou pro.</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>Erro durante a execução.</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>Ainda não aplicado.</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>A aplicar…</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>Aplicado com sucesso.</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Risco</value>
@@ -609,6 +794,9 @@ Passa o rato pelo chip Seguro/Risco para saberes porquê.</value>
   <data name="Navigation.Panel" xml:space="preserve">
     <value>PAINEL</value>
   </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>Reverter alterações</value>
+  </data>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Definições</value>
   </data>
@@ -621,11 +809,94 @@ Passa o rato pelo chip Seguro/Risco para saberes porquê.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Atualizações</value>
   </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>{0} módulos aplicados com sucesso.</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite — Otimização concluída</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>Tentados {0} módulos — alguns reportaram erros. Verifica o separador Registo.</value>
+  </data>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Limpeza rápida</value>
   </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>Isto vai esvaziar a reciclagem e limpar as pastas temporárias do Windows.
+Nenhum ficheiro pessoal será tocado.</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>Executar limpeza rápida?</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>Elimina ficheiros temporários de %TEMP%, C:\Windows\Temp e C:\Windows\Prefetch.
+Também esvazia a reciclagem.
+Nenhum ficheiro pessoal é tocado.</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>Aplicado</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>Módulo</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>Destino</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>Executa módulos de otimização para começar a registar alterações aqui.
+Cada ação nativa é registada automaticamente para reverter com um clique.</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>Ainda não há alterações registadas</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} alteração(ões) pendente(s)</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>Serão revertidas {0} alteração(ões).
+A operação não pode ser desfeita no DexSuite.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>Será revertida a alteração aplicada por '{0}'.
+O valor original será restaurado.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Reverter alteração?</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>Reverter tudo</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>Reverter</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>Cada alteração que o DexSuite aplica de forma nativa é registada aqui.
+Reverte individualmente ou todas de uma vez.</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>Reverter alterações</value>
+  </data>
   <data name="RestorePoint.AutoDescription" xml:space="preserve">
     <value>DexSuite — antes de executar {0} módulos</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>Criar um ponto de restauração permite-te desfazer qualquer alteração a partir do Windows se algo correr mal.
+Demora apenas alguns segundos.</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>Não, continuar sem ele</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>Criar primeiro um ponto de restauração?</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>Sim, criar</value>
   </data>
   <data name="RestorePoint.Description" xml:space="preserve">
     <value>DexSuite — cópia de segurança de otimização manual</value>
@@ -654,6 +925,53 @@ Passa o rato pelo chip Seguro/Risco para saberes porquê.</value>
   <data name="Search.ResultsCount" xml:space="preserve">
     <value>{0} resultado(s) para «{1}»</value>
   </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>Executa Windows Defender, SFC, DISM ou MRT.
+Ferramentas nativas, sem downloads extra.</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>Verificação de segurança e integridade</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>Executar uma análise rápida do Windows Defender?
+Normalmente demora 5–10 minutos.</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>Executar DISM /RestoreHealth?
+Repara a imagem do Windows usando o Windows Update. Requer internet e pode demorar 10–20 minutos.</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>Executar a Ferramenta de Remoção de Software Malicioso (MRT /Q)?
+Executa silenciosamente em segundo plano.</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>Executar o Verificador de Ficheiros de Sistema (SFC /scannow)?
+Verifica e repara ficheiros de sistema danificados. Demora 10–20 minutos.</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>Executar verificação?</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>Defender · Análise rápida</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · Restaurar imagem</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · Remoção de malware</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · Verificador de ficheiros</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>{0} não está instalado neste sistema.</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>Ferramenta não disponível</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>Executar verificação</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Aplica-se ao iniciar a app.</value>
   </data>
@@ -677,13 +995,19 @@ A interface atualiza-se instantaneamente.</value>
     <value>Idioma</value>
   </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
-    <value>Aviso do sistema quando a limpeza terminar (futuro).</value>
+    <value>Mostra um aviso do Windows na Central de Ações quando a otimização termina.</value>
   </data>
   <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
     <value>Notificar ao terminar uma execução</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Repor definições</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>Sempre que inicias uma otimização, o DexSuite pergunta se queres criar primeiro um ponto de restauração. Podes responder Sim, Não ou Cancelar.</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>O DexSuite pergunta sempre antes de otimizar</value>
   </data>
   <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
     <value>Criar automaticamente antes de cada execução</value>
@@ -715,8 +1039,8 @@ Temas exclusivos para utilizadores Pro.</value>
     <value>Tema</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
-    <value>Limita os módulos que podes executar.
-Por agora é informativo; na próxima versão desativará os módulos fora do teu plano.</value>
+    <value>Determina os módulos que podes executar.
+Ativa uma licença na secção Licença para desbloquear os módulos Advanced ou Pro.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
     <value>Plano ativo</value>
@@ -762,6 +1086,16 @@ Por agora é informativo; na próxima versão desativará os módulos fora do te
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
     <value>Hardware e sistema operativo detetados</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>Modo administrador ativo</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>Dados obtidos do Windows.
+Clica em Atualizar se o hardware mudar.</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>Resumo do sistema</value>
   </data>
   <data name="Specs.Title" xml:space="preserve">
     <value>Especificações do sistema</value>
@@ -830,11 +1164,23 @@ Clica em «Atualizar agora» para a instalar.</value>
   <data name="Status.RestorePointFailed" xml:space="preserve">
     <value>Erro ao criar ponto de restauração: {0}</value>
   </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>Reversão concluída: {0}/{1}.</value>
+  </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Pontuações repostas. Clica em Analisar para recomeçar.</value>
   </data>
   <data name="Status.Searching" xml:space="preserve">
     <value>A procurar atualizações...</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} concluído.</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>{0} terminou com erros: {1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>A executar {0}…</value>
   </data>
   <data name="Status.SelectModulesFirst" xml:space="preserve">
     <value>Seleciona pelo menos um módulo antes de executar.</value>
@@ -856,6 +1202,15 @@ A aplicação irá reiniciar automaticamente.</value>
   </data>
   <data name="Status.UpToDate" xml:space="preserve">
     <value>Tens a versão mais recente (v{0}).</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>Aplicações atualizadas — {0} pacotes.</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>Erro ao atualizar aplicações: {0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>A atualizar aplicações…</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Ouro premium + preto quente</value>
@@ -905,8 +1260,8 @@ Beta: versões novas mais cedo, podem ter erros.</value>
     <value>Procurar atualizações</value>
   </data>
   <data name="Updates.HowItWorks.Message" xml:space="preserve">
-    <value>O DexSuite usa Velopack. Clica em «Procurar atualizações» para verificar uma nova versão.
-Se a app não estiver instalada via Setup, as atualizações automáticas não estarão disponíveis.</value>
+    <value>O DexSuite consulta o nosso servidor de versões e instala-as sobre a própria app.
+Se estás numa build de desenvolvimento, as atualizações automáticas ficam desativadas.</value>
   </data>
   <data name="Updates.HowItWorks.Title" xml:space="preserve">
     <value>Como funcionam as atualizações</value>
@@ -950,5 +1305,16 @@ Mantém-no atualizado para receber as últimas otimizações.</value>
   </data>
   <data name="Verdict.Improvable" xml:space="preserve">
     <value>Melhorável</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>Será executado winget upgrade --all.
+Pode demorar vários minutos consoante o número de atualizações pendentes.
+O progresso será exibido no registo.</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>Atualizar todas as aplicações?</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>O Gestor de Pacotes do Windows (winget) não está disponível neste sistema.</value>
   </data>
 </root>

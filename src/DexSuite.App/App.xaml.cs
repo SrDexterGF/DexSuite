@@ -3,6 +3,8 @@ using System.Text;
 using System.Windows;
 using DexSuite.App.Data;
 using DexSuite.App.Services;
+using DexSuite.App.Services.CleanupModules;
+using DexSuite.App.Services.Licensing;
 using DexSuite.App.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,8 +26,8 @@ public partial class App : System.Windows.Application
     {
         base.OnStartup(e);
 
-        // Sin esto, Encoding.GetEncoding(1252) lanza en .NET Core/+5. Lo necesita BatRunner
-        // para leer la salida del .bat que corre con "chcp 1252".
+        // CodePage 1252 sigue siendo útil para procesos de Windows que escupen
+        // OEM/Western encoding (algunas líneas de netsh, defrag) en M16/M18.
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
         var logsDir = Path.Combine(
@@ -48,18 +50,59 @@ public partial class App : System.Windows.Application
 
         _host.Start();
 
+        // CAPA 2 — Integridad del ejecutable. Antes de cualquier UI ni licencia.
+        // Si la build de release ha sido modificada, abortamos con un mensaje.
+        // En modo dev (sin clave pública configurada) IIntegrityVerifier devuelve
+        // siempre true para no estorbar al desarrollo.
+        try
+        {
+            var integrity = _host.Services.GetRequiredService<IIntegrityVerifier>();
+            if (!integrity.Verify(out var reason))
+            {
+                Log.Error("Integridad del ejecutable fallida: {Reason}", reason);
+                MessageBox.Show(
+                    $"DexSuite no puede arrancar:{Environment.NewLine}{Environment.NewLine}{reason}",
+                    "DexSuite — Error de integridad",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                Shutdown(1);
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Excepción al verificar integridad — la app continúa por seguridad de la UX");
+        }
+
         // Asegura que la BD SQLite existe (crea esquema si es la 1ª ejecución).
-        // EnsureCreated es suficiente porque por ahora no usamos migraciones.
+        // Además, crea de forma idempotente las tablas NUEVAS que no existían en
+        // ejecuciones previas (EnsureCreated no actualiza esquema existente).
+        // Cuando crezca el proyecto, migrar a Migrations de EF Core.
         try
         {
             using var scope = _host.Services.CreateScope();
             var factory = scope.ServiceProvider.GetRequiredService<IDbContextFactory<DexSuiteDbContext>>();
             using var db = factory.CreateDbContext();
             db.Database.EnsureCreated();
+            EnsureModuleChangesTable(db);
+            EnsureLicensesTable(db);
         }
         catch (Exception ex)
         {
             Log.Error(ex, "No se pudo inicializar la base de datos del historial");
+        }
+
+        // Carga inicial de la licencia (sincrónica, antes de la primera vista).
+        // El servicio re-verifica la firma desde cero; si la licencia es válida,
+        // CurrentTier queda con Avanzado/Pro y MainViewModel desbloquea módulos.
+        try
+        {
+            var license = _host.Services.GetRequiredService<ILicenseService>();
+            license.RevalidateAsync().GetAwaiter().GetResult();
+        }
+        catch (Exception ex)
+        {
+            Log.Warning(ex, "No se pudo cargar la licencia al arrancar");
         }
 
         // Aplica el tema persistido (o Default si es la primera ejecución).
@@ -95,6 +138,59 @@ public partial class App : System.Windows.Application
         base.OnExit(e);
     }
 
+    /// <summary>
+    /// Crea de forma idempotente la tabla ModuleChanges (F5.5). Usuarios con BD
+    /// previa no la tienen porque EnsureCreated solo crea esquema si la BD no existía.
+    /// Mantenemos la migración manual aquí en lugar de añadir EF Migrations
+    /// para evitar el overhead hasta que sea estrictamente necesario.
+    /// </summary>
+    private static void EnsureModuleChangesTable(DexSuiteDbContext db)
+    {
+        const string sql = @"
+            CREATE TABLE IF NOT EXISTS ModuleChanges (
+                Id              INTEGER NOT NULL CONSTRAINT PK_ModuleChanges PRIMARY KEY AUTOINCREMENT,
+                ModuleId        TEXT NOT NULL,
+                ModuleName      TEXT NOT NULL,
+                ChangeType      INTEGER NOT NULL,
+                Target          TEXT NOT NULL,
+                SubTarget       TEXT NULL,
+                OriginalValue   TEXT NULL,
+                NewValue        TEXT NULL,
+                ValueKind       TEXT NULL,
+                AppliedAtUtc    TEXT NOT NULL,
+                IsReverted      INTEGER NOT NULL DEFAULT 0,
+                RevertedAtUtc   TEXT NULL,
+                RevertError     TEXT NULL
+            );
+            CREATE INDEX IF NOT EXISTS IX_ModuleChanges_ModuleId
+                ON ModuleChanges (ModuleId);
+            CREATE INDEX IF NOT EXISTS IX_ModuleChanges_IsReverted_AppliedAtUtc
+                ON ModuleChanges (IsReverted, AppliedAtUtc DESC);
+        ";
+        db.Database.ExecuteSqlRaw(sql);
+    }
+
+    /// <summary>
+    /// Crea de forma idempotente la tabla Licenses (F7 — sistema de licencias).
+    /// Solo se mantiene una fila a la vez; LicenseService borra y reinserta al
+    /// activar una licencia nueva.
+    /// </summary>
+    private static void EnsureLicensesTable(DexSuiteDbContext db)
+    {
+        const string sql = @"
+            CREATE TABLE IF NOT EXISTS Licenses (
+                Id              INTEGER NOT NULL CONSTRAINT PK_Licenses PRIMARY KEY AUTOINCREMENT,
+                Hwid            TEXT NOT NULL,
+                Tier            INTEGER NOT NULL,
+                LicenseId       TEXT NOT NULL,
+                Blob            TEXT NOT NULL,
+                IssuedAtUtc     TEXT NOT NULL,
+                AppliedAtUtc    TEXT NOT NULL
+            );
+        ";
+        db.Database.ExecuteSqlRaw(sql);
+    }
+
     private static void ConfigureServices(IServiceCollection services)
     {
         // Carpeta %LocalAppData%/DexSuite (compartida por logs Serilog y BD).
@@ -111,7 +207,7 @@ public partial class App : System.Windows.Application
 
         // Services
         services.AddSingleton<IModuleCatalog, ModuleCatalog>();
-        services.AddSingleton<IBatRunner, BatRunner>();
+        services.AddSingleton<INativeModuleRunner, NativeModuleRunner>();
         services.AddSingleton<IPerformanceAnalyzer, PerformanceAnalyzer>();
         services.AddSingleton<IUpdateService, VelopackUpdateService>();
         services.AddSingleton<IQuickCleanService, QuickCleanService>();
@@ -121,6 +217,42 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IRestorePointService, RestorePointService>();
         services.AddSingleton<IThemeService, ThemeService>();
         services.AddSingleton<ISettingsService, SettingsService>();
+        services.AddSingleton<IGameOptimizationService, GameOptimizationService>();
+        services.AddSingleton<IWingetService, WingetService>();
+        services.AddSingleton<ISecurityCheckService, SecurityCheckService>();
+        services.AddSingleton<IChangeTrackingService, ChangeTrackingService>();
+        services.AddSingleton<IBugReportService, BugReportService>();
+
+        // F7 — Sistema de licencias (3 capas)
+        services.AddSingleton<IHardwareIdProvider, HardwareIdProvider>();
+        services.AddSingleton<IIntegrityVerifier, IntegrityVerifier>();
+        services.AddSingleton<ILicenseService, LicenseService>();
+        // Watchdog re-verifica la licencia cada ~10 min con jitter; hospedado
+        // como BackgroundService para que el host lo arranque y pare con la app.
+        services.AddHostedService<LicenseWatchdog>();
+
+        // Executors nativos de los 19 módulos. Cada uno migra una sección del .bat
+        // legacy y se registra como IModuleExecutor para que NativeModuleRunner
+        // los descubra y orqueste en orden ascendente de ModuleId.
+        services.AddSingleton<IModuleExecutor, M01Prefetch>();
+        services.AddSingleton<IModuleExecutor, M02SystemLogs>();
+        services.AddSingleton<IModuleExecutor, M03TempAndRecycle>();
+        services.AddSingleton<IModuleExecutor, M04DeepCleanup>();
+        services.AddSingleton<IModuleExecutor, M05WindowsUpdate>();
+        services.AddSingleton<IModuleExecutor, M06DismComponentStore>();
+        services.AddSingleton<IModuleExecutor, M07BrowserCache>();
+        services.AddSingleton<IModuleExecutor, M08NetworkReset>();
+        services.AddSingleton<IModuleExecutor, M09StoreOneDriveTeams>();
+        services.AddSingleton<IModuleExecutor, M10SfcDism>();
+        services.AddSingleton<IModuleExecutor, M11Peripherals>();
+        services.AddSingleton<IModuleExecutor, M12WingetUpgrade>();
+        services.AddSingleton<IModuleExecutor, M13CopilotCortanaTelemetry>();
+        services.AddSingleton<IModuleExecutor, M14PrivacyServices>();
+        services.AddSingleton<IModuleExecutor, M15Performance>();
+        services.AddSingleton<IModuleExecutor, M16Ethernet>();
+        services.AddSingleton<IModuleExecutor, M17Security>();
+        services.AddSingleton<IModuleExecutor, M18SsdTrim>();
+        services.AddSingleton<IModuleExecutor, M19Drivers>();
 
         // i18n: el singleton estático es el mismo que usa la markup extension {loc:T}.
         services.AddSingleton<ILocalizationService>(LocalizationService.Instance);
@@ -128,8 +260,12 @@ public partial class App : System.Windows.Application
 
         // ViewModels
         services.AddSingleton<MainViewModel>();
+        // Game selector: Transient porque cada apertura empieza con tiles
+        // limpios (selección de variante no se preserva entre sesiones).
+        services.AddTransient<GameSelectorViewModel>();
 
         // Views
         services.AddSingleton<MainWindow>();
+        services.AddTransient<GameSelectorWindow>();
     }
 }

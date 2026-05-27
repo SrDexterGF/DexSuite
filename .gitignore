@@ -26,3 +26,11 @@ logs/
 *.log
 Thumbs.db
 .DS_Store
+
+## F7 — Sistema de licencias
+# Si por error apareciese una clave privada o un .integrity dentro del repo,
+# .gitignore los bloquea. La clave privada vive en %LocalAppData%\DexSuiteKeyGen,
+# nunca aquí.
+**/private.xml
+*.integrity
+DexSuiteKeyGen/

@@ -92,9 +92,23 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     [ObservableProperty]
     private bool isLocked;
 
-    /// <summary>Estado actual de ejecución (para futura fase 2 con tracking por módulo).</summary>
+    /// <summary>Estado legacy (no usado por la UI nueva — conservado por compatibilidad).</summary>
     [ObservableProperty]
     private ModuleStatus status = ModuleStatus.Pending;
+
+    /// <summary>
+    /// Estado de ejecución del módulo durante el último run (F2.2).
+    /// La UI lo usa para pintar el icono (— / spinner / ✓ / ⚠) y el tooltip.
+    /// </summary>
+    [ObservableProperty]
+    private ModuleRunStatus runStatus = ModuleRunStatus.Idle;
+
+    /// <summary>
+    /// Mensaje de error del último intento, si RunStatus == Error. Se muestra
+    /// como tooltip del icono ⚠ en la UI.
+    /// </summary>
+    [ObservableProperty]
+    private string? lastError;
 
     public void Dispose()
     {

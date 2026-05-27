@@ -10,6 +10,7 @@ public enum AppSection
     Modules,
     Log,
     Specs,
+    Restore,
     Settings,
     Updates,
     About,

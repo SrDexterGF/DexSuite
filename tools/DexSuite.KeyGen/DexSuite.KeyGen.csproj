@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Herramienta interna del desarrollador para gestionar el sistema de licencias
+    de DexSuite (F7). Console app autónoma. NO se distribuye con la app del cliente.
+
+    Subcomandos disponibles (ver Program.cs PrintUsage para el detalle):
+      init, pubkey, gen, sign-integrity, verify
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>DexSuite.KeyGen</RootNamespace>
+    <AssemblyName>DexSuite.KeyGen</AssemblyName>
+    <Version>0.1.0</Version>
+    <!-- Esta tool NO debe entrar nunca en el publish de la app del cliente. -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+</Project>

@@ -39,9 +39,61 @@ public interface ILocalizationService : INotifyPropertyChanged
 /// <param name="Code">Código ISO (p. ej. "es", "zh").</param>
 /// <param name="NativeName">Nombre en el propio idioma (p. ej. "Español", "中文").</param>
 /// <param name="EnglishName">Nombre en inglés, para logs y debugging.</param>
-/// <param name="Flag">Emoji de la bandera del país/región (p. ej. "🇪🇸").</param>
+/// <param name="Flag">Emoji de la bandera (reservado; Windows no lo renderiza en color).</param>
 public sealed record LanguageOption(string Code, string NativeName, string EnglishName, string Flag)
 {
-    /// <summary>Texto que se muestra en el ComboBox: bandera + nombre nativo.</summary>
-    public string DisplayName => $"{Flag}  {NativeName}";
+    /// <summary>Nombre nativo del idioma.</summary>
+    public string DisplayName => NativeName;
+
+    /// <summary>Código ISO en mayúsculas para el chip del selector ("ES", "RU", "JA"…).</summary>
+    public string UpperCode => Code.ToUpperInvariant();
+
+    /// <summary>
+    /// Código de país ISO 3166-1 alpha-2 para cargar la bandera desde flagcdn.com.
+    /// Los idiomas regionales sin estado propio (gl, ca, eu) usan el código de España.
+    /// </summary>
+    public string FlagCountryCode => Code switch
+    {
+        "es" or "gl" or "ca" or "eu" => "es",
+        "en" => "gb",
+        "pt" => "pt",
+        "fr" => "fr",
+        "de" => "de",
+        "it" => "it",
+        "zh" => "cn",
+        "ru" => "ru",
+        "uk" => "ua",
+        "ar" => "sa",
+        "ja" => "jp",
+        "ko" => "kr",
+        "hi" => "in",
+        "bn" => "bd",
+        "ur" => "pk",
+        "id" => "id",
+        "tr" => "tr",
+        "vi" => "vn",
+        "nl" => "nl",
+        "sv" => "se",
+        "ro" => "ro",
+        "pl" => "pl",
+        "cs" => "cz",
+        "el" => "gr",
+        "da" => "dk",
+        "no" => "no",
+        "fi" => "fi",
+        _    => Code,
+    };
+
+    /// <summary>
+    /// URL de la bandera. Los idiomas regionales sin país propio usan
+    /// Wikipedia Commons (banderas oficiales de Galicia, Cataluña y Euskadi).
+    /// El resto carga desde flagcdn.com (20×15 px, PNG, sin API key).
+    /// </summary>
+    public string FlagImageUrl => Code switch
+    {
+        "gl" => "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Flag_of_Galicia.svg/20px-Flag_of_Galicia.svg.png",
+        "ca" => "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/20px-Flag_of_Catalonia.svg.png",
+        "eu" => "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/20px-Flag_of_the_Basque_Country.svg.png",
+        _    => $"https://flagcdn.com/20x15/{FlagCountryCode}.png",
+    };
 }

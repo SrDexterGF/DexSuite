@@ -37,7 +37,7 @@
     <value>• CYBERNETIC gaia ziano + bioleta paletarekin eta logo esklusiboarekin</value>
   </data>
   <data name="About.Changelog.Item9" xml:space="preserve">
-    <value>• Alboko barra ikonoekin, banatzaileekin eta hizkuntza-hautatzailearekin (10 hizkuntza)</value>
+    <value>• Alboko barra ikonoekin, banatzaileekin eta hizkuntza-hautatzailearekin (30 hizkuntza)</value>
   </data>
   <data name="About.Changelog.Title" xml:space="preserve">
     <value>v{0} berritasunak</value>
@@ -90,6 +90,25 @@
   <data name="App.Tagline" xml:space="preserve">
     <value>MUGAREN MUGAN</value>
   </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>Diagnostiko-informazioa automatikoki bildua (lagungarria erreproduzitzeko):</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>Mesedez, deskribatu zer gertatu den, zer espero zenuen eta erreproduzitzeko urratsak:</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>Akatsa jakinarazi</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>Bidali zure txostena eskuz suitedex@gmail.com helbidera.
+Errorea: {0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>Ezin izan da posta-bezeroa ireki</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>Posta-bezeroa irekitzen du diagnostiko-informazioa aurrez beteta.</value>
+  </data>
   <data name="Common.Apply" xml:space="preserve">
     <value>Aplikatu</value>
   </data>
@@ -113,6 +132,37 @@
   </data>
   <data name="Common.Run" xml:space="preserve">
     <value>Exekutatu</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>Aukeratu jokoa eta aplikatu neurrira egindako doikuntza, FPS gehienak eta latentzia gutxiena lortzeko.</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>Joko bakoitzaren optimizazio profilak</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>Profil bakoitzak doikuntza zehatzak aplikatzen ditu FPS maximorako eta latentzia minimorako.</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>Errorea jokoaren optimizazioan ({0}): {1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>Bideojokoen optimizazioa abiarazi da: {0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>Ezin izan da jokoen hautatzailea ireki: {0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>Aukeratu optimizatu beharreko jokoa</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>Optimizatu</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>Doikuntza zehatzak FPS gehienak eta latentzia gutxiena lortzeko.
+Joko bakoitzak bere profila du.</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>Aukeratu optimizatu beharreko jokoa</value>
   </data>
   <data name="Home.AnalyzeAgain" xml:space="preserve">
     <value>Analizatu berriro</value>
@@ -153,6 +203,26 @@ Abiarazi garbiketa eta doikuntzak.</value>
   <data name="Home.Card.Optimize.Title" xml:space="preserve">
     <value>Optimizatu sistema</value>
   </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>Garbitu orain</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>Aldi baterako karpetak eta zakarrontzia hustu.
+Espazioa askatzen du segundotan.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>Garbiketa azkarra</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>Eguneratu apps</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>Instalatutako aplikazio guztiak aldi berean eguneratzen ditu.
+Windowsen pakete-kudeatzailea (winget) erabiltzen du.</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>Eguneratu aplikazioak</value>
+  </data>
   <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
     <value>Sakatu Analizatu puntuazio bat lortzeko.
 Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
@@ -174,6 +244,54 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Zer egin nahi duzu?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Aktibatu</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Lizentzia kendu</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Itsatsi aktibazio-gako baliogarri bat.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Aktibazioak huts egin du: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Itsatsi erosketan jasotako aktibazio-gakoa. Gakoa hardware honetara lotuta dago (goiko HWID).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Aktibazio-gakoa</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Lizentzia aktibatu da. Plana: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Uneko plana</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Kopiatu</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>Hardware IDa (HWID) — bidali garatzaileari zure gakoa jasotzeko</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID arbelera kopiatuta.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite-k hardware-lotutako lizentzia erabiltzen du. HWIDak PC hau identifikatzen du; jasotako gakoa sinatuta dago eta hemen bakarrik funtzionatzen du.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Lizentzia</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Advanced plana aktibo.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Doako plana aktibo.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Pro plana aktibo.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Errendimendua</value>
@@ -235,11 +353,32 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   <data name="Log.Event.AppStarted" xml:space="preserve">
     <value>DexSuite abiarazi da (v{0}).</value>
   </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>Bug-aren txostena posta-bezeroan ireki da.</value>
+  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Historia garbitu da ({0} sarrera).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Hizkuntza {0}-ra aldatu da.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Lizentzia aktibatu da — {0} plana.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Lizentzia-aktibazioa baztertu da: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Lizentzia kendu da — doako planera itzuli.</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] — Osatuta</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — Errorea: {1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — Hasita</value>
   </data>
   <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
     <value>Garbiketa azkarraren errorea: {0}</value>
@@ -253,6 +392,15 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   <data name="Log.Event.RestorePointFailed" xml:space="preserve">
     <value>Errorea berrezarpen-puntua sortzean: {0}</value>
   </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>Itzulera masiboa amaitu da — {0} desegin, {1} huts, {2}-tik.</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>Errorea desegitean — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>Aldaketa desegin da — {0} [{1}]</value>
+  </data>
   <data name="Log.Event.RunCancelled" xml:space="preserve">
     <value>Erabiltzaileak optimizazioa bertan behera utzi du.</value>
   </data>
@@ -264,6 +412,18 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   </data>
   <data name="Log.Event.RunStarted" xml:space="preserve">
     <value>Optimizazioa hasi da {0} modulurekin.</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>Segurtasun-egiaztapenean errorea: {0}: {1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>Segurtasun-egiaztapena amaitu da: {0} (irteera {1})</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>Segurtasun-egiaztapena ez-zero kodearekin amaitu da: {0} (irteera {1})</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>Segurtasun-egiaztapena hasi da: {0}</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Ezarpenak balio lehenetsietara berrezarri dira.</value>
@@ -288,6 +448,15 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   </data>
   <data name="Log.Event.UpdateNone" xml:space="preserve">
     <value>Azken bertsioan zaude jada (v{0}).</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>Errorea aplikazioak eguneratzean: {0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>Aplikazioen eguneratzea osatu da — {0} pakete eguneratuta.</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>Aplikazioen eguneratzea hasi da (winget upgrade --all)</value>
   </data>
   <data name="Log.Export" xml:space="preserve">
     <value>.txt-ra esportatu</value>
@@ -355,6 +524,9 @@ Denbora errealean eguneratzen da exekuzioan.</value>
   </data>
   <data name="Modules.Impact.Strong" xml:space="preserve">
     <value>Indartsua</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>Ekintza honek ekipoaren errendimenduan izango duen eraginaren maila.</value>
   </data>
   <data name="Modules.M01.Description" xml:space="preserve">
     <value>Prefetch, sistemaren eta erabiltzailearen Temp, miniaturak, IconCache eta DirectX shader-ak ezabatzen ditu.
@@ -553,18 +725,31 @@ Ez du daturik aldatzen.</value>
 EZ ditu automatikoki instalatzen: zuk erabakitzen duzu Windows Update bidez eguneratu nahi dituzun.</value>
   </data>
   <data name="Modules.M20.Description" xml:space="preserve">
-    <value>Urrutiko PowerShell menua deskargatzen eta exekutatzen du, joko bakoitzerako optimizazioekin.</value>
+    <value>Joko bakoitzerako profil zainduen aukeraketa irekitzen du.
+Aukeratu zure izenburua eta lortu neurrira egindako optimizazioa, FPS gehienak eta sarrera-latentzia gutxiena lortzeko.</value>
   </data>
   <data name="Modules.M20.Name" xml:space="preserve">
     <value>Bideojokoen optimizazioa</value>
   </data>
   <data name="Modules.M20.SafetyReason" xml:space="preserve">
-    <value>Zure PCan kodea deskargatu eta exekutatzen du.
-Iturburua sinesten baduzu soilik aktibatu (Sr. Dexter / Game_Configs).</value>
+    <value>Joko bakoitzerako doikuntza espezifikoak aplikatzen ditu, FPS goreneko eta latentzia gutxiagoko helburuarekin.
+Edozein aldaketa geroago itzul daiteke Windowsen ezarpenetatik.</value>
   </data>
   <data name="Modules.Recommended.Why" xml:space="preserve">
     <value>Optimizazio hauek hautatuta daude seguruak, itzulgarriak eta ekipo gehienetan hobekuntza nabaria eragiten dutelako.
 Aurreratu edo pro ezarpenak aztertu aurretik, abiapuntu onena dira.</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>Errorea exekuzioan.</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>Oraindik ez da aplikatu.</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>Aplikatzen…</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>Behar bezala aplikatuta.</value>
   </data>
   <data name="Modules.Safety.Risk" xml:space="preserve">
     <value>Arriskua</value>
@@ -609,6 +794,9 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   <data name="Navigation.Panel" xml:space="preserve">
     <value>PANELA</value>
   </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>Aldaketak desegin</value>
+  </data>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Ezarpenak</value>
   </data>
@@ -621,11 +809,94 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Eguneraketak</value>
   </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>{0} modulu behar bezala aplikatuta.</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite — Optimizazioa amaitu da</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>{0} modulu probatu dira — batzuek erroreak eman dituzte. Berrikusi Erregistroa fitxa.</value>
+  </data>
   <data name="QuickClean.Button" xml:space="preserve">
     <value>Garbiketa azkarra</value>
   </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>Honek zakarrontzia hustu eta Windowsen aldi baterako karpetak garbituko ditu.
+Ez da fitxategi pertsonalik ukituko.</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>Garbiketa azkarra exekutatu?</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>%TEMP%, C:\Windows\Temp eta C:\Windows\Prefetch-eko aldi baterako fitxategiak ezabatzen ditu.
+Zakarrontzia ere husten du.
+Ez da fitxategi pertsonalik ukituko.</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>Aplikatuta</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>Modulua</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>Helburua</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>Mota</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>Exekutatu optimizazio-moduluak aldaketak hemen erregistratzen hasteko.
+Akzio natibo bakoitza automatikoki jarraitzen da klik bakar batez desegiteko.</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>Oraindik ez dago aldaketarik erregistratuta</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} aldaketa zain</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>Eguneratu</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>{0} aldaketa desegingo dira.
+Eragiketa ezin da DexSuitetik desegin.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>'{0}'-ek aplikatutako aldaketa desegingo da.
+Jatorrizko balioa berreskuratuko da.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Aldaketa desegin?</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>Guztia desegin</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>Desegin</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>DexSuitek aplikatzen duen aldaketa bakoitza hemen erregistratzen da.
+Banaka edo guztiak batera desegin.</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>Aldaketak desegin</value>
+  </data>
   <data name="RestorePoint.AutoDescription" xml:space="preserve">
     <value>DexSuite — {0} modulu exekutatu aurretik</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>Berrezarpen-puntua sortzeak edozein aldaketa Windows-etik desegiteko aukera ematen dizu zerbait gaizki ateratzen bada.
+Segundo gutxi batzuk hartzen ditu.</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>Ez, gabe jarraitu</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>Lehenik berrezarpen-puntua sortu?</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>Bai, sortu</value>
   </data>
   <data name="RestorePoint.Description" xml:space="preserve">
     <value>DexSuite — eskuzko optimizazioaren babeskopia</value>
@@ -654,6 +925,53 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   <data name="Search.ResultsCount" xml:space="preserve">
     <value>{0} emaitza «{1}» bilaketarako</value>
   </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>Exekutatu Windows Defender, SFC, DISM edo MRT.
+Jatorrizko tresnak, deskarga gehigarririk gabe.</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>Segurtasuna eta osotasunaren egiaztapena</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>Windows Defender-en azterketa azkarra exekutatu?
+5–10 minutu inguru behar ditu.</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>DISM /RestoreHealth exekutatu?
+Windows-en irudia konpontzen du Windows Update erabiliz. Internet behar du eta 10–20 minutu behar ditu.</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>Software maltzurra kentzeko tresna exekutatu (MRT /Q)?
+Isilean exekutatzen da bigarren planoan.</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>Sistema-fitxategien egiaztatzailea exekutatu (SFC /scannow)?
+Sistema-fitxategi hondatuak aztertu eta konpontzen ditu. 10–20 minutu behar ditu.</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>Egiaztapena exekutatu?</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>Defender · Azterketa azkarra</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · Irudia berrezarri</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · Malwarea kentzea</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · Sistema-fitxategien egiaztapena</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>{0} ez dago instalatuta sistema honetan.</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>Tresna ez dago erabilgarri</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>Egiaztapena exekutatu</value>
+  </data>
   <data name="Settings.AutoSelect.Desc" xml:space="preserve">
     <value>Aplikazioa abiaraztean aplikatzen da.</value>
   </data>
@@ -677,13 +995,19 @@ Interfazea berehala eguneratzen da.</value>
     <value>Hizkuntza</value>
   </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
-    <value>Sistemaren oharra garbiketa amaitzean (etorkizunean).</value>
+    <value>Windows-en oharra erakusten du Jarduera Zentroan optimizazioa amaitzean.</value>
   </data>
   <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
     <value>Jakinarazi exekuzioa amaitzean</value>
   </data>
   <data name="Settings.Reset" xml:space="preserve">
     <value>Berrezarri ezarpenak</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>Optimizazio bat hasten duzun bakoitzean, DexSuitek lehenik berrezarpen-puntua sortu nahi duzun galdetzen dizu. Bai, Ez edo Utzi erantzun dezakezu.</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>DexSuitek beti galdetzen du optimizatu aurretik</value>
   </data>
   <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
     <value>Sortu automatikoki exekuzio bakoitzaren aurretik</value>
@@ -715,8 +1039,8 @@ Gai esklusiboak Pro erabiltzaileentzat.</value>
     <value>Gaia</value>
   </data>
   <data name="Settings.Tier.Description" xml:space="preserve">
-    <value>Zein modulu exekutatu ditzakezun mugatzen du.
-Oraingoz informatiboa da; hurrengo bertsioan zure planean ez dauden moduluak desgaituko ditu.</value>
+    <value>Zein modulu exekutatu ditzakezun zehazten du.
+Desblokeatu Advanced edo Pro moduluak Lizentzia atalean lizentzia bat aktibatuz.</value>
   </data>
   <data name="Settings.Tier.Title" xml:space="preserve">
     <value>Plan aktiboa</value>
@@ -762,6 +1086,16 @@ Oraingoz informatiboa da; hurrengo bertsioan zure planean ez dauden moduluak des
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
     <value>Hautemandako hardware eta sistema eragilea</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>Administratzaile modua aktibo</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>Datuak Windows-etik lortuta.
+Sakatu Eguneratu hardware-aldaketarik egonez gero.</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>Sistemaren laburpena</value>
   </data>
   <data name="Specs.Title" xml:space="preserve">
     <value>Sistemaren zehaztapenak</value>
@@ -830,11 +1164,23 @@ Sakatu «Eguneratu orain» instalatzeko.</value>
   <data name="Status.RestorePointFailed" xml:space="preserve">
     <value>Errorea berrezarpen-puntua sortzean: {0}</value>
   </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>Itzulera osatuta: {0}/{1}.</value>
+  </data>
   <data name="Status.ScoresReset" xml:space="preserve">
     <value>Puntuazioak berrabiarazita. Sakatu Analizatu berriz hasteko.</value>
   </data>
   <data name="Status.Searching" xml:space="preserve">
     <value>Eguneraketak bilatzen...</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} amaitu da.</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>{0} errorez amaitu da: {1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>{0} exekutatzen…</value>
   </data>
   <data name="Status.SelectModulesFirst" xml:space="preserve">
     <value>Aukeratu gutxienez modulu bat exekutatu aurretik.</value>
@@ -856,6 +1202,15 @@ Aplikazioa automatikoki berrabiaraziko da.</value>
   </data>
   <data name="Status.UpToDate" xml:space="preserve">
     <value>Eskuragarri dagoen azken bertsioa duzu (v{0}).</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>Aplikazioak eguneratuta — {0} pakete.</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>Errorea aplikazioak eguneratzean: {0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>Aplikazioak eguneratzen…</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Urre premium + beltz beroa</value>
@@ -905,8 +1260,8 @@ Beta: bertsio berriak lehenago, akatsak izan ditzakete.</value>
     <value>Bilatu eguneraketak</value>
   </data>
   <data name="Updates.HowItWorks.Message" xml:space="preserve">
-    <value>DexSuite-k Velopack erabiltzen du. Sakatu «Bilatu eguneraketak» bertsio berririk dagoen ikusteko.
-Aplikazioa Setup bidez instalatuta ez badago, eguneraketa automatikoak ez daude eskuragarri.</value>
+    <value>DexSuitek gure bertsio-zerbitzaria kontsultatzen du eta aplikazioaren gainean instalatzen ditu.
+Garapen-eraikuntza batean bazaude, eguneraketa automatikoak desgaituta geratzen dira.</value>
   </data>
   <data name="Updates.HowItWorks.Title" xml:space="preserve">
     <value>Nola funtzionatzen duten eguneraketek</value>
@@ -950,5 +1305,16 @@ Mantendu eguneratuta optimizazio guztiak lortzeko.</value>
   </data>
   <data name="Verdict.Improvable" xml:space="preserve">
     <value>Hobetzeko modukoa</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>winget upgrade --all exekutatuko da.
+Hainbat minutu behar izan ditzake eguneratze kopuruaren arabera.
+Aurrerapena erregistroan ikusiko da.</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>Aplikazio guztiak eguneratu?</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>Windowsen pakete-kudeatzailea (winget) ez dago erabilgarri sistema honetan.</value>
   </data>
 </root>

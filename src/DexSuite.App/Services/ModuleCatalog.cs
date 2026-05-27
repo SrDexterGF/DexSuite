@@ -3,11 +3,11 @@ using DexSuite.App.Models;
 namespace DexSuite.App.Services;
 
 /// <summary>
-/// Catálogo de los 20 módulos de DexSuite.
+/// Catálogo de los 19 módulos de DexSuite (M20 = juegos, gestionado fuera del catálogo).
 /// Distribución de tiers:
-///   FREE (5)     — limpieza básica, 100 % segura, reversible.
-///   AVANZADO (8) — limpieza profunda y ajustes; puede afectar funcionalidades.
-///   PRO (7)      — optimización extrema de rendimiento, seguridad y hardware.
+///   FREE (6)     — limpieza básica + Winget; segura y mayoritariamente reversible.
+///   AVANZADO (7) — limpieza profunda y ajustes; puede afectar funcionalidades.
+///   PRO (6)      — optimización extrema de rendimiento, seguridad y hardware.
 ///
 /// Todos los textos visibles son CLAVES i18n; las traducciones reales viven
 /// en scripts/modules.json y se compilan a satellite assemblies.
@@ -50,8 +50,16 @@ public sealed class ModuleCatalog : IModuleCatalog
             SafetyReasonKey: "Modules.M07.SafetyReason",
             Impact: ImpactLevel.Soft),
 
+        // Winget (M12): herramienta nativa de Windows, gratuita, segura y
+        // reversible. Movida a Free como parte de la migración del .bat.
+        new(12, "Modules.M12.Name", "Modules.M12.Description",
+            ModuleCategory.Settings, ModuleTier.Free,
+            RecommendedDefault: false, Reversible: false,
+            SafetyReasonKey: "Modules.M12.SafetyReason",
+            Impact: ImpactLevel.Soft),
+
         // ══════════════════════════════════════════════════════════════
-        //  AVANZADO — Limpieza profunda + tweaks (8 módulos)
+        //  AVANZADO — Limpieza profunda + tweaks (7 módulos)
         // ══════════════════════════════════════════════════════════════
 
         new(4,  "Modules.M04.Name", "Modules.M04.Description",
@@ -89,12 +97,6 @@ public sealed class ModuleCatalog : IModuleCatalog
             RecommendedDefault: false, Reversible: true,
             SafetyReasonKey: "Modules.M11.SafetyReason",
             Impact: ImpactLevel.Strong),
-
-        new(12, "Modules.M12.Name", "Modules.M12.Description",
-            ModuleCategory.Settings, ModuleTier.Advanced,
-            RecommendedDefault: false, Reversible: false,
-            SafetyReasonKey: "Modules.M12.SafetyReason",
-            Impact: ImpactLevel.Soft),
 
         new(13, "Modules.M13.Name", "Modules.M13.Description",
             ModuleCategory.Settings, ModuleTier.Advanced,
@@ -143,14 +145,11 @@ public sealed class ModuleCatalog : IModuleCatalog
             Impact: ImpactLevel.Notable),
 
         // ══════════════════════════════════════════════════════════════
-        //  PRO EXTRA — Videojuegos (separado visualmente en la UI)
+        //  NOTA: La optimización de videojuegos NO es un módulo del catálogo.
+        //  Se accede desde la ventana modal GameSelectorWindow en la sección
+        //  EXTRA PRO; el lanzador WPF ejecuta directamente el .ps1 del juego
+        //  elegido (repo Game_Configs).
         // ══════════════════════════════════════════════════════════════
-
-        new(20, "Modules.M20.Name", "Modules.M20.Description",
-            ModuleCategory.Extras, ModuleTier.Pro,
-            RecommendedDefault: false, Reversible: false,
-            SafetyReasonKey: "Modules.M20.SafetyReason",
-            Impact: ImpactLevel.Extreme),
     };
 
     public IReadOnlyList<CleanupModule> GetAll() => _modules;

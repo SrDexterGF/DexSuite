@@ -1,6 +1,6 @@
 {
   "_comment": "Traducciones de los 20 módulos del catálogo. Cada módulo tiene Name, Description y SafetyReason en 10 idiomas. Se mergea con translations.json al generar los resx.",
-  "languages": ["en", "es", "gl", "ca", "eu", "pt", "fr", "de", "it", "zh"],
+  "languages": ["en", "es", "gl", "ca", "eu", "pt", "fr", "de", "it", "zh", "ru", "uk", "ar", "ja", "ko", "hi", "bn", "ur", "id", "tr", "vi", "nl", "sv", "ro", "pl", "cs", "el", "da", "no", "fi"],
   "keys": {
 
     "Modules.M01.Name": {
@@ -719,28 +719,28 @@
       "zh": "游戏优化"
     },
     "Modules.M20.Description": {
-      "en": "Downloads and runs a remote PowerShell menu with per-game optimizations.",
-      "es": "Descarga y ejecuta un menú remoto de PowerShell con optimizaciones por juego.",
-      "gl": "Descarga e executa un menú remoto de PowerShell con optimizacións por xogo.",
-      "ca": "Descarrega i executa un menú remot de PowerShell amb optimitzacions per joc.",
-      "eu": "Urrutiko PowerShell menua deskargatzen eta exekutatzen du, joko bakoitzerako optimizazioekin.",
-      "pt": "Transfere e executa um menu remoto em PowerShell com otimizações por jogo.",
-      "fr": "Télécharge et exécute un menu PowerShell distant avec des optimisations par jeu.",
-      "de": "Lädt ein PowerShell-Menü mit spielespezifischen Optimierungen herunter und führt es aus.",
-      "it": "Scarica ed esegue un menu PowerShell remoto con ottimizzazioni per gioco.",
-      "zh": "下载并运行远程 PowerShell 菜单，按游戏进行优化。"
+      "en": "Opens a curated selection of per-game tuning profiles.\nPick your title and get a tailored optimization aimed at maximum FPS and minimum input lag.",
+      "es": "Abre una selección curada de perfiles de ajuste por juego.\nElige tu título y obtén una optimización a medida orientada a FPS máximos y mínima latencia de entrada.",
+      "gl": "Abre unha selección coidada de perfís de axuste por xogo.\nEscolle o teu título e obtén unha optimización a medida orientada a FPS máximos e mínima latencia de entrada.",
+      "ca": "Obre una selecció curada de perfils d'ajust per joc.\nTria el teu títol i obtén una optimització a mida orientada a FPS màxims i mínima latència d'entrada.",
+      "eu": "Joko bakoitzerako profil zainduen aukeraketa irekitzen du.\nAukeratu zure izenburua eta lortu neurrira egindako optimizazioa, FPS gehienak eta sarrera-latentzia gutxiena lortzeko.",
+      "pt": "Abre uma seleção curada de perfis de ajuste por jogo.\nEscolhe o teu título e obtém uma otimização à medida focada em FPS máximos e mínima latência de entrada.",
+      "fr": "Ouvre une sélection soignée de profils de réglage par jeu.\nChoisissez votre titre et bénéficiez d'une optimisation sur mesure visant les FPS maximaux et la latence d'entrée minimale.",
+      "de": "Öffnet eine kuratierte Auswahl spielespezifischer Tuning-Profile.\nWähle deinen Titel und erhalte eine maßgeschneiderte Optimierung für maximale FPS und minimale Eingabelatenz.",
+      "it": "Apre una selezione curata di profili di tuning per gioco.\nScegli il tuo titolo e ottieni un'ottimizzazione su misura per FPS massimi e latenza di input minima.",
+      "zh": "打开精心整理的逐游戏调优配置选择。\n选择你的游戏，获得为最大 FPS 与最低输入延迟量身定制的优化。"
     },
     "Modules.M20.SafetyReason": {
-      "en": "Downloads and runs code on your PC.\nOnly enable it if you trust the source (Sr. Dexter / Game_Configs).",
-      "es": "Descarga y ejecuta código en tu PC.\nSolo actívalo si confías en la fuente (Sr. Dexter / Game_Configs).",
-      "gl": "Descarga e executa código no teu PC.\nSó actívao se confías na fonte (Sr. Dexter / Game_Configs).",
-      "ca": "Descarrega i executa codi al teu PC.\nNomés activa'l si confies en la font (Sr. Dexter / Game_Configs).",
-      "eu": "Zure PCan kodea deskargatu eta exekutatzen du.\nIturburua sinesten baduzu soilik aktibatu (Sr. Dexter / Game_Configs).",
-      "pt": "Transfere e executa código no teu PC.\nAtiva-o apenas se confias na fonte (Sr. Dexter / Game_Configs).",
-      "fr": "Télécharge et exécute du code sur votre PC.\nNe l'activez que si vous faites confiance à la source (Sr. Dexter / Game_Configs).",
-      "de": "Lädt Code herunter und führt ihn auf deinem PC aus.\nNur aktivieren, wenn du der Quelle vertraust (Sr. Dexter / Game_Configs).",
-      "it": "Scarica ed esegue codice sul tuo PC.\nAttivalo solo se ti fidi della fonte (Sr. Dexter / Game_Configs).",
-      "zh": "在你的电脑上下载并执行代码。\n仅在信任来源（Sr. Dexter / Game_Configs）时启用。"
+      "en": "Applies game-specific tweaks targeting peak FPS and reduced latency.\nRevert any change later from Windows settings if needed.",
+      "es": "Aplica ajustes específicos por juego orientados a FPS máximos y menor latencia.\nCualquier cambio se puede revertir más tarde desde la configuración de Windows.",
+      "gl": "Aplica axustes específicos por xogo orientados a FPS máximos e menor latencia.\nCalquera cambio pódese reverter máis tarde dende a configuración de Windows.",
+      "ca": "Aplica ajustos específics per joc orientats a FPS màxims i menor latència.\nQualsevol canvi es pot revertir més tard des de la configuració de Windows.",
+      "eu": "Joko bakoitzerako doikuntza espezifikoak aplikatzen ditu, FPS goreneko eta latentzia gutxiagoko helburuarekin.\nEdozein aldaketa geroago itzul daiteke Windowsen ezarpenetatik.",
+      "pt": "Aplica ajustes específicos de cada jogo focados em FPS de pico e menor latência.\nQualquer alteração pode ser revertida mais tarde nas definições do Windows.",
+      "fr": "Applique des réglages spécifiques au jeu pour des FPS maximaux et une latence réduite.\nToute modification peut être annulée plus tard depuis les paramètres Windows.",
+      "de": "Wendet spielspezifische Anpassungen für maximale FPS und reduzierte Latenz an.\nJede Änderung kann später über die Windows-Einstellungen rückgängig gemacht werden.",
+      "it": "Applica regolazioni specifiche per gioco mirate al picco di FPS e alla minor latenza.\nOgni modifica può essere annullata in seguito dalle impostazioni di Windows.",
+      "zh": "应用针对游戏的专属调优，追求峰值 FPS 与更低延迟。\n所有更改稍后均可在 Windows 设置中还原。"
     }
 
   }

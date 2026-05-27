@@ -10,4 +10,9 @@ public partial class MainWindow : FluentWindow
         InitializeComponent();
         DataContext = viewModel;
     }
+
+    private void OnQuestionMarkPreventClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        e.Handled = true;
+    }
 }

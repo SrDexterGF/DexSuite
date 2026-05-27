@@ -1,19 +1,19 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DexSuite.App.Models;
 using DexSuite.App.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace DexSuite.App.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
-    private readonly IBatRunner _runner;
+    private readonly INativeModuleRunner _runner;
     private readonly IPerformanceAnalyzer _analyzer;
     private readonly IUpdateService _updateService;
     private readonly ILocalizationService _loc;
@@ -25,38 +25,19 @@ public partial class MainViewModel : ObservableObject
     private readonly IRestorePointService _restorePoint;
     private readonly IThemeService _themeService;
     private readonly ISettingsService _settingsService;
+    private readonly IWingetService _winget;
+    private readonly ISecurityCheckService _security;
+    private readonly IChangeTrackingService _changes;
+    private readonly IBugReportService _bugReport;
+    private readonly ILicenseService _license;
+    // Resolver de ventanas transient (GameSelectorWindow). El alternativo
+    // era inyectar Func<GameSelectorWindow>; usar IServiceProvider mantiene
+    // la firma simple si añadimos más diálogos en el futuro.
+    private readonly IServiceProvider _services;
 
     // Mientras es false, los OnXxxChanged no llaman a PersistSettings (evita
     // escrituras espurias al hidratar valores desde settings.json al arrancar).
     private bool _settingsHydrated;
-
-    /// <summary>
-    /// Ruta por defecto de la carpeta donde vive el .bat de DexSuite.
-    /// Se resuelve dinámicamente al primer arranque buscando en (orden):
-    ///   1. Carpeta hermana del .exe: "../DexSuite (Script)"
-    ///   2. %Documents%/DexSuite (Script)
-    ///   3. %Documents%/Claude Environment W11/DexSuite (Script) (compat. dev)
-    /// Si nada existe, se usa el último valor para que el error de ResolveBatPath
-    /// muestre una ruta razonable al usuario.
-    /// </summary>
-    private static readonly string DefaultScriptFolder = ResolveDefaultScriptFolder();
-
-    private static string ResolveDefaultScriptFolder()
-    {
-        var docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        var candidates = new[]
-        {
-            Path.Combine(AppContext.BaseDirectory, "..", "DexSuite (Script)"),
-            Path.Combine(docs, "DexSuite (Script)"),
-            Path.Combine(docs, "Claude Environment W11", "DexSuite (Script)"),
-        };
-        foreach (var raw in candidates)
-        {
-            var full = Path.GetFullPath(raw);
-            if (Directory.Exists(full)) return full;
-        }
-        return candidates[^1]; // fallback con mensaje de error útil
-    }
 
     // CTS del run en curso, para que el botón Cancelar pueda matarlo.
     private CancellationTokenSource? _runCts;
@@ -85,8 +66,18 @@ public partial class MainViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IsIdle))]
     private bool isQuickCleaning;
 
-    /// <summary>True cuando la app no está ejecutando el .bat, analizando, limpiando ni creando restore point.</summary>
-    public bool IsIdle => !IsRunning && !IsAnalyzing && !IsQuickCleaning && !IsCreatingRestorePoint;
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsIdle))]
+    private bool isUpdatingApps;
+
+    /// <summary>True cuando la app no está ejecutando módulos, analizando, limpiando ni creando restore point.</summary>
+    public bool IsIdle => !IsRunning && !IsAnalyzing && !IsQuickCleaning && !IsCreatingRestorePoint && !IsUpdatingApps;
+
+    /// <summary>True si winget está disponible en el sistema (habilita el botón de actualizar apps).</summary>
+    public bool IsWingetAvailable => _winget.IsAvailable;
+
+    /// <summary>True cuando hay una actualización de DexSuite disponible (tiñe la flecha del sidebar).</summary>
+    public bool IsUpdateAvailable => HasAvailableUpdate;
 
     [ObservableProperty]
     private string statusMessage = string.Empty;
@@ -108,6 +99,7 @@ public partial class MainViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IsModulesView))]
     [NotifyPropertyChangedFor(nameof(IsLogView))]
     [NotifyPropertyChangedFor(nameof(IsSpecsView))]
+    [NotifyPropertyChangedFor(nameof(IsRestoreView))]
     [NotifyPropertyChangedFor(nameof(IsSettingsView))]
     [NotifyPropertyChangedFor(nameof(IsUpdatesView))]
     [NotifyPropertyChangedFor(nameof(IsAboutView))]
@@ -117,6 +109,7 @@ public partial class MainViewModel : ObservableObject
     public bool IsModulesView  => CurrentSection == AppSection.Modules;
     public bool IsLogView      => CurrentSection == AppSection.Log;
     public bool IsSpecsView    => CurrentSection == AppSection.Specs;
+    public bool IsRestoreView  => CurrentSection == AppSection.Restore;
     public bool IsSettingsView => CurrentSection == AppSection.Settings;
     public bool IsUpdatesView  => CurrentSection == AppSection.Updates;
     public bool IsAboutView    => CurrentSection == AppSection.About;
@@ -131,6 +124,8 @@ public partial class MainViewModel : ObservableObject
                 _ = LoadSystemInfoAsync();
             if (section == AppSection.Log)
                 _ = RefreshAppLogAsync();
+            if (section == AppSection.Restore)
+                _ = RefreshChangesAsync();
         }
     }
 
@@ -371,10 +366,97 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private bool notifyOnFinish;
 
-    /// <summary>Tier activo del usuario. Controla qué módulos puede ejecutar.</summary>
+    /// <summary>
+    /// Tier activo del usuario. Solo lo escribe el ViewModel desde el evento
+    /// <c>ILicenseService.TierChanged</c> — la UI lo muestra pero no permite
+    /// cambiarlo libremente: para subir de tier hay que activar una clave válida.
+    /// </summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(UserTierEnum))]
-    private string userTier = "Pro";
+    private string userTier = "Free";
+
+    /// <summary>HWID del equipo, formato visual XXXX-XXXX-XXXX-XXXX-XXXX.</summary>
+    [ObservableProperty]
+    private string hardwareId = string.Empty;
+
+    /// <summary>Clave de activación que el usuario está pegando en la UI.</summary>
+    [ObservableProperty]
+    private string activationKeyInput = string.Empty;
+
+    /// <summary>Mensaje de estado bajo el botón Activar (éxito / error / tier actual).</summary>
+    [ObservableProperty]
+    private string licenseStatusMessage = string.Empty;
+
+    /// <summary>True mientras la activación está en curso (deshabilita el botón).</summary>
+    [ObservableProperty]
+    private bool isActivatingLicense;
+
+    /// <summary>Convierte el enum <see cref="ModuleTier"/> al string que usa la UI.</summary>
+    private static string TierToString(ModuleTier tier) => tier switch
+    {
+        ModuleTier.Pro      => "Pro",
+        ModuleTier.Advanced => "Avanzado",
+        _                   => "Free",
+    };
+
+    [RelayCommand]
+    private void CopyHardwareId()
+    {
+        try
+        {
+            System.Windows.Clipboard.SetText(HardwareId);
+            LicenseStatusMessage = T("License.HwidCopied");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo copiar el HWID al portapapeles");
+        }
+    }
+
+    private bool CanActivateLicense() => !IsActivatingLicense;
+
+    [RelayCommand(CanExecute = nameof(CanActivateLicense))]
+    private async Task ActivateLicenseAsync()
+    {
+        if (string.IsNullOrWhiteSpace(ActivationKeyInput))
+        {
+            LicenseStatusMessage = T("License.Activation.Empty");
+            return;
+        }
+
+        IsActivatingLicense = true;
+        ActivateLicenseCommand.NotifyCanExecuteChanged();
+        try
+        {
+            var result = await _license.ActivateAsync(ActivationKeyInput);
+            if (result.Success)
+            {
+                LicenseStatusMessage = T("License.Activation.Success", TierToString(result.Tier));
+                ActivationKeyInput = string.Empty;
+                await _appLog.SuccessAsync(AppLogCategory.Settings,
+                    T("Log.Event.LicenseActivated", TierToString(result.Tier)));
+            }
+            else
+            {
+                LicenseStatusMessage = T("License.Activation.Failed", result.Message ?? "?");
+                await _appLog.WarningAsync(AppLogCategory.Settings,
+                    T("Log.Event.LicenseActivationFailed", result.Message ?? "?"));
+            }
+        }
+        finally
+        {
+            IsActivatingLicense = false;
+            ActivateLicenseCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    [RelayCommand]
+    private async Task DeactivateLicenseAsync()
+    {
+        await _license.DeactivateAsync();
+        LicenseStatusMessage = T("License.Status.Free");
+        await _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.LicenseDeactivated"));
+    }
 
     /// <summary>Tier activo como enum comparable con <see cref="ModuleTier"/>.</summary>
     public ModuleTier UserTierEnum => UserTier switch
@@ -384,12 +466,15 @@ public partial class MainViewModel : ObservableObject
         _          => ModuleTier.Free,
     };
 
-    /// <summary>Cada vez que cambia el tier, recalcula qué módulos quedan bloqueados.</summary>
+    /// <summary>
+    /// Cada vez que cambia el tier (solo lo escribe el VM desde ILicenseService.TierChanged),
+    /// recalcula qué módulos quedan bloqueados y refresca el selector de temas.
+    /// Ya NO persiste a settings.json: la fuente de verdad es la licencia firmada.
+    /// </summary>
     partial void OnUserTierChanged(string value)
     {
         UpdateModuleLockStates();
         RefreshThemeItems(); // El bloqueo del selector de temas también depende del tier.
-        PersistSettings();
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.TierChanged", value));
     }
 
@@ -402,7 +487,6 @@ public partial class MainViewModel : ObservableObject
     partial void OnNotifyOnFinishChanged(bool value)              => PersistSettings();
     partial void OnAutoUpdateEnabledChanged(bool value)           => PersistSettings();
     partial void OnUpdateChannelChanged(string value)             => PersistSettings();
-    partial void OnScriptFolderChanged(string value)              => PersistSettings();
 
     /// <summary>
     /// Toma un snapshot del estado actual y lo manda a guardar (con debounce).
@@ -414,7 +498,6 @@ public partial class MainViewModel : ObservableObject
         _settingsService.ScheduleSave(new AppSettings
         {
             Language                    = CurrentLanguage,
-            UserTier                    = UserTier,
             UpdateChannel               = UpdateChannel,
             AutoSelectRecommended       = AutoSelectRecommended,
             JumpToLogOnRun              = JumpToLogOnRun,
@@ -422,7 +505,6 @@ public partial class MainViewModel : ObservableObject
             CreateRestorePointBeforeRun = CreateRestorePointBeforeRun,
             NotifyOnFinish              = NotifyOnFinish,
             AutoUpdateEnabled           = AutoUpdateEnabled,
-            ScriptFolder                = ScriptFolder,
         });
     }
 
@@ -432,9 +514,6 @@ public partial class MainViewModel : ObservableObject
         foreach (var m in Modules)
             m.IsLocked = m.Module.Tier > currentTier;
     }
-
-    /// <summary>Opciones disponibles para el ComboBox de tier.</summary>
-    public IReadOnlyList<string> AvailableTiers { get; } = new[] { "Free", "Avanzado", "Pro" };
 
     /// <summary>Opciones disponibles para el ComboBox de canal de actualización.</summary>
     public IReadOnlyList<string> AvailableChannels { get; } = new[] { "Stable", "Beta" };
@@ -503,10 +582,6 @@ public partial class MainViewModel : ObservableObject
 
     partial void OnCurrentThemeChanged(AppTheme value) => RefreshThemeItems();
 
-    /// <summary>Carpeta donde busca el .bat de DexSuite. Editable en Ajustes.</summary>
-    [ObservableProperty]
-    private string scriptFolder = DefaultScriptFolder;
-
     [RelayCommand]
     private void OpenLogsFolder()
     {
@@ -533,8 +608,8 @@ public partial class MainViewModel : ObservableObject
         WarnBeforeNonReversible = true;
         CreateRestorePointBeforeRun = true;
         NotifyOnFinish = false;
-        UserTier = "Pro";
-        ScriptFolder = DefaultScriptFolder;
+        // UserTier NO se resetea aquí: lo controla únicamente la licencia activa.
+        // Resetear configs no debe regalar Pro.
         StatusMessage = T("Status.SettingsReset");
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.SettingsReset"));
     }
@@ -873,6 +948,18 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand(CanExecute = nameof(CanQuickClean))]
     private async Task QuickCleanAsync()
     {
+        // Diálogo de confirmación (F2.6). Usamos Wpf.Ui MessageBox para mantener
+        // la coherencia visual con el resto del Fluent design.
+        var confirm = new Wpf.Ui.Controls.MessageBox
+        {
+            Title             = T("QuickClean.ConfirmTitle"),
+            Content           = T("QuickClean.ConfirmMessage"),
+            PrimaryButtonText = T("Common.OK"),
+            CloseButtonText   = T("Common.Cancel"),
+        };
+        var result = await confirm.ShowDialogAsync();
+        if (result != Wpf.Ui.Controls.MessageBoxResult.Primary) return;
+
         IsQuickCleaning = true;
         QuickCleanCommand.NotifyCanExecuteChanged();
         RunCommand.NotifyCanExecuteChanged();
@@ -881,11 +968,11 @@ public partial class MainViewModel : ObservableObject
 
         try
         {
-            var result = await _quickClean.CleanAsync();
-            var mb = Math.Round(result.BytesFreed / 1_048_576.0, 1);
-            StatusMessage = T("Status.QuickCleanDone", mb, result.FilesDeleted);
+            var clean = await _quickClean.CleanAsync();
+            var mb = Math.Round(clean.BytesFreed / 1_048_576.0, 1);
+            StatusMessage = T("Status.QuickCleanDone", mb, clean.FilesDeleted);
             await _appLog.SuccessAsync(AppLogCategory.QuickClean,
-                T("Log.Event.QuickCleanFinished", mb, result.FilesDeleted));
+                T("Log.Event.QuickCleanFinished", mb, clean.FilesDeleted));
         }
         catch (Exception ex)
         {
@@ -905,11 +992,377 @@ public partial class MainViewModel : ObservableObject
 
     private bool CanQuickClean() => !IsRunning && !IsAnalyzing && !IsQuickCleaning;
 
+    // ---- Actualizar aplicaciones con winget (F5.3) ----------------------
+
+    [RelayCommand(CanExecute = nameof(CanWingetUpgrade))]
+    private async Task WingetUpgradeAsync()
+    {
+        if (!_winget.IsAvailable)
+        {
+            var unavail = new Wpf.Ui.Controls.MessageBox
+            {
+                Title             = "winget",
+                Content           = T("Winget.NotAvailable"),
+                CloseButtonText   = T("Common.Close"),
+            };
+            await unavail.ShowDialogAsync();
+            return;
+        }
+
+        var confirm = new Wpf.Ui.Controls.MessageBox
+        {
+            Title             = T("Winget.ConfirmTitle"),
+            Content           = T("Winget.ConfirmMessage"),
+            PrimaryButtonText = T("Common.OK"),
+            CloseButtonText   = T("Common.Cancel"),
+        };
+        if (await confirm.ShowDialogAsync() != Wpf.Ui.Controls.MessageBoxResult.Primary)
+            return;
+
+        IsUpdatingApps = true;
+        WingetUpgradeCommand.NotifyCanExecuteChanged();
+        StatusMessage = T("Status.WingetRunning");
+        await _appLog.InfoAsync(AppLogCategory.Run, T("Log.Event.WingetStarted"));
+
+        // Navega al registro para que el usuario vea el progreso en vivo.
+        CurrentSection = AppSection.Log;
+
+        try
+        {
+            var progress = new Progress<string>(line =>
+            {
+                if (!string.IsNullOrWhiteSpace(line))
+                    _ = _appLog.InfoAsync(AppLogCategory.Run, line);
+            });
+
+            var result = await _winget.UpgradeAllAsync(progress);
+
+            StatusMessage = T("Status.WingetDone", result.PackagesUpdated);
+            await _appLog.SuccessAsync(AppLogCategory.Run,
+                T("Log.Event.WingetFinished", result.PackagesUpdated));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Fallo en winget upgrade");
+            StatusMessage = T("Status.WingetError", ex.Message);
+            await _appLog.ErrorAsync(AppLogCategory.Run,
+                T("Log.Event.WingetFailed", ex.Message), ex.ToString());
+        }
+        finally
+        {
+            IsUpdatingApps = false;
+            WingetUpgradeCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    private bool CanWingetUpgrade() => !IsRunning && !IsAnalyzing && !IsUpdatingApps && !IsQuickCleaning;
+
+    // ---- Comprobación de seguridad (F5.4) -------------------------------
+
+    [ObservableProperty]
+    private bool isSecurityChecking;
+
+    [ObservableProperty]
+    private SecurityCheckKind selectedSecurityCheck = SecurityCheckKind.DefenderQuick;
+
+    /// <summary>Opciones del ComboBox de selección de herramienta.</summary>
+    public IReadOnlyList<SecurityCheckKind> AvailableSecurityChecks { get; } =
+    [
+        SecurityCheckKind.DefenderQuick,
+        SecurityCheckKind.Sfc,
+        SecurityCheckKind.Dism,
+        SecurityCheckKind.Mrt,
+    ];
+
+    [RelayCommand(CanExecute = nameof(CanRunSecurityCheck))]
+    private async Task RunSecurityCheckAsync()
+    {
+        var kind = SelectedSecurityCheck;
+        if (!_security.IsAvailable(kind))
+        {
+            var unavail = new Wpf.Ui.Controls.MessageBox
+            {
+                Title           = T("Security.NotAvailable.Title"),
+                Content         = T("Security.NotAvailable.Message", kind),
+                CloseButtonText = T("Common.Close"),
+            };
+            await unavail.ShowDialogAsync();
+            return;
+        }
+
+        var confirm = new Wpf.Ui.Controls.MessageBox
+        {
+            Title             = T("Security.Confirm.Title"),
+            Content           = T($"Security.Confirm.{kind}"),
+            PrimaryButtonText = T("Common.OK"),
+            CloseButtonText   = T("Common.Cancel"),
+        };
+        if (await confirm.ShowDialogAsync() != Wpf.Ui.Controls.MessageBoxResult.Primary)
+            return;
+
+        IsSecurityChecking = true;
+        RunSecurityCheckCommand.NotifyCanExecuteChanged();
+        StatusMessage = T("Status.SecurityRunning", kind);
+        await _appLog.InfoAsync(AppLogCategory.Run, T("Log.Event.SecurityStarted", kind));
+        CurrentSection = AppSection.Log;
+
+        try
+        {
+            var progress = new Progress<string>(line =>
+            {
+                if (!string.IsNullOrWhiteSpace(line))
+                    _ = _appLog.InfoAsync(AppLogCategory.Run, line);
+            });
+
+            var result = await _security.RunAsync(kind, progress);
+
+            if (result.Succeeded)
+            {
+                StatusMessage = T("Status.SecurityDone", kind);
+                await _appLog.SuccessAsync(AppLogCategory.Run,
+                    T("Log.Event.SecurityFinished", kind, result.ExitCode));
+            }
+            else
+            {
+                StatusMessage = T("Status.SecurityError", kind, result.ExitCode);
+                await _appLog.WarningAsync(AppLogCategory.Run,
+                    T("Log.Event.SecurityFinishedWarn", kind, result.ExitCode));
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Fallo en security check {Kind}", kind);
+            StatusMessage = T("Status.SecurityError", kind, ex.Message);
+            await _appLog.ErrorAsync(AppLogCategory.Run,
+                T("Log.Event.SecurityFailed", kind, ex.Message), ex.ToString());
+        }
+        finally
+        {
+            IsSecurityChecking = false;
+            RunSecurityCheckCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    private bool CanRunSecurityCheck() => !IsRunning && !IsAnalyzing && !IsSecurityChecking;
+
+    // ---- Revertir cambios (F5.5) ----------------------------------------
+
+    public ObservableCollection<ModuleChangeRecord> PendingChanges { get; } = new();
+
+    [ObservableProperty]
+    private bool isRefreshingChanges;
+
+    [ObservableProperty]
+    private bool isReverting;
+
+    [ObservableProperty]
+    private int pendingChangesCount;
+
+    /// <summary>True cuando hay cambios pendientes (controla el badge en sidebar).</summary>
+    public bool HasPendingChanges => PendingChangesCount > 0;
+
+    partial void OnPendingChangesCountChanged(int value) => OnPropertyChanged(nameof(HasPendingChanges));
+
+    [RelayCommand]
+    private async Task RefreshChangesAsync()
+    {
+        IsRefreshingChanges = true;
+        try
+        {
+            var list = await _changes.GetPendingChangesAsync();
+            PendingChanges.Clear();
+            foreach (var c in list) PendingChanges.Add(c);
+            PendingChangesCount = list.Count;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudo cargar la lista de cambios pendientes");
+        }
+        finally
+        {
+            IsRefreshingChanges = false;
+        }
+    }
+
+    [RelayCommand(CanExecute = nameof(CanRevert))]
+    private async Task RevertChangeAsync(ModuleChangeRecord? record)
+    {
+        if (record is null) return;
+
+        var confirm = new Wpf.Ui.Controls.MessageBox
+        {
+            Title             = T("Restore.Revert.ConfirmTitle"),
+            Content           = T("Restore.Revert.ConfirmOne", record.ModuleName),
+            PrimaryButtonText = T("Common.OK"),
+            CloseButtonText   = T("Common.Cancel"),
+        };
+        if (await confirm.ShowDialogAsync() != Wpf.Ui.Controls.MessageBoxResult.Primary)
+            return;
+
+        IsReverting = true;
+        try
+        {
+            var ok = await _changes.RevertChangeAsync(record.Id);
+            await _appLog.WriteAsync(
+                ok ? AppLogLevel.Success : AppLogLevel.Warning,
+                AppLogCategory.Run,
+                T(ok ? "Log.Event.RevertOk" : "Log.Event.RevertFailed",
+                  record.ModuleName, record.Target));
+            await RefreshChangesAsync();
+        }
+        finally
+        {
+            IsReverting = false;
+        }
+    }
+
+    [RelayCommand(CanExecute = nameof(CanRevert))]
+    private async Task RevertAllChangesAsync()
+    {
+        if (PendingChangesCount == 0) return;
+
+        var confirm = new Wpf.Ui.Controls.MessageBox
+        {
+            Title             = T("Restore.Revert.ConfirmTitle"),
+            Content           = T("Restore.Revert.ConfirmAll", PendingChangesCount),
+            PrimaryButtonText = T("Common.OK"),
+            CloseButtonText   = T("Common.Cancel"),
+        };
+        if (await confirm.ShowDialogAsync() != Wpf.Ui.Controls.MessageBoxResult.Primary)
+            return;
+
+        IsReverting = true;
+        try
+        {
+            var result = await _changes.RevertAllPendingAsync();
+            await _appLog.InfoAsync(AppLogCategory.Run,
+                T("Log.Event.RevertAllDone", result.Reverted, result.Failed, result.Total));
+            StatusMessage = T("Status.RevertDone", result.Reverted, result.Total);
+            await RefreshChangesAsync();
+        }
+        finally
+        {
+            IsReverting = false;
+        }
+    }
+
+    private bool CanRevert() => !IsReverting;
+
+    // ---- Reporte de bugs (F5.6) -----------------------------------------
+
+    [RelayCommand]
+    private async Task ReportBugAsync()
+    {
+        try
+        {
+            await _bugReport.OpenBugReportAsync();
+            await _appLog.InfoAsync(AppLogCategory.App, T("Log.Event.BugReportOpened"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudo abrir el cliente de correo");
+            var err = new Wpf.Ui.Controls.MessageBox
+            {
+                Title           = T("BugReport.Error.Title"),
+                Content         = T("BugReport.Error.Message", ex.Message),
+                CloseButtonText = T("Common.Close"),
+            };
+            await err.ShowDialogAsync();
+        }
+    }
+
+    // ---- Optimización de videojuegos (F2.8) -----------------------------
+
+    /// <summary>
+    /// Abre la ventana modal de selección de juegos. Cada juego viene del
+    /// catálogo en <see cref="IGameOptimizationService.AvailableGames"/> y al
+    /// pulsar Optimizar dentro del tile se descarga + ejecuta el .ps1
+    /// correspondiente del repo SrDexterGF/Game_Configs.
+    /// </summary>
+    [RelayCommand]
+    private void OpenGameSelector()
+    {
+        try
+        {
+            var window = (Window)_services.GetService(typeof(GameSelectorWindow))!;
+            window.Owner = Application.Current?.MainWindow;
+            window.ShowDialog();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudo abrir la ventana de selección de juegos");
+            StatusMessage = T("Gaming.OpenError", ex.Message);
+        }
+    }
+
+    // ---- Diálogos previos al run --------------------------------------------
+
+    /// <summary>
+    /// Pregunta al usuario si quiere crear un punto de restauración antes de
+    /// ejecutar cualquier optimización (F2.7). Esta versión SIEMPRE muestra
+    /// el diálogo — el toggle de Ajustes <see cref="CreateRestorePointBeforeRun"/>
+    /// solo influye en cuál de las dos opciones está pre-seleccionada por
+    /// defecto (Sí si está activado, No si está desactivado).
+    ///
+    /// Devuelve:
+    ///   - true  → continuar y crear punto.
+    ///   - false → continuar sin crear punto.
+    ///   - null  → abortar el run.
+    /// </summary>
+    private async Task<bool?> AskRestorePointBeforeRunAsync()
+    {
+        var dialog = new Wpf.Ui.Controls.MessageBox
+        {
+            Title               = T("RestorePoint.ConfirmTitle"),
+            Content             = T("RestorePoint.ConfirmMessage"),
+            PrimaryButtonText   = T("RestorePoint.ConfirmYes"),
+            SecondaryButtonText = T("RestorePoint.ConfirmNo"),
+            CloseButtonText     = T("Common.Cancel"),
+        };
+        var res = await dialog.ShowDialogAsync();
+        return res switch
+        {
+            Wpf.Ui.Controls.MessageBoxResult.Primary   => true,
+            Wpf.Ui.Controls.MessageBoxResult.Secondary => false,
+            _ => (bool?)null, // cancel / close
+        };
+    }
+
+    /// <summary>
+    /// Muestra una notificación nativa de Windows al terminar el run, si el
+    /// usuario tiene activada la opción <see cref="NotifyOnFinish"/>. Cualquier
+    /// fallo se loguea silencioso — la notificación es accesoria.
+    /// </summary>
+    private async Task TryShowFinishNotificationAsync(int moduleCount, bool hadErrors)
+    {
+        if (!NotifyOnFinish) return;
+        // Las toast notifications nativas requieren Win10 build 19041+. Si el
+        // SO es más antiguo, omitimos silenciosamente — la notificación es
+        // accesoria.
+        if (!OperatingSystem.IsWindowsVersionAtLeast(10, 0, 19041)) return;
+        try
+        {
+            var title = T("Notification.RunFinished.Title");
+            var body  = hadErrors
+                ? T("Notification.RunFinished.WithErrors", moduleCount)
+                : T("Notification.RunFinished.Body", moduleCount);
+            // CA1416: el guard de versión arriba (IsWindowsVersionAtLeast(10,0,19041))
+            // garantiza la plataforma, pero el analizador no rastrea inter-métodos.
+#pragma warning disable CA1416
+            await Task.Run(() => ToastNotificationService.Show(title, body));
+#pragma warning restore CA1416
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo emitir la notificación toast");
+        }
+    }
+
     // ---- Constructor -----------------------------------------------------
 
     public MainViewModel(
         IModuleCatalog catalog,
-        IBatRunner runner,
+        INativeModuleRunner runner,
         IPerformanceAnalyzer analyzer,
         IUpdateService updateService,
         ILocalizationService loc,
@@ -920,6 +1373,12 @@ public partial class MainViewModel : ObservableObject
         IRestorePointService restorePoint,
         IThemeService themeService,
         ISettingsService settingsService,
+        IServiceProvider services,
+        IWingetService winget,
+        ISecurityCheckService security,
+        IChangeTrackingService changes,
+        IBugReportService bugReport,
+        ILicenseService license,
         ILogger<MainViewModel> logger)
     {
         _runner = runner;
@@ -933,7 +1392,18 @@ public partial class MainViewModel : ObservableObject
         _restorePoint = restorePoint;
         _themeService = themeService;
         _settingsService = settingsService;
+        _services = services;
+        _winget = winget;
+        _security = security;
+        _changes = changes;
+        _bugReport = bugReport;
+        _license = license;
         _logger = logger;
+
+        // F7 — HWID inicial + tier real desde el servicio de licencias.
+        // Se obtiene ANTES de hidratar settings para que UserTier no quede
+        // fijado al persistido (que ya no es la fuente de verdad).
+        HardwareId = _license.GetHardwareId();
 
         // Hidrata valores persistidos antes de enganchar la lógica de save.
         // El flag _settingsHydrated permanece en false durante este bloque
@@ -944,14 +1414,26 @@ public partial class MainViewModel : ObservableObject
         WarnBeforeNonReversible     = persisted.WarnBeforeNonReversible;
         CreateRestorePointBeforeRun = persisted.CreateRestorePointBeforeRun;
         NotifyOnFinish              = persisted.NotifyOnFinish;
-        UserTier                    = persisted.UserTier;
+        // El tier ya NO se hidrata desde settings: viene del servicio de licencias
+        // (firma RSA + HWID). El campo persistido se ignora en lectura para evitar
+        // que un settings.json modificado a mano otorgue Pro sin clave válida.
+        UserTier                    = TierToString(_license.CurrentTier);
         AutoUpdateEnabled           = persisted.AutoUpdateEnabled;
         UpdateChannel               = persisted.UpdateChannel;
-        if (!string.IsNullOrWhiteSpace(persisted.ScriptFolder))
-            ScriptFolder = persisted.ScriptFolder!;
         if (!string.IsNullOrWhiteSpace(persisted.Language))
             _loc.CurrentLanguage = persisted.Language;
         _settingsHydrated = true;
+
+        // Reacciona a cambios del tier emitidos por el watchdog o por activaciones.
+        _license.TierChanged += (_, tier) =>
+        {
+            Application.Current?.Dispatcher.BeginInvoke(() =>
+            {
+                UserTier = TierToString(tier);
+                LicenseStatusMessage = T($"License.Status.{tier}");
+            });
+        };
+        LicenseStatusMessage = T($"License.Status.{_license.CurrentTier}");
 
         // Sincroniza el tema actual al que cargó App.xaml.cs antes de mostrar la
         // ventana. Si en runtime se cambia, ThemeChanged actualizará la UI.
@@ -1023,9 +1505,22 @@ public partial class MainViewModel : ObservableObject
         // Carga el baseline guardado en disco (fire-and-forget — no bloquea la UI).
         _ = LoadPersistedBaselineAsync();
 
+        // Comprueba actualizaciones al arrancar (fire-and-forget).
+        // Si hay update disponible, HasAvailableUpdate → IsUpdateAvailable pone la flecha verde.
+        _ = CheckForUpdatesCommand.ExecuteAsync(null);
+
+        // Carga el contador de cambios pendientes (fire-and-forget).
+        _ = LoadPendingChangesCountAsync();
+
         // Evento de arranque en el historial interno (fire-and-forget).
         _ = _appLog.InfoAsync(AppLogCategory.App,
             T("Log.Event.AppStarted", _updateService.CurrentVersion));
+    }
+
+    private async Task LoadPendingChangesCountAsync()
+    {
+        try { PendingChangesCount = await _changes.CountPendingAsync(); }
+        catch (Exception ex) { _logger.LogWarning(ex, "No se pudo cargar el contador de cambios pendientes"); }
     }
 
     private async Task LoadPersistedBaselineAsync()
@@ -1051,6 +1546,113 @@ public partial class MainViewModel : ObservableObject
     }
 
     // ---- Ejecutar / Cancelar --------------------------------------------
+    //
+    // Tras la migración nativa, el runner emite ModuleProgress estructurado:
+    //   Header  → marcar el módulo (por ModuleId) como Running.
+    //   Error   → acumular error; al cerrar, el módulo termina en estado Error.
+    //   Done    → cerrar el módulo (Success o Error según haya habido errores).
+    //   Resto   → solo se renderizan en el Log interno.
+    //
+    // Ya no hay parsing por regex ni resolución de módulo por nombre.
+
+    /// <summary>Módulo actualmente en estado Running, null si ninguno.</summary>
+    private ModuleItemViewModel? _currentRunningModule;
+
+    /// <summary>Acumulado de errores vistos dentro del bloque actual.</summary>
+    private string? _currentRunErrorMessage;
+
+    /// <summary>
+    /// Reinicia el estado de ejecución de todos los módulos a Idle. Se llama
+    /// al inicio de cada run para que la UI muestre el estado limpio.
+    /// </summary>
+    private void ResetModuleRunStates()
+    {
+        foreach (var m in Modules)
+        {
+            m.RunStatus = ModuleRunStatus.Idle;
+            m.LastError = null;
+        }
+    }
+
+    /// <summary>
+    /// Convierte un ModuleProgress a una línea de texto para el log interno.
+    /// </summary>
+    private static string FormatProgressLine(ModuleProgress p) => p.Kind switch
+    {
+        ModuleProgressKind.Header    => $"┌─ M{p.ModuleId:00} ── {p.Message}",
+        ModuleProgressKind.Step      => $"  → {p.Message}",
+        ModuleProgressKind.Ok        => $"  [OK] {p.Message}",
+        ModuleProgressKind.Warn      => $"  [WARN] {p.Message}",
+        ModuleProgressKind.Error     => $"  [ERROR] {p.Message}",
+        ModuleProgressKind.Info      => $"     {p.Message}",
+        ModuleProgressKind.Heartbeat => $"  [...] {p.Message}",
+        ModuleProgressKind.Done      => $"└─ {p.Message}",
+        _ => p.Message,
+    };
+
+    /// <summary>
+    /// Procesa un evento estructurado del runner nativo y actualiza el estado
+    /// de los módulos correspondientes.
+    /// </summary>
+    private void ProcessModuleProgress(ModuleProgress p)
+    {
+        switch (p.Kind)
+        {
+            case ModuleProgressKind.Header:
+                // Cerramos el módulo previo (defensivo) y abrimos el nuevo.
+                FinishCurrentModule();
+                var match = Modules.FirstOrDefault(m => m.Id == p.ModuleId);
+                if (match is not null)
+                {
+                    match.RunStatus = ModuleRunStatus.Running;
+                    _currentRunningModule = match;
+                    _currentRunErrorMessage = null;
+                    _ = _appLog.InfoAsync(AppLogCategory.Run,
+                        T("Log.Event.ModuleStarted", match.Name));
+                }
+                break;
+
+            case ModuleProgressKind.Error:
+                if (_currentRunningModule is not null)
+                {
+                    _currentRunErrorMessage = string.IsNullOrEmpty(_currentRunErrorMessage)
+                        ? p.Message
+                        : $"{_currentRunErrorMessage}; {p.Message}";
+                }
+                break;
+
+            case ModuleProgressKind.Done:
+                FinishCurrentModule();
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Cierra el módulo en ejecución actual. Si vio errores → Error;
+    /// si no → Success. Limpia el slot _currentRunningModule.
+    /// </summary>
+    private void FinishCurrentModule()
+    {
+        if (_currentRunningModule is null) return;
+        var m = _currentRunningModule;
+
+        if (_currentRunErrorMessage is not null)
+        {
+            m.RunStatus = ModuleRunStatus.Error;
+            m.LastError = _currentRunErrorMessage;
+            _ = _appLog.ErrorAsync(AppLogCategory.Run,
+                T("Log.Event.ModuleError", m.Name, _currentRunErrorMessage));
+        }
+        else
+        {
+            m.RunStatus = ModuleRunStatus.Success;
+            _ = _appLog.SuccessAsync(AppLogCategory.Run,
+                T("Log.Event.ModuleCompleted", m.Name));
+        }
+
+        _currentRunningModule = null;
+        _currentRunErrorMessage = null;
+    }
 
     [RelayCommand(CanExecute = nameof(CanRun))]
     private async Task RunAsync()
@@ -1062,24 +1664,15 @@ public partial class MainViewModel : ObservableObject
             return;
         }
 
-        string batPath;
-        try
-        {
-            batPath = ResolveBatPath();
-        }
-        catch (FileNotFoundException ex)
-        {
-            StatusMessage = $"[!] {ex.Message}";
-            _logger.LogError(ex, "No se encontró ningún .bat de DexSuite");
-            return;
-        }
-
-        // Crear punto de restauración automáticamente antes de ejecutar (si la opción está activa).
-        await TryAutoRestorePointAsync(selected.Count);
+        // Diálogo previo: ¿crear punto de restauración? (F2.7)
+        var rpDecision = await AskRestorePointBeforeRunAsync();
+        if (rpDecision is null) return; // usuario canceló
+        if (rpDecision.Value) await TryAutoRestorePointAsync(selected.Count);
 
         IsRunning = true;
         OutputLog = string.Empty;
         lock (_bufferLock) _pendingBuffer.Clear();
+        ResetModuleRunStates();
         StatusMessage = T("Status.Executing", selected.Count);
         if (JumpToLogOnRun)
             CurrentSection = AppSection.Log;
@@ -1106,29 +1699,57 @@ public partial class MainViewModel : ObservableObject
 
         try
         {
-            _logger.LogInformation("Lanzando .bat {Path} con módulos: {Modules}", batPath, string.Join(",", selected));
+            _logger.LogInformation("Lanzando ejecución nativa con módulos: {Modules}", string.Join(",", selected));
             var modulesStr = string.Join(", ", Modules.Where(m => m.IsEnabled).Select(m => m.Name));
             await _appLog.InfoAsync(AppLogCategory.Run,
                 T("Log.Event.RunStarted", selected.Count),
                 modulesStr);
 
-            await foreach (var line in _runner.RunAsync(batPath, selected, ct).WithCancellation(ct))
+            await foreach (var progress in _runner.RunAsync(selected, ct).WithCancellation(ct))
             {
+                var line = FormatProgressLine(progress);
                 lock (_bufferLock) _pendingBuffer.AppendLine(line);
+                // El parser estructurado actualiza estados de módulo en el hilo de UI.
+                var captured = progress;
+                Application.Current?.Dispatcher.BeginInvoke(() => ProcessModuleProgress(captured));
             }
+
+            // Cierra el último módulo en estado Running cuando termina la ejecución.
+            Application.Current?.Dispatcher.Invoke(FinishCurrentModule);
+
             StatusMessage = T("Status.ExecutionDone");
             await _appLog.SuccessAsync(AppLogCategory.Run, T("Log.Event.RunFinished", selected.Count));
+            // Notificación toast al terminar (F2.5).
+            await TryShowFinishNotificationAsync(selected.Count, hadErrors: false);
         }
         catch (OperationCanceledException)
         {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                if (_currentRunningModule is not null)
+                {
+                    _currentRunningModule.RunStatus = ModuleRunStatus.Idle;
+                    _currentRunningModule = null;
+                }
+            });
             StatusMessage = T("Status.ExecutionCancelled");
             await _appLog.WarningAsync(AppLogCategory.Run, T("Log.Event.RunCancelled"));
         }
         catch (Exception ex)
         {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                if (_currentRunningModule is not null)
+                {
+                    _currentRunningModule.RunStatus = ModuleRunStatus.Error;
+                    _currentRunningModule.LastError = ex.Message;
+                    _currentRunningModule = null;
+                }
+            });
             StatusMessage = T("Status.ExecutionError", ex.Message);
-            _logger.LogError(ex, "Fallo al ejecutar el .bat");
+            _logger.LogError(ex, "Fallo al ejecutar los módulos");
             await _appLog.ErrorAsync(AppLogCategory.Run, T("Log.Event.RunFailed", ex.Message), ex.ToString());
+            await TryShowFinishNotificationAsync(selected.Count, hadErrors: true);
         }
         finally
         {
@@ -1180,42 +1801,4 @@ public partial class MainViewModel : ObservableObject
         OutputLog = combined;
     }
 
-    /// <summary>
-    /// Busca el .bat de DexSuite en la carpeta configurada (ScriptFolder) y devuelve
-    /// el de versión más alta. Así sobrevivimos a actualizaciones como v0.9.0 -> v1.0.0.
-    /// </summary>
-    private string ResolveBatPath()
-    {
-        var scriptDir = ScriptFolder;
-        if (!Directory.Exists(scriptDir))
-            throw new FileNotFoundException(
-                $"No existe la carpeta del .bat: {scriptDir}", scriptDir);
-
-        var candidates = Directory.GetFiles(scriptDir, "DexSuite_CleanUp_v*.bat");
-        if (candidates.Length == 0)
-            throw new FileNotFoundException(
-                $"No se encontró ningún DexSuite_CleanUp_v*.bat en {scriptDir}", scriptDir);
-
-        var versionRegex = new Regex(@"v(\d+)\.(\d+)\.(\d+)", RegexOptions.IgnoreCase);
-        var best = candidates
-            .Select(path => new
-            {
-                Path = path,
-                Version = ParseVersion(versionRegex, Path.GetFileName(path)),
-            })
-            .OrderByDescending(x => x.Version)
-            .First();
-
-        return best.Path;
-    }
-
-    private static Version ParseVersion(Regex regex, string fileName)
-    {
-        var m = regex.Match(fileName);
-        if (!m.Success) return new Version(0, 0, 0);
-        return new Version(
-            int.Parse(m.Groups[1].Value),
-            int.Parse(m.Groups[2].Value),
-            int.Parse(m.Groups[3].Value));
-    }
 }
