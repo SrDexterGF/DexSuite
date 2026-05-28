@@ -569,26 +569,42 @@
                             </StackPanel>
                             <Border Grid.Column="1"
                                     Padding="6,2" CornerRadius="4"
-                                    Background="#1A9D4EDD"
-                                    BorderBrush="#3A9D4EDD"
                                     BorderThickness="1">
                                 <Border.Style>
                                     <Style TargetType="Border">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <!-- Default: Free -->
+                                        <Setter Property="Background"   Value="#1A606060"/>
+                                        <Setter Property="BorderBrush"  Value="#3A808080"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding UserTier}" Value="Pro">
-                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Setter Property="Background"  Value="#1A9D4EDD"/>
+                                                <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
-                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Setter Property="Background"  Value="#1A9D4EDD"/>
+                                                <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
                                 <ui:TextBlock Text="{Binding UserTier}"
                                               FontTypography="Caption"
-                                              Foreground="#FFB026FF"
-                                              FontWeight="Bold"/>
+                                              FontWeight="Bold">
+                                    <ui:TextBlock.Style>
+                                        <Style TargetType="ui:TextBlock">
+                                            <!-- Default: Free -->
+                                            <Setter Property="Foreground" Value="#FF909090"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                    <Setter Property="Foreground" Value="#FFB026FF"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                    <Setter Property="Foreground" Value="#FFB026FF"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ui:TextBlock.Style>
+                                </ui:TextBlock>
                             </Border>
                         </Grid>
                     </Border>
