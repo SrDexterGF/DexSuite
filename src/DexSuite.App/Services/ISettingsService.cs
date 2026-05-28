@@ -34,8 +34,8 @@ public sealed class AppSettings
 
     public bool AutoSelectRecommended { get; set; } = false;
     public bool JumpToLogOnRun { get; set; } = false;
-    public bool WarnBeforeNonReversible { get; set; } = true;
-    public bool CreateRestorePointBeforeRun { get; set; } = true;
-    public bool NotifyOnFinish { get; set; } = true;
+    public bool WarnBeforeNonReversible { get; set; } = false;
+    public bool CreateRestorePointBeforeRun { get; set; } = false;
+    public bool NotifyOnFinish { get; set; } = false;
     public bool AutoUpdateEnabled { get; set; } = false;
 }
