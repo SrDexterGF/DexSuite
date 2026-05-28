@@ -1280,6 +1280,27 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+    [RelayCommand]
+    private async Task SuggestFeatureAsync()
+    {
+        try
+        {
+            await _bugReport.OpenSuggestionAsync();
+            await _appLog.InfoAsync(AppLogCategory.App, T("Log.Event.SuggestionOpened"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudo abrir el cliente de correo para sugerencia");
+            var err = new Wpf.Ui.Controls.MessageBox
+            {
+                Title           = T("BugReport.Error.Title"),
+                Content         = T("BugReport.Error.Message", ex.Message),
+                CloseButtonText = T("Common.Close"),
+            };
+            await err.ShowDialogAsync();
+        }
+    }
+
     // Optimización de videojuegos
 
     /// <summary>

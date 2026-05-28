@@ -355,6 +355,9 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug-aren txostena posta-bezeroan ireki da.</value>
   </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
+  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Historia garbitu da ({0} sarrera).</value>
   </data>
@@ -1215,6 +1218,15 @@ Aplikazioa automatikoki berrabiaraziko da.</value>
   </data>
   <data name="Status.WingetRunning" xml:space="preserve">
     <value>Aplikazioak eguneratzen…</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>Describe your suggestion or improvement here:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>Suggest an improvement</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>Share an idea or suggestion.</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Urre premium + beltz beroa</value>

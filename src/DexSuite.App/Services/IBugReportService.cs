@@ -13,4 +13,10 @@ public interface IBugReportService
     /// El cuerpo incluye versión, OS, idioma y las últimas N entradas del log.
     /// </summary>
     Task OpenBugReportAsync(string? userDescription = null);
+
+    /// <summary>
+    /// Abre un mailto: para enviar una sugerencia o mejora.
+    /// Sin datos de diagnóstico — solo una plantilla en blanco con versión.
+    /// </summary>
+    Task OpenSuggestionAsync();
 }

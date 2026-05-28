@@ -355,6 +355,9 @@ Depois poderás otimizar e analisar de novo para veres a diferença.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Email de reporte de bug aberto no cliente.</value>
   </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
+  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Histórico limpo ({0} entradas).</value>
   </data>
@@ -1215,6 +1218,15 @@ A aplicação irá reiniciar automaticamente.</value>
   </data>
   <data name="Status.WingetRunning" xml:space="preserve">
     <value>A atualizar aplicações…</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>Describe your suggestion or improvement here:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>Suggest an improvement</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>Share an idea or suggestion.</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Ouro premium + preto quente</value>

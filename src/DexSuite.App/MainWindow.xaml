@@ -609,6 +609,16 @@
                         </Grid>
                     </Border>
 
+                    <!-- Botón "Sugerir mejora" anclado sobre el footer -->
+                    <Button DockPanel.Dock="Bottom"
+                            Style="{StaticResource NavButtonStyle}"
+                            Command="{Binding SuggestFeatureCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:SymbolIcon Symbol="LightbulbFilament24" Style="{StaticResource NavItemIconStyle}"/>
+                            <TextBlock Text="{loc:T Key=Suggestion.Button}" Style="{StaticResource NavItemTextStyle}"/>
+                        </StackPanel>
+                    </Button>
+
                     <!-- Botón "Reportar un fallo" anclado sobre el footer -->
                     <Button DockPanel.Dock="Bottom"
                             Style="{StaticResource NavButtonStyle}"
@@ -2971,13 +2981,21 @@
                                         </Border>
                                     </StackPanel>
 
-                                    <!-- Botón "Reportar un fallo" — mailto pre-rellenado -->
+                                    <!-- Botones "Reportar fallo" y "Sugerir mejora" -->
                                     <StackPanel HorizontalAlignment="Center" Margin="0,18,0,0">
-                                        <ui:Button Appearance="Secondary"
-                                                   Content="{loc:T Key=BugReport.Button}"
-                                                   Icon="{ui:SymbolIcon Symbol=Mail24}"
-                                                   Command="{Binding ReportBugCommand}"
-                                                   HorizontalAlignment="Center"/>
+                                        <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Center">
+                                            <ui:Button Appearance="Secondary"
+                                                       Content="{loc:T Key=BugReport.Button}"
+                                                       Icon="{ui:SymbolIcon Symbol=Mail24}"
+                                                       Command="{Binding ReportBugCommand}"
+                                                       Margin="0,0,6,0"/>
+                                            <ui:Button Appearance="Secondary"
+                                                       Content="{loc:T Key=Suggestion.Button}"
+                                                       Icon="{ui:SymbolIcon Symbol=LightbulbFilament24}"
+                                                       Command="{Binding SuggestFeatureCommand}"
+                                                       Margin="6,0,0,0"/>
+                                        </StackPanel>
                                         <ui:TextBlock Text="{loc:T Key=BugReport.Subtitle}"
                                                       Opacity="0.6"
                                                       FontTypography="Caption"

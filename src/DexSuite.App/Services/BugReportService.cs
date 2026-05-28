@@ -65,6 +65,33 @@ public sealed class BugReportService : IBugReportService
         }
     }
 
+    public Task OpenSuggestionAsync()
+    {
+        var subject = $"DexSuite v{_updateService.CurrentVersion} — Sugerencia / Mejora";
+        var body    = _loc.Get("Suggestion.Body.DescribePrompt") +
+                      $"\n\n\n\n---\nDexSuite v{_updateService.CurrentVersion}";
+
+        var mailto = $"mailto:{TargetEmail}" +
+                     $"?subject={Uri.EscapeDataString(subject)}" +
+                     $"&body={Uri.EscapeDataString(body)}";
+
+        try
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName        = mailto,
+                UseShellExecute = true,
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudo abrir el cliente de correo para la sugerencia");
+            throw;
+        }
+
+        return Task.CompletedTask;
+    }
+
     private async Task<string> BuildBodyAsync(string? userDescription)
     {
         var sb = new StringBuilder(capacity: 4096);

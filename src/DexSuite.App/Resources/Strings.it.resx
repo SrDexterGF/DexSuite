@@ -355,6 +355,9 @@ Dopo potrai ottimizzare e analizzare di nuovo per vedere la differenza.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Email di report bug aperta nel client.</value>
   </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
+  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Cronologia svuotata ({0} voci).</value>
   </data>
@@ -1215,6 +1218,15 @@ L'applicazione si riavvierà automaticamente.</value>
   </data>
   <data name="Status.WingetRunning" xml:space="preserve">
     <value>Aggiornamento app in corso…</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>Describe your suggestion or improvement here:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>Suggest an improvement</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>Share an idea or suggestion.</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Oro premium + nero caldo</value>

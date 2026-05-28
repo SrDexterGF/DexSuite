@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -354,6 +354,9 @@ Danach kannst du optimieren und erneut analysieren, um den Unterschied zu sehen.
   </data>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug-Report-E-Mail im Client geöffnet.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Verlauf geleert ({0} Einträge).</value>
@@ -1215,6 +1218,15 @@ Die Anwendung wird automatisch neu gestartet.</value>
   </data>
   <data name="Status.WingetRunning" xml:space="preserve">
     <value>Apps werden aktualisiert…</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>Describe your suggestion or improvement here:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>Suggest an improvement</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>Share an idea or suggestion.</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium-Gold + warmes Schwarz</value>

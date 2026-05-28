@@ -355,6 +355,9 @@
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>已在客户端中打开错误报告邮件。</value>
   </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
+  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>历史记录已清空（{0} 条）。</value>
   </data>
@@ -1215,6 +1218,15 @@
   </data>
   <data name="Status.WingetRunning" xml:space="preserve">
     <value>正在更新应用…</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>Describe your suggestion or improvement here:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>Suggest an improvement</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>Share an idea or suggestion.</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>尊享金 + 暖黑</value>
