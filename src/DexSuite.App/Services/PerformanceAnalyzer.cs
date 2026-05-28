@@ -24,8 +24,8 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         // Métricas volátiles: CPU, GPU y Red se miden en PARALELO.
         // Cada una toma Samples × SampleMs = 1.8 s internamente,
         // pero como corren a la vez el tiempo total es ≈ 1.8 s + overhead.
-        var cpuTask     = Task.Run(() => MeasureCpuMultiSample(ct), ct);
-        var gpuTask     = Task.Run(() => MeasureGpuMultiSample(ct), ct);
+        var cpuTask     = MeasureCpuMultiSampleAsync(ct);
+        var gpuTask     = Task.Run(() => MeasureGpuMultiSampleAsync(ct), ct);
         var networkTask = Task.Run(() => MeasureNetworkMultiSample(ct), ct);
 
         // Métricas estables: se miden directamente (rápido).
@@ -56,7 +56,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
 
     // CPU (multi-muestra, mediana)
 
-    private static PerformanceCategoryScore MeasureCpuMultiSample(CancellationToken ct)
+    private static async Task<PerformanceCategoryScore> MeasureCpuMultiSampleAsync(CancellationToken ct)
     {
         var samples = new List<double>(Samples);
 
@@ -70,7 +70,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
                 continue;
             }
 
-            Task.Delay(SampleMs, ct).Wait(ct);
+            await Task.Delay(SampleMs, ct).ConfigureAwait(false);
 
             if (!GetSystemTimes(out var idle2, out var kernel2, out var user2))
             {
@@ -94,8 +94,9 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
 
     // GPU (multi-muestra, mediana)
 
-    private static PerformanceCategoryScore MeasureGpuMultiSample(CancellationToken ct)
+    private static async Task<PerformanceCategoryScore> MeasureGpuMultiSampleAsync(CancellationToken ct)
     {
+        var counters = new List<PerformanceCounter>();
         try
         {
             if (!PerformanceCounterCategory.Exists("GPU Engine"))
@@ -106,7 +107,6 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
             if (instances.Length == 0)
                 return new PerformanceCategoryScore("GPU", 90, "No detectada (sin instancias)");
 
-            var counters = new List<PerformanceCounter>();
             foreach (var inst in instances)
             {
                 try
@@ -122,14 +122,14 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
                 return new PerformanceCategoryScore("GPU", 90, "No medible");
 
             // Warm-up: un intervalo inicial para que los contadores acumulen.
-            Task.Delay(SampleMs, ct).Wait(ct);
+            await Task.Delay(SampleMs, ct).ConfigureAwait(false);
 
             var samples = new List<double>(Samples);
             for (int i = 0; i < Samples; i++)
             {
                 ct.ThrowIfCancellationRequested();
 
-                if (i > 0) Task.Delay(SampleMs, ct).Wait(ct);
+                if (i > 0) await Task.Delay(SampleMs, ct).ConfigureAwait(false);
 
                 float total = 0;
                 foreach (var c in counters)
@@ -139,8 +139,6 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
                 samples.Add(Math.Clamp(total, 0.0, 100.0));
             }
 
-            foreach (var c in counters) c.Dispose();
-
             var medianUsage = Median(samples);
             var score = (int)Math.Round(100 - medianUsage);
             return new PerformanceCategoryScore("GPU", score, $"{medianUsage:0}% en uso");
@@ -148,6 +146,10 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         catch (Exception ex)
         {
             return new PerformanceCategoryScore("GPU", 50, $"No medible: {ex.Message}");
+        }
+        finally
+        {
+            foreach (var c in counters) c.Dispose();
         }
     }
 

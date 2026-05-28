@@ -185,8 +185,8 @@ public partial class MainViewModel : ObservableObject
         finally
         {
             IsLoadingAppLog = false;
-            OnPropertyChanged(nameof(HasAppLogEntries));
-            OnPropertyChanged(nameof(IsAppLogEmpty));
+            // CollectionChanged ya notificó HasAppLogEntries / IsAppLogEmpty.
+            // IsLoadingAppLog tiene [NotifyPropertyChangedFor] para ambas propiedades.
         }
     }
 
@@ -205,8 +205,7 @@ public partial class MainViewModel : ObservableObject
             StatusMessage = T("Log.ClearError", ex.Message);
             _logger.LogError(ex, "No se pudo vaciar el historial interno");
         }
-        OnPropertyChanged(nameof(HasAppLogEntries));
-        OnPropertyChanged(nameof(IsAppLogEmpty));
+        // CollectionChanged notifica HasAppLogEntries / IsAppLogEmpty al hacer Clear().
     }
 
     [RelayCommand]
@@ -249,9 +248,7 @@ public partial class MainViewModel : ObservableObject
             const int MaxInMemory = 500;
             while (AppLogEntries.Count > MaxInMemory)
                 AppLogEntries.RemoveAt(AppLogEntries.Count - 1);
-
-            OnPropertyChanged(nameof(HasAppLogEntries));
-            OnPropertyChanged(nameof(IsAppLogEmpty));
+            // CollectionChanged dispara HasAppLogEntries / IsAppLogEmpty automáticamente.
         });
     }
 
@@ -1472,6 +1469,14 @@ public partial class MainViewModel : ObservableObject
 
         // Suscripción al historial para refresco en vivo de la vista.
         _appLog.EntryAdded += OnAppLogEntryAdded;
+
+        // Notifica HasAppLogEntries / IsAppLogEmpty automáticamente cuando cambia
+        // la colección, sin necesidad de llamadas manuales dispersas por el código.
+        AppLogEntries.CollectionChanged += (_, _) =>
+        {
+            OnPropertyChanged(nameof(HasAppLogEntries));
+            OnPropertyChanged(nameof(IsAppLogEmpty));
+        };
 
         LogsFolder = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),

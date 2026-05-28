@@ -22,7 +22,7 @@ public partial class App : System.Windows.Application
 {
     private IHost? _host;
 
-    protected override void OnStartup(StartupEventArgs e)
+    protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
 
@@ -96,7 +96,7 @@ public partial class App : System.Windows.Application
         try
         {
             var license = _host.Services.GetRequiredService<ILicenseService>();
-            license.RevalidateAsync().GetAwaiter().GetResult();
+            await license.RevalidateAsync();
         }
         catch (Exception ex)
         {

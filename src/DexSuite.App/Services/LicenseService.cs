@@ -68,8 +68,9 @@ public sealed class LicenseService : ILicenseService
         try
         {
             await using var db = await _dbFactory.CreateDbContextAsync(ct).ConfigureAwait(false);
-            // Solo una licencia activa: borramos las anteriores.
-            db.Licenses.RemoveRange(db.Licenses);
+            // Solo una licencia activa: reemplaza cualquier fila previa (≤1 siempre).
+            var existing = await db.Licenses.FirstOrDefaultAsync(ct).ConfigureAwait(false);
+            if (existing != null) db.Licenses.Remove(existing);
             db.Licenses.Add(entity);
             await db.SaveChangesAsync(ct).ConfigureAwait(false);
         }
@@ -124,8 +125,7 @@ public sealed class LicenseService : ILicenseService
         try
         {
             await using var db = await _dbFactory.CreateDbContextAsync(ct).ConfigureAwait(false);
-            db.Licenses.RemoveRange(db.Licenses);
-            await db.SaveChangesAsync(ct).ConfigureAwait(false);
+            await db.Licenses.ExecuteDeleteAsync(ct).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
