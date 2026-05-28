@@ -739,6 +739,7 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Versión disponible para descargar, null si no hay actualización.</summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasAvailableUpdate))]
+    [NotifyPropertyChangedFor(nameof(IsUpdateAvailable))]
     [NotifyPropertyChangedFor(nameof(AvailableUpdateVersionLabel))]
     private string? availableUpdateVersion;
 
