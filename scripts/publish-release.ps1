@@ -89,12 +89,18 @@ Write-Host "[4/6] Firmando archivo de integridad (.integrity)..." -ForegroundCol
 $DllPath = Join-Path $PublishDir "DexSuite.App.dll"
 if (-not (Test-Path $DllPath)) { throw "No se encuentra $DllPath tras publish/obfuscate" }
 
-# La KeyGen tool firma con la clave privada de %LocalAppData%\DexSuiteKeyGen.
-& dotnet run --project $KeyGenProj -c Release -- sign-integrity $DllPath
+# Usamos 'dotnet build' + 'dotnet exec DLL' en lugar de 'dotnet run' para evitar
+# que Smart App Control bloquee el .exe compilado en entornos con App Control activo.
+$KeyGenBuildDir = Join-Path $Root "tools\DexSuite.KeyGen\bin\Release\net8.0"
+$KeyGenDll      = Join-Path $KeyGenBuildDir "DexSuite.KeyGen.dll"
+& dotnet build $KeyGenProj -c Release -o $KeyGenBuildDir /p:UseAppHost=false --nologo -v quiet
+if ($LASTEXITCODE -ne 0) { throw "dotnet build KeyGen falló con código $LASTEXITCODE" }
+
+& dotnet exec $KeyGenDll sign-integrity $DllPath
 if ($LASTEXITCODE -ne 0) {
     Write-Warning "DexSuite.KeyGen sign-integrity devolvió $LASTEXITCODE."
     Write-Warning "Si la herramienta no está inicializada, ejecuta:"
-    Write-Warning "  dotnet run --project $KeyGenProj -- init"
+    Write-Warning "  dotnet exec $KeyGenDll init"
     throw "No se pudo generar .integrity (CAPA 2)"
 }
 
