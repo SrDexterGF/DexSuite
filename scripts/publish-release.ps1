@@ -132,7 +132,7 @@ $assets = @(Get-ChildItem $ReleasesDir |
     ForEach-Object { $_.FullName })
 
 # $noteArg siempre como array para que el splatting funcione correctamente
-$noteArg      = if ([string]::IsNullOrWhiteSpace($Notes)) { @("--generate-notes") } else { @("--notes", $Notes) }
+$noteArg      = @("--notes", "")
 $preReleaseArg = if ($Channel -eq "beta") { @("--prerelease") } else { @() }
 
 $ghArgs = @("release", "create", "v$Version",
