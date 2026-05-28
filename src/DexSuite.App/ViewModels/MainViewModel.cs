@@ -300,7 +300,8 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void SelectAll()
     {
-        foreach (var m in Modules) m.IsEnabled = true;
+        foreach (var m in Modules)
+            if (!m.IsLocked) m.IsEnabled = true;
     }
 
     [RelayCommand]
@@ -312,7 +313,8 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void SelectRecommended()
     {
-        foreach (var m in Modules) m.IsEnabled = m.Module.RecommendedDefault;
+        foreach (var m in Modules)
+            if (!m.IsLocked) m.IsEnabled = m.Module.RecommendedDefault;
     }
 
     // Idioma
