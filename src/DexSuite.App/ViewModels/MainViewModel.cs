@@ -472,6 +472,7 @@ public partial class MainViewModel : ObservableObject
     {
         UpdateModuleLockStates();
         RefreshThemeItems(); // El bloqueo del selector de temas también depende del tier.
+        OpenGameSelectorCommand.NotifyCanExecuteChanged();
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.TierChanged", value));
     }
 
@@ -1277,7 +1278,10 @@ public partial class MainViewModel : ObservableObject
     /// pulsar Optimizar dentro del tile se descarga + ejecuta el .ps1
     /// correspondiente del repo SrDexterGF/Game_Configs.
     /// </summary>
-    [RelayCommand]
+    private bool CanOpenGameSelector() =>
+        UserTierEnum is ModuleTier.Pro or ModuleTier.Advanced;
+
+    [RelayCommand(CanExecute = nameof(CanOpenGameSelector))]
     private void OpenGameSelector()
     {
         try
