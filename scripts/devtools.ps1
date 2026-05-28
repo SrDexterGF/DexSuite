@@ -2,7 +2,7 @@
 #  devtools.ps1
 #  Herramienta interna de DexSuite para publicar releases y
 #  generar claves de licencia. No requiere argumentos; todo es
-#  interactivo con menú de colores.
+#  interactivo con menu de colores.
 #
 #  Uso:
 #    .\scripts\devtools.ps1
@@ -16,15 +16,15 @@
 
 $ErrorActionPreference = "Stop"
 
-$Root        = Resolve-Path "$PSScriptRoot\.."
-$Csproj      = Join-Path $Root "src\DexSuite.App\DexSuite.App.csproj"
+$Root          = Resolve-Path "$PSScriptRoot\.."
+$Csproj        = Join-Path $Root "src\DexSuite.App\DexSuite.App.csproj"
 $PublishScript = Join-Path $Root "scripts\publish-release.ps1"
 
 $KeyGenProj     = Join-Path $Root "tools\DexSuite.KeyGen\DexSuite.KeyGen.csproj"
 $KeyGenBuildDir = Join-Path $Root "tools\DexSuite.KeyGen\bin\Release\net8.0"
 $KeyGenDll      = Join-Path $KeyGenBuildDir "DexSuite.KeyGen.dll"
 
-# ── helpers de UI ──────────────────────────────────────────────────────────────
+# ------------ helpers de UI --------------------------------------------------
 
 function Write-Banner {
     param([string]$Text, [ConsoleColor]$Color = [ConsoleColor]::Magenta)
@@ -54,18 +54,18 @@ function Read-NonEmpty {
     param([string]$Prompt, [string]$Default = "")
     while ($true) {
         if ($Default) {
-            $input = Read-Host "  $Prompt [$Default]"
-            if ([string]::IsNullOrWhiteSpace($input)) { return $Default }
-            return $input.Trim()
+            $val = Read-Host "  $Prompt [$Default]"
+            if ([string]::IsNullOrWhiteSpace($val)) { return $Default }
+            return $val.Trim()
         } else {
-            $input = Read-Host "  $Prompt"
-            if (-not [string]::IsNullOrWhiteSpace($input)) { return $input.Trim() }
-            Write-Warn "Campo obligatorio, inténtalo de nuevo."
+            $val = Read-Host "  $Prompt"
+            if (-not [string]::IsNullOrWhiteSpace($val)) { return $val.Trim() }
+            Write-Warn "Campo obligatorio, intentalo de nuevo."
         }
     }
 }
 
-# ── lee versión actual del .csproj ─────────────────────────────────────────────
+# ------------ version del .csproj --------------------------------------------
 
 function Get-CurrentVersion {
     $xml = [xml](Get-Content $Csproj -Raw)
@@ -80,7 +80,7 @@ function Bump-PatchVersion {
     return "$major.$minor.$($patch + 1)"
 }
 
-# ── asegura que DexSuite.KeyGen.dll esté compilado ─────────────────────────────
+# ------------ compilar DexSuite.KeyGen.dll si no existe ----------------------
 
 function Ensure-KeyGenDll {
     if (-not (Test-Path $KeyGenDll)) {
@@ -90,95 +90,130 @@ function Ensure-KeyGenDll {
     }
 }
 
-# ── FLUJO 1 — Nueva release ─────────────────────────────────────────────────────
+# ------------ FLUJO 1: Nueva release -----------------------------------------
 
 function Invoke-NewRelease {
     Write-Banner "Nueva Release" Magenta
 
-    # Versión actual y sugerencia
-    $current = Get-CurrentVersion
+    $current   = Get-CurrentVersion
     $suggested = Bump-PatchVersion $current
-    Write-Host "  Versión actual en .csproj : " -NoNewline
-    Write-Host $current -ForegroundColor Yellow
+    Write-Host "  Version actual en .csproj : " -NoNewline
+    Write-Host $current   -ForegroundColor Yellow
     Write-Host "  Sugerencia (patch +1)     : " -NoNewline
     Write-Host $suggested -ForegroundColor Green
     Write-Host ""
 
-    $version = Read-NonEmpty "Versión a publicar (Semver: mayor.menor.parche)" $suggested
+    $version = Read-NonEmpty "Version a publicar (Semver: mayor.menor.parche)" $suggested
 
-    # Canal
     Write-Host ""
-    Write-Host "  Canal de distribución:" -ForegroundColor White
-    Write-Host "    [1] stable  — para todos los usuarios (recomendado)" -ForegroundColor Green
-    Write-Host "    [2] beta    — pruebas, clientes de confianza" -ForegroundColor Yellow
+    Write-Host "  Canal de distribucion:" -ForegroundColor White
+    Write-Host "    [1] stable  -- para todos los usuarios (recomendado)" -ForegroundColor Green
+    Write-Host "    [2] beta    -- pruebas, clientes de confianza"         -ForegroundColor Yellow
     $channelChoice = Read-NonEmpty "Elige canal (1/2)" "1"
     $channel = if ($channelChoice -eq "2") { "beta" } else { "stable" }
 
-    # Notas opcionales
     Write-Host ""
     $notes = Read-Host "  Notas del release (Enter para autogenerar desde commits)"
     if ([string]::IsNullOrWhiteSpace($notes)) { $notes = $null }
 
-    # Confirmación
     Write-Host ""
-    Write-Host "  ─────────────────────────────────────────────────" -ForegroundColor DarkGray
-    Write-Host "  Versión : " -NoNewline; Write-Host $version -ForegroundColor Cyan
+    Write-Host ("  " + ("-" * 50)) -ForegroundColor DarkGray
+    Write-Host "  Version : " -NoNewline; Write-Host $version -ForegroundColor Cyan
     Write-Host "  Canal   : " -NoNewline; Write-Host $channel -ForegroundColor Cyan
     Write-Host "  Notas   : " -NoNewline
-    if ($notes) { Write-Host $notes -ForegroundColor Cyan } else { Write-Host "(autogeneradas)" -ForegroundColor DarkGray }
-    Write-Host "  ─────────────────────────────────────────────────" -ForegroundColor DarkGray
+    if ($notes) { Write-Host $notes -ForegroundColor Cyan }
+    else        { Write-Host "(autogeneradas)" -ForegroundColor DarkGray }
+    Write-Host ("  " + ("-" * 50)) -ForegroundColor DarkGray
     Write-Host ""
 
     $confirm = Read-Host "  Publicar ahora? (s/N)"
     if ($confirm -notmatch '^[sS]$') {
-        Write-Warn "Publicación cancelada."
+        Write-Warn "Publicacion cancelada."
         return
     }
 
     Write-Host ""
-    # Llamar al script de publish
     $publishArgs = @("-Version", $version, "-Channel", $channel)
     if ($notes) { $publishArgs += @("-Notes", $notes) }
 
     & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $PublishScript @publishArgs
     if ($LASTEXITCODE -ne 0) {
         Write-Host ""
-        Write-Host "  La publicación falló (código $LASTEXITCODE)." -ForegroundColor Red
+        Write-Host "  La publicacion fallo (codigo $LASTEXITCODE)." -ForegroundColor Red
     } else {
         Write-Host ""
         Write-OK "Release v$version ($channel) publicada correctamente en GitHub."
+        if ($channel -eq "beta") {
+            Write-Host ""
+            Show-BetaInstructions $version
+        }
     }
 }
 
-# ── FLUJO 2 — Generar licencia ──────────────────────────────────────────────────
+# ------------ FLUJO 4: Instrucciones para beta testers -----------------------
+
+function Show-BetaInstructions {
+    param([string]$Version = "")
+
+    $versionStr = if ($Version) { " v$Version" } else { "" }
+    $downloadUrl = "https://github.com/SrDexterGF/DexSuite/releases/latest/download/DexSuite-beta-Setup.exe"
+
+    Write-Banner "Instrucciones para beta testers" Yellow
+    Write-Host "  Copia y pega este mensaje para enviarlo a tus testers:" -ForegroundColor DarkGray
+    Write-Host ""
+    Write-Host ("  " + ("=" * 56)) -ForegroundColor DarkGray
+
+$msg = @"
+
+Hola, te mando la beta$versionStr de DexSuite para que la pruebes.
+
+PASO 1 - Solo la primera vez (si Windows la bloquea):
+Antes de instalar, desactiva Smart App Control:
+Configuracion > Privacidad y seguridad > Seguridad de Windows
+> Control de aplicaciones y explorador
+> Smart App Control > Desactivado
+
+PASO 2 - Instalar:
+Descarga e instala desde este enlace:
+$downloadUrl
+
+Si aparece una advertencia de "publicador desconocido",
+haz clic en "Mas informacion" y luego en "Ejecutar de todas formas".
+
+Las actualizaciones futuras llegaran automaticamente.
+
+"@
+    Write-Host $msg -ForegroundColor White
+    Write-Host ("  " + ("=" * 56)) -ForegroundColor DarkGray
+    Write-Host ""
+}
+
+# ------------ FLUJO 2: Generar licencia --------------------------------------
 
 function Invoke-GenerateLicense {
     Write-Banner "Generar Licencia" Cyan
 
-    # Verificar que existe la clave privada
     $keyPath = Join-Path $env:LOCALAPPDATA "DexSuiteKeyGen\private.xml"
     if (-not (Test-Path $keyPath)) {
         Write-Host ""
         Write-Host "  ERROR: No se encuentra la clave privada en:" -ForegroundColor Red
-        Write-Host "    $keyPath" -ForegroundColor Red
+        Write-Host "    $keyPath"                                   -ForegroundColor Red
         Write-Host ""
-        Write-Host "  Ejecuta primero la opción [3] Inicializar KeyGen." -ForegroundColor Yellow
+        Write-Host "  Ejecuta primero la opcion [3] Inicializar KeyGen." -ForegroundColor Yellow
         return
     }
 
     Ensure-KeyGenDll
 
-    # HWID del cliente
     Write-Host "  El HWID aparece en DexSuite > Ajustes > Licencia." -ForegroundColor DarkGray
     Write-Host "  Formato: XXXX-XXXX-XXXX-XXXX-XXXX (con o sin guiones)" -ForegroundColor DarkGray
     Write-Host ""
     $hwid = Read-NonEmpty "HWID del cliente"
 
-    # Tier
     Write-Host ""
     Write-Host "  Nivel de licencia:" -ForegroundColor White
-    Write-Host "    [1] Advanced  — funciones avanzadas" -ForegroundColor Green
-    Write-Host "    [2] Pro       — todas las funciones + futuras" -ForegroundColor Magenta
+    Write-Host "    [1] Advanced  -- funciones avanzadas" -ForegroundColor Green
+    Write-Host "    [2] Pro       -- todas las funciones + futuras" -ForegroundColor Magenta
     $tierChoice = Read-NonEmpty "Elige nivel (1/2)" "1"
     $tier = if ($tierChoice -eq "2") { "Pro" } else { "Advanced" }
 
@@ -189,15 +224,15 @@ function Invoke-GenerateLicense {
     & dotnet exec $KeyGenDll gen --hwid $hwid --tier $tier
     if ($LASTEXITCODE -ne 0) {
         Write-Host ""
-        Write-Host "  ERROR al generar la licencia (código $LASTEXITCODE)." -ForegroundColor Red
+        Write-Host "  ERROR al generar la licencia (codigo $LASTEXITCODE)." -ForegroundColor Red
         Write-Host "  Comprueba que el HWID es correcto (20 chars sin guiones)." -ForegroundColor Yellow
     } else {
         Write-Host ""
-        Write-OK "Licencia generada. Copia el blob de activación y envíaselo al cliente."
+        Write-OK "Licencia generada. Copia el blob y enviaselo al cliente."
     }
 }
 
-# ── FLUJO 3 — Inicializar KeyGen ────────────────────────────────────────────────
+# ------------ FLUJO 3: Inicializar KeyGen ------------------------------------
 
 function Invoke-InitKeyGen {
     Write-Banner "Inicializar KeyGen" Yellow
@@ -206,10 +241,10 @@ function Invoke-InitKeyGen {
     if (Test-Path $keyPath) {
         Write-Warn "Ya existe una clave privada en:"
         Write-Host "    $keyPath" -ForegroundColor Yellow
-        Write-Warn "Sobrescribirla invalidaría TODAS las licencias emitidas."
-        $confirm = Read-Host "  ¿Estás seguro de que quieres regenerarla? (escribe SI para confirmar)"
+        Write-Warn "Sobrescribirla invalidaria TODAS las licencias emitidas."
+        $confirm = Read-Host "  Escribe SI para confirmar la regeneracion"
         if ($confirm -ne "SI") {
-            Write-Warn "Operación cancelada."
+            Write-Warn "Operacion cancelada."
             return
         }
         Remove-Item $keyPath -Force
@@ -228,47 +263,48 @@ function Invoke-InitKeyGen {
     Write-OK "Clave privada creada."
     Write-Host ""
 
-    # Actualizar claves públicas en el app
-    $appSrc = Join-Path $Root "src\DexSuite.App"
+    $appSrc   = Join-Path $Root "src\DexSuite.App"
     $confirm2 = Read-Host "  Actualizar los KeyPart*.cs en el proyecto? (s/N)"
     if ($confirm2 -match '^[sS]$') {
         & dotnet exec $KeyGenDll pubkey --update-app $appSrc
         if ($LASTEXITCODE -ne 0) {
             Write-Host "  ERROR al actualizar KeyPart*.cs." -ForegroundColor Red
         } else {
-            Write-OK "KeyPart*.cs actualizados. Recuerda compilar y publicar una nueva release."
+            Write-OK "KeyPart*.cs actualizados. Recuerda compilar y publicar nueva release."
             Write-Warn "IMPORTANTE: haz backup de $keyPath ahora."
         }
     } else {
-        Write-Warn "Recuerda ejecutar 'dotnet exec $KeyGenDll pubkey --update-app $appSrc' antes de publicar."
+        Write-Warn "Recuerda ejecutar pubkey --update-app antes de publicar."
     }
 }
 
-# ── MENÚ PRINCIPAL ──────────────────────────────────────────────────────────────
+# ------------ MENU PRINCIPAL -------------------------------------------------
 
 Clear-Host
 Write-Banner "DexSuite DevTools" Magenta
 
 while ($true) {
-    Write-Host "  Qué quieres hacer?" -ForegroundColor White
+    Write-Host "  Que quieres hacer?" -ForegroundColor White
     Write-Host ""
     Write-Host "    [1]  Nueva release  (publicar en GitHub)" -ForegroundColor Green
-    Write-Host "    [2]  Generar licencia para un cliente" -ForegroundColor Cyan
-    Write-Host "    [3]  Inicializar / regenerar KeyGen" -ForegroundColor Yellow
-    Write-Host "    [0]  Salir" -ForegroundColor DarkGray
+    Write-Host "    [2]  Generar licencia para un cliente"     -ForegroundColor Cyan
+    Write-Host "    [3]  Inicializar / regenerar KeyGen"       -ForegroundColor Yellow
+    Write-Host "    [4]  Ver instrucciones para beta testers"  -ForegroundColor Yellow
+    Write-Host "    [0]  Salir"                                -ForegroundColor DarkGray
     Write-Host ""
 
-    $choice = Read-Host "  Opción"
+    $choice = Read-Host "  Opcion"
 
     switch ($choice) {
         "1" { Invoke-NewRelease }
         "2" { Invoke-GenerateLicense }
         "3" { Invoke-InitKeyGen }
+        "4" { Show-BetaInstructions }
         "0" { Write-Host ""; exit 0 }
-        default { Write-Warn "Opción no válida. Elige 0, 1, 2 o 3." }
+        default { Write-Warn "Opcion no valida. Elige 0, 1, 2, 3 o 4." }
     }
 
     Write-Host ""
-    Write-Host ("─" * 62) -ForegroundColor DarkGray
+    Write-Host ("-" * 62) -ForegroundColor DarkGray
     Write-Host ""
 }
