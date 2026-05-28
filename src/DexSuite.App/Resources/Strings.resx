@@ -992,6 +992,12 @@ The interface updates instantly.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>When minimized, the app hides to the notification area instead of closing.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Minimize to system tray</value>
+  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>

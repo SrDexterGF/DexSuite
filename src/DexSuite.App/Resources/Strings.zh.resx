@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -991,6 +991,12 @@
   </data>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>语言</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>最小化时，应用程序将隐藏到通知区域，而不是关闭。</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>最小化到系统托盘</value>
   </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>优化完成时在「操作中心」显示 Windows 通知。</value>

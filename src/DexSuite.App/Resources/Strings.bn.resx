@@ -935,6 +935,12 @@ The interface updates instantly.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>ভাষা</value>
   </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>ছোট করলে, অ্যাপটি বন্ধ না হয়ে বিজ্ঞপ্তি এলাকায় লুকায়।</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>সিস্টেম ট্রেতে ছোট করুন</value>
+  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>

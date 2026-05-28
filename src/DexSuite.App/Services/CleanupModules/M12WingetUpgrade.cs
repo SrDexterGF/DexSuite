@@ -76,7 +76,29 @@ public sealed class M12WingetUpgrade : ModuleExecutorBase
                 }
                 else if (!string.IsNullOrWhiteSpace(line) && !IsWingetNoiseLine(line))
                 {
-                    yield return Info(line);
+                    var trimmed = line.Trim();
+
+                    // "Upgrading: AppName" → Step para que se muestre resaltado.
+                    if (trimmed.StartsWith("Upgrading:", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var pkg = trimmed["Upgrading:".Length..].Trim();
+                        yield return Step(string.IsNullOrWhiteSpace(pkg) ? trimmed : $"Actualizando: {pkg}");
+                    }
+                    // "Successfully installed" → Ok.
+                    else if (trimmed.Contains("Successfully installed", StringComparison.OrdinalIgnoreCase))
+                    {
+                        yield return Ok(trimmed);
+                    }
+                    // "X upgrade(s) available" → Step informativo.
+                    else if (trimmed.Contains("upgrade", StringComparison.OrdinalIgnoreCase) &&
+                             trimmed.Contains("available", StringComparison.OrdinalIgnoreCase))
+                    {
+                        yield return Step(trimmed);
+                    }
+                    else
+                    {
+                        yield return Info(line);
+                    }
                 }
             }
         }
@@ -98,8 +120,9 @@ public sealed class M12WingetUpgrade : ModuleExecutorBase
     }
 
     /// <summary>
-    /// Returns true for lines that are winget UI noise (spinner animation chars,
-    /// Unicode progress bars). These lines pollute the log without adding value.
+    /// Returns true for lines that are winget UI noise (spinner chars,
+    /// progress bars, table separators, column headers).
+    /// These lines pollute the log without adding value.
     /// </summary>
     private static bool IsWingetNoiseLine(string line)
     {
@@ -112,6 +135,19 @@ public sealed class M12WingetUpgrade : ModuleExecutorBase
 
         // Unicode block-element progress bars (█ ▒ ░) — winget download progress
         if (t.IndexOfAny(['█', '▒', '░']) >= 0)
+            return true;
+
+        // Separator lines: mostly dashes (table column separators)
+        if (t.Length > 10 && t.All(c => c == '-' || c == ' '))
+            return true;
+
+        // Column header rows ("Name ... Id ... Version ... Source")
+        if (t.Contains("Id") && t.Contains("Version") && t.Contains("Source") && t.Contains("Name"))
+            return true;
+
+        // Download/install percentage lines from winget (e.g. "  100%  ██...")
+        // that somehow pass the block-char check (edge case)
+        if (t.Length > 3 && t.All(c => char.IsDigit(c) || c == '%' || c == ' '))
             return true;
 
         return false;

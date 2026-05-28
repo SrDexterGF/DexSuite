@@ -935,6 +935,12 @@ The interface updates instantly.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Språk</value>
   </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>Vid minimering gömmer sig appen i meddelandeområdet istället för att stängas.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Minimera till systemfältet</value>
+  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>

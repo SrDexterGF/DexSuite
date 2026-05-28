@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -991,6 +991,12 @@ Interfazea berehala eguneratzen da.</value>
   </data>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Hizkuntza</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>Txikitzerakoan, aplikazioa jakinarazpen eremuan ezkutatzen da itxi beharrean.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Sistema-erretilura txikitu</value>
   </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Windows-en oharra erakusten du Jarduera Zentroan optimizazioa amaitzean.</value>

@@ -992,6 +992,12 @@ La interfaz se actualiza al instante.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Idioma</value>
   </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>Al minimizar, la app se oculta en el área de notificaciones en lugar de cerrarse.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Minimizar a la bandeja del sistema</value>
+  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Muestra un aviso de Windows en el Centro de Actividades cuando termina la optimización.</value>
   </data>

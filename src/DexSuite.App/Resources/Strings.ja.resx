@@ -935,6 +935,12 @@ The interface updates instantly.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>言語</value>
   </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>最小化するとアプリが閉じる代わりに通知エリアに隠れます。</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>システムトレイに最小化</value>
+  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>

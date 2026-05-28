@@ -992,6 +992,12 @@ The interface updates instantly.</value>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Taal</value>
   </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>Bij minimaliseren wordt de app in het systeemvak verborgen in plaats van gesloten.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Minimaliseren naar systeemvak</value>
+  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>

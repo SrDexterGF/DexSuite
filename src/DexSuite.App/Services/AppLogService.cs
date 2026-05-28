@@ -36,7 +36,7 @@ public sealed class AppLogService : IAppLogService
             TimestampUtc = DateTime.UtcNow,
             Level        = level,
             Category     = category,
-            Message      = string.IsNullOrWhiteSpace(message) ? "(empty)" : Truncate(message, 500),
+            Message      = string.IsNullOrWhiteSpace(message) ? "(empty)" : Truncate(Sanitize(message), 500),
             Details      = string.IsNullOrWhiteSpace(details) ? null : details,
         };
 
@@ -123,6 +123,34 @@ public sealed class AppLogService : IAppLogService
 
     private static string Truncate(string s, int max)
         => s.Length <= max ? s : s.Substring(0, max - 1) + "…";
+
+    /// <summary>
+    /// Elimina \r y caracteres de control ASCII (< 0x20 salvo \t y \n).
+    /// Evita que la salida de procesos externos llene el historial de basura.
+    /// </summary>
+    private static string Sanitize(string s)
+    {
+        // Ruta rápida: si no hay nada que limpiar, evitar la asignación del StringBuilder.
+        var needsClean = false;
+        foreach (var c in s)
+        {
+            if (c == '\r' || (c < 0x20 && c != '\t' && c != '\n'))
+            {
+                needsClean = true;
+                break;
+            }
+        }
+        if (!needsClean) return s;
+
+        var sb = new StringBuilder(s.Length);
+        foreach (var c in s)
+        {
+            if (c == '\r') continue;
+            if (c < 0x20 && c != '\t' && c != '\n') continue;
+            sb.Append(c);
+        }
+        return sb.ToString();
+    }
 
     /// <summary>Si el path ya existe, añade -1, -2, ... antes de la extensión.</summary>
     private static string ResolveNonClashingPath(string path)

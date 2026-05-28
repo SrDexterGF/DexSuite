@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -991,6 +991,12 @@ A interface atualiza-se instantaneamente.</value>
   </data>
   <data name="Settings.Language.Title" xml:space="preserve">
     <value>Idioma</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>Ao minimizar, o app se oculta na área de notificações em vez de fechar.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Minimizar para a bandeja do sistema</value>
   </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Mostra um aviso do Windows na Central de Ações quando a otimização termina.</value>

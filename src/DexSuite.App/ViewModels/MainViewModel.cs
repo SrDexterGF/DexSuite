@@ -486,6 +486,7 @@ public partial class MainViewModel : ObservableObject
     partial void OnCreateRestorePointBeforeRunChanged(bool value) => PersistSettings();
     partial void OnNotifyOnFinishChanged(bool value)              => PersistSettings();
     partial void OnAutoUpdateEnabledChanged(bool value)           => PersistSettings();
+    partial void OnMinimizeToTrayChanged(bool value)              => PersistSettings();
     partial void OnUpdateChannelChanged(string value)             => PersistSettings();
 
     /// <summary>
@@ -505,6 +506,7 @@ public partial class MainViewModel : ObservableObject
             CreateRestorePointBeforeRun = CreateRestorePointBeforeRun,
             NotifyOnFinish              = NotifyOnFinish,
             AutoUpdateEnabled           = AutoUpdateEnabled,
+            MinimizeToTray              = MinimizeToTray,
         });
     }
 
@@ -609,6 +611,7 @@ public partial class MainViewModel : ObservableObject
         CreateRestorePointBeforeRun = false;
         NotifyOnFinish = true;
         AutoUpdateEnabled = false;
+        MinimizeToTray = false;
         // UserTier NO se resetea aquí: lo controla únicamente la licencia activa.
         // Resetear configs no debe regalar Pro.
         StatusMessage = T("Status.SettingsReset");
@@ -725,6 +728,10 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private bool autoUpdateEnabled = false;
+
+    /// <summary>Si al minimizar la ventana se oculta a la bandeja del sistema.</summary>
+    [ObservableProperty]
+    private bool minimizeToTray = false;
 
     [ObservableProperty]
     private string updateChannel = "Stable";
@@ -1423,6 +1430,7 @@ public partial class MainViewModel : ObservableObject
         // que un settings.json modificado a mano otorgue Pro sin clave válida.
         UserTier                    = TierToString(_license.CurrentTier);
         AutoUpdateEnabled           = persisted.AutoUpdateEnabled;
+        MinimizeToTray              = persisted.MinimizeToTray;
         UpdateChannel               = persisted.UpdateChannel;
         if (!string.IsNullOrWhiteSpace(persisted.Language))
             _loc.CurrentLanguage = persisted.Language;

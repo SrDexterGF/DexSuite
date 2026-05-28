@@ -2693,6 +2693,22 @@
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding NotifyOnFinish, Mode=TwoWay}"/>
                                     </Grid>
+
+                                    <Grid Margin="0,6,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="{loc:T Key=Settings.MinimizeToTray.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.MinimizeToTray.Desc}"
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding MinimizeToTray, Mode=TwoWay}"/>
+                                    </Grid>
                                 </StackPanel>
                             </Border>
 

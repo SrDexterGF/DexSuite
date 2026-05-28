@@ -38,4 +38,5 @@ public sealed class AppSettings
     public bool CreateRestorePointBeforeRun { get; set; } = false;
     public bool NotifyOnFinish { get; set; } = true;
     public bool AutoUpdateEnabled { get; set; } = false;
+    public bool MinimizeToTray { get; set; } = false;
 }
