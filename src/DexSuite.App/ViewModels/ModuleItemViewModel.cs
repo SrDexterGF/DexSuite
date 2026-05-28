@@ -51,6 +51,9 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     public string Description => _loc.Get(Module.DescriptionKey);
     public string CategoryName => Module.Category.ToString();
 
+    /// <summary>Tier requerido por el módulo (Free / Advanced / Pro). Usado por la UI para colorear el candado.</summary>
+    public ModuleTier Tier => Module.Tier;
+
     /// <summary>Etiqueta visible del tier (Free / Avanzado / Pro / …) traducida.</summary>
     public string TierLabel => Module.Tier switch
     {

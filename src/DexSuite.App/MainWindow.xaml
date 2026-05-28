@@ -430,24 +430,35 @@
                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
                     </Border>
 
-                    <!-- Candado: visible solo cuando el módulo está bloqueado por tier -->
+                    <!-- Candado: visible solo cuando el módulo está bloqueado por tier.
+                         Color: cyan para Advanced, violeta para Pro. -->
                     <Border Grid.Column="5"
                             Width="22" Height="22"
                             CornerRadius="11"
                             VerticalAlignment="Center"
                             Margin="4,0,0,0"
-                            Background="#1A9D4EDD"
-                            BorderBrush="#3A9D4EDD"
                             BorderThickness="1"
                             ToolTipService.ShowDuration="8000"
                             ToolTipService.InitialShowDelay="300">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <!-- Default (no debería verse): oculto -->
+                                <Setter Property="Visibility"   Value="Collapsed"/>
+                                <Setter Property="Background"   Value="#1500B8D9"/>
+                                <Setter Property="BorderBrush"  Value="#3500B8D9"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsLocked}" Value="True">
                                         <Setter Property="Visibility" Value="Visible"/>
                                     </DataTrigger>
+                                    <!-- Pro: violeta -->
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsLocked}" Value="True"/>
+                                            <Condition Binding="{Binding Tier}" Value="Pro"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background"  Value="#1A9D4EDD"/>
+                                        <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
+                                    </MultiDataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
@@ -463,8 +474,19 @@
                         <ui:SymbolIcon Symbol="LockClosed24"
                                        FontSize="12"
                                        HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       Foreground="#FFB026FF"/>
+                                       VerticalAlignment="Center">
+                            <ui:SymbolIcon.Style>
+                                <Style TargetType="ui:SymbolIcon">
+                                    <!-- Default: cyan (Advanced) -->
+                                    <Setter Property="Foreground" Value="#FF00D9FF"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Tier}" Value="Pro">
+                                            <Setter Property="Foreground" Value="#FFB026FF"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:SymbolIcon.Style>
+                        </ui:SymbolIcon>
                     </Border>
                 </Grid>
             </Border>
@@ -576,11 +598,13 @@
                                         <Setter Property="Background"  Value="#1500C853"/>
                                         <Setter Property="BorderBrush" Value="#3500C853"/>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
-                                                <Setter Property="Background"  Value="#1A9D4EDD"/>
-                                                <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
-                                            </DataTrigger>
+                                            <!-- Advanced: cyan -->
                                             <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                <Setter Property="Background"  Value="#1400B8D9"/>
+                                                <Setter Property="BorderBrush" Value="#3200B8D9"/>
+                                            </DataTrigger>
+                                            <!-- Pro: violeta -->
+                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
                                                 <Setter Property="Background"  Value="#1A9D4EDD"/>
                                                 <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
                                             </DataTrigger>
@@ -592,13 +616,15 @@
                                               FontWeight="Bold">
                                     <ui:TextBlock.Style>
                                         <Style TargetType="ui:TextBlock">
-                                            <!-- Default: Free -->
+                                            <!-- Default: Free — verde -->
                                             <Setter Property="Foreground" Value="#FF00C853"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding UserTier}" Value="Pro">
-                                                    <Setter Property="Foreground" Value="#FFB026FF"/>
-                                                </DataTrigger>
+                                                <!-- Advanced: cyan -->
                                                 <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                    <Setter Property="Foreground" Value="#FF00D9FF"/>
+                                                </DataTrigger>
+                                                <!-- Pro: violeta -->
+                                                <DataTrigger Binding="{Binding UserTier}" Value="Pro">
                                                     <Setter Property="Foreground" Value="#FFB026FF"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -1390,16 +1416,21 @@
                                 <Border Padding="10,6"
                                         Margin="0,0,0,10"
                                         CornerRadius="6"
-                                        Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}">
+                                        Background="#1400C853"
+                                        BorderBrush="#3200C853"
+                                        BorderThickness="1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                            <ui:TextBlock Text="{loc:T Key=Modules.Tier.Free}" FontTypography="BodyStrong"/>
+                                            <ui:TextBlock Text="{loc:T Key=Modules.Tier.Free}"
+                                                          FontTypography="BodyStrong"
+                                                          Foreground="#FF4CAF50"/>
                                             <ui:TextBlock Text="{Binding FreeModules.Count, StringFormat=' · {0}'}"
-                                                          Opacity="0.6"/>
+                                                          Foreground="#FF4CAF50"
+                                                          Opacity="0.65"/>
                                         </StackPanel>
                                         <!-- Siempre desbloqueado: icono de check -->
                                         <ui:SymbolIcon Grid.Column="1"
@@ -1418,7 +1449,9 @@
                                 <Border Padding="10,6"
                                         Margin="0,0,0,10"
                                         CornerRadius="6"
-                                        Background="{DynamicResource AccentFillColorDefaultBrush}">
+                                        Background="#1400B8D9"
+                                        BorderBrush="#3200B8D9"
+                                        BorderThickness="1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -1427,17 +1460,16 @@
                                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                                             <ui:TextBlock Text="{loc:T Key=Modules.Tier.Advanced}"
                                                           FontTypography="BodyStrong"
-                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
+                                                          Foreground="#FF00D9FF"/>
                                             <ui:TextBlock Text="{Binding AdvancedModules.Count, StringFormat=' · {0}'}"
-                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"
-                                                          Opacity="0.75"/>
+                                                          Foreground="#FF00D9FF"
+                                                          Opacity="0.65"/>
                                         </StackPanel>
                                         <!-- Candado visible solo cuando tier = Free -->
                                         <ui:SymbolIcon Grid.Column="1"
                                                        Symbol="LockClosed24"
                                                        FontSize="14"
-                                                       Foreground="White"
-                                                       Opacity="0.8"
+                                                       Foreground="#FF00D9FF"
                                                        VerticalAlignment="Center">
                                             <ui:SymbolIcon.Style>
                                                 <Style TargetType="ui:SymbolIcon">
@@ -1454,8 +1486,7 @@
                                         <ui:SymbolIcon Grid.Column="1"
                                                        Symbol="CheckmarkCircle24"
                                                        FontSize="14"
-                                                       Foreground="White"
-                                                       Opacity="0.8"
+                                                       Foreground="#FF00D9FF"
                                                        VerticalAlignment="Center">
                                             <ui:SymbolIcon.Style>
                                                 <Style TargetType="ui:SymbolIcon">
@@ -1479,16 +1510,21 @@
                                 <Border Padding="10,6"
                                         Margin="0,0,0,10"
                                         CornerRadius="6"
-                                        Background="{DynamicResource SystemFillColorCautionBackgroundBrush}">
+                                        Background="#1A9D4EDD"
+                                        BorderBrush="#3A9D4EDD"
+                                        BorderThickness="1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                            <ui:TextBlock Text="{loc:T Key=Modules.Tier.Pro}" FontTypography="BodyStrong"/>
+                                            <ui:TextBlock Text="{loc:T Key=Modules.Tier.Pro}"
+                                                          FontTypography="BodyStrong"
+                                                          Foreground="#FFB026FF"/>
                                             <ui:TextBlock Text="{Binding ProModules.Count, StringFormat=' · {0}'}"
-                                                          Opacity="0.6"/>
+                                                          Foreground="#FFB026FF"
+                                                          Opacity="0.65"/>
                                         </StackPanel>
                                         <!-- Candado visible cuando tier ≠ Pro -->
                                         <ui:SymbolIcon Grid.Column="1"
