@@ -24,6 +24,24 @@ public abstract class ModuleExecutorBase : IModuleExecutor
     public abstract int ModuleId { get; }
     public abstract IAsyncEnumerable<ModuleProgress> ExecuteAsync(CancellationToken ct = default);
 
+    /// <summary>
+    /// Servicio de auditoría/reversión. Es opcional: los módulos de limpieza
+    /// (borrado de archivos) no lo necesitan y llaman al ctor sin argumentos.
+    /// Los módulos de ajustes (registro/servicios) lo reciben por DI para
+    /// capturar el valor ORIGINAL antes de cambiarlo y poder revertir.
+    /// </summary>
+    protected IChangeTrackingService? Tracking { get; }
+
+    protected ModuleExecutorBase(IChangeTrackingService? tracking = null) => Tracking = tracking;
+
+    /// <summary>
+    /// Nombre legible del módulo guardado junto a cada cambio (para la vista
+    /// "Revertir"). Por defecto "MNN"; cada módulo lo sobreescribe con su nombre.
+    /// </summary>
+    protected virtual string ModuleName => $"M{ModuleId:00}";
+
+    private string ModuleIdString => ModuleId.ToString();
+
     // Atajos de progreso
     protected ModuleProgress Header(string msg)    => ModuleProgress.Header(ModuleId, msg);
     protected ModuleProgress Step(string msg)      => ModuleProgress.Step(ModuleId, msg);
@@ -265,6 +283,103 @@ public abstract class ModuleExecutorBase : IModuleExecutor
             return true;
         }
         catch { return false; }
+    }
+
+    // -------------------- captura + escritura con tracking --------------------
+
+    /// <summary>
+    /// Lee el valor actual del registro y lo serializa igual que espera el
+    /// servicio de reversión (DWORD/QWORD→texto, MULTI_SZ→unión por espacios,
+    /// BINARY→Base64). Devuelve (null, null) si la clave o el valor no existen,
+    /// lo que el revertir interpreta como "borrar el valor".
+    /// </summary>
+    private static (string? Value, string? Kind) ReadRegistryValue(string keyPath, string? valueName)
+    {
+        try
+        {
+            var (root, sub) = SplitHive(keyPath);
+            using var k = root.OpenSubKey(sub);
+            if (k is null) return (null, null);
+
+            var name = valueName ?? string.Empty;
+            var raw = k.GetValue(name, null, RegistryValueOptions.DoNotExpandEnvironmentNames);
+            if (raw is null) return (null, null);
+
+            var kind = k.GetValueKind(name);
+            string? serialized = kind switch
+            {
+                RegistryValueKind.DWord       => Convert.ToInt32(raw).ToString(),
+                RegistryValueKind.QWord       => Convert.ToInt64(raw).ToString(),
+                RegistryValueKind.MultiString => string.Join(" ", (string[])raw),
+                RegistryValueKind.Binary      => Convert.ToBase64String((byte[])raw),
+                _                             => raw.ToString(),
+            };
+            string kindStr = kind switch
+            {
+                RegistryValueKind.DWord        => "DWORD",
+                RegistryValueKind.QWord        => "QWORD",
+                RegistryValueKind.String       => "SZ",
+                RegistryValueKind.ExpandString => "EXPAND_SZ",
+                RegistryValueKind.MultiString  => "MULTI_SZ",
+                RegistryValueKind.Binary       => "BINARY",
+                _                              => "SZ",
+            };
+            return (serialized, kindStr);
+        }
+        catch { return (null, null); }
+    }
+
+    /// <summary>Lee el StartMode actual de un servicio (Auto/Manual/Disabled) vía WMI.</summary>
+    private static string? ReadServiceStartMode(string name)
+    {
+        try
+        {
+            using var svc = new ManagementObject($"Win32_Service.Name='{name}'");
+            svc.Get();
+            return svc["StartMode"]?.ToString();
+        }
+        catch { return null; }
+    }
+
+    /// <summary>Captura (una sola vez) el valor original antes de modificar el registro.</summary>
+    private void CaptureRegistryOriginal(string keyPath, string? valueName, string? newValue, string newKind)
+    {
+        if (Tracking is null) return;
+        var (orig, origKind) = ReadRegistryValue(keyPath, valueName);
+        _ = Tracking.RecordRegistryChangeIfFirstAsync(
+            ModuleIdString, ModuleName, keyPath, valueName, orig, newValue, origKind ?? newKind);
+    }
+
+    /// <summary>Escribe un REG_DWORD capturando antes el valor original para poder revertir.</summary>
+    protected void TrackedSetDword(string keyPath, string valueName, int value)
+    {
+        CaptureRegistryOriginal(keyPath, valueName, value.ToString(), "DWORD");
+        SetRegistryDword(keyPath, valueName, value);
+    }
+
+    /// <summary>Escribe un REG_SZ capturando antes el valor original para poder revertir.</summary>
+    protected void TrackedSetString(string keyPath, string valueName, string value)
+    {
+        CaptureRegistryOriginal(keyPath, valueName, value, "SZ");
+        SetRegistryString(keyPath, valueName, value);
+    }
+
+    /// <summary>Escribe un REG_BINARY capturando antes el valor original para poder revertir.</summary>
+    protected void TrackedSetBinary(string keyPath, string valueName, byte[] value)
+    {
+        CaptureRegistryOriginal(keyPath, valueName, Convert.ToBase64String(value), "BINARY");
+        SetRegistryBinary(keyPath, valueName, value);
+    }
+
+    /// <summary>Cambia el modo de arranque de un servicio capturando antes el original.</summary>
+    protected void TrackedSetServiceStartMode(string name, string mode)
+    {
+        if (Tracking is not null)
+        {
+            var orig = ReadServiceStartMode(name);
+            _ = Tracking.RecordServiceChangeIfFirstAsync(ModuleIdString, ModuleName, name, orig, mode);
+        }
+        SetServiceStartMode(name, mode);
     }
 
     /// <summary>

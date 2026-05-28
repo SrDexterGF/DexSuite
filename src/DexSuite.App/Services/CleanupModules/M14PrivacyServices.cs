@@ -15,7 +15,10 @@ namespace DexSuite.App.Services.CleanupModules;
 [SupportedOSPlatform("windows")]
 public sealed class M14PrivacyServices : ModuleExecutorBase
 {
+    public M14PrivacyServices(IChangeTrackingService tracking) : base(tracking) { }
+
     public override int ModuleId => 14;
+    protected override string ModuleName => "Privacidad y Servicios";
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
         [EnumeratorCancellation] CancellationToken ct = default)
@@ -23,25 +26,25 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
         yield return Header("Privacidad y Servicios");
 
         yield return Step("Desactivando instalación silenciosa de apps sugeridas");
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent", "DisableWindowsConsumerFeatures", 1);
-        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SilentInstalledAppsEnabled", 0);
-        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SystemPaneSuggestionsEnabled", 0);
-        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338393Enabled", 0);
-        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-353694Enabled", 0);
-        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-353696Enabled", 0);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent", "DisableWindowsConsumerFeatures", 1);
+        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SilentInstalledAppsEnabled", 0);
+        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SystemPaneSuggestionsEnabled", 0);
+        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338393Enabled", 0);
+        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-353694Enabled", 0);
+        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-353696Enabled", 0);
         yield return Ok("Instalación silenciosa de apps desactivada");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando rastreo de ubicación");
-        SetRegistryString(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location", "Value", "Deny");
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocation", 1);
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocationScripting", 1);
+        TrackedSetString(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location", "Value", "Deny");
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocation", 1);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocationScripting", 1);
         yield return Ok("Ubicación desactivada");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Quitando los Widgets de la barra de tareas");
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Dsh", "AllowNewsAndInterests", 0);
-        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarDa", 0);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Dsh", "AllowNewsAndInterests", 0);
+        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarDa", 0);
         // Guard runtime: la API WinRT existe en Win10 1507+ (10.0.10240). El target
         // del proyecto (net8.0-windows10.0.19041) garantiza que estamos por encima.
         int removed = OperatingSystem.IsWindowsVersionAtLeast(10, 0, 10240)
@@ -53,23 +56,23 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Quitando resultados de la Store en el buscador");
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer", "NoUseStoreOpenWith", 1);
-        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Start_TrackProgs", 0);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer", "NoUseStoreOpenWith", 1);
+        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Start_TrackProgs", 0);
         yield return Ok("Resultados de Store en búsqueda desactivados");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando WPBT (reinstalación de bloatware por BIOS)");
-        SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager", "DisableWpbtExecution", 1);
+        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager", "DisableWpbtExecution", 1);
         yield return Ok("WPBT desactivado");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando servicios innecesarios");
-        SetServiceStartMode("MapsBroker", "Manual");     StopService("MapsBroker");
-        SetServiceStartMode("RemoteRegistry", "Disabled"); StopService("RemoteRegistry");
-        SetServiceStartMode("RemoteAccess",   "Disabled"); StopService("RemoteAccess");
-        SetServiceStartMode("SharedAccess",   "Disabled"); StopService("SharedAccess");
-        SetServiceStartMode("CscService",     "Disabled"); StopService("CscService");
-        SetServiceStartMode("ssh-agent",      "Disabled"); StopService("ssh-agent");
+        TrackedSetServiceStartMode("MapsBroker", "Manual");     StopService("MapsBroker");
+        TrackedSetServiceStartMode("RemoteRegistry", "Disabled"); StopService("RemoteRegistry");
+        TrackedSetServiceStartMode("RemoteAccess",   "Disabled"); StopService("RemoteAccess");
+        TrackedSetServiceStartMode("SharedAccess",   "Disabled"); StopService("SharedAccess");
+        TrackedSetServiceStartMode("CscService",     "Disabled"); StopService("CscService");
+        TrackedSetServiceStartMode("ssh-agent",      "Disabled"); StopService("ssh-agent");
         yield return Ok("Servicios innecesarios desactivados");
 
         if (ct.IsCancellationRequested) yield break;
@@ -86,7 +89,7 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
         if (ramErr is null)
         {
             var ramInKB = (int)(totalRamBytes / 1024);
-            SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control", "SvcHostSplitThresholdInKB", ramInKB);
+            TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Control", "SvcHostSplitThresholdInKB", ramInKB);
             yield return Ok($"SvcHost ajustado a {ramInKB / 1024 / 1024} GB de RAM (umbral = {ramInKB} KB)");
         }
         else yield return Warn($"No se pudo leer la RAM: {ramErr}");
@@ -113,9 +116,9 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando Sticky Keys y atajos de accesibilidad molestos");
-        SetRegistryString(@"HKCU\Control Panel\Accessibility\StickyKeys",        "Flags", "506");
-        SetRegistryString(@"HKCU\Control Panel\Accessibility\ToggleKeys",        "Flags", "58");
-        SetRegistryString(@"HKCU\Control Panel\Accessibility\Keyboard Response", "Flags", "122");
+        TrackedSetString(@"HKCU\Control Panel\Accessibility\StickyKeys",        "Flags", "506");
+        TrackedSetString(@"HKCU\Control Panel\Accessibility\ToggleKeys",        "Flags", "58");
+        TrackedSetString(@"HKCU\Control Panel\Accessibility\Keyboard Response", "Flags", "122");
         yield return Ok("Sticky Keys desactivadas");
 
         yield return Done("M14 completado");

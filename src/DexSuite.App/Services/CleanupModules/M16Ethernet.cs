@@ -18,7 +18,10 @@ namespace DexSuite.App.Services.CleanupModules;
 [SupportedOSPlatform("windows")]
 public sealed class M16Ethernet : ModuleExecutorBase
 {
+    public M16Ethernet(IChangeTrackingService tracking) : base(tracking) { }
+
     public override int ModuleId => 16;
+    protected override string ModuleName => "Ethernet - Optimización Máxima";
 
     // Class GUID de adaptadores de red (NDIS NetClass).
     private const string NetClassPath =
@@ -66,31 +69,31 @@ public sealed class M16Ethernet : ModuleExecutorBase
             await RunProcessAsync(netsh, "int tcp set global timestamps=disabled", ct);
             await RunProcessAsync(netsh, "int tcp set global initialRto=2000", ct);
         }
-        SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters", "TcpMaxSynRetransmissions", 2);
+        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters", "TcpMaxSynRetransmissions", 2);
         const string tcpInterfaces = @"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces";
-        SetRegistryDword(tcpInterfaces, "TcpAckFrequency", 1);
-        SetRegistryDword(tcpInterfaces, "TcpNoDelay", 1);
+        TrackedSetDword(tcpInterfaces, "TcpAckFrequency", 1);
+        TrackedSetDword(tcpInterfaces, "TcpNoDelay", 1);
         foreach (var sub in EnumerateSubKeys(tcpInterfaces))
         {
-            SetRegistryDword($@"{tcpInterfaces}\{sub}", "TcpAckFrequency", 1);
-            SetRegistryDword($@"{tcpInterfaces}\{sub}", "TcpNoDelay", 1);
+            TrackedSetDword($@"{tcpInterfaces}\{sub}", "TcpAckFrequency", 1);
+            TrackedSetDword($@"{tcpInterfaces}\{sub}", "TcpNoDelay", 1);
         }
         yield return Ok("Nagle desactivado, ACK inmediato en todas las interfaces");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Parámetros del stack IP");
         const string tcpipParams = @"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters";
-        SetRegistryDword(tcpipParams, "MaxUserPort", 65534);
-        SetRegistryDword(tcpipParams, "TcpTimedWaitDelay", 30);
-        SetRegistryDword(tcpipParams, "MaxFreeTcbs", 65536);
-        SetRegistryDword(tcpipParams, "MaxHashTableSize", 65536);
-        SetRegistryDword(tcpipParams, "MaxDupAcksForFastRetransmit", 2);
+        TrackedSetDword(tcpipParams, "MaxUserPort", 65534);
+        TrackedSetDword(tcpipParams, "TcpTimedWaitDelay", 30);
+        TrackedSetDword(tcpipParams, "MaxFreeTcbs", 65536);
+        TrackedSetDword(tcpipParams, "MaxHashTableSize", 65536);
+        TrackedSetDword(tcpipParams, "MaxDupAcksForFastRetransmit", 2);
         yield return Ok("MaxUserPort=65534, TIME_WAIT=30s, MaxFreeTcbs=65536");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("QoS - Eliminando la reserva del 20% de ancho de banda");
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched", "NonBestEffortLimit", 0);
-        SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Psched\Parameters", "NonBestEffortLimit", 0);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched", "NonBestEffortLimit", 0);
+        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Psched\Parameters", "NonBestEffortLimit", 0);
         yield return Ok("QoS reserva = 0%");
 
         if (ct.IsCancellationRequested) yield break;
@@ -120,14 +123,14 @@ public sealed class M16Ethernet : ModuleExecutorBase
     /// Escribe las advanced properties típicas para gaming en el subkey
     /// de Class correspondiente al GUID del adaptador.
     /// </summary>
-    private static void ApplyAdvancedProperties(string adapterGuid)
+    private void ApplyAdvancedProperties(string adapterGuid)
     {
         // Encontrar el subkey de Class con NetCfgInstanceId == adapterGuid.
         var subKeyPath = FindClassSubKey(adapterGuid);
         if (subKeyPath is null) return;
 
         // SpeedDuplex: 6 = 1 Gbps Full Duplex. Si el switch no aguanta, lo dejamos en 0 (Auto).
-        SetRegistryString(subKeyPath, "*SpeedDuplex", "6");
+        TrackedSetString(subKeyPath, "*SpeedDuplex", "6");
 
         // EEE / Green Ethernet / ULP / power saving — todo a 0.
         var disableKeywords = new[]
@@ -137,20 +140,20 @@ public sealed class M16Ethernet : ModuleExecutorBase
             "*FlowControl", "*InterruptModeration",
         };
         foreach (var kw in disableKeywords)
-            SetRegistryString(subKeyPath, kw, "0");
+            TrackedSetString(subKeyPath, kw, "0");
 
         // Buffers grandes.
-        SetRegistryString(subKeyPath, "*ReceiveBuffers", "512");
-        SetRegistryString(subKeyPath, "*TransmitBuffers", "512");
+        TrackedSetString(subKeyPath, "*ReceiveBuffers", "512");
+        TrackedSetString(subKeyPath, "*TransmitBuffers", "512");
 
         // MTU estándar 1500 → JumboPacket 1514.
-        SetRegistryString(subKeyPath, "*JumboPacket", "1514");
+        TrackedSetString(subKeyPath, "*JumboPacket", "1514");
 
         // RSS on, Priority+VLAN, LSO v2 IPv4/IPv6.
-        SetRegistryString(subKeyPath, "*RSS", "1");
-        SetRegistryString(subKeyPath, "*PriorityVLANTag", "3");
-        SetRegistryString(subKeyPath, "*LsoV2IPv4", "1");
-        SetRegistryString(subKeyPath, "*LsoV2IPv6", "1");
+        TrackedSetString(subKeyPath, "*RSS", "1");
+        TrackedSetString(subKeyPath, "*PriorityVLANTag", "3");
+        TrackedSetString(subKeyPath, "*LsoV2IPv4", "1");
+        TrackedSetString(subKeyPath, "*LsoV2IPv6", "1");
 
         // Checksum offload TCP/UDP IPv4/IPv6 = 3 (Tx & Rx).
         foreach (var kw in new[]
@@ -158,7 +161,7 @@ public sealed class M16Ethernet : ModuleExecutorBase
             "*TCPChecksumOffloadIPv4", "*TCPChecksumOffloadIPv6",
             "*UDPChecksumOffloadIPv4", "*UDPChecksumOffloadIPv6",
         })
-            SetRegistryString(subKeyPath, kw, "3");
+            TrackedSetString(subKeyPath, kw, "3");
 
         // Verificar si SpeedDuplex 1 Gbps llegó a aplicarse; si no, revertir a Auto.
         // Damos un margen y comprobamos LinkSpeed del adaptador.
@@ -168,7 +171,7 @@ public sealed class M16Ethernet : ModuleExecutorBase
             var nic = NetworkInterface.GetAllNetworkInterfaces()
                 .FirstOrDefault(n => n.Id == adapterGuid);
             if (nic is not null && nic.Speed < 1_000_000_000)
-                SetRegistryString(subKeyPath, "*SpeedDuplex", "0");
+                TrackedSetString(subKeyPath, "*SpeedDuplex", "0");
         }
         catch { /* ignora */ }
     }

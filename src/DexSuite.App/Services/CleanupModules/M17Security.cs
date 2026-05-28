@@ -15,7 +15,10 @@ namespace DexSuite.App.Services.CleanupModules;
 [SupportedOSPlatform("windows")]
 public sealed class M17Security : ModuleExecutorBase
 {
+    public M17Security(IChangeTrackingService tracking) : base(tracking) { }
+
     public override int ModuleId => 17;
+    protected override string ModuleName => "Seguridad";
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
         [EnumeratorCancellation] CancellationToken ct = default)
@@ -62,7 +65,7 @@ public sealed class M17Security : ModuleExecutorBase
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando SMBv1 (vector de WannaCry / EternalBlue)");
-        SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "SMB1", 0);
+        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "SMB1", 0);
         var dism = Path.Combine(system32, "Dism.exe");
         if (File.Exists(dism))
         {
@@ -82,10 +85,10 @@ public sealed class M17Security : ModuleExecutorBase
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando AutoRun y AutoPlay");
-        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoDriveTypeAutoRun", 255);
-        SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoDriveTypeAutoRun", 255);
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer", "NoAutoplayfornonVolume", 1);
-        SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers", "DisableAutoplay", 1);
+        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoDriveTypeAutoRun", 255);
+        TrackedSetDword(@"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoDriveTypeAutoRun", 255);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer", "NoAutoplayfornonVolume", 1);
+        TrackedSetDword(@"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers", "DisableAutoplay", 1);
         yield return Ok("AutoRun y AutoPlay desactivados");
 
         if (ct.IsCancellationRequested) yield break;
@@ -99,7 +102,7 @@ public sealed class M17Security : ModuleExecutorBase
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando LLMNR (Link-Local Multicast Name Resolution)");
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient", "EnableMulticast", 0);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient", "EnableMulticast", 0);
         yield return Ok("LLMNR desactivado");
 
         if (ct.IsCancellationRequested) yield break;
@@ -120,27 +123,27 @@ public sealed class M17Security : ModuleExecutorBase
             }
         }
         catch { /* WMI off */ }
-        SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters", "NodeType", 2);
+        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters", "NodeType", 2);
         yield return Ok("NetBIOS desactivado en todos los adaptadores activos");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Activando protección PUA en Windows Defender");
-        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender", "PUAProtection", 1);
+        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender", "PUAProtection", 1);
         yield return Ok("Protección PUA activada");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando Remote Desktop (RDP)");
-        SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server", "fDenyTSConnections", 1);
-        SetServiceStartMode("TermService", "Manual"); StopService("TermService");
+        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server", "fDenyTSConnections", 1);
+        TrackedSetServiceStartMode("TermService", "Manual"); StopService("TermService");
         if (File.Exists(netsh))
             await RunProcessAsync(netsh, "advfirewall firewall set rule name=\"Remote Desktop\" new enable=no", ct);
         yield return Ok("RDP desactivado. Reactivarlo en Configuración si se necesita.");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("UAC - Nivel recomendado (aviso solo para apps externas)");
-        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "EnableLUA", 1);
-        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 5);
-        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 1);
+        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "EnableLUA", 1);
+        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "ConsentPromptBehaviorAdmin", 5);
+        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "PromptOnSecureDesktop", 1);
         yield return Ok("UAC activo en nivel 2 (recomendado)");
 
         yield return Done("M17 completado");

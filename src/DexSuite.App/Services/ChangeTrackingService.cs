@@ -83,6 +83,86 @@ public sealed class ChangeTrackingService : IChangeTrackingService
             AppliedAtUtc  = DateTime.UtcNow,
         });
 
+    public async Task RecordRegistryChangeIfFirstAsync(
+        string moduleId, string moduleName,
+        string keyPath, string? valueName,
+        string? originalValue, string? newValue,
+        string? valueKind)
+    {
+        await _writeLock.WaitAsync().ConfigureAwait(false);
+        try
+        {
+            await using var db = await _factory.CreateDbContextAsync().ConfigureAwait(false);
+            var exists = await db.ModuleChanges.AnyAsync(c =>
+                !c.IsReverted &&
+                c.ModuleId == moduleId &&
+                c.ChangeType == ChangeType.RegistryValue &&
+                c.Target == keyPath &&
+                c.SubTarget == valueName).ConfigureAwait(false);
+            if (exists) return;
+
+            db.ModuleChanges.Add(new ModuleChangeRecord
+            {
+                ModuleId      = moduleId,
+                ModuleName    = moduleName,
+                ChangeType    = ChangeType.RegistryValue,
+                Target        = keyPath,
+                SubTarget     = valueName,
+                OriginalValue = originalValue,
+                NewValue      = newValue,
+                ValueKind     = valueKind,
+                AppliedAtUtc  = DateTime.UtcNow,
+            });
+            await db.SaveChangesAsync().ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo registrar el cambio de registro {Key}\\{Value}", keyPath, valueName);
+        }
+        finally
+        {
+            _writeLock.Release();
+        }
+    }
+
+    public async Task RecordServiceChangeIfFirstAsync(
+        string moduleId, string moduleName,
+        string serviceName,
+        string? originalStartType, string? newStartType)
+    {
+        await _writeLock.WaitAsync().ConfigureAwait(false);
+        try
+        {
+            await using var db = await _factory.CreateDbContextAsync().ConfigureAwait(false);
+            var exists = await db.ModuleChanges.AnyAsync(c =>
+                !c.IsReverted &&
+                c.ModuleId == moduleId &&
+                c.ChangeType == ChangeType.ServiceStartup &&
+                c.Target == serviceName).ConfigureAwait(false);
+            if (exists) return;
+
+            db.ModuleChanges.Add(new ModuleChangeRecord
+            {
+                ModuleId      = moduleId,
+                ModuleName    = moduleName,
+                ChangeType    = ChangeType.ServiceStartup,
+                Target        = serviceName,
+                OriginalValue = originalStartType,
+                NewValue      = newStartType,
+                AppliedAtUtc  = DateTime.UtcNow,
+            });
+            await db.SaveChangesAsync().ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo registrar el cambio de servicio {Service}", serviceName);
+        }
+        finally
+        {
+            _writeLock.Release();
+        }
+    }
+
     private async Task<int> RecordAsync(ModuleChangeRecord record)
     {
         await _writeLock.WaitAsync().ConfigureAwait(false);

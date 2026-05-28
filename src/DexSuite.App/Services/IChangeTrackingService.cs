@@ -41,6 +41,27 @@ public interface IChangeTrackingService
         string taskPath,
         string? originalEnabled, string? newEnabled);
 
+    /// <summary>
+    /// Registra un cambio de registro SOLO si aún no existe un registro pendiente
+    /// para (moduleId, keyPath, valueName). Garantiza que el valor original
+    /// capturado es el de la PRIMERA aplicación, no el ya modificado por DexSuite
+    /// en ejecuciones posteriores. Idempotente.
+    /// </summary>
+    Task RecordRegistryChangeIfFirstAsync(
+        string moduleId, string moduleName,
+        string keyPath, string? valueName,
+        string? originalValue, string? newValue,
+        string? valueKind);
+
+    /// <summary>
+    /// Como <see cref="RecordRegistryChangeIfFirstAsync"/> pero para el tipo de
+    /// inicio de un servicio. Captura el StartMode original una sola vez.
+    /// </summary>
+    Task RecordServiceChangeIfFirstAsync(
+        string moduleId, string moduleName,
+        string serviceName,
+        string? originalStartType, string? newStartType);
+
     /// <summary>Devuelve todos los cambios no revertidos (más recientes primero).</summary>
     Task<IReadOnlyList<ModuleChangeRecord>> GetPendingChangesAsync();
 

@@ -1220,6 +1220,7 @@ public partial class MainViewModel : ObservableObject
                 T(ok ? "Log.Event.RevertOk" : "Log.Event.RevertFailed",
                   record.ModuleName, record.Target));
             await RefreshChangesAsync();
+            await SyncAppliedStateAfterRevertAsync();
         }
         finally
         {
@@ -1250,6 +1251,7 @@ public partial class MainViewModel : ObservableObject
                 T("Log.Event.RevertAllDone", result.Reverted, result.Failed, result.Total));
             StatusMessage = T("Status.RevertDone", result.Reverted, result.Total);
             await RefreshChangesAsync();
+            await SyncAppliedStateAfterRevertAsync();
         }
         finally
         {
@@ -1621,6 +1623,47 @@ public partial class MainViewModel : ObservableObject
         catch (Exception ex)
         {
             _logger.LogWarning(ex, "No se pudo hidratar el estado aplicado de los módulos");
+        }
+    }
+
+    /// <summary>
+    /// Tras revertir, recalcula qué módulos siguen "aplicados". Un módulo deja de
+    /// estar aplicado cuando TODOS sus cambios registrados han sido revertidos.
+    /// Los módulos de limpieza (sin cambios registrados) no se tocan.
+    /// </summary>
+    private async Task SyncAppliedStateAfterRevertAsync()
+    {
+        try
+        {
+            var all = await _changes.GetAllChangesAsync().ConfigureAwait(false);
+
+            // moduleId(int) → tiene algún cambio aún pendiente
+            var stillPending = new HashSet<int>();
+            var everTracked  = new HashSet<int>();
+            foreach (var c in all)
+            {
+                if (!int.TryParse(c.ModuleId, out var mid)) continue;
+                everTracked.Add(mid);
+                if (!c.IsReverted) stillPending.Add(mid);
+            }
+
+            // Módulos cuyos cambios ya están todos revertidos → ya no aplicados.
+            var noLongerApplied = everTracked.Where(id => !stillPending.Contains(id)).ToList();
+            if (noLongerApplied.Count == 0) return;
+
+            foreach (var id in noLongerApplied)
+                await _moduleState.SetAppliedAsync(id, false).ConfigureAwait(false);
+
+            var set = new HashSet<int>(noLongerApplied);
+            Application.Current?.Dispatcher.BeginInvoke(() =>
+            {
+                foreach (var m in Modules)
+                    if (set.Contains(m.Id)) m.IsApplied = false;
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo sincronizar el estado aplicado tras revertir");
         }
     }
 

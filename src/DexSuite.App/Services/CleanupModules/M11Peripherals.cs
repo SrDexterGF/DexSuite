@@ -13,7 +13,10 @@ namespace DexSuite.App.Services.CleanupModules;
 [SupportedOSPlatform("windows")]
 public sealed class M11Peripherals : ModuleExecutorBase
 {
+    public M11Peripherals(IChangeTrackingService tracking) : base(tracking) { }
+
     public override int ModuleId => 11;
+    protected override string ModuleName => "Ratón, Teclado y Monitores";
 
     // Curvas binarias del ratón — copiadas para resultado idéntico al original.
     private static readonly byte[] SmoothMouseXCurve =
@@ -40,20 +43,20 @@ public sealed class M11Peripherals : ModuleExecutorBase
         yield return Header("Ratón, Teclado y Monitores");
 
         yield return Step("Desactivando aceleración del ratón");
-        SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseSpeed", "0");
-        SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseThreshold1", "0");
-        SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseThreshold2", "0");
+        TrackedSetString(@"HKCU\Control Panel\Mouse", "MouseSpeed", "0");
+        TrackedSetString(@"HKCU\Control Panel\Mouse", "MouseThreshold1", "0");
+        TrackedSetString(@"HKCU\Control Panel\Mouse", "MouseThreshold2", "0");
         yield return Ok("Aceleración del ratón desactivada");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Doble clic más rápido (200 ms)");
-        SetRegistryString(@"HKCU\Control Panel\Mouse", "DoubleClickSpeed", "200");
+        TrackedSetString(@"HKCU\Control Panel\Mouse", "DoubleClickSpeed", "200");
         yield return Ok("Doble clic: 200 ms");
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Teclado: retardo mínimo y velocidad máxima");
-        SetRegistryString(@"HKCU\Control Panel\Keyboard", "KeyboardDelay", "0");
-        SetRegistryString(@"HKCU\Control Panel\Keyboard", "KeyboardSpeed", "31");
+        TrackedSetString(@"HKCU\Control Panel\Keyboard", "KeyboardDelay", "0");
+        TrackedSetString(@"HKCU\Control Panel\Keyboard", "KeyboardSpeed", "31");
         yield return Ok("Teclado configurado: retardo 0 / velocidad 31");
 
         if (ct.IsCancellationRequested) yield break;
@@ -105,9 +108,9 @@ public sealed class M11Peripherals : ModuleExecutorBase
 
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Curva del puntero lineal (movimiento 1:1)");
-        SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseSensitivity", "10");
-        SetRegistryBinary(@"HKCU\Control Panel\Mouse", "SmoothMouseXCurve", SmoothMouseXCurve);
-        SetRegistryBinary(@"HKCU\Control Panel\Mouse", "SmoothMouseYCurve", SmoothMouseYCurve);
+        TrackedSetString(@"HKCU\Control Panel\Mouse", "MouseSensitivity", "10");
+        TrackedSetBinary(@"HKCU\Control Panel\Mouse", "SmoothMouseXCurve", SmoothMouseXCurve);
+        TrackedSetBinary(@"HKCU\Control Panel\Mouse", "SmoothMouseYCurve", SmoothMouseYCurve);
         yield return Ok("Curva del puntero lineal aplicada (sensibilidad 10)");
 
         yield return Done("M11 completado");
