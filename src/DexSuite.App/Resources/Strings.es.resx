@@ -1001,6 +1001,21 @@ La interfaz se actualiza al instante.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Minimizar a la bandeja del sistema</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Limpiar ahora</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Elimina carpetas temporales de actualización que el instalador deja en AppData.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>No hay rastros que limpiar.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Eliminadas {0} carpetas ({1} liberados).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Limpiar rastros de DexSuite</value>
+  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Muestra un aviso de Windows en el Centro de Actividades cuando termina la optimización.</value>
   </data>

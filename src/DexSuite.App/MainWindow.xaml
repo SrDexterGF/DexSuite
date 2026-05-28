@@ -2758,6 +2758,35 @@
                                 </StackPanel>
                             </Border>
 
+                            <!-- Card: Mantenimiento de la app -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                        <ui:TextBlock Text="{loc:T Key=Settings.SelfCleanup.Title}"
+                                                      FontTypography="BodyStrong"/>
+                                        <ui:TextBlock Text="{loc:T Key=Settings.SelfCleanup.Desc}"
+                                                      Opacity="0.55"
+                                                      FontTypography="Caption"
+                                                      TextWrapping="Wrap"
+                                                      Margin="0,2,16,0"/>
+                                    </StackPanel>
+                                    <ui:Button Grid.Column="1"
+                                               Content="{loc:T Key=Settings.SelfCleanup.Button}"
+                                               Icon="{ui:SymbolIcon Symbol=Broom24}"
+                                               Appearance="Secondary"
+                                               Command="{Binding CleanAppDataCommand}"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
                             <!-- Card: Punto de restauración del sistema -->
                             <Border Padding="20,18" CornerRadius="10"
                                     Background="{DynamicResource ControlFillColorDefaultBrush}"

@@ -220,6 +220,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<ISecurityCheckService, SecurityCheckService>();
         services.AddSingleton<IChangeTrackingService, ChangeTrackingService>();
         services.AddSingleton<IBugReportService, BugReportService>();
+        services.AddSingleton<IAppSelfCleanupService, AppSelfCleanupService>();
 
         // Sistema de licencias
         services.AddSingleton<IHardwareIdProvider, HardwareIdProvider>();

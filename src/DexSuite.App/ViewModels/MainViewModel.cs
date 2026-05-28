@@ -29,6 +29,7 @@ public partial class MainViewModel : ObservableObject
     private readonly ISecurityCheckService _security;
     private readonly IChangeTrackingService _changes;
     private readonly IBugReportService _bugReport;
+    private readonly IAppSelfCleanupService _selfCleanup;
     private readonly ILicenseService _license;
     // Resolver de ventanas transient (GameSelectorWindow). El alternativo
     // era inyectar Func<GameSelectorWindow>; usar IServiceProvider mantiene
@@ -1301,6 +1302,39 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+    // Mantenimiento de la propia app
+
+    private static string FormatBytes(long bytes)
+    {
+        if (bytes < 1024)        return $"{bytes} B";
+        if (bytes < 1024 * 1024) return $"{bytes / 1024.0:F1} KB";
+        return $"{bytes / (1024.0 * 1024):F1} MB";
+    }
+
+    [RelayCommand]
+    private async Task CleanAppDataAsync()
+    {
+        try
+        {
+            var (folders, bytes) = await _selfCleanup.CleanAsync();
+            var msg = folders == 0
+                ? T("Settings.SelfCleanup.NothingToClean")
+                : T("Settings.SelfCleanup.Result", folders, FormatBytes(bytes));
+            await _appLog.InfoAsync(AppLogCategory.App, msg);
+            var box = new Wpf.Ui.Controls.MessageBox
+            {
+                Title           = T("Settings.SelfCleanup.Title"),
+                Content         = msg,
+                CloseButtonText = T("Common.Close"),
+            };
+            await box.ShowDialogAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al limpiar rastros de DexSuite");
+        }
+    }
+
     // Optimización de videojuegos
 
     /// <summary>
@@ -1411,6 +1445,7 @@ public partial class MainViewModel : ObservableObject
         ISecurityCheckService security,
         IChangeTrackingService changes,
         IBugReportService bugReport,
+        IAppSelfCleanupService selfCleanup,
         ILicenseService license,
         ILogger<MainViewModel> logger)
     {
@@ -1430,6 +1465,7 @@ public partial class MainViewModel : ObservableObject
         _security = security;
         _changes = changes;
         _bugReport = bugReport;
+        _selfCleanup = selfCleanup;
         _license = license;
         _logger = logger;
 
