@@ -361,7 +361,7 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>Mostrar notificación de Windows al terminar (futuro).</summary>
     [ObservableProperty]
-    private bool notifyOnFinish;
+    private bool notifyOnFinish = true;
 
     /// <summary>
     /// Tier activo del usuario. Solo lo escribe el ViewModel desde el evento
@@ -604,7 +604,7 @@ public partial class MainViewModel : ObservableObject
         JumpToLogOnRun = false;
         WarnBeforeNonReversible = true;
         CreateRestorePointBeforeRun = true;
-        NotifyOnFinish = false;
+        NotifyOnFinish = true;
         AutoUpdateEnabled = false;
         // UserTier NO se resetea aquí: lo controla únicamente la licencia activa.
         // Resetear configs no debe regalar Pro.

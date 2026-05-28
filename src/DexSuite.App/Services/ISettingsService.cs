@@ -36,6 +36,6 @@ public sealed class AppSettings
     public bool JumpToLogOnRun { get; set; } = false;
     public bool WarnBeforeNonReversible { get; set; } = true;
     public bool CreateRestorePointBeforeRun { get; set; } = true;
-    public bool NotifyOnFinish { get; set; }
+    public bool NotifyOnFinish { get; set; } = true;
     public bool AutoUpdateEnabled { get; set; } = false;
 }
