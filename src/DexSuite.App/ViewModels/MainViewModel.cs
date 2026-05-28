@@ -600,11 +600,12 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void ResetSettings()
     {
-        AutoSelectRecommended = true;
-        JumpToLogOnRun = true;
+        AutoSelectRecommended = false;
+        JumpToLogOnRun = false;
         WarnBeforeNonReversible = true;
         CreateRestorePointBeforeRun = true;
         NotifyOnFinish = false;
+        AutoUpdateEnabled = false;
         // UserTier NO se resetea aquí: lo controla únicamente la licencia activa.
         // Resetear configs no debe regalar Pro.
         StatusMessage = T("Status.SettingsReset");

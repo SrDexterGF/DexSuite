@@ -32,10 +32,10 @@ public sealed class AppSettings
     public string Language { get; set; } = "es";
     public string UpdateChannel { get; set; } = "Stable";
 
-    public bool AutoSelectRecommended { get; set; } = true;
-    public bool JumpToLogOnRun { get; set; } = true;
+    public bool AutoSelectRecommended { get; set; } = false;
+    public bool JumpToLogOnRun { get; set; } = false;
     public bool WarnBeforeNonReversible { get; set; } = true;
     public bool CreateRestorePointBeforeRun { get; set; } = true;
     public bool NotifyOnFinish { get; set; }
-    public bool AutoUpdateEnabled { get; set; } = true;
+    public bool AutoUpdateEnabled { get; set; } = false;
 }
