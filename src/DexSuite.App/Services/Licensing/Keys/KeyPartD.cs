@@ -4,5 +4,5 @@
 /// <remarks>Generado por DexSuite.KeyGen pubkey --update-app. No editar a mano.</remarks>
 internal static class KeyPartD
 {
-    internal const string Value = "WNTcwpzIlCmtaOVDfX2nM4v7+UeTooyzNFMyNuVUhIqza65HH9q3DAI66oXmiiAtEkiYXaDsJBOxpWu/6oV2NdPTskoQIDAQAB";
+    internal const string Value = "q/PIhUM/ffEABINrqz7P3gkJJskr6W867iuwjL4c9paFWvyn1CcuV3jWNj0/eGzQDEAILwsuAJMbBZK0rnk5f9Zzr1HQIDAQAB";
 }
