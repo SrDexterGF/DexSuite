@@ -13,7 +13,7 @@ namespace DexSuite.App.Services.CleanupModules;
 /// Configura adaptadores Ethernet (advanced properties vía registro Class),
 /// TCP global vía netsh, parámetros del stack IP vía registro, QoS = 0%,
 /// DNS Google + Cloudflare vía WMI Win32_NetworkAdapterConfiguration y vacía
-/// caches ARP/NetBIOS/DNS. Migrado del bloque RUN_16 del .bat.
+/// caches ARP/NetBIOS/DNS.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M16Ethernet : ModuleExecutorBase
@@ -29,7 +29,6 @@ public sealed class M16Ethernet : ModuleExecutorBase
     {
         yield return Header("Ethernet - Optimización Máxima");
 
-        // ── Adaptadores Ethernet ──────────────────────────────────────
         yield return Step("Detectando y configurando adaptadores Ethernet activos");
         var ethernetAdapters = NetworkInterface.GetAllNetworkInterfaces()
             .Where(i => i.NetworkInterfaceType == NetworkInterfaceType.Ethernet
@@ -44,7 +43,6 @@ public sealed class M16Ethernet : ModuleExecutorBase
         }
         yield return Ok($"NIC configurada en {ethernetAdapters.Count} adaptador(es)");
 
-        // ── TCP Global vía netsh ──────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("TCP Stack - Autotuning y configuración global");
         var netsh = Path.Combine(
@@ -61,7 +59,6 @@ public sealed class M16Ethernet : ModuleExecutorBase
         }
         else yield return Warn("netsh.exe no encontrado");
 
-        // ── Nagle off + ACK inmediato global ──────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("TCP - Nagle off y ACK inmediato en todas las interfaces");
         if (File.Exists(netsh))
@@ -80,7 +77,6 @@ public sealed class M16Ethernet : ModuleExecutorBase
         }
         yield return Ok("Nagle desactivado, ACK inmediato en todas las interfaces");
 
-        // ── Parámetros del stack IP ───────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Parámetros del stack IP");
         const string tcpipParams = @"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters";
@@ -91,21 +87,18 @@ public sealed class M16Ethernet : ModuleExecutorBase
         SetRegistryDword(tcpipParams, "MaxDupAcksForFastRetransmit", 2);
         yield return Ok("MaxUserPort=65534, TIME_WAIT=30s, MaxFreeTcbs=65536");
 
-        // ── QoS 0% ────────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("QoS - Eliminando la reserva del 20% de ancho de banda");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched", "NonBestEffortLimit", 0);
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Psched\Parameters", "NonBestEffortLimit", 0);
         yield return Ok("QoS reserva = 0%");
 
-        // ── DNS Google + Cloudflare ───────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Configurando DNS: Google primario + Cloudflare terciario");
         yield return Info("DNS 1: 8.8.8.8 (Google) / DNS 2: 8.8.4.4 (Google) / DNS 3: 1.1.1.1 (Cloudflare)");
         int dnsApplied = SetDnsOnEthernetAdapters(new[] { "8.8.8.8", "8.8.4.4", "1.1.1.1" });
         yield return Ok($"DNS configurado en {dnsApplied} adaptador(es) Ethernet");
 
-        // ── Vaciar cachés ARP/NetBIOS/DNS ─────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Vaciando cache ARP, NetBIOS y DNS");
         var arp      = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "arp.exe");

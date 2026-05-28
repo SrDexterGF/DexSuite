@@ -6,19 +6,9 @@ using Microsoft.Extensions.Logging;
 namespace DexSuite.App.Services;
 
 /// <summary>
-/// Implementación de <see cref="IIntegrityVerifier"/>.
-///
-/// Flujo (solo en Release):
-///   1. Localiza el path del .exe actual (<c>AppContext.BaseDirectory</c> + nombre).
-///   2. Lee el sibling <c>&lt;exe&gt;.integrity</c>: formato "Base64(hash).Base64(firma)".
-///   3. Verifica la firma RSA-SHA256 de los bytes del hash con la clave pública.
-///   4. Calcula SHA-256 del .exe actual y lo compara con el hash firmado.
-///
-/// Comportamiento:
-///   • Build Debug → devuelve true siempre (no bloquea el F5 desde Visual Studio).
-///   • Build Release sin clave pública embebida (placeholder) → devuelve true.
-///   • Build Release con clave pero sin .integrity → devuelve true (warning en log).
-///   • .integrity presente pero firma inválida o hash distinto → falla.
+/// Implementación de <see cref="IIntegrityVerifier"/>. Verifica la firma RSA-SHA256
+/// del ensamblado contra el archivo <c>.integrity</c> generado en el pipeline de release.
+/// En builds Debug o sin clave pública configurada, la verificación se omite.
 /// </summary>
 public sealed class IntegrityVerifier : IIntegrityVerifier
 {

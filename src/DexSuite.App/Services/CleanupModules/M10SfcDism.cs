@@ -8,8 +8,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// <summary>
 /// M10 — SFC + DISM RestoreHealth.
 /// Verificación y reparación del sistema vía Process streaming.
-/// Reutiliza el mismo patrón que <see cref="SecurityCheckService"/>.
-/// Migrado del bloque RUN_10 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M10SfcDism : ModuleExecutorBase
@@ -25,7 +23,6 @@ public sealed class M10SfcDism : ModuleExecutorBase
         var sfc  = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "sfc.exe");
         var dism = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "Dism.exe");
 
-        // SFC /scannow.
         yield return Step("SFC - Escaneando y reparando archivos del sistema");
         if (File.Exists(sfc))
         {
@@ -39,7 +36,6 @@ public sealed class M10SfcDism : ModuleExecutorBase
         }
         else yield return Warn("sfc.exe no encontrado");
 
-        // DISM /Online /Cleanup-Image /RestoreHealth.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("DISM - Reparando la imagen de Windows");
         if (File.Exists(dism))

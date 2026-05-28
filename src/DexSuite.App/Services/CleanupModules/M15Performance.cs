@@ -12,7 +12,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// hibernación off, sincronización de cuenta off, transparencia off, apps en
 /// segundo plano off, recopilación de escritura/voz off, HAGS on, servicios de
 /// diagnóstico ajustados, BCD timer fijo.
-/// Migrado del bloque RUN_15 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M15Performance : ModuleExecutorBase
@@ -24,12 +23,10 @@ public sealed class M15Performance : ModuleExecutorBase
     {
         yield return Header("Rendimiento y Latencia");
 
-        // ── Power Throttling off ──────────────────────────────────────
         yield return Step("Desactivando Power Throttling");
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling", "PowerThrottlingOff", 1);
         yield return Ok("Power Throttling desactivado");
 
-        // ── MMCSS para juegos ─────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("MMCSS - Prioridad máxima para juegos y multimedia");
         const string sysProfile = @"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile";
@@ -45,14 +42,12 @@ public sealed class M15Performance : ModuleExecutorBase
         SetRegistryString(gamesTask, "SFIO Priority", "High");
         yield return Ok("MMCSS configurado para máximo rendimiento en juegos");
 
-        // ── Game Mode on ──────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Activando Game Mode");
         SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\GameBar", "AllowAutoGameMode", 1);
         SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\GameBar", "AutoGameModeEnabled", 1);
         yield return Ok("Game Mode activado");
 
-        // ── FSE off ───────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando Full Screen Optimizations");
         SetRegistryDword(@"HKCU\System\GameConfigStore", "GameDVR_FSEBehaviorMode", 2);
@@ -61,7 +56,6 @@ public sealed class M15Performance : ModuleExecutorBase
         SetRegistryDword(@"HKCU\System\GameConfigStore", "GameDVR_EFSEFeatureFlags", 0);
         yield return Ok("Full Screen Optimizations desactivadas");
 
-        // ── Timeouts reducidos ────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Reduciendo tiempos de espera del sistema");
         SetRegistryString(@"HKCU\Control Panel\Desktop", "AutoEndTasks", "1");
@@ -72,14 +66,12 @@ public sealed class M15Performance : ModuleExecutorBase
         SetRegistryString(@"HKLM\SYSTEM\CurrentControlSet\Control", "WaitToKillServiceTimeout", "2000");
         yield return Ok("Tiempos de espera reducidos");
 
-        // ── Mantenimiento auto preservado ─────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Mantenimiento automático (activo; necesario para TRIM del SSD)");
         SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance",
             "MaintenanceDisabled", 0);
         yield return Ok("Mantenimiento automático preservado");
 
-        // ── Hibernación off ───────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando hibernación y liberando hiberfil.sys");
         var powercfg = Path.Combine(
@@ -89,7 +81,6 @@ public sealed class M15Performance : ModuleExecutorBase
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Power", "HibernateEnabled", 0);
         yield return Ok("Hibernación desactivada");
 
-        // ── Sincronización Microsoft account off ──────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando sincronización de configuración con la cuenta Microsoft");
         const string syncRoot = @"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync";
@@ -98,14 +89,12 @@ public sealed class M15Performance : ModuleExecutorBase
             SetRegistryDword($@"{syncRoot}\Groups\{grp}", "Enabled", 0);
         yield return Ok("Sincronización de cuenta desactivada");
 
-        // ── Transparencia off ─────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando efectos de transparencia");
         SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize",
             "EnableTransparency", 0);
         yield return Ok("Transparencia desactivada");
 
-        // ── Apps en background off ────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando apps en segundo plano");
         SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications",
@@ -114,7 +103,6 @@ public sealed class M15Performance : ModuleExecutorBase
             "BackgroundAppGlobalToggle", 0);
         yield return Ok("Apps en segundo plano desactivadas");
 
-        // ── Recopilación escritura/voz off ────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando recopilación de datos de escritura y voz");
         SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\Personalization\Settings", "AcceptedPrivacyPolicy", 0);
@@ -124,7 +112,6 @@ public sealed class M15Performance : ModuleExecutorBase
         SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy", "HasAccepted", 0);
         yield return Ok("Recopilación de escritura y voz desactivada");
 
-        // ── HAGS on + detección GPU ───────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("HAGS - Hardware Accelerated GPU Scheduling");
         var gpus = new List<string>();
@@ -145,7 +132,6 @@ public sealed class M15Performance : ModuleExecutorBase
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers", "HwSchMode", 2);
         yield return Ok("HAGS activado (requiere reinicio; solo GPU NVIDIA 10xx+/AMD RX5000+)");
 
-        // ── Servicios de diagnóstico ──────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando servicios de diagnóstico innecesarios");
         SetServiceStartMode("diagsvc", "Disabled");        StopService("diagsvc");
@@ -159,7 +145,6 @@ public sealed class M15Performance : ModuleExecutorBase
         SetServiceStartMode("Wecsvc", "Disabled");         StopService("Wecsvc");
         yield return Ok("Servicios de diagnóstico configurados");
 
-        // ── BCD: Dynamic Tick off, Platform Tick on ───────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("BCD: timer de hardware fijo para menos jitter");
         var bcdedit = Path.Combine(

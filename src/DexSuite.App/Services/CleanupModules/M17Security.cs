@@ -11,7 +11,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// MRT, actualización de firmas Defender + Quick Scan (vía MpCmdRun.exe), SMBv1 off,
 /// Firewall on, AutoRun/AutoPlay off, DEP AlwaysOn (bcdedit), LLMNR/NetBIOS off,
 /// PUA Protection on, RDP off, UAC nivel 2 (recomendado).
-/// Migrado del bloque RUN_17 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M17Security : ModuleExecutorBase
@@ -29,7 +28,6 @@ public sealed class M17Security : ModuleExecutorBase
             Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
             "Windows Defender", "MpCmdRun.exe");
 
-        // ── MRT ───────────────────────────────────────────────────────
         yield return Step("MRT - Malicious Software Removal Tool");
         var mrt = Path.Combine(system32, "MRT.exe");
         if (File.Exists(mrt))
@@ -39,7 +37,6 @@ public sealed class M17Security : ModuleExecutorBase
         }
         else yield return Info("MRT no encontrado, omitido");
 
-        // ── Defender: firmas + Quick Scan ─────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Windows Defender - Actualizando firmas de virus");
         if (File.Exists(defender))
@@ -63,7 +60,6 @@ public sealed class M17Security : ModuleExecutorBase
             yield return Ok("Escaneo de Defender completado");
         }
 
-        // ── SMBv1 off ─────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando SMBv1 (vector de WannaCry / EternalBlue)");
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters", "SMB1", 0);
@@ -74,7 +70,6 @@ public sealed class M17Security : ModuleExecutorBase
         }
         yield return Ok("SMBv1 desactivado");
 
-        // ── Firewall on ───────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Firewall de Windows - Activado en todos los perfiles");
         var netsh = Path.Combine(system32, "netsh.exe");
@@ -85,7 +80,6 @@ public sealed class M17Security : ModuleExecutorBase
         }
         else yield return Warn("netsh.exe no encontrado");
 
-        // ── AutoRun / AutoPlay off ────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando AutoRun y AutoPlay");
         SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoDriveTypeAutoRun", 255);
@@ -94,7 +88,6 @@ public sealed class M17Security : ModuleExecutorBase
         SetRegistryDword(@"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers", "DisableAutoplay", 1);
         yield return Ok("AutoRun y AutoPlay desactivados");
 
-        // ── DEP AlwaysOn ──────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("DEP - Data Execution Prevention en modo AlwaysOn");
         var bcdedit = Path.Combine(system32, "bcdedit.exe");
@@ -104,13 +97,11 @@ public sealed class M17Security : ModuleExecutorBase
             yield return Ok("DEP configurado en AlwaysOn (requiere reinicio)");
         }
 
-        // ── LLMNR off ─────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando LLMNR (Link-Local Multicast Name Resolution)");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient", "EnableMulticast", 0);
         yield return Ok("LLMNR desactivado");
 
-        // ── NetBIOS off ───────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando NetBIOS sobre TCP/IP en todos los adaptadores");
         try
@@ -132,13 +123,11 @@ public sealed class M17Security : ModuleExecutorBase
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Services\NetBT\Parameters", "NodeType", 2);
         yield return Ok("NetBIOS desactivado en todos los adaptadores activos");
 
-        // ── PUA Protection ────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Activando protección PUA en Windows Defender");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender", "PUAProtection", 1);
         yield return Ok("Protección PUA activada");
 
-        // ── RDP off ───────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando Remote Desktop (RDP)");
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server", "fDenyTSConnections", 1);
@@ -147,7 +136,6 @@ public sealed class M17Security : ModuleExecutorBase
             await RunProcessAsync(netsh, "advfirewall firewall set rule name=\"Remote Desktop\" new enable=no", ct);
         yield return Ok("RDP desactivado. Reactivarlo en Configuración si se necesita.");
 
-        // ── UAC nivel 2 ───────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("UAC - Nivel recomendado (aviso solo para apps externas)");
         SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "EnableLUA", 1);

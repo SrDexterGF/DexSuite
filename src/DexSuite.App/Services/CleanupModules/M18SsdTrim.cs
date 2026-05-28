@@ -11,7 +11,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// fsutil DisableDeleteNotify=0 para NTFS y ReFS, detecta SSDs vía WMI
 /// (MSFT_PhysicalDisk + MSFT_StorageReliabilityCounter en root\Microsoft\Windows\Storage),
 /// lanza TRIM con defrag.exe X: /L /O por cada SSD y reporta temperatura y desgaste.
-/// Migrado del bloque RUN_18 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M18SsdTrim : ModuleExecutorBase
@@ -27,7 +26,6 @@ public sealed class M18SsdTrim : ModuleExecutorBase
         var fsutil   = Path.Combine(system32, "fsutil.exe");
         var defrag   = Path.Combine(system32, "defrag.exe");
 
-        // ── Activar TRIM a nivel sistema ──────────────────────────────
         yield return Step("Asegurando que TRIM está activado a nivel sistema");
         if (File.Exists(fsutil))
         {
@@ -39,7 +37,6 @@ public sealed class M18SsdTrim : ModuleExecutorBase
 
         yield return Info("El TRIM puede tardar entre 10 y 60 segundos por SSD.");
 
-        // ── Detectar SSDs y aplicar TRIM ──────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Detectando SSDs, aplicando TRIM y leyendo salud SMART");
 

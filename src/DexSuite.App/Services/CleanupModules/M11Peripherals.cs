@@ -9,14 +9,13 @@ namespace DexSuite.App.Services.CleanupModules;
 /// M11 — Ratón, Teclado y Monitores.
 /// Aceleración de ratón off, curva del puntero lineal (REG_BINARY),
 /// doble clic rápido, retardo de teclado mínimo y detección de Hz máximos.
-/// Migrado del bloque RUN_11 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M11Peripherals : ModuleExecutorBase
 {
     public override int ModuleId => 11;
 
-    // Curvas binarias del ratón — copiadas tal cual del .bat para resultado idéntico.
+    // Curvas binarias del ratón — copiadas para resultado idéntico al original.
     private static readonly byte[] SmoothMouseXCurve =
     {
         0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
@@ -40,27 +39,23 @@ public sealed class M11Peripherals : ModuleExecutorBase
     {
         yield return Header("Ratón, Teclado y Monitores");
 
-        // Aceleración del ratón: off.
         yield return Step("Desactivando aceleración del ratón");
         SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseSpeed", "0");
         SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseThreshold1", "0");
         SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseThreshold2", "0");
         yield return Ok("Aceleración del ratón desactivada");
 
-        // Doble clic 200 ms.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Doble clic más rápido (200 ms)");
         SetRegistryString(@"HKCU\Control Panel\Mouse", "DoubleClickSpeed", "200");
         yield return Ok("Doble clic: 200 ms");
 
-        // Teclado: retardo 0 / velocidad 31.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Teclado: retardo mínimo y velocidad máxima");
         SetRegistryString(@"HKCU\Control Panel\Keyboard", "KeyboardDelay", "0");
         SetRegistryString(@"HKCU\Control Panel\Keyboard", "KeyboardSpeed", "31");
         yield return Ok("Teclado configurado: retardo 0 / velocidad 31");
 
-        // Detección de Hz por monitor vía WMI.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Detectando Hz máximos de cada monitor");
         var monitorReports = new List<string>();
@@ -103,13 +98,11 @@ public sealed class M11Peripherals : ModuleExecutorBase
         yield return Info("Si no estás al máximo: Configuración → Pantalla → Frecuencia de actualización");
         yield return Ok("Detección de Hz completada");
 
-        // Aplicar cambios del ratón en caliente.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Aplicando cambios del ratón sin reiniciar");
         ApplyMouseSettingsLive();
         yield return Ok("Cambios de ratón aplicados en caliente");
 
-        // Curva del puntero lineal (movimiento 1:1).
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Curva del puntero lineal (movimiento 1:1)");
         SetRegistryString(@"HKCU\Control Panel\Mouse", "MouseSensitivity", "10");

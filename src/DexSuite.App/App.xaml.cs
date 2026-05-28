@@ -49,10 +49,7 @@ public partial class App : System.Windows.Application
             .ConfigureServices((_, services) => ConfigureServices(services))
             .Build();
 
-        // CAPA 2 — Integridad del ejecutable. Antes de cualquier UI ni licencia.
-        // Si la build de release ha sido modificada, abortamos con un mensaje.
-        // En modo dev (sin clave pública configurada) IIntegrityVerifier devuelve
-        // siempre true para no estorbar al desarrollo.
+        // Verificar integridad antes de mostrar UI.
         try
         {
             var integrity = _host.Services.GetRequiredService<IIntegrityVerifier>();
@@ -140,7 +137,7 @@ public partial class App : System.Windows.Application
     }
 
     /// <summary>
-    /// Crea de forma idempotente la tabla ModuleChanges (F5.5). Usuarios con BD
+    /// Crea de forma idempotente la tabla ModuleChanges. Usuarios con BD
     /// previa no la tienen porque EnsureCreated solo crea esquema si la BD no existía.
     /// Mantenemos la migración manual aquí en lugar de añadir EF Migrations
     /// para evitar el overhead hasta que sea estrictamente necesario.
@@ -172,7 +169,7 @@ public partial class App : System.Windows.Application
     }
 
     /// <summary>
-    /// Crea de forma idempotente la tabla Licenses (F7 — sistema de licencias).
+    /// Crea de forma idempotente la tabla Licenses.
     /// Solo se mantiene una fila a la vez; LicenseService borra y reinserta al
     /// activar una licencia nueva.
     /// </summary>
@@ -224,7 +221,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IChangeTrackingService, ChangeTrackingService>();
         services.AddSingleton<IBugReportService, BugReportService>();
 
-        // F7 — Sistema de licencias (3 capas)
+        // Sistema de licencias
         services.AddSingleton<IHardwareIdProvider, HardwareIdProvider>();
         services.AddSingleton<IIntegrityVerifier, IntegrityVerifier>();
         services.AddSingleton<ILicenseService, LicenseService>();
@@ -232,9 +229,8 @@ public partial class App : System.Windows.Application
         // como BackgroundService para que el host lo arranque y pare con la app.
         services.AddHostedService<LicenseWatchdog>();
 
-        // Executors nativos de los 19 módulos. Cada uno migra una sección del .bat
-        // legacy y se registra como IModuleExecutor para que NativeModuleRunner
-        // los descubra y orqueste en orden ascendente de ModuleId.
+        // Executors nativos de los 19 módulos, registrados como IModuleExecutor
+        // para que NativeModuleRunner los descubra en orden ascendente de ModuleId.
         services.AddSingleton<IModuleExecutor, M01Prefetch>();
         services.AddSingleton<IModuleExecutor, M02SystemLogs>();
         services.AddSingleton<IModuleExecutor, M03TempAndRecycle>();

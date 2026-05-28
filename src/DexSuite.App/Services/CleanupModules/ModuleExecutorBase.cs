@@ -24,7 +24,7 @@ public abstract class ModuleExecutorBase : IModuleExecutor
     public abstract int ModuleId { get; }
     public abstract IAsyncEnumerable<ModuleProgress> ExecuteAsync(CancellationToken ct = default);
 
-    // ── Atajos de progreso ───────────────────────────────────────────────
+    // Atajos de progreso
     protected ModuleProgress Header(string msg)    => ModuleProgress.Header(ModuleId, msg);
     protected ModuleProgress Step(string msg)      => ModuleProgress.Step(ModuleId, msg);
     protected ModuleProgress Ok(string msg)        => ModuleProgress.Ok(ModuleId, msg);
@@ -34,14 +34,28 @@ public abstract class ModuleExecutorBase : IModuleExecutor
     protected ModuleProgress Heartbeat(string msg) => ModuleProgress.Heartbeat(ModuleId, msg);
     protected ModuleProgress Done(string msg)      => ModuleProgress.Done(ModuleId, msg);
 
-    // ════════════════════════════════════════════════════════════════════
-    //  Filesystem
-    // ════════════════════════════════════════════════════════════════════
+    // Filesystem
 
     /// <summary>
-    /// Borra todo el contenido de un directorio (archivos + subdirs).
-    /// Equivalente a la subrutina :purge del .bat — silencia handles bloqueados.
+    /// Borra un único archivo quitando el atributo ReadOnly si hace falta.
+    /// Devuelve los bytes liberados, o 0 si el archivo no existe o está bloqueado.
     /// </summary>
+    private static long DeleteFileSafe(string path)
+    {
+        try
+        {
+            var fi = new FileInfo(path);
+            if (!fi.Exists) return 0;
+            var size = fi.Length;
+            if ((fi.Attributes & FileAttributes.ReadOnly) != 0)
+                fi.Attributes &= ~FileAttributes.ReadOnly;
+            fi.Delete();
+            return size;
+        }
+        catch { return 0; }
+    }
+
+    /// <summary>Borra todo el contenido de un directorio (archivos + subdirs).</summary>
     protected static (int Files, long Bytes) PurgeDirectory(string path, CancellationToken ct = default)
     {
         if (!Directory.Exists(path)) return (0, 0);
@@ -54,18 +68,8 @@ public abstract class ModuleExecutorBase : IModuleExecutor
             foreach (var f in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories))
             {
                 if (ct.IsCancellationRequested) break;
-                try
-                {
-                    var fi = new FileInfo(f);
-                    var size = fi.Length;
-                    // Quita el atributo readonly antes de borrar.
-                    if ((fi.Attributes & FileAttributes.ReadOnly) != 0)
-                        fi.Attributes &= ~FileAttributes.ReadOnly;
-                    fi.Delete();
-                    bytes += size;
-                    files++;
-                }
-                catch { /* bloqueado / permiso denegado */ }
+                var freed = DeleteFileSafe(f);
+                if (freed > 0) { bytes += freed; files++; }
             }
         }
         catch { /* enumeración fallida; sigue */ }
@@ -85,9 +89,7 @@ public abstract class ModuleExecutorBase : IModuleExecutor
         return (files, bytes);
     }
 
-    /// <summary>
-    /// Borra archivos que casen con un patrón (ej. "*.log") dentro de un directorio.
-    /// </summary>
+    /// <summary>Borra archivos que casen con un patrón (ej. "*.log") dentro de un directorio.</summary>
     protected static (int Files, long Bytes) PurgePattern(
         string dir,
         string pattern,
@@ -105,17 +107,8 @@ public abstract class ModuleExecutorBase : IModuleExecutor
             foreach (var f in Directory.EnumerateFiles(dir, pattern, opts))
             {
                 if (ct.IsCancellationRequested) break;
-                try
-                {
-                    var fi = new FileInfo(f);
-                    var size = fi.Length;
-                    if ((fi.Attributes & FileAttributes.ReadOnly) != 0)
-                        fi.Attributes &= ~FileAttributes.ReadOnly;
-                    fi.Delete();
-                    bytes += size;
-                    files++;
-                }
-                catch { /* bloqueado */ }
+                var freed = DeleteFileSafe(f);
+                if (freed > 0) { bytes += freed; files++; }
             }
         }
         catch { /* enumeración fallida */ }
@@ -124,20 +117,7 @@ public abstract class ModuleExecutorBase : IModuleExecutor
     }
 
     /// <summary>Borra un único archivo si existe. Devuelve los bytes liberados.</summary>
-    protected static long PurgeFile(string path)
-    {
-        if (!File.Exists(path)) return 0;
-        try
-        {
-            var fi = new FileInfo(path);
-            var size = fi.Length;
-            if ((fi.Attributes & FileAttributes.ReadOnly) != 0)
-                fi.Attributes &= ~FileAttributes.ReadOnly;
-            fi.Delete();
-            return size;
-        }
-        catch { return 0; }
-    }
+    protected static long PurgeFile(string path) => DeleteFileSafe(path);
 
     /// <summary>
     /// Formatea bytes con sufijo legible (KB/MB/GB).
@@ -150,9 +130,7 @@ public abstract class ModuleExecutorBase : IModuleExecutor
         return $"{bytes / 1_073_741_824.0:F2} GB";
     }
 
-    // ════════════════════════════════════════════════════════════════════
-    //  Servicios (vía WMI Win32_Service — sin paquete adicional)
-    // ════════════════════════════════════════════════════════════════════
+    // Servicios (vía WMI Win32_Service)
 
     /// <summary>
     /// Para un servicio Windows. Devuelve true si el servicio existe y queda detenido
@@ -225,9 +203,7 @@ public abstract class ModuleExecutorBase : IModuleExecutor
         return killed;
     }
 
-    // ════════════════════════════════════════════════════════════════════
-    //  Registro
-    // ════════════════════════════════════════════════════════════════════
+    // Registro
 
     /// <summary>Resuelve hive desde un path tipo "HKLM\SOFTWARE\Foo".</summary>
     private static (RegistryKey Root, string SubPath) SplitHive(string fullPath)
@@ -304,9 +280,7 @@ public abstract class ModuleExecutorBase : IModuleExecutor
             yield return name;
     }
 
-    // ════════════════════════════════════════════════════════════════════
-    //  Process streaming
-    // ════════════════════════════════════════════════════════════════════
+    // Process streaming
 
     /// <summary>
     /// Lanza un proceso, redirige stdout/stderr y devuelve cada línea en orden.
@@ -403,9 +377,7 @@ public abstract class ModuleExecutorBase : IModuleExecutor
         catch { return -1; }
     }
 
-    // ════════════════════════════════════════════════════════════════════
-    //  P/Invoke: SystemParametersInfo para aplicar cambios de ratón en caliente
-    // ════════════════════════════════════════════════════════════════════
+    // P/Invoke: SystemParametersInfo
 
     [DllImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
@@ -417,8 +389,8 @@ public abstract class ModuleExecutorBase : IModuleExecutor
     private const uint SPIF_SENDCHANGE       = 0x02;
 
     /// <summary>
-    /// Vuelve a leer la configuración del ratón desde el registro y la aplica sin
-    /// necesidad de cerrar sesión. Equivalente al [NM]::SystemParametersInfo del .bat.
+    /// Vuelve a leer la configuración del ratón desde el registro y la aplica
+    /// sin necesidad de cerrar sesión.
     /// </summary>
     protected static void ApplyMouseSettingsLive()
     {

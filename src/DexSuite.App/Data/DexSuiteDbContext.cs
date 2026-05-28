@@ -7,7 +7,7 @@ namespace DexSuite.App.Data;
 /// DbContext de DexSuite. Aloja:
 ///  - Historial interno (<see cref="LogEntry"/>).
 ///  - Registro de cambios por módulo (<see cref="ModuleChangeRecord"/>),
-///    base para la función "Revertir cambios" (F5.5).
+///    base para la función "Revertir cambios".
 ///  - Licencia activa del equipo (<see cref="LicenseEntity"/>) — solo se
 ///    guarda una fila a la vez, persistida por <c>LicenseService</c>.
 /// </summary>

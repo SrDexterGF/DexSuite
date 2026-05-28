@@ -7,9 +7,8 @@ namespace DexSuite.App.Services.CleanupModules;
 
 /// <summary>
 /// M1 — Prefetch, Cache y D3DSCache.
-/// Limpia carpetas Prefetch (arranque), Windows\Temp, Temp del usuario,
+/// Limpia carpetas Prefetch, Windows\Temp, Temp del usuario,
 /// Thumbnail / Icon Cache y D3DSCache (DirectX shader cache).
-/// Migrado fielmente del bloque RUN_1 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M01Prefetch : ModuleExecutorBase
@@ -23,14 +22,12 @@ public sealed class M01Prefetch : ModuleExecutorBase
         long totalBytes = 0;
         int  totalFiles = 0;
 
-        // Prefetch — acumula archivos de programas ya desinstalados.
         yield return Step("Prefetch");
         var (f, b) = PurgeDirectory(Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Prefetch"), ct);
         totalFiles += f; totalBytes += b;
         yield return Ok($"Prefetch limpiado ({f} archivos, {FormatBytes(b)})");
 
-        // Windows Temp — instaladores a medias y basura del sistema.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Windows Temp");
         (f, b) = PurgeDirectory(Path.Combine(
@@ -60,7 +57,6 @@ public sealed class M01Prefetch : ModuleExecutorBase
         }
         yield return Ok($"Temporales del usuario limpiadas ({FormatBytes(totalBytes)} total acumulado)");
 
-        // Thumbnail / Icon cache — se regenera solo.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Thumbnail cache e Icon Cache");
         var explorerDir = Path.Combine(localAppData, "Microsoft", "Windows", "Explorer");
@@ -72,7 +68,6 @@ public sealed class M01Prefetch : ModuleExecutorBase
         totalBytes += tb + icb + iconDbBytes;
         yield return Ok($"Thumbnail e Icon Cache borrados ({tf + icf} archivos)");
 
-        // D3DSCache — DirectX shader cache, se regenera al abrir el juego.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("DirectX Shader Cache (D3DSCache)");
         (f, b) = PurgeDirectory(Path.Combine(localAppData, "D3DSCache"), ct);

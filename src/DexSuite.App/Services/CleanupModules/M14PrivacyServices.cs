@@ -11,7 +11,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// Desactiva apps sugeridas/silenciosas, ubicación, Widgets (AppX WebExperienceHost),
 /// WPBT, servicios remotos innecesarios, ajusta SvcHostSplitThresholdInKB a la RAM
 /// instalada, desactiva telemetría de PS7 y atajos de accesibilidad molestos.
-/// Migrado del bloque RUN_14 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M14PrivacyServices : ModuleExecutorBase
@@ -23,7 +22,6 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
     {
         yield return Header("Privacidad y Servicios");
 
-        // ── Apps sugeridas y silenciosas ──────────────────────────────
         yield return Step("Desactivando instalación silenciosa de apps sugeridas");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent", "DisableWindowsConsumerFeatures", 1);
         SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SilentInstalledAppsEnabled", 0);
@@ -33,7 +31,6 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
         SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-353696Enabled", 0);
         yield return Ok("Instalación silenciosa de apps desactivada");
 
-        // ── Ubicación ─────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando rastreo de ubicación");
         SetRegistryString(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location", "Value", "Deny");
@@ -41,7 +38,6 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocationScripting", 1);
         yield return Ok("Ubicación desactivada");
 
-        // ── Widgets (registro + AppX WebExperienceHost) ───────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Quitando los Widgets de la barra de tareas");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Dsh", "AllowNewsAndInterests", 0);
@@ -55,20 +51,17 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
             ? Ok($"Widgets eliminados ({removed} paquete(s) AppX)")
             : Ok("Widgets desactivados por registro (no había AppX que retirar)");
 
-        // ── Store en buscador / Open With ────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Quitando resultados de la Store en el buscador");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer", "NoUseStoreOpenWith", 1);
         SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Start_TrackProgs", 0);
         yield return Ok("Resultados de Store en búsqueda desactivados");
 
-        // ── WPBT ──────────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando WPBT (reinstalación de bloatware por BIOS)");
         SetRegistryDword(@"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager", "DisableWpbtExecution", 1);
         yield return Ok("WPBT desactivado");
 
-        // ── Servicios innecesarios ────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando servicios innecesarios");
         SetServiceStartMode("MapsBroker", "Manual");     StopService("MapsBroker");
@@ -79,7 +72,6 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
         SetServiceStartMode("ssh-agent",      "Disabled"); StopService("ssh-agent");
         yield return Ok("Servicios innecesarios desactivados");
 
-        // ── SvcHost ajustado a RAM ────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Ajustando SvcHost según la RAM instalada");
         long totalRamBytes = 0;
@@ -99,7 +91,6 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
         }
         else yield return Warn($"No se pudo leer la RAM: {ramErr}");
 
-        // ── Telemetría PowerShell 7 ───────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando telemetría de PowerShell 7 (si está instalado)");
         var ps7 = Path.Combine(
@@ -120,7 +111,6 @@ public sealed class M14PrivacyServices : ModuleExecutorBase
         }
         else yield return Info("PowerShell 7 no instalado, omitido");
 
-        // ── Sticky / Toggle / Filter Keys ─────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando Sticky Keys y atajos de accesibilidad molestos");
         SetRegistryString(@"HKCU\Control Panel\Accessibility\StickyKeys",        "Flags", "506");

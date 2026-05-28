@@ -82,7 +82,7 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private string statusMessage = string.Empty;
 
-    // ---- Helper i18n -----------------------------------------------------
+    // Helper i18n
     // T() = "translate", abreviado para no inflar las asignaciones de StatusMessage.
 
     /// <summary>Traduce una clave i18n al idioma activo.</summary>
@@ -92,7 +92,7 @@ public partial class MainViewModel : ObservableObject
     private string T(string key, params object?[] args)
         => string.Format(_loc.Get(key), args);
 
-    // ---- Navegación entre secciones (sidebar) ----------------------------
+    // Navegación entre secciones (sidebar)
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsHomeView))]
@@ -129,7 +129,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Especificaciones del sistema -----------------------------------
+    // Especificaciones del sistema
 
     [ObservableProperty]
     private DexSuite.App.Models.SystemInfo? systemSpecs;
@@ -155,7 +155,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Historial interno (SQLite) -------------------------------------
+    // Historial interno (SQLite)
 
     /// <summary>Entradas del historial cargadas, más recientes primero.</summary>
     public ObservableCollection<LogEntry> AppLogEntries { get; } = new();
@@ -255,7 +255,7 @@ public partial class MainViewModel : ObservableObject
         });
     }
 
-    // ---- Búsqueda de módulos --------------------------------------------
+    // Búsqueda de módulos
 
     public ObservableCollection<ModuleItemViewModel> SearchResults { get; } = new();
 
@@ -298,7 +298,7 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void ClearSearch() => SearchText = string.Empty;
 
-    // ---- Acciones rápidas sobre la lista de módulos ----------------------
+    // Acciones rápidas sobre la lista de módulos
 
     [RelayCommand]
     private void SelectAll()
@@ -318,7 +318,7 @@ public partial class MainViewModel : ObservableObject
         foreach (var m in Modules) m.IsEnabled = m.Module.RecommendedDefault;
     }
 
-    // ---- Idioma ----------------------------------------------------------
+    // Idioma
 
     /// <summary>Idiomas disponibles en la app (10).</summary>
     public IReadOnlyList<LanguageOption> AvailableLanguages => _loc.AvailableLanguages;
@@ -335,7 +335,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Ajustes ---------------------------------------------------------
+    // Ajustes
 
     /// <summary>Si la lista de módulos arranca con los recomendados ya marcados.</summary>
     [ObservableProperty]
@@ -478,7 +478,7 @@ public partial class MainViewModel : ObservableObject
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.TierChanged", value));
     }
 
-    // ── Persistencia (todos los toggles de Ajustes llaman aquí) ───────────────
+    // Persistencia (todos los toggles de Ajustes llaman aquí)
 
     partial void OnAutoSelectRecommendedChanged(bool value)       => PersistSettings();
     partial void OnJumpToLogOnRunChanged(bool value)              => PersistSettings();
@@ -521,7 +521,7 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Carpeta donde Serilog escribe los logs (calculada al construir el VM).</summary>
     public string LogsFolder { get; }
 
-    // ── Temas (F_THEMES) ──────────────────────────────────────────────────
+    // Temas
 
     /// <summary>Items observables para el selector de temas en Ajustes.</summary>
     public ObservableCollection<ThemeItemViewModel> ThemeItems { get; } = new();
@@ -614,7 +614,7 @@ public partial class MainViewModel : ObservableObject
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.SettingsReset"));
     }
 
-    // ---- Punto de restauración ------------------------------------------
+    // Punto de restauración
 
     /// <summary>
     /// Crea un punto de restauración de Windows de forma manual (desde Ajustes).
@@ -706,7 +706,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Actualizaciones -------------------------------------------------
+    // Actualizaciones
 
     /// <summary>Versión instalada actual, reportada por Velopack (o "0.1.0" en dev).</summary>
     public string CurrentVersion => _updateService.CurrentVersion;
@@ -812,7 +812,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Test de rendimiento --------------------------------------------
+    // Test de rendimiento
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasScoreBefore))]
@@ -943,12 +943,12 @@ public partial class MainViewModel : ObservableObject
     partial void OnScoreAfterChanged(PerformanceScore? value)
         => ResetScoresCommand.NotifyCanExecuteChanged();
 
-    // ---- Limpieza rápida ------------------------------------------------
+    // Limpieza rápida
 
     [RelayCommand(CanExecute = nameof(CanQuickClean))]
     private async Task QuickCleanAsync()
     {
-        // Diálogo de confirmación (F2.6). Usamos Wpf.Ui MessageBox para mantener
+        // Diálogo de confirmación. Usamos Wpf.Ui MessageBox para mantener
         // la coherencia visual con el resto del Fluent design.
         var confirm = new Wpf.Ui.Controls.MessageBox
         {
@@ -992,7 +992,7 @@ public partial class MainViewModel : ObservableObject
 
     private bool CanQuickClean() => !IsRunning && !IsAnalyzing && !IsQuickCleaning;
 
-    // ---- Actualizar aplicaciones con winget (F5.3) ----------------------
+    // Actualizar aplicaciones con winget
 
     [RelayCommand(CanExecute = nameof(CanWingetUpgrade))]
     private async Task WingetUpgradeAsync()
@@ -1057,7 +1057,7 @@ public partial class MainViewModel : ObservableObject
 
     private bool CanWingetUpgrade() => !IsRunning && !IsAnalyzing && !IsUpdatingApps && !IsQuickCleaning;
 
-    // ---- Comprobación de seguridad (F5.4) -------------------------------
+    // Comprobación de seguridad
 
     [ObservableProperty]
     private bool isSecurityChecking;
@@ -1145,7 +1145,7 @@ public partial class MainViewModel : ObservableObject
 
     private bool CanRunSecurityCheck() => !IsRunning && !IsAnalyzing && !IsSecurityChecking;
 
-    // ---- Revertir cambios (F5.5) ----------------------------------------
+    // Revertir cambios
 
     public ObservableCollection<ModuleChangeRecord> PendingChanges { get; } = new();
 
@@ -1248,7 +1248,7 @@ public partial class MainViewModel : ObservableObject
 
     private bool CanRevert() => !IsReverting;
 
-    // ---- Reporte de bugs (F5.6) -----------------------------------------
+    // Reporte de bugs
 
     [RelayCommand]
     private async Task ReportBugAsync()
@@ -1271,7 +1271,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Optimización de videojuegos (F2.8) -----------------------------
+    // Optimización de videojuegos
 
     /// <summary>
     /// Abre la ventana modal de selección de juegos. Cada juego viene del
@@ -1295,11 +1295,11 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Diálogos previos al run --------------------------------------------
+    // Diálogos previos al run
 
     /// <summary>
     /// Pregunta al usuario si quiere crear un punto de restauración antes de
-    /// ejecutar cualquier optimización (F2.7). Esta versión SIEMPRE muestra
+    /// ejecutar cualquier optimización. Esta versión SIEMPRE muestra
     /// el diálogo — el toggle de Ajustes <see cref="CreateRestorePointBeforeRun"/>
     /// solo influye en cuál de las dos opciones está pre-seleccionada por
     /// defecto (Sí si está activado, No si está desactivado).
@@ -1358,7 +1358,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Constructor -----------------------------------------------------
+    // Constructor
 
     public MainViewModel(
         IModuleCatalog catalog,
@@ -1400,7 +1400,7 @@ public partial class MainViewModel : ObservableObject
         _license = license;
         _logger = logger;
 
-        // F7 — HWID inicial + tier real desde el servicio de licencias.
+        // HWID inicial + tier real desde el servicio de licencias.
         // Se obtiene ANTES de hidratar settings para que UserTier no quede
         // fijado al persistido (que ya no es la fuente de verdad).
         HardwareId = _license.GetHardwareId();
@@ -1545,15 +1545,7 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    // ---- Ejecutar / Cancelar --------------------------------------------
-    //
-    // Tras la migración nativa, el runner emite ModuleProgress estructurado:
-    //   Header  → marcar el módulo (por ModuleId) como Running.
-    //   Error   → acumular error; al cerrar, el módulo termina en estado Error.
-    //   Done    → cerrar el módulo (Success o Error según haya habido errores).
-    //   Resto   → solo se renderizan en el Log interno.
-    //
-    // Ya no hay parsing por regex ni resolución de módulo por nombre.
+    // Ejecutar / Cancelar
 
     /// <summary>Módulo actualmente en estado Running, null si ninguno.</summary>
     private ModuleItemViewModel? _currentRunningModule;
@@ -1664,7 +1656,7 @@ public partial class MainViewModel : ObservableObject
             return;
         }
 
-        // Diálogo previo: ¿crear punto de restauración? (F2.7)
+        // Diálogo previo: ¿crear punto de restauración?
         var rpDecision = await AskRestorePointBeforeRunAsync();
         if (rpDecision is null) return; // usuario canceló
         if (rpDecision.Value) await TryAutoRestorePointAsync(selected.Count);
@@ -1719,7 +1711,7 @@ public partial class MainViewModel : ObservableObject
 
             StatusMessage = T("Status.ExecutionDone");
             await _appLog.SuccessAsync(AppLogCategory.Run, T("Log.Event.RunFinished", selected.Count));
-            // Notificación toast al terminar (F2.5).
+            // Notificación toast al terminar.
             await TryShowFinishNotificationAsync(selected.Count, hadErrors: false);
         }
         catch (OperationCanceledException)
@@ -1776,7 +1768,7 @@ public partial class MainViewModel : ObservableObject
     private bool CanRun() => !IsRunning && !IsAnalyzing;
     private bool CanCancel() => IsRunning;
 
-    // ---- Helpers internos ------------------------------------------------
+    // Helpers internos
 
     private void FlushBuffer()
     {

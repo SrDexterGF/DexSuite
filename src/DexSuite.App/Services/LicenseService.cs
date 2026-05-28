@@ -10,22 +10,8 @@ using Microsoft.Extensions.Logging;
 namespace DexSuite.App.Services;
 
 /// <summary>
-/// Implementación de <see cref="ILicenseService"/>.
-///
-/// Formato de clave de activación:
-///     <c>BASE64URL(payloadJsonBytes) "." BASE64URL(rsaSignature)</c>
-///
-/// - El payload es <see cref="LicensePayload"/> serializado con JsonSerializerOptions
-///   por defecto (mismo formato en el dev tool y aquí — System.Text.Json es
-///   determinista para tipos planos).
-/// - La firma cubre los bytes del payload con RSA-SHA256 + PKCS#1 v1.5.
-/// - El HWID dentro del payload debe casar con <see cref="IHardwareIdProvider.GetCanonicalHardwareId"/>.
-///
-/// La verificación se ejecuta en TODOS los puntos críticos:
-///   1. <see cref="ActivateAsync"/> antes de persistir.
-///   2. <see cref="RevalidateAsync"/> en cada arranque y tick del watchdog.
-///   3. Nunca se confía en <see cref="LicenseEntity.Tier"/> almacenado: se
-///      recalcula siempre a partir del blob firmado.
+/// Implementación de <see cref="ILicenseService"/>. Gestiona activación,
+/// re-validación y desactivación de licencias RSA firmadas con HWID binding.
 /// </summary>
 public sealed class LicenseService : ILicenseService
 {
@@ -147,8 +133,6 @@ public sealed class LicenseService : ILicenseService
         }
         SetTier(ModuleTier.Free);
     }
-
-    // ── Verificación ────────────────────────────────────────────────────
 
     /// <summary>
     /// Resultado intermedio de la verificación de un blob de licencia.

@@ -97,7 +97,7 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     private ModuleStatus status = ModuleStatus.Pending;
 
     /// <summary>
-    /// Estado de ejecución del módulo durante el último run (F2.2).
+    /// Estado de ejecución del módulo durante el último run.
     /// La UI lo usa para pintar el icono (— / spinner / ✓ / ⚠) y el tooltip.
     /// </summary>
     [ObservableProperty]

@@ -7,16 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DexSuite.App.Services;
 
-/// <summary>
-/// Implementación de <see cref="IThemeService"/>.
-///
-/// Estrategia: la app arranca con un ResourceDictionary embebido en App.xaml
-/// (slot reservado al final de MergedDictionaries). Al cambiar de tema,
-/// reemplazamos ese diccionario manteniendo su posición en la lista para que
-/// los overrides sigan ganando prioridad sobre ThemesDictionary de Wpf.Ui.
-///
-/// Persistencia: se guarda en %LocalAppData%/DexSuite/theme.json.
-/// </summary>
+/// <summary>Gestiona el tema visual de la aplicación.</summary>
 public sealed class ThemeService : IThemeService
 {
     private readonly ILogger<ThemeService> _logger;

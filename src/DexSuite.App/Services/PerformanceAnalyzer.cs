@@ -8,27 +8,8 @@ using Microsoft.Win32;
 namespace DexSuite.App.Services;
 
 /// <summary>
-/// Mide el rendimiento del equipo en 8 dimensiones y devuelve un score 0-100 por cada una.
-///
-/// ESTABILIDAD (F5.6):
-///   Las métricas volátiles (CPU, GPU, Red) se miden con 3 muestras independientes
-///   espaciadas 600 ms y se usa la MEDIANA. Esto elimina picos puntuales del SO,
-///   antivirus, etc. y hace que el "Antes / Después" sea significativo.
-///
-///   CPU, GPU y Red se ejecutan en paralelo para que el tiempo total sea ≈ 2 s
-///   (el máximo de los tres) en lugar de suma de todos.
-///
-/// Categorías y pesos:
-///   1) CPU       – % CPU en uso  (mediana de 3 muestras × 600 ms)
-///   2) Memoria   – % RAM en uso  (single snapshot — muy estable)
-///   3) GPU       – % GPU en uso  (mediana de 3 muestras × 600 ms)
-///   4) Disco C   – % libre       (single snapshot — muy estable)
-///   5) Procesos  – nº procesos   (single snapshot — moderadamente estable)
-///   6) Inicio    – apps startup  (single snapshot — muy estable)
-///   7) Temp      – MB en %TEMP% (single snapshot — estable)
-///   8) Red       – RTT ping      (mediana de 3 pings)
-///
-/// Todo es lectura: no modifica nada del sistema.
+/// Mide el rendimiento del equipo en 8 dimensiones (CPU, RAM, GPU, disco, procesos,
+/// inicio, temp, red) y devuelve un score 0-100 por cada una. Solo lectura.
 /// </summary>
 public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
 {
@@ -73,7 +54,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         return new PerformanceScore(total, cats, DateTime.Now);
     }
 
-    // ── CPU (multi-muestra, mediana) ─────────────────────────────────────────
+    // CPU (multi-muestra, mediana)
 
     private static PerformanceCategoryScore MeasureCpuMultiSample(CancellationToken ct)
     {
@@ -111,7 +92,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         return new PerformanceCategoryScore("CPU", score, $"{medianUsage:0}% en uso");
     }
 
-    // ── GPU (multi-muestra, mediana) ─────────────────────────────────────────
+    // GPU (multi-muestra, mediana)
 
     private static PerformanceCategoryScore MeasureGpuMultiSample(CancellationToken ct)
     {
@@ -170,7 +151,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ── Red (multi-muestra, mediana) ─────────────────────────────────────────
+    // Red (multi-muestra, mediana)
 
     private static PerformanceCategoryScore MeasureNetworkMultiSample(CancellationToken ct)
     {
@@ -201,7 +182,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         return new PerformanceCategoryScore("Red", score, $"{medianRtt} ms hasta 1.1.1.1");
     }
 
-    // ── RAM (snapshot — muy estable) ─────────────────────────────────────────
+    // RAM (snapshot)
 
     private static PerformanceCategoryScore MeasureRam()
     {
@@ -218,7 +199,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
             $"{load}% en uso ({availGb:0.0} GB libres de {totalGb:0.0} GB)");
     }
 
-    // ── Disco (snapshot — muy estable) ───────────────────────────────────────
+    // Disco (snapshot)
 
     private static PerformanceCategoryScore MeasureDisk()
     {
@@ -248,7 +229,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ── Procesos (snapshot — moderadamente estable) ──────────────────────────
+    // Procesos (snapshot)
 
     private static PerformanceCategoryScore MeasureProcesses()
     {
@@ -268,7 +249,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ── Apps de inicio (snapshot — muy estable) ──────────────────────────────
+    // Apps de inicio (snapshot)
 
     private static PerformanceCategoryScore MeasureStartup()
     {
@@ -313,7 +294,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         return total;
     }
 
-    // ── Temp (snapshot — estable) ────────────────────────────────────────────
+    // Temp (snapshot)
 
     private static PerformanceCategoryScore MeasureTemp(CancellationToken ct)
     {
@@ -355,7 +336,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
         }
     }
 
-    // ── Helpers matemáticos ──────────────────────────────────────────────────
+    // Helpers matemáticos
 
     /// <summary>Devuelve la mediana de una lista de valores. La lista puede estar desordenada.</summary>
     private static double Median(List<double> values)
@@ -368,7 +349,7 @@ public sealed class PerformanceAnalyzer : IPerformanceAnalyzer
             : sorted[mid];
     }
 
-    // ── P/Invoke ─────────────────────────────────────────────────────────────
+    // P/Invoke
 
     [StructLayout(LayoutKind.Sequential)]
     private struct FILETIME

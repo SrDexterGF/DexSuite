@@ -9,7 +9,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// M7 — Cache de navegadores.
 /// Edge, Chrome, Firefox (todos los perfiles), Brave, Opera/Opera GX, Vivaldi.
 /// Solo carpetas de cache — perfil, contraseñas y marcadores no se tocan.
-/// Migrado del bloque RUN_7 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M07BrowserCache : ModuleExecutorBase
@@ -26,20 +25,17 @@ public sealed class M07BrowserCache : ModuleExecutorBase
         var localApp = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         var appData  = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        // Edge.
         yield return Step("Microsoft Edge");
         var (ef, eb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Microsoft", "Edge", "User Data", "Default"), ct);
         totalFiles += ef; totalBytes += eb;
         yield return Ok($"Edge limpiado ({ef} archivos, {FormatBytes(eb)})");
 
-        // Chrome.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Google Chrome");
         var (cf, cb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Google", "Chrome", "User Data", "Default"), ct);
         totalFiles += cf; totalBytes += cb;
         yield return Ok($"Chrome limpiado ({cf} archivos, {FormatBytes(cb)})");
 
-        // Firefox — múltiples perfiles.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Mozilla Firefox");
         var ffProfiles = Path.Combine(localApp, "Mozilla", "Firefox", "Profiles");
@@ -57,14 +53,12 @@ public sealed class M07BrowserCache : ModuleExecutorBase
         totalFiles += ffFiles; totalBytes += ffBytes;
         yield return Ok($"Firefox limpiado ({ffFiles} archivos, {FormatBytes(ffBytes)})");
 
-        // Brave.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Brave");
         var (bf, bb) = PurgeChromiumLikeCache(Path.Combine(localApp, "BraveSoftware", "Brave-Browser", "User Data", "Default"), ct);
         totalFiles += bf; totalBytes += bb;
         yield return Ok($"Brave limpiado ({bf} archivos, {FormatBytes(bb)})");
 
-        // Opera y Opera GX.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Opera y Opera GX");
         var (of_, ob) = PurgeDirectory(Path.Combine(appData, "Opera Software", "Opera Stable", "Cache", "Cache_Data"), ct);
@@ -72,7 +66,6 @@ public sealed class M07BrowserCache : ModuleExecutorBase
         totalFiles += of_ + og; totalBytes += ob + ogb;
         yield return Ok($"Opera / Opera GX limpiados ({of_ + og} archivos)");
 
-        // Vivaldi.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Vivaldi");
         var (vf, vb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Vivaldi", "User Data", "Default"), ct);

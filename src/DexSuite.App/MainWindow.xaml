@@ -29,17 +29,17 @@
         <conv:KeyToTranslationConverter x:Key="Loc"/>
         <conv:LocFormatMultiConverter x:Key="LocFormat"/>
 
-        <!-- Converters del historial interno (F5.4) -->
+        <!-- Converters del historial interno -->
         <conv:LogLevelToBrushConverter    x:Key="LogLevelBrush"/>
         <conv:LogLevelToTextConverter     x:Key="LogLevelText"/>
         <conv:LogCategoryToTextConverter  x:Key="LogCategoryText"/>
         <conv:UtcToLocalTimeConverter     x:Key="UtcToLocalTime"/>
 
-        <!-- Converters F5: tipo de check de seguridad + tipo de cambio revertible -->
+        <!-- Converters: tipo de check de seguridad + tipo de cambio revertible -->
         <conv:SecurityKindConverter       x:Key="SecurityKind"/>
         <conv:ChangeTypeConverter         x:Key="ChangeTypeText"/>
 
-        <!-- ===== Sidebar: nav items con profundidad, acento cian y glow ===== -->
+        <!-- Sidebar: nav items -->
         <Style x:Key="NavItemStyle" TargetType="RadioButton">
             <Setter Property="Margin" Value="8,2"/>
             <Setter Property="Padding" Value="12,11"/>
@@ -160,11 +160,7 @@
             <Setter Property="FontTypography" Value="Caption"/>
         </Style>
 
-        <!-- ===== Estilo compartido para botones de barra superior =====
-             Unifica altura, padding, margen y alineación vertical de todos
-             los botones de acción que aparecen en las cabeceras de cada
-             vista. Hereda del estilo base de ui:Button para conservar el
-             ControlTemplate y la lógica de Appearance="Secondary"/"Primary".
+        <!-- Estilo compartido para botones de barra superior.
              SIN BasedOn, los setters pisan el template y los botones pierden
              color/bordes (aparecen planos en blanco). -->
         <Style x:Key="ToolbarButton" TargetType="ui:Button" BasedOn="{StaticResource {x:Type ui:Button}}">
@@ -175,12 +171,7 @@
             <Setter Property="FontSize" Value="13"/>
         </Style>
 
-        <!-- ===== Pinceles del Sidebar =====
-             Versión simple: el sidebar usa el mismo brush que arrancaba
-             en el primer diseño (LayerOnAcrylicFillColorDefaultBrush) y un
-             borde derecho 1 px sutil. Sin banda de fade superpuesta sobre
-             el contenido (el "blanco" que se veía arriba era ese overlay).
-        -->
+        <!-- Sidebar brushes -->
         <SolidColorBrush x:Key="SidebarBorderBrush" Color="#1A00B8D9"/>
 
         <!-- Card de módulo: acción + badge de impacto + "?" con tooltip completo -->
@@ -526,7 +517,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- ================== SIDEBAR ================== -->
+            <!-- Sidebar -->
             <Border Grid.Column="0"
                     Background="{DynamicResource LayerOnAcrylicFillColorDefaultBrush}"
                     BorderBrush="{StaticResource SidebarBorderBrush}"
@@ -738,11 +729,11 @@
                 </DockPanel>
             </Border>
 
-            <!-- ================== CONTENT ================== -->
+            <!-- Contenido -->
             <Grid Grid.Column="1">
 
 
-                <!-- =========== VISTA INICIO =========== -->
+                <!-- Vista Inicio -->
                 <ScrollViewer Visibility="{Binding IsHomeView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="980" HorizontalAlignment="Center" Margin="32,28,32,24">
@@ -1141,7 +1132,7 @@
                     </Grid>
                 </ScrollViewer>
 
-                <!-- =========== VISTA MÓDULOS =========== -->
+                <!-- Vista Módulos -->
                 <Grid Visibility="{Binding IsModulesView, Converter={StaticResource BoolToVis}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1501,10 +1492,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <!-- ═══════════════════════════════════════════════ -->
-                        <!--   EXTRA PRO · Gaming  — sección visualmente    -->
-                        <!--   diferenciada del resto del plan Pro           -->
-                        <!-- ═══════════════════════════════════════════════ -->
+                        <!-- Extra Pro: Gaming -->
                         <Border Margin="0,18,0,0"
                                 CornerRadius="10"
                                 BorderThickness="1"
@@ -1598,11 +1586,7 @@
                                     </Grid>
                                 </Border>
 
-                                <!-- Acceso a la ventana modal de selección de juegos
-                                     (F2.8). Sustituye al antiguo card M20: aquí no hay
-                                     checkbox ni ejecución por lotes, solo un botón
-                                     grande que abre la ventana con la lista de juegos
-                                     del repositorio Game_Configs. -->
+                                <!-- Acceso a la ventana modal de selección de juegos -->
                                 <Border Grid.Row="1" Margin="14,10,14,14"
                                         Padding="14,12"
                                         CornerRadius="8"
@@ -1727,7 +1711,7 @@
                     </Border>
                 </Grid>
 
-                <!-- =========== VISTA REGISTRO =========== -->
+                <!-- Vista Registro -->
                 <Grid Visibility="{Binding IsLogView, Converter={StaticResource BoolToVis}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1962,7 +1946,7 @@
                     </Border>
                 </Grid>
 
-                <!-- =========== VISTA ESPECIFICACIONES =========== -->
+                <!-- Vista Especificaciones -->
                 <ScrollViewer Visibility="{Binding IsSpecsView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
@@ -2177,7 +2161,7 @@
                     </Grid>
                 </ScrollViewer>
 
-                <!-- =========== VISTA REVERTIR CAMBIOS (F5.5) =========== -->
+                <!-- Vista Revertir Cambios -->
                 <ScrollViewer Visibility="{Binding IsRestoreView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="980" HorizontalAlignment="Center" Margin="32,24,32,32">
@@ -2328,7 +2312,7 @@
                     </Grid>
                 </ScrollViewer>
 
-                <!-- =========== VISTA AJUSTES =========== -->
+                <!-- Vista Ajustes -->
                 <ScrollViewer Visibility="{Binding IsSettingsView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
@@ -2395,7 +2379,7 @@
                                 </Grid>
                             </Border>
 
-                            <!-- Tema visual (F_THEMES) — selector de paletas con candado por plan -->
+                            <!-- Tema visual — selector de paletas con candado por plan -->
                             <Border Padding="20,16" CornerRadius="10"
                                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -2517,7 +2501,7 @@
                                 </StackPanel>
                             </Border>
 
-                            <!-- F7 — Licencia (HWID + activación) -->
+                            <!-- Licencia (HWID + activación) -->
                             <Border Padding="20,16" CornerRadius="10"
                                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -2683,7 +2667,7 @@
                                 </StackPanel>
                             </Border>
 
-                            <!-- Card: Punto de restauración del sistema (F5.5) -->
+                            <!-- Card: Punto de restauración del sistema -->
                             <Border Padding="20,18" CornerRadius="10"
                                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -2757,7 +2741,7 @@
                     </Grid>
                 </ScrollViewer>
 
-                <!-- =========== VISTA ACTUALIZACIONES =========== -->
+                <!-- Vista Actualizaciones -->
                 <ScrollViewer Visibility="{Binding IsUpdatesView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="780" HorizontalAlignment="Center" Margin="32,24,32,32">
@@ -2907,7 +2891,7 @@
                     </Grid>
                 </ScrollViewer>
 
-                <!-- =========== VISTA ACERCA DE =========== -->
+                <!-- Vista Acerca De -->
                 <ScrollViewer Visibility="{Binding IsAboutView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,28,32,32">
@@ -2942,7 +2926,7 @@
                                         </Border>
                                     </StackPanel>
 
-                                    <!-- Botón "Reportar un fallo" (F5.6) — mailto pre-rellenado -->
+                                    <!-- Botón "Reportar un fallo" — mailto pre-rellenado -->
                                     <StackPanel HorizontalAlignment="Center" Margin="0,18,0,0">
                                         <ui:Button Appearance="Secondary"
                                                    Content="{loc:T Key=BugReport.Button}"

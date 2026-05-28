@@ -9,7 +9,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// <summary>
 /// M8 — Red (DNS y gpupdate).
 /// flushdns vía P/Invoke DnsFlushResolverCache, registerdns y gpupdate /force.
-/// Migrado del bloque RUN_8 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M08NetworkReset : ModuleExecutorBase
@@ -24,7 +23,6 @@ public sealed class M08NetworkReset : ModuleExecutorBase
     {
         yield return Header("Red y Directivas de Grupo");
 
-        // Vaciar cache DNS — P/Invoke directo.
         yield return Step("Vaciando cache DNS");
         bool dnsOk = false;
         try { dnsOk = DnsFlushResolverCache() != 0; }
@@ -41,14 +39,12 @@ public sealed class M08NetworkReset : ModuleExecutorBase
             yield return rc == 0 ? Ok("Cache DNS vaciada (fallback ipconfig)") : Warn("No se pudo vaciar la cache DNS");
         }
 
-        // Registrar equipo en DNS.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Registrando equipo en DNS");
         var ipconfig = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ipconfig.exe");
         var rcReg = await RunProcessAsync(ipconfig, "/registerdns", ct);
         yield return rcReg == 0 ? Ok("DNS registrado") : Warn($"ipconfig /registerdns ExitCode={rcReg}");
 
-        // gpupdate /force — sin alternativa .NET.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Forzando actualización de directivas de grupo");
         var gpupdate = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "gpupdate.exe");

@@ -8,8 +8,7 @@ namespace DexSuite.App.Services.CleanupModules;
 
 /// <summary>
 /// M3 — Temporales, Recientes y Papelera (+ Windows.old).
-/// Migrado del bloque RUN_3 del .bat. Vacía la papelera vía P/Invoke
-/// SHEmptyRecycleBin (sin diálogos, sin sonido) en vez de Clear-RecycleBin.
+/// Vacía la papelera vía P/Invoke SHEmptyRecycleBin (sin diálogos, sin sonido).
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M03TempAndRecycle : ModuleExecutorBase
@@ -52,14 +51,12 @@ public sealed class M03TempAndRecycle : ModuleExecutorBase
         }
         yield return Ok($"Temporales borradas ({totalFiles} archivos, {FormatBytes(totalBytes)})");
 
-        // Carpeta Recent — accesos directos a archivos recientes.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Historial de archivos recientes");
         var (rf, rb) = PurgeDirectory(Path.Combine(appData, "Microsoft", "Windows", "Recent"), ct);
         totalFiles += rf; totalBytes += rb;
         yield return Ok($"Historial reciente limpiado ({rf} archivos)");
 
-        // Papelera de reciclaje — todas las unidades.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Papelera de Reciclaje");
         string? recycleErr = null;

@@ -8,7 +8,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// M13 — Copilot, Cortana y Telemetría.
 /// Deshabilita Windows Copilot, Cortana, telemetría (nivel 0), DiagTrack,
 /// Timeline, AdvertisingID y CEIP — todo vía registro y WMI (servicios).
-/// Migrado del bloque RUN_13 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
@@ -20,7 +19,6 @@ public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
     {
         yield return Header("Copilot, Cortana y Telemetría");
 
-        // ── Copilot ────────────────────────────────────────────────────
         yield return Step("Desactivando Windows Copilot");
         SetRegistryDword(@"HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
@@ -28,7 +26,6 @@ public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
         SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Search",            "BingSearchEnabled", 0);
         yield return Ok("Copilot desactivado");
 
-        // ── Cortana ────────────────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando Cortana");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortana", 0);
@@ -39,7 +36,6 @@ public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
         KillProcess("Cortana.exe");
         yield return Ok("Cortana desactivada");
 
-        // ── Telemetría nivel 0 ─────────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Telemetría a nivel 0 (mínimo posible)");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection",                "AllowTelemetry", 0);
@@ -47,7 +43,6 @@ public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
         SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", "MaxTelemetryAllowed", 0);
         yield return Ok("Telemetría configurada al nivel 0");
 
-        // ── Servicios de telemetría ────────────────────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando los servicios de telemetría");
         SetServiceStartMode("DiagTrack", "Disabled"); StopService("DiagTrack");
@@ -56,7 +51,6 @@ public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
         SetServiceStartMode("WerSvc", "Disabled"); StopService("WerSvc");
         yield return Ok("Servicios de telemetría desactivados");
 
-        // ── Timeline / AdvertisingID / CEIP / WER ──────────────────────
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Desactivando Timeline, AdvertisingID y CEIP");
         SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "AITEnable", 0);

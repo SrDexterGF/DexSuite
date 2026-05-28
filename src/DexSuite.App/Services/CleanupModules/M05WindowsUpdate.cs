@@ -9,7 +9,7 @@ namespace DexSuite.App.Services.CleanupModules;
 /// M5 — Cache de Windows Update.
 /// Para los servicios de WU (wuauserv, bits, cryptsvc, UsoSvc), mata TiWorker y
 /// TrustedInstaller, vacía SoftwareDistribution\Download y vuelve a arrancar.
-/// También limpia Delivery Optimization. Migrado del bloque RUN_5 del .bat.
+/// También limpia Delivery Optimization.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M05WindowsUpdate : ModuleExecutorBase
@@ -23,7 +23,6 @@ public sealed class M05WindowsUpdate : ModuleExecutorBase
 
         var windir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
 
-        // Parar servicios y procesos relacionados con WU.
         yield return Step("Deteniendo servicios de Windows Update");
         StopService("wuauserv");
         StopService("bits");
@@ -34,14 +33,12 @@ public sealed class M05WindowsUpdate : ModuleExecutorBase
         killed += KillProcess("TrustedInstaller.exe");
         yield return Ok($"Servicios detenidos (procesos terminados: {killed})");
 
-        // Vaciar carpeta de descargas.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Borrando la carpeta de descargas de WU");
         var dl = Path.Combine(windir, "SoftwareDistribution", "Download");
         var (df, db) = PurgeDirectory(dl, ct);
         yield return Ok($"Carpeta de descargas vaciada ({df} archivos, {FormatBytes(db)})");
 
-        // Reiniciar servicios.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Reiniciando servicios de Windows Update");
         StartService("cryptsvc");
@@ -49,7 +46,6 @@ public sealed class M05WindowsUpdate : ModuleExecutorBase
         StartService("wuauserv");
         yield return Ok("Servicios reiniciados");
 
-        // Delivery Optimization: caches y logs.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Delivery Optimization Cache");
         var doCache = Path.Combine(windir, "ServiceProfiles", "NetworkService", "AppData", "Local",

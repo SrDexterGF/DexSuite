@@ -7,15 +7,8 @@ namespace DexSuite.App.Services;
 
 /// <summary>
 /// Implementación principal de <see cref="ILocalizationService"/>.
-///
-/// Carga las traducciones desde los archivos .resx embebidos en
-/// <c>Resources/Strings.resx</c> (idioma neutro = inglés) y
-/// <c>Resources/Strings.&lt;lang&gt;.resx</c> (satellite assemblies).
-///
-/// Expone una instancia singleton <see cref="Instance"/> para que la
-/// markup extension {loc:T} pueda enlazarse a ella sin pasar por DI.
-/// Aun así también se registra en el contenedor DI para inyectarlo en
-/// los ViewModels.
+/// Carga traducciones desde los .resx embebidos y expone un singleton
+/// estático para la markup extension {loc:T}.
 /// </summary>
 public sealed class LocalizationService : ILocalizationService
 {

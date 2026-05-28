@@ -8,8 +8,7 @@ namespace DexSuite.App.Services.CleanupModules;
 
 /// <summary>
 /// M4 — Limpieza profunda.
-/// Crash dumps, cola de impresión (spooler), compactación de WMI y vaciado
-/// del Visor de Eventos. Migrado del bloque RUN_4 del .bat.
+/// Crash dumps, cola de impresión (spooler), compactación de WMI y vaciado del Visor de Eventos.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M04DeepCleanup : ModuleExecutorBase
@@ -27,7 +26,6 @@ public sealed class M04DeepCleanup : ModuleExecutorBase
         var system32 = Environment.GetFolderPath(Environment.SpecialFolder.System);
         var localApp = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-        // Crash dumps y volcados de memoria.
         yield return Step("Crash dumps y volcados de memoria");
         totalBytes += PurgeFile("C:\\WIN386.SWP");
         var (mdf, mdb) = PurgeDirectory(Path.Combine(windir, "Minidump"), ct);
@@ -37,7 +35,6 @@ public sealed class M04DeepCleanup : ModuleExecutorBase
         totalBytes += mdb + cdb;
         yield return Ok($"Crash dumps eliminados ({FormatBytes(totalBytes)})");
 
-        // Cola de impresión: parar spooler → vaciar → arrancar.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Cola de impresión (spooler)");
         StopService("Spooler");
@@ -46,7 +43,6 @@ public sealed class M04DeepCleanup : ModuleExecutorBase
         totalFiles += sf; totalBytes += sb;
         yield return Ok("Spooler limpiado y reiniciado");
 
-        // WMI compact — sin equivalente .NET, usa winmgmt.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Compactando base de datos WMI");
         var winmgmt = Path.Combine(system32, "wbem", "WinMgmt.exe");
@@ -62,7 +58,6 @@ public sealed class M04DeepCleanup : ModuleExecutorBase
             yield return Warn("winmgmt no encontrado en system32\\wbem");
         }
 
-        // Visor de eventos — usar EventLogSession.GlobalSession para limpiar TODOS los logs.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Vaciando el Visor de Eventos");
         int cleared = 0;

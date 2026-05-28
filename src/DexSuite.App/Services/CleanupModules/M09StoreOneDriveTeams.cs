@@ -10,7 +10,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// M9 — Store, OneDrive y Teams.
 /// wsreset.exe -i resetea la cache de Microsoft Store sin abrir UI.
 /// Borra logs de OneDrive y todas las cachés de Teams (clásico).
-/// Migrado del bloque RUN_9 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M09StoreOneDriveTeams : ModuleExecutorBase
@@ -28,7 +27,6 @@ public sealed class M09StoreOneDriveTeams : ModuleExecutorBase
         var appData  = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         var system32 = Environment.GetFolderPath(Environment.SpecialFolder.System);
 
-        // wsreset.exe -i — la propia herramienta de Microsoft para reset de Store.
         yield return Step("Reseteando la cache de Microsoft Store");
         var wsreset = Path.Combine(system32, "wsreset.exe");
         if (File.Exists(wsreset))
@@ -65,7 +63,6 @@ public sealed class M09StoreOneDriveTeams : ModuleExecutorBase
         }
         else yield return Warn("wsreset.exe no encontrado");
 
-        // OneDrive logs.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Logs de OneDrive");
         var oneDrive = Path.Combine(localApp, "Microsoft", "OneDrive");
@@ -78,7 +75,6 @@ public sealed class M09StoreOneDriveTeams : ModuleExecutorBase
         }
         else yield return Info("OneDrive no instalado, omitido");
 
-        // Microsoft Teams (clásico) — varias subcarpetas.
         if (ct.IsCancellationRequested) yield break;
         yield return Step("Cache de Microsoft Teams");
         var teams = Path.Combine(appData, "Microsoft", "Teams");

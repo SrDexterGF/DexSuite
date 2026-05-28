@@ -8,7 +8,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// M12 — Winget upgrade --all.
 /// Reutiliza el <see cref="IWingetService"/> ya existente (que llama a winget.exe
 /// directamente sin .bat). Emite cada línea de stdout como Info y respeta cancelación.
-/// Migrado del bloque RUN_12 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M12WingetUpgrade : ModuleExecutorBase

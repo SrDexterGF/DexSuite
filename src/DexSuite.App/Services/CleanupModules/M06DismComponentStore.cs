@@ -9,7 +9,6 @@ namespace DexSuite.App.Services.CleanupModules;
 /// M6 — DISM Component Store.
 /// AnalyzeComponentStore + StartComponentCleanup vía Process streaming.
 /// DISM no tiene API .NET razonable, mantener exe directo es lo estándar.
-/// Migrado del bloque RUN_6 del .bat.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public sealed class M06DismComponentStore : ModuleExecutorBase
