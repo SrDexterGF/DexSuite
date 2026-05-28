@@ -1,0 +1,1318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• 主屏幕带有徽标和快捷入口</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• 性能测试涵盖 8 个类别：CPU、RAM、GPU、磁盘、进程、启动项、温度、网络</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• 前后对比显示分数差异</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• 模块按套餐分为 3 列（Free / 高级 / Pro）</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• 每个模块都带「安全/风险」标签及影响说明</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• 执行期间实时监控,并可一键取消</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• 内置自动更新</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• CYBERNETIC 主题：青色 + 紫色配色方案及专属徽标</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• 侧边栏含图标、分隔线和语言选择器（30 种语言）</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>v{0} 新功能</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>设计与概念</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>开发</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>游戏模块</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · 高级游戏配置</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>致谢</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · 仅限 Windows · 需要管理员权限</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite 是面向 Windows 的极限优化系统。</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>分析你的电脑，应用高影响调整，将性能推向物理极限。</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>每个版本都加入新的 C# 原生模块,以最大化 FPS 并降低延迟。</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>需要管理员权限</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>技术栈</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>打开日志文件夹</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>实用工具</value>
+  </data>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Windows 的清理、优化与安全</value>
+  </data>
+  <data name="App.Tagline" xml:space="preserve">
+    <value>突破极限</value>
+  </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>自动收集的诊断信息（便于重现）：</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>请描述发生了什么、您期望什么以及重现步骤：</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>报告问题</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>请手动将您的报告发送至 suitedex@gmail.com。
+错误：{0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>无法打开邮件客户端</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>打开您的电子邮件客户端，并预填诊断信息。</value>
+  </data>
+  <data name="Common.Apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>从未</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>执行</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>选择游戏并应用为最大 FPS 和最低输入延迟量身定制的调优。</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>逐游戏优化配置</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>每个配置文件应用精确调整，以实现最高 FPS 和最低延迟。</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>游戏优化失败（{0}）：{1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>已启动游戏优化：{0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>无法打开游戏选择器：{0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>选择要优化的游戏</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>优化</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>为峰值 FPS 与最低延迟量身定制的调整。
+每款游戏都有自己的配置文件。</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>选择要优化的游戏</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>重新分析</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>优化后详情</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>初始分析详情</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>分析</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>测量你设备的当前状态。
+获得 100 分制评分。</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>分析性能</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>前往日志</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>在执行过程中查看实时输出。
+回顾上一次运行。</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>查看日志</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>前往模块</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>选择你想要的模块。
+启动清理与调整。</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>优化系统</value>
+  </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>立即清理</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>清空临时文件夹和回收站。
+数秒内释放空间。</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>快速清理</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>更新应用</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>一次性更新所有已安装的应用。</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>更新应用</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>点击「分析」以获得评分。
+之后可以优化并再次分析以查看差异。</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>你还没有分析过你的设备</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>重置评分</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>初始状态</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>测量时间 {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} 分</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>你想做什么？</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>激活</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>移除许可证</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>请粘贴有效的激活密钥。</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>激活失败：{0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>粘贴购买时收到的激活密钥。该密钥绑定到此硬件（上方 HWID）。</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>激活密钥</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>许可证已激活。计划：{0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>当前计划</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>硬件 ID（HWID）— 发送给开发者以获取密钥</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID 已复制到剪贴板。</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite 使用与硬件绑定的许可证。HWID 标识此 PC；收到的密钥已签名，仅在此处有效。</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>许可证</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Advanced 计划已激活。</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>免费计划已激活。</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Pro 计划已激活。</value>
+  </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>性能</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>快速清理</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>执行</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>清空历史记录</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>历史记录已清空（删除 {0} 条）。</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>无法清空历史记录：{0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>级别</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>消息</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>你执行的操作会自动显示在这里。</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>暂无事件</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>基准分数：{0}（{1}）。</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>性能测试失败：{0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>最终分数：{0}（{1}）。变化：{2}{3}。</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite 已启动（v{0}）。</value>
+  </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>已在客户端中打开错误报告邮件。</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>历史记录已清空（{0} 条）。</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>语言已切换为 {0}。</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>许可证已激活 — {0} 计划。</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>许可证激活被拒绝：{0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>许可证已移除 — 返回免费计划。</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] — 已完成</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — 错误：{1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — 已开始</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>快速清理失败：{0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>快速清理：释放 {0} MB，删除 {1} 个文件。</value>
+  </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>还原点已创建：{0}。</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>创建还原点失败：{0}</value>
+  </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>批量撤销完成 — 已撤销 {0}，失败 {1}，共 {2}。</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>撤销失败 — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>已撤销更改 — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>用户已取消优化。</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>优化失败：{0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>优化完成（{0} 个模块）。</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>已使用 {0} 个模块开始优化。</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>安全检查失败：{0}：{1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>安全检查完成：{0}（退出 {1}）</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>安全检查以非零退出码完成：{0}（退出 {1}）</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>安全检查已启动：{0}</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>已将设置恢复为默认值。</value>
+  </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>主题已切换为 {0}。</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>已切换至 {0} 套餐。</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>已应用 v{0} 更新。</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>无法应用更新：{0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>检查更新失败：{0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>有可用的新版本：v{0}。</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>已是最新版本（v{0}）。</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>应用更新失败：{0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>应用更新完成 — 已更新 {0} 个软件包。</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>应用更新已启动 (winget upgrade --all)</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>导出为 .txt</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>导出失败：{0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>历史记录已导出至 {0}</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>正在加载历史记录…</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>当前进程的实时输出。
+执行过程中实时更新。</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>历史记录</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>实时输出</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>执行日志</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>个模块</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>取消全选</value>
+  </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>将游戏性能推向绝对极限的专项优化</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>EXTRA PRO · 游戏</value>
+  </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>极限</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>无影响</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>显著</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>轻微</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>强效</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>此操作对系统性能的影响等级。</value>
+  </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>清除 Prefetch、系统和用户 Temp、缩略图、IconCache 和 DirectX 着色器。
+所有内容会自动重新生成。</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Prefetch、缓存与 D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>仅清除 Windows 在使用时会自动重新生成的缓存。
+不影响你的数据或程序。</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>清理 Windows、SoftwareDistribution、Windows Update、CBS、DISM 旧日志以及 WER 文件夹。</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>系统日志</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>仅删除诊断日志文件。
+不影响系统运行或个人数据。</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>清空顽固的 Temp 文件夹、最近使用记录、回收站以及 Windows.old（如存在）。</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>临时文件、最近项与回收站</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>清空回收站和临时文件。
+如果你将重要文件移到回收站，请先恢复。</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>崩溃转储、打印队列、WMI 压缩和清空事件查看器。
+事件不可恢复。</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>深度清理</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>清空事件查看器：系统事件一旦删除便无法恢复。
+有利于隐私，但请三思。</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>停止 wuauserv 与 BITS，清除 SoftwareDistribution\Download 和 Delivery Optimization，然后重启服务。</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Windows Update 缓存</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>仅清空 Windows Update 下载缓存。
+如果之前的更新失败，本模块可修复。</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>清理系统中过时的组件。
+耗时 5-20 分钟，不可逆（无法卸载之前的更新）。</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>DISM 组件存储</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>执行后将无法卸载已应用的 Windows 更新。
+安全但不可撤销。</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>清除 Edge、Chrome、Firefox、Brave、Opera 和 Vivaldi 的缓存。
+不影响配置文件和密码。</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>浏览器缓存</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>仅清空浏览器缓存。
+不影响密码、书签、历史记录或会话 Cookie。</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>刷新 DNS 缓存，在 DNS 中注册本机，并强制刷新组策略。</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>网络（DNS 与 gpupdate）</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>仅刷新 DNS 缓存和组策略。
+不改变持久的网络配置。</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>重置 Microsoft Store 缓存，清空 OneDrive 日志和 Teams 缓存。</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store、OneDrive 与 Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>清理 Microsoft Store、OneDrive 和 Teams 的缓存。
+你同步的文件和聊天记录会保留。</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>检查受保护的系统文件并修复 Windows 映像。
+修复性操作，非破坏性。</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM（修复）</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>修复损坏的系统文件。
+较慢（10-30 分钟），但不会修改用户数据。</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>关闭鼠标加速，将键盘调至最高，关闭粘滞键，并读取显示器最大 Hz。</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>鼠标、键盘与显示器</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>在注册表中调整鼠标和键盘偏好。
+如不满意，可在 Windows 设置中恢复。</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>执行 'winget upgrade --all'。
+时间取决于应用数量。本模块不可撤销。</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget（更新应用）</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>将所有应用更新到最新版本。
+如果新版本带来不喜欢的变化，这里无法回退。</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>禁用 Windows Copilot、Cortana、DiagTrack、Timeline、AdvertisingID 和 CEIP。</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Copilot、Cortana 与遥测</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>通过修改注册表禁用 Copilot、Cortana 和遥测。
+可通过重新启用每项还原。</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>屏蔽推荐应用、定位、小组件、WPBT，并禁用不常用服务。</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>隐私与服务</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>调整隐私策略并禁用多个 Windows 服务。
+可还原，但会影响小组件或定位等功能。</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>关闭 Power Throttling、MMCSS 优先、关闭休眠、启用 HAGS、BCD 平台时钟（需要重启）。</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>性能与延迟</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>修改 BCD、MMCSS、休眠和 HAGS。
+需要重启。变更强力但可还原。</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>调优网卡（RSS、Offload、关闭 EEE）、TCP 栈（关闭 Nagle、MaxUserPort 65534）以及 Google/Cloudflare DNS。</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet（网络优化）</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>修改网卡参数和 TCP 协议栈。
+若失去连接，请运行 'netsh int ip reset'。</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT、Defender 快速扫描、关闭 SMBv1/AutoRun/LLMNR/NetBIOS/RDP，DEP AlwaysOn，UAC 第 2 级。</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>强化系统安全。
+禁用 RDP：如果你需要远程连接，请手动重新启用。</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>确保 NTFS/ReFS 上启用 TRIM，对检测到的 SSD 执行 TRIM，并读取 SMART 温度和磨损。</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD（TRIM 与 SMART 健康）</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>仅读取 SMART 状态并执行 TRIM（SSD 标准操作）。
+不修改数据。</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>执行 pnputil 扫描，列出 OEM 驱动程序，并启动 Windows Update 查找新驱动。</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>驱动程序（Windows Update + pnputil）</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>仅查找驱动程序。
+不会自动安装：是否通过 Windows Update 更新由你决定。</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>打开精心整理的逐游戏调优配置选择。
+选择你的游戏，获得为最大 FPS 与最低输入延迟量身定制的优化。</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>游戏优化</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>应用针对游戏的专属调优，追求峰值 FPS 与更低延迟。
+所有更改稍后均可在 Windows 设置中还原。</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>这些优化被选中是因为它们安全、可还原，并且在大多数系统上产生明显改善。
+它们是在探索高级或专业设置之前的最佳起点。</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>执行过程中出错。</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>尚未应用。</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>正在应用…</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>已成功应用。</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>风险</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>全选</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>推荐</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>勾选要运行的模块。
+将鼠标悬停在「安全 / 风险」标签上以了解原因。</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>FREE</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>可用模块</value>
+  </data>
+  <data name="Navigation.About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Navigation.Home" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="Navigation.Log" xml:space="preserve">
+    <value>日志</value>
+  </data>
+  <data name="Navigation.Modules" xml:space="preserve">
+    <value>模块</value>
+  </data>
+  <data name="Navigation.Panel" xml:space="preserve">
+    <value>面板</value>
+  </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>撤销更改</value>
+  </data>
+  <data name="Navigation.Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>系统规格</value>
+  </data>
+  <data name="Navigation.System" xml:space="preserve">
+    <value>系统</value>
+  </data>
+  <data name="Navigation.Updates" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>已成功应用 {0} 个模块。</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite — 优化完成</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>尝试了 {0} 个模块 — 部分报告错误。请查看「日志」标签页。</value>
+  </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>快速清理</value>
+  </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>将清空回收站并清理 Windows 临时文件夹。
+不会触碰任何个人文件。</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>执行快速清理？</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>删除 %TEMP%、C:\Windows\Temp 和 C:\Windows\Prefetch 中的临时文件。
+同时清空回收站。
+不会触碰任何个人文件。</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>已应用</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>模块</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>目标</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>运行优化模块以开始在此记录更改。
+每个本机操作都会自动跟踪，以便一键撤销。</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>暂无已记录的更改</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} 个待处理更改</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>将撤销 {0} 个待处理更改。
+此操作在 DexSuite 中无法撤销。</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>将撤销 '{0}' 应用的更改。
+原始值将被恢复。</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>撤销更改？</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>全部撤销</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>撤销</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>DexSuite 原生应用的每个更改都记录在此。
+可单独或一次性全部撤销。</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>撤销更改</value>
+  </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — 运行 {0} 个模块之前</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>创建还原点可以让你在出问题时从 Windows 撤销所有更改。
+只需几秒钟。</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>不，直接执行</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>是否先创建还原点？</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>是的，创建</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — 手动优化备份</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>无法创建还原点：{0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>还原点已成功创建。</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>从上次会话加载</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>已保存的基准 — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>测量于 — {0}</value>
+  </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>未找到「{0}」的结果</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>搜索设置…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>「{1}」的搜索结果：{0} 条</value>
+  </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>运行 Windows Defender、SFC、DISM 或 MRT。</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>安全和完整性检查</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>运行 Windows Defender 快速扫描？
+通常需要 5-10 分钟。</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>运行 DISM /RestoreHealth？
+使用 Windows Update 修复 Windows 映像。需要联网，10-20 分钟。</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>运行恶意软件删除工具 (MRT /Q)？
+在后台静默运行。</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>运行系统文件检查器 (SFC /scannow)？
+扫描并修复损坏的系统文件。需要 10-20 分钟。</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>执行检查？</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>Defender · 快速扫描</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · 修复映像</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · 恶意软件删除</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · 系统文件检查</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>此系统上未安装 {0}。</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>工具不可用</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>运行</value>
+  </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>应用启动时生效。</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>启动时预选推荐模块</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>行为</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>自动切换视图以查看进程输出。</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>执行时跳转到日志</value>
+  </data>
+  <data name="Settings.Language.Description" xml:space="preserve">
+    <value>更改应用程序语言。
+界面将即时更新。</value>
+  </data>
+  <data name="Settings.Language.Title" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>优化完成时在「操作中心」显示 Windows 通知。</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>执行结束时通知</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>重置设置</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>每次开始优化时，DexSuite 都会询问你是否先创建还原点。可以回答「是」「否」或「取消」。</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>DexSuite 总是在优化前询问</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>每次运行前自动创建</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>立即创建还原点</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>在运行优化前创建还原点，以便通过 Windows 设置撤销任何更改。</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>系统还原点</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>选项即时生效。
+你的偏好会自动保存。</value>
+  </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>应用视觉标识。
+专属主题仅限 Pro 用户。</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>需要 Pro 套餐</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>确定你可执行的模块。
+在许可证部分激活许可证以解锁Advanced或Pro模块。</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>当前套餐</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>对标记为「风险」的模块要求确认（将来）。</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>执行不可逆模块前提示</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} 核心 / {1} 逻辑处理器</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>处理器</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB 共计 · {1} GB 可用 · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>显卡</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>正在检测硬件…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>操作系统</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>内存</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB 共计 · {1} GB 可用</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>存储</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>检测到的硬件和操作系统</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>管理员模式已激活</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>数据读取自 Windows。
+硬件变更时请点击「刷新」。</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>系统概览</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>系统规格</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>分析出错：{0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>最终分析：{0}/100（{1}）。
+差值：{2}{3} 分。</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>初始分析：{0}/100（{1}）。
+你现在可以优化了。</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>正在分析性能……</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>正在取消……</value>
+  </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>正在创建还原点…</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>开发模式 — 此环境下无法更新。</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>正在下载更新…… {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>正在执行 {0} 个模块……（可取消）</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>执行已被用户取消。</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>执行已完成。
+返回主页并重新分析以进行对比。</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>错误：{0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>无法打开文件夹：{0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>有新版本可用：v{0}！
+点击「立即更新」进行安装。</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>清理完成：释放 {0} MB，删除 {1} 个文件</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>快速清理出错：{0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>正在清理临时文件和回收站...</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>就绪。选择模块并点击「执行」。</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>还原点已创建。</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>创建还原点失败：{0}</value>
+  </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>撤销完成：{0}/{1}。</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>评分已重置。点击「分析」重新开始。</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>正在检查更新……</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} 已完成。</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>{0} 出错完成：{1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>正在运行 {0}…</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>执行前请至少选择一个模块。</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>设置已恢复为默认值。</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>应用更新时出错：
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>更新已下载。
+应用将自动重启。</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>检查更新时出错：
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>你已是最新版本（v{0}）。</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>应用已更新 — {0} 个软件包。</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>更新应用失败：{0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>正在更新应用…</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>尊享金 + 暖黑</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>赛博朋克：青 + 紫</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>中性 Fluent 配色</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>赛道红 + 深邃黑</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>极简单色</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>CYBERNETIC</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>DEFAULT</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>REDLINE</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>ZERO LAG</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>在后台下载并安装新版本。
+仅当 DexSuite 空闲时。</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>自动更新</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Stable：经过测试的稳定版本。
+Beta：更早获得新版本，但可能存在问题。</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>更新通道</value>
+  </data>
+  <data name="Updates.CheckForUpdates" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite 会向发行服务器查询新版本，并就地完成安装。
+如果你使用的是开发构建，自动更新将保持关闭。</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>更新如何工作</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>已安装版本</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>上次检查：{0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>有新版本可用！</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>v{0} 版已准备好下载并安装。</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>偏好设置</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite 会自动更新到最新版本。
+保持更新以获取最新的优化。</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>立即更新</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>可接受</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>严重</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>优秀</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>良好</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>可改进</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>将运行 winget upgrade --all。
+根据待更新数量可能需要数分钟。
+进度将显示在日志中。</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>更新所有应用？</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>此系统上没有 Windows 包管理器 (winget)。</value>
+  </data>
+</root>
