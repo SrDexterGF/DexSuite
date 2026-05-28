@@ -344,7 +344,7 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>Avisar antes de ejecutar módulos no reversibles (futuro).</summary>
     [ObservableProperty]
-    private bool warnBeforeNonReversible = false;
+    private bool warnBeforeNonReversible = true;
 
     /// <summary>Crear punto de restauración automáticamente antes de ejecutar módulos.</summary>
     [ObservableProperty]
@@ -361,7 +361,7 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>Mostrar notificación de Windows al terminar (futuro).</summary>
     [ObservableProperty]
-    private bool notifyOnFinish = false;
+    private bool notifyOnFinish = true;
 
     /// <summary>
     /// Tier activo del usuario. Solo lo escribe el ViewModel desde el evento
@@ -602,9 +602,9 @@ public partial class MainViewModel : ObservableObject
     {
         AutoSelectRecommended = false;
         JumpToLogOnRun = false;
-        WarnBeforeNonReversible = false;
+        WarnBeforeNonReversible = true;
         CreateRestorePointBeforeRun = false;
-        NotifyOnFinish = false;
+        NotifyOnFinish = true;
         AutoUpdateEnabled = false;
         // UserTier NO se resetea aquí: lo controla únicamente la licencia activa.
         // Resetear configs no debe regalar Pro.
