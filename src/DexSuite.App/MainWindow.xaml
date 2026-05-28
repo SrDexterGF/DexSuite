@@ -572,9 +572,9 @@
                                     BorderThickness="1">
                                 <Border.Style>
                                     <Style TargetType="Border">
-                                        <!-- Default: Free -->
-                                        <Setter Property="Background"   Value="#1A606060"/>
-                                        <Setter Property="BorderBrush"  Value="#3A808080"/>
+                                        <!-- Default: Free — verde igual que los módulos -->
+                                        <Setter Property="Background"  Value="#1500C853"/>
+                                        <Setter Property="BorderBrush" Value="#3500C853"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding UserTier}" Value="Pro">
                                                 <Setter Property="Background"  Value="#1A9D4EDD"/>
@@ -593,7 +593,7 @@
                                     <ui:TextBlock.Style>
                                         <Style TargetType="ui:TextBlock">
                                             <!-- Default: Free -->
-                                            <Setter Property="Foreground" Value="#FF909090"/>
+                                            <Setter Property="Foreground" Value="#FF00C853"/>
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding UserTier}" Value="Pro">
                                                     <Setter Property="Foreground" Value="#FFB026FF"/>
