@@ -1,4 +1,4 @@
-# =============================================================
+﻿# =============================================================
 #  publish-release.ps1
 #  Publica una nueva versión de DexSuite en GitHub Releases.
 #  Hace: dotnet publish + vpk pack + gh release create.
@@ -110,19 +110,27 @@ if (-not (Test-Path $ReleasesDir)) { New-Item -ItemType Directory -Path $Release
     --outputDir $ReleasesDir
 if ($LASTEXITCODE -ne 0) { throw "vpk pack falló con código $LASTEXITCODE" }
 
-# 6) Crea release en GitHub y sube todos los artefactos.
+# 6) Crea release en GitHub y sube solo los artefactos del canal actual.
+#    Excluye archivos de versiones/canales anteriores que puedan estar en el
+#    directorio de Releases.
 Write-Host ""
 Write-Host "[6/6] Creando GitHub Release v$Version..." -ForegroundColor Cyan
-$assets = Get-ChildItem $ReleasesDir | ForEach-Object { $_.FullName }
-$noteArg = if ([string]::IsNullOrWhiteSpace($Notes)) { "--generate-notes" } else { "--notes", "$Notes" }
+
+# Solo los archivos generados por este vpk pack (contienen la versión o el canal
+# en el nombre, más los JSON de índice del canal).
+$assets = @(Get-ChildItem $ReleasesDir |
+    Where-Object { $_.Name -match $Version -or $_.Name -match "-$Channel" -or $_.Name -match "\.$Channel\." } |
+    ForEach-Object { $_.FullName })
+
+# $noteArg siempre como array para que el splatting funcione correctamente
+$noteArg      = if ([string]::IsNullOrWhiteSpace($Notes)) { @("--generate-notes") } else { @("--notes", $Notes) }
 $preReleaseArg = if ($Channel -eq "beta") { @("--prerelease") } else { @() }
 
-& gh release create "v$Version" `
-    --repo $Repo `
-    --title "DexSuite v$Version" `
-    @noteArg `
-    @preReleaseArg `
-    $assets
+$ghArgs = @("release", "create", "v$Version",
+    "--repo", $Repo,
+    "--title", "DexSuite v$Version") + $noteArg + $preReleaseArg + $assets
+
+& gh @ghArgs
 if ($LASTEXITCODE -ne 0) { throw "gh release create falló con código $LASTEXITCODE" }
 
 Write-Host ""
