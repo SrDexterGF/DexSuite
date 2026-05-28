@@ -28,6 +28,7 @@ public partial class MainViewModel : ObservableObject
     private readonly IWingetService _winget;
     private readonly ISecurityCheckService _security;
     private readonly IChangeTrackingService _changes;
+    private readonly IModuleStateService _moduleState;
     private readonly IBugReportService _bugReport;
     private readonly IAppSelfCleanupService _selfCleanup;
     private readonly ILicenseService _license;
@@ -1444,6 +1445,7 @@ public partial class MainViewModel : ObservableObject
         IWingetService winget,
         ISecurityCheckService security,
         IChangeTrackingService changes,
+        IModuleStateService moduleState,
         IBugReportService bugReport,
         IAppSelfCleanupService selfCleanup,
         ILicenseService license,
@@ -1464,6 +1466,7 @@ public partial class MainViewModel : ObservableObject
         _winget = winget;
         _security = security;
         _changes = changes;
+        _moduleState = moduleState;
         _bugReport = bugReport;
         _selfCleanup = selfCleanup;
         _license = license;
@@ -1580,6 +1583,9 @@ public partial class MainViewModel : ObservableObject
         // Estado inicial de bloqueo según el tier configurado.
         UpdateModuleLockStates();
 
+        // Rehidrata el estado "aplicado" persistido (barra → tick entre sesiones).
+        _ = HydrateModuleAppliedStatesAsync();
+
         // Carga el baseline guardado en disco (fire-and-forget — no bloquea la UI).
         _ = LoadPersistedBaselineAsync();
 
@@ -1593,6 +1599,29 @@ public partial class MainViewModel : ObservableObject
         // Evento de arranque en el historial interno (fire-and-forget).
         _ = _appLog.InfoAsync(AppLogCategory.App,
             T("Log.Event.AppStarted", _updateService.CurrentVersion));
+    }
+
+    /// <summary>
+    /// Carga desde SQLite qué módulos están marcados como aplicados y lo refleja
+    /// en la UI (indicador en estado "tick"). Fire-and-forget al arrancar.
+    /// </summary>
+    private async Task HydrateModuleAppliedStatesAsync()
+    {
+        try
+        {
+            var applied = await _moduleState.GetAppliedModuleIdsAsync().ConfigureAwait(false);
+            if (applied.Count == 0) return;
+            var set = new HashSet<int>(applied);
+            Application.Current?.Dispatcher.BeginInvoke(() =>
+            {
+                foreach (var m in Modules)
+                    if (set.Contains(m.Id)) m.IsApplied = true;
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "No se pudo hidratar el estado aplicado de los módulos");
+        }
     }
 
     private async Task LoadPendingChangesCountAsync()
@@ -1716,6 +1745,10 @@ public partial class MainViewModel : ObservableObject
         else
         {
             m.RunStatus = ModuleRunStatus.Success;
+            // Estado "aplicado" persistente: la barra pasa a tick y sobrevive
+            // al reinicio. Fire-and-forget; el indicador ya refleja el cambio.
+            m.IsApplied = true;
+            _ = _moduleState.SetAppliedAsync(m.Id, true);
             _ = _appLog.SuccessAsync(AppLogCategory.Run,
                 T("Log.Event.ModuleCompleted", m.Name));
         }

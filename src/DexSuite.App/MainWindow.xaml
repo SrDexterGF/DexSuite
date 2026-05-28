@@ -298,32 +298,32 @@
                           Margin="2,0,6,0"
                           ToolTipService.ShowDuration="8000"
                           ToolTipService.InitialShowDelay="200">
-                        <!-- Idle: guion -->
-                        <ui:TextBlock Text="—"
-                                      FontSize="14"
-                                      FontWeight="SemiBold"
-                                      Opacity="0.4"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      ToolTip="{Binding [Modules.Run.IdleTooltip], Source={x:Static svc:LocalizationService.Instance}}">
-                            <ui:TextBlock.Style>
-                                <Style TargetType="ui:TextBlock">
+                        <!-- NotApplied: barra (aún no aplicado) -->
+                        <Border Width="14" Height="4"
+                                CornerRadius="2"
+                                Background="{DynamicResource TextFillColorSecondaryBrush}"
+                                Opacity="0.45"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                ToolTip="{Binding [Modules.Run.IdleTooltip], Source={x:Static svc:LocalizationService.Instance}}">
+                            <Border.Style>
+                                <Style TargetType="Border">
                                     <Setter Property="Visibility" Value="Visible"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding RunStatus}" Value="Running">
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Applying">
                                             <Setter Property="Visibility" Value="Collapsed"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding RunStatus}" Value="Success">
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Applied">
                                             <Setter Property="Visibility" Value="Collapsed"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding RunStatus}" Value="Error">
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Error">
                                             <Setter Property="Visibility" Value="Collapsed"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </ui:TextBlock.Style>
-                        </ui:TextBlock>
-                        <!-- Running: spinner -->
+                            </Border.Style>
+                        </Border>
+                        <!-- Applying: círculo de carga -->
                         <ui:ProgressRing IsIndeterminate="True"
                                          Width="18" Height="18"
                                          ToolTip="{Binding [Modules.Run.RunningTooltip], Source={x:Static svc:LocalizationService.Instance}}">
@@ -331,14 +331,14 @@
                                 <Style TargetType="ui:ProgressRing">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding RunStatus}" Value="Running">
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Applying">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </ui:ProgressRing.Style>
                         </ui:ProgressRing>
-                        <!-- Success: checkmark verde -->
+                        <!-- Applied: checkmark verde (persistente entre sesiones) -->
                         <ui:SymbolIcon Symbol="CheckmarkCircle24"
                                        FontSize="18"
                                        Foreground="#FF00C853"
@@ -349,7 +349,7 @@
                                 <Style TargetType="ui:SymbolIcon">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding RunStatus}" Value="Success">
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Applied">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -367,7 +367,7 @@
                                 <Style TargetType="ui:SymbolIcon">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding RunStatus}" Value="Error">
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Error">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>

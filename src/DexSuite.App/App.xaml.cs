@@ -80,6 +80,7 @@ public partial class App : System.Windows.Application
             using var db = factory.CreateDbContext();
             db.Database.EnsureCreated();
             EnsureModuleChangesTable(db);
+            EnsureModuleStatesTable(db);
             EnsureLicensesTable(db);
         }
         catch (Exception ex)
@@ -169,6 +170,22 @@ public partial class App : System.Windows.Application
     }
 
     /// <summary>
+    /// Crea de forma idempotente la tabla ModuleStates (estado "aplicado" por
+    /// módulo, persistido entre sesiones). Usuarios con BD previa no la tienen.
+    /// </summary>
+    private static void EnsureModuleStatesTable(DexSuiteDbContext db)
+    {
+        const string sql = @"
+            CREATE TABLE IF NOT EXISTS ModuleStates (
+                ModuleId        INTEGER NOT NULL CONSTRAINT PK_ModuleStates PRIMARY KEY,
+                IsApplied       INTEGER NOT NULL DEFAULT 0,
+                AppliedAtUtc    TEXT NULL
+            );
+        ";
+        db.Database.ExecuteSqlRaw(sql);
+    }
+
+    /// <summary>
     /// Crea de forma idempotente la tabla Licenses.
     /// Solo se mantiene una fila a la vez; LicenseService borra y reinserta al
     /// activar una licencia nueva.
@@ -219,6 +236,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<IWingetService, WingetService>();
         services.AddSingleton<ISecurityCheckService, SecurityCheckService>();
         services.AddSingleton<IChangeTrackingService, ChangeTrackingService>();
+        services.AddSingleton<IModuleStateService, ModuleStateService>();
         services.AddSingleton<IBugReportService, BugReportService>();
         services.AddSingleton<IAppSelfCleanupService, AppSelfCleanupService>();
 

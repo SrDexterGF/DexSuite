@@ -15,6 +15,7 @@ public sealed class DexSuiteDbContext : DbContext
 {
     public DbSet<LogEntry> Logs => Set<LogEntry>();
     public DbSet<ModuleChangeRecord> ModuleChanges => Set<ModuleChangeRecord>();
+    public DbSet<ModuleStateRecord> ModuleStates => Set<ModuleStateRecord>();
     public DbSet<LicenseEntity> Licenses => Set<LicenseEntity>();
 
     public DexSuiteDbContext(DbContextOptions<DexSuiteDbContext> options) : base(options) { }
@@ -43,6 +44,11 @@ public sealed class DexSuiteDbContext : DbContext
         // Índices: por módulo (para revertir un módulo entero) + por estado pendiente.
         ch.HasIndex(e => e.ModuleId);
         ch.HasIndex(e => new { e.IsReverted, e.AppliedAtUtc }).IsDescending(false, true);
+
+        var ms = modelBuilder.Entity<ModuleStateRecord>();
+        ms.HasKey(e => e.ModuleId);
+        ms.Property(e => e.ModuleId).ValueGeneratedNever();
+        ms.Property(e => e.IsApplied).IsRequired();
 
         var lic = modelBuilder.Entity<LicenseEntity>();
         lic.HasKey(e => e.Id);

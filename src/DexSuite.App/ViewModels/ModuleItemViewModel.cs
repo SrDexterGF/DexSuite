@@ -17,6 +17,21 @@ public enum ModuleStatus
 }
 
 /// <summary>
+/// Estado visual persistente del indicador de un módulo:
+///   - NotApplied : barra (aún no aplicado).
+///   - Applying   : círculo de carga (aplicándose ahora).
+///   - Applied    : tick (aplicado; se conserva entre sesiones).
+///   - Error      : triángulo (el último intento falló).
+/// </summary>
+public enum ModuleVisualState
+{
+    NotApplied,
+    Applying,
+    Applied,
+    Error,
+}
+
+/// <summary>
 /// Item de la lista de módulos en la UI. Envuelve un <see cref="CleanupModule"/>
 /// y traduce los textos al idioma activo vía <see cref="ILocalizationService"/>.
 /// Cuando el usuario cambia el idioma, las propiedades Name/Description/SafetyReason
@@ -105,6 +120,28 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     /// </summary>
     [ObservableProperty]
     private ModuleRunStatus runStatus = ModuleRunStatus.Idle;
+
+    /// <summary>
+    /// Estado "aplicado" persistente (sobrevive entre sesiones). Lo hidrata
+    /// MainViewModel al arrancar desde <see cref="IModuleStateService"/> y se
+    /// fija a true cuando el módulo termina con éxito.
+    /// </summary>
+    [ObservableProperty]
+    private bool isApplied;
+
+    /// <summary>
+    /// Estado visual combinado que consume la UI. Deriva de RunStatus + IsApplied:
+    /// si está corriendo → Applying; si el último run falló → Error;
+    /// si está aplicado → Applied; en otro caso → NotApplied (barra).
+    /// </summary>
+    public ModuleVisualState VisualState =>
+        RunStatus == ModuleRunStatus.Running ? ModuleVisualState.Applying  :
+        RunStatus == ModuleRunStatus.Error   ? ModuleVisualState.Error     :
+        IsApplied                            ? ModuleVisualState.Applied    :
+                                               ModuleVisualState.NotApplied;
+
+    partial void OnRunStatusChanged(ModuleRunStatus value) => OnPropertyChanged(nameof(VisualState));
+    partial void OnIsAppliedChanged(bool value) => OnPropertyChanged(nameof(VisualState));
 
     /// <summary>
     /// Mensaje de error del último intento, si RunStatus == Error. Se muestra
