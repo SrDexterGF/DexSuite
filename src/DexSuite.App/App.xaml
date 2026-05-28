@@ -1,0 +1,18 @@
+<Application x:Class="DexSuite.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:local="clr-namespace:DexSuite.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemesDictionary Theme="Dark" />
+                <ui:ControlsDictionary />
+                <!-- Tema CYBERNETIC: sobreescribe los brushes principales
+                     (acento cian, surface azul oscuro, texto blanco azulado).
+                     Debe ir DESPUÉS del ThemesDictionary para tener prioridad. -->
+                <ResourceDictionary Source="/Themes/Cybernetic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

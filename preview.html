@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>DexSuite — Preview</title>
+<style>
+:root{
+  --bgWindow:#1B1B1B;--bgSidebar:#202020;--bgCard:#2C2C2C;--bgCardHover:#383838;--bgSubtle:#404040;
+  --stroke:#3F3F3F;--strokeSub:#2E2E2E;
+  --text:#FFFFFF;--text2:#C8C8C8;--text3:#7E7E7E;--onAccent:#FFFFFF;
+  --accent:#60CDFF;--accent2:#7DD8FF;--accent3:#4A9FCC;
+  --success:#00D9A0;--successBg:#3300D9A0;
+  --caution:#FFB800;--cautionBg:#33FFB800;
+  --critical:#FF5470;--criticalBg:#33FF5470;
+  --previewC1:#1B1B1B;--previewC2:#60CDFF;--previewC3:#FFFFFF;
+}
+[data-theme="cybernetic"]{
+  --bgWindow:#0A0A1A;--bgSidebar:#0F0F1F;--bgCard:#14142A;--bgCardHover:#1A1A38;--bgSubtle:#1F1F3D;
+  --stroke:#2A2A4A;--strokeSub:#1F1F3D;
+  --text:#E8F4F8;--text2:#8C97A8;--text3:#6B7280;--onAccent:#050511;
+  --accent:#00B8D9;--accent2:#00E5FF;--accent3:#007A99;
+  --accentExtra:#9D4EDD;
+  --previewC1:#0F0F1F;--previewC2:#00B8D9;--previewC3:#9D4EDD;
+}
+[data-theme="redline"]{
+  --bgWindow:#0A0606;--bgSidebar:#130808;--bgCard:#1A0E0E;--bgCardHover:#231414;--bgSubtle:#2A1818;
+  --stroke:#3D1F1F;--strokeSub:#291515;
+  --text:#F8E8E8;--text2:#A8898C;--text3:#7A6062;--onAccent:#FFFFFF;
+  --accent:#E63946;--accent2:#FF1744;--accent3:#8B0000;
+  --previewC1:#130808;--previewC2:#E63946;--previewC3:#FF1744;
+}
+[data-theme="zerolag"]{
+  --bgWindow:#050505;--bgSidebar:#0C0C0C;--bgCard:#131313;--bgCardHover:#1C1C1C;--bgSubtle:#222222;
+  --stroke:#2A2A2A;--strokeSub:#1A1A1A;
+  --text:#F2F2F2;--text2:#9E9E9E;--text3:#606060;--onAccent:#050505;
+  --accent:#EAF6FF;--accent2:#FFFFFF;--accent3:#B0BBC4;
+  --previewC1:#0C0C0C;--previewC2:#606060;--previewC3:#FFFFFF;
+}
+[data-theme="apex"]{
+  --bgWindow:#0A0907;--bgSidebar:#13110D;--bgCard:#1A1612;--bgCardHover:#251F18;--bgSubtle:#2D261E;
+  --stroke:#3C342B;--strokeSub:#26211A;
+  --text:#FAF6EE;--text2:#C5B9A0;--text3:#7A6F58;--onAccent:#1A1612;
+  --accent:#D4AF37;--accent2:#FFD700;--accent3:#8B7500;
+  --previewC1:#13110D;--previewC2:#D4AF37;--previewC3:#FFD700;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;background:#000;color:#fff;font-size:14px}
+body{padding:14px 12px 60px}
+h1{font-size:18px;margin:0 0 4px;color:#fff;font-weight:600}
+.sub{color:#888;font-size:12px;margin:0 0 14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:8px;background:#111;border-radius:10px;border:1px solid #222}
+.toolbar .label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.5px;width:100%;margin-bottom:2px}
+.chip{padding:7px 12px;border-radius:8px;background:#1c1c1c;border:1px solid #2a2a2a;color:#ddd;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.15s;font-weight:500}
+.chip:hover{background:#2a2a2a}
+.chip.on{background:#fff;color:#000;border-color:#fff}
+.chip .swatch{display:inline-flex;width:22px;height:10px;border-radius:3px;overflow:hidden;border:1px solid rgba(255,255,255,.2)}
+.chip .swatch span{flex:1}
+
+.app{margin-top:10px;border-radius:14px;overflow:hidden;background:var(--bgWindow);color:var(--text);border:1px solid var(--stroke)}
+.app .titlebar{padding:10px 14px;background:var(--bgSidebar);border-bottom:1px solid var(--stroke);font-size:12px;color:var(--text2);display:flex;justify-content:space-between;align-items:center}
+.app .titlebar .left{font-weight:600;color:var(--text)}
+.app .titlebar .dots{display:flex;gap:6px}
+.app .titlebar .dots i{width:10px;height:10px;border-radius:50%;background:var(--text3);opacity:.5}
+.layout{display:grid;grid-template-columns:1fr;min-height:560px}
+@media(min-width:720px){.layout{grid-template-columns:200px 1fr}}
+
+.sidebar{background:var(--bgSidebar);padding:14px 10px;border-bottom:1px solid var(--stroke)}
+@media(min-width:720px){.sidebar{border-bottom:0;border-right:1px solid var(--stroke)}}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 14px;border-bottom:1px solid var(--strokeSub);margin-bottom:12px}
+.brand .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:var(--onAccent);font-weight:800;font-size:14px;letter-spacing:.5px}
+.brand .name{font-weight:700;font-size:14px;color:var(--text);letter-spacing:.5px}
+.brand .tag{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.section-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;padding:6px 8px 4px;font-weight:700}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:7px;color:var(--text2);text-decoration:none;font-size:12.5px;cursor:pointer;transition:.15s}
+.nav a:hover{background:var(--bgCardHover);color:var(--text)}
+.nav a.active{background:var(--accent);color:var(--onAccent);font-weight:600}
+.nav a .ic{width:14px;display:inline-block;text-align:center;font-size:13px}
+
+.content{padding:18px 16px;overflow:hidden}
+.title{font-size:20px;font-weight:700;color:var(--text);margin:0 0 4px}
+.subtitle{font-size:12px;color:var(--text2);margin:0 0 16px;line-height:1.5}
+.card{background:var(--bgCard);border:1px solid var(--stroke);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.card h3{font-size:13px;margin:0 0 6px;color:var(--text)}
+.card p{font-size:12px;color:var(--text2);margin:0;line-height:1.5}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:6px;border:1px solid var(--stroke);background:var(--bgCardHover);color:var(--text);font-size:12px;font-weight:500;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--onAccent);border-color:var(--accent);font-weight:600}
+.btn.secondary{background:transparent;color:var(--text)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.spacer{height:8px}
+
+.badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.4px;text-transform:uppercase}
+.badge.free{background:var(--bgSubtle);color:var(--text2)}
+.badge.adv{background:var(--cautionBg,#33FFB800);color:var(--caution,#FFB800);border:1px solid var(--caution,#FFB800)}
+.badge.pro{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--onAccent)}
+.badge.extra{background:linear-gradient(135deg,var(--accent2),var(--accentExtra,var(--accent3)));color:var(--onAccent)}
+.badge.safe{background:var(--successBg,#3300D9A0);color:var(--success,#00D9A0)}
+.badge.risk{background:var(--criticalBg,#33FF5470);color:var(--critical,#FF5470)}
+.badge.impact-soft{background:rgba(255,255,255,.06);color:var(--text2)}
+.badge.impact-strong{background:var(--cautionBg,#33FFB800);color:var(--caution,#FFB800)}
+.badge.impact-extreme{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--onAccent);font-weight:700}
+
+.module{background:var(--bgCard);border:1px solid var(--stroke);border-radius:8px;padding:10px 12px;margin-bottom:6px}
+.module .head{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.module .nm{font-size:12px;font-weight:600;color:var(--text);flex:1;min-width:0}
+.module .help{width:18px;height:18px;border-radius:50%;background:var(--bgSubtle);color:var(--text2);display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
+.module .desc{font-size:11px;color:var(--text2);line-height:1.4;margin:2px 0}
+.module.locked{opacity:.55}
+.module.locked::after{content:"🔒";float:right;margin-top:-22px}
+
+.tab{display:flex;border-bottom:1px solid var(--stroke);margin-bottom:10px}
+.tab span{padding:8px 14px;font-size:12px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;font-weight:500}
+.tab span.on{color:var(--accent);border-color:var(--accent)}
+
+.kv{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;font-size:12px;margin-top:6px}
+.kv .k{color:var(--text2)}
+.kv .v{color:var(--text)}
+
+.score-ring{width:120px;height:120px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:conic-gradient(var(--accent) 0% 78%, var(--bgSubtle) 78% 100%);position:relative;margin:0 auto}
+.score-ring::before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--bgCard)}
+.score-ring .v{font-size:28px;font-weight:800;color:var(--text);z-index:1}
+.score-ring .l{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;z-index:1}
+
+.cat-row{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--bgCard);border:1px solid var(--stroke);border-radius:6px;margin-bottom:4px;font-size:12px}
+.cat-row .nm{font-weight:600;color:var(--text);width:90px}
+.cat-row .det{color:var(--text2);flex:1;text-align:center}
+.cat-row .sc{font-weight:700;color:var(--text)}
+
+.theme-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.theme-tile{width:140px;height:100px;border-radius:8px;border:2px solid var(--stroke);overflow:hidden;cursor:pointer;background:var(--bgCard);position:relative;display:flex;flex-direction:column}
+.theme-tile.active{border-color:var(--accent)}
+.theme-tile.locked{opacity:.55}
+.theme-tile .swatch3{flex:1;display:flex}
+.theme-tile .swatch3 i{flex:1}
+.theme-tile .lbl{padding:5px 8px;background:var(--bgCard);border-top:1px solid var(--stroke)}
+.theme-tile .lbl .n{font-size:11px;font-weight:700;color:var(--text);letter-spacing:.4px}
+.theme-tile .lbl .h{font-size:9px;color:var(--text3);margin-top:1px}
+.theme-tile .active-pill{position:absolute;top:6px;right:6px;background:var(--accent);color:var(--onAccent);font-size:9px;padding:2px 6px;border-radius:4px;font-weight:700}
+.theme-tile .lock-ovl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;text-shadow:0 1px 4px #000}
+
+.toggle{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--strokeSub)}
+.toggle:last-child{border-bottom:0}
+.toggle .lbl{font-size:12px;color:var(--text);font-weight:500}
+.toggle .desc{font-size:11px;color:var(--text2)}
+.toggle .sw{width:36px;height:20px;background:var(--bgSubtle);border-radius:10px;position:relative;cursor:pointer}
+.toggle .sw.on{background:var(--accent)}
+.toggle .sw::after{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;top:3px;left:3px;transition:.15s}
+.toggle .sw.on::after{left:19px}
+
+.combo{padding:8px 12px;background:var(--bgCard);border:1px solid var(--stroke);border-radius:6px;color:var(--text);font-size:12px;min-width:180px;display:inline-flex;justify-content:space-between;align-items:center}
+.combo .arr{color:var(--text3);font-size:9px}
+
+.log-row{display:grid;grid-template-columns:80px 70px 90px 1fr;gap:10px;padding:6px 10px;background:var(--bgCard);border:1px solid var(--stroke);border-radius:6px;font-size:11px;margin-bottom:4px}
+.log-row .t{color:var(--text3);font-family:Consolas,monospace}
+.log-row .lvl{font-weight:700;text-transform:uppercase;font-size:9px;letter-spacing:.5px}
+.log-row .cat{color:var(--text2)}
+.log-row .msg{color:var(--text)}
+.log-row .lvl.info{color:var(--text2)}
+.log-row .lvl.success{color:var(--success)}
+.log-row .lvl.warn{color:var(--caution)}
+.log-row .lvl.error{color:var(--critical)}
+
+.specs{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:480px){.specs{grid-template-columns:1fr 1fr}}
+.spec-card{background:var(--bgCard);border:1px solid var(--stroke);border-radius:8px;padding:10px 12px}
+.spec-card .ic{font-size:18px;margin-bottom:4px}
+.spec-card .lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.spec-card .v{font-size:13px;color:var(--text);font-weight:600;margin-top:2px}
+.spec-card .d{font-size:11px;color:var(--text3);margin-top:2px}
+
+.stack-wrap{display:flex;flex-wrap:wrap;gap:6px}
+.stack-pill{padding:4px 10px;background:var(--bgSubtle);border-radius:5px;font-size:10px;color:var(--text2)}
+
+.update-banner{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--onAccent);padding:14px 16px;border-radius:10px;margin-bottom:12px}
+.update-banner .t{font-weight:700;font-size:14px;margin-bottom:2px}
+.update-banner .d{font-size:12px;opacity:.9}
+
+.gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+.hero{background:var(--bgCard);border:1px solid var(--stroke);border-radius:10px;padding:20px;text-align:center;margin-bottom:12px}
+.hero .big{font-size:24px;font-weight:800;letter-spacing:.5px;color:var(--text);margin-bottom:4px}
+.hero .small{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:2px}
+.hero .v{display:inline-block;padding:3px 10px;background:var(--accent);color:var(--onAccent);border-radius:4px;font-size:10px;font-weight:700;margin-top:8px;letter-spacing:1px}
+
+.hint{font-size:11px;color:var(--text3);padding:8px 12px;background:var(--bgSubtle);border-radius:6px;margin-bottom:8px;border-left:3px solid var(--accent)}
+
+.section-title{font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin:14px 0 6px}
+</style>
+</head>
+<body>
+
+<h1>DexSuite — Preview</h1>
+<p class="sub">Maqueta visual. Toca un tema y una vista para previsualizar.</p>
+
+<div class="toolbar">
+  <span class="label">Tema</span>
+  <button class="chip on" data-set-theme="default"><span class="swatch"><span style="background:#1B1B1B"></span><span style="background:#60CDFF"></span><span style="background:#FFF"></span></span>DEFAULT</button>
+  <button class="chip" data-set-theme="cybernetic"><span class="swatch"><span style="background:#0F0F1F"></span><span style="background:#00B8D9"></span><span style="background:#9D4EDD"></span></span>CYBERNETIC</button>
+  <button class="chip" data-set-theme="redline"><span class="swatch"><span style="background:#130808"></span><span style="background:#E63946"></span><span style="background:#FF1744"></span></span>REDLINE</button>
+  <button class="chip" data-set-theme="zerolag"><span class="swatch"><span style="background:#0C0C0C"></span><span style="background:#606060"></span><span style="background:#FFFFFF"></span></span>ZERO LAG</button>
+  <button class="chip" data-set-theme="apex"><span class="swatch"><span style="background:#13110D"></span><span style="background:#D4AF37"></span><span style="background:#FFD700"></span></span>APEX</button>
+</div>
+
+<div class="toolbar">
+  <span class="label">Vista</span>
+  <button class="chip on" data-set-view="home">Inicio</button>
+  <button class="chip" data-set-view="homeEmpty">Inicio · sin análisis</button>
+  <button class="chip" data-set-view="modules">Módulos</button>
+  <button class="chip" data-set-view="modulesRun">Módulos · ejecutando</button>
+  <button class="chip" data-set-view="modulesSearch">Módulos · búsqueda</button>
+  <button class="chip" data-set-view="modulesFree">Módulos · plan Free</button>
+  <button class="chip" data-set-view="log">Registro · historial</button>
+  <button class="chip" data-set-view="logLive">Registro · salida en directo (legado)</button>
+  <button class="chip" data-set-view="settings">Ajustes</button>
+  <button class="chip" data-set-view="updates">Actualizaciones</button>
+  <button class="chip" data-set-view="updatesIdle">Actualizaciones · al día</button>
+  <button class="chip" data-set-view="specs">Especificaciones</button>
+  <button class="chip" data-set-view="about">Acerca de</button>
+</div>
+
+<div class="app" id="app" data-theme="default">
+  <div class="titlebar">
+    <div class="left">DexSuite — Performance Series</div>
+    <div class="dots"><i></i><i></i><i></i></div>
+  </div>
+  <div class="layout">
+    <div class="sidebar">
+      <div class="brand">
+        <div class="logo">DX</div>
+        <div>
+          <div class="name">DEXSUITE</div>
+          <div class="tag">AL LÍMITE</div>
+        </div>
+      </div>
+      <div class="section-label">PANEL</div>
+      <nav class="nav" id="nav">
+        <a data-view="home" class="active"><span class="ic">🏠</span>Inicio</a>
+        <a data-view="modules"><span class="ic">📦</span>Módulos</a>
+        <a data-view="log"><span class="ic">📋</span>Registro</a>
+      </nav>
+      <div class="section-label" style="margin-top:14px">SISTEMA</div>
+      <nav class="nav">
+        <a data-view="specs"><span class="ic">⚙️</span>Especificaciones</a>
+        <a data-view="settings"><span class="ic">🎛️</span>Ajustes</a>
+        <a data-view="updates"><span class="ic">⬇️</span>Actualizaciones</a>
+        <a data-view="about"><span class="ic">ℹ️</span>Acerca de</a>
+      </nav>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<script>
+const VIEWS = {
+home: `
+<div class="hero">
+  <div class="small">DEXSUITE</div>
+  <div class="big gradient-text">AL LÍMITE</div>
+  <div class="v">v0.1.0</div>
+</div>
+<div class="title">¿Qué quieres hacer?</div>
+<p class="subtitle">Pulsa Analizar para obtener una puntuación.<br>Después podrás optimizar y volver a analizar para ver la diferencia.</p>
+<div class="row" style="align-items:stretch;gap:10px;flex-wrap:wrap">
+  <div class="card" style="flex:1;min-width:220px">
+    <h3>📊 Analizar rendimiento</h3>
+    <p>Mide el estado actual de tu equipo.<br>Obtén una puntuación sobre 100.</p>
+    <div class="spacer"></div>
+    <button class="btn primary">▶ Analizar</button>
+  </div>
+  <div class="card" style="flex:1;min-width:220px">
+    <h3>⚡ Optimizar sistema</h3>
+    <p>Elige los módulos que quieras.<br>Lanza la limpieza y los ajustes.</p>
+    <div class="spacer"></div>
+    <button class="btn secondary">→ Ir a Módulos</button>
+  </div>
+</div>
+<div class="section-title">Estado inicial · Medido el 24/05/2026 14:32</div>
+<div class="row" style="align-items:center;gap:20px;flex-wrap:wrap">
+  <div class="score-ring"><div class="v">78</div><div class="l">/ 100</div></div>
+  <div style="flex:1;min-width:200px">
+    <div class="cat-row"><span class="nm">CPU</span><span class="det">24% en uso</span><span class="sc">82/100</span></div>
+    <div class="cat-row"><span class="nm">Memoria</span><span class="det">12 GB / 32 GB</span><span class="sc">75/100</span></div>
+    <div class="cat-row"><span class="nm">GPU</span><span class="det">8% en uso</span><span class="sc">88/100</span></div>
+    <div class="cat-row"><span class="nm">Disco</span><span class="det">256 GB libres</span><span class="sc">70/100</span></div>
+    <div class="cat-row"><span class="nm">Red</span><span class="det">12 ms hasta 1.1.1.1</span><span class="sc">76/100</span></div>
+  </div>
+</div>
+<div class="row" style="justify-content:flex-end;margin-top:14px">
+  <button class="btn secondary">↻ Reiniciar puntuaciones</button>
+  <button class="btn primary">↻ Analizar de nuevo</button>
+</div>
+`,
+
+modules: `
+<div class="title">Módulos disponibles</div>
+<p class="subtitle">Marca los módulos que quieras ejecutar.<br>Pasa el ratón por el chip Seguro/Riesgo para saber por qué.</p>
+<div class="row" style="justify-content:space-between;margin-bottom:12px">
+  <input type="text" placeholder="🔍 Buscar ajuste…" style="padding:8px 12px;background:var(--bgCard);border:1px solid var(--stroke);border-radius:6px;color:var(--text);font-size:12px;flex:1;max-width:240px;outline:none">
+  <div class="row">
+    <button class="btn secondary">🧹 Limpieza rápida</button>
+    <button class="btn secondary">✓ Recomendado <span class="help" style="margin-left:2px">?</span></button>
+    <button class="btn primary">▶ Ejecutar (5)</button>
+  </div>
+</div>
+<div class="row" style="align-items:flex-start;gap:10px;flex-wrap:wrap">
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge free">FREE</span><span style="color:var(--text2);font-size:11px">3 módulos</span></div>
+    <div class="module">
+      <div class="head"><span class="nm">Prefetch, caché y D3DSCache</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-soft">Suave</span></div>
+      <div class="desc">Borra Prefetch, Temp del sistema y del usuario, miniaturas, IconCache y shaders DirectX.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">Logs del sistema</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-soft">Suave</span></div>
+      <div class="desc">Limpia logs antiguos de Windows, SoftwareDistribution, CBS, DISM y WER.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">Temporales, recientes y papelera</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-soft">Suave</span></div>
+      <div class="desc">Vacía las carpetas Temp, el historial reciente, la papelera y Windows.old.</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge adv">AVANZADO</span><span style="color:var(--text2);font-size:11px">8 módulos</span></div>
+    <div class="module">
+      <div class="head"><span class="nm">Caché de Windows Update</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-strong">Notable</span></div>
+      <div class="desc">Detiene wuauserv y BITS, borra SoftwareDistribution\\Download.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">Caché de navegadores</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-strong">Notable</span></div>
+      <div class="desc">Vacía la caché de Edge, Chrome, Firefox, Brave, Opera y Vivaldi.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">Red (DNS y gpupdate)</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-strong">Notable</span></div>
+      <div class="desc">Vacía la caché DNS, registra el equipo y fuerza las directivas.</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge pro">PRO</span><span style="color:var(--text2);font-size:11px">8 módulos</span></div>
+    <div class="module">
+      <div class="head"><span class="nm">Rendimiento y latencia</span><span class="help">?</span><span class="badge risk">Riesgo</span><span class="badge impact-extreme">EXTREMO</span></div>
+      <div class="desc">Power Throttling off, MMCSS prioritario, hibernación off, HAGS on.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">Ethernet (red)</span><span class="help">?</span><span class="badge risk">Riesgo</span><span class="badge impact-extreme">EXTREMO</span></div>
+      <div class="desc">Tunea NIC, stack TCP (Nagle off, MaxUserPort 65534) y DNS.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">DISM Component Store</span><span class="help">?</span><span class="badge risk">Riesgo</span><span class="badge impact-strong">Fuerte</span></div>
+      <div class="desc">Limpia componentes obsoletos del sistema. Irreversible.</div>
+    </div>
+  </div>
+</div>
+<div class="section-title">⭐ EXTRA PRO · Videojuegos</div>
+<p class="subtitle">Optimizaciones específicas para llevar el rendimiento en juegos al límite absoluto</p>
+<div class="module">
+  <div class="head"><span class="nm">🎮 Optimización de videojuegos</span><span class="help">?</span><span class="badge extra">EXTRA PRO</span><span class="badge impact-extreme">EXTREMO</span></div>
+  <div class="desc">Optimizaciones por juego con menú remoto. Sólo activar si confías en la fuente.</div>
+</div>
+`,
+
+log: `
+<div class="title">Registro de ejecución</div>
+<p class="subtitle">Salida en vivo del proceso actual.<br>Se actualiza en tiempo real mientras se ejecuta.</p>
+<div class="tab">
+  <span class="on">📋 Historial</span>
+  <span>📡 Salida en directo</span>
+</div>
+<div class="row" style="justify-content:flex-end;margin-bottom:10px">
+  <button class="btn secondary">↻ Actualizar</button>
+  <button class="btn secondary">⬇ Exportar a .txt</button>
+  <button class="btn secondary" style="color:var(--critical);border-color:var(--critical)">🗑 Vaciar historial</button>
+</div>
+<div class="log-row"><span class="t">24/05 14:35:02</span><span class="lvl success">✓ ÉXITO</span><span class="cat">Ejecución</span><span class="msg">Optimización finalizada (5 módulos).</span></div>
+<div class="log-row"><span class="t">24/05 14:34:51</span><span class="lvl info">○ INFO</span><span class="cat">Restore</span><span class="msg">Punto de restauración creado: DexSuite — antes de ejecutar 5 módulos.</span></div>
+<div class="log-row"><span class="t">24/05 14:34:48</span><span class="lvl info">○ INFO</span><span class="cat">Ejecución</span><span class="msg">Optimización iniciada con 5 módulos.</span></div>
+<div class="log-row"><span class="t">24/05 14:33:12</span><span class="lvl success">✓ ÉXITO</span><span class="cat">Rendimiento</span><span class="msg">Puntuación final: 89 (Excelente). Variación: +11.</span></div>
+<div class="log-row"><span class="t">24/05 14:32:55</span><span class="lvl info">○ INFO</span><span class="cat">Rendimiento</span><span class="msg">Puntuación inicial: 78 (Bueno).</span></div>
+<div class="log-row"><span class="t">24/05 14:31:08</span><span class="lvl success">✓ ÉXITO</span><span class="cat">Limpieza rápida</span><span class="msg">Limpieza rápida: 1240 MB liberados, 8923 archivos eliminados.</span></div>
+<div class="log-row"><span class="t">24/05 14:30:00</span><span class="lvl warn">⚠ AVISO</span><span class="cat">Actualización</span><span class="msg">Nueva versión disponible: v0.2.0.</span></div>
+<div class="log-row"><span class="t">24/05 14:29:50</span><span class="lvl info">○ INFO</span><span class="cat">App</span><span class="msg">DexSuite iniciado (v0.1.0).</span></div>
+`,
+
+settings: `
+<div class="title">Ajustes</div>
+<p class="subtitle">Las opciones se aplican al instante.<br>De momento no se guardan al cerrar la app (llegará con SQLite).</p>
+
+<div class="card">
+  <div class="row" style="justify-content:space-between"><div>
+    <h3>🌐 Idioma</h3><p>Cambia el idioma de la aplicación.<br>La interfaz se actualiza al instante.</p>
+  </div>
+  <div class="combo">🇪🇸&nbsp; Español <span class="arr">▼</span></div></div>
+</div>
+
+<div class="card">
+  <h3>🎨 Tema</h3>
+  <p style="margin-bottom:12px">Identidad visual de la app.<br>Temas exclusivos para usuarios Pro.</p>
+  <div class="theme-grid">
+    <div class="theme-tile" data-tt="default"><div class="swatch3"><i style="background:#1B1B1B"></i><i style="background:#60CDFF"></i><i style="background:#FFFFFF"></i></div><div class="lbl"><div class="n">DEFAULT</div><div class="h">Paleta Fluent neutra</div></div></div>
+    <div class="theme-tile" data-tt="cybernetic"><div class="swatch3"><i style="background:#0F0F1F"></i><i style="background:#00B8D9"></i><i style="background:#9D4EDD"></i></div><div class="lbl"><div class="n">CYBERNETIC</div><div class="h">Cyberpunk cian + violeta</div></div></div>
+    <div class="theme-tile" data-tt="redline"><div class="swatch3"><i style="background:#130808"></i><i style="background:#E63946"></i><i style="background:#FF1744"></i></div><div class="lbl"><div class="n">REDLINE</div><div class="h">Rojo carrera + negro</div></div></div>
+    <div class="theme-tile" data-tt="zerolag"><div class="swatch3"><i style="background:#0C0C0C"></i><i style="background:#606060"></i><i style="background:#FFFFFF"></i></div><div class="lbl"><div class="n">ZERO LAG</div><div class="h">Monocromo</div></div></div>
+    <div class="theme-tile" data-tt="apex"><div class="swatch3"><i style="background:#13110D"></i><i style="background:#D4AF37"></i><i style="background:#FFD700"></i></div><div class="lbl"><div class="n">APEX</div><div class="h">Oro premium</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="row" style="justify-content:space-between"><div>
+    <h3>👑 Plan activo</h3><p>Limita qué módulos puedes ejecutar.</p>
+  </div>
+  <div class="combo">Pro <span class="arr">▼</span></div></div>
+</div>
+
+<div class="card">
+  <h3>⚙️ Comportamiento</h3>
+  <div class="toggle">
+    <div><div class="lbl">Marcar módulos recomendados al abrir</div><div class="desc">Se aplica al iniciar la app.</div></div>
+    <div class="sw on"></div>
+  </div>
+  <div class="toggle">
+    <div><div class="lbl">Saltar al Registro al ejecutar</div><div class="desc">Cambia de vista automáticamente.</div></div>
+    <div class="sw on"></div>
+  </div>
+  <div class="toggle">
+    <div><div class="lbl">Avisar antes de ejecutar módulos no reversibles</div><div class="desc">Pedirá confirmación para módulos de Riesgo.</div></div>
+    <div class="sw on"></div>
+  </div>
+  <div class="toggle">
+    <div><div class="lbl">Notificar al terminar una ejecución</div><div class="desc">Aviso del sistema al terminar.</div></div>
+    <div class="sw"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>🛡️ Punto de restauración del sistema</h3>
+  <p style="margin-bottom:10px">Crea un punto de restauración antes de ejecutar optimizaciones, para poder deshacer cualquier cambio desde la configuración de Windows.</p>
+  <div class="toggle" style="border:0;padding:0 0 8px">
+    <div><div class="lbl">Crear automáticamente antes de cada ejecución</div></div>
+    <div class="sw on"></div>
+  </div>
+  <button class="btn secondary">🛡️ Crear punto de restauración ahora</button>
+</div>
+`,
+
+updates: `
+<div class="title">Actualizaciones</div>
+<p class="subtitle">DexSuite se actualiza automáticamente a la última versión.<br>Mantenla al día para obtener las últimas optimizaciones.</p>
+
+<div class="update-banner">
+  <div class="t">¡Nueva versión disponible!</div>
+  <div class="d">Versión v0.2.0 lista para descargar e instalar.</div>
+  <div style="margin-top:10px"><button class="btn" style="background:rgba(0,0,0,.3);color:var(--onAccent);border-color:rgba(0,0,0,.3)">⬇ Actualizar ahora</button></div>
+</div>
+
+<div class="card">
+  <h3>📦 Versión instalada</h3>
+  <p style="font-size:18px;color:var(--text);font-weight:700;margin-top:4px">v0.1.0</p>
+  <p style="font-size:11px;color:var(--text3)">Última comprobación: hace 5 minutos</p>
+  <div class="row" style="margin-top:10px">
+    <button class="btn primary">↻ Buscar actualizaciones</button>
+  </div>
+</div>
+
+<div class="card">
+  <h3>⚙️ Preferencias</h3>
+  <div class="toggle">
+    <div><div class="lbl">Actualizar automáticamente</div><div class="desc">Descarga e instala nuevas versiones en segundo plano.</div></div>
+    <div class="sw on"></div>
+  </div>
+  <div class="toggle" style="border:0">
+    <div><div class="lbl">Canal de actualización</div><div class="desc">Stable: versiones probadas. Beta: versiones nuevas antes.</div></div>
+    <div class="combo" style="min-width:120px">Stable <span class="arr">▼</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>ℹ️ Cómo funcionan las actualizaciones</h3>
+  <p>DexSuite usa Velopack. Pulsa «Buscar actualizaciones» para comprobar si hay una versión nueva.<br>Si la app no está instalada vía Setup, las actualizaciones automáticas no están disponibles.</p>
+</div>
+`,
+
+specs: `
+<div class="title">Especificaciones del sistema</div>
+<p class="subtitle">Hardware y sistema operativo detectados</p>
+<div class="specs">
+  <div class="spec-card"><div class="ic">🧠</div><div class="lbl">Procesador</div><div class="v">Intel Core i7-13700K</div><div class="d">16 núcleos / 24 lógicos</div></div>
+  <div class="spec-card"><div class="ic">💾</div><div class="lbl">Memoria</div><div class="v">32 GB DDR5</div><div class="d">32 GB totales · 18 GB disponibles</div></div>
+  <div class="spec-card"><div class="ic">🎮</div><div class="lbl">Gráfica</div><div class="v">NVIDIA RTX 4080</div><div class="d">16 GB VRAM</div></div>
+  <div class="spec-card"><div class="ic">💿</div><div class="lbl">Almacenamiento</div><div class="v">2 TB NVMe SSD</div><div class="d">2000 GB totales · 1240 GB libres · NTFS</div></div>
+  <div class="spec-card" style="grid-column:1/-1"><div class="ic">🖥️</div><div class="lbl">Sistema operativo</div><div class="v">Windows 11 Pro 23H2</div><div class="d">Build 22631.3155 · x64</div></div>
+</div>
+<div style="margin-top:10px"><button class="btn secondary">↻ Actualizar</button></div>
+`,
+
+homeEmpty: `
+<div class="hero">
+  <div class="small">DEXSUITE</div>
+  <div class="big gradient-text">AL LÍMITE</div>
+  <div class="v">v0.1.0</div>
+</div>
+<div class="title">¿Qué quieres hacer?</div>
+<p class="subtitle">Limpieza, optimización y seguridad para Windows.</p>
+<div class="row" style="align-items:stretch;gap:10px;flex-wrap:wrap">
+  <div class="card" style="flex:1;min-width:220px">
+    <h3>📊 Analizar rendimiento</h3>
+    <p>Mide el estado actual de tu equipo.<br>Obtén una puntuación sobre 100.</p>
+    <div class="spacer"></div>
+    <button class="btn primary">▶ Analizar</button>
+  </div>
+  <div class="card" style="flex:1;min-width:220px">
+    <h3>⚡ Optimizar sistema</h3>
+    <p>Elige los módulos que quieras.<br>Lanza la limpieza y los ajustes.</p>
+    <div class="spacer"></div>
+    <button class="btn secondary">→ Ir a Módulos</button>
+  </div>
+  <div class="card" style="flex:1;min-width:220px">
+    <h3>📋 Ver registro</h3>
+    <p>Mira la salida en vivo durante la ejecución.<br>Revisa la última ejecución.</p>
+    <div class="spacer"></div>
+    <button class="btn secondary">→ Ir a Registro</button>
+  </div>
+</div>
+<div class="card" style="text-align:center;padding:30px;margin-top:14px">
+  <div style="font-size:36px;opacity:.5">📊</div>
+  <h3 style="margin-top:8px">Aún no has analizado tu equipo</h3>
+  <p>Pulsa Analizar para obtener una puntuación.<br>Después podrás optimizar y volver a analizar para ver la diferencia.</p>
+  <div style="margin-top:14px"><button class="btn primary">▶ Analizar ahora</button></div>
+</div>
+`,
+
+modulesRun: `
+<div class="title">Módulos disponibles</div>
+<p class="subtitle">Ejecutando 5 módulo(s)... (puedes cancelar)</p>
+<div class="card" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--onAccent);border:0;padding:18px 20px">
+  <div style="display:flex;align-items:center;gap:14px">
+    <div style="width:42px;height:42px;border:3px solid rgba(0,0,0,.2);border-top-color:var(--onAccent);border-radius:50%;animation:spin 1s linear infinite"></div>
+    <div style="flex:1">
+      <div style="font-weight:700;font-size:14px">Ejecutando optimización…</div>
+      <div style="font-size:11px;opacity:.85;margin-top:2px">Módulo 3 de 5 · Caché de Windows Update</div>
+      <div style="height:4px;background:rgba(0,0,0,.2);border-radius:2px;margin-top:6px;overflow:hidden"><div style="width:60%;height:100%;background:var(--onAccent)"></div></div>
+    </div>
+    <button class="btn" style="background:rgba(0,0,0,.3);color:var(--onAccent);border-color:rgba(0,0,0,.3);font-weight:700">✕ Cancelar</button>
+  </div>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<div class="row" style="align-items:flex-start;gap:10px;flex-wrap:wrap;margin-top:10px">
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge free">FREE</span></div>
+    <div class="module"><div class="head"><span class="nm" style="color:var(--success)">✓ Prefetch, caché y D3DSCache</span><span class="badge safe">Hecho</span></div></div>
+    <div class="module"><div class="head"><span class="nm" style="color:var(--success)">✓ Logs del sistema</span><span class="badge safe">Hecho</span></div></div>
+    <div class="module" style="border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset"><div class="head"><span class="nm">⟳ Temporales, recientes y papelera</span><span class="badge" style="background:var(--accent);color:var(--onAccent)">En curso</span></div></div>
+  </div>
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge adv">AVANZADO</span></div>
+    <div class="module" style="opacity:.6"><div class="head"><span class="nm">○ Caché de Windows Update</span><span class="badge" style="background:var(--bgSubtle);color:var(--text2)">Pendiente</span></div></div>
+    <div class="module" style="opacity:.6"><div class="head"><span class="nm">○ Caché de navegadores</span><span class="badge" style="background:var(--bgSubtle);color:var(--text2)">Pendiente</span></div></div>
+  </div>
+</div>
+<div class="hint" style="margin-top:12px">🛡️ Punto de restauración creado antes de empezar — DexSuite — antes de ejecutar 5 módulos</div>
+`,
+
+modulesSearch: `
+<div class="title">Módulos disponibles</div>
+<div class="row" style="justify-content:space-between;margin-bottom:12px">
+  <input type="text" value="telem" style="padding:8px 12px;background:var(--bgCard);border:2px solid var(--accent);border-radius:6px;color:var(--text);font-size:12px;flex:1;max-width:240px;outline:none">
+</div>
+<div class="hint">🔍 2 resultado(s) para «telem»</div>
+<div class="module">
+  <div class="head"><span class="nm">Copilot, Cortana y telemetría</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-extreme">EXTREMO</span><span class="badge pro">PRO</span></div>
+  <div class="desc">Desactiva Windows Copilot, Cortana, DiagTrack, Timeline, AdvertisingID y CEIP.</div>
+</div>
+<div class="module">
+  <div class="head"><span class="nm">Privacidad y servicios</span><span class="help">?</span><span class="badge safe">Seguro</span><span class="badge impact-strong">Fuerte</span><span class="badge pro">PRO</span></div>
+  <div class="desc">Bloquea apps sugeridas, ubicación, widgets, WPBT y desactiva servicios poco útiles (incluye telemetría).</div>
+</div>
+`,
+
+modulesFree: `
+<div class="title">Módulos disponibles</div>
+<p class="subtitle">Plan activo: <strong>Free</strong> · Los módulos de planes superiores aparecen bloqueados.</p>
+<div class="row" style="align-items:flex-start;gap:10px;flex-wrap:wrap">
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge free">FREE</span></div>
+    <div class="module">
+      <div class="head"><span class="nm">Prefetch, caché y D3DSCache</span><span class="help">?</span><span class="badge safe">Seguro</span></div>
+      <div class="desc">Borra Prefetch, Temp del sistema y del usuario, miniaturas e IconCache.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">Logs del sistema</span><span class="help">?</span><span class="badge safe">Seguro</span></div>
+      <div class="desc">Limpia logs antiguos de Windows.</div>
+    </div>
+    <div class="module">
+      <div class="head"><span class="nm">Temporales, recientes y papelera</span><span class="help">?</span><span class="badge safe">Seguro</span></div>
+      <div class="desc">Vacía las carpetas Temp, el historial reciente y la papelera.</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge adv">AVANZADO</span></div>
+    <div class="module locked">
+      <div class="head"><span class="nm">Caché de Windows Update</span><span class="badge adv">🔒 Requiere Avanzado</span></div>
+      <div class="desc">Detiene wuauserv y BITS, borra SoftwareDistribution.</div>
+    </div>
+    <div class="module locked">
+      <div class="head"><span class="nm">Caché de navegadores</span><span class="badge adv">🔒 Requiere Avanzado</span></div>
+      <div class="desc">Vacía la caché de Edge, Chrome, Firefox, Brave.</div>
+    </div>
+  </div>
+  <div style="flex:1;min-width:200px">
+    <div class="row" style="margin-bottom:8px"><span class="badge pro">PRO</span></div>
+    <div class="module locked">
+      <div class="head"><span class="nm">Rendimiento y latencia</span><span class="badge pro">🔒 Requiere Pro</span></div>
+      <div class="desc">Power Throttling off, MMCSS prioritario, HAGS on.</div>
+    </div>
+    <div class="module locked">
+      <div class="head"><span class="nm">Ethernet (red)</span><span class="badge pro">🔒 Requiere Pro</span></div>
+      <div class="desc">Tunea NIC, stack TCP y DNS.</div>
+    </div>
+  </div>
+</div>
+`,
+
+logLive: `
+<div class="title">Registro de ejecución</div>
+<p class="subtitle">Salida en vivo del proceso actual.<br>Se actualiza en tiempo real mientras se ejecuta.</p>
+<div class="tab">
+  <span>📋 Historial</span>
+  <span class="on">📡 Salida en directo</span>
+</div>
+<div style="background:#000;border:1px solid var(--stroke);border-radius:8px;padding:14px 16px;font-family:Consolas,'Courier New',monospace;font-size:11px;line-height:1.55;color:#c0c0c0;white-space:pre-wrap;max-height:480px;overflow:auto">
+<span style="color:#0EA5E9">[14:34:48]</span> <span style="color:#fff">━━━━ DEXSUITE CLEANUP v1.7.3 ━━━━</span>
+<span style="color:#0EA5E9">[14:34:48]</span> Iniciando con 5 módulos seleccionados
+<span style="color:#0EA5E9">[14:34:48]</span> Modo: Optimización extrema
+<span style="color:#0EA5E9">[14:34:48]</span> Privilegios: Administrador ✓
+<span style="color:#888">
+[14:34:49]</span> ▶ Módulo 1/5: Prefetch, caché y D3DSCache
+<span style="color:#888">[14:34:49]</span>   ├─ Limpiando C:\\Windows\\Prefetch...
+<span style="color:#888">[14:34:50]</span>   ├─ Eliminados 1247 archivos
+<span style="color:#888">[14:34:50]</span>   ├─ Limpiando %TEMP% del usuario...
+<span style="color:#888">[14:34:51]</span>   ├─ Eliminados 8923 archivos · 1240 MB liberados
+<span style="color:#888">[14:34:51]</span>   ├─ Limpiando IconCache...
+<span style="color:#888">[14:34:51]</span>   └─ <span style="color:#00D9A0">✓ Completado en 2.1s</span>
+<span style="color:#888">
+[14:34:51]</span> ▶ Módulo 2/5: Logs del sistema
+<span style="color:#888">[14:34:52]</span>   ├─ Limpiando Windows Event Logs...
+<span style="color:#888">[14:34:52]</span>   ├─ Limpiando SoftwareDistribution...
+<span style="color:#888">[14:34:53]</span>   ├─ Limpiando CBS, DISM y WER...
+<span style="color:#888">[14:34:53]</span>   └─ <span style="color:#00D9A0">✓ Completado en 1.8s</span>
+<span style="color:#888">
+[14:34:53]</span> ▶ Módulo 3/5: Caché de Windows Update
+<span style="color:#888">[14:34:53]</span>   ├─ Deteniendo wuauserv...
+<span style="color:#888">[14:34:54]</span>   ├─ Deteniendo BITS...
+<span style="color:#888">[14:34:55]</span>   ├─ <span style="color:#FFB800">⚠ Conflicto detectado, reintentando...</span>
+<span style="color:#888">[14:34:55]</span>   ├─ Limpiando SoftwareDistribution\\Download...
+<span style="color:#888">[14:34:56]</span>   ├─ Reiniciando servicios...
+<span style="color:#0EA5E9">[14:34:56]</span> <span style="color:#fff">⟳ EN CURSO — espera...</span>_
+</div>
+<div class="row" style="justify-content:flex-end;margin-top:8px">
+  <button class="btn secondary">⤓ Bajar al final</button>
+  <button class="btn secondary">⧉ Copiar salida</button>
+</div>
+<div class="hint" style="margin-top:8px">ℹ️ Esta es la salida cruda del script .bat de mantenimiento.<br>Sirve para depurar cuando una optimización falla.</div>
+`,
+
+updatesIdle: `
+<div class="title">Actualizaciones</div>
+<p class="subtitle">DexSuite se actualiza automáticamente a la última versión.<br>Mantenla al día para obtener las últimas optimizaciones.</p>
+
+<div class="card" style="border:1px solid var(--success);background:linear-gradient(180deg,var(--successBg) 0%,var(--bgCard) 100%)">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="font-size:32px">✓</div>
+    <div>
+      <div style="font-weight:700;color:var(--success);font-size:14px">Estás en la última versión disponible</div>
+      <div style="font-size:12px;color:var(--text2);margin-top:2px">Versión instalada: v0.1.0</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>📦 Versión instalada</h3>
+  <p style="font-size:18px;color:var(--text);font-weight:700;margin-top:4px">v0.1.0</p>
+  <p style="font-size:11px;color:var(--text3)">Última comprobación: hace 32 segundos</p>
+  <div class="row" style="margin-top:10px">
+    <button class="btn primary">↻ Buscar actualizaciones</button>
+  </div>
+</div>
+
+<div class="card">
+  <h3>⚙️ Preferencias</h3>
+  <div class="toggle">
+    <div><div class="lbl">Actualizar automáticamente</div><div class="desc">Descarga e instala nuevas versiones en segundo plano.</div></div>
+    <div class="sw on"></div>
+  </div>
+  <div class="toggle" style="border:0">
+    <div><div class="lbl">Canal de actualización</div><div class="desc">Stable: probadas. Beta: nuevas antes.</div></div>
+    <div class="combo" style="min-width:120px">Stable <span class="arr">▼</span></div>
+  </div>
+</div>
+`,
+
+about: `
+<div class="title">Acerca de DexSuite</div>
+<div class="card" style="text-align:center;padding:28px">
+  <div style="font-size:64px;margin-bottom:6px">⚡</div>
+  <div style="font-size:18px;font-weight:800;color:var(--text);letter-spacing:1px">DEXSUITE</div>
+  <div style="font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:2px;margin-top:2px">Performance Series</div>
+  <div class="row" style="justify-content:center;margin-top:10px">
+    <span class="badge pro">v0.1.0</span>
+    <span class="badge free">Requiere administrador</span>
+  </div>
+</div>
+<div class="card">
+  <h3>El proyecto</h3>
+  <p>DexSuite es un sistema de optimización extrema para Windows.<br>Analiza tu equipo, aplica ajustes de alto impacto y empuja el rendimiento al límite físicamente posible.<br>Cada versión incorpora nuevos módulos nativos C# orientados a maximizar FPS y reducir latencias.</p>
+</div>
+<div class="card">
+  <h3>Novedades en v0.1.0</h3>
+  <p>• Pantalla de inicio con logo y accesos rápidos<br>
+     • Test de rendimiento con 8 categorías<br>
+     • Comparativa antes/después con delta<br>
+     • Módulos agrupados por plan (Free / Avanzado / Pro)<br>
+     • Chip Seguro/Riesgo con explicación de impacto<br>
+     • Monitoreo en tiempo real y botón Cancelar<br>
+     • Actualización automática integrada<br>
+     • Tema CYBERNETIC con paleta cian + violeta<br>
+     • Sidebar con iconos y selector de idioma (10 idiomas)</p>
+</div>
+<div class="card">
+  <h3>Créditos</h3>
+  <div class="kv">
+    <span class="k">Diseño y concepto</span><span class="v">Sr. Dexter</span>
+    <span class="k">Desarrollo</span><span class="v">Mateo · DexSuite Performance Series</span>
+    <span class="k">Módulo videojuegos</span><span class="v">Sr. Dexter · Configuración avanzada</span>
+  </div>
+</div>
+<div class="card">
+  <h3>Stack técnico</h3>
+  <div class="stack-wrap">
+    <span class="stack-pill">.NET 8</span>
+    <span class="stack-pill">C# 12</span>
+    <span class="stack-pill">WPF</span>
+    <span class="stack-pill">Wpf.Ui (Lepoco)</span>
+    <span class="stack-pill">CommunityToolkit.Mvvm</span>
+    <span class="stack-pill">EF Core SQLite</span>
+    <span class="stack-pill">Serilog</span>
+    <span class="stack-pill">Velopack</span>
+  </div>
+</div>
+<div class="card">
+  <h3>Utilidades</h3>
+  <div class="row">
+    <button class="btn secondary">📁 Abrir carpeta de logs</button>
+    <button class="btn secondary">↻ Buscar actualizaciones</button>
+  </div>
+</div>
+<p style="text-align:center;font-size:10px;color:var(--text3);margin-top:14px">© 2026 DexSuite · Solo para Windows · Requiere permisos de administrador</p>
+`
+};
+
+const app = document.getElementById('app');
+const content = document.getElementById('content');
+const themeBtns = document.querySelectorAll('[data-set-theme]');
+const viewBtns = document.querySelectorAll('[data-set-view]');
+const navLinks = document.querySelectorAll('[data-view]');
+
+function render(viewKey){
+  content.innerHTML = VIEWS[viewKey] || VIEWS.home;
+  navLinks.forEach(n=>n.classList.toggle('active', n.dataset.view===viewKey));
+  // Marca el tema activo en el selector de Ajustes según el tema actual del app.
+  const cur = app.getAttribute('data-theme');
+  document.querySelectorAll('.theme-tile').forEach(t=>{
+    t.classList.toggle('active', t.dataset.tt===cur);
+  });
+}
+
+function setTheme(th){
+  app.setAttribute('data-theme', th);
+  themeBtns.forEach(b=>b.classList.toggle('on', b.dataset.setTheme===th));
+  // Re-render para que el selector de temas refresque el "Active"
+  const cur = document.querySelector('[data-set-view].on')?.dataset.setView || 'home';
+  render(cur);
+}
+
+function setView(v){
+  viewBtns.forEach(b=>b.classList.toggle('on', b.dataset.setView===v));
+  render(v);
+}
+
+themeBtns.forEach(b=>b.addEventListener('click', ()=>setTheme(b.dataset.setTheme)));
+viewBtns.forEach(b=>b.addEventListener('click', ()=>setView(b.dataset.setView)));
+navLinks.forEach(n=>n.addEventListener('click', ()=>setView(n.dataset.view)));
+
+render('home');
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
+using DexSuite.App.Models;
+
+namespace DexSuite.App.Services.CleanupModules;
+
+/// <summary>
+/// M13 — Copilot, Cortana y Telemetría.
+/// Deshabilita Windows Copilot, Cortana, telemetría (nivel 0), DiagTrack,
+/// Timeline, AdvertisingID y CEIP — todo vía registro y WMI (servicios).
+/// Migrado del bloque RUN_13 del .bat.
+/// </summary>
+[SupportedOSPlatform("windows")]
+public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
+{
+    public override int ModuleId => 13;
+
+    public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        [EnumeratorCancellation] CancellationToken ct = default)
+    {
+        yield return Header("Copilot, Cortana y Telemetría");
+
+        // ── Copilot ────────────────────────────────────────────────────
+        yield return Step("Desactivando Windows Copilot");
+        SetRegistryDword(@"HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
+        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowCopilotButton", 0);
+        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Search",            "BingSearchEnabled", 0);
+        yield return Ok("Copilot desactivado");
+
+        // ── Cortana ────────────────────────────────────────────────────
+        if (ct.IsCancellationRequested) yield break;
+        yield return Step("Desactivando Cortana");
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortana", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortanaAboveLock", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowSearchToUseLocation", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "DisableWebSearch", 1);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "ConnectedSearchUseWeb", 0);
+        KillProcess("Cortana.exe");
+        yield return Ok("Cortana desactivada");
+
+        // ── Telemetría nivel 0 ─────────────────────────────────────────
+        if (ct.IsCancellationRequested) yield break;
+        yield return Step("Telemetría a nivel 0 (mínimo posible)");
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection",                "AllowTelemetry", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", "AllowTelemetry", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", "MaxTelemetryAllowed", 0);
+        yield return Ok("Telemetría configurada al nivel 0");
+
+        // ── Servicios de telemetría ────────────────────────────────────
+        if (ct.IsCancellationRequested) yield break;
+        yield return Step("Desactivando los servicios de telemetría");
+        SetServiceStartMode("DiagTrack", "Disabled"); StopService("DiagTrack");
+        SetServiceStartMode("dmwappushservice", "Disabled"); StopService("dmwappushservice");
+        SetServiceStartMode("diagnosticshub.standardcollector.service", "Disabled");
+        SetServiceStartMode("WerSvc", "Disabled"); StopService("WerSvc");
+        yield return Ok("Servicios de telemetría desactivados");
+
+        // ── Timeline / AdvertisingID / CEIP / WER ──────────────────────
+        if (ct.IsCancellationRequested) yield break;
+        yield return Step("Desactivando Timeline, AdvertisingID y CEIP");
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "AITEnable", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "DisableInventory", 1);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "DisablePCA", 1);
+        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Privacy",
+            "TailoredExperiencesWithDiagnosticDataEnabled", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "PublishUserActivities", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "UploadUserActivities", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "EnableActivityFeed", 0);
+        SetRegistryDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo", "Enabled", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo", "DisabledByGroupPolicy", 1);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows", "CEIPEnable", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\SQMClient\Windows", "CEIPEnable", 0);
+        SetRegistryDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting", "Disabled", 1);
+        SetRegistryDword(@"HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting", "Disabled", 1);
+        yield return Ok("Timeline, AdvertisingID y CEIP desactivados");
+
+        yield return Done("M13 completado");
+        await Task.CompletedTask;
+    }
+}

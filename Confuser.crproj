@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ConfuserEx 2 — configuración de ofuscación de DexSuite.
+
+    Preset 'aggressive' incluye: control flow + anti-debug + anti-tamper +
+    anti-ildasm + reference proxy + constants + resource encryption.
+    NO incluye 'renaming' por defecto en este proyecto: WPF resuelve los
+    bindings por nombre y renombrar tipos públicos rompería el XAML.
+
+    Si en el futuro se quiere renombrar parcialmente, añadir una regla
+    excluyendo namespaces de Models, ViewModels y Markup.
+
+    El path baseDir/outputDir se resuelve relativo al .crproj.
+    El pipeline de release (scripts/publish-release.ps1) deja los binarios
+    en ../publish/win-x64 antes de invocar a ConfuserEx.
+-->
+<project outputDir="publish\win-x64" baseDir="publish\win-x64" xmlns="http://confuser.codeplex.com">
+  <rule pattern="true" inherit="false">
+    <!-- Aggressive = control flow + anti-debug + anti-tamper + anti-ildasm + ref proxy. -->
+    <protection id="anti debug" />
+    <protection id="anti dump" />
+    <protection id="anti ildasm" />
+    <protection id="anti tamper" />
+    <protection id="constants" />
+    <protection id="ctrl flow" />
+    <protection id="ref proxy" />
+    <protection id="resources" />
+  </rule>
+
+  <!-- Excluir Models y ViewModels del control flow agresivo: WPF necesita
+       reflexión sobre ellos. Mantener el resto de protecciones. -->
+  <rule pattern="namespace('DexSuite.App.Models') or namespace('DexSuite.App.ViewModels')"
+        inherit="false">
+    <protection id="anti tamper" />
+    <protection id="constants" />
+    <protection id="resources" />
+  </rule>
+
+  <module path="DexSuite.App.dll" />
+  <module path="DexSuite.App.exe" />
+</project>

@@ -1,0 +1,126 @@
+using System.ComponentModel;
+using System.Globalization;
+using System.Resources;
+using System.Threading;
+
+namespace DexSuite.App.Services;
+
+/// <summary>
+/// Implementación principal de <see cref="ILocalizationService"/>.
+///
+/// Carga las traducciones desde los archivos .resx embebidos en
+/// <c>Resources/Strings.resx</c> (idioma neutro = inglés) y
+/// <c>Resources/Strings.&lt;lang&gt;.resx</c> (satellite assemblies).
+///
+/// Expone una instancia singleton <see cref="Instance"/> para que la
+/// markup extension {loc:T} pueda enlazarse a ella sin pasar por DI.
+/// Aun así también se registra en el contenedor DI para inyectarlo en
+/// los ViewModels.
+/// </summary>
+public sealed class LocalizationService : ILocalizationService
+{
+    /// <summary>Singleton accesible desde la markup extension TExtension.</summary>
+    public static LocalizationService Instance { get; } = new();
+
+    private static readonly ResourceManager _rm = new(
+        "DexSuite.App.Resources.Strings",
+        typeof(LocalizationService).Assembly);
+
+    private string _currentLanguage = "es";
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    public event EventHandler? LanguageChanged;
+
+    /// <summary>
+    /// Los 30 idiomas soportados por DexSuite.
+    /// El nombre nativo se muestra en el ComboBox de Ajustes (cada usuario
+    /// reconoce el suyo aunque la app esté en otro idioma).
+    /// El chino "zh" se entrega como mandarín simplificado (zh-CN).
+    /// </summary>
+    public IReadOnlyList<LanguageOption> AvailableLanguages { get; } = new[]
+    {
+        // Bloque 1 — España + originales
+        new LanguageOption("es", "Español",   "Spanish",    "🇪🇸"),
+        new LanguageOption("gl", "Galego",    "Galician",   "🇪🇸"),
+        new LanguageOption("ca", "Català",    "Catalan",    "🇪🇸"),
+        new LanguageOption("eu", "Euskara",   "Basque",     "🇪🇸"),
+        new LanguageOption("en", "English",   "English",    "🇬🇧"),
+        new LanguageOption("pt", "Português", "Portuguese", "🇵🇹"),
+        new LanguageOption("fr", "Français",  "French",     "🇫🇷"),
+        new LanguageOption("de", "Deutsch",   "German",     "🇩🇪"),
+        new LanguageOption("it", "Italiano",  "Italian",    "🇮🇹"),
+        new LanguageOption("zh", "中文 (简体)", "Chinese (Mandarin)", "🇨🇳"),
+
+        // Bloque 2 — Europa del este + asiáticos principales
+        new LanguageOption("ru", "Русский",        "Russian",    "🇷🇺"),
+        new LanguageOption("uk", "Українська",     "Ukrainian",  "🇺🇦"),
+        new LanguageOption("ar", "العربية",         "Arabic",     "🇸🇦"),
+        new LanguageOption("ja", "日本語",          "Japanese",   "🇯🇵"),
+        new LanguageOption("ko", "한국어",          "Korean",     "🇰🇷"),
+        new LanguageOption("hi", "हिन्दी",            "Hindi",      "🇮🇳"),
+        new LanguageOption("bn", "বাংলা",            "Bengali",    "🇧🇩"),
+        new LanguageOption("ur", "اردو",            "Urdu",       "🇵🇰"),
+        new LanguageOption("id", "Indonesia",      "Indonesian", "🇮🇩"),
+        new LanguageOption("tr", "Türkçe",         "Turkish",    "🇹🇷"),
+        new LanguageOption("vi", "Tiếng Việt",     "Vietnamese", "🇻🇳"),
+
+        // Bloque 3 — resto de Europa
+        new LanguageOption("nl", "Nederlands",     "Dutch",      "🇳🇱"),
+        new LanguageOption("sv", "Svenska",        "Swedish",    "🇸🇪"),
+        new LanguageOption("ro", "Română",         "Romanian",   "🇷🇴"),
+        new LanguageOption("pl", "Polski",         "Polish",     "🇵🇱"),
+        new LanguageOption("cs", "Čeština",        "Czech",      "🇨🇿"),
+        new LanguageOption("el", "Ελληνικά",       "Greek",      "🇬🇷"),
+        new LanguageOption("da", "Dansk",          "Danish",     "🇩🇰"),
+        new LanguageOption("no", "Norsk",          "Norwegian",  "🇳🇴"),
+        new LanguageOption("fi", "Suomi",          "Finnish",    "🇫🇮"),
+    };
+
+    public string CurrentLanguage
+    {
+        get => _currentLanguage;
+        set
+        {
+            if (string.Equals(_currentLanguage, value, StringComparison.OrdinalIgnoreCase))
+                return;
+
+            _currentLanguage = value;
+            ApplyCulture(value);
+
+            // Notifica al indexer "Item[]" para que todos los bindings
+            // {loc:T Key=...} se refresquen automáticamente.
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Item[]"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentLanguage)));
+            LanguageChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public string Get(string key)
+    {
+        if (string.IsNullOrEmpty(key)) return string.Empty;
+        var culture = CultureFor(_currentLanguage);
+        return _rm.GetString(key, culture) ?? $"[{key}]";
+    }
+
+    public string this[string key] => Get(key);
+
+    private LocalizationService()
+    {
+        ApplyCulture(_currentLanguage);
+    }
+
+    private static void ApplyCulture(string code)
+    {
+        var culture = CultureFor(code);
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+        Thread.CurrentThread.CurrentCulture = culture;
+        Thread.CurrentThread.CurrentUICulture = culture;
+    }
+
+    private static CultureInfo CultureFor(string code)
+    {
+        try { return CultureInfo.GetCultureInfo(code); }
+        catch { return CultureInfo.InvariantCulture; }
+    }
+}

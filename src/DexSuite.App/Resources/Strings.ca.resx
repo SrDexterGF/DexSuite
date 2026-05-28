@@ -1,0 +1,1318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• Pantalla d'inici amb logo i accessos ràpids</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• Test de rendiment amb 8 categories: CPU, RAM, GPU, Disc, Processos, Inici, Temperatura, Xarxa</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Comparativa abans/després amb delta de puntuació</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• Mòduls agrupats per pla (Free / Avançat / Pro) en 3 columnes</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Xip Segur/Risc amb explicació de l'impacte a cada mòdul</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Monitoratge en temps real i botó Cancel·la durant l'execució</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Actualització automàtica integrada</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• Tema CYBERNETIC amb paleta cian + violeta i logo exclusiu</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• Barra lateral amb icones, separadors i selector d'idioma (30 idiomes)</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>Novetats a v{0}</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Disseny i concepte</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>Desenvolupament</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Mòdul videojocs</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter · Configuració avançada de jocs</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Crèdits</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Només per a Windows · Requereix permisos d'administrador</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite és un sistema d'optimització extrema per a Windows.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>Analitza el teu equip, aplica ajustos d'alt impacte i empeny el rendiment al límit físicament possible.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Cada versió incorpora nous mòduls natius C# orientats a maximitzar FPS i reduir latències.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>El projecte</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Requereix administrador</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Stack tècnic</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Obre carpeta de logs</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Utilitats</value>
+  </data>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Neteja, optimització i seguretat per a Windows</value>
+  </data>
+  <data name="App.Tagline" xml:space="preserve">
+    <value>AL LÍMIT</value>
+  </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>Informació de diagnòstic recollida automàticament (ajuda a reproduir):</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>Descriu què ha passat, què esperaves i els passos per reproduir-ho:</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>Reportar un error</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>Envia el teu informe manualment a suitedex@gmail.com.
+Error: {0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>No s'ha pogut obrir el client de correu</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>Obre el teu client de correu amb informació de diagnòstic preomplerta.</value>
+  </data>
+  <data name="Common.Apply" xml:space="preserve">
+    <value>Aplica</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Cancel·la</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Tanca</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Mai</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>D'acord</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>Obre</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Restableix</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>Executa</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>Tria un joc i aplica un ajust a mida per a FPS màxims i latència mínima.</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>Perfils d'optimització per joc</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>Cada perfil aplica ajustos precisos per al màxim FPS i la mínima latència.</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>Error en l'optimització del joc ({0}): {1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>Optimització de videojocs llançada: {0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>No s'ha pogut obrir el selector de jocs: {0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>Triar joc a optimitzar</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>Optimitza</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>Ajustos a mida per a FPS màxims i latència mínima.
+Cada joc té el seu propi perfil.</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>Selecciona un joc per optimitzar</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>Analitza de nou</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>Desglossament després d'optimitzar</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>Desglossament de l'anàlisi inicial</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>Analitza</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>Mesura l'estat actual del teu equip.
+Obtén una puntuació sobre 100.</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>Analitza el rendiment</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>Ves al Registre</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>Mira la sortida en directe durant l'execució.
+Revisa la darrera execució.</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>Mostra el registre</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>Ves a Mòduls</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>Tria els mòduls que vulguis.
+Llença la neteja i els ajustos.</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>Optimitza el sistema</value>
+  </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>Netejar ara</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>Buida carpetes temporals i paperera.
+Allibera espai en segons.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>Neteja ràpida</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>Actualitzar apps</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>Actualitza totes les aplicacions instal·lades alhora.</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>Actualitzar aplicacions</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>Clica Analitza per obtenir una puntuació.
+Després podràs optimitzar i analitzar de nou per veure la diferència.</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>Encara no has analitzat el teu equip</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>Reinicia les puntuacions</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>Estat inicial</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>Mesurat el {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} punts</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>Què vols fer?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Activar</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Eliminar llicència</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Enganxa una clau d'activació vàlida.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Error d'activació: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Enganxa la clau d'activació rebuda amb la teva compra. La clau està vinculada a aquest maquinari (HWID a dalt).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Clau d'activació</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Llicència activada. Pla: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Pla actual</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Copiar</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>ID de maquinari (HWID) — envia'l al desenvolupador per rebre la teva clau</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID copiat al porta-retalls.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite utilitza una llicència vinculada al maquinari. L'HWID identifica aquest PC; la clau rebuda és signada i només funciona aquí.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Llicència</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Pla Advanced actiu.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Pla gratuït actiu.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Pla Pro actiu.</value>
+  </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>Rendiment</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>Neteja ràpida</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>Execució</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>Actualització</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>Buida l'historial</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>Historial buidat ({0} entrades eliminades).</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>No s'ha pogut buidar l'historial: {0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>Nivell</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>Missatge</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>Les accions que executis apareixeran aquí automàticament.</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>Encara no hi ha esdeveniments</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>Puntuació inicial: {0} ({1}).</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>Error al test de rendiment: {0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>Puntuació final: {0} ({1}). Variació: {2}{3}.</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite iniciat (v{0}).</value>
+  </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>Correu d'informe de bug obert al client.</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>Historial buidat ({0} entrades).</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>Idioma canviat a {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Llicència activada — pla {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Activació de llicència rebutjada: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Llicència eliminada — tornada al pla gratuït.</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] — Completat</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — Error: {1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — Iniciat</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>Error en neteja ràpida: {0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>Neteja ràpida: {0} MB alliberats, {1} arxius eliminats.</value>
+  </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Punt de restauració creat: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Error en crear punt de restauració: {0}</value>
+  </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>Reversió massiva finalitzada — {0} revertits, {1} fallits de {2}.</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>Error en revertir — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>Canvi revertit — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>Optimització cancel·lada per l'usuari.</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>Error en l'optimització: {0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>Optimització finalitzada ({0} mòduls).</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>Optimització iniciada amb {0} mòduls.</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>Error en la comprovació de seguretat: {0}: {1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>Comprovació de seguretat completada: {0} (sortida {1})</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>Comprovació de seguretat ha finalitzat amb codi diferent de zero: {0} (sortida {1})</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>Comprovació de seguretat iniciada: {0}</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>Configuració restablerta als valors per defecte.</value>
+  </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>Tema canviat a {0}.</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>Pla actiu canviat a {0}.</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>Actualització v{0} aplicada.</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>No s'ha pogut aplicar l'actualització: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>Error en cercar actualitzacions: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>Nova versió disponible: v{0}.</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>Ja estàs a l'última versió (v{0}).</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>Error en l'actualització d'aplicacions: {0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>Actualització d'aplicacions completada — {0} paquets actualitzats.</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>Actualització d'aplicacions iniciada (winget upgrade --all)</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>Exporta a .txt</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>Error en exportar: {0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>Historial exportat a {0}</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>Èxit</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>Avís</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>Carregant historial…</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>Sortida en directe del procés actual.
+S'actualitza en temps real mentre s'executa.</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>Historial</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>Sortida en directe</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>Registre d'execució</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>mòduls</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>Desmarca-ho tot</value>
+  </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>Optimitzacions específiques per portar el rendiment en jocs al límit absolut</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>EXTRA PRO · Videojocs</value>
+  </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>EXTREM</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>Sense impacte</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>Notable</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>Suau</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>Fort</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>Nivell d'impacte que tindrà aquesta acció en el rendiment de l'equip.</value>
+  </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>Esborra Prefetch, Temp del sistema i de l'usuari, miniatures, IconCache i shaders DirectX.
+Tot es regenera sol.</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Prefetch, memòria cau i D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>Només esborra memòries cau que Windows regenera automàticament en usar l'equip.
+No afecta les teves dades ni programes.</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>Neteja registres antics de Windows, SoftwareDistribution, Windows Update, CBS, DISM i la carpeta WER.</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>Registres del sistema</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>Només esborra arxius de registre de diagnòstic.
+No afecta el funcionament ni les dades personals.</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>Buida les carpetes Temp persistents, l'historial recent, la paperera i Windows.old si existeix.</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>Temporals, recents i paperera</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>Buida la paperera i els arxius temporals.
+Si havies enviat alguna cosa important a la paperera, recupera-la abans.</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>Crash dumps, cua d'impressió, compactació de WMI i buidatge del Visor d'esdeveniments.
+Els esdeveniments no es poden recuperar.</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>Neteja profunda</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>Buida el Visor d'esdeveniments: un cop esborrats els esdeveniments del sistema, no es poden recuperar.
+Útil per a la privacitat, però pensa-t'ho abans.</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>Atura wuauserv i BITS, esborra SoftwareDistribution\Download i Delivery Optimization, i reinicia els serveis.</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Memòria cau de Windows Update</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>Només buida la memòria cau de descàrregues de Windows Update.
+Si una actualització havia fallat, aquest mòdul ho arregla.</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>Neteja components obsolets del sistema.
+Triga 5-20 minuts i és irreversible (no podràs desinstal·lar actualitzacions prèvies).</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>DISM Component Store</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>Després d'aquesta neteja ja no podràs desinstal·lar les actualitzacions de Windows ja aplicades.
+És segur, però permanent.</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>Buida la memòria cau d'Edge, Chrome, Firefox, Brave, Opera i Vivaldi.
+No toca perfils ni contrasenyes.</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>Memòria cau de navegadors</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>Només buida la memòria cau dels navegadors.
+NO toca contrasenyes, marcadors, historial ni galetes de sessió.</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>Buida la memòria cau DNS, registra l'equip al DNS i força l'actualització de directives de grup.</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>Xarxa (DNS i gpupdate)</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>Només refresca la memòria cau DNS i les directives de grup.
+No canvia la configuració de xarxa persistent.</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>Reinicia la memòria cau de Microsoft Store, buida els registres d'OneDrive i la memòria cau de Teams.</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store, OneDrive i Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>Neteja les memòries cau de Microsoft Store, OneDrive i Teams.
+Els teus arxius sincronitzats i converses es conserven.</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>Comprova els arxius protegits del sistema i repara la imatge de Windows.
+Reparador, no destructiu.</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM (reparació)</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>Repara arxius del sistema danyats.
+És lent (10-30 min), però NO modifica dades de l'usuari.</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>Desactiva l'acceleració del ratolí, posa el teclat al màxim, desactiva sticky keys i llegeix els Hz màxims dels monitors.</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>Ratolí, teclat i monitors</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>Toca preferències de ratolí i teclat al registre.
+Si no t'agraden els canvis, es poden revertir des de Configuració de Windows.</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>Executa 'winget upgrade --all'.
+Pot trigar segons el nombre d'apps. Sense undo per mòdul.</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget (actualitzar apps)</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>Actualitza TOTES les teves apps a la darrera versió.
+Si una nova versió porta un canvi que no t'agrada, no es pot desfer des d'aquí.</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>Desactiva Windows Copilot, Cortana, DiagTrack, Timeline, AdvertisingID i CEIP.</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Copilot, Cortana i telemetria</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>Canvia la configuració del registre per desactivar Copilot, Cortana i la telemetria.
+Reversible reactivant cada opció.</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>Bloqueja apps suggerides, ubicació, widgets, WPBT i desactiva serveis poc útils.</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>Privacitat i serveis</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>Modifica polítiques de privacitat i desactiva diversos serveis de Windows.
+Reversible, però afecta funcions com Widgets o ubicació.</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>Power Throttling off, MMCSS prioritari, hibernació off, HAGS on, BCD platform tick (cal reiniciar).</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>Rendiment i latència</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>Canvia BCD, MMCSS, hibernació i HAGS.
+Cal reiniciar. Són canvis forts però reversibles.</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>Optimitza NIC (RSS, offload, EEE off), stack TCP (Nagle off, MaxUserPort 65534) i DNS Google/Cloudflare.</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet (optimització de xarxa)</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>Modifica paràmetres de l'adaptador de xarxa i la pila TCP.
+Si perds connexió, executa 'netsh int ip reset'.</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT, Defender quick scan, SMBv1 off, AutoRun off, DEP AlwaysOn, LLMNR/NetBIOS off, RDP off, UAC nivell 2.</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>Seguretat</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>Endureix la seguretat del sistema.
+Desactiva RDP: si l'usaves per connectar-te en remot, activa'l de nou manualment.</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>S'assegura que TRIM estigui actiu a NTFS/ReFS, llança TRIM als SSD detectats i llegeix temperatura i desgast SMART.</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD (TRIM i salut SMART)</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>Només llegeix l'estat SMART i executa TRIM (operació estàndard d'SSD).
+No modifica dades.</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>pnputil scan, llista els drivers OEM i executa Windows Update per cercar drivers nous.</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>Drivers (Windows Update + pnputil)</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>Només cerca drivers.
+NO els instal·la automàticament: tu decideixes si actualitzar-los des de Windows Update.</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>Obre una selecció curada de perfils d'ajust per joc.
+Tria el teu títol i obtén una optimització a mida orientada a FPS màxims i mínima latència d'entrada.</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>Optimització de videojocs</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>Aplica ajustos específics per joc orientats a FPS màxims i menor latència.
+Qualsevol canvi es pot revertir més tard des de la configuració de Windows.</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>Aquestes optimitzacions estan seleccionades perquè són segures, reversibles i produeixen una millora visible a la majoria d'equips.
+Són el millor punt de partida abans d'explorar els ajustos avançats o pro.</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>Error durant l'execució.</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>Encara no aplicat.</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>Aplicant…</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>Aplicat correctament.</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>Risc</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>Segur</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>Marca-ho tot</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>Recomanat</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>Marca els mòduls que vulguis executar.
+Passa el ratolí pel xip Segur/Risc per saber per què.</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>AVANÇAT</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>FREE</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>Mòduls disponibles</value>
+  </data>
+  <data name="Navigation.About" xml:space="preserve">
+    <value>Quant a</value>
+  </data>
+  <data name="Navigation.Home" xml:space="preserve">
+    <value>Inici</value>
+  </data>
+  <data name="Navigation.Log" xml:space="preserve">
+    <value>Registre</value>
+  </data>
+  <data name="Navigation.Modules" xml:space="preserve">
+    <value>Mòduls</value>
+  </data>
+  <data name="Navigation.Panel" xml:space="preserve">
+    <value>PANELL</value>
+  </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>Revertir canvis</value>
+  </data>
+  <data name="Navigation.Settings" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>Especificacions</value>
+  </data>
+  <data name="Navigation.System" xml:space="preserve">
+    <value>SISTEMA</value>
+  </data>
+  <data name="Navigation.Updates" xml:space="preserve">
+    <value>Actualitzacions</value>
+  </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>{0} mòduls aplicats correctament.</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite — Optimització finalitzada</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>S'han intentat {0} mòduls — alguns han reportat errors. Revisa la pestanya Registre.</value>
+  </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Neteja ràpida</value>
+  </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>Es buidarà la paperera i es netejaran les carpetes temporals de Windows.
+No es tocarà cap arxiu personal.</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>Executar la neteja ràpida?</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>Elimina fitxers temporals de %TEMP%, C:\Windows\Temp i C:\Windows\Prefetch.
+També buida la paperera.
+No es toca cap fitxer personal.</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>Aplicat</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>Mòdul</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>Destí</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>Tipus</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>Executa mòduls d'optimització per començar a registrar canvis aquí.
+Cada acció nativa es registra automàticament per revertir amb un clic.</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>Encara no hi ha canvis registrats</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} canvi(s) pendent(s)</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>Actualitzar</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>Es revertiran {0} canvi(s) pendent(s).
+L'operació no es pot desfer des de DexSuite.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>Es revertirà el canvi aplicat per '{0}'.
+Es restaurarà el valor original.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Revertir canvi?</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>Revertir-ho tot</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>Revertir</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>Cada canvi que DexSuite aplica de forma nativa es registra aquí.
+Reverteix individualment o tots alhora.</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>Revertir canvis</value>
+  </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — abans d'executar {0} mòduls</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>Crear un punt de restauració et permet desfer qualsevol canvi des de Windows si alguna cosa no va bé.
+Només triga uns segons.</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>No, continuar sense</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>Crear primer un punt de restauració?</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>Sí, crear-lo</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — còpia de seguretat d'optimització manual</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>No s'ha pogut crear el punt de restauració: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Punt de restauració creat correctament.</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>Carregat de sessió anterior</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>Referència desada — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>Mesurat — {0}</value>
+  </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>Sense resultats per a «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Cercar ajust…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} resultat(s) per a «{1}»</value>
+  </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>Executa Windows Defender, SFC, DISM o MRT.</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>Comprovació de seguretat i integritat</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>Llançar una anàlisi ràpida de Windows Defender?
+Sol durar 5–10 minuts.</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>Executar DISM /RestoreHealth?
+Repara la imatge de Windows usant Windows Update. Requereix internet i pot trigar 10–20 minuts.</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>Executar l'Eina d'eliminació de programari maliciós (MRT /Q)?
+S'executa silenciosament en segon pla.</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>Executar el Comprovador d'arxius de sistema (SFC /scannow)?
+Analitza i repara fitxers de sistema malmesos. Triga 10–20 minuts.</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>Executar comprovació?</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>Defender · Anàlisi ràpida</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · Restaurar imatge</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · Eliminació de programari maliciós</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · Comprovador d'arxius</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>{0} no està instal·lat en aquest sistema.</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>Eina no disponible</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>Executar</value>
+  </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>S'aplica en iniciar l'aplicació.</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>Marca mòduls recomanats en obrir</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>Comportament</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>Canvia de vista automàticament per veure la sortida del procés.</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>Salta al Registre en executar</value>
+  </data>
+  <data name="Settings.Language.Description" xml:space="preserve">
+    <value>Canvia l'idioma de l'aplicació.
+La interfície s'actualitza a l'instant.</value>
+  </data>
+  <data name="Settings.Language.Title" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>Mostra un avís de Windows al Centre d'activitat quan finalitza l'optimització.</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>Notifica en acabar una execució</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>Restableix la configuració</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>Cada cop que inicies una optimització, DexSuite et pregunta si vols crear primer un punt de restauració. Pots respondre Sí, No o Cancel·lar.</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>DexSuite sempre pregunta abans d'optimitzar</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Crea automàticament abans de cada execució</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Crea el punt de restauració ara</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Crea un punt de restauració abans d'executar optimitzacions, per poder desfer qualsevol canvi des de la configuració de Windows.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Punt de restauració del sistema</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>Les opcions s'apliquen a l'instant.
+Les teves preferències es desen automàticament.</value>
+  </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>Actiu</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>Identitat visual de l'app.
+Temes exclusius per a usuaris Pro.</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>Requereix pla Pro</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>Determina quins mòduls pots executar.
+Activa una llicència a la secció Llicència per desbloquejar els mòduls Advanced o Pro.</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>Pla actiu</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>Demanarà confirmació per als mòduls marcats com a Risc (futur).</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>Avisa abans d'executar mòduls no reversibles</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} nuclis / {1} lògics</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB totals · {1} GB lliures · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Gràfica</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Detectant maquinari…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Sistema operatiu</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>Memòria</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB totals · {1} GB disponibles</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Emmagatzematge</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Maquinari i sistema operatiu detectats</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>Mode administrador actiu</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>Dades obtingudes de Windows.
+Clica Actualitza si canvia el maquinari.</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>Resum del sistema</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>Especificacions del sistema</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>Error en analitzar: {0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>Anàlisi final: {0}/100 ({1}).
+Diferència: {2}{3} punts.</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>Anàlisi inicial: {0}/100 ({1}).
+Ja pots optimitzar.</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>Analitzant el rendiment...</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>Cancel·lant...</value>
+  </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Creant punt de restauració…</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>Mode desenvolupament — actualitzacions no disponibles en aquest entorn.</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>Baixant l'actualització... {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>Executant {0} mòdul(s)... (pots cancel·lar)</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>Execució cancel·lada per l'usuari.</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>Execució completada.
+Torna a Inici i analitza per comparar.</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>No s'ha pogut obrir la carpeta: {0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>Nova versió disponible: v{0}!
+Clica «Actualitza ara» per instal·lar-la.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>Neteja completada: {0} MB alliberats, {1} arxius eliminats</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Error en neteja ràpida: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Netejant arxius temporals i paperera...</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>A punt. Selecciona mòduls i clica Executa.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Punt de restauració creat.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Error en crear el punt de restauració: {0}</value>
+  </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>Reversió completada: {0}/{1}.</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>Puntuacions reiniciades. Clica Analitza per començar de nou.</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>Cercant actualitzacions...</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} completat.</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>{0} ha finalitzat amb errors: {1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>Executant {0}…</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>Selecciona almenys un mòdul abans d'executar.</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>Configuració restablerta als valors per defecte.</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>Error en aplicar l'actualització:
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>Actualització baixada.
+L'aplicació es reiniciarà automàticament.</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>Error en cercar actualitzacions:
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>Tens la darrera versió disponible (v{0}).</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>Aplicacions actualitzades — {0} paquets.</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>Error en actualitzar aplicacions: {0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>Actualitzant aplicacions…</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>Or premium + negre càlid</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>Cyberpunk cian + violeta</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>Paleta Fluent neutra</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>Vermell cursa + negre profund</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>Monocrom ultraminimalista</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>CYBERNETIC</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>DEFAULT</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>REDLINE</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>ZERO LAG</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>Descarrega i instal·la noves versions en segon pla.
+Només quan DexSuite està inactiu.</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>Actualitza automàticament</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Stable: versions provades i estables.
+Beta: versions noves abans, amb possibles errors.</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>Canal d'actualització</value>
+  </data>
+  <data name="Updates.CheckForUpdates" xml:space="preserve">
+    <value>Cerca actualitzacions</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite consulta el nostre servidor de versions i les instal·la sobre la mateixa app.
+Si estàs en una build de desenvolupament, les actualitzacions automàtiques queden desactivades.</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>Com funcionen les actualitzacions</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>Versió instal·lada</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>Darrera comprovació: {0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>Nova versió disponible!</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>Versió v{0} llesta per descarregar i instal·lar.</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>Preferències</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite s'actualitza automàticament a la darrera versió.
+Mantén-la al dia per obtenir totes les optimitzacions.</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>Actualitzacions</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>Actualitza ara</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>Acceptable</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>Crític</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>Excel·lent</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>Bo</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>Millorable</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>S'executarà winget upgrade --all.
+Pot trigar uns minuts depenent del nombre d'actualitzacions pendents.
+El progrés es mostrarà al registre.</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>Actualitzar totes les aplicacions?</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>El Gestor de paquets de Windows (winget) no està disponible en aquest sistema.</value>
+  </data>
+</root>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>DexSuite — Propuestas de tema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; overflow: hidden; }
+
+  /* ============ THEME SWITCHER ============ */
+  .switcher {
+    position: fixed; top: 0; left: 0; right: 0; height: 56px;
+    display: flex; align-items: center; padding: 0 20px; gap: 8px;
+    background: #0a0a0a; border-bottom: 1px solid #222;
+    z-index: 100;
+  }
+  .switcher .label { color: #888; font-size: 12px; margin-right: 16px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .switcher button {
+    background: transparent; color: #aaa;
+    border: 1px solid #333; padding: 8px 16px;
+    cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.15s;
+  }
+  .switcher button:hover { color: #fff; border-color: #666; }
+  .switcher button.active { background: #fff; color: #000; border-color: #fff; }
+
+  /* ============ PREVIEW SHELL ============ */
+  .preview {
+    margin-top: 56px; height: calc(100vh - 56px);
+    display: grid; grid-template-columns: 240px 1fr;
+    transition: background 0.25s, color 0.25s;
+  }
+  .sidebar { padding: 20px 14px; display: flex; flex-direction: column; }
+  .header { display: flex; align-items: center; gap: 12px; padding: 8px 8px 18px 8px; }
+  .logo {
+    width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+  }
+  .header h3 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
+  .header p { margin: 0; font-size: 11px; opacity: 0.55; letter-spacing: 1px; text-transform: uppercase; }
+
+  .nav-label { font-size: 10px; letter-spacing: 2px; padding: 14px 12px 4px; opacity: 0.45; }
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; margin: 2px 0;
+    font-size: 14px; cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.05); }
+  .nav-item.active { font-weight: 600; }
+  .nav-icon {
+    width: 18px; height: 18px; display: inline-block;
+    border-radius: 4px; flex-shrink: 0;
+  }
+
+  .content { padding: 32px 40px; overflow-y: auto; }
+  .content h1 { margin: 0 0 6px; font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  .content .subtitle { margin: 0 0 24px; opacity: 0.65; font-size: 14px; }
+
+  .cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+  .hero-card {
+    padding: 18px;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .hero-card:hover { transform: translateY(-2px); }
+  .hero-card .icon {
+    width: 32px; height: 32px; border-radius: 6px; margin-bottom: 12px;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;
+  }
+  .hero-card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+  .hero-card p { margin: 0 0 12px; font-size: 13px; opacity: 0.65; line-height: 1.4; }
+  .btn { padding: 6px 14px; border: none; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+  h2 { margin: 20px 0 10px; font-size: 16px; font-weight: 600; }
+
+  .module {
+    display: grid; grid-template-columns: 24px 1fr auto auto; gap: 12px; align-items: center;
+    padding: 12px 14px; margin-bottom: 8px;
+  }
+  .module .check { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid currentColor; opacity: 0.5; }
+  .module.checked .check { background: currentColor; opacity: 1; }
+  .module-name { font-weight: 600; font-size: 14px; }
+  .module-desc { font-size: 12px; opacity: 0.55; }
+  .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; letter-spacing: 0.5px; }
+  .impact-extreme { font-weight: 800; }
+
+  .bottom-bar {
+    margin-top: 24px; padding: 16px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .status { font-size: 13px; opacity: 0.7; }
+  .btn-primary {
+    padding: 10px 24px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+    border: none; cursor: pointer; font-family: inherit;
+  }
+
+  /* ============================================================
+     THEME 1: REDLINE (gamer extremo: rojo carmesí + dorado)
+     ============================================================ */
+  .redline { background: #0A0A0A; color: #F5F5F5; font-family: 'Inter', sans-serif; }
+  .redline .sidebar { background: #0F0F0F; border-right: 1px solid #1F1F1F; }
+  .redline .logo { background: linear-gradient(135deg, #FF2D2D, #B81111); color: #fff; box-shadow: 0 0 16px rgba(255,45,45,0.4); }
+  .redline .header h3 { color: #FFD700; }
+  .redline .nav-icon { background: #2A2A2A; }
+  .redline .nav-item.active { background: rgba(255,45,45,0.12); color: #FF6B6B; border-left: 3px solid #FF2D2D; padding-left: 9px; }
+  .redline .nav-item.active .nav-icon { background: #FF2D2D; }
+  .redline .nav-label { color: #FFD700; opacity: 0.7; }
+  .redline .hero-card { background: #141414; border: 1px solid #1F1F1F; border-radius: 8px; }
+  .redline .hero-card:hover { border-color: #FFD700; box-shadow: 0 0 24px rgba(255,215,0,0.08); }
+  .redline .hero-card .icon { background: rgba(255,45,45,0.15); color: #FF2D2D; border: 1px solid rgba(255,45,45,0.3); }
+  .redline .btn { background: #FF2D2D; color: #fff; border-radius: 4px; }
+  .redline .module { background: #141414; border: 1px solid #1F1F1F; border-radius: 6px; }
+  .redline .module.checked { border-color: rgba(255,45,45,0.4); }
+  .redline .module .check { color: #FF2D2D; }
+  .redline .badge.safe { background: rgba(80,200,120,0.15); color: #50C878; }
+  .redline .badge.risk { background: rgba(255,45,45,0.2); color: #FF6B6B; }
+  .redline .badge.extreme { background: linear-gradient(90deg,#FF2D2D,#FFD700); color: #000; }
+  .redline .bottom-bar { background: #0F0F0F; border-top: 1px solid #1F1F1F; }
+  .redline .btn-primary {
+    background: linear-gradient(135deg, #FF2D2D, #C61A1A); color: #fff;
+    box-shadow: 0 0 20px rgba(255,45,45,0.5);
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     THEME 2: CYBERNETIC (cyberpunk: cian + violeta neón)
+     ============================================================ */
+  .cybernetic { background: #050511; color: #E8F4F8; font-family: 'Inter', sans-serif; }
+  .cybernetic .sidebar { background: #0A0A1A; border-right: 1px solid rgba(0,229,255,0.12); }
+  .cybernetic .logo { background: linear-gradient(135deg, #00E5FF, #B026FF); color: #fff; box-shadow: 0 0 20px rgba(0,229,255,0.5); }
+  .cybernetic .header h3 { background: linear-gradient(90deg, #00E5FF, #B026FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .cybernetic .nav-icon { background: rgba(0,229,255,0.15); }
+  .cybernetic .nav-item.active { background: rgba(0,229,255,0.08); color: #00E5FF; border-left: 3px solid #00E5FF; padding-left: 9px; }
+  .cybernetic .nav-item.active .nav-icon { background: #00E5FF; box-shadow: 0 0 12px rgba(0,229,255,0.6); }
+  .cybernetic .nav-label { color: #B026FF; opacity: 0.8; }
+  .cybernetic .hero-card { background: rgba(15,15,31,0.6); border: 1px solid rgba(0,229,255,0.18); border-radius: 8px; backdrop-filter: blur(10px); }
+  .cybernetic .hero-card:hover { border-color: #00E5FF; box-shadow: 0 0 30px rgba(0,229,255,0.2); }
+  .cybernetic .hero-card .icon { background: rgba(0,229,255,0.15); color: #00E5FF; border: 1px solid rgba(0,229,255,0.4); box-shadow: 0 0 12px rgba(0,229,255,0.3); }
+  .cybernetic .btn { background: transparent; color: #00E5FF; border: 1px solid #00E5FF; border-radius: 4px; }
+  .cybernetic .module { background: rgba(15,15,31,0.6); border: 1px solid rgba(176,38,255,0.15); border-radius: 6px; }
+  .cybernetic .module.checked { border-color: #00E5FF; }
+  .cybernetic .module .check { color: #00E5FF; }
+  .cybernetic .badge.safe { background: rgba(0,229,255,0.15); color: #00E5FF; }
+  .cybernetic .badge.risk { background: rgba(176,38,255,0.2); color: #B026FF; }
+  .cybernetic .badge.extreme { background: linear-gradient(90deg,#00E5FF,#B026FF); color: #050511; }
+  .cybernetic .bottom-bar { background: rgba(10,10,26,0.8); border-top: 1px solid rgba(0,229,255,0.1); }
+  .cybernetic .btn-primary {
+    background: linear-gradient(135deg, #00E5FF, #B026FF); color: #050511;
+    box-shadow: 0 0 24px rgba(0,229,255,0.5);
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     THEME 3: ZERO LAG (hacker terminal: verde fósforo)
+     ============================================================ */
+  .zerolag { background: #000000; color: #DDFFDD; font-family: 'JetBrains Mono', 'Consolas', monospace; }
+  .zerolag .sidebar { background: #030503; border-right: 1px solid #0F1F0F; }
+  .zerolag .logo { background: #00FF88; color: #000; box-shadow: 0 0 16px rgba(0,255,136,0.6); border-radius: 0; font-weight: 800; }
+  .zerolag .header h3 { color: #00FF88; letter-spacing: 1px; }
+  .zerolag .nav-icon { background: #0F1F0F; border-radius: 0; }
+  .zerolag .nav-item { letter-spacing: 0.5px; }
+  .zerolag .nav-item.active { background: rgba(0,255,136,0.08); color: #00FF88; border-left: 3px solid #00FF88; padding-left: 9px; }
+  .zerolag .nav-item.active .nav-icon { background: #00FF88; }
+  .zerolag .nav-item::before { content: '> '; opacity: 0.4; }
+  .zerolag .nav-label { color: #00FF88; opacity: 0.6; }
+  .zerolag .hero-card { background: #050905; border: 1px solid #0F1F0F; border-radius: 0; }
+  .zerolag .hero-card:hover { border-color: #00FF88; }
+  .zerolag .hero-card .icon { background: rgba(0,255,136,0.15); color: #00FF88; border: 1px solid #00FF88; border-radius: 0; }
+  .zerolag .btn { background: transparent; color: #00FF88; border: 1px solid #00FF88; border-radius: 0; font-family: inherit; text-transform: uppercase; }
+  .zerolag .module { background: #050905; border: 1px solid #0F1F0F; border-radius: 0; }
+  .zerolag .module.checked { border-color: #00FF88; }
+  .zerolag .module .check { color: #00FF88; border-radius: 0; }
+  .zerolag .badge { border-radius: 0; }
+  .zerolag .badge.safe { background: #0F1F0F; color: #00FF88; }
+  .zerolag .badge.risk { background: rgba(255,80,80,0.15); color: #FF5050; }
+  .zerolag .badge.extreme { background: #00FF88; color: #000; }
+  .zerolag .bottom-bar { background: #030503; border-top: 1px solid #0F1F0F; }
+  .zerolag .btn-primary {
+    background: #00FF88; color: #000; border-radius: 0;
+    box-shadow: 0 0 20px rgba(0,255,136,0.5);
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  .zerolag .content h1 { font-family: 'JetBrains Mono', monospace; }
+  .zerolag .content h1::before { content: '$ '; color: #00FF88; opacity: 0.5; }
+
+  /* ============================================================
+     THEME 4: APEX (premium minimalista: grafito + naranja)
+     ============================================================ */
+  .apex { background: #0F0F11; color: #FAFAFA; font-family: 'Inter', sans-serif; }
+  .apex .sidebar { background: #18181B; border-right: 1px solid #27272A; }
+  .apex .logo { background: #FF6B00; color: #fff; border-radius: 8px; }
+  .apex .header h3 { color: #FAFAFA; }
+  .apex .nav-icon { background: #27272A; }
+  .apex .nav-item.active { background: #27272A; color: #FFFFFF; }
+  .apex .nav-item.active .nav-icon { background: #FF6B00; }
+  .apex .nav-label { color: #71717A; }
+  .apex .hero-card { background: #18181B; border: 1px solid #27272A; border-radius: 10px; }
+  .apex .hero-card:hover { border-color: #3F3F46; background: #1C1C1F; }
+  .apex .hero-card .icon { background: #27272A; color: #FAFAFA; border-radius: 6px; }
+  .apex .hero-card:first-child .icon { background: rgba(255,107,0,0.15); color: #FF6B00; }
+  .apex .btn { background: #27272A; color: #FAFAFA; border-radius: 6px; }
+  .apex .module { background: #18181B; border: 1px solid #27272A; border-radius: 8px; }
+  .apex .module.checked { border-color: #3F3F46; background: #1C1C1F; }
+  .apex .module .check { color: #FF6B00; }
+  .apex .badge { border-radius: 4px; }
+  .apex .badge.safe { background: rgba(34,197,94,0.15); color: #22C55E; }
+  .apex .badge.risk { background: rgba(239,68,68,0.15); color: #EF4444; }
+  .apex .badge.extreme { background: #FF6B00; color: #fff; }
+  .apex .bottom-bar { background: #18181B; border-top: 1px solid #27272A; }
+  .apex .btn-primary {
+    background: #FF6B00; color: #fff; border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="switcher">
+  <span class="label">Tema</span>
+  <button class="active" data-theme="redline">REDLINE</button>
+  <button data-theme="cybernetic">CYBERNETIC</button>
+  <button data-theme="zerolag">ZERO LAG</button>
+  <button data-theme="apex">APEX</button>
+</div>
+
+<div class="preview redline" id="preview">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="header">
+      <div class="logo">DX</div>
+      <div>
+        <h3>DexSuite</h3>
+        <p>Performance Series</p>
+      </div>
+    </div>
+
+    <div class="nav-label">PANEL</div>
+    <div class="nav-item"><span class="nav-icon"></span>Inicio</div>
+    <div class="nav-item active"><span class="nav-icon"></span>Módulos</div>
+    <div class="nav-item"><span class="nav-icon"></span>Registro</div>
+
+    <div class="nav-label">SISTEMA</div>
+    <div class="nav-item"><span class="nav-icon"></span>Ajustes</div>
+    <div class="nav-item"><span class="nav-icon"></span>Actualizaciones</div>
+    <div class="nav-item"><span class="nav-icon"></span>Acerca de</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <h1>Módulos disponibles</h1>
+    <p class="subtitle">Marca los módulos que quieras ejecutar. Pasa el ratón por el chip Seguro/Riesgo para saber por qué.</p>
+
+    <div class="cards-row">
+      <div class="hero-card">
+        <div class="icon">⚡</div>
+        <h4>Analizar rendimiento</h4>
+        <p>Mide el estado actual de tu equipo.<br>Obtén una puntuación sobre 100.</p>
+        <button class="btn">Analizar</button>
+      </div>
+      <div class="hero-card">
+        <div class="icon">▶</div>
+        <h4>Optimizar sistema</h4>
+        <p>Elige los módulos que quieras.<br>Lanza la limpieza y los ajustes.</p>
+        <button class="btn">Ir a Módulos</button>
+      </div>
+      <div class="hero-card">
+        <div class="icon">≡</div>
+        <h4>Ver registro</h4>
+        <p>Salida en vivo durante la ejecución.<br>Revisa la última ejecución.</p>
+        <button class="btn">Ir a Registro</button>
+      </div>
+    </div>
+
+    <h2>Módulos disponibles</h2>
+
+    <div class="module checked">
+      <div class="check">✓</div>
+      <div>
+        <div class="module-name">Prefetch, caché y D3DSCache</div>
+        <div class="module-desc">Borra Prefetch, Temp, miniaturas e IconCache. Se regenera solo.</div>
+      </div>
+      <span class="badge safe">SEGURO</span>
+      <span class="badge">FREE</span>
+    </div>
+
+    <div class="module">
+      <div class="check"></div>
+      <div>
+        <div class="module-name">Rendimiento y latencia</div>
+        <div class="module-desc">Power Throttling off · MMCSS prioritario · HAGS on · BCD tweaks.</div>
+      </div>
+      <span class="badge extreme impact-extreme">EXTREMO</span>
+      <span class="badge">PRO</span>
+    </div>
+
+    <div class="module">
+      <div class="check"></div>
+      <div>
+        <div class="module-name">Ethernet (optimización de red)</div>
+        <div class="module-desc">Tunea NIC, stack TCP y DNS. Latencia mínima.</div>
+      </div>
+      <span class="badge extreme impact-extreme">EXTREMO</span>
+      <span class="badge">PRO</span>
+    </div>
+
+    <div class="bottom-bar">
+      <span class="status">Listo. Selecciona módulos y pulsa Ejecutar.</span>
+      <button class="btn-primary">Ejecutar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.switcher button');
+  const preview = document.getElementById('preview');
+  buttons.forEach(b => b.addEventListener('click', () => {
+    buttons.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    preview.className = 'preview ' + b.dataset.theme;
+  }));
+</script>
+
+</body>
+</html>
