@@ -572,7 +572,20 @@
                                     Background="#1A9D4EDD"
                                     BorderBrush="#3A9D4EDD"
                                     BorderThickness="1">
-                                <ui:TextBlock Text="PRO"
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <ui:TextBlock Text="{Binding UserTier}"
                                               FontTypography="Caption"
                                               Foreground="#FFB026FF"
                                               FontWeight="Bold"/>

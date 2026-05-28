@@ -122,7 +122,7 @@ public sealed class ThemeService : IThemeService
     /// CYBERNETIC es la paleta de marca de DexSuite, así que la mantenemos
     /// en primera ejecución (no rompe la experiencia de usuarios existentes).
     /// </summary>
-    private const AppTheme DefaultStartupTheme = AppTheme.Cybernetic;
+    private const AppTheme DefaultStartupTheme = AppTheme.Default;
 
     public AppTheme LoadPersistedTheme()
     {

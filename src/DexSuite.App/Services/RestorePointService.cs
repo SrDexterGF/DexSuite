@@ -158,9 +158,10 @@ public sealed class RestorePointService : IRestorePointService
     {
         if (string.IsNullOrEmpty(message)) return false;
         var m = message.ToLowerInvariant();
-        return m.Contains("not found")      || m.Contains("no encontrad") ||
-               m.Contains("0x80042302")     || m.Contains("disabled")     ||
-               m.Contains("system restore") && m.Contains("not enabled")  ||
+        return m.Contains("not found")        || m.Contains("no encontrad")    ||
+               m.Contains("0x80042302")       || m.Contains("disabled")        ||
+               m.Contains("deshabilitado")    || m.Contains("serviceDisabled") ||
+               m.Contains("system restore") && m.Contains("not enabled")       ||
                m.Contains("restore is turn");
     }
 
@@ -183,6 +184,14 @@ public sealed class RestorePointService : IRestorePointService
                 RedirectStandardOutput = true,
                 RedirectStandardError  = true,
             };
+            // Forzamos startup type a Manual antes de intentar arrancar.
+            // Sin este paso, Start-Service falla si el servicio está marcado Disabled.
+            psi.Arguments = "-NoProfile -ExecutionPolicy Bypass -Command \"" +
+                            "Set-Service VSS      -StartupType Manual -ErrorAction SilentlyContinue; " +
+                            "Set-Service srservice -StartupType Manual -ErrorAction SilentlyContinue; " +
+                            "Start-Service VSS      -ErrorAction SilentlyContinue; " +
+                            "Start-Service srservice -ErrorAction SilentlyContinue; " +
+                            "Enable-ComputerRestore -Drive 'C:\\' -ErrorAction Stop\"";
             using var p = Process.Start(psi);
             if (p is null) return false;
             if (!p.WaitForExit(30_000))
