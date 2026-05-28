@@ -336,11 +336,11 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>Si la lista de módulos arranca con los recomendados ya marcados.</summary>
     [ObservableProperty]
-    private bool autoSelectRecommended = true;
+    private bool autoSelectRecommended = false;
 
     /// <summary>Si al pulsar Ejecutar saltamos automáticamente a la vista de Registro.</summary>
     [ObservableProperty]
-    private bool jumpToLogOnRun = true;
+    private bool jumpToLogOnRun = false;
 
     /// <summary>Avisar antes de ejecutar módulos no reversibles (futuro).</summary>
     [ObservableProperty]
@@ -721,7 +721,7 @@ public partial class MainViewModel : ObservableObject
         T("Updates.LastCheck", LastUpdateCheck ?? T("Common.Never"));
 
     [ObservableProperty]
-    private bool autoUpdateEnabled = true;
+    private bool autoUpdateEnabled = false;
 
     [ObservableProperty]
     private string updateChannel = "Stable";
