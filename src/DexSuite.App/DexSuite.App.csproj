@@ -11,7 +11,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
     <RootNamespace>DexSuite.App</RootNamespace>
-    <Version>0.2.16</Version>
+    <Version>0.2.17</Version>
     <!-- Entrada manual para que VelopackApp.Build().Run() preceda a WPF -->
     <StartupObject>DexSuite.App.Program</StartupObject>
   </PropertyGroup>
