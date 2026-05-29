@@ -29,7 +29,7 @@ public sealed class SettingsService : ISettingsService, IDisposable
     {
         _logger = logger;
         var dir = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "DexSuite");
         Directory.CreateDirectory(dir);
         _path = Path.Combine(dir, "settings.json");

@@ -70,6 +70,10 @@ public partial class App : System.Windows.Application
             Log.Error(ex, "Excepción al verificar integridad — la app continúa por seguridad de la UX");
         }
 
+        // Mueve datos persistentes de %LocalAppData%\DexSuite a %AppData%\DexSuite
+        // si existen en la ruta antigua y no en la nueva.
+        MigrateUserDataIfNeeded();
+
         // Asegura que la BD SQLite existe (crea esquema si es la 1ª ejecución).
         // Se hace ANTES de _host.Start() para que el LicenseWatchdog (IHostedService)
         // encuentre las tablas listas desde su primer tick.
@@ -206,11 +210,39 @@ public partial class App : System.Windows.Application
         db.Database.ExecuteSqlRaw(sql);
     }
 
+    /// <summary>
+    /// Migra los archivos de usuario desde %LocalAppData%\DexSuite\ (colisionaba
+    /// con el directorio de instalación de Velopack) a %AppData%\DexSuite\.
+    /// Se ejecuta en cada arranque pero solo copia si el destino no existe todavía.
+    /// </summary>
+    private static void MigrateUserDataIfNeeded()
+    {
+        var oldDir = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DexSuite");
+        var newDir = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DexSuite");
+
+        if (!Directory.Exists(oldDir)) return;
+        Directory.CreateDirectory(newDir);
+
+        foreach (var file in new[] { "dexsuite.db", "settings.json", "theme.json", "baseline.json" })
+        {
+            var src  = Path.Combine(oldDir, file);
+            var dest = Path.Combine(newDir, file);
+            if (File.Exists(src) && !File.Exists(dest))
+            {
+                try { File.Copy(src, dest); Log.Information("Migrado: {File}", file); }
+                catch (Exception ex) { Log.Warning(ex, "No se pudo migrar {File}", file); }
+            }
+        }
+    }
+
     private static void ConfigureServices(IServiceCollection services)
     {
-        // Carpeta %LocalAppData%/DexSuite (compartida por logs Serilog y BD).
+        // Carpeta %AppData%\DexSuite — separada del directorio de instalación Velopack
+        // (%LocalAppData%\DexSuite) para que los datos del usuario sobrevivan actualizaciones.
         var dataDir = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "DexSuite");
         Directory.CreateDirectory(dataDir);
         var dbPath = Path.Combine(dataDir, "dexsuite.db");

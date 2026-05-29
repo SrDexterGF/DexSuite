@@ -1,7 +1,6 @@
 using DexSuite.App.ViewModels;
 using H.NotifyIcon;
 using System.Windows;
-using System.Windows.Media.Imaging;
 using Wpf.Ui.Controls;
 using WpfMenuItem  = System.Windows.Controls.MenuItem;
 using WpfSeparator = System.Windows.Controls.Separator;
@@ -20,25 +19,20 @@ public partial class MainWindow : FluentWindow
         DataContext = viewModel;
         _vm = viewModel;
 
-        InitTrayIcon();
         StateChanged += OnWindowStateChanged;
         Closed        += OnWindowClosed;
-        // Force-register the Win32 notification icon once the WPF message loop
-        // is running (Loaded fires after the dispatcher is active).
-        Loaded += (_, _) =>
-        {
-            if (_trayIcon is not null)
-            {
-                _trayIcon.Visibility = Visibility.Visible;
-                _trayIcon.Visibility = Visibility.Collapsed;
-            }
-        };
+        // Retrieve the TaskbarIcon declared in XAML resources so that H.NotifyIcon
+        // registers it properly with the WPF logical tree before any state changes.
+        Loaded += (_, _) => InitTrayIcon();
     }
 
     // ── Bandeja del sistema ────────────────────────────────────────────────────
 
     private void InitTrayIcon()
     {
+        _trayIcon = (TaskbarIcon?)TryFindResource("TrayIcon");
+        if (_trayIcon is null) return;
+
         var restoreItem = new WpfMenuItem { Header = "Restaurar" };
         restoreItem.Click += (_, _) => RestoreWindow();
 
@@ -50,12 +44,7 @@ public partial class MainWindow : FluentWindow
         menu.Items.Add(new WpfSeparator());
         menu.Items.Add(exitItem);
 
-        _trayIcon = new TaskbarIcon
-        {
-            IconSource  = new BitmapImage(new Uri("pack://application:,,,/Assets/AppIcon.ico")),
-            ToolTipText = "DexSuite",
-            ContextMenu = menu,
-        };
+        _trayIcon.ContextMenu = menu;
         _trayIcon.TrayMouseDoubleClick += (_, _) => RestoreWindow();
     }
 

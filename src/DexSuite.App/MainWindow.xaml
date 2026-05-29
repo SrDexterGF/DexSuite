@@ -11,19 +11,30 @@
     xmlns:conv="clr-namespace:DexSuite.App.Converters"
     xmlns:svc="clr-namespace:DexSuite.App.Services"
     xmlns:mdl="clr-namespace:DexSuite.App.Models"
+    xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
     mc:Ignorable="d"
     Title="DexSuite"
     Icon="pack://application:,,,/Assets/AppIcon.png"
-    Width="1280"
-    Height="820"
-    MinWidth="1080"
-    MinHeight="640"
+    Width="1440"
+    Height="900"
+    MinWidth="1200"
+    MinHeight="720"
+    UseLayoutRounding="True"
+    TextOptions.TextFormattingMode="Display"
+    TextOptions.TextRenderingMode="ClearType"
     ExtendsContentIntoTitleBar="True"
     WindowBackdropType="Mica"
     WindowCornerPreference="Round"
     WindowStartupLocation="CenterScreen">
 
     <ui:FluentWindow.Resources>
+        <!-- Tray icon declarado en XAML para que H.NotifyIcon lo registre correctamente
+             con el árbol lógico de WPF desde el primer momento. -->
+        <tb:TaskbarIcon x:Key="TrayIcon"
+                        IconSource="/Assets/AppIcon.ico"
+                        ToolTipText="DexSuite"
+                        Visibility="Collapsed"/>
+
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <conv:InverseBoolToVisibilityConverter x:Key="InverseBoolToVis"/>
         <conv:KeyToTranslationConverter x:Key="Loc"/>
@@ -641,11 +652,23 @@
                             <!-- British Shorthair cat head (round face + small ears + eye holes) -->
                             <Viewbox Width="18" Height="18" Margin="0,0,12,0" VerticalAlignment="Center">
                                 <Path Data="F0 M 5,10 C 5,15.5 8,19 12,19 C 16,19 19,15.5 19,10 L 17,3 L 13,9 C 12.5,7.5 11.5,7.5 11,9 L 7,3 Z M 9.5,11 A 1.5,1.5 0 1 0 9.5,14 A 1.5,1.5 0 1 0 9.5,11 Z M 14.5,11 A 1.5,1.5 0 1 0 14.5,14 A 1.5,1.5 0 1 0 14.5,11 Z"
-                                      Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
                             </Viewbox>
                             <TextBlock Text="{loc:T Key=Suggestion.Button}" Style="{StaticResource NavItemTextStyle}"/>
                         </StackPanel>
                     </Button>
+
+                    <!-- Separador entre sección nav y botones de feedback -->
+                    <Border DockPanel.Dock="Bottom" Height="1" Margin="16,8,16,6">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Offset="0"   Color="Transparent"/>
+                                <GradientStop Offset="0.3" Color="#FF2A2A4A"/>
+                                <GradientStop Offset="0.7" Color="#FF2A2A4A"/>
+                                <GradientStop Offset="1"   Color="Transparent"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
 
                     <!-- Botón "Reportar un fallo" anclado sobre el footer -->
                     <Button DockPanel.Dock="Bottom"

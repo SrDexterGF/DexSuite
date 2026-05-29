@@ -45,7 +45,7 @@ public sealed class PerformanceBaselineService : IPerformanceBaselineService
     {
         _logger = logger;
         var dataDir = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "DexSuite");
         Directory.CreateDirectory(dataDir);
         _path = Path.Combine(dataDir, "baseline.json");

@@ -19,7 +19,7 @@ public sealed class ThemeService : IThemeService
         _logger = logger;
 
         var dir = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "DexSuite");
         Directory.CreateDirectory(dir);
         _persistPath = Path.Combine(dir, "theme.json");
