@@ -13,31 +13,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.Changelog.Item1" xml:space="preserve">
-    <value>• Pantalla de inicio con logo y accesos rápidos</value>
+    <value>• 19 módulos de optimización agrupados por plan: Free, Avanzado y Pro</value>
   </data>
   <data name="About.Changelog.Item2" xml:space="preserve">
-    <value>• Test de rendimiento con 8 categorías: CPU, RAM, GPU, Disco, Procesos, Inicio, Temperatura, Red</value>
+    <value>• Test de rendimiento con 8 categorías y comparativa antes/después</value>
   </data>
   <data name="About.Changelog.Item3" xml:space="preserve">
-    <value>• Comparativa antes/después con delta de puntuación</value>
+    <value>• Estado visual por módulo: barra sin aplicar, círculo al ejecutar y tick al completar</value>
   </data>
   <data name="About.Changelog.Item4" xml:space="preserve">
-    <value>• Módulos agrupados por plan (Free / Avanzado / Pro) en 3 columnas</value>
+    <value>• Progreso en tiempo real: módulo actual, porcentaje y barra en el pie</value>
   </data>
   <data name="About.Changelog.Item5" xml:space="preserve">
-    <value>• Chip Seguro/Riesgo con explicación de impacto en cada módulo</value>
+    <value>• Historial de cambios con opción de revertir cualquier ajuste aplicado</value>
   </data>
   <data name="About.Changelog.Item6" xml:space="preserve">
-    <value>• Supervisión en tiempo real y botón Cancelar durante la ejecución</value>
+    <value>• Sistema de licencias con planes Avanzado y Pro</value>
   </data>
   <data name="About.Changelog.Item7" xml:space="preserve">
-    <value>• Actualización automática integrada</value>
+    <value>• Actualización automática desde la app y minimizar a bandeja del sistema</value>
   </data>
   <data name="About.Changelog.Item8" xml:space="preserve">
-    <value>• Tema CYBERNETIC con paleta cian + violeta y logo exclusivo</value>
+    <value>• Temas visuales: Default, CYBERNETIC, ZeroLag, Redline y Apex</value>
   </data>
   <data name="About.Changelog.Item9" xml:space="preserve">
-    <value>• Sidebar con iconos, separadores y selector de idioma (30 idiomas)</value>
+    <value>• Interfaz disponible en 30 idiomas con cambio instantáneo desde Ajustes</value>
   </data>
   <data name="About.Changelog.Title" xml:space="preserve">
     <value>Novedades en v{0}</value>
@@ -52,7 +52,7 @@
     <value>Módulo videojuegos</value>
   </data>
   <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
-    <value>Sr. Dexter · Configuración avanzada de juegos</value>
+    <value>Sr. Dexter</value>
   </data>
   <data name="About.Credits.Title" xml:space="preserve">
     <value>Créditos</value>

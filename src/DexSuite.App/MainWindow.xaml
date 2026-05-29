@@ -3337,6 +3337,10 @@
                                                 Background="{DynamicResource SubtleFillColorSecondaryBrush}">
                                             <ui:TextBlock Text="Serilog" FontTypography="Caption"/>
                                         </Border>
+                                        <Border Padding="8,4" CornerRadius="4" Margin="0,0,6,6"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <ui:TextBlock Text="Velopack" FontTypography="Caption"/>
+                                        </Border>
                                     </WrapPanel>
                                 </StackPanel>
                             </Border>
