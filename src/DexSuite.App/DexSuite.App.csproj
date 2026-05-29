@@ -37,6 +37,7 @@
   <ItemGroup>
     <Resource Include="Assets\AppIcon.png" />
     <Resource Include="Assets\AppIcon.ico" />
+    <Resource Include="Assets\CatSuggestion.png" />
   </ItemGroup>
 
 </Project>
