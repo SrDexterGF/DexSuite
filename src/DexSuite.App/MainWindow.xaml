@@ -3163,7 +3163,7 @@
                                                     HorizontalAlignment="Center">
                                             <ui:Button Appearance="Secondary"
                                                        Content="{loc:T Key=BugReport.Button}"
-                                                       Icon="{ui:SymbolIcon Symbol=Mail24}"
+                                                       Icon="{ui:SymbolIcon Symbol=Bug24}"
                                                        Command="{Binding ReportBugCommand}"
                                                        Margin="0,0,6,0"/>
                                             <ui:Button Appearance="Secondary"
