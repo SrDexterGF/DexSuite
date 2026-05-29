@@ -42,13 +42,15 @@ public partial class MainWindow : FluentWindow
 
         _trayIcon = new TaskbarIcon
         {
-            IconSource   = new BitmapImage(new Uri("pack://application:,,,/Assets/AppIcon.ico")),
-            ToolTipText  = "DexSuite",
-            ContextMenu  = menu,
-            Visibility   = Visibility.Collapsed,
+            IconSource  = new BitmapImage(new Uri("pack://application:,,,/Assets/AppIcon.ico")),
+            ToolTipText = "DexSuite",
+            ContextMenu = menu,
         };
-
         _trayIcon.TrayMouseDoubleClick += (_, _) => RestoreWindow();
+        // Register the Win32 notification icon with Windows now so that toggling
+        // Visibility later (when minimizing) works reliably. Then hide it until needed.
+        _trayIcon.Visibility = Visibility.Visible;
+        _trayIcon.Visibility = Visibility.Collapsed;
     }
 
     private void OnWindowStateChanged(object? sender, EventArgs e)
@@ -57,6 +59,7 @@ public partial class MainWindow : FluentWindow
 
         if (WindowState == WindowState.Minimized)
         {
+            ShowInTaskbar = false;
             Hide();
             if (_trayIcon is not null)
                 _trayIcon.Visibility = Visibility.Visible;
@@ -65,11 +68,12 @@ public partial class MainWindow : FluentWindow
 
     private void RestoreWindow()
     {
+        if (_trayIcon is not null)
+            _trayIcon.Visibility = Visibility.Collapsed;
+        ShowInTaskbar = true;
         Show();
         WindowState = WindowState.Normal;
         Activate();
-        if (_trayIcon is not null)
-            _trayIcon.Visibility = Visibility.Collapsed;
     }
 
     private void OnWindowClosed(object? sender, EventArgs e)

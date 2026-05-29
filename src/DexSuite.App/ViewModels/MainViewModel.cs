@@ -49,6 +49,10 @@ public partial class MainViewModel : ObservableObject
     private readonly object _bufferLock = new();
     private const int MaxLogChars = 80_000;
 
+    // Step progress counters (written on background thread inside await foreach, read on UI thread via Dispatcher).
+    private int _runModuleTotal;
+    private int _runModuleIndex;
+
     public ObservableCollection<ModuleItemViewModel> Modules { get; } = new();
     public ObservableCollection<ModuleItemViewModel> FreeModules { get; } = new();
     public ObservableCollection<ModuleItemViewModel> AdvancedModules { get; } = new();
@@ -83,6 +87,10 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private string statusMessage = string.Empty;
+
+    /// <summary>Texto "Módulo X de Y" visible en el pie mientras hay una ejecución en curso.</summary>
+    [ObservableProperty]
+    private string runProgressText = string.Empty;
 
     // Helper i18n
     // T() = "translate", abreviado para no inflar las asignaciones de StatusMessage.
@@ -1700,6 +1708,12 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Módulo actualmente en estado Running, null si ninguno.</summary>
     private ModuleItemViewModel? _currentRunningModule;
 
+    /// <summary>Milisegundos mínimos que el círculo de carga permanece visible por módulo.</summary>
+    private const int MinSpinnerVisibleMs = 600;
+
+    /// <summary>Marca temporal de cuándo empezó a mostrarse el módulo actual (para el dwell del spinner).</summary>
+    private DateTime _currentModuleVisibleSince;
+
     /// <summary>Acumulado de errores vistos dentro del bloque actual.</summary>
     private string? _currentRunErrorMessage;
 
@@ -1809,6 +1823,8 @@ public partial class MainViewModel : ObservableObject
             StatusMessage = T("Status.SelectModulesFirst");
             return;
         }
+        _runModuleTotal = selected.Count;
+        _runModuleIndex = 0;
 
         // Diálogo previo: ¿crear punto de restauración?
         var rpDecision = await AskRestorePointBeforeRunAsync();
@@ -1855,6 +1871,30 @@ public partial class MainViewModel : ObservableObject
             {
                 var line = FormatProgressLine(progress);
                 lock (_bufferLock) _pendingBuffer.AppendLine(line);
+
+                // Garantiza que el círculo de carga (estado Applying) sea visible
+                // un mínimo de tiempo. Los módulos de registro terminan en pocos
+                // milisegundos; sin esto, Header y Done llegan casi a la vez y WPF
+                // nunca pinta un fotograma con el spinner (barra → tick directo).
+                if (progress.Kind == ModuleProgressKind.Header)
+                {
+                    _runModuleIndex++;
+                    var idx = _runModuleIndex;
+                    var tot = _runModuleTotal;
+                    // Prefix in live log so the user can follow progress there too.
+                    lock (_bufferLock) _pendingBuffer.AppendLine($"── Módulo {idx} de {tot} ──");
+                    // Update the bottom-bar progress label on the UI thread.
+                    Application.Current?.Dispatcher.BeginInvoke(() => RunProgressText = $"Módulo {idx} de {tot}");
+                    _currentModuleVisibleSince = DateTime.UtcNow;
+                }
+                else if (progress.Kind == ModuleProgressKind.Done)
+                {
+                    var elapsedMs = (DateTime.UtcNow - _currentModuleVisibleSince).TotalMilliseconds;
+                    var remaining = MinSpinnerVisibleMs - elapsedMs;
+                    if (remaining > 0)
+                        await Task.Delay((int)remaining, ct);
+                }
+
                 // El parser estructurado actualiza estados de módulo en el hilo de UI.
                 var captured = progress;
                 Application.Current?.Dispatcher.BeginInvoke(() => ProcessModuleProgress(captured));
@@ -1903,6 +1943,7 @@ public partial class MainViewModel : ObservableObject
             try { await flushTask; } catch { /* swallowed */ }
             FlushBuffer();
 
+            RunProgressText = string.Empty;
             IsRunning = false;
             _runCts?.Dispose();
             _runCts = null;
