@@ -1,9 +1,10 @@
 using DexSuite.App.ViewModels;
 using H.NotifyIcon;
+using System.ComponentModel;
 using System.Windows;
 using Wpf.Ui.Controls;
-using WpfMenuItem  = System.Windows.Controls.MenuItem;
-using WpfSeparator = System.Windows.Controls.Separator;
+using WpfMenuItem    = System.Windows.Controls.MenuItem;
+using WpfSeparator   = System.Windows.Controls.Separator;
 using WpfContextMenu = System.Windows.Controls.ContextMenu;
 
 namespace DexSuite.App;
@@ -21,14 +22,12 @@ public partial class MainWindow : FluentWindow
 
         StateChanged += OnWindowStateChanged;
         Closed        += OnWindowClosed;
-        // Retrieve the TaskbarIcon declared in XAML resources so that H.NotifyIcon
-        // registers it properly with the WPF logical tree before any state changes.
-        Loaded += (_, _) => InitTrayIcon();
+        Loaded        += OnLoaded;
     }
 
     // ── Bandeja del sistema ────────────────────────────────────────────────────
 
-    private void InitTrayIcon()
+    private void OnLoaded(object sender, RoutedEventArgs e)
     {
         _trayIcon = (TaskbarIcon?)TryFindResource("TrayIcon");
         if (_trayIcon is null) return;
@@ -44,8 +43,30 @@ public partial class MainWindow : FluentWindow
         menu.Items.Add(new WpfSeparator());
         menu.Items.Add(exitItem);
 
-        _trayIcon.ContextMenu = menu;
-        _trayIcon.TrayMouseDoubleClick += (_, _) => RestoreWindow();
+        _trayIcon.ContextMenu  = menu;
+        _trayIcon.TrayMouseDoubleClick += (_, _) => Dispatcher.Invoke(RestoreWindow);
+
+        // Show the icon immediately if MinimizeToTray is already enabled,
+        // and track future changes to the setting.
+        RefreshTrayVisibility();
+        if (_vm is not null)
+            _vm.PropertyChanged += OnVmPropertyChanged;
+    }
+
+    private void OnVmPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(MainViewModel.MinimizeToTray))
+            Dispatcher.Invoke(RefreshTrayVisibility);
+    }
+
+    // The icon stays visible for as long as MinimizeToTray is on —
+    // it does not toggle on/off each time the window is minimized/restored.
+    private void RefreshTrayVisibility()
+    {
+        if (_trayIcon is null || _vm is null) return;
+        _trayIcon.Visibility = _vm.MinimizeToTray
+            ? Visibility.Visible
+            : Visibility.Collapsed;
     }
 
     private void OnWindowStateChanged(object? sender, EventArgs e)
@@ -56,27 +77,27 @@ public partial class MainWindow : FluentWindow
         {
             ShowInTaskbar = false;
             Hide();
-            if (_trayIcon is not null)
-                _trayIcon.Visibility = Visibility.Visible;
+            // Tray icon is already registered and visible — nothing extra needed.
         }
     }
 
     private void RestoreWindow()
     {
-        if (_trayIcon is not null)
-            _trayIcon.Visibility = Visibility.Collapsed;
         ShowInTaskbar = true;
-        Show();
-        WindowState = WindowState.Normal;
+        if (!IsVisible) Show();
+        if (WindowState != WindowState.Normal)
+            WindowState = WindowState.Normal;
         Activate();
     }
 
     private void OnWindowClosed(object? sender, EventArgs e)
     {
+        if (_vm is not null)
+            _vm.PropertyChanged -= OnVmPropertyChanged;
         _trayIcon?.Dispose();
     }
 
-    // ── Evento de título ───────────────────────────────────────────────────────
+    // ── Eventos de interfaz ────────────────────────────────────────────────────
 
     private void OnQuestionMarkPreventClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
