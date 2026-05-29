@@ -3237,9 +3237,6 @@
                                     <ui:TextBlock Text="{loc:T Key=About.Project.Line2}"
                                                   TextWrapping="Wrap" Opacity="0.85"
                                                   Margin="0,4,0,0"/>
-                                    <ui:TextBlock Text="{loc:T Key=About.Project.Line3}"
-                                                  TextWrapping="Wrap" Opacity="0.85"
-                                                  Margin="0,4,0,0"/>
                                 </StackPanel>
                             </Border>
 
@@ -3289,7 +3286,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.Development}" Opacity="0.6"/>
-                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter · DexSuite Performance Series"/>
+                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter"/>
                                     </Grid>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
