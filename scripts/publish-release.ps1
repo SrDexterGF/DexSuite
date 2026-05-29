@@ -131,8 +131,9 @@ $assets = @(Get-ChildItem $ReleasesDir |
     Where-Object { $_.Name -match $Version -or $_.Name -match "-$Channel" -or $_.Name -match "\.$Channel\." } |
     ForEach-Object { $_.FullName })
 
-# $noteArg siempre como array para que el splatting funcione correctamente
-$noteArg      = @("--notes", "")
+# Usa un fichero vacío para evitar que el string vacío se pierda en splatting de PS.
+$_tmpNotes    = [System.IO.Path]::GetTempFileName()
+$noteArg      = @("--notes-file", $_tmpNotes)
 $preReleaseArg = if ($Channel -eq "beta") { @("--prerelease") } else { @() }
 
 $ghArgs = @("release", "create", "v$Version",
