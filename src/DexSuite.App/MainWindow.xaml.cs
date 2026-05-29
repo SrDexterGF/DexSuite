@@ -22,7 +22,17 @@ public partial class MainWindow : FluentWindow
 
         InitTrayIcon();
         StateChanged += OnWindowStateChanged;
-        Closed += OnWindowClosed;
+        Closed        += OnWindowClosed;
+        // Force-register the Win32 notification icon once the WPF message loop
+        // is running (Loaded fires after the dispatcher is active).
+        Loaded += (_, _) =>
+        {
+            if (_trayIcon is not null)
+            {
+                _trayIcon.Visibility = Visibility.Visible;
+                _trayIcon.Visibility = Visibility.Collapsed;
+            }
+        };
     }
 
     // ── Bandeja del sistema ────────────────────────────────────────────────────
@@ -47,10 +57,6 @@ public partial class MainWindow : FluentWindow
             ContextMenu = menu,
         };
         _trayIcon.TrayMouseDoubleClick += (_, _) => RestoreWindow();
-        // Register the Win32 notification icon with Windows now so that toggling
-        // Visibility later (when minimizing) works reliably. Then hide it until needed.
-        _trayIcon.Visibility = Visibility.Visible;
-        _trayIcon.Visibility = Visibility.Collapsed;
     }
 
     private void OnWindowStateChanged(object? sender, EventArgs e)
