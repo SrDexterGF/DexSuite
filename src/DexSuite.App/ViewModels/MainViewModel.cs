@@ -92,6 +92,10 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private string runProgressText = string.Empty;
 
+    /// <summary>Porcentaje completado (0–100) para la barra de progreso del pie.</summary>
+    [ObservableProperty]
+    private double runProgressPercent = 0.0;
+
     // Helper i18n
     // T() = "translate", abreviado para no inflar las asignaciones de StatusMessage.
 
@@ -1883,8 +1887,12 @@ public partial class MainViewModel : ObservableObject
                     var tot = _runModuleTotal;
                     // Prefix in live log so the user can follow progress there too.
                     lock (_bufferLock) _pendingBuffer.AppendLine($"── Módulo {idx} de {tot} ──");
-                    // Update the bottom-bar progress label on the UI thread.
-                    Application.Current?.Dispatcher.BeginInvoke(() => RunProgressText = $"Módulo {idx} de {tot}");
+                    // Update the bottom-bar progress label and percentage on the UI thread.
+                    Application.Current?.Dispatcher.BeginInvoke(() =>
+                    {
+                        RunProgressText    = $"Módulo {idx} de {tot}";
+                        RunProgressPercent = tot > 0 ? idx / (double)tot * 100.0 : 0.0;
+                    });
                     _currentModuleVisibleSince = DateTime.UtcNow;
                 }
                 else if (progress.Kind == ModuleProgressKind.Done)
@@ -1943,7 +1951,8 @@ public partial class MainViewModel : ObservableObject
             try { await flushTask; } catch { /* swallowed */ }
             FlushBuffer();
 
-            RunProgressText = string.Empty;
+            RunProgressText    = string.Empty;
+            RunProgressPercent = 0.0;
             IsRunning = false;
             _runCts?.Dispose();
             _runCts = null;

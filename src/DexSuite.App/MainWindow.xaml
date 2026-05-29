@@ -334,16 +334,21 @@
                                 </Style>
                             </Border.Style>
                         </Border>
-                        <!-- Applying: círculo de carga -->
+                        <!-- Applying: círculo de carga.
+                             Opacity en vez de Visibility para que la animación
+                             del ProgressRing nunca se detenga y sea inmediatamente
+                             visible cuando el estado cambia a Applying. -->
                         <ui:ProgressRing IsIndeterminate="True"
                                          Width="18" Height="18"
                                          ToolTip="{Binding [Modules.Run.RunningTooltip], Source={x:Static svc:LocalizationService.Instance}}">
                             <ui:ProgressRing.Style>
                                 <Style TargetType="ui:ProgressRing">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Setter Property="Opacity"          Value="0"/>
+                                    <Setter Property="IsHitTestVisible" Value="False"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding VisualState}" Value="Applying">
-                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Setter Property="Opacity"          Value="1"/>
+                                            <Setter Property="IsHitTestVisible" Value="True"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -658,7 +663,17 @@
                         </StackPanel>
                     </Button>
 
-                    <!-- Separador entre sección nav y botones de feedback -->
+                    <!-- Botón "Reportar un fallo" anclado sobre el footer -->
+                    <Button DockPanel.Dock="Bottom"
+                            Style="{StaticResource NavButtonStyle}"
+                            Command="{Binding ReportBugCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:SymbolIcon Symbol="Bug24" Style="{StaticResource NavItemIconStyle}"/>
+                            <TextBlock Text="{loc:T Key=BugReport.Button}" Style="{StaticResource NavItemTextStyle}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Separador entre "Acerca de" e "Informar de un fallo" -->
                     <Border DockPanel.Dock="Bottom" Height="1" Margin="16,8,16,6">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
@@ -669,16 +684,6 @@
                             </LinearGradientBrush>
                         </Border.Background>
                     </Border>
-
-                    <!-- Botón "Reportar un fallo" anclado sobre el footer -->
-                    <Button DockPanel.Dock="Bottom"
-                            Style="{StaticResource NavButtonStyle}"
-                            Command="{Binding ReportBugCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <ui:SymbolIcon Symbol="Bug24" Style="{StaticResource NavItemIconStyle}"/>
-                            <TextBlock Text="{loc:T Key=BugReport.Button}" Style="{StaticResource NavItemTextStyle}"/>
-                        </StackPanel>
-                    </Button>
 
                     <StackPanel>
                         <ui:TextBlock Text="{loc:T Key=Navigation.Panel}" Style="{StaticResource SidebarCaption}"/>
@@ -1780,37 +1785,58 @@
                     <Border Grid.Row="2"
                             Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
                             BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                            BorderThickness="0,1,0,0"
-                            Padding="24,12">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                <ui:TextBlock Text="{Binding StatusMessage}"
-                                              Opacity="0.8"
-                                              TextWrapping="Wrap"
-                                              MaxHeight="40"/>
-                                <ui:TextBlock Text="{Binding RunProgressText}"
-                                              FontTypography="Caption"
-                                              Opacity="0.65"
-                                              Foreground="#FF00B8D9"
-                                              Margin="0,2,0,0"
-                                              Visibility="{Binding IsRunning, Converter={StaticResource BoolToVis}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <ui:Button Appearance="Secondary"
-                                           Content="{loc:T Key=Common.Cancel}"
-                                           Icon="{ui:SymbolIcon Symbol=Stop24}"
-                                           Command="{Binding CancelCommand}"
-                                           Margin="0,0,8,0"/>
-                                <ui:Button Appearance="Primary"
-                                           Content="{loc:T Key=Common.Run}"
-                                           Icon="{ui:SymbolIcon Symbol=Play24}"
-                                           Command="{Binding RunCommand}"/>
-                            </StackPanel>
-                        </Grid>
+                            BorderThickness="0,1,0,0">
+                        <DockPanel LastChildFill="True">
+                            <!-- Barra de progreso determinista pegada al borde superior del pie -->
+                            <ProgressBar DockPanel.Dock="Top"
+                                         Value="{Binding RunProgressPercent}"
+                                         Maximum="100"
+                                         Height="3"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         Foreground="#FF00B8D9"
+                                         Visibility="{Binding IsRunning, Converter={StaticResource BoolToVis}}"/>
+                            <Grid Margin="24,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <ui:TextBlock Text="{Binding StatusMessage}"
+                                                  Opacity="0.8"
+                                                  TextWrapping="Wrap"
+                                                  MaxHeight="40"/>
+                                    <!-- Indicador: spinner + "Módulo X de Y · XX%" -->
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="0,3,0,0"
+                                                Visibility="{Binding IsRunning, Converter={StaticResource BoolToVis}}">
+                                        <ui:ProgressRing IsIndeterminate="True"
+                                                         Width="14" Height="14"
+                                                         Margin="0,0,6,0"
+                                                         VerticalAlignment="Center"/>
+                                        <ui:TextBlock FontTypography="Caption"
+                                                      Opacity="0.65"
+                                                      Foreground="#FF00B8D9"
+                                                      VerticalAlignment="Center">
+                                            <Run Text="{Binding RunProgressText, Mode=OneWay}"/>
+                                            <Run Text=" · "/>
+                                            <Run Text="{Binding RunProgressPercent, StringFormat={}{0:0}%, Mode=OneWay}"/>
+                                        </ui:TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <ui:Button Appearance="Secondary"
+                                               Content="{loc:T Key=Common.Cancel}"
+                                               Icon="{ui:SymbolIcon Symbol=Stop24}"
+                                               Command="{Binding CancelCommand}"
+                                               Margin="0,0,8,0"/>
+                                    <ui:Button Appearance="Primary"
+                                               Content="{loc:T Key=Common.Run}"
+                                               Icon="{ui:SymbolIcon Symbol=Play24}"
+                                               Command="{Binding RunCommand}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DockPanel>
                     </Border>
                 </Grid>
 
@@ -2021,37 +2047,58 @@
                     <Border Grid.Row="2"
                             Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
                             BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                            BorderThickness="0,1,0,0"
-                            Padding="24,12">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                <ui:TextBlock Text="{Binding StatusMessage}"
-                                              Opacity="0.8"
-                                              TextWrapping="Wrap"
-                                              MaxHeight="40"/>
-                                <ui:TextBlock Text="{Binding RunProgressText}"
-                                              FontTypography="Caption"
-                                              Opacity="0.65"
-                                              Foreground="#FF00B8D9"
-                                              Margin="0,2,0,0"
-                                              Visibility="{Binding IsRunning, Converter={StaticResource BoolToVis}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <ui:Button Appearance="Secondary"
-                                           Content="{loc:T Key=Common.Cancel}"
-                                           Icon="{ui:SymbolIcon Symbol=Stop24}"
-                                           Command="{Binding CancelCommand}"
-                                           Margin="0,0,8,0"/>
-                                <ui:Button Appearance="Primary"
-                                           Content="{loc:T Key=Common.Run}"
-                                           Icon="{ui:SymbolIcon Symbol=Play24}"
-                                           Command="{Binding RunCommand}"/>
-                            </StackPanel>
-                        </Grid>
+                            BorderThickness="0,1,0,0">
+                        <DockPanel LastChildFill="True">
+                            <!-- Barra de progreso determinista pegada al borde superior del pie -->
+                            <ProgressBar DockPanel.Dock="Top"
+                                         Value="{Binding RunProgressPercent}"
+                                         Maximum="100"
+                                         Height="3"
+                                         Background="Transparent"
+                                         BorderThickness="0"
+                                         Foreground="#FF00B8D9"
+                                         Visibility="{Binding IsRunning, Converter={StaticResource BoolToVis}}"/>
+                            <Grid Margin="24,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <ui:TextBlock Text="{Binding StatusMessage}"
+                                                  Opacity="0.8"
+                                                  TextWrapping="Wrap"
+                                                  MaxHeight="40"/>
+                                    <!-- Indicador: spinner + "Módulo X de Y · XX%" -->
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="0,3,0,0"
+                                                Visibility="{Binding IsRunning, Converter={StaticResource BoolToVis}}">
+                                        <ui:ProgressRing IsIndeterminate="True"
+                                                         Width="14" Height="14"
+                                                         Margin="0,0,6,0"
+                                                         VerticalAlignment="Center"/>
+                                        <ui:TextBlock FontTypography="Caption"
+                                                      Opacity="0.65"
+                                                      Foreground="#FF00B8D9"
+                                                      VerticalAlignment="Center">
+                                            <Run Text="{Binding RunProgressText, Mode=OneWay}"/>
+                                            <Run Text=" · "/>
+                                            <Run Text="{Binding RunProgressPercent, StringFormat={}{0:0}%, Mode=OneWay}"/>
+                                        </ui:TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <ui:Button Appearance="Secondary"
+                                               Content="{loc:T Key=Common.Cancel}"
+                                               Icon="{ui:SymbolIcon Symbol=Stop24}"
+                                               Command="{Binding CancelCommand}"
+                                               Margin="0,0,8,0"/>
+                                    <ui:Button Appearance="Primary"
+                                               Content="{loc:T Key=Common.Run}"
+                                               Icon="{ui:SymbolIcon Symbol=Play24}"
+                                               Command="{Binding RunCommand}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DockPanel>
                     </Border>
                 </Grid>
 
