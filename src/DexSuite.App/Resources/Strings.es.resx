@@ -850,6 +850,9 @@ Pasa el ratón por el chip Seguro/Riesgo para saber por qué.</value>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEMA</value>
   </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRAS</value>
+  </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Actualizaciones</value>
   </data>

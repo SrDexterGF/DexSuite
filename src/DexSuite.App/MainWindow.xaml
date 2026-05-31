@@ -656,11 +656,11 @@
                         <StackPanel Orientation="Horizontal">
                             <!-- Cat icon: PNG usado como máscara y teñido con el mismo
                                  brush que el icono de bug, para igualar color/opacidad. -->
-                            <Rectangle Width="18" Height="18" Margin="0,0,12,0"
+                            <Rectangle Width="24" Height="24" Margin="-2,0,8,0"
                                        VerticalAlignment="Center"
                                        SnapsToDevicePixels="True"
                                        UseLayoutRounding="True"
-                                       RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
                                        Fill="{DynamicResource TextFillColorPrimaryBrush}">
                                 <Rectangle.OpacityMask>
                                     <ImageBrush ImageSource="pack://application:,,,/Assets/CatSuggestion.png"
@@ -718,17 +718,6 @@
                             </StackPanel>
                         </RadioButton>
 
-                        <!-- Tuning (bloqueada con overlay Coming Soon hasta nuevo aviso) -->
-                        <RadioButton Style="{StaticResource NavItemStyle}"
-                                     GroupName="MainNav"
-                                     IsChecked="{Binding IsTuningView, Mode=OneWay}"
-                                     Command="{Binding NavigateCommand}"
-                                     CommandParameter="Tuning">
-                            <StackPanel Orientation="Horizontal">
-                                <ui:SymbolIcon Symbol="Wrench24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="{loc:T Key=Navigation.Tuning}" Style="{StaticResource NavItemTextStyle}"/>
-                            </StackPanel>
-                        </RadioButton>
 
                         <RadioButton Style="{StaticResource NavItemStyle}"
                                      GroupName="MainNav"
@@ -841,6 +830,59 @@
                                 <TextBlock Text="{loc:T Key=Navigation.About}" Style="{StaticResource NavItemTextStyle}"/>
                             </StackPanel>
                         </RadioButton>
+
+                        <!-- Separador con gradiente -->
+                        <Border Height="1" Margin="16,14,16,6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Offset="0"   Color="Transparent"/>
+                                    <GradientStop Offset="0.3" Color="#FF2A2A4A"/>
+                                    <GradientStop Offset="0.7" Color="#FF2A2A4A"/>
+                                    <GradientStop Offset="1"   Color="Transparent"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <ui:TextBlock Text="{loc:T Key=Navigation.Extras}" Style="{StaticResource SidebarCaption}"/>
+
+                        <!-- Tuning (bloqueada con overlay Coming Soon hasta nuevo aviso).
+                             Lleva candado a la derecha para indicar el bloqueo. -->
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsTuningView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Tuning">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                    <ui:SymbolIcon Symbol="Wrench24" Style="{StaticResource NavItemIconStyle}"/>
+                                    <TextBlock Text="{loc:T Key=Navigation.Tuning}" Style="{StaticResource NavItemTextStyle}"/>
+                                </StackPanel>
+                                <ui:SymbolIcon Grid.Column="1"
+                                               Symbol="LockClosed24"
+                                               Filled="True"
+                                               FontSize="14"
+                                               Opacity="0.7"
+                                               VerticalAlignment="Center"
+                                               Margin="0,0,2,0"
+                                               ToolTip="{loc:T Key=Tuning.ComingSoon.Title}"/>
+                            </Grid>
+                        </RadioButton>
+
+                        <!-- Separador con gradiente -->
+                        <Border Height="1" Margin="16,14,16,6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Offset="0"   Color="Transparent"/>
+                                    <GradientStop Offset="0.3" Color="#FF2A2A4A"/>
+                                    <GradientStop Offset="0.7" Color="#FF2A2A4A"/>
+                                    <GradientStop Offset="1"   Color="Transparent"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
                     </StackPanel>
                 </DockPanel>
             </Border>
@@ -2719,16 +2761,24 @@
                                                                           Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
                                                         </Border>
 
-                                                        <!-- Badge "Próximamente" para la tarjeta Coming Soon -->
-                                                        <Border HorizontalAlignment="Center"
+                                                        <!-- Badge "Próximamente" centrado en la tarjeta Coming Soon.
+                                                             Stretch + Margin para usar todo el ancho de las 3 columnas
+                                                             sin depender de Grid.ColumnSpan (que no se aplicaba bien). -->
+                                                        <Border Grid.Column="0" Grid.ColumnSpan="3"
+                                                                HorizontalAlignment="Stretch"
                                                                 VerticalAlignment="Center"
-                                                                Padding="8,3"
+                                                                Margin="10,0"
+                                                                Padding="6,3"
                                                                 CornerRadius="4"
-                                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                                                                Background="#CC1A1A2A"
                                                                 Visibility="{Binding IsComingSoon, Converter={StaticResource BoolToVis}}">
                                                             <ui:TextBlock Text="{loc:T Key=Settings.Theme.ComingSoon}"
-                                                                          FontTypography="Caption"
-                                                                          FontWeight="Bold"/>
+                                                                          FontSize="11"
+                                                                          FontWeight="Bold"
+                                                                          TextAlignment="Center"
+                                                                          TextTrimming="None"
+                                                                          TextWrapping="NoWrap"
+                                                                          Foreground="White"/>
                                                         </Border>
 
                                                         <!-- Candado: bloqueado por plan y NO Coming Soon -->
@@ -2815,12 +2865,12 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{loc:T Key=Settings.Theme.GameThemesHeader}"
                                                            VerticalAlignment="Center"/>
-                                                <!-- Emoji 😉 renderizado con la fuente de emojis a color de Windows -->
-                                                <TextBlock Text="&#x1F609;"
-                                                           FontFamily="Segoe UI Emoji"
-                                                           FontSize="16"
-                                                           Margin="6,0,0,0"
-                                                           VerticalAlignment="Center"/>
+                                                <!-- Emoji 😉 a color real (Apple-style PNG) -->
+                                                <Image Source="pack://application:,,,/Assets/Wink.png"
+                                                       Width="18" Height="18"
+                                                       Margin="6,0,0,0"
+                                                       VerticalAlignment="Center"
+                                                       RenderOptions.BitmapScalingMode="HighQuality"/>
                                             </StackPanel>
                                         </Expander.Header>
                                         <ItemsControl ItemsSource="{Binding GameThemeItems}"
@@ -3319,11 +3369,11 @@
                                                        Command="{Binding SuggestFeatureCommand}"
                                                        Margin="6,0,0,0">
                                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                    <Rectangle Width="16" Height="16" Margin="0,0,8,0"
+                                                    <Rectangle Width="18" Height="18" Margin="0,0,8,0"
                                                                VerticalAlignment="Center"
                                                                SnapsToDevicePixels="True"
                                                                UseLayoutRounding="True"
-                                                               RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                                               RenderOptions.BitmapScalingMode="HighQuality"
                                                                Fill="{DynamicResource TextFillColorPrimaryBrush}">
                                                         <Rectangle.OpacityMask>
                                                             <ImageBrush ImageSource="pack://application:,,,/Assets/CatSuggestion.png"

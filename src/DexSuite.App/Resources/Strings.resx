@@ -850,6 +850,9 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.System" xml:space="preserve">
     <value>SYSTEM</value>
   </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRAS</value>
+  </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Updates</value>
   </data>

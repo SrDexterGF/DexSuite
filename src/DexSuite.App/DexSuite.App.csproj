@@ -38,6 +38,7 @@
     <Resource Include="Assets\AppIcon.png" />
     <Resource Include="Assets\AppIcon.ico" />
     <Resource Include="Assets\CatSuggestion.png" />
+    <Resource Include="Assets\Wink.png" />
   </ItemGroup>
 
 </Project>
