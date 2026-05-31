@@ -114,10 +114,10 @@ public partial class MainViewModel : ObservableObject
     /// sección se muestra con un overlay "Coming Soon" y su contenido no es
     /// interactivo, independientemente de la versión o el plan del usuario.
     /// </summary>
-    public static bool TuneupComingSoon { get; } = true;
+    public static bool TuningComingSoon { get; } = true;
 
-    /// <summary>Espejo de instancia de <see cref="TuneupComingSoon"/> para binding XAML directo.</summary>
-    public bool IsTuneupComingSoon => TuneupComingSoon;
+    /// <summary>Espejo de instancia de <see cref="TuningComingSoon"/> para binding XAML directo.</summary>
+    public bool IsTuningComingSoon => TuningComingSoon;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsHomeView))]
@@ -125,7 +125,7 @@ public partial class MainViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(IsLogView))]
     [NotifyPropertyChangedFor(nameof(IsSpecsView))]
     [NotifyPropertyChangedFor(nameof(IsRestoreView))]
-    [NotifyPropertyChangedFor(nameof(IsTuneupView))]
+    [NotifyPropertyChangedFor(nameof(IsTuningView))]
     [NotifyPropertyChangedFor(nameof(IsSettingsView))]
     [NotifyPropertyChangedFor(nameof(IsUpdatesView))]
     [NotifyPropertyChangedFor(nameof(IsAboutView))]
@@ -136,7 +136,7 @@ public partial class MainViewModel : ObservableObject
     public bool IsLogView      => CurrentSection == AppSection.Log;
     public bool IsSpecsView    => CurrentSection == AppSection.Specs;
     public bool IsRestoreView  => CurrentSection == AppSection.Restore;
-    public bool IsTuneupView   => CurrentSection == AppSection.Tuneup;
+    public bool IsTuningView   => CurrentSection == AppSection.Tuning;
     public bool IsSettingsView => CurrentSection == AppSection.Settings;
     public bool IsUpdatesView  => CurrentSection == AppSection.Updates;
     public bool IsAboutView    => CurrentSection == AppSection.About;
@@ -158,12 +158,18 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>
     /// Abre una URL en el navegador por defecto. Lo usan los botones del
-    /// instalador de apps de la sección "Puesta a Punto" (operativos cuando
-    /// la sección se desbloquee; mientras está en Coming Soon el overlay
-    /// impide pulsarlos).
+    /// instalador de apps de la sección Tuning (operativos cuando la sección
+    /// se desbloquee; mientras está en Coming Soon el overlay impide pulsarlos).
+    /// Registra cada apertura en el historial interno (AppLog).
+    ///
+    /// Cuando la sección Tuning se desbloquee y se implementen handlers reales
+    /// (cambio de resolución, frecuencia, aceleración de ratón…), cada handler
+    /// debe usar IChangeTrackingService para que el ajuste aparezca en
+    /// "Revertir cambios" y emitir un evento via _appLog igual que hacen los
+    /// módulos en Services/CleanupModules/.
     /// </summary>
     [RelayCommand]
-    private void OpenDownloadUrl(string? url)
+    private async Task OpenDownloadUrlAsync(string? url)
     {
         if (string.IsNullOrWhiteSpace(url)) return;
         try
@@ -173,10 +179,14 @@ public partial class MainViewModel : ObservableObject
                 FileName = url,
                 UseShellExecute = true,
             });
+            await _appLog.InfoAsync(AppLogCategory.App,
+                T("Tuning.Log.UrlOpened", url));
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "No se pudo abrir la URL de descarga {Url}", url);
+            await _appLog.ErrorAsync(AppLogCategory.App,
+                T("Tuning.Log.UrlFailed", url, ex.Message));
         }
     }
 

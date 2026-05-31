@@ -1,5 +1,4 @@
 using DexSuite.App.ViewModels;
-using H.NotifyIcon;
 using System.ComponentModel;
 using System.Windows;
 using Wpf.Ui.Controls;
@@ -11,7 +10,6 @@ namespace DexSuite.App;
 
 public partial class MainWindow : FluentWindow
 {
-    private TaskbarIcon? _trayIcon;
     private MainViewModel? _vm;
 
     // True solo cuando el usuario pide salir de verdad (menú "Cerrar DexSuite"),
@@ -34,9 +32,8 @@ public partial class MainWindow : FluentWindow
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        _trayIcon = (TaskbarIcon?)TryFindResource("TrayIcon");
-        if (_trayIcon is null) return;
-
+        // El TaskbarIcon ya está en el árbol visual (declarado en XAML con x:Name).
+        // Aquí solo añadimos su menú contextual y suscribimos los eventos.
         var restoreItem = new WpfMenuItem { Header = "Restaurar" };
         restoreItem.Click += (_, _) => RestoreWindow();
 
@@ -48,11 +45,9 @@ public partial class MainWindow : FluentWindow
         menu.Items.Add(new WpfSeparator());
         menu.Items.Add(exitItem);
 
-        _trayIcon.ContextMenu  = menu;
-        _trayIcon.TrayMouseDoubleClick += (_, _) => Dispatcher.Invoke(RestoreWindow);
+        TrayIcon.ContextMenu  = menu;
+        TrayIcon.TrayMouseDoubleClick += (_, _) => Dispatcher.Invoke(RestoreWindow);
 
-        // Show the icon immediately if MinimizeToTray is already enabled,
-        // and track future changes to the setting.
         RefreshTrayVisibility();
         if (_vm is not null)
             _vm.PropertyChanged += OnVmPropertyChanged;
@@ -64,14 +59,24 @@ public partial class MainWindow : FluentWindow
             Dispatcher.Invoke(RefreshTrayVisibility);
     }
 
-    // The icon stays visible for as long as MinimizeToTray is on —
-    // it does not toggle on/off each time the window is minimized/restored.
+    // Mientras "minimizar a bandeja" esté activado:
+    //  - el icono de bandeja está SIEMPRE visible (así el usuario puede recuperar
+    //    la ventana aunque la haya ocultado),
+    //  - y la ventana desaparece de la barra de tareas (ShowInTaskbar = false)
+    //    para no duplicarse con el icono de la bandeja.
     private void RefreshTrayVisibility()
     {
-        if (_trayIcon is null || _vm is null) return;
-        _trayIcon.Visibility = _vm.MinimizeToTray
-            ? Visibility.Visible
-            : Visibility.Collapsed;
+        if (_vm is null) return;
+        if (_vm.MinimizeToTray)
+        {
+            TrayIcon.Visibility = Visibility.Visible;
+            ShowInTaskbar       = false;
+        }
+        else
+        {
+            TrayIcon.Visibility = Visibility.Collapsed;
+            ShowInTaskbar       = true;
+        }
     }
 
     private void OnWindowStateChanged(object? sender, EventArgs e)
@@ -80,9 +85,10 @@ public partial class MainWindow : FluentWindow
 
         if (WindowState == WindowState.Minimized)
         {
-            ShowInTaskbar = false;
+            // Oculta la ventana del Alt+Tab y del escritorio; el icono de bandeja
+            // ya está visible (lo deja RefreshTrayVisibility cuando la opción
+            // está activa), así que el usuario podrá recuperarla.
             Hide();
-            // Tray icon is already registered and visible — nothing extra needed.
         }
     }
 
@@ -94,17 +100,17 @@ public partial class MainWindow : FluentWindow
         if (_vm is null || !_vm.MinimizeToTray || _forceClose) return;
 
         e.Cancel = true;
-        ShowInTaskbar = false;
         Hide();
-        // El icono de bandeja ya está visible mientras MinimizeToTray esté activo.
     }
 
     private void RestoreWindow()
     {
-        ShowInTaskbar = true;
         if (!IsVisible) Show();
         if (WindowState != WindowState.Normal)
             WindowState = WindowState.Normal;
+        // Si la opción de bandeja está OFF, recuperamos la entrada en la taskbar.
+        if (_vm is not null && !_vm.MinimizeToTray)
+            ShowInTaskbar = true;
         Activate();
     }
 
@@ -112,7 +118,7 @@ public partial class MainWindow : FluentWindow
     {
         if (_vm is not null)
             _vm.PropertyChanged -= OnVmPropertyChanged;
-        _trayIcon?.Dispose();
+        TrayIcon?.Dispose();
     }
 
     // ── Eventos de interfaz ────────────────────────────────────────────────────

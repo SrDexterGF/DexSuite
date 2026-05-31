@@ -805,35 +805,41 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.Restore" xml:space="preserve">
     <value>Restore changes</value>
   </data>
-  <data name="Navigation.Tuneup" xml:space="preserve">
-    <value>Tune-Up</value>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Tuning</value>
   </data>
-  <data name="Tuneup.Title" xml:space="preserve">
-    <value>Tune-Up</value>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Tuning</value>
   </data>
-  <data name="Tuneup.Subtitle" xml:space="preserve">
+  <data name="Tuning.Subtitle" xml:space="preserve">
     <value>System tweaks and quick install of essential apps.</value>
   </data>
-  <data name="Tuneup.System.Title" xml:space="preserve">
+  <data name="Tuning.System.Title" xml:space="preserve">
     <value>System settings</value>
   </data>
-  <data name="Tuneup.System.Resolution" xml:space="preserve">
+  <data name="Tuning.System.Resolution" xml:space="preserve">
     <value>Set resolution to native</value>
   </data>
-  <data name="Tuneup.System.RefreshRate" xml:space="preserve">
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
     <value>Set refresh rate to monitor maximum</value>
   </data>
-  <data name="Tuneup.System.MouseAccel" xml:space="preserve">
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
     <value>Disable mouse acceleration</value>
   </data>
-  <data name="Tuneup.Installer.Title" xml:space="preserve">
+  <data name="Tuning.Installer.Title" xml:space="preserve">
     <value>App installer</value>
   </data>
-  <data name="Tuneup.ComingSoon.Title" xml:space="preserve">
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
     <value>Coming soon</value>
   </data>
-  <data name="Tuneup.ComingSoon.Message" xml:space="preserve">
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
     <value>This section will be available in a future update.</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Tuning: download opened — {0}</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Tuning: could not open download {0} — {1}</value>
   </data>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Settings</value>
@@ -1349,7 +1355,7 @@ The application will restart automatically.</value>
     <value>Coming soon</value>
   </data>
   <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
-    <value>Themes 😉</value>
+    <value>Themes</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>

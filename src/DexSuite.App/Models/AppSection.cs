@@ -8,10 +8,10 @@ public enum AppSection
 {
     Home,
     Modules,
+    Tuning,
     Log,
     Specs,
     Restore,
-    Tuneup,
     Settings,
     Updates,
     About,

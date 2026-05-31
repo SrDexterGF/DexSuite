@@ -805,35 +805,41 @@ Pasa el ratón por el chip Seguro/Riesgo para saber por qué.</value>
   <data name="Navigation.Restore" xml:space="preserve">
     <value>Revertir cambios</value>
   </data>
-  <data name="Navigation.Tuneup" xml:space="preserve">
-    <value>Puesta a Punto</value>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Tuning</value>
   </data>
-  <data name="Tuneup.Title" xml:space="preserve">
-    <value>Puesta a Punto</value>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Tuning</value>
   </data>
-  <data name="Tuneup.Subtitle" xml:space="preserve">
+  <data name="Tuning.Subtitle" xml:space="preserve">
     <value>Ajustes del sistema e instalación rápida de aplicaciones esenciales.</value>
   </data>
-  <data name="Tuneup.System.Title" xml:space="preserve">
+  <data name="Tuning.System.Title" xml:space="preserve">
     <value>Ajustes del sistema</value>
   </data>
-  <data name="Tuneup.System.Resolution" xml:space="preserve">
+  <data name="Tuning.System.Resolution" xml:space="preserve">
     <value>Cambiar resolución a la nativa</value>
   </data>
-  <data name="Tuneup.System.RefreshRate" xml:space="preserve">
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
     <value>Ajustar frecuencia al máximo del monitor</value>
   </data>
-  <data name="Tuneup.System.MouseAccel" xml:space="preserve">
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
     <value>Desactivar aceleración del ratón</value>
   </data>
-  <data name="Tuneup.Installer.Title" xml:space="preserve">
+  <data name="Tuning.Installer.Title" xml:space="preserve">
     <value>Instalador de aplicaciones</value>
   </data>
-  <data name="Tuneup.ComingSoon.Title" xml:space="preserve">
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
     <value>Próximamente</value>
   </data>
-  <data name="Tuneup.ComingSoon.Message" xml:space="preserve">
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
     <value>Esta sección estará disponible en una próxima actualización.</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Tuning: descarga abierta — {0}</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Tuning: no se pudo abrir la descarga {0} — {1}</value>
   </data>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Ajustes</value>
@@ -1349,7 +1355,7 @@ La aplicación se reiniciará automáticamente.</value>
     <value>Próximamente</value>
   </data>
   <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
-    <value>Temas 😉</value>
+    <value>Temas</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cian + violeta</value>
