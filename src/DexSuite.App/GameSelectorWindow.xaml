@@ -44,87 +44,106 @@
                           Opacity="0.65"
                           TextWrapping="Wrap"
                           Margin="0,4,0,0"/>
+
+            <!-- Buscador: filtra la lista en tiempo real por nombre de juego -->
+            <ui:TextBox Margin="0,12,0,0"
+                        Icon="{ui:SymbolIcon Symbol=Search24}"
+                        PlaceholderText="{loc:T Key=Gaming.SearchPlaceholder}"
+                        Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
 
-        <!-- Lista de juegos: cards con nombre, subtítulo y selector de variante -->
-        <ScrollViewer Grid.Row="2"
-                      Margin="24,0,24,12"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled">
-            <ItemsControl ItemsSource="{Binding Games}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Width="220" Height="140"
-                                Margin="0,0,12,12"
-                                Padding="14,12"
-                                CornerRadius="10"
-                                Background="{DynamicResource ControlFillColorDefaultBrush}"
-                                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                                BorderThickness="1">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+        <!-- Lista de juegos (modo lista, fila horizontal): icono + nombre/subtítulo,
+             tick de aplicado, selector de variante y botón Optimizar. -->
+        <ListBox Grid.Row="2"
+                 Margin="24,0,24,12"
+                 ItemsSource="{Binding GamesView}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 HorizontalContentAlignment="Stretch"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,8"/>
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="14,10"
+                            CornerRadius="10"
+                            Background="{DynamicResource ControlFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                                <!-- Header: nombre + icono gaming -->
-                                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                    <ui:SymbolIcon Symbol="Games24"
-                                                   FontSize="16"
-                                                   Foreground="#FF00C853"
-                                                   VerticalAlignment="Center"
-                                                   Margin="0,0,6,0"/>
-                                    <ui:TextBlock Text="{Binding Name}"
-                                                  FontTypography="BodyStrong"
-                                                  VerticalAlignment="Center"/>
-                                </StackPanel>
+                            <!-- Icono -->
+                            <ui:SymbolIcon Grid.Column="0"
+                                           Symbol="Games24"
+                                           FontSize="20"
+                                           Foreground="#FF00C853"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,12,0"/>
 
-                                <ui:TextBlock Grid.Row="1"
-                                              Text="{Binding Subtitle}"
+                            <!-- Nombre + subtítulo -->
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <ui:TextBlock Text="{Binding Name}" FontTypography="BodyStrong"/>
+                                <ui:TextBlock Text="{Binding Subtitle}"
                                               Opacity="0.6"
                                               FontTypography="Caption"
                                               TextWrapping="Wrap"
-                                              VerticalAlignment="Center"
-                                              Margin="0,8,0,8"/>
+                                              Margin="0,2,0,0"/>
+                            </StackPanel>
 
-                                <!-- Acción:
-                                       - Si hay >1 variante (Battlefield, CoD, Splitgate),
-                                         se muestra el ComboBox para que el usuario elija
-                                         la versión + botón Optimizar a la derecha.
-                                       - Si solo hay una variante, se muestra únicamente
-                                         el botón Optimizar a lo ancho — no tiene sentido
-                                         repetir el nombre del juego en un desplegable. -->
-                                <Grid Grid.Row="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <ComboBox Grid.Column="0"
-                                              ItemsSource="{Binding Variants}"
-                                              DisplayMemberPath="DisplayName"
-                                              SelectedItem="{Binding SelectedVariant, Mode=TwoWay}"
-                                              Margin="0,0,6,0"
+                            <!-- Tick de configuración aplicada -->
+                            <StackPanel Grid.Column="2"
+                                        Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        Margin="8,0,12,0"
+                                        Visibility="{Binding IsConfigApplied, Converter={StaticResource BoolToVis}}">
+                                <ui:SymbolIcon Symbol="CheckmarkCircle24"
+                                               FontSize="18"
+                                               Foreground="#FF00C853"
+                                               VerticalAlignment="Center"/>
+                                <ui:TextBlock Text="{loc:T Key=Gaming.Applied}"
+                                              Foreground="#FF00C853"
+                                              FontTypography="Caption"
                                               VerticalAlignment="Center"
-                                              Visibility="{Binding HasMultipleVariants, Converter={StaticResource BoolToVis}}"/>
-                                    <ui:Button Grid.Column="1"
-                                               Appearance="Primary"
-                                               Icon="{ui:SymbolIcon Symbol=Play24}"
-                                               Content="{loc:T Key=Gaming.OptimizeButton}"
-                                               Command="{Binding DataContext.OptimizeCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                               CommandParameter="{Binding}"/>
-                                </Grid>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+                                              Margin="5,0,0,0"/>
+                            </StackPanel>
+
+                            <!-- Selector de variante (solo si hay más de una) -->
+                            <ComboBox Grid.Column="3"
+                                      MinWidth="150"
+                                      ItemsSource="{Binding Variants}"
+                                      DisplayMemberPath="DisplayName"
+                                      SelectedItem="{Binding SelectedVariant, Mode=TwoWay}"
+                                      Margin="0,0,8,0"
+                                      VerticalAlignment="Center"
+                                      Visibility="{Binding HasMultipleVariants, Converter={StaticResource BoolToVis}}"/>
+
+                            <!-- Botón Optimizar -->
+                            <ui:Button Grid.Column="4"
+                                       Appearance="Primary"
+                                       Icon="{ui:SymbolIcon Symbol=Play24}"
+                                       Content="{loc:T Key=Gaming.OptimizeButton}"
+                                       VerticalAlignment="Center"
+                                       Command="{Binding DataContext.OptimizeCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                                       CommandParameter="{Binding}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <!-- Footer con Cerrar -->
         <Border Grid.Row="3"

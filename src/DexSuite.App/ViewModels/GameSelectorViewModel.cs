@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Data;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DexSuite.App.Models;
@@ -30,6 +32,11 @@ public partial class GameTileViewModel : ObservableObject
     [ObservableProperty]
     private GameVariant selectedVariant;
 
+    /// <summary>True cuando ya se ha aplicado la optimización de este juego
+    /// (marca el tick verde en la lista). En memoria durante la sesión.</summary>
+    [ObservableProperty]
+    private bool isConfigApplied;
+
     public GameTileViewModel(GameProfile profile)
     {
         Profile = profile;
@@ -51,6 +58,15 @@ public sealed partial class GameSelectorViewModel : ObservableObject
 
     public ObservableCollection<GameTileViewModel> Games { get; } = new();
 
+    /// <summary>Vista filtrable de los juegos para búsqueda en tiempo real por nombre.</summary>
+    public ICollectionView GamesView { get; }
+
+    /// <summary>Texto del buscador; al cambiar refresca el filtro de la vista.</summary>
+    [ObservableProperty]
+    private string searchText = string.Empty;
+
+    partial void OnSearchTextChanged(string value) => GamesView.Refresh();
+
     public GameSelectorViewModel(
         IGameOptimizationService service,
         IAppLogService appLog,
@@ -64,6 +80,18 @@ public sealed partial class GameSelectorViewModel : ObservableObject
 
         foreach (var p in _service.AvailableGames)
             Games.Add(new GameTileViewModel(p));
+
+        GamesView = CollectionViewSource.GetDefaultView(Games);
+        GamesView.Filter = FilterGame;
+    }
+
+    /// <summary>Filtro de la vista: deja pasar el juego si el buscador está vacío
+    /// o si su nombre contiene el texto (sin distinguir mayúsculas/acentos básicos).</summary>
+    private bool FilterGame(object obj)
+    {
+        if (obj is not GameTileViewModel tile) return false;
+        if (string.IsNullOrWhiteSpace(SearchText)) return true;
+        return tile.Name.Contains(SearchText.Trim(), StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>
@@ -79,6 +107,7 @@ public sealed partial class GameSelectorViewModel : ObservableObject
         try
         {
             await _service.RunGameOptimizationAsync(variant);
+            tile.IsConfigApplied = true;
             await _appLog.SuccessAsync(AppLogCategory.Run,
                 string.Format(_loc.Get("Gaming.Log.Launched"), variant.DisplayName));
         }

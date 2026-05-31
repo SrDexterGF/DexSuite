@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Windows;
+using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DexSuite.App.Models;
@@ -108,12 +109,23 @@ public partial class MainViewModel : ObservableObject
 
     // Navegación entre secciones (sidebar)
 
+    /// <summary>
+    /// Bloqueo global de la sección "Puesta a Punto". Mientras sea true, la
+    /// sección se muestra con un overlay "Coming Soon" y su contenido no es
+    /// interactivo, independientemente de la versión o el plan del usuario.
+    /// </summary>
+    public static bool TuneupComingSoon { get; } = true;
+
+    /// <summary>Espejo de instancia de <see cref="TuneupComingSoon"/> para binding XAML directo.</summary>
+    public bool IsTuneupComingSoon => TuneupComingSoon;
+
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsHomeView))]
     [NotifyPropertyChangedFor(nameof(IsModulesView))]
     [NotifyPropertyChangedFor(nameof(IsLogView))]
     [NotifyPropertyChangedFor(nameof(IsSpecsView))]
     [NotifyPropertyChangedFor(nameof(IsRestoreView))]
+    [NotifyPropertyChangedFor(nameof(IsTuneupView))]
     [NotifyPropertyChangedFor(nameof(IsSettingsView))]
     [NotifyPropertyChangedFor(nameof(IsUpdatesView))]
     [NotifyPropertyChangedFor(nameof(IsAboutView))]
@@ -124,6 +136,7 @@ public partial class MainViewModel : ObservableObject
     public bool IsLogView      => CurrentSection == AppSection.Log;
     public bool IsSpecsView    => CurrentSection == AppSection.Specs;
     public bool IsRestoreView  => CurrentSection == AppSection.Restore;
+    public bool IsTuneupView   => CurrentSection == AppSection.Tuneup;
     public bool IsSettingsView => CurrentSection == AppSection.Settings;
     public bool IsUpdatesView  => CurrentSection == AppSection.Updates;
     public bool IsAboutView    => CurrentSection == AppSection.About;
@@ -140,6 +153,30 @@ public partial class MainViewModel : ObservableObject
                 _ = RefreshAppLogAsync();
             if (section == AppSection.Restore)
                 _ = RefreshChangesAsync();
+        }
+    }
+
+    /// <summary>
+    /// Abre una URL en el navegador por defecto. Lo usan los botones del
+    /// instalador de apps de la sección "Puesta a Punto" (operativos cuando
+    /// la sección se desbloquee; mientras está en Coming Soon el overlay
+    /// impide pulsarlos).
+    /// </summary>
+    [RelayCommand]
+    private void OpenDownloadUrl(string? url)
+    {
+        if (string.IsNullOrWhiteSpace(url)) return;
+        try
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true,
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "No se pudo abrir la URL de descarga {Url}", url);
         }
     }
 
@@ -542,6 +579,9 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Items observables para el selector de temas en Ajustes.</summary>
     public ObservableCollection<ThemeItemViewModel> ThemeItems { get; } = new();
 
+    /// <summary>Temas de videojuegos mostrados en el Expander "Temas 😉".</summary>
+    public ObservableCollection<ThemeItemViewModel> GameThemeItems { get; } = new();
+
     [ObservableProperty]
     private AppTheme currentTheme;
 
@@ -552,6 +592,12 @@ public partial class MainViewModel : ObservableObject
     private void RefreshThemeItems()
     {
         foreach (var item in ThemeItems)
+        {
+            if (item.IsComingSoon) continue;   // placeholder, no cambia de estado
+            item.IsActive = item.Theme == CurrentTheme;
+            item.IsUnlocked = IsThemeUnlocked(item.MinTier);
+        }
+        foreach (var item in GameThemeItems)
         {
             item.IsActive = item.Theme == CurrentTheme;
             item.IsUnlocked = IsThemeUnlocked(item.MinTier);
@@ -566,6 +612,7 @@ public partial class MainViewModel : ObservableObject
     private async Task SelectThemeAsync(ThemeItemViewModel? item)
     {
         if (item is null) return;
+        if (item.IsComingSoon) return;   // tarjeta placeholder, no aplicable
         if (!item.IsUnlocked) return;
         if (_themeService.CurrentTheme == item.Theme) return;
 
@@ -1528,6 +1575,20 @@ public partial class MainViewModel : ObservableObject
         foreach (var desc in _themeService.AvailableThemes)
         {
             ThemeItems.Add(new ThemeItemViewModel(
+                desc,
+                isActive:   desc.Theme == CurrentTheme,
+                isUnlocked: IsThemeUnlocked(desc.MinTier)));
+        }
+        // Tarjeta "Coming Soon" al final del listado normal: no seleccionable.
+        ThemeItems.Add(new ThemeItemViewModel(
+            new ThemeDescriptor(AppTheme.Default, "Settings.Theme.ComingSoon", "Settings.Theme.ComingSoon",
+                Color.FromRgb(0x20, 0x20, 0x28), Color.FromRgb(0x40, 0x40, 0x4A), Color.FromRgb(0x60, 0x60, 0x6A), "Pro"),
+            isActive: false, isUnlocked: false, isComingSoon: true));
+
+        // Temas de videojuegos (Expander "Temas 😉").
+        foreach (var desc in _themeService.GameThemes)
+        {
+            GameThemeItems.Add(new ThemeItemViewModel(
                 desc,
                 isActive:   desc.Theme == CurrentTheme,
                 isUnlocked: IsThemeUnlocked(desc.MinTier)));

@@ -16,12 +16,17 @@ public sealed partial class ThemeItemViewModel : ObservableObject
 {
     public ThemeDescriptor Descriptor { get; }
 
-    public ThemeItemViewModel(ThemeDescriptor descriptor, bool isActive, bool isUnlocked)
+    public ThemeItemViewModel(ThemeDescriptor descriptor, bool isActive, bool isUnlocked, bool isComingSoon = false)
     {
         Descriptor = descriptor;
         this.isActive = isActive;
         this.isUnlocked = isUnlocked;
+        IsComingSoon = isComingSoon;
     }
+
+    /// <summary>True si es la tarjeta placeholder "Coming Soon": no seleccionable,
+    /// se muestra deshabilitada con un badge "Próximamente".</summary>
+    public bool IsComingSoon { get; }
 
     /// <summary>Identificador del tema (para la clave de traducción).</summary>
     public AppTheme Theme => Descriptor.Theme;

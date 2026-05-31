@@ -157,6 +157,12 @@ Error: {0}</value>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimizar</value>
   </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Buscar juego...</value>
+  </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Aplicado</value>
+  </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Ajustes a medida para FPS máximos y latencia mínima.
 Cada juego tiene su propio perfil.</value>
@@ -799,6 +805,36 @@ Pasa el ratón por el chip Seguro/Riesgo para saber por qué.</value>
   <data name="Navigation.Restore" xml:space="preserve">
     <value>Revertir cambios</value>
   </data>
+  <data name="Navigation.Tuneup" xml:space="preserve">
+    <value>Puesta a Punto</value>
+  </data>
+  <data name="Tuneup.Title" xml:space="preserve">
+    <value>Puesta a Punto</value>
+  </data>
+  <data name="Tuneup.Subtitle" xml:space="preserve">
+    <value>Ajustes del sistema e instalación rápida de aplicaciones esenciales.</value>
+  </data>
+  <data name="Tuneup.System.Title" xml:space="preserve">
+    <value>Ajustes del sistema</value>
+  </data>
+  <data name="Tuneup.System.Resolution" xml:space="preserve">
+    <value>Cambiar resolución a la nativa</value>
+  </data>
+  <data name="Tuneup.System.RefreshRate" xml:space="preserve">
+    <value>Ajustar frecuencia al máximo del monitor</value>
+  </data>
+  <data name="Tuneup.System.MouseAccel" xml:space="preserve">
+    <value>Desactivar aceleración del ratón</value>
+  </data>
+  <data name="Tuneup.Installer.Title" xml:space="preserve">
+    <value>Instalador de aplicaciones</value>
+  </data>
+  <data name="Tuneup.ComingSoon.Title" xml:space="preserve">
+    <value>Próximamente</value>
+  </data>
+  <data name="Tuneup.ComingSoon.Message" xml:space="preserve">
+    <value>Esta sección estará disponible en una próxima actualización.</value>
+  </data>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Ajustes</value>
   </data>
@@ -1243,8 +1279,77 @@ La aplicación se reiniciará automáticamente.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Comparte una idea o mejora.</value>
   </data>
-  <data name="Theme.Desc.Apex" xml:space="preserve">
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
     <value>Oro premium + negro cálido</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Rojo intenso + blanco hueso</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Azul + amarillo vibrante</value>
+  </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Naranja táctico + negro</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Dorado + azul profundo</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Verde césped + marrón tierra</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>Rojo + cian sobre azul-gris</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Naranja + azul protector</value>
+  </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Morado + dorado mítico</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Azul claro + blanco frío</value>
+  </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Amarillo + negro militar</value>
+  </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Próximamente</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Temas 😉</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cian + violeta</value>
@@ -1257,9 +1362,6 @@ La aplicación se reiniciará automáticamente.</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Monocromo ultraminimalista</value>
-  </data>
-  <data name="Theme.Name.Apex" xml:space="preserve">
-    <value>APEX</value>
   </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>

@@ -11,6 +11,7 @@ public enum AppSection
     Log,
     Specs,
     Restore,
+    Tuneup,
     Settings,
     Updates,
     About,

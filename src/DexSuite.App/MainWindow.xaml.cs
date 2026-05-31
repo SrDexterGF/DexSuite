@@ -14,6 +14,10 @@ public partial class MainWindow : FluentWindow
     private TaskbarIcon? _trayIcon;
     private MainViewModel? _vm;
 
+    // True solo cuando el usuario pide salir de verdad (menú "Cerrar DexSuite"),
+    // para que OnWindowClosing no cancele ese cierre intencionado.
+    private bool _forceClose;
+
     public MainWindow(MainViewModel viewModel)
     {
         InitializeComponent();
@@ -21,6 +25,7 @@ public partial class MainWindow : FluentWindow
         _vm = viewModel;
 
         StateChanged += OnWindowStateChanged;
+        Closing       += OnWindowClosing;
         Closed        += OnWindowClosed;
         Loaded        += OnLoaded;
     }
@@ -36,7 +41,7 @@ public partial class MainWindow : FluentWindow
         restoreItem.Click += (_, _) => RestoreWindow();
 
         var exitItem = new WpfMenuItem { Header = "Cerrar DexSuite" };
-        exitItem.Click += (_, _) => Application.Current.Shutdown();
+        exitItem.Click += (_, _) => { _forceClose = true; Application.Current.Shutdown(); };
 
         var menu = new WpfContextMenu();
         menu.Items.Add(restoreItem);
@@ -79,6 +84,19 @@ public partial class MainWindow : FluentWindow
             Hide();
             // Tray icon is already registered and visible — nothing extra needed.
         }
+    }
+
+    // Con "minimizar a bandeja" activado, pulsar la X oculta la ventana al área
+    // de notificaciones en lugar de cerrar la app. El cierre real solo ocurre
+    // desde el menú "Cerrar DexSuite" del icono de bandeja (_forceClose = true).
+    private void OnWindowClosing(object? sender, CancelEventArgs e)
+    {
+        if (_vm is null || !_vm.MinimizeToTray || _forceClose) return;
+
+        e.Cancel = true;
+        ShowInTaskbar = false;
+        Hide();
+        // El icono de bandeja ya está visible mientras MinimizeToTray esté activo.
     }
 
     private void RestoreWindow()

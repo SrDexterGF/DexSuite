@@ -16,6 +16,9 @@ public interface IThemeService
     /// <summary>Catálogo de descripciones de tema (icono, nombre, mínimo plan).</summary>
     IReadOnlyList<ThemeDescriptor> AvailableThemes { get; }
 
+    /// <summary>Temas inspirados en videojuegos (sección oculta "Temas 😉").</summary>
+    IReadOnlyList<ThemeDescriptor> GameThemes { get; }
+
     /// <summary>Cambia el tema activo y lo aplica al ResourceDictionary global.</summary>
     void ApplyTheme(AppTheme theme);
 

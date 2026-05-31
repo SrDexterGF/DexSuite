@@ -654,11 +654,16 @@
                             Style="{StaticResource NavButtonStyle}"
                             Command="{Binding SuggestFeatureCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <!-- Cat icon (user-provided British Shorthair art) -->
-                            <Image Source="pack://application:,,,/Assets/CatSuggestion.png"
-                                   Width="18" Height="18" Margin="0,0,12,0"
-                                   VerticalAlignment="Center"
-                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                            <!-- Cat icon: PNG usado como máscara y teñido con el mismo
+                                 brush que el icono de bug, para igualar color/opacidad. -->
+                            <Rectangle Width="18" Height="18" Margin="0,0,12,0"
+                                       VerticalAlignment="Center"
+                                       Fill="{DynamicResource TextFillColorPrimaryBrush}">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="pack://application:,,,/Assets/CatSuggestion.png"
+                                                Stretch="Uniform"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
                             <TextBlock Text="{loc:T Key=Suggestion.Button}" Style="{StaticResource NavItemTextStyle}"/>
                         </StackPanel>
                     </Button>
@@ -761,6 +766,18 @@
                                                   Foreground="#FF00B8D9"/>
                                 </Border>
                             </Grid>
+                        </RadioButton>
+
+                        <!-- Puesta a Punto (bloqueada con overlay Coming Soon) -->
+                        <RadioButton Style="{StaticResource NavItemStyle}"
+                                     GroupName="MainNav"
+                                     IsChecked="{Binding IsTuneupView, Mode=OneWay}"
+                                     Command="{Binding NavigateCommand}"
+                                     CommandParameter="Tuneup">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="Wrench24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.Tuneup}" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
                         </RadioButton>
 
                         <!-- Separador con gradiente -->
@@ -2468,6 +2485,88 @@
                     </Grid>
                 </ScrollViewer>
 
+                <!-- Vista Puesta a Punto (bloqueada con overlay Coming Soon) -->
+                <Grid Visibility="{Binding IsTuneupView, Converter={StaticResource BoolToVis}}">
+                    <!-- Contenido planificado (no funcional aún, queda tras el overlay) -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
+                            <ui:TextBlock Text="{loc:T Key=Tuneup.Title}" FontTypography="TitleLarge"/>
+                            <ui:TextBlock Text="{loc:T Key=Tuneup.Subtitle}"
+                                          Opacity="0.65" TextWrapping="Wrap" Margin="0,2,0,18"/>
+
+                            <!-- Grupo: Ajustes del sistema -->
+                            <Border Padding="20,16" CornerRadius="10" Margin="0,0,0,12"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1">
+                                <StackPanel>
+                                    <ui:TextBlock Text="{loc:T Key=Tuneup.System.Title}" FontTypography="Subtitle" Margin="0,0,0,12"/>
+                                    <ui:Button Margin="0,0,0,8" HorizontalAlignment="Left"
+                                               Icon="{ui:SymbolIcon Symbol=Desktop24}"
+                                               Content="{loc:T Key=Tuneup.System.Resolution}"/>
+                                    <ui:Button Margin="0,0,0,8" HorizontalAlignment="Left"
+                                               Icon="{ui:SymbolIcon Symbol=TopSpeed24}"
+                                               Content="{loc:T Key=Tuneup.System.RefreshRate}"/>
+                                    <ui:Button HorizontalAlignment="Left"
+                                               Icon="{ui:SymbolIcon Symbol=CursorHover24}"
+                                               Content="{loc:T Key=Tuneup.System.MouseAccel}"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Grupo: Instalador de apps -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1">
+                                <StackPanel>
+                                    <ui:TextBlock Text="{loc:T Key=Tuneup.Installer.Title}" FontTypography="Subtitle" Margin="0,0,0,12"/>
+                                    <WrapPanel>
+                                        <WrapPanel.Resources>
+                                            <Style TargetType="ui:Button">
+                                                <Setter Property="Margin" Value="0,0,8,8"/>
+                                                <Setter Property="MinWidth" Value="150"/>
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="Command" Value="{Binding DataContext.OpenDownloadUrlCommand, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}"/>
+                                            </Style>
+                                        </WrapPanel.Resources>
+                                        <ui:Button Content="Chrome"          CommandParameter="https://www.google.com/chrome/"/>
+                                        <ui:Button Content="Firefox"         CommandParameter="https://www.mozilla.org/firefox/new/"/>
+                                        <ui:Button Content="Brave"           CommandParameter="https://brave.com/download/"/>
+                                        <ui:Button Content="Discord"         CommandParameter="https://discord.com/download"/>
+                                        <ui:Button Content="Steam"           CommandParameter="https://store.steampowered.com/about/"/>
+                                        <ui:Button Content="Revo Uninstaller" CommandParameter="https://www.revouninstaller.com/products/revo-uninstaller-free/"/>
+                                        <ui:Button Content="Riot Games"      CommandParameter="https://www.riotgames.com/en/download"/>
+                                        <ui:Button Content="Epic Games"      CommandParameter="https://store.epicgames.com/en-US/download"/>
+                                        <ui:Button Content="Notepad++"       CommandParameter="https://notepad-plus-plus.org/downloads/"/>
+                                        <ui:Button Content="AnyDesk"         CommandParameter="https://anydesk.com/en/downloads/windows"/>
+                                        <ui:Button Content="CPU-Z"           CommandParameter="https://www.cpuid.com/softwares/cpu-z.html"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Overlay Coming Soon: bloquea interacción mientras TuneupComingSoon -->
+                    <Border Background="#CC0A0A14"
+                            Visibility="{Binding IsTuneupComingSoon, Converter={StaticResource BoolToVis}}">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ui:SymbolIcon Symbol="LockClosed24" Filled="True" FontSize="48"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
+                            <ui:TextBlock Text="{loc:T Key=Tuneup.ComingSoon.Title}"
+                                          FontTypography="TitleLarge"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,14,0,4"/>
+                            <ui:TextBlock Text="{loc:T Key=Tuneup.ComingSoon.Message}"
+                                          Opacity="0.7"
+                                          TextWrapping="Wrap"
+                                          TextAlignment="Center"
+                                          MaxWidth="420"
+                                          HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
                 <!-- Vista Ajustes -->
                 <ScrollViewer Visibility="{Binding IsSettingsView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
@@ -2542,6 +2641,146 @@
                                     BorderThickness="1"
                                     Margin="0,0,0,12">
                                 <StackPanel>
+                                    <StackPanel.Resources>
+                                        <!-- Tarjeta de tema reutilizada por el listado normal y el Expander de juegos -->
+                                        <DataTemplate x:Key="ThemeCardTemplate">
+                                            <Button Width="170" Height="120"
+                                                    Margin="0,0,10,10"
+                                                    Padding="0"
+                                                    BorderThickness="2"
+                                                    Cursor="Hand"
+                                                    HorizontalContentAlignment="Stretch"
+                                                    VerticalContentAlignment="Stretch"
+                                                    Command="{Binding DataContext.SelectThemeCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                    CommandParameter="{Binding}">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+                                                        <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                                <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsUnlocked}" Value="False">
+                                                                <Setter Property="Opacity" Value="0.55"/>
+                                                            </DataTrigger>
+                                                            <!-- Coming Soon: no seleccionable -->
+                                                            <DataTrigger Binding="{Binding IsComingSoon}" Value="True">
+                                                                <Setter Property="IsEnabled" Value="False"/>
+                                                                <Setter Property="Opacity" Value="0.5"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <!-- Bloque superior: 3 muestras de color -->
+                                                    <Grid Grid.Row="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border Grid.Column="0">
+                                                            <Border.Background>
+                                                                <SolidColorBrush Color="{Binding PreviewColor1}"/>
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <Border Grid.Column="1">
+                                                            <Border.Background>
+                                                                <SolidColorBrush Color="{Binding PreviewColor2}"/>
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <Border Grid.Column="2">
+                                                            <Border.Background>
+                                                                <SolidColorBrush Color="{Binding PreviewColor3}"/>
+                                                            </Border.Background>
+                                                        </Border>
+
+                                                        <!-- Badge "Activo" -->
+                                                        <Border HorizontalAlignment="Right"
+                                                                VerticalAlignment="Top"
+                                                                Margin="0,6,6,0"
+                                                                Padding="6,2"
+                                                                CornerRadius="4"
+                                                                Background="{DynamicResource AccentFillColorDefaultBrush}"
+                                                                Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}">
+                                                            <ui:TextBlock Text="{loc:T Key=Settings.Theme.Active}"
+                                                                          FontTypography="Caption"
+                                                                          FontWeight="Bold"
+                                                                          Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
+                                                        </Border>
+
+                                                        <!-- Badge "Próximamente" para la tarjeta Coming Soon -->
+                                                        <Border HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Padding="8,3"
+                                                                CornerRadius="4"
+                                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                                                                Visibility="{Binding IsComingSoon, Converter={StaticResource BoolToVis}}">
+                                                            <ui:TextBlock Text="{loc:T Key=Settings.Theme.ComingSoon}"
+                                                                          FontTypography="Caption"
+                                                                          FontWeight="Bold"/>
+                                                        </Border>
+
+                                                        <!-- Candado: bloqueado por plan y NO Coming Soon -->
+                                                        <ui:SymbolIcon Symbol="LockClosed24"
+                                                                       Filled="True"
+                                                                       FontSize="32"
+                                                                       Foreground="White"
+                                                                       HorizontalAlignment="Center"
+                                                                       VerticalAlignment="Center">
+                                                            <ui:SymbolIcon.Style>
+                                                                <Style TargetType="ui:SymbolIcon">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding IsUnlocked}" Value="False">
+                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding IsComingSoon}" Value="True">
+                                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ui:SymbolIcon.Style>
+                                                        </ui:SymbolIcon>
+                                                    </Grid>
+
+                                                    <!-- Bloque inferior: nombre + hint/desc -->
+                                                    <StackPanel Grid.Row="1" Margin="10,6,10,8">
+                                                        <ui:TextBlock Text="{Binding NameKey, Converter={StaticResource Loc}}"
+                                                                      FontTypography="BodyStrong"/>
+                                                        <ui:TextBlock Text="{loc:T Key=Settings.Theme.LockedHint}"
+                                                                      FontTypography="Caption"
+                                                                      Opacity="0.7">
+                                                            <ui:TextBlock.Style>
+                                                                <Style TargetType="ui:TextBlock">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding IsUnlocked}" Value="False">
+                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding IsComingSoon}" Value="True">
+                                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ui:TextBlock.Style>
+                                                        </ui:TextBlock>
+                                                        <ui:TextBlock Text="{Binding DescriptionKey, Converter={StaticResource Loc}}"
+                                                                      FontTypography="Caption"
+                                                                      Opacity="0.6"
+                                                                      Visibility="{Binding IsUnlocked, Converter={StaticResource BoolToVis}}"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Button>
+                                        </DataTemplate>
+                                    </StackPanel.Resources>
+
                                     <ui:TextBlock Text="{loc:T Key=Settings.Theme.Title}"
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,4"/>
@@ -2549,111 +2788,31 @@
                                                   Opacity="0.7"
                                                   TextWrapping="Wrap"
                                                   Margin="0,0,0,14"/>
-                                    <ItemsControl ItemsSource="{Binding ThemeItems}">
+
+                                    <!-- Listado normal de temas + Coming Soon -->
+                                    <ItemsControl ItemsSource="{Binding ThemeItems}"
+                                                  ItemTemplate="{StaticResource ThemeCardTemplate}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <WrapPanel/>
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Button Width="170" Height="120"
-                                                        Margin="0,0,10,10"
-                                                        Padding="0"
-                                                        BorderThickness="2"
-                                                        Cursor="Hand"
-                                                        HorizontalContentAlignment="Stretch"
-                                                        VerticalContentAlignment="Stretch"
-                                                        Command="{Binding DataContext.SelectThemeCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                                                        CommandParameter="{Binding}">
-                                                    <Button.Style>
-                                                        <Style TargetType="Button">
-                                                            <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
-                                                            <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}"/>
-                                                            <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding IsActive}" Value="True">
-                                                                    <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}"/>
-                                                                </DataTrigger>
-                                                                <DataTrigger Binding="{Binding IsUnlocked}" Value="False">
-                                                                    <Setter Property="Opacity" Value="0.55"/>
-                                                                </DataTrigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Button.Style>
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-
-                                                        <!-- Bloque superior: 3 muestras de color en gradiente vertical -->
-                                                        <Grid Grid.Row="0">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0">
-                                                                <Border.Background>
-                                                                    <SolidColorBrush Color="{Binding PreviewColor1}"/>
-                                                                </Border.Background>
-                                                            </Border>
-                                                            <Border Grid.Column="1">
-                                                                <Border.Background>
-                                                                    <SolidColorBrush Color="{Binding PreviewColor2}"/>
-                                                                </Border.Background>
-                                                            </Border>
-                                                            <Border Grid.Column="2">
-                                                                <Border.Background>
-                                                                    <SolidColorBrush Color="{Binding PreviewColor3}"/>
-                                                                </Border.Background>
-                                                            </Border>
-
-                                                            <!-- Badge "Activo" en esquina superior derecha -->
-                                                            <Border HorizontalAlignment="Right"
-                                                                    VerticalAlignment="Top"
-                                                                    Margin="0,6,6,0"
-                                                                    Padding="6,2"
-                                                                    CornerRadius="4"
-                                                                    Background="{DynamicResource AccentFillColorDefaultBrush}"
-                                                                    Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}">
-                                                                <ui:TextBlock Text="{loc:T Key=Settings.Theme.Active}"
-                                                                              FontTypography="Caption"
-                                                                              FontWeight="Bold"
-                                                                              Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}"/>
-                                                            </Border>
-
-                                                            <!-- Candado en el centro si está bloqueado -->
-                                                            <ui:SymbolIcon Symbol="LockClosed24"
-                                                                           Filled="True"
-                                                                           FontSize="32"
-                                                                           Foreground="White"
-                                                                           HorizontalAlignment="Center"
-                                                                           VerticalAlignment="Center">
-                                                                <ui:SymbolIcon.Visibility>
-                                                                    <Binding Path="IsUnlocked" Converter="{StaticResource InverseBoolToVis}"/>
-                                                                </ui:SymbolIcon.Visibility>
-                                                            </ui:SymbolIcon>
-                                                        </Grid>
-
-                                                        <!-- Bloque inferior: nombre + hint del plan si bloqueado -->
-                                                        <StackPanel Grid.Row="1" Margin="10,6,10,8">
-                                                            <ui:TextBlock Text="{Binding NameKey, Converter={StaticResource Loc}}"
-                                                                          FontTypography="BodyStrong"/>
-                                                            <ui:TextBlock Text="{loc:T Key=Settings.Theme.LockedHint}"
-                                                                          FontTypography="Caption"
-                                                                          Opacity="0.7"
-                                                                          Visibility="{Binding IsUnlocked, Converter={StaticResource InverseBoolToVis}}"/>
-                                                            <ui:TextBlock Text="{Binding DescriptionKey, Converter={StaticResource Loc}}"
-                                                                          FontTypography="Caption"
-                                                                          Opacity="0.6"
-                                                                          Visibility="{Binding IsUnlocked, Converter={StaticResource BoolToVis}}"/>
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </Button>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
                                     </ItemsControl>
+
+                                    <!-- Sección oculta: temas inspirados en videojuegos -->
+                                    <Expander Header="{loc:T Key=Settings.Theme.GameThemesHeader}"
+                                              IsExpanded="False"
+                                              Margin="0,12,0,0">
+                                        <ItemsControl ItemsSource="{Binding GameThemeItems}"
+                                                      ItemTemplate="{StaticResource ThemeCardTemplate}"
+                                                      Margin="0,12,0,0">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
+                                    </Expander>
                                 </StackPanel>
                             </Border>
 
@@ -3140,10 +3299,14 @@
                                                        Command="{Binding SuggestFeatureCommand}"
                                                        Margin="6,0,0,0">
                                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                    <Image Source="pack://application:,,,/Assets/CatSuggestion.png"
-                                                           Width="14" Height="14" Margin="0,0,6,0"
-                                                           VerticalAlignment="Center"
-                                                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                                                    <Rectangle Width="16" Height="16" Margin="0,0,8,0"
+                                                               VerticalAlignment="Center"
+                                                               Fill="{DynamicResource TextFillColorPrimaryBrush}">
+                                                        <Rectangle.OpacityMask>
+                                                            <ImageBrush ImageSource="pack://application:,,,/Assets/CatSuggestion.png"
+                                                                        Stretch="Uniform"/>
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
                                                     <TextBlock Text="{loc:T Key=Suggestion.Button}" VerticalAlignment="Center"/>
                                                 </StackPanel>
                                             </ui:Button>
