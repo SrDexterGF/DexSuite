@@ -1,9 +1,13 @@
+using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace DexSuite.KeyGen;
+
+// La herramienta solo se ejecuta en Windows (DPAPI / ProtectedData).
+[SupportedOSPlatform("windows")]
 
 /// <summary>
 /// Punto de entrada de la herramienta. Cada subcomando es un método estático
@@ -43,7 +47,7 @@ public static class Program
 
     // ── init ────────────────────────────────────────────────────────────
 
-    /// <summary>Crea un par RSA-2048 si no existe y lo persiste cifrado a archivo.</summary>
+    /// <summary>Crea un par RSA-2048 si no existe y lo persiste cifrado con DPAPI.</summary>
     private static int CmdInit()
     {
         Directory.CreateDirectory(KeyDir);
@@ -58,7 +62,7 @@ public static class Program
 
         using var rsa = RSA.Create(2048);
         var xml = rsa.ToXmlString(includePrivateParameters: true);
-        File.WriteAllText(PrivateKeyPath, xml, Encoding.UTF8);
+        SaveEncryptedPrivateKey(xml);
 
         // Permisos: solo el usuario actual (sin esto, Documents/AppData son legibles
         // por procesos en el mismo perfil — admin sí puede leerlo igual).
@@ -252,15 +256,71 @@ internal static class KeyPart{{letter}}
 
     // ── helpers ─────────────────────────────────────────────────────────
 
+    /// <summary>
+    /// Carga la clave privada del disco. El archivo está cifrado con DPAPI
+    /// (CurrentUser scope): solo el mismo usuario de Windows que lo creó puede
+    /// descifrarlo. Si el archivo existe sin cifrar (versión anterior), lo
+    /// cifra in-place antes de devolver — migración automática y transparente.
+    /// </summary>
     private static RSA LoadPrivateKey()
     {
         if (!File.Exists(PrivateKeyPath))
             throw new FileNotFoundException(
                 $"No hay clave privada. Ejecuta primero: DexSuite.KeyGen init",
                 PrivateKeyPath);
+
+        var raw = File.ReadAllBytes(PrivateKeyPath);
+        string xml;
+
+        if (IsPlainXml(raw))
+        {
+            // Archivo legado en claro — leer, cifrar in-place y continuar.
+            xml = Encoding.UTF8.GetString(raw).TrimStart('﻿');
+            Console.WriteLine("Detectada clave en claro; migrando a cifrado DPAPI...");
+            SaveEncryptedPrivateKey(xml);
+            Console.WriteLine("Migración completada.");
+        }
+        else
+        {
+            var plain = ProtectedData.Unprotect(raw, optionalEntropy: null,
+                scope: DataProtectionScope.CurrentUser);
+            xml = Encoding.UTF8.GetString(plain).TrimStart('﻿');
+        }
+
         var rsa = RSA.Create();
-        rsa.FromXmlString(File.ReadAllText(PrivateKeyPath));
+        rsa.FromXmlString(xml);
         return rsa;
+    }
+
+    /// <summary>Escribe la clave cifrada con DPAPI (CurrentUser).</summary>
+    private static void SaveEncryptedPrivateKey(string xml)
+    {
+        var plain = Encoding.UTF8.GetBytes(xml);
+        var encrypted = ProtectedData.Protect(plain, optionalEntropy: null,
+            scope: DataProtectionScope.CurrentUser);
+
+        // Si existe con Hidden / ReadOnly, WriteAllBytes da Access Denied.
+        // Limpiamos atributos antes de sobrescribir.
+        if (File.Exists(PrivateKeyPath))
+            File.SetAttributes(PrivateKeyPath, FileAttributes.Normal);
+
+        File.WriteAllBytes(PrivateKeyPath, encrypted);
+
+        try { File.SetAttributes(PrivateKeyPath, FileAttributes.Hidden); }
+        catch { /* atributo opcional */ }
+    }
+
+    /// <summary>
+    /// Heurística: los blobs DPAPI empiezan por bytes binarios; un XML plano
+    /// empieza siempre por '&lt;' (0x3C), opcionalmente con BOM UTF-8 (EF BB BF).
+    /// </summary>
+    private static bool IsPlainXml(byte[] raw)
+    {
+        if (raw.Length == 0) return false;
+        int offset = 0;
+        if (raw.Length >= 3 && raw[0] == 0xEF && raw[1] == 0xBB && raw[2] == 0xBF)
+            offset = 3;
+        return offset < raw.Length && raw[offset] == (byte)'<';
     }
 
     private static string? ParseFlag(string[] args, string name)

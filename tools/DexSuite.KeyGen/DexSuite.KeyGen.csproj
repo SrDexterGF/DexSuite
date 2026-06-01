@@ -10,7 +10,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <!-- net8.0-windows porque ProtectedData (DPAPI) es Windows-only.
+         La herramienta solo se ejecuta en el equipo del desarrollador con Windows. -->
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>DexSuite.KeyGen</RootNamespace>
@@ -19,5 +21,10 @@
     <!-- Esta tool NO debe entrar nunca en el publish de la app del cliente. -->
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- DPAPI para cifrar la clave privada en disco con el scope CurrentUser. -->
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="9.0.0" />
+  </ItemGroup>
 
 </Project>
