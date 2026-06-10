@@ -596,6 +596,11 @@
                     </Border.Style>
                     <ItemsControl ItemsSource="{Binding SubOptions}"
                                   IsEnabled="{Binding IsEnabled}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="2"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,4,0,4">
@@ -1723,6 +1728,16 @@
                         <StackPanel MaxWidth="1020" HorizontalAlignment="Center" Margin="16,0,16,20"
                                     Visibility="{Binding IsNormalView, Converter={StaticResource BoolToVis}}">
                         <Grid>
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsAdvancedModuleView}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -1884,6 +1899,122 @@
                                               ItemTemplate="{StaticResource ModuleCardTemplate}"/>
                             </StackPanel>
                         </Grid>
+
+                        <!-- ── Vista avanzada: lista plana por tier ── -->
+                        <StackPanel>
+                            <StackPanel.Style>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsAdvancedModuleView}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+
+                            <!-- FREE -->
+                            <Border Padding="10,6" Margin="0,0,0,8" CornerRadius="6"
+                                    Background="#1400C853" BorderBrush="#3200C853" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Free}" FontTypography="BodyStrong" Foreground="#FF4CAF50"/>
+                                        <ui:TextBlock Text="{Binding FreeModules.Count, StringFormat=' · {0}'}" Foreground="#FF4CAF50" Opacity="0.65"/>
+                                    </StackPanel>
+                                    <ui:SymbolIcon Grid.Column="1" Symbol="CheckmarkCircle24" FontSize="14" Foreground="#FF4CAF50" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                            <ItemsControl ItemsSource="{Binding FreeModules}"
+                                          ItemTemplate="{StaticResource ModuleCardTemplate}"
+                                          Margin="0,0,0,20"/>
+
+                            <!-- AVANZADO -->
+                            <Border Padding="10,6" Margin="0,0,0,8" CornerRadius="6"
+                                    Background="#1400B8D9" BorderBrush="#3200B8D9" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Advanced}" FontTypography="BodyStrong" Foreground="#FF00D9FF"/>
+                                        <ui:TextBlock Text="{Binding AdvancedModules.Count, StringFormat=' · {0}'}" Foreground="#FF00D9FF" Opacity="0.65"/>
+                                    </StackPanel>
+                                    <ui:SymbolIcon Grid.Column="1" Symbol="LockClosed24" FontSize="14" Foreground="#FF00D9FF" VerticalAlignment="Center">
+                                        <ui:SymbolIcon.Style>
+                                            <Style TargetType="ui:SymbolIcon">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Free">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ui:SymbolIcon.Style>
+                                    </ui:SymbolIcon>
+                                    <ui:SymbolIcon Grid.Column="1" Symbol="CheckmarkCircle24" FontSize="14" Foreground="#FF00D9FF" VerticalAlignment="Center">
+                                        <ui:SymbolIcon.Style>
+                                            <Style TargetType="ui:SymbolIcon">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Free">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ui:SymbolIcon.Style>
+                                    </ui:SymbolIcon>
+                                </Grid>
+                            </Border>
+                            <ItemsControl ItemsSource="{Binding AdvancedModules}"
+                                          ItemTemplate="{StaticResource ModuleCardTemplate}"
+                                          Margin="0,0,0,20"/>
+
+                            <!-- PRO -->
+                            <Border Padding="10,6" Margin="0,0,0,8" CornerRadius="6"
+                                    Background="#1A9D4EDD" BorderBrush="#3A9D4EDD" BorderThickness="1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Tier.Pro}" FontTypography="BodyStrong" Foreground="#FFB026FF"/>
+                                        <ui:TextBlock Text="{Binding ProModules.Count, StringFormat=' · {0}'}" Foreground="#FFB026FF" Opacity="0.65"/>
+                                    </StackPanel>
+                                    <ui:SymbolIcon Grid.Column="1" Symbol="LockClosed24" FontSize="14" Foreground="#FFB026FF" VerticalAlignment="Center">
+                                        <ui:SymbolIcon.Style>
+                                            <Style TargetType="ui:SymbolIcon">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ui:SymbolIcon.Style>
+                                    </ui:SymbolIcon>
+                                    <ui:SymbolIcon Grid.Column="1" Symbol="CheckmarkCircle24" FontSize="14" Foreground="#FFB026FF" VerticalAlignment="Center">
+                                        <ui:SymbolIcon.Style>
+                                            <Style TargetType="ui:SymbolIcon">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ui:SymbolIcon.Style>
+                                    </ui:SymbolIcon>
+                                </Grid>
+                            </Border>
+                            <ItemsControl ItemsSource="{Binding ProModules}"
+                                          ItemTemplate="{StaticResource ModuleCardTemplate}"/>
+                        </StackPanel>
 
                         <!-- Extra Pro: Gaming -->
                         <Border Margin="0,18,0,0"
@@ -2915,7 +3046,7 @@
                     </ScrollViewer>
 
                     <!-- Overlay Coming Soon: bloquea interacción mientras TuningComingSoon -->
-                    <Border Background="#CC0A0A14"
+                    <Border Background="{DynamicResource ApplicationBackgroundBrush}"
                             Visibility="{Binding IsTuningComingSoon, Converter={StaticResource BoolToVis}}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <ui:SymbolIcon Symbol="LockClosed24" Filled="True" FontSize="48"
