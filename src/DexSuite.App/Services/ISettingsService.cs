@@ -32,8 +32,8 @@ public sealed class AppSettings
     public string Language { get; set; } = "es";
     public string UpdateChannel { get; set; } = "Stable";
 
-    public bool AutoSelectRecommended { get; set; } = false;
-    public bool JumpToLogOnRun { get; set; } = false;
+    public bool AutoSelectRecommended { get; set; } = true;
+    public bool JumpToLogOnRun { get; set; } = true;
 
     // Vista de módulos: false = simple (agrupada), true = avanzada (ajustes individuales).
     public bool IsAdvancedModuleView { get; set; } = false;

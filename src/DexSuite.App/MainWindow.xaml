@@ -696,14 +696,28 @@
                             Margin="14,14,14,8"
                             Padding="10,10"
                             CornerRadius="10"
-                            Background="{DynamicResource ControlFillColorDefaultBrush}"
-                            BorderBrush="#4400B8D9"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                             BorderThickness="1"
                             Cursor="Hand">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
                         <Button Background="Transparent" BorderThickness="0" Padding="0"
                                 HorizontalContentAlignment="Stretch"
                                 Command="{Binding OpenDownloadUrlCommand}"
                                 CommandParameter="https://dexsuite-web.vercel.app/">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Button.Template>
                             <StackPanel Orientation="Horizontal">
                                 <Border Width="38" Height="38" CornerRadius="7" ClipToBounds="True">
                                     <Image Source="pack://application:,,,/Assets/AppIcon.png"
@@ -786,65 +800,38 @@
                         </Grid>
                     </Border>
 
-                    <!-- Botón "Sugerir mejora" anclado sobre el footer -->
-                    <Button DockPanel.Dock="Bottom"
-                            Style="{StaticResource NavButtonStyle}"
-                            Command="{Binding SuggestFeatureCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Cat icon: PNG usado como máscara y teñido con el mismo
-                                 brush que el icono de bug, para igualar color/opacidad. -->
-                            <Rectangle Width="24" Height="24" Margin="-2,0,8,0"
-                                       VerticalAlignment="Center"
-                                       SnapsToDevicePixels="True"
-                                       UseLayoutRounding="True"
-                                       RenderOptions.BitmapScalingMode="HighQuality"
-                                       Fill="{DynamicResource TextFillColorPrimaryBrush}">
-                                <Rectangle.OpacityMask>
-                                    <ImageBrush ImageSource="pack://application:,,,/Assets/CatSuggestion.png"
-                                                Stretch="Uniform"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                            <TextBlock Text="{loc:T Key=Suggestion.Button}" Style="{StaticResource NavItemTextStyle}"/>
+                    <!-- EXTRAS: fila compacta de iconos — Tuning / Bug / Sugerir -->
+                    <Border DockPanel.Dock="Bottom" Margin="8,0,8,6" Padding="0,2">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <RadioButton Style="{StaticResource NavItemStyle}"
+                                         GroupName="MainNav"
+                                         IsChecked="{Binding IsTuningView, Mode=OneWay}"
+                                         Command="{Binding NavigateCommand}"
+                                         CommandParameter="Tuning"
+                                         Margin="2" Padding="10"
+                                         ToolTip="{loc:T Key=Navigation.Tuning}">
+                                <Grid Width="22" Height="22">
+                                    <ui:SymbolIcon Symbol="Wrench24" FontSize="18" Margin="0"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <ui:SymbolIcon Symbol="LockClosed24" Filled="True" FontSize="9"
+                                                   HorizontalAlignment="Right" VerticalAlignment="Top"
+                                                   Opacity="0.75" Margin="0"/>
+                                </Grid>
+                            </RadioButton>
+                            <Button Style="{StaticResource NavButtonStyle}"
+                                    Command="{Binding ReportBugCommand}"
+                                    Margin="2" Padding="10"
+                                    ToolTip="{loc:T Key=BugReport.Button}">
+                                <ui:SymbolIcon Symbol="Bug24" FontSize="18" Margin="0"/>
+                            </Button>
+                            <Button Style="{StaticResource NavButtonStyle}"
+                                    Command="{Binding SuggestFeatureCommand}"
+                                    Margin="2" Padding="10"
+                                    ToolTip="{loc:T Key=Suggestion.Button}">
+                                <ui:SymbolIcon Symbol="Lightbulb24" FontSize="18" Margin="0"/>
+                            </Button>
                         </StackPanel>
-                    </Button>
-
-                    <!-- Botón "Reportar un fallo" anclado sobre el footer -->
-                    <Button DockPanel.Dock="Bottom"
-                            Style="{StaticResource NavButtonStyle}"
-                            Command="{Binding ReportBugCommand}">
-                        <StackPanel Orientation="Horizontal">
-                            <ui:SymbolIcon Symbol="Bug24" Style="{StaticResource NavItemIconStyle}"/>
-                            <TextBlock Text="{loc:T Key=BugReport.Button}" Style="{StaticResource NavItemTextStyle}"/>
-                        </StackPanel>
-                    </Button>
-
-                    <!-- EXTRAS: anclado al fondo para evitar espacio vacío bajo Tuning -->
-                    <RadioButton DockPanel.Dock="Bottom"
-                                 Style="{StaticResource NavItemStyle}"
-                                 GroupName="MainNav"
-                                 IsChecked="{Binding IsTuningView, Mode=OneWay}"
-                                 Command="{Binding NavigateCommand}"
-                                 CommandParameter="Tuning">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                <ui:SymbolIcon Symbol="Wrench24" Style="{StaticResource NavItemIconStyle}"/>
-                                <TextBlock Text="{loc:T Key=Navigation.Tuning}" Style="{StaticResource NavItemTextStyle}"/>
-                            </StackPanel>
-                            <ui:SymbolIcon Grid.Column="1"
-                                           Symbol="LockClosed24"
-                                           Filled="True"
-                                           FontSize="16"
-                                           Opacity="0.7"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           Margin="0,0,10,0"
-                                           ToolTip="{loc:T Key=Tuning.ComingSoon.Title}"/>
-                        </Grid>
-                    </RadioButton>
+                    </Border>
                     <ui:TextBlock DockPanel.Dock="Bottom"
                                   Text="{loc:T Key=Navigation.Extras}"
                                   Style="{StaticResource SidebarCaption}"/>
@@ -4161,7 +4148,7 @@
                                                    Command="{Binding OpenDownloadUrlCommand}"
                                                    CommandParameter="https://www.trustpilot.com/evaluate/dexsuite.carrd.co"
                                                    Margin="0,0,8,8"/>
-                                        <ui:Button Appearance="Primary"
+                                        <ui:Button Appearance="Secondary"
                                                    Content="{loc:T Key=About.Social.Website}"
                                                    Command="{Binding OpenDownloadUrlCommand}"
                                                    CommandParameter="https://dexsuite-web.vercel.app/"
