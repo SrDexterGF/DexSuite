@@ -39,4 +39,6 @@ public sealed class AppSettings
     public bool NotifyOnFinish { get; set; } = true;
     public bool AutoUpdateEnabled { get; set; } = false;
     public bool MinimizeToTray { get; set; } = false;
+    public bool ShowGamingDisclaimer { get; set; } = true;
+    public bool TermsAccepted { get; set; } = false;
 }

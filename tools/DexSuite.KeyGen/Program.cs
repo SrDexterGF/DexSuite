@@ -32,6 +32,7 @@ public static class Program
                 "init"           => CmdInit(),
                 "pubkey"         => CmdPubKey(args),
                 "gen"            => CmdGen(args),
+                "export-private" => CmdExportPrivate(args),
                 "sign-integrity" => CmdSignIntegrity(args),
                 "verify"         => CmdVerify(args),
                 "-h" or "--help" => PrintUsageAndExit(0),
@@ -197,6 +198,33 @@ internal static class KeyPart{{letter}}
         return 0;
     }
 
+    // ── export-private ──────────────────────────────────────────────────
+
+    /// <summary>
+    /// Exporta la clave privada como PKCS#8 PEM en Base64 (una sola línea) para
+    /// pegarla en una variable de entorno del backend web (Vercel). El backend
+    /// la usa para firmar licencias RSA con el mismo par de claves que la app
+    /// verifica. NUNCA subas este valor a Git ni lo compartas.
+    /// </summary>
+    private static int CmdExportPrivate(string[] args)
+    {
+        using var rsa = LoadPrivateKey();
+        var pem = rsa.ExportPkcs8PrivateKeyPem();
+        var b64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(pem));
+
+        Console.WriteLine();
+        Console.WriteLine("Clave privada PKCS#8 en Base64 (una sola línea).");
+        Console.WriteLine("Pégala en Vercel como variable de entorno LICENSE_PRIVATE_KEY_PEM:");
+        Console.WriteLine();
+        Console.WriteLine(b64);
+        Console.WriteLine();
+        Console.WriteLine("AVISO DE SEGURIDAD:");
+        Console.WriteLine("  - No la subas a Git ni la pegues en chats.");
+        Console.WriteLine("  - Solo en variables de entorno cifradas del servidor.");
+        Console.WriteLine("  - Quien tenga este valor puede emitir licencias válidas.");
+        return 0;
+    }
+
     // ── sign-integrity ──────────────────────────────────────────────────
 
     /// <summary>Firma el SHA-256 del exe pasado y escribe el archivo .integrity hermano.</summary>
@@ -347,6 +375,9 @@ internal static class KeyPart{{letter}}
         Console.WriteLine();
         Console.WriteLine("  gen --hwid <HWID> --tier <Advanced|Pro>");
         Console.WriteLine("      Genera una clave de activación firmada para un cliente.");
+        Console.WriteLine();
+        Console.WriteLine("  export-private");
+        Console.WriteLine("      Exporta la clave privada (PKCS#8 PEM en Base64) para el backend web.");
         Console.WriteLine();
         Console.WriteLine("  sign-integrity <ruta-al-exe>");
         Console.WriteLine("      Firma el SHA-256 del exe y escribe <exe>.integrity (CAPA 2).");

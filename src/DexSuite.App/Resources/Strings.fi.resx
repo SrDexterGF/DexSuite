@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Ota yhteyttä</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Pysy ajan tasalla ja ota yhteyttä</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Seuraa meitä</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Jätä arvostelu</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Suorita</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Sovellettu</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Jokainen profiili soveltaa tarkkoja säätöjä maksimaalista FPS:ää ja minimaalista viivettä varten.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Pelin vastuuvapauslauseke hyväksytty</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Pelien optimoinnin tilan palautus: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Palauta</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Nollaa joka tapauksessa</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Tämä nollaa {0}:n sovelletun tilan. Huomautus: komentosarjan tekemiä järjestelmäsäätöjä ei voi peruuttaa automaattisesti – käytä Windowsin palautuspistettä kumota ne kokonaan.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Palauta pelin optimointi</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Etsi peli...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Mitä haluat tehdä?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Aktivoida</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Poista lisenssi</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Liitä kelvollinen aktivointiavain.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Aktivointi epäonnistui: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Liitä ostoksesi yhteydessä saamasi aktivointiavain. Avain on lukittu tähän laitteistoon (HWID yllä).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Aktivointiavain</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Lisenssi aktivoitu. Suunnitelma: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Nykyinen suunnitelma</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Kopioida</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>Hardware ID (HWID) – lähetä tämä kehittäjälle avaimesi vastaanottamiseksi</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID kopioitu leikepöydälle.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite käyttää laitteistoon sidottua lisenssiä. HWID tunnistaa tämän tietokoneen; saamasi avain on allekirjoitettu ja toimii vain täällä.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Lisenssi</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Tarkennettu suunnitelma aktiivinen.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Ilmainen suunnitelma aktiivinen.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Pro-suunnitelma aktiivinen.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Lisenssi aktivoitu — suunnitelma {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Lisenssin aktivointi hylätty: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Lisenssi poistettu – takaisin Free.</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>Poista valinta</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>Suositeltu</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>EDISTYNYT</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Tietoja</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRAS</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Etusivu</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>JÄRJESTELMÄ</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Viritys</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Päivitykset</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Merkitse luetuksi</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Pienennä järjestelmäalustalle</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Tulossa pian</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Tallennustila</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Hyväksyn ehdot</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Napsauttamalla &quot;Hyväksyn ehdot&quot; vahvistat, että olet lukenut ja hyväksynyt yllä olevat ehdot.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Hylkää</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Lue ja hyväksy seuraavat ehdot ennen DexSuiten käyttöä.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite on Windowsin järjestelmän optimointityökalu. Se vaatii järjestelmänvalvojan oikeudet rekisteriasetusten, järjestelmäpalvelujen ja ajoitettujen tehtävien muokkaamiseen. Nämä muutokset vaikuttavat järjestelmän toimintaan ja suorituskykyyn.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Kuinka sovellus toimii</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>DexSuiten käyttö on omalla vastuullasi. Tehdyt muutokset voivat muuttaa järjestelmän toimintaa. On suositeltavaa luoda palautuspiste ennen voimakkaiden moduulien suorittamista. DexSuite ei anna takuuta tietyille tuloksille eikä ole vastuussa mistään vahingoista tai tietojen katoamisesta.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Käyttäjän vastuu</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Pelimoduuli lataa ja suorittaa PowerShell-komentosarjat GitHubista. DexSuite varmistaa niiden SHA-256-eheyden ennen suorittamista. Olet vastuussa skriptien toiminnan tarkistamisesta ennen niiden käyttöönottoa.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Pelin optimointiskriptit</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite ei kerää käyttötietoja tai lähetä tietoja ulkoisille palvelimille. Kaikki tiedot (historia, lisenssi, asetukset) tallennetaan paikallisesti laitteellesi.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Yksityisyys ja tiedot</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Käyttöehdot</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Taktinen oranssi + musta</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Ruohonvihreä + maanruskea</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Keltainen + sotilaamusta</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Eloisa sininen + keltainen</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Oranssi + suojaava sininen</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Kulta + syvän sininen</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Premium kulta + lämmin musta</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Violetti + myyttinen kulta</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Vaaleansininen + kylmä valkoinen</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Lihavoitu punainen + luun valkoinen</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Tämä osio on saatavilla tulevassa päivityksessä.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Tulossa pian</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Sovelluksen asennusohjelma</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Viritys: latausta ei voitu avata {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Viritys: lataus avattu — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Järjestelmän parannukset ja tärkeiden sovellusten nopea asennus.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Poista hiiren kiihdytys käytöstä</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Aseta virkistystaajuus valvomaan maksimia</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Aseta resoluutio alkuperäiseksi</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Järjestelmäasetukset</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Viritys</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Avain on lukittu tähän laitteeseen (HWID yllä).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Saatamasi avain on allekirjoitettu ja toimii vain tällä laitteella.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Pikatarkistus: havaitsee aktiiviset haittaohjelmat järjestelmästä.
+SFC · Järjestelmätiedostojen tarkistus: etsii ja korjaa vahingoittuneet järjestelmätiedostot.
+DISM · Palauta kuva: korjaa Windows-kuvan, kun SFC ei voi.
+MRT · Haittaohjelmien poisto: Microsoftin virallinen työkalu tiettyjä uhkia vastaan.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Hallitse, miten DexSuite toimii, kun suoritat moduuleja tai pienennät sovellusta.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Katso käyttöehdot</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Jos sinun on kumottava muutoksia, voit tehdä sen Windowsin asetuksista.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Ennen kuin jatkat</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Pelin optimointi avaa konsolin, jossa sinun on luettava viestit, valittava vaihtoehdot ja syötettävä polku tai kaksi. Se ei ole vaikeaa, mutta kiinnitä huomiota siihen, mitä näytöllä näkyy.
+
+Profiilit ladataan GitHubista ja toimivat järjestelmänvalvojan oikeuksin. Käytä omalla vastuullasi.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Älä näytä tätä ilmoitusta uudelleen</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Selvä</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Peruuttaa</value>
   </data>
 </root>

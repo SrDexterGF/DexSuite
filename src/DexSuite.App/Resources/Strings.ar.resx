@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>اتصال</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>ابق على اطلاع وتواصل</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>تابعنا</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>ترك التعليق</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>تشغيل</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>مُطبَّق</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>يُطبّق كل ملف شخصي ضبطًا دقيقًا لأقصى معدل إطارات وأدنى تأخير.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>تم قبول إخلاء المسؤولية عن الألعاب</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>إعادة ضبط حالة تحسين الألعاب: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>يرجع</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>إعادة تعيين على أي حال</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>يؤدي هذا إلى إعادة تعيين الحالة المطبقة لـ {0}. ملاحظة: لا يمكن عكس تعديلات النظام التي أجراها البرنامج النصي تلقائيًا — استخدم نقطة استعادة Windows للتراجع عنها بالكامل.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>العودة إلى تحسين اللعبة</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>لعبة البحث...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>ماذا تريد أن تفعل؟</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>فعل</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>إزالة الترخيص</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>الرجاء لصق مفتاح تفعيل صالح.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>فشل التنشيط: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>الصق مفتاح التنشيط الذي تلقيته مع عملية الشراء. المفتاح مقفل على هذا الجهاز (HWID أعلاه).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>مفتاح التنشيط</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>تم تفعيل الترخيص. الخطة: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>الخطة الحالية</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>ينسخ</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>معرف الجهاز (HWID) - أرسل هذا إلى المطور لاستلام مفتاحك</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>تم نسخ HWID إلى الحافظة.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>يستخدم DexSuite ترخيصًا مرتبطًا بالأجهزة. يحدد HWID هذا الكمبيوتر؛ المفتاح الذي تتلقاه موقّع ويعمل هنا فقط.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>رخصة</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>الخطة المتقدمة نشطة.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>الخطة المجانية نشطة.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>الخطة الاحترافية نشطة.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>تم تفعيل الترخيص — الخطة {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>تم رفض تنشيط الترخيص: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>تمت إزالة الترخيص - العودة إلى الإصدار المجاني.</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>إلغاء التحديد</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>موصى به</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>متقدم</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>حول</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>إضافات</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>الرئيسية</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>النظام</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>ضبط</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>التحديثات</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>وضع علامة كمقروءة</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>التصغير إلى منطقة الإشعارات</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>قريباً</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>التخزين</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>أوافق على الشروط</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>بالنقر فوق &quot;أوافق على الشروط&quot;، فإنك تؤكد أنك قرأت الشروط المذكورة أعلاه ووافقت عليها.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>انخفاض</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>يرجى قراءة الشروط التالية وقبولها قبل استخدام DexSuite.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite هي أداة لتحسين نظام Windows. يتطلب امتيازات المسؤول لتعديل إعدادات التسجيل وخدمات النظام والمهام المجدولة. تؤثر هذه التغييرات على سلوك النظام وأدائه.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>كيف يعمل التطبيق</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>إن استخدام DexSuite هو على مسؤوليتك الخاصة. قد تؤدي التغييرات المطبقة إلى تغيير سلوك النظام. يوصى بإنشاء نقطة استعادة قبل تشغيل الوحدات عالية التأثير. لا تقدم DexSuite أي ضمان لنتائج محددة وليست مسؤولة عن أي ضرر أو فقدان للبيانات.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>مسؤولية المستخدم</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>تقوم وحدة الألعاب بتنزيل وتنفيذ البرامج النصية PowerShell من GitHub. يتحقق DexSuite من سلامة SHA-256 قبل التنفيذ. أنت مسؤول عن مراجعة ما تفعله البرامج النصية قبل تطبيقها.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>البرامج النصية لتحسين اللعبة</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>لا يقوم DexSuite بجمع بيانات الاستخدام أو إرسال معلومات إلى خوادم خارجية. يتم تخزين جميع البيانات (السجل والترخيص والإعدادات) محليًا على جهازك.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>الخصوصية والبيانات</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>شروط الاستخدام</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>برتقالي تكتيكي + أسود</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>العشب الأخضر + البني الترابي</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>أصفر + أسود عسكري</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>أزرق نابض بالحياة + أصفر</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>برتقالي + أزرق واقي</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>ذهبي + أزرق غامق</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>ذهبي فاخر + أسود دافئ</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>أرجواني + ذهبي أسطوري</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>أزرق فاتح + أبيض بارد</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>أحمر غامق + أبيض عظمي</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>سيكون هذا القسم متاحًا في التحديث المستقبلي.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>قريباً</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>مثبت التطبيق</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>الضبط: تعذر فتح تنزيل {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>الضبط: تم فتح التنزيل — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>تعديلات النظام والتثبيت السريع للتطبيقات الأساسية.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>تعطيل تسريع الماوس</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>ضبط معدل التحديث لمراقبة الحد الأقصى</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>تعيين القرار إلى الأصلي</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>إعدادات النظام</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>ضبط</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>المفتاح مقفل على هذا الجهاز (HWID أعلاه).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>المفتاح الذي تتلقاه موقّع ويعمل فقط على هذا الجهاز.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>المدافع · الفحص السريع: يكتشف البرامج الضارة النشطة على النظام.
+SFC · مدقق ملفات النظام: يجد ويصلح ملفات النظام التالفة.
+DISM · استعادة الصورة: يقوم بإصلاح صورة Windows عندما لا يتمكن SFC من ذلك.
+MRT · إزالة البرامج الضارة: أداة Microsoft الرسمية ضد تهديدات محددة.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>التحكم في كيفية تصرف DexSuite عند تشغيل الوحدات النمطية أو تصغير التطبيق.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>عرض شروط الاستخدام</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>إذا كنت بحاجة إلى التراجع عن التغييرات، فيمكنك القيام بذلك من إعدادات Windows.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>قبل المتابعة</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>يؤدي تحسين اللعبة إلى فتح وحدة تحكم حيث ستحتاج إلى قراءة الرسائل واختيار الخيارات وإدخال مسار أو مسارين. الأمر ليس صعبًا، ولكن انتبه لما يظهر على الشاشة.
+
+يتم تنزيل الملفات الشخصية من GitHub وتشغيلها بأذونات المسؤول. استخدم على مسؤوليتك الخاصة.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>لا تظهر هذا الإشعار مرة أخرى</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>فهمتها</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>يلغي</value>
   </data>
 </root>

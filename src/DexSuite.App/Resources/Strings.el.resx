@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Επαφή</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Μείνετε ενημερωμένοι και επικοινωνήστε</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Ακολουθήστε μας</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Αφήστε μια κριτική</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Εκτέλεση</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Εφαρμοσμένος</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Κάθε προφίλ εφαρμόζει ακριβείς ρυθμίσεις για μέγιστα FPS και ελάχιστη καθυστέρηση.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Αποδεκτή δήλωση αποποίησης ευθυνών για παιχνίδια</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Επαναφορά κατάστασης βελτιστοποίησης παιχνιδιού: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Επαναστρέφω</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Επαναφορά ούτως ή άλλως</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Αυτό επαναφέρει την εφαρμοζόμενη κατάσταση για το {0}. Σημείωση: οι τροποποιήσεις συστήματος που γίνονται από το σενάριο δεν μπορούν να αντιστραφούν αυτόματα — χρησιμοποιήστε ένα Σημείο επαναφοράς των Windows για να τις αναιρέσετε πλήρως.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Επαναφορά βελτιστοποίησης παιχνιδιού</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Αναζήτηση παιχνιδιού...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Τι θέλεις να κάνεις;</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Δραστηριοποιώ</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Κατάργηση άδειας</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Επικολλήστε ένα έγκυρο κλειδί ενεργοποίησης.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Η ενεργοποίηση απέτυχε: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Επικολλήστε το κλειδί ενεργοποίησης που λάβατε με την αγορά σας. Το κλειδί είναι κλειδωμένο σε αυτό το υλικό (HWID παραπάνω).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Κλειδί ενεργοποίησης</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Ενεργοποιήθηκε η άδεια. Σχέδιο: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Τρέχον σχέδιο</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Αντίγραφο</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>Αναγνωριστικό υλικού (HWID) — στείλτε το στον προγραμματιστή για να λάβει το κλειδί σας</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>Το HWID αντιγράφηκε στο πρόχειρο.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>Το DexSuite χρησιμοποιεί μια άδεια χρήσης που συνδέεται με το υλικό. Το HWID αναγνωρίζει αυτόν τον υπολογιστή. το κλειδί που λαμβάνετε είναι υπογεγραμμένο και λειτουργεί μόνο εδώ.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Αδεια</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Το σύνθετο σχέδιο είναι ενεργό.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Δωρεάν πρόγραμμα ενεργό.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Το επαγγελματικό σχέδιο είναι ενεργό.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Ενεργοποιήθηκε η άδεια — σχέδιο {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Η ενεργοποίηση άδειας απορρίφθηκε: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Η άδεια καταργήθηκε — επιστροφή στο Δωρεάν.</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>Αποεπιλογή</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>Συνιστάται</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>ΠΡΟΧΩΡΗΜΕΝΟ</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Σχετικά</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRAS</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Αρχική</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>ΣΥΣΤΗΜΑ</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Κούρδισμα</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Ενημερώσεις</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Επισήμανση ως αναγνωσμένου</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Ελαχιστοποίηση στη γραμμή συστήματος</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Προσεχώς</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Αποθήκευση</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Αποδέχομαι τους Όρους</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Κάνοντας κλικ στο «Αποδέχομαι τους Όρους» επιβεβαιώνετε ότι έχετε διαβάσει και συμφωνήσει με τους παραπάνω όρους.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Πτώση</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Διαβάστε και αποδεχτείτε τους παρακάτω όρους πριν χρησιμοποιήσετε το DexSuite.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>Το DexSuite είναι ένα εργαλείο βελτιστοποίησης συστήματος των Windows. Απαιτεί δικαιώματα διαχειριστή για την τροποποίηση των ρυθμίσεων μητρώου, των υπηρεσιών συστήματος και των προγραμματισμένων εργασιών. Αυτές οι αλλαγές επηρεάζουν τη συμπεριφορά και την απόδοση του συστήματος.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Πώς λειτουργεί η εφαρμογή</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>Η χρήση του DexSuite γίνεται με δική σας ευθύνη. Οι εφαρμοσμένες αλλαγές ενδέχεται να αλλάξουν τη συμπεριφορά του συστήματος. Συνιστάται η δημιουργία ενός σημείου επαναφοράς πριν από την εκτέλεση λειτουργικών μονάδων με μεγάλη επίδραση. Το DexSuite δεν παρέχει καμία εγγύηση για συγκεκριμένα αποτελέσματα και δεν φέρει ευθύνη για οποιαδήποτε ζημιά ή απώλεια δεδομένων.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Ευθύνη χρήστη</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Η λειτουργική μονάδα gaming κατεβάζει και εκτελεί σενάρια PowerShell από το GitHub. Το DexSuite επαληθεύει την ακεραιότητά του SHA-256 πριν από την εκτέλεση. Είστε υπεύθυνοι να ελέγξετε τι κάνουν τα σενάρια πριν τα εφαρμόσετε.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Σενάρια βελτιστοποίησης παιχνιδιών</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>Το DexSuite δεν συλλέγει δεδομένα χρήσης ούτε αποστέλλει πληροφορίες σε εξωτερικούς διακομιστές. Όλα τα δεδομένα (ιστορικό, άδεια χρήσης, ρυθμίσεις) αποθηκεύονται τοπικά στη συσκευή σας.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Απόρρητο και δεδομένα</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Όροι Χρήσης</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Τακτική πορτοκαλί + μαύρο</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Πράσινο γρασίδι + γήινο καφέ</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Κίτρινο + στρατιωτικό μαύρο</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Ζωντανό μπλε + κίτρινο</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Πορτοκαλί + προστατευτικό μπλε</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Χρυσό + βαθύ μπλε</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Premium χρυσό + ζεστό μαύρο</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Μωβ + μυθικός χρυσός</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Ανοιχτό μπλε + κρύο λευκό</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Έντονο κόκκινο + λευκό κόκαλο</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Αυτή η ενότητα θα είναι διαθέσιμη σε μελλοντική ενημέρωση.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Προσεχώς</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Εγκατάσταση εφαρμογών</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Συντονισμός: δεν ήταν δυνατό το άνοιγμα της λήψης {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Συντονισμός: η λήψη άνοιξε — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Τροποποιήσεις συστήματος και γρήγορη εγκατάσταση βασικών εφαρμογών.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Απενεργοποιήστε την επιτάχυνση του ποντικιού</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Ρυθμίστε το ρυθμό ανανέωσης για να παρακολουθείτε το μέγιστο</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Ορίστε την ανάλυση σε εγγενή</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Ρυθμίσεις συστήματος</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Κούρδισμα</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Το κλειδί είναι κλειδωμένο σε αυτήν τη συσκευή (HWID παραπάνω).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Το κλειδί που λαμβάνετε είναι υπογεγραμμένο και λειτουργεί μόνο σε αυτήν τη συσκευή.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Γρήγορη σάρωση: εντοπίζει ενεργό κακόβουλο λογισμικό στο σύστημα.
+SFC · Έλεγχος αρχείων συστήματος: βρίσκει και επισκευάζει κατεστραμμένα αρχεία συστήματος.
+DISM · Επαναφορά εικόνας: επιδιορθώνει την εικόνα των Windows όταν το SFC δεν μπορεί.
+MRT · Αφαίρεση κακόβουλου λογισμικού: Το επίσημο εργαλείο της Microsoft ενάντια σε συγκεκριμένες απειλές.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Ελέγξτε πώς συμπεριφέρεται το DexSuite όταν εκτελείτε λειτουργικές μονάδες ή ελαχιστοποιείτε την εφαρμογή.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Δείτε τους όρους χρήσης</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Εάν πρέπει να αναιρέσετε τις αλλαγές, μπορείτε να το κάνετε από τις Ρυθμίσεις των Windows.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Πριν συνεχίσεις</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Η βελτιστοποίηση ενός παιχνιδιού ανοίγει μια κονσόλα όπου θα πρέπει να διαβάσετε τα μηνύματα, να επιλέξετε επιλογές και να εισαγάγετε μια ή δύο διαδρομές. Δεν είναι δύσκολο, αλλά προσέξτε τι εμφανίζεται στην οθόνη.
+
+Τα προφίλ λαμβάνονται από το GitHub και εκτελούνται με δικαιώματα διαχειριστή. Χρησιμοποιήστε με δική σας ευθύνη.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Μην εμφανιστεί ξανά αυτή η ειδοποίηση</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Κατάλαβα</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Ματαίωση</value>
   </data>
 </root>

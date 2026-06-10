@@ -26,6 +26,12 @@ public partial class App : System.Windows.Application
     {
         base.OnStartup(e);
 
+        // Evita que el cierre de ventanas intermedias durante el arranque
+        // (p. ej. el diálogo de Terms en primera ejecución) dispare el shutdown
+        // automático antes de mostrar la ventana principal. Se restaura a
+        // OnMainWindowClose en cuanto MainWindow está visible.
+        ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
         // CodePage 1252 sigue siendo útil para procesos de Windows que escupen
         // OEM/Western encoding (algunas líneas de netsh, defrag) en M16/M18.
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -114,8 +120,48 @@ public partial class App : System.Windows.Application
         var persistedTheme = themeService.LoadPersistedTheme();
         themeService.ApplyTheme(persistedTheme);
 
+        // Mostrar Terms of Use en la primera ejecución.
+        // Si el usuario declina, la app se cierra sin mostrar la ventana principal.
+        var settingsService = _host.Services.GetRequiredService<ISettingsService>();
+        var currentSettings = settingsService.Load();
+        if (!currentSettings.TermsAccepted)
+        {
+            var terms = new TermsWindow();
+            terms.ShowDialog();
+            if (!terms.Accepted)
+            {
+                Shutdown(0);
+                return;
+            }
+            currentSettings.TermsAccepted = true;
+            settingsService.ScheduleSave(currentSettings);
+            await settingsService.FlushAsync();
+        }
+
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
+        MainWindow = mainWindow;
         mainWindow.Show();
+
+        // Ya hay ventana principal: el cierre de esta vuelve a apagar la app.
+        ShutdownMode = ShutdownMode.OnMainWindowClose;
+    }
+
+    /// <summary>
+    /// Reactiva la ventana principal cuando una segunda instancia intenta abrir.
+    /// La recupera de la bandeja si estaba oculta y la trae al frente.
+    /// </summary>
+    public void BringToForeground()
+    {
+        if (MainWindow is null) return;
+        if (!MainWindow.IsVisible) MainWindow.Show();
+        if (MainWindow.WindowState == System.Windows.WindowState.Minimized)
+            MainWindow.WindowState = System.Windows.WindowState.Normal;
+        MainWindow.ShowInTaskbar = true;
+        MainWindow.Activate();
+        // Truco para forzar el primer plano sin dejar la ventana siempre encima.
+        MainWindow.Topmost = true;
+        MainWindow.Topmost = false;
+        MainWindow.Focus();
     }
 
     protected override void OnExit(ExitEventArgs e)

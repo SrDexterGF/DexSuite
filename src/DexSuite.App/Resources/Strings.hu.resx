@@ -1,0 +1,1588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• 19 modul terv szerint rendezve: ingyenes, haladó és profi. Mindegyik egy bizonyos dolgot csinál.</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• 100-ból teljesítménypontszám az optimalizálás előtt/utána összehasonlítással.</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Minden modul valós időben mutatja az állapotát: függőben, fut, alkalmazva vagy sikertelen.</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• A végrehajtás során látható előrehaladás: melyik modul fut, mennyi van hátra.</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Minden alkalmazott naplózásra kerül. Bármilyen változtatást bármikor visszaállíthat.</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Speciális és Pro tervek, hardveresen ellenőrzött. A kulcs csak az Ön készülékén működik.</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Az alkalmazás frissíti magát. A tálcára is minimalizálhatja.</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• 15 színes téma. A 10 játéknak saját szekciója van.</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• 30 nyelv áll rendelkezésre. Váltson át a Beállításokból, és azonnal életbe lép.</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>A v{0} újdonságai</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Tervezés és koncepció</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>Fejlesztés</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Játék modul</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>Sr. Dexter</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Kredit</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Csak Windows · Rendszergazdai jogosultság szükséges</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>A DexSuite egy extrém optimalizálási rendszer a Windows számára.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>Elemzi a számítógépet, nagy hatású módosításokat alkalmaz, és a teljesítményt a fizikai határig növeli.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Mindegyik verzió új natív C# modulokat ad hozzá, amelyek az FPS maximalizálására és a késleltetés csökkentésére összpontosítanak.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>A projekt</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Rendszergazda szükséges</value>
+  </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Érintkezés</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Legyen naprakész, és vegye fel a kapcsolatot</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Kövess minket</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Hagyjon véleményt</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Tech stack</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Nyissa meg a naplók mappát</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Közművek</value>
+  </data>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Windows a végletekig.</value>
+  </data>
+  <data name="App.Tagline" xml:space="preserve">
+    <value>TÖRLÉSE FEL A HATÁROKAT</value>
+  </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>Automatikusan gyűjtött diagnosztikai adatok (segít reprodukálni):</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>Kérjük, írja le, mi történt, mire számított, és a reprodukálás lépéseit:</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>Hiba bejelentése</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>Küldje el jelentését manuálisan a suitedex@gmail.com címre.
+Hiba: {0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>Nem sikerült megnyitni az e-mail klienst</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>Ha valami nem működik, írj és utánanézek.</value>
+  </data>
+  <data name="Common.Apply" xml:space="preserve">
+    <value>Alkalmazni</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Mégsem</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Közeli</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Soha</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>RENDBEN</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>Nyitott</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>Fut</value>
+  </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Alkalmazott</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>Válassz egy játékot, és alkalmazz egy személyre szabott finomítást, amely a maximális FPS-re és a minimális bemeneti késésre összpontosít.</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>Játékonkénti optimalizálási profilok</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>Kézzel készített beállítások minden játékhoz.</value>
+  </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>A játékra vonatkozó felelősségi nyilatkozat elfogadva</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>A játékoptimalizálás nem sikerült ({0}): {1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>Elindult a játékoptimalizálás: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>A játékoptimalizálás állapotának visszaállítása: {0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>Nem sikerült megnyitni a játékválasztót: {0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>Válasszon egy játékot az optimalizáláshoz</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>Optimalizálás</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Reset mindenesetre</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Ez visszaállítja az {0} alkalmazás állapotát. Megjegyzés: a szkript által végrehajtott rendszermódosítások nem vonhatók vissza automatikusan – használja a Windows visszaállítási pontot a teljes visszavonáshoz.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>A játékoptimalizálás visszaállítása</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Játék keresése...</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>Személyre szabott módosítások a csúcs FPS és a minimális bemeneti késleltetés érdekében.
+Minden játéknak saját profilja van.</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>Válassza ki az optimalizálni kívánt játékot</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>Elemezze újra</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>Lebontás az optimalizálás után</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>Kezdeti elemzési bontás</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>Elemezze</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>Mielőtt bármit megváltoztatna, tájékozódjon, hol áll számítógépe.</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>A teljesítmény elemzése</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>Lépjen a Naplóba</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>Itt minden, amit a DexSuite fut, naplózásra kerül.</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>Napló megtekintése</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>Lépjen a Modulok menüpontra</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>Válassza ki, mit szeretne javítani, és hagyja, hogy a DexSuite intézze a többit.</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>Rendszer optimalizálása</value>
+  </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>Tisztíts meg most</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>Ideiglenes fájlok, gyorsítótár, Lomtár.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Minden tiszta másodpercek alatt.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>Gyors tisztítás</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>Frissítse az alkalmazásokat</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>Az összes alkalmazása naprakészen egy lépésben.</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>Frissítse az alkalmazásokat</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>Kattintson az Elemzés gombra a pontszám eléréséhez.
+Később optimalizálja és újra elemezze a különbséget.</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>Még nem elemezte a számítógépét</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>Pontszámok visszaállítása</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>Kezdeti állapot</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>Mérés dátuma: 0:nn/hh/éééé ÓÓ:pp}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} pontok</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>mit akarsz csinálni?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Aktiválja</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Licenc eltávolítása</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Kérjük, illesszen be egy érvényes aktiváló kulcsot.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Az aktiválás sikertelen: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Illessze be a vásárláskor kapott aktiváló kulcsot.</value>
+  </data>
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>A kulcs ehhez az eszközhöz van zárva (HWID fent).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Aktiváló kulcs</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Licenc aktiválva. Terv: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Jelenlegi terv</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Másolat</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>Hardverazonosító (HWID) – küldje el ezt a fejlesztőnek, hogy megkapja a kulcsot</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID a vágólapra másolva.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>A DexSuite hardverhez kötött licencet használ.</value>
+  </data>
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>A kapott kulcs aláírt, és csak ezen az eszközön működik.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Engedély</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Speciális terv aktív.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Ingyenes csomag aktív.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Pro terv aktív.</value>
+  </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>Teljesítmény</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>Nyelv</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>Gyors tisztítás</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>Fut</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>Beállítások elemre</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>Törölje az előzményeket</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>Az előzmények törölve (az {0} bejegyzések eltávolítva).</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>Nem sikerült törölni az előzményeket: {0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>Kategória</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>Szint</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>Üzenet</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>Idő</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>A végrehajtott műveletek automatikusan megjelennek itt.</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>Még nincsenek események</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>Kiindulási pontszám: {0} ({1}).</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>A teljesítményteszt sikertelen: {0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>Végső pontszám: {0} ({1}). Változat: {2}{3}.</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>A DexSuite elindult (v{0}).</value>
+  </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>Hibajelentés e-mail megnyitva a kliensben.</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>Az előzmények törölve ({0} bejegyzések).</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>A nyelv {0}-re módosult.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Licenc aktiválva – {0} terv.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>A licenc aktiválása elutasítva: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Licenc eltávolítva – vissza az ingyeneshez.</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] – Befejezve</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — Hiba: {1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — Elindítva</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>A gyors tisztítás nem sikerült: {0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>Gyors tisztítás: {0} MB felszabadult, {1} fájlok eltávolítva.</value>
+  </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Visszaállítási pont létrehozva: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>A visszaállítási pont nem sikerült: {0}</value>
+  </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>A tömeges visszaállítás befejeződött – az {0} visszaállítva, az {1} meghiúsult az {2} közül.</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>A visszaállítás sikertelen – {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>Változás visszavonva – {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>Az optimalizálást a felhasználó megszakította.</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>Az optimalizálás sikertelen: {0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>Az optimalizálás befejeződött ({0} modulok).</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>Az optimalizálás az {0} modulokkal kezdődött.</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>A biztonsági ellenőrzés sikertelen: {0}: {1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>A biztonsági ellenőrzés befejezve: {0} (kilépés az {1}-ből)</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>A biztonsági ellenőrzés nem nulla kilépéssel befejeződött: {0} (exit {1})</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>A biztonsági ellenőrzés elindult: {0}</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>A beállítások visszaállnak az alapértelmezett értékekre.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Javaslat űrlap megnyitva.</value>
+  </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>A téma módosult erre: {0}.</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>Az aktív csomag a következőre módosult: {0}.</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>A v{0} frissítés alkalmazva.</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>Nem sikerült alkalmazni a frissítést: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>A frissítés ellenőrzése sikertelen: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>Új verzió érhető el: v{0}.</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>Már naprakész (v{0}).</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>Az alkalmazás frissítése sikertelen: {0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>Az alkalmazás frissítése befejeződött — az {0} csomagok frissítve.</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>Az alkalmazásfrissítés elindult (winget frissítés --minden)</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>Exportálás .txt formátumba</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>Nem sikerült exportálni: {0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>Az előzmények exportálva {0}-be</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>Siker</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>Előzmények betöltése…</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>Itt minden, amit a DexSuite fut, naplózásra kerül.</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>Történelem</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>Élő kimenet</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>Végrehajtási napló</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>modulok</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>Törölje az összes kijelölését</value>
+  </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>Speciális optimalizálások a játékteljesítmény abszolút határáig.</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>EXTRA PRO · Játék</value>
+  </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>SZÉLSŐ</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>Nincs hatás</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>Jelentős</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>Puha</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>Erős</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>Ez a művelet hatással lesz a teljesítményre a rendszerre.</value>
+  </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>Törli az előzetes letöltést, a rendszer- és felhasználói hőmérsékletet, a bélyegképeket, az IconCache-t és a DirectX-shadereket.
+Minden magától regenerálódik.</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Előzetes letöltés, gyorsítótár és D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>Csak a gyorsítótárak törlése A Windows automatikusan újraindul a számítógép használata során.
+Nincs hatással az Ön adataira vagy programjaira.</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>Törli a régi Windows naplókat, a SoftwareDistribution, a Windows Update, a CBS, a DISM és a WER mappát.</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>Rendszernaplók</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>Csak a diagnosztikai naplófájlokat törli.
+Nem érinti a rendszer működését vagy a személyes adatokat.</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>Kiüríti a makacs Temp mappákat, a legutóbbi elemek előzményeit, a Lomtárat és a Windows.oldot, ha van ilyen.</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>Ideiglenes fájlok, legutóbbi elemek és Lomtár</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>Kiüríti a Lomtárat és az ideiglenes fájlokat.
+Ha valami fontosat küldött a kukába, először állítsa vissza.</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>Összeomlási kiíratások, nyomtatási sor, WMI-tömörítés és az Event Viewer törlése.
+Az események nem téríthetők vissza.</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>Mélytisztítás</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>Törli az Eseménynaplót: a rendszeresemények törlése után nem állíthatók vissza.
+Hasznos a magánélet szempontjából, de gondolja át.</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>Leállítja a wuauserv-t és a BITS-t, törli a SoftwareDistribution\Download and Delivery Optimization-t, majd újraindítja a szolgáltatásokat.</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Windows Update gyorsítótár</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>Csak a Windows Update letöltési gyorsítótárát üríti ki.
+Ha a frissítés sikertelen volt, ez a modul kijavítja.</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>Eltávolítja az elavult rendszerelemeket.
+5-20 percet vesz igénybe, és visszafordíthatatlan (a korábbi frissítéseket nem tudja eltávolítani).</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>DISM alkatrészbolt</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>A tisztítás után már nem távolíthatja el a már alkalmazott Windows-frissítéseket.
+Biztonságos, de végleges.</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>Törli az Edge, Chrome, Firefox, Brave, Opera és Vivaldi gyorsítótárát.
+Nem érinti a profilokat vagy a jelszavakat.</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>Böngésző gyorsítótárai</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>Csak a böngésző gyorsítótárait üríti ki.
+NEM érinti a jelszavakat, könyvjelzőket, előzményeket vagy munkamenet-sütiket.</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>Kiüríti a DNS-gyorsítótárat, regisztrálja a gépet a DNS-ben, és kényszeríti a csoportházirend-frissítést.</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>Hálózat (DNS és gpupdate)</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>Csak a DNS-gyorsítótárat és a csoportházirendet frissíti.
+Nem változtatja meg az állandó hálózati konfigurációt.</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>Visszaállítja a Microsoft Store gyorsítótárat, törli a OneDrive naplókat és a Teams gyorsítótárát.</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store, OneDrive és Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>Megtisztítja a Microsoft Store, a OneDrive és a Teams gyorsítótárait.
+A szinkronizált fájlok és beszélgetések megmaradnak.</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>Ellenőrzi a védett rendszerfájlokat és kijavítja a Windows lemezképet.
+Csak javításra alkalmas, nem romboló.</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM (javítás)</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>Javítja a sérült rendszerfájlokat.
+Lassú (10-30 perc), de NEM módosítja a felhasználói adatokat.</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>Letiltja az egér gyorsítását, maximalizálja a billentyűzetet, letiltja a ragadós billentyűket és beolvassa a monitorok maximális Hz-ét.</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>Egér, billentyűzet és monitorok</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>Módosítja az egér és a billentyűzet beállításait a rendszerleíró adatbázisban.
+Ha nem tetszenek a változások, térjen vissza a Windows beállításaiból.</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>Futtatja a „winget upgrade --all” parancsot.
+Az alkalmazások számától függően eltarthat egy ideig. Nincs modulonkénti visszavonás.</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget (alkalmazások frissítése)</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>Az ÖSSZES alkalmazást frissíti a legújabb verzióra.
+Ha egy új verzió nem kívánt változásokat hoz, innen nem vonhatja vissza.</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>Letiltja a Windows másodpilótát, a Cortanát, a DiagTrack-et, az idővonalat, az AdvertisingID-t és a CEIP-t.</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Másodpilóta, Cortana és telemetria</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>Beállítja a beállításjegyzéket a Copilot, a Cortana és a telemetria letiltásához.
+Megfordítható az egyes opciók újbóli engedélyezésével.</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>Letiltja a javasolt alkalmazásokat, helyet, widgeteket, WPBT-t, és letiltja a kevésbé hasznos szolgáltatásokat.</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>Adatvédelem és szolgáltatások</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>Módosítja az adatvédelmi szabályzatot, és letilt számos Windows-szolgáltatást.
+Megfordítható, de olyan funkciókat érint, mint a widgetek vagy a hely.</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>Power Throttling kikapcsolva, MMCSS prioritás, hibernálás kikapcsolva, HAGS be, BCD platform pipa (újraindítás szükséges).</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>Teljesítmény és késleltetés</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>A BCD, MMCSS, hibernált és HAGS beállítások módosítása.
+Újraindítás szükséges. Erős, de visszafordítható változások.</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>Hangolja a NIC-et (RSS, offload, EEE off), a TCP-vermet (Nagle off, MaxUserPort 65534) és a Google/Cloudflare DNS-t.</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet (hálózat optimalizálás)</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>Módosítja a hálózati adapter paramétereit és a TCP-vermet.
+Ha ezután megszakad a kapcsolat, futtassa a „netsh int ip reset” parancsot.</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT, Defender gyorskeresés, SMBv1 ki, AutoRun off, DEP AlwaysOn, LLMNR/NetBIOS ki, RDP ki, UAC 2. szint.</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>Biztonság</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>Megerősíti a rendszer biztonságát.
+Letiltja az RDP-t: ha távoli hozzáféréshez használta, manuálisan engedélyezze újra.</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>Gondoskodik arról, hogy a TRIM be legyen kapcsolva NTFS/ReFS esetén, lefutja a TRIM-et az észlelt SSD-ken, és leolvassa a SMART hőmérsékletet és kopást.</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD (TRIM és SMART állapot)</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>Csak a SMART állapotot olvassa, és a TRIM-et (normál SSD-művelet) futtatja.
+Nem módosítja az adatokat.</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>pnputil scan, felsorolja az OEM illesztőprogramokat, és futtassa a Windows Update szolgáltatást, hogy új illesztőprogramokat keressen.</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>Illesztőprogramok (Windows Update + pnputil)</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>Csak illesztőprogramokat keres.
+NEM telepíti őket automatikusan: Ön dönti el, hogy frissíti-e őket a Windows Update szolgáltatásból.</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>Megnyitja a játékonkénti hangolási profilok válogatott választékát.
+Válassza ki a címet, és kapjon személyre szabott optimalizálást, amelynek célja a maximális FPS és a minimális bemeneti késés.</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>Játék optimalizálás</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>Játékspecifikus módosításokat alkalmaz a csúcs FPS és a csökkentett késleltetés érdekében.
+Ha szükséges, állítsa vissza a módosításokat később a Windows beállításaiból.</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>Kiválasztja a legjobb modulokat a jelenlegi tervéhez. Ingyenes: alaptakarítás. Speciális: hozzáadja a hálózati visszaállítást, az alkalmazás-gyorsítótárat és a rendszerjavítást. Pro: magában foglalja az adatvédelmet, az Ethernetet és az SSD TRIM-et is. Az extrém hatású modulok kiválasztása soha nem történik meg automatikusan.</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>Hiba a végrehajtás során.</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>Még nem jelentkezett.</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>Futás…</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>Sikeresen alkalmazva.</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>Kockázat</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>Biztonságos</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>Válassza ki az összeset</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>Ajánlott</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>Jelölje be a futtatni kívánt modulokat.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>További részletekért vigye az egérmutatót a hatásjelvényre.</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>FEJLETT</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>INGYENES</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>Elérhető modulok</value>
+  </data>
+  <data name="Navigation.About" xml:space="preserve">
+    <value>Körülbelül</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRÁK</value>
+  </data>
+  <data name="Navigation.Home" xml:space="preserve">
+    <value>Otthon</value>
+  </data>
+  <data name="Navigation.Log" xml:space="preserve">
+    <value>Napló</value>
+  </data>
+  <data name="Navigation.Modules" xml:space="preserve">
+    <value>Modulok</value>
+  </data>
+  <data name="Navigation.Panel" xml:space="preserve">
+    <value>PANEL</value>
+  </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>Változtatások visszaállítása</value>
+  </data>
+  <data name="Navigation.Settings" xml:space="preserve">
+    <value>Beállítások elemre</value>
+  </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>A rendszer specifikációi</value>
+  </data>
+  <data name="Navigation.System" xml:space="preserve">
+    <value>RENDSZER</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Hangolás</value>
+  </data>
+  <data name="Navigation.Updates" xml:space="preserve">
+    <value>Frissítések</value>
+  </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>Az {0} modulok sikeresen alkalmazva.</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite – Az optimalizálás befejeződött</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>{0} modulok megkísérelték – néhány hibát jelentett. Ellenőrizze a Napló lapot.</value>
+  </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Gyors tisztítás</value>
+  </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>Ez kiüríti a Lomtárat, és törli a Windows ideiglenes mappáit.
+A személyes fájlokhoz nem nyúlnak hozzá.</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>Gyors tisztítás?</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>Törli az ideiglenes fájlokat a %TEMP%, C:\Windows\Temp és C:\Windows\Prefetch mappából.
+Kiüríti a Lomtárat is.
+Személyes fájlokhoz nem nyúltak hozzá.</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>Alkalmazott</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>Modul</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>Cél</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>Írja be</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>Futtassa az optimalizálási modulokat a változások naplózásának megkezdéséhez.
+A rendszer minden natív műveletet automatikusan nyomon követ az egykattintásos visszaállításhoz.</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>Még nincsenek nyomon követett változások</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Megjelölés olvasottként</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} függőben lévő módosítás(ok)</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>Ezzel visszaállítja az {0} függőben lévő módosítás(oka)t.
+A művelet nem vonható vissza a DexSuite programban.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>Ezzel visszaállítja az „{0}” által alkalmazott módosítást.
+Az eredeti érték visszaáll.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Visszaállítja a változtatást?</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>Az összes visszaállítása</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>A DexSuite által natívan alkalmazott minden módosítás itt naplózásra kerül.
+Visszaállítás egyenként vagy egyszerre.</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>Változtatások visszaállítása</value>
+  </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — {0} modulok futtatása előtt</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>A visszaállítási pont létrehozása lehetővé teszi a Windows minden módosításának visszavonását, ha bármi baj történik.
+Csak néhány másodpercet vesz igénybe.</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>Nem, fuss nélküle</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>Először létrehoz egy visszaállítási pontot?</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>Igen, hozd létre</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite – manuális optimalizálási biztonsági mentés</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Nem sikerült létrehozni a következő visszaállítási pontot: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>A visszaállítási pont sikeresen létrehozva.</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>Előző munkamenetből töltve</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>Mentett alapvonal – {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>Mért — {0}</value>
+  </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>Nem találhatók beállítások a következőhöz: «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Keresési beállítás…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} találat(ok) az «{1}» kifejezésre</value>
+  </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>Ellenőrizze és javítsa meg rendszerét a Windows beépített eszközeivel.</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>Biztonsági és integritási ellenőrzés</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>Futtassa a Windows Defender gyorsellenőrzését?
+Általában 5-10 percet vesz igénybe.</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>Futtassa a DISM/RestoreHealth programot?
+Javítja a Windows-képet a Windows Update segítségével. Internetet igényel, és 10-20 percet vesz igénybe.</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>Futtassa a rosszindulatú szoftvereket eltávolító eszközt (MRT /Q)?
+Hangtalanul fut a háttérben.</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>Futtassa a Rendszerfájl-ellenőrzőt (SFC /scannow)?
+Ellenőrzi és kijavítja a sérült rendszerfájlokat. 10-20 percet vesz igénybe.</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>Futtassa az ellenőrzést?</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>Defender · Gyors keresés</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · Kép visszaállítása</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · Rosszindulatú programok eltávolítása</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · Rendszerfájl ellenőrzés</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>Az {0} nincs telepítve erre a rendszerre.</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>Az eszköz nem elérhető</value>
+  </data>
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Gyors vizsgálat: észleli az aktív rosszindulatú programokat a rendszeren.
+SFC · Rendszerfájl-ellenőrző: megkeresi és kijavítja a sérült rendszerfájlokat.
+DISM · Kép visszaállítása: javítja a Windows képfájlt, ha az SFC nem tudja.
+MRT · Rosszindulatú programok eltávolítása: a Microsoft hivatalos eszköze bizonyos fenyegetések ellen.</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>Fut</value>
+  </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>Az alkalmazás indításakor alkalmazzák.</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>Indításkor előre válassza ki az ajánlott modulokat</value>
+  </data>
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Szabályozhatja, hogyan viselkedjen a DexSuite modulok futtatása vagy az alkalmazás minimalizálása során.</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>Viselkedés</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>A folyamat kimenetének megtekintéséhez automatikusan nézetet vált.</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>Ugrás a Bejelentkezés futáshoz</value>
+  </data>
+  <data name="Settings.Language.Description" xml:space="preserve">
+    <value>Módosítsa az alkalmazás nyelvét.
+A felület azonnal frissül.</value>
+  </data>
+  <data name="Settings.Language.Title" xml:space="preserve">
+    <value>Nyelv</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>Ha minimalizálja, az alkalmazás bezárás helyett elrejti az értesítési területet.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Minimalizálás a rendszertálcára</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>Az optimalizálás befejeztével Windows-pirítót jelenít meg a Műveletközpontban.</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>Értesítés a végrehajtás befejezéséről</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>Beállítások visszaállítása</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>Minden alkalommal, amikor elindít egy optimalizálást, a DexSuite megkérdezi, hogy először kíván-e létrehozni egy visszaállítási pontot. Válaszolhat igen, nem vagy mégse.</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>A DexSuite mindig rákérdez az optimalizálás előtt</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Automatikus létrehozás minden futtatás előtt</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Hozzon létre visszaállítási pontot most</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Az optimalizálás futtatása előtt hozzon létre egy visszaállítási pontot.</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Ha vissza kell vonnia a módosításokat, megteheti a Windows beállításai között.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Rendszer-visszaállítási pont</value>
+  </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Tisztíts meg most</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Eltávolítja a telepítő által az AppData-ban hagyott ideiglenes frissítési mappákat.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nincs mit takarítani.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>{0} mappák eltávolítva ({1} felszabadítva).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Tisztítsa meg a DexSuite maradékot</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>Minden, amit itt módosít, automatikusan mentésre kerül.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Nincsenek mentési gombok, nincs megerősítés.</value>
+  </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>Aktív</value>
+  </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Hamarosan</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>Legyen a DexSuite a magáé.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>A tervtől függően színes témák állnak rendelkezésre.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>Pro terv szükséges</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>Téma</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>Meghatározza, hogy mely modulokat futtathatja.
+Az Advanced vagy Pro modulok feloldásához aktiváljon egy licencet a Licenc részben.</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>Aktív terv</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Beállítások elemre</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>Megerősítést kér a visszafordíthatatlan változtatásokkal rendelkező modulok futtatása előtt.</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>Figyelmeztetés a nem visszafordítható modulok futtatása előtt</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} magok / {1} logikai</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Processzor</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB összesen · {1} GB ingyenes · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Grafika</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Hardver észlelése…</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Operációs rendszer</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB összesen · {1} GB elérhető</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Tárolás</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Hardver és operációs rendszer észlelve.</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>Felügyeleti mód aktív</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>Adatok beolvasása a Windows rendszerből.
+Használja a Frissítés gombot a frissítéshez, ha hardver változik.</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>Rendszer összefoglaló</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>A rendszer specifikációi</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>Hibaelemzés: {0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>Végső elemzés: {0}/100 ({1}).
+Delta: {2}{3} pont.</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>Kezdeti elemzés: {0}/100 ({1}).
+Most már lehet optimalizálni.</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>Teljesítmény elemzése...</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>Lemondás...</value>
+  </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Visszaállítási pont létrehozása…</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>Fejlesztési mód – a frissítések nem érhetők el ebben a környezetben.</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>Frissítés letöltése... {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>{0} modul(ok) futtatása... (lemondhatod)</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>A végrehajtást a felhasználó megszakította.</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>A végrehajtás befejeződött.
+Menjen a Kezdőlapra, és elemezze újra az összehasonlításhoz.</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>Hiba: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>Nem sikerült megnyitni a következő mappát: {0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>Új verzió érhető el: v{0}!
+Kattintson a „Frissítés most” gombra a telepítéshez.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>A tisztítás befejeződött: {0} MB felszabadult, {1} fájlok eltávolítva</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Gyors tisztítási hiba: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Az ideiglenes fájlok és a lomtár tisztítása...</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>Kész. Válassza ki a modulokat, és kattintson a Futtatás gombra.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Visszaállítási pont létrehozva.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>A visszaállítási pont nem sikerült: {0}</value>
+  </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>Visszaállítás kész: {0}/{1}.</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>A pontszámok visszaállítása. Kattintson az Elemzés gombra az újrakezdéshez.</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>Frissítések keresése...</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} kész.</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>Az {0} hibákkal fejeződött be: {1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>Az {0} futtatása…</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>Válasszon ki legalább egy modult a futtatás előtt.</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>A beállítások visszaállnak az alapértelmezett értékekre.</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>Hiba a frissítés alkalmazásakor:
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>Frissítés letöltve.
+Az alkalmazás automatikusan újraindul.</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>Hiba a frissítések ellenőrzésekor:
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>Ön a legújabb verziót használja (v{0}).</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>Alkalmazások frissítve — {0} csomagok.</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>Az alkalmazás frissítése sikertelen: {0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>Alkalmazások frissítése…</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>Itt írja le javaslatát vagy fejlesztését:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>Javasoljon javítást</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>Ossza meg ötletét vagy javaslatát.</value>
+  </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Elfogadom a Feltételeket</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Az &quot;Elfogadom a feltételeket&quot; gombra kattintva megerősíti, hogy elolvasta és elfogadja a fenti feltételeket.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Hanyatlás</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Kérjük, olvassa el és fogadja el a következő feltételeket a DexSuite használata előtt.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>A DexSuite egy Windows rendszeroptimalizáló eszköz. Rendszergazdai jogosultságokat igényel a beállításjegyzék-beállítások, a rendszerszolgáltatások és az ütemezett feladatok módosításához. Ezek a változások hatással vannak a rendszer viselkedésére és teljesítményére.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Hogyan működik az alkalmazás</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>A DexSuite használata saját felelősségére történik. Az alkalmazott változtatások megváltoztathatják a rendszer viselkedését. Javasoljuk, hogy a nagy hatású modulok futtatása előtt hozzon létre egy visszaállítási pontot. A DexSuite nem vállal garanciát a konkrét eredményekre, és nem vállal felelősséget semmilyen kárért vagy adatvesztésért.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Felhasználó felelőssége</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>A játékmodul letölti és végrehajtja a PowerShell-szkripteket a GitHubról. A DexSuite a végrehajtás előtt ellenőrzi az SHA-256 integritását. Ön felelős azért, hogy felülvizsgálja a szkriptek működését, mielőtt alkalmazná őket.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Játékoptimalizáló szkriptek</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>A DexSuite nem gyűjt használati adatokat, és nem küld információkat külső szervereknek. Minden adat (előzmények, licenc, beállítások) helyben tárolódik az eszközén.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Adatvédelem és adatok</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Felhasználási feltételek</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>Piros + cián acél kéken</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Taktikai narancs + fekete</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Fűzöld + földbarna</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>Cyberpunk cián + lila</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>Neutral Fluent paletta</value>
+  </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Sárga + katonai fekete</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Élénk kék + sárga</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Narancssárga + védőkék</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Arany + mélykék</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Prémium arany + meleg fekete</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>Versenypiros + mélyfekete</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Lila + mitikus arany</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Világoskék + hideg fehér</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Merész piros + csontfehér</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>Ultraminimális monokróm</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>KIBERNETIKUS</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>ALAPÉRTELMEZETT</value>
+  </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>REDLINE</value>
+  </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>NULLA LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Ez a szakasz egy későbbi frissítésben lesz elérhető.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Hamarosan</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Alkalmazástelepítő</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Hangolás: nem sikerült megnyitni a letöltést: {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Hangolás: letöltés megnyitva — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Rendszerbeállítások és az alapvető alkalmazások gyors telepítése.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Az egér gyorsításának letiltása</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Állítsa be a frissítési gyakoriságot a maximális figyeléshez</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Állítsa be a felbontást natívra</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Rendszerbeállítások</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Hangolás</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>Letölti és telepíti az új verziókat a háttérben.
+Csak akkor, ha a DexSuite tétlen.</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>Automatikus frissítés</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Stabil: tesztelt, stabil verziók.
+Béta: új verziók korábbi, de lehetnek hibák.</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>Frissítse a csatornát</value>
+  </data>
+  <data name="Updates.CheckForUpdates" xml:space="preserve">
+    <value>Ellenőrizze a frissítéseket</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>A DexSuite ellenőrzi kiadási kiszolgálónkat az új verziókért, és a helyére telepíti azokat.
+Ha fejlesztői buildet futtat, az automatikus frissítések le vannak tiltva.</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>Hogyan működnek a frissítések</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>Telepített verzió</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>Utolsó ellenőrzés: {0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>Új verzió elérhető!</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>A v{0} verzió letöltésre és telepítésre kész.</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>A DexSuite automatikusan frissül a legújabb verzióra.
+Tartsa naprakészen, hogy minden új optimalizálást megkapjon.</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>Frissítések</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>Frissítse most</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>Elfogadható</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>Kritikai</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>Kiváló</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>Jó</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>Javítható</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>Ez futtatja a winget frissítést --all.
+A függőben lévő frissítések számától függően ez több percig is eltarthat.
+Az előrehaladás a naplóban jelenik meg.</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>Frissíti az összes alkalmazást?</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>A Windows Package Manager (winget) nem érhető el ezen a rendszeren.
+Frissítse rendszerét, vagy telepítse az App Installert a Microsoft Store-ból.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Tekintse meg a használati feltételeket</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Mielőtt folytatná</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>A játék optimalizálása megnyit egy konzolt, ahol el kell olvasnia az üzeneteket, ki kell választania a lehetőségeket, és meg kell adnia egy-két elérési utat. Nem nehéz, de figyeljen arra, hogy mi jelenik meg a képernyőn.
+
+A profilok letöltése a GitHubról történik, és rendszergazdai jogosultságokkal futnak. Használja saját felelősségére.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Ne jelenítse meg újra ezt az értesítést</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Értem</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+</root>

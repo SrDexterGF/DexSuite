@@ -45,12 +45,26 @@ public sealed class IntegrityVerifier : IIntegrityVerifier
         var integrityPath = dllPath + ".integrity";
         if (!File.Exists(integrityPath))
         {
-            // .integrity ausente → el ensamblado no pasó por el pipeline de release
-            // (p. ej. bin\Release\ durante desarrollo local). Solo bloqueamos si el
-            // archivo EXISTE pero la firma o el hash fallan; la ausencia total se
-            // trata como "no empaquetado" y no como sabotaje.
+            // En instalaciones Velopack (bin bajo %LocalAppData%) la ausencia
+            // del .integrity es un fallo — alguien pudo haberlo borrado para
+            // saltarse la verificación. En desarrollo local (bin\Release\ fuera
+            // de %AppData%) se omite para no bloquear el flujo de trabajo.
+            var localAppData = Environment.GetFolderPath(
+                Environment.SpecialFolder.LocalApplicationData);
+            bool isProductionInstall = dllPath.StartsWith(
+                localAppData, StringComparison.OrdinalIgnoreCase);
+
+            if (isProductionInstall)
+            {
+                reason = "Archivo .integrity ausente. El ejecutable puede haber sido manipulado.";
+                _logger.LogError(
+                    "IntegrityVerifier: .integrity no encontrado en {Dll} (instalación de producción).",
+                    dllPath);
+                return false;
+            }
+
             _logger.LogWarning(
-                "IntegrityVerifier: .integrity no encontrado junto a {Dll} — verificación omitida.",
+                "IntegrityVerifier: .integrity no encontrado junto a {Dll} — omitido (desarrollo local).",
                 dllPath);
             return true;
         }

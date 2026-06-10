@@ -1,0 +1,156 @@
+<ui:FluentWindow
+    x:Class="DexSuite.App.TermsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:loc="clr-namespace:DexSuite.App.Markup"
+    Title="DexSuite — Términos de Uso"
+    Width="680"
+    Height="560"
+    MinWidth="560"
+    MinHeight="460"
+    ResizeMode="NoResize"
+    UseLayoutRounding="True"
+    TextOptions.TextFormattingMode="Display"
+    TextOptions.TextRenderingMode="ClearType"
+    ExtendsContentIntoTitleBar="True"
+    WindowBackdropType="Mica"
+    WindowCornerPreference="Round"
+    WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0" Title="DexSuite — Términos de Uso"/>
+
+        <!-- Contenido scrollable -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      Margin="28,16,28,0">
+            <StackPanel>
+
+                <!-- Logo + título -->
+                <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <Image Source="pack://application:,,,/Assets/AppIcon.png"
+                           Width="72" Height="72"
+                           Stretch="Uniform"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           SnapsToDevicePixels="True"/>
+                    <ui:TextBlock Text="{loc:T Key=Terms.Title}"
+                                  FontTypography="TitleLarge"
+                                  HorizontalAlignment="Center"
+                                  Margin="0,10,0,4"/>
+                    <ui:TextBlock Text="{loc:T Key=Terms.Intro}"
+                                  Opacity="0.7"
+                                  HorizontalAlignment="Center"
+                                  TextAlignment="Center"
+                                  TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <!-- Sección 1 -->
+                <Border Padding="16,12" CornerRadius="8" Margin="0,0,0,8"
+                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+                    <StackPanel>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section1.Title}"
+                                      FontTypography="BodyStrong" Margin="0,0,0,6"/>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section1.Body}"
+                                      TextWrapping="Wrap" Opacity="0.85" LineHeight="20"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Sección 2 -->
+                <Border Padding="16,12" CornerRadius="8" Margin="0,0,0,8"
+                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+                    <StackPanel>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section2.Title}"
+                                      FontTypography="BodyStrong" Margin="0,0,0,6"/>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section2.Body}"
+                                      TextWrapping="Wrap" Opacity="0.85" LineHeight="20"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Sección 3 -->
+                <Border Padding="16,12" CornerRadius="8" Margin="0,0,0,8"
+                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+                    <StackPanel>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section3.Title}"
+                                      FontTypography="BodyStrong" Margin="0,0,0,6"/>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section3.Body}"
+                                      TextWrapping="Wrap" Opacity="0.85" LineHeight="20"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Sección 4 -->
+                <Border Padding="16,12" CornerRadius="8" Margin="0,0,0,16"
+                        Background="{DynamicResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+                    <StackPanel>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section4.Title}"
+                                      FontTypography="BodyStrong" Margin="0,0,0,6"/>
+                        <ui:TextBlock Text="{loc:T Key=Terms.Section4.Body}"
+                                      TextWrapping="Wrap" Opacity="0.85" LineHeight="20"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer: nota + botones -->
+        <Border Grid.Row="2"
+                Padding="28,14"
+                Background="{DynamicResource SolidBackgroundFillColorBaseBrush}"
+                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                BorderThickness="0,1,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <ui:TextBlock x:Name="AcceptNote"
+                              Grid.Column="0"
+                              Text="{loc:T Key=Terms.AcceptNote}"
+                              Opacity="0.6"
+                              FontTypography="Caption"
+                              TextWrapping="Wrap"
+                              VerticalAlignment="Center"
+                              MaxWidth="380"/>
+
+                <!-- Botones de aceptación (primera ejecución) -->
+                <StackPanel x:Name="AcceptButtons"
+                            Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <ui:Button Appearance="Secondary"
+                               Content="{loc:T Key=Terms.DeclineButton}"
+                               Icon="{ui:SymbolIcon Symbol=Dismiss24}"
+                               Margin="0,0,8,0"
+                               Click="OnDeclineClicked"/>
+                    <ui:Button Appearance="Primary"
+                               Content="{loc:T Key=Terms.AcceptButton}"
+                               Icon="{ui:SymbolIcon Symbol=Checkmark24}"
+                               Click="OnAcceptClicked"/>
+                </StackPanel>
+
+                <!-- Botón cerrar (modo solo lectura desde Ajustes) -->
+                <ui:Button x:Name="CloseButton"
+                           Grid.Column="1"
+                           Appearance="Secondary"
+                           Content="{loc:T Key=Common.Close}"
+                           Icon="{ui:SymbolIcon Symbol=Dismiss24}"
+                           VerticalAlignment="Center"
+                           Visibility="Collapsed"
+                           Click="OnCloseClicked"/>
+            </Grid>
+        </Border>
+    </Grid>
+</ui:FluentWindow>

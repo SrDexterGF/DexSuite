@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Liên hệ</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Luôn cập nhật và liên lạc</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Theo dõi chúng tôi</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Để lại đánh giá</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Chạy</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Đã áp dụng</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Mỗi hồ sơ áp dụng các điều chỉnh chính xác để đạt FPS tối đa và độ trễ tối thiểu.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Tuyên bố từ chối trách nhiệm về trò chơi đã được chấp nhận</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Đặt lại trạng thái tối ưu hóa trò chơi: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Hoàn nguyên</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Vẫn đặt lại</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Thao tác này sẽ đặt lại trạng thái được áp dụng cho {0}. Lưu ý: không thể tự động đảo ngược các chỉnh sửa hệ thống do tập lệnh thực hiện - hãy sử dụng Điểm khôi phục Windows để hoàn tác chúng hoàn toàn.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Hoàn nguyên tối ưu hóa trò chơi</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Trò chơi tìm kiếm...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Bạn muốn làm gì?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Kích hoạt</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Xóa giấy phép</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Vui lòng dán mã kích hoạt hợp lệ.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Kích hoạt không thành công: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Dán mã kích hoạt bạn nhận được khi mua hàng. Khóa được khóa đối với phần cứng này (HWID ở trên).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Khóa kích hoạt</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Giấy phép đã được kích hoạt. Gói: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Kế hoạch hiện tại</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>ID phần cứng (HWID) - gửi mã này cho nhà phát triển để nhận khóa của bạn</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID được sao chép vào clipboard.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite sử dụng giấy phép giới hạn phần cứng. HWID xác định PC này; khóa bạn nhận được đã được ký và chỉ hoạt động ở đây.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Giấy phép</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Kế hoạch nâng cao đang hoạt động.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Gói miễn phí đang hoạt động.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Kế hoạch chuyên nghiệp đang hoạt động.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Đã kích hoạt giấy phép — gói {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Kích hoạt giấy phép bị từ chối: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Đã xóa giấy phép - quay lại Miễn phí.</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>Bỏ chọn</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>Khuyên dùng</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>NÂNG CAO</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Giới thiệu</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>BỔ SUNG</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Trang chính</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>HỆ THỐNG</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Điều chỉnh</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Cập nhật</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Đánh dấu là đã đọc</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Thu nhỏ vào khay hệ thống</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Sắp ra mắt</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Lưu trữ</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Tôi chấp nhận các Điều khoản</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Bằng cách nhấp vào 'Tôi chấp nhận Điều khoản', bạn xác nhận rằng bạn đã đọc và đồng ý với các điều kiện trên.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Sự suy sụp</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Vui lòng đọc và chấp nhận các điều khoản sau trước khi sử dụng DexSuite.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite là một công cụ tối ưu hóa hệ thống Windows. Nó yêu cầu đặc quyền của quản trị viên để sửa đổi cài đặt đăng ký, dịch vụ hệ thống và các tác vụ đã lên lịch. Những thay đổi này ảnh hưởng đến hành vi và hiệu suất của hệ thống.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Ứng dụng hoạt động như thế nào</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>Bạn phải tự chịu rủi ro khi sử dụng DexSuite. Những thay đổi được áp dụng có thể thay đổi hành vi của hệ thống. Bạn nên tạo Điểm khôi phục trước khi chạy các mô-đun có tác động cao. DexSuite không bảo đảm về kết quả cụ thể và không chịu trách nhiệm về bất kỳ thiệt hại hoặc mất dữ liệu nào.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Trách nhiệm của người dùng</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Mô-đun trò chơi tải xuống và thực thi các tập lệnh PowerShell từ GitHub. DexSuite xác minh tính toàn vẹn SHA-256 trước khi thực thi. Bạn có trách nhiệm xem lại những gì tập lệnh thực hiện trước khi áp dụng chúng.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Kịch bản tối ưu hóa trò chơi</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite không thu thập dữ liệu sử dụng hoặc gửi thông tin đến các máy chủ bên ngoài. Tất cả dữ liệu (lịch sử, giấy phép, cài đặt) được lưu trữ cục bộ trên thiết bị của bạn.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Quyền riêng tư và dữ liệu</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Điều khoản sử dụng</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Chiến thuật cam + đen</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Cỏ xanh + nâu đất</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Vàng + đen quân đội</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Màu xanh + vàng rực rỡ</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Cam + xanh bảo vệ</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Vàng + xanh đậm</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Vàng cao cấp + đen ấm áp</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Tím + vàng huyền thoại</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Xanh nhạt + trắng lạnh</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Đỏ đậm + trắng xương</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Phần này sẽ có sẵn trong bản cập nhật trong tương lai.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Sắp ra mắt</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Trình cài đặt ứng dụng</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Điều chỉnh: không thể mở tải xuống {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Điều chỉnh: đã mở tải xuống — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Tinh chỉnh hệ thống và cài đặt nhanh các ứng dụng cần thiết.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Vô hiệu hóa tăng tốc chuột</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Đặt tốc độ làm mới để theo dõi tối đa</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Đặt độ phân giải thành gốc</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Cài đặt hệ thống</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Điều chỉnh</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Chìa khóa đã bị khóa đối với thiết bị này (HWID ở trên).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Khóa bạn nhận được đã được ký và chỉ hoạt động trên thiết bị này.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Quét nhanh: phát hiện phần mềm độc hại đang hoạt động trên hệ thống.
+SFC · Trình kiểm tra tệp hệ thống: tìm và sửa chữa các tệp hệ thống bị hỏng.
+DISM · Khôi phục hình ảnh: sửa chữa hình ảnh Windows khi SFC không thể.
+MRT · Loại bỏ phần mềm độc hại: Công cụ chính thức của Microsoft chống lại các mối đe dọa cụ thể.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Kiểm soát cách DexSuite hoạt động khi bạn chạy mô-đun hoặc thu nhỏ ứng dụng.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Xem điều khoản sử dụng</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Nếu cần hoàn tác các thay đổi, bạn có thể thực hiện việc đó từ Cài đặt Windows.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Trước khi bạn tiếp tục</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Việc tối ưu hóa trò chơi sẽ mở ra một bảng điều khiển nơi bạn sẽ cần đọc tin nhắn, chọn các tùy chọn và nhập một hoặc hai đường dẫn. Không khó nhưng hãy chú ý đến những gì hiển thị trên màn hình.
+
+Hồ sơ được tải xuống từ GitHub và chạy với quyền quản trị viên. Sử dụng có nguy cơ của riêng bạn.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Đừng hiển thị thông báo này nữa</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Hiểu rồi</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Hủy bỏ</value>
   </data>
 </root>

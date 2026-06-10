@@ -1,6 +1,13 @@
 # PROJECT CONTEXT
-> Generado el 2026-06-03. Versión actual publicada: **v0.2.23**
+> Generado el 2026-06-09. Versión actual publicada: **v0.2.34**
 > Propósito: memoria técnica completa para reanudar el desarrollo desde cero.
+
+## Cómo reanudar sesión
+
+Si es una sesión nueva, di a Claude:
+> *"Lee el CONTEXT.md y continúa desde donde lo dejamos."*
+
+Claude confirmará: versión actual + último bloque trabajado + próximo paso. Sin re-explicar nada.
 
 ---
 
@@ -167,6 +174,12 @@ DexSuite (App)/
 
 ## 4. Estado actual — Qué está implementado
 
+### Web DexSuite
+- Creada base `../DexSuite (Web)/` para la web oficial como proyecto hermano de la app: Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, next-intl ES/EN, rutas principales, sitemap/robots y `.env.example`.
+- Implementada fase 1: layout global, header/footer, navegación responsive, selector ES/EN, botón base, preview visual de app, fondo Cybernetic y asset real `public/images/dexsuite-icon.png`.
+- Implementada fase 2: contenido ES/EN para Inicio, DexSuite, Servicios, Descarga y Reseñas; componentes `FeatureGrid`, `SectionHeading`, `PlanCards`, `CtaBand`; datos visuales en `src/config/content.ts`.
+- Pendiente instalar dependencias y validar build cuando Node.js/npm esten disponibles en la shell.
+
 ### Arquitectura y ciclo de vida
 - Arranque en 3 pasos: `VelopackApp.Build().Run()` → UAC elevation → WPF (`Program.cs`)
 - DI completa con `Microsoft.Extensions.Hosting`; todos los servicios registrados como Singleton (GameSelectorViewModel y GameSelectorWindow como Transient)
@@ -294,6 +307,45 @@ DexSuite (App)/
 4. **Referencias obsoletas**: limpiar código muerto, servicios no usados, comentarios desactualizados
 5. **Código muerto**: `ModuleStatus` en `ModuleItemViewModel` marcado como "legacy no usado por la UI nueva"
 
+### Bloque 7 — UX / Textos (pendiente de implementar)
+Ver prompt detallado generado en sesión 2026-06-03. Resumen de bloques:
+- **A**: Comportamiento — corregir "Marcar como leído" (no debe vaciar la lista), scrollbar visual en idiomas, reordenar idiomas (es primero, luego latino-europeo, luego cirílico, luego RTL/asiático)
+- **B**: Menú juegos — eliminar subtítulos de tiles, reescribir footer
+- **C**: Inicio — reescribir App.Subtitle, descripciones de 6 tarjetas, tooltip (?) en seguridad, reescribir Log.Subtitle, corregir tooltip de impacto (menciona chip que no existe)
+- **D**: Ajustes — eliminar "(futuro)" de WarnBeforeNonReversible, reescribir Settings.Subtitle/Theme.Description/Behavior, separar frases en Licencia/Activación/PuntoRestauración
+- **E**: Acerca de — reescribir changelog (menos técnico), reescribir BugReport.Subtitle
+- **F**: Layout — reducir espacio bajo Tuning en sidebar, separar botón Actualizar de descripción en Revertir, evaluar/cambiar título "Performance Series"
+
+### Bloque 8 — Nuevos idiomas (paridad con Steam)
+Añadir los siguientes idiomas que Steam soporta y DexSuite no tiene aún:
+- `zh-TW` — 繁體中文 (chino tradicional)
+- `th` — ไทย (tailandés)
+- `bg` — Български (búlgaro)
+- `hu` — Magyar (húngaro)
+- `pt-BR` — Português do Brasil (variante separada de pt-PT)
+Requiere: nuevos .resx, actualizar LocalizationService.cs, ComboBox de idiomas y pipeline de traducciones.
+
+### Bloque 9 — Deuda técnica futura
+- Auditoría general de la app (UI, código, flujos)
+- Auditoría completa de traducciones (errores, localización, formatos, coherencia de IU)
+- Dividir módulos en opciones individuales (un ajuste por opción, no conjuntos)
+- Revisar distribución de colores por tema (coherencia muestra ↔ tema aplicado)
+- Mejorar analizador de rendimiento (funcionalidad, puntuación, valor al usuario)
+- Auditoría de código (código muerto, rutas obsoletas, optimizaciones)
+- Humanizar todos los textos de la app (que parezca escrita por el desarrollador, no por IA)
+- Eliminar cualquier mención a terceros (personas, empresas, IA, coautores) en app/código/GitHub
+- Auditoría de seguridad completa
+- **Mejorar protección anti-ingeniería-inversa**: la ofuscación actual (ctrl flow + constants + ref proxy) NO renombra (rename rompe Velopack/i18n/WPF), así que los nombres siguen legibles. Evaluar: licencia con validación server-side (la verificación local es bypasseable parcheando IL), o solución de ofuscación comercial compatible con .NET 8 + Velopack. Ver memoria confuserex-config.md.
+- Revisión de cumplimiento legal (normas, leyes, copyright)
+- Cobertura legal completa (EULA, privacidad, descargos, telemetría)
+- Registro legal y formalización de la app como propiedad del desarrollador
+
+### Bloque 10 — Funcionalidad futura (UX/módulos/web)
+- **Vista avanzada de módulos**: además de la vista simple actual (opciones agrupadas), crear una vista avanzada/detallada con cada ajuste individual seleccionable. Alternativa preferida a separar todos los módulos.
+- **Selector de vista en Ajustes**: opción para elegir si al abrir Módulos se muestra la vista simple o la avanzada por defecto.
+- **Botón "Revertir" en Módulos**: junto a "Ejecutar", permitir seleccionar X módulos y revertirlos a su estado original (revertir cualquier cambio de la app desde la propia selección).
+- **Acceso a la web desde la app**: cuando exista la web, enlazarla desde la zona de RRSS (Acerca de), al pulsar "Sr. Dexter" en créditos, y al pulsar el logo del menú Inicio y el logo del sidebar.
+
 ### Pantalla de bienvenida legal
 - Mostrar Terms of Use la primera vez que arranca la app. Debe registrar en settings que el usuario aceptó para no mostrarla de nuevo.
 
@@ -390,8 +442,9 @@ Durante el constructor de `MainViewModel`, se hidratan todos los ObservablePrope
 9. **GitHub**: limpiar README y notas de release (Bloque 5)
 
 ### Infraestructura futura
-10. **Sección Tuning real**: cuando se desbloquee, cambiar `TuningComingSoon = false` en `MainViewModel` y añadir handlers para resolución, frecuencia, aceleración de ratón, etc. Cada cambio debe usar `IChangeTrackingService` para aparecer en Revertir cambios.
-11. **Revert de archivos**: implementar backup pre-módulo para soportar `ChangeType.File` en el sistema de reversión.
+10. **Web DexSuite fase 3**: implementar formulario de contacto con Resend.
+11. **Sección Tuning real**: cuando se desbloquee, cambiar `TuningComingSoon = false` en `MainViewModel` y añadir handlers para resolución, frecuencia, aceleración de ratón, etc. Cada cambio debe usar `IChangeTrackingService` para aparecer en Revertir cambios.
+12. **Revert de archivos**: implementar backup pre-módulo para soportar `ChangeType.File` en el sistema de reversión.
 
 ---
 

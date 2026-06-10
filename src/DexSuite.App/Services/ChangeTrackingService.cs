@@ -19,7 +19,7 @@ namespace DexSuite.App.Services;
 ///   - Archivos: no soportado todavía (requiere snapshot/backup).
 /// </summary>
 [SupportedOSPlatform("windows")]
-public sealed class ChangeTrackingService : IChangeTrackingService
+public sealed partial class ChangeTrackingService : IChangeTrackingService
 {
     private readonly IDbContextFactory<DexSuiteDbContext> _factory;
     private readonly ILogger<ChangeTrackingService> _logger;
@@ -336,12 +336,53 @@ public sealed class ChangeTrackingService : IChangeTrackingService
 
     // -------------------- reversión por tipo --------------------
 
+    // Prefijos de registro que los módulos de DexSuite pueden escribir.
+    // Cualquier Target que no empiece por uno de estos se rechaza como no confiable.
+    private static readonly string[] AllowedRegistryPrefixes =
+    [
+        @"HKLM\SYSTEM\",
+        @"HKLM\SOFTWARE\",
+        @"HKCU\Software\",
+        @"HKEY_LOCAL_MACHINE\SYSTEM\",
+        @"HKEY_LOCAL_MACHINE\SOFTWARE\",
+        @"HKEY_CURRENT_USER\Software\",
+    ];
+
+    private static void ValidateRegistryPath(string path)
+    {
+        if (!AllowedRegistryPrefixes.Any(p =>
+                path.StartsWith(p, StringComparison.OrdinalIgnoreCase)))
+            throw new ArgumentException($"Ruta de registro no permitida para revertir: {path}");
+    }
+
+    // Solo letras, números, guión, guión bajo, punto y espacio.
+    // Rechaza comillas y otros chars que romperían los argumentos de sc.exe/schtasks.
+    [System.Text.RegularExpressions.GeneratedRegex(@"^[A-Za-z0-9_.\- ]+$")]
+    private static partial System.Text.RegularExpressions.Regex ServiceNamePattern();
+
+    // Tareas: igual que servicio más barra invertida y barra normal.
+    [System.Text.RegularExpressions.GeneratedRegex(@"^[A-Za-z0-9_.\-\\ ]+$")]
+    private static partial System.Text.RegularExpressions.Regex TaskPathPattern();
+
+    private static void ValidateServiceName(string name)
+    {
+        if (!ServiceNamePattern().IsMatch(name))
+            throw new ArgumentException($"Nombre de servicio contiene caracteres no permitidos: {name}");
+    }
+
+    private static void ValidateTaskPath(string path)
+    {
+        if (!TaskPathPattern().IsMatch(path))
+            throw new ArgumentException($"Ruta de tarea contiene caracteres no permitidos: {path}");
+    }
+
     /// <summary>
     /// Restaura un valor del registro. Si OriginalValue es null, se elimina el valor
     /// (porque significa que no existía antes del cambio).
     /// </summary>
     private static void RevertRegistryValue(ModuleChangeRecord r)
     {
+        ValidateRegistryPath(r.Target);
         var (hive, subKey) = ParseRegistryPath(r.Target);
         using var baseKey = OpenBaseKey(hive);
         using var key = baseKey.CreateSubKey(subKey, writable: true)
@@ -368,6 +409,7 @@ public sealed class ChangeTrackingService : IChangeTrackingService
     /// </summary>
     private static void RevertRegistryKey(ModuleChangeRecord r)
     {
+        ValidateRegistryPath(r.Target);
         var (hive, subKey) = ParseRegistryPath(r.Target);
         using var baseKey = OpenBaseKey(hive);
 
@@ -382,6 +424,8 @@ public sealed class ChangeTrackingService : IChangeTrackingService
     {
         if (string.IsNullOrWhiteSpace(r.OriginalValue))
             throw new InvalidOperationException("Sin valor original para revertir el servicio.");
+
+        ValidateServiceName(r.Target);
 
         // sc config <name> start= <auto|demand|disabled|delayed-auto>
         var startType = r.OriginalValue.ToLowerInvariant() switch
@@ -402,6 +446,8 @@ public sealed class ChangeTrackingService : IChangeTrackingService
     {
         if (string.IsNullOrWhiteSpace(r.OriginalValue))
             throw new InvalidOperationException("Sin valor original para revertir la tarea.");
+
+        ValidateTaskPath(r.Target);
 
         var enable = string.Equals(r.OriginalValue, "true", StringComparison.OrdinalIgnoreCase);
         var verb = enable ? "/Enable" : "/Disable";

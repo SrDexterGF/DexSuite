@@ -13,31 +13,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About.Changelog.Item1" xml:space="preserve">
-    <value>• Home screen with logo and quick actions</value>
+    <value>• 19 modules organized by plan: Free, Advanced and Pro. Each one does one specific thing.</value>
   </data>
   <data name="About.Changelog.Item2" xml:space="preserve">
-    <value>• Performance test with 8 categories: CPU, RAM, GPU, Disk, Processes, Startup, Temperature, Network</value>
+    <value>• Performance score out of 100 with before/after comparison once you optimize.</value>
   </data>
   <data name="About.Changelog.Item3" xml:space="preserve">
-    <value>• Before/after comparison with score delta</value>
+    <value>• Each module shows its state in real time: pending, running, applied or failed.</value>
   </data>
   <data name="About.Changelog.Item4" xml:space="preserve">
-    <value>• Modules grouped by plan (Free / Advanced / Pro) in 3 columns</value>
+    <value>• Progress visible during execution: which module is running, how much is left.</value>
   </data>
   <data name="About.Changelog.Item5" xml:space="preserve">
-    <value>• Safe/Risk chip with impact explanation on each module</value>
+    <value>• Everything applied is logged. You can revert any change whenever you want.</value>
   </data>
   <data name="About.Changelog.Item6" xml:space="preserve">
-    <value>• Real-time monitoring and Cancel button during execution</value>
+    <value>• Advanced and Pro plans, hardware-verified. The key only works on your device.</value>
   </data>
   <data name="About.Changelog.Item7" xml:space="preserve">
-    <value>• Built-in automatic updates</value>
+    <value>• The app updates itself. You can also minimize it to the system tray.</value>
   </data>
   <data name="About.Changelog.Item8" xml:space="preserve">
-    <value>• CYBERNETIC theme with cyan + violet palette and exclusive logo</value>
+    <value>• 15 color themes. The 10 gaming ones have their own section.</value>
   </data>
   <data name="About.Changelog.Item9" xml:space="preserve">
-    <value>• Sidebar with icons, separators and language selector (30 languages)</value>
+    <value>• 30 languages available. Switch from Settings and it applies instantly.</value>
   </data>
   <data name="About.Changelog.Title" xml:space="preserve">
     <value>What's new in v{0}</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Stay up to date and get in touch</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Follow us</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Leave a review</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -85,7 +103,7 @@
     <value>Utilities</value>
   </data>
   <data name="App.Subtitle" xml:space="preserve">
-    <value>Performance optimization and security for Windows</value>
+    <value>Windows to the limit.</value>
   </data>
   <data name="App.Tagline" xml:space="preserve">
     <value>PUSH THE LIMITS</value>
@@ -107,7 +125,7 @@ Error: {0}</value>
     <value>Could not open email client</value>
   </data>
   <data name="BugReport.Subtitle" xml:space="preserve">
-    <value>Opens your email client with diagnostic info pre-filled.</value>
+    <value>If something's not working right, write to me and I'll look into it.</value>
   </data>
   <data name="Common.Apply" xml:space="preserve">
     <value>Apply</value>
@@ -133,20 +151,46 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Run</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Applied</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
   <data name="Gaming.CardTitle" xml:space="preserve">
     <value>Per-game optimization profiles</value>
   </data>
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Before you continue</value>
+  </data>
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Optimizing a game opens a console where you'll need to read the messages, choose options and enter a path or two. It's not hard, but pay attention to what shows up on screen.
+
+Profiles are downloaded from GitHub and run with administrator permissions. Use at your own risk.</value>
+  </data>
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Don't show this notice again</value>
+  </data>
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Got it</value>
+  </data>
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Gaming.FooterNote" xml:space="preserve">
-    <value>Each profile applies targeted tweaks for maximum FPS and minimum latency.</value>
+    <value>Hand-crafted settings for each game.</value>
+  </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Gaming disclaimer accepted</value>
   </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Gaming optimization state reset: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -157,11 +201,20 @@ Error: {0}</value>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
   </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Revert</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Reset anyway</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>This resets the applied state for {0}. Note: system tweaks made by the script cannot be automatically reversed — use a Windows Restore Point to fully undo them.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Revert game optimization</value>
+  </data>
   <data name="Gaming.SearchPlaceholder" xml:space="preserve">
     <value>Search game...</value>
-  </data>
-  <data name="Gaming.Applied" xml:space="preserve">
-    <value>Applied</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -183,8 +236,7 @@ Each game has its own profile.</value>
     <value>Analyze</value>
   </data>
   <data name="Home.Card.Analyze.Desc" xml:space="preserve">
-    <value>Measure your computer's current state.
-Get a score out of 100.</value>
+    <value>Find out where your PC stands before changing anything.</value>
   </data>
   <data name="Home.Card.Analyze.Title" xml:space="preserve">
     <value>Analyze performance</value>
@@ -193,8 +245,7 @@ Get a score out of 100.</value>
     <value>Go to Log</value>
   </data>
   <data name="Home.Card.Log.Desc" xml:space="preserve">
-    <value>See live output during execution.
-Review the last run.</value>
+    <value>Everything DexSuite runs gets logged here.</value>
   </data>
   <data name="Home.Card.Log.Title" xml:space="preserve">
     <value>View log</value>
@@ -203,8 +254,7 @@ Review the last run.</value>
     <value>Go to Modules</value>
   </data>
   <data name="Home.Card.Optimize.Desc" xml:space="preserve">
-    <value>Pick the modules you want.
-Launch cleanup and tweaks.</value>
+    <value>Pick what you want to improve and let DexSuite handle the rest.</value>
   </data>
   <data name="Home.Card.Optimize.Title" xml:space="preserve">
     <value>Optimize system</value>
@@ -213,8 +263,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Temp files, cache, Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>All clean in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -223,7 +275,7 @@ Free up space in seconds.</value>
     <value>Update apps</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
-    <value>Update all installed apps at once.</value>
+    <value>All your apps up to date in one go.</value>
   </data>
   <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
     <value>Update apps</value>
@@ -263,7 +315,10 @@ Later, optimize and analyze again to see the difference.</value>
     <value>Activation failed: {0}</value>
   </data>
   <data name="License.Activation.Help" xml:space="preserve">
-    <value>Paste the activation key you received with your purchase. The key is locked to this hardware (HWID above).</value>
+    <value>Paste the activation key you received with your purchase.</value>
+  </data>
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>The key is locked to this device (HWID above).</value>
   </data>
   <data name="License.Activation.Label" xml:space="preserve">
     <value>Activation key</value>
@@ -284,16 +339,19 @@ Later, optimize and analyze again to see the difference.</value>
     <value>HWID copied to clipboard.</value>
   </data>
   <data name="License.Section.Description" xml:space="preserve">
-    <value>DexSuite uses a hardware-bound license. The HWID identifies this PC; the key you receive is signed and only works here.</value>
+    <value>DexSuite uses a hardware-bound license.</value>
+  </data>
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>The key you receive is signed and only works on this device.</value>
   </data>
   <data name="License.Section.Title" xml:space="preserve">
     <value>License</value>
   </data>
-  <data name="License.Status.Free" xml:space="preserve">
-    <value>Free plan active.</value>
-  </data>
   <data name="License.Status.Advanced" xml:space="preserve">
     <value>Advanced plan active.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Free plan active.</value>
   </data>
   <data name="License.Status.Pro" xml:space="preserve">
     <value>Pro plan active.</value>
@@ -360,9 +418,6 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
-  </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
@@ -436,6 +491,9 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
   </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
+  </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
   </data>
@@ -494,8 +552,7 @@ Later, optimize and analyze again to see the difference.</value>
     <value>Refresh</value>
   </data>
   <data name="Log.Subtitle" xml:space="preserve">
-    <value>Live output of the current process.
-Updates in real time while running.</value>
+    <value>Everything DexSuite runs gets logged here.</value>
   </data>
   <data name="Log.Tab.History" xml:space="preserve">
     <value>History</value>
@@ -513,7 +570,7 @@ Updates in real time while running.</value>
     <value>Deselect all</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -744,8 +801,7 @@ Pick your title and get a tailored optimization aimed at maximum FPS and minimum
 Revert any change later from Windows settings if needed.</value>
   </data>
   <data name="Modules.Recommended.Why" xml:space="preserve">
-    <value>These optimizations have been selected because they are safe, reversible and produce a visible improvement on most systems.
-They are the best starting point before diving into advanced or pro settings.</value>
+    <value>Selects the best modules for your current plan. Free: basic cleanup. Advanced: adds network reset, app cache and system repair. Pro: also includes privacy, Ethernet and SSD TRIM. Modules with extreme impact are never auto-selected.</value>
   </data>
   <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
     <value>Error during execution.</value>
@@ -772,8 +828,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>Recommended</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the impact badge for more details.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>ADVANCED</value>
@@ -790,6 +848,9 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRAS</value>
+  </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -805,42 +866,6 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.Restore" xml:space="preserve">
     <value>Restore changes</value>
   </data>
-  <data name="Navigation.Tuning" xml:space="preserve">
-    <value>Tuning</value>
-  </data>
-  <data name="Tuning.Title" xml:space="preserve">
-    <value>Tuning</value>
-  </data>
-  <data name="Tuning.Subtitle" xml:space="preserve">
-    <value>System tweaks and quick install of essential apps.</value>
-  </data>
-  <data name="Tuning.System.Title" xml:space="preserve">
-    <value>System settings</value>
-  </data>
-  <data name="Tuning.System.Resolution" xml:space="preserve">
-    <value>Set resolution to native</value>
-  </data>
-  <data name="Tuning.System.RefreshRate" xml:space="preserve">
-    <value>Set refresh rate to monitor maximum</value>
-  </data>
-  <data name="Tuning.System.MouseAccel" xml:space="preserve">
-    <value>Disable mouse acceleration</value>
-  </data>
-  <data name="Tuning.Installer.Title" xml:space="preserve">
-    <value>App installer</value>
-  </data>
-  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
-    <value>Coming soon</value>
-  </data>
-  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
-    <value>This section will be available in a future update.</value>
-  </data>
-  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
-    <value>Tuning: download opened — {0}</value>
-  </data>
-  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
-    <value>Tuning: could not open download {0} — {1}</value>
-  </data>
   <data name="Navigation.Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -850,8 +875,8 @@ Hover the Safe/Risk chip to know why.</value>
   <data name="Navigation.System" xml:space="preserve">
     <value>SYSTEM</value>
   </data>
-  <data name="Navigation.Extras" xml:space="preserve">
-    <value>EXTRAS</value>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Tuning</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Updates</value>
@@ -899,6 +924,9 @@ Each native action is tracked automatically for one-click revert.</value>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
   </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Mark as read</value>
+  </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
   </data>
@@ -923,8 +951,7 @@ The original value will be restored.</value>
     <value>Revert</value>
   </data>
   <data name="Restore.Subtitle" xml:space="preserve">
-    <value>Every change DexSuite applies natively is logged here.
-Revert individually or all at once.</value>
+    <value>Here's every change DexSuite has applied. Undo any of them, or all at once.</value>
   </data>
   <data name="Restore.Title" xml:space="preserve">
     <value>Restore changes</value>
@@ -973,7 +1000,7 @@ It only takes a few seconds.</value>
     <value>{0} result(s) for «{1}»</value>
   </data>
   <data name="Security.CardDesc" xml:space="preserve">
-    <value>Run Windows Defender, SFC, DISM or MRT.</value>
+    <value>Check and repair your system using Windows built-in tools.</value>
   </data>
   <data name="Security.CardTitle" xml:space="preserve">
     <value>Security &amp; integrity check</value>
@@ -1015,6 +1042,12 @@ It scans and repairs corrupted system files. Takes 10–20 minutes.</value>
   <data name="Security.NotAvailable.Title" xml:space="preserve">
     <value>Tool not available</value>
   </data>
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Quick scan: detects active malware on the system.
+SFC · System File Checker: finds and repairs damaged system files.
+DISM · Restore image: repairs the Windows image when SFC can't.
+MRT · Malware removal: Microsoft's official tool against specific threats.</value>
+  </data>
   <data name="Security.RunButton" xml:space="preserve">
     <value>Run</value>
   </data>
@@ -1023,6 +1056,9 @@ It scans and repairs corrupted system files. Takes 10–20 minutes.</value>
   </data>
   <data name="Settings.AutoSelect.Title" xml:space="preserve">
     <value>Pre-select recommended modules on start</value>
+  </data>
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Control how DexSuite behaves when you run modules or minimize the app.</value>
   </data>
   <data name="Settings.Behavior.Title" xml:space="preserve">
     <value>Behavior</value>
@@ -1046,6 +1082,40 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Minimize to system tray</value>
   </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>Notify when execution finishes</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>Reset settings</value>
+  </data>
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>View terms of use</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>Each time you start an optimization, DexSuite asks if you want to create a restore point first.
+You can answer Yes, No or Cancel.</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>DexSuite always asks before optimizing</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Create automatically before each run</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Create restore point now</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Create a restore point before running optimizations.</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>If you need to undo changes, you can do it from Windows Settings.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>System restore point</value>
+  </data>
   <data name="Settings.SelfCleanup.Button" xml:space="preserve">
     <value>Clean now</value>
   </data>
@@ -1061,43 +1131,26 @@ The interface updates instantly.</value>
   <data name="Settings.SelfCleanup.Title" xml:space="preserve">
     <value>Clean DexSuite leftovers</value>
   </data>
-  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
-    <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
-  </data>
-  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
-    <value>Notify when execution finishes</value>
-  </data>
-  <data name="Settings.Reset" xml:space="preserve">
-    <value>Reset settings</value>
-  </data>
-  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
-    <value>Each time you start an optimization, DexSuite asks if you want to create a restore point first. You can answer Yes, No or Cancel.</value>
-  </data>
-  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
-    <value>DexSuite always asks before optimizing</value>
-  </data>
-  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
-    <value>Create automatically before each run</value>
-  </data>
-  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
-    <value>Create restore point now</value>
-  </data>
-  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
-    <value>Create a restore point before running optimizations, so you can undo any change from Windows settings.</value>
-  </data>
-  <data name="Settings.RestorePoint.Title" xml:space="preserve">
-    <value>System restore point</value>
-  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Everything you change here is saved automatically.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>No save buttons, no confirmations.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Make DexSuite yours.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Color themes are available depending on your plan.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1116,7 +1169,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Settings</value>
   </data>
   <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
-    <value>Asks confirmation for modules marked as Risk (future).</value>
+    <value>Asks for confirmation before running modules with irreversible changes.</value>
   </data>
   <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
     <value>Warn before running non-reversible modules</value>
@@ -1152,7 +1205,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Storage</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1288,77 +1341,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
-  <data name="Theme.Name.Midas" xml:space="preserve">
-    <value>MIDAS</value>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>I accept the Terms</value>
   </data>
-  <data name="Theme.Desc.Midas" xml:space="preserve">
-    <value>Premium gold + warm black</value>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>By clicking 'I accept the Terms' you confirm that you have read and agreed to the above conditions.</value>
   </data>
-  <data name="Theme.Name.Valor" xml:space="preserve">
-    <value>VALOR</value>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Decline</value>
   </data>
-  <data name="Theme.Desc.Valor" xml:space="preserve">
-    <value>Bold red + bone white</value>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Please read and accept the following terms before using DexSuite.</value>
   </data>
-  <data name="Theme.Name.Fortress" xml:space="preserve">
-    <value>FORTRESS</value>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite is a Windows system optimization tool. It requires administrator privileges to modify registry settings, system services, and scheduled tasks. These changes affect system behavior and performance.</value>
   </data>
-  <data name="Theme.Desc.Fortress" xml:space="preserve">
-    <value>Vibrant blue + yellow</value>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>How the application works</value>
   </data>
-  <data name="Theme.Name.Counter" xml:space="preserve">
-    <value>COUNTER</value>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>Use of DexSuite is at your own risk. Applied changes may alter system behavior. It is recommended to create a Restore Point before running high-impact modules. DexSuite provides no warranty of specific results and is not liable for any damage or data loss.</value>
   </data>
-  <data name="Theme.Desc.Counter" xml:space="preserve">
-    <value>Tactical orange + black</value>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>User responsibility</value>
   </data>
-  <data name="Theme.Name.Legends" xml:space="preserve">
-    <value>LEGENDS</value>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>The gaming module downloads and executes PowerShell scripts from GitHub. DexSuite verifies their SHA-256 integrity before execution. You are responsible for reviewing what scripts do before applying them.</value>
   </data>
-  <data name="Theme.Desc.Legends" xml:space="preserve">
-    <value>Gold + deep blue</value>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Game optimization scripts</value>
   </data>
-  <data name="Theme.Name.Crafter" xml:space="preserve">
-    <value>CRAFTER</value>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite does not collect usage data or send information to external servers. All data (history, license, settings) is stored locally on your device.</value>
   </data>
-  <data name="Theme.Desc.Crafter" xml:space="preserve">
-    <value>Grass green + earth brown</value>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Privacy and data</value>
   </data>
-  <data name="Theme.Name.Apex" xml:space="preserve">
-    <value>APEX</value>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Terms of Use</value>
   </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Red + cyan on steel blue</value>
   </data>
-  <data name="Theme.Name.Guardian" xml:space="preserve">
-    <value>GUARDIAN</value>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Tactical orange + black</value>
   </data>
-  <data name="Theme.Desc.Guardian" xml:space="preserve">
-    <value>Orange + protective blue</value>
-  </data>
-  <data name="Theme.Name.Rivals" xml:space="preserve">
-    <value>RIVALS</value>
-  </data>
-  <data name="Theme.Desc.Rivals" xml:space="preserve">
-    <value>Purple + mythic gold</value>
-  </data>
-  <data name="Theme.Name.Tenno" xml:space="preserve">
-    <value>TENNO</value>
-  </data>
-  <data name="Theme.Desc.Tenno" xml:space="preserve">
-    <value>Light blue + cold white</value>
-  </data>
-  <data name="Theme.Name.Divers" xml:space="preserve">
-    <value>DIVERS</value>
-  </data>
-  <data name="Theme.Desc.Divers" xml:space="preserve">
-    <value>Yellow + military black</value>
-  </data>
-  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
-    <value>Coming soon</value>
-  </data>
-  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
-    <value>Themes</value>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Grass green + earth brown</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1366,11 +1395,44 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Yellow + military black</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Vibrant blue + yellow</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Orange + protective blue</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Gold + deep blue</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Premium gold + warm black</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
   </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Purple + mythic gold</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Light blue + cold white</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Bold red + bone white</value>
+  </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
   </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
@@ -1378,11 +1440,68 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>This section will be available in a future update.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>App installer</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Tuning: could not open download {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Tuning: download opened — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>System tweaks and quick install of essential apps.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Disable mouse acceleration</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Set refresh rate to monitor maximum</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Set resolution to native</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>System settings</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Tuning</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.

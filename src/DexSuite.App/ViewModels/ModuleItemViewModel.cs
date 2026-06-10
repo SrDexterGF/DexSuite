@@ -5,18 +5,6 @@ using DexSuite.App.Services;
 namespace DexSuite.App.ViewModels;
 
 /// <summary>
-/// Estado de ejecución de un módulo dentro de un run.
-/// </summary>
-public enum ModuleStatus
-{
-    Pending,
-    Running,
-    Completed,
-    Skipped,
-    Failed,
-}
-
-/// <summary>
 /// Estado visual persistente del indicador de un módulo:
 ///   - NotApplied : barra (aún no aplicado).
 ///   - Applying   : círculo de carga (aplicándose ahora).
@@ -109,10 +97,6 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     /// <summary>True cuando el tier del módulo supera el tier activo del usuario. Lo fija MainViewModel.</summary>
     [ObservableProperty]
     private bool isLocked;
-
-    /// <summary>Estado legacy (no usado por la UI nueva — conservado por compatibilidad).</summary>
-    [ObservableProperty]
-    private ModuleStatus status = ModuleStatus.Pending;
 
     /// <summary>
     /// Estado de ejecución del módulo durante el último run.

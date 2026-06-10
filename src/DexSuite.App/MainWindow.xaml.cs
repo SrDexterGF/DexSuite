@@ -37,11 +37,24 @@ public partial class MainWindow : FluentWindow
         var restoreItem = new WpfMenuItem { Header = "Restaurar" };
         restoreItem.Click += (_, _) => RestoreWindow();
 
+        var settingsItem = new WpfMenuItem { Header = "Ajustes" };
+        settingsItem.Click += (_, _) => { RestoreWindow(); _vm?.NavigateCommand.Execute("Settings"); };
+
+        var aboutItem = new WpfMenuItem { Header = "Acerca de" };
+        aboutItem.Click += (_, _) => { RestoreWindow(); _vm?.NavigateCommand.Execute("About"); };
+
+        var updatesItem = new WpfMenuItem { Header = "Buscar actualizaciones" };
+        updatesItem.Click += (_, _) => { RestoreWindow(); _vm?.NavigateCommand.Execute("Updates"); };
+
         var exitItem = new WpfMenuItem { Header = "Cerrar DexSuite" };
         exitItem.Click += (_, _) => { _forceClose = true; Application.Current.Shutdown(); };
 
         var menu = new WpfContextMenu();
         menu.Items.Add(restoreItem);
+        menu.Items.Add(new WpfSeparator());
+        menu.Items.Add(settingsItem);
+        menu.Items.Add(aboutItem);
+        menu.Items.Add(updatesItem);
         menu.Items.Add(new WpfSeparator());
         menu.Items.Add(exitItem);
 
@@ -59,15 +72,12 @@ public partial class MainWindow : FluentWindow
             Dispatcher.Invoke(RefreshTrayVisibility);
     }
 
-    // Mientras "minimizar a bandeja" esté activado:
-    //  - el icono de bandeja está SIEMPRE visible (así el usuario puede recuperar
-    //    la ventana aunque la haya ocultado),
-    //  - y la ventana desaparece de la barra de tareas (ShowInTaskbar = false)
-    //    para no duplicarse con el icono de la bandeja.
+    // El icono de bandeja solo aparece cuando la ventana está oculta.
+    // Cuando MinimizeToTray está OFF el icono permanece siempre oculto.
     private void RefreshTrayVisibility()
     {
         if (_vm is null) return;
-        if (_vm.MinimizeToTray)
+        if (_vm.MinimizeToTray && !IsVisible)
         {
             TrayIcon.Visibility = Visibility.Visible;
             ShowInTaskbar       = false;
@@ -75,7 +85,7 @@ public partial class MainWindow : FluentWindow
         else
         {
             TrayIcon.Visibility = Visibility.Collapsed;
-            ShowInTaskbar       = true;
+            ShowInTaskbar       = _vm.MinimizeToTray ? false : true;
         }
     }
 
@@ -85,10 +95,8 @@ public partial class MainWindow : FluentWindow
 
         if (WindowState == WindowState.Minimized)
         {
-            // Oculta la ventana del Alt+Tab y del escritorio; el icono de bandeja
-            // ya está visible (lo deja RefreshTrayVisibility cuando la opción
-            // está activa), así que el usuario podrá recuperarla.
             Hide();
+            RefreshTrayVisibility();
         }
     }
 
@@ -101,6 +109,7 @@ public partial class MainWindow : FluentWindow
 
         e.Cancel = true;
         Hide();
+        RefreshTrayVisibility();
     }
 
     private void RestoreWindow()
@@ -108,9 +117,8 @@ public partial class MainWindow : FluentWindow
         if (!IsVisible) Show();
         if (WindowState != WindowState.Normal)
             WindowState = WindowState.Normal;
-        // Si la opción de bandeja está OFF, recuperamos la entrada en la taskbar.
-        if (_vm is not null && !_vm.MinimizeToTray)
-            ShowInTaskbar = true;
+        ShowInTaskbar = !(_vm?.MinimizeToTray ?? false);
+        TrayIcon.Visibility = Visibility.Collapsed;
         Activate();
     }
 

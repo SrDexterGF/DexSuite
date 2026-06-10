@@ -2465,16 +2465,16 @@
       "fi": "Järjestelmän tiedot"
     },
     "Specs.Subtitle": {
-      "en": "Detected hardware and operating system",
-      "es": "Hardware y sistema operativo detectados",
-      "gl": "Hardware e sistema operativo detectados",
-      "ca": "Maquinari i sistema operatiu detectats",
-      "eu": "Hautemandako hardware eta sistema eragilea",
-      "pt": "Hardware e sistema operativo detetados",
-      "fr": "Matériel et système d'exploitation détectés",
-      "de": "Erkannte Hardware und Betriebssystem",
-      "it": "Hardware e sistema operativo rilevati",
-      "zh": "检测到的硬件和操作系统"
+      "en": "Detected hardware and operating system.",
+      "es": "Hardware y sistema operativo detectados.",
+      "gl": "Hardware e sistema operativo detectados.",
+      "ca": "Maquinari i sistema operatiu detectats.",
+      "eu": "Hautemandako hardware eta sistema eragilea.",
+      "pt": "Hardware e sistema operativo detetados.",
+      "fr": "Matériel et système d'exploitation détectés.",
+      "de": "Erkannte Hardware und Betriebssystem.",
+      "it": "Hardware e sistema operativo rilevati.",
+      "zh": "检测到的硬件和操作系统。"
     },
     "Specs.CPU": {
       "en": "Processor",
@@ -2841,16 +2841,16 @@
       "zh": "快速清理出错：{0}"
     },
     "Modules.Extra.Subtitle": {
-      "en": "Specific optimizations to push gaming performance to the absolute limit",
-      "es": "Optimizaciones específicas para llevar el rendimiento en juegos al límite absoluto",
-      "gl": "Optimizacións específicas para levar o rendemento en xogos ao límite absoluto",
-      "ca": "Optimitzacions específiques per portar el rendiment en jocs al límit absolut",
-      "eu": "Joko-errendimendua muga absolutura eramateko optimizazio espezifikoak",
-      "pt": "Otimizações específicas para levar o desempenho em jogos ao limite absoluto",
-      "fr": "Optimisations spécifiques pour pousser les performances en jeu à la limite absolue",
-      "de": "Spezifische Optimierungen, um die Gaming-Leistung an die absolute Grenze zu treiben",
-      "it": "Ottimizzazioni specifiche per portare le prestazioni di gioco al limite assoluto",
-      "zh": "将游戏性能推向绝对极限的专项优化"
+      "en": "Specific optimizations to push gaming performance to the absolute limit.",
+      "es": "Optimizaciones específicas para llevar el rendimiento en juegos al límite absoluto.",
+      "gl": "Optimizacións específicas para levar o rendemento en xogos ao límite absoluto.",
+      "ca": "Optimitzacions específiques per portar el rendiment en jocs al límit absolut.",
+      "eu": "Joko-errendimendua muga absolutura eramateko optimizazio espezifikoak.",
+      "pt": "Otimizações específicas para levar o desempenho em jogos ao limite absoluto.",
+      "fr": "Optimisations spécifiques pour pousser les performances en jeu à la limite absolue.",
+      "de": "Spezifische Optimierungen, um die Gaming-Leistung an die absolute Grenze zu treiben.",
+      "it": "Ottimizzazioni specifiche per portare le prestazioni di gioco al limite assoluto.",
+      "zh": "将游戏性能推向绝对极限的专项优化。"
     },
     "Log.Tab.History": {
       "en": "History",
@@ -4180,7 +4180,6 @@
       "it": "• Barra laterale con icone, separatori e selettore di lingua (30 lingue)",
       "zh": "• 侧边栏含图标、分隔线和语言选择器（30 种语言）"
     },
-
     "Gaming.CardTitle": {
       "en": "Per-game optimization profiles",
       "es": "Perfiles de optimización por juego",
@@ -4230,9 +4229,16 @@
       "zh": "为峰值 FPS 与最低延迟量身定制的调整。\n每款游戏都有自己的配置文件。"
     },
     "Gaming.OptimizeButton": {
-      "en": "Optimize", "es": "Optimizar", "gl": "Optimizar", "ca": "Optimitza",
-      "eu": "Optimizatu", "pt": "Otimizar", "fr": "Optimiser", "de": "Optimieren",
-      "it": "Ottimizza", "zh": "优化"
+      "en": "Optimize",
+      "es": "Optimizar",
+      "gl": "Optimizar",
+      "ca": "Optimitza",
+      "eu": "Optimizatu",
+      "pt": "Otimizar",
+      "fr": "Optimiser",
+      "de": "Optimieren",
+      "it": "Ottimizza",
+      "zh": "优化"
     },
     "Gaming.OpenSelector": {
       "en": "Choose a game to optimize",
@@ -4314,54 +4320,112 @@
       "it": "Impossibile aprire il selettore giochi: {0}",
       "zh": "无法打开游戏选择器：{0}"
     },
-
     "Log.Event.ModuleStarted": {
-      "en": "[{0}] — Started", "es": "[{0}] — Iniciado", "gl": "[{0}] — Iniciado",
-      "ca": "[{0}] — Iniciat", "eu": "[{0}] — Hasita", "pt": "[{0}] — Iniciado",
-      "fr": "[{0}] — Démarré", "de": "[{0}] — Gestartet", "it": "[{0}] — Avviato", "zh": "[{0}] — 已开始"
+      "en": "[{0}] — Started",
+      "es": "[{0}] — Iniciado",
+      "gl": "[{0}] — Iniciado",
+      "ca": "[{0}] — Iniciat",
+      "eu": "[{0}] — Hasita",
+      "pt": "[{0}] — Iniciado",
+      "fr": "[{0}] — Démarré",
+      "de": "[{0}] — Gestartet",
+      "it": "[{0}] — Avviato",
+      "zh": "[{0}] — 已开始"
     },
     "Log.Event.ModuleCompleted": {
-      "en": "[{0}] — Completed", "es": "[{0}] — Completado", "gl": "[{0}] — Completado",
-      "ca": "[{0}] — Completat", "eu": "[{0}] — Osatuta", "pt": "[{0}] — Concluído",
-      "fr": "[{0}] — Terminé", "de": "[{0}] — Abgeschlossen", "it": "[{0}] — Completato", "zh": "[{0}] — 已完成"
+      "en": "[{0}] — Completed",
+      "es": "[{0}] — Completado",
+      "gl": "[{0}] — Completado",
+      "ca": "[{0}] — Completat",
+      "eu": "[{0}] — Osatuta",
+      "pt": "[{0}] — Concluído",
+      "fr": "[{0}] — Terminé",
+      "de": "[{0}] — Abgeschlossen",
+      "it": "[{0}] — Completato",
+      "zh": "[{0}] — 已完成"
     },
     "Log.Event.ModuleError": {
-      "en": "[{0}] — Error: {1}", "es": "[{0}] — Error: {1}", "gl": "[{0}] — Erro: {1}",
-      "ca": "[{0}] — Error: {1}", "eu": "[{0}] — Errorea: {1}", "pt": "[{0}] — Erro: {1}",
-      "fr": "[{0}] — Erreur : {1}", "de": "[{0}] — Fehler: {1}", "it": "[{0}] — Errore: {1}", "zh": "[{0}] — 错误：{1}"
+      "en": "[{0}] — Error: {1}",
+      "es": "[{0}] — Error: {1}",
+      "gl": "[{0}] — Erro: {1}",
+      "ca": "[{0}] — Error: {1}",
+      "eu": "[{0}] — Errorea: {1}",
+      "pt": "[{0}] — Erro: {1}",
+      "fr": "[{0}] — Erreur : {1}",
+      "de": "[{0}] — Fehler: {1}",
+      "it": "[{0}] — Errore: {1}",
+      "zh": "[{0}] — 错误：{1}"
     },
-
     "Modules.Run.IdleTooltip": {
-      "en": "Not applied yet.", "es": "No aplicado todavía.", "gl": "Aínda non aplicado.",
-      "ca": "Encara no aplicat.", "eu": "Oraindik ez da aplikatu.", "pt": "Ainda não aplicado.",
-      "fr": "Pas encore appliqué.", "de": "Noch nicht angewendet.", "it": "Non ancora applicato.", "zh": "尚未应用。"
+      "en": "Not applied yet.",
+      "es": "No aplicado todavía.",
+      "gl": "Aínda non aplicado.",
+      "ca": "Encara no aplicat.",
+      "eu": "Oraindik ez da aplikatu.",
+      "pt": "Ainda não aplicado.",
+      "fr": "Pas encore appliqué.",
+      "de": "Noch nicht angewendet.",
+      "it": "Non ancora applicato.",
+      "zh": "尚未应用。"
     },
     "Modules.Run.RunningTooltip": {
-      "en": "Running…", "es": "Aplicando…", "gl": "Aplicando…",
-      "ca": "Aplicant…", "eu": "Aplikatzen…", "pt": "A aplicar…",
-      "fr": "En cours…", "de": "Wird angewendet…", "it": "In esecuzione…", "zh": "正在应用…"
+      "en": "Running…",
+      "es": "Aplicando…",
+      "gl": "Aplicando…",
+      "ca": "Aplicant…",
+      "eu": "Aplikatzen…",
+      "pt": "A aplicar…",
+      "fr": "En cours…",
+      "de": "Wird angewendet…",
+      "it": "In esecuzione…",
+      "zh": "正在应用…"
     },
     "Modules.Run.SuccessTooltip": {
-      "en": "Applied successfully.", "es": "Aplicado correctamente.", "gl": "Aplicado correctamente.",
-      "ca": "Aplicat correctament.", "eu": "Behar bezala aplikatuta.", "pt": "Aplicado com sucesso.",
-      "fr": "Appliqué avec succès.", "de": "Erfolgreich angewendet.", "it": "Applicato con successo.", "zh": "已成功应用。"
+      "en": "Applied successfully.",
+      "es": "Aplicado correctamente.",
+      "gl": "Aplicado correctamente.",
+      "ca": "Aplicat correctament.",
+      "eu": "Behar bezala aplikatuta.",
+      "pt": "Aplicado com sucesso.",
+      "fr": "Appliqué avec succès.",
+      "de": "Erfolgreich angewendet.",
+      "it": "Applicato con successo.",
+      "zh": "已成功应用。"
     },
     "Modules.Run.ErrorTooltip": {
-      "en": "Error during execution.", "es": "Error durante la ejecución.", "gl": "Erro durante a execución.",
-      "ca": "Error durant l'execució.", "eu": "Errorea exekuzioan.", "pt": "Erro durante a execução.",
-      "fr": "Erreur pendant l'exécution.", "de": "Fehler bei der Ausführung.", "it": "Errore durante l'esecuzione.", "zh": "执行过程中出错。"
+      "en": "Error during execution.",
+      "es": "Error durante la ejecución.",
+      "gl": "Erro durante a execución.",
+      "ca": "Error durant l'execució.",
+      "eu": "Errorea exekuzioan.",
+      "pt": "Erro durante a execução.",
+      "fr": "Erreur pendant l'exécution.",
+      "de": "Fehler bei der Ausführung.",
+      "it": "Errore durante l'esecuzione.",
+      "zh": "执行过程中出错。"
     },
-
     "Navigation.Restore": {
-      "en": "Restore changes", "es": "Revertir cambios", "gl": "Reverter cambios",
-      "ca": "Revertir canvis", "eu": "Aldaketak desegin", "pt": "Reverter alterações",
-      "fr": "Annuler les changements", "de": "Änderungen rückgängig", "it": "Annulla modifiche",
+      "en": "Restore changes",
+      "es": "Revertir cambios",
+      "gl": "Reverter cambios",
+      "ca": "Revertir canvis",
+      "eu": "Aldaketak desegin",
+      "pt": "Reverter alterações",
+      "fr": "Annuler les changements",
+      "de": "Änderungen rückgängig",
+      "it": "Annulla modifiche",
       "zh": "撤销更改"
     },
     "Restore.Title": {
-      "en": "Restore changes", "es": "Revertir cambios", "gl": "Reverter cambios",
-      "ca": "Revertir canvis", "eu": "Aldaketak desegin", "pt": "Reverter alterações",
-      "fr": "Annuler les changements", "de": "Änderungen rückgängig", "it": "Annulla modifiche",
+      "en": "Restore changes",
+      "es": "Revertir cambios",
+      "gl": "Reverter cambios",
+      "ca": "Revertir canvis",
+      "eu": "Aldaketak desegin",
+      "pt": "Reverter alterações",
+      "fr": "Annuler les changements",
+      "de": "Änderungen rückgängig",
+      "it": "Annulla modifiche",
       "zh": "撤销更改"
     },
     "Restore.Subtitle": {
@@ -4377,11 +4441,16 @@
       "zh": "DexSuite 原生应用的每个更改都记录在此。\n可单独或一次性全部撤销。"
     },
     "Restore.Empty.Title": {
-      "en": "No tracked changes yet", "es": "Aún no hay cambios registrados",
-      "gl": "Aínda non hai cambios rexistrados", "ca": "Encara no hi ha canvis registrats",
-      "eu": "Oraindik ez dago aldaketarik erregistratuta", "pt": "Ainda não há alterações registadas",
-      "fr": "Aucun changement enregistré pour l'instant", "de": "Noch keine erfassten Änderungen",
-      "it": "Nessuna modifica registrata", "zh": "暂无已记录的更改"
+      "en": "No tracked changes yet",
+      "es": "Aún no hay cambios registrados",
+      "gl": "Aínda non hai cambios rexistrados",
+      "ca": "Encara no hi ha canvis registrats",
+      "eu": "Oraindik ez dago aldaketarik erregistratuta",
+      "pt": "Ainda não há alterações registadas",
+      "fr": "Aucun changement enregistré pour l'instant",
+      "de": "Noch keine erfassten Änderungen",
+      "it": "Nessuna modifica registrata",
+      "zh": "暂无已记录的更改"
     },
     "Restore.Empty.Message": {
       "en": "Native C# modules will track their changes here for one-click revert.\nUntil they are available, use Settings → Create restore point as a safety net.",
@@ -4396,52 +4465,112 @@
       "zh": "C# 原生模块将在此记录其更改，以便一键撤销。\n在此之前，使用设置 → 创建还原点作为安全网。"
     },
     "Restore.PendingCount": {
-      "en": "{0} pending change(s)", "es": "{0} cambio(s) pendiente(s)",
-      "gl": "{0} cambio(s) pendente(s)", "ca": "{0} canvi(s) pendent(s)",
-      "eu": "{0} aldaketa zain", "pt": "{0} alteração(ões) pendente(s)",
-      "fr": "{0} changement(s) en attente", "de": "{0} ausstehende Änderung(en)",
-      "it": "{0} modifica/e in sospeso", "zh": "{0} 个待处理更改"
+      "en": "{0} pending change(s)",
+      "es": "{0} cambio(s) pendiente(s)",
+      "gl": "{0} cambio(s) pendente(s)",
+      "ca": "{0} canvi(s) pendent(s)",
+      "eu": "{0} aldaketa zain",
+      "pt": "{0} alteração(ões) pendente(s)",
+      "fr": "{0} changement(s) en attente",
+      "de": "{0} ausstehende Änderung(en)",
+      "it": "{0} modifica/e in sospeso",
+      "zh": "{0} 个待处理更改"
     },
     "Restore.RevertAll": {
-      "en": "Revert all", "es": "Revertir todo", "gl": "Reverter todo",
-      "ca": "Revertir-ho tot", "eu": "Guztia desegin", "pt": "Reverter tudo",
-      "fr": "Tout annuler", "de": "Alles rückgängig", "it": "Annulla tutto", "zh": "全部撤销"
+      "en": "Revert all",
+      "es": "Revertir todo",
+      "gl": "Reverter todo",
+      "ca": "Revertir-ho tot",
+      "eu": "Guztia desegin",
+      "pt": "Reverter tudo",
+      "fr": "Tout annuler",
+      "de": "Alles rückgängig",
+      "it": "Annulla tutto",
+      "zh": "全部撤销"
     },
     "Restore.RevertOne": {
-      "en": "Revert", "es": "Revertir", "gl": "Reverter", "ca": "Revertir",
-      "eu": "Desegin", "pt": "Reverter", "fr": "Annuler", "de": "Rückgängig",
-      "it": "Annulla", "zh": "撤销"
+      "en": "Revert",
+      "es": "Revertir",
+      "gl": "Reverter",
+      "ca": "Revertir",
+      "eu": "Desegin",
+      "pt": "Reverter",
+      "fr": "Annuler",
+      "de": "Rückgängig",
+      "it": "Annulla",
+      "zh": "撤销"
     },
     "Restore.Refresh": {
-      "en": "Refresh", "es": "Actualizar", "gl": "Actualizar", "ca": "Actualitzar",
-      "eu": "Eguneratu", "pt": "Atualizar", "fr": "Actualiser", "de": "Aktualisieren",
-      "it": "Aggiorna", "zh": "刷新"
+      "en": "Refresh",
+      "es": "Actualizar",
+      "gl": "Actualizar",
+      "ca": "Actualitzar",
+      "eu": "Eguneratu",
+      "pt": "Atualizar",
+      "fr": "Actualiser",
+      "de": "Aktualisieren",
+      "it": "Aggiorna",
+      "zh": "刷新"
     },
     "Restore.Column.Module": {
-      "en": "Module", "es": "Módulo", "gl": "Módulo", "ca": "Mòdul",
-      "eu": "Modulua", "pt": "Módulo", "fr": "Module", "de": "Modul",
-      "it": "Modulo", "zh": "模块"
+      "en": "Module",
+      "es": "Módulo",
+      "gl": "Módulo",
+      "ca": "Mòdul",
+      "eu": "Modulua",
+      "pt": "Módulo",
+      "fr": "Module",
+      "de": "Modul",
+      "it": "Modulo",
+      "zh": "模块"
     },
     "Restore.Column.Type": {
-      "en": "Type", "es": "Tipo", "gl": "Tipo", "ca": "Tipus",
-      "eu": "Mota", "pt": "Tipo", "fr": "Type", "de": "Typ",
-      "it": "Tipo", "zh": "类型"
+      "en": "Type",
+      "es": "Tipo",
+      "gl": "Tipo",
+      "ca": "Tipus",
+      "eu": "Mota",
+      "pt": "Tipo",
+      "fr": "Type",
+      "de": "Typ",
+      "it": "Tipo",
+      "zh": "类型"
     },
     "Restore.Column.Target": {
-      "en": "Target", "es": "Destino", "gl": "Destino", "ca": "Destí",
-      "eu": "Helburua", "pt": "Destino", "fr": "Cible", "de": "Ziel",
-      "it": "Destinazione", "zh": "目标"
+      "en": "Target",
+      "es": "Destino",
+      "gl": "Destino",
+      "ca": "Destí",
+      "eu": "Helburua",
+      "pt": "Destino",
+      "fr": "Cible",
+      "de": "Ziel",
+      "it": "Destinazione",
+      "zh": "目标"
     },
     "Restore.Column.AppliedAt": {
-      "en": "Applied", "es": "Aplicado", "gl": "Aplicado", "ca": "Aplicat",
-      "eu": "Aplikatuta", "pt": "Aplicado", "fr": "Appliqué", "de": "Angewendet",
-      "it": "Applicato", "zh": "已应用"
+      "en": "Applied",
+      "es": "Aplicado",
+      "gl": "Aplicado",
+      "ca": "Aplicat",
+      "eu": "Aplikatuta",
+      "pt": "Aplicado",
+      "fr": "Appliqué",
+      "de": "Angewendet",
+      "it": "Applicato",
+      "zh": "已应用"
     },
     "Restore.Revert.ConfirmTitle": {
-      "en": "Revert change?", "es": "¿Revertir cambio?", "gl": "Reverter cambio?",
-      "ca": "Revertir canvi?", "eu": "Aldaketa desegin?", "pt": "Reverter alteração?",
-      "fr": "Annuler le changement ?", "de": "Änderung rückgängig machen?",
-      "it": "Annullare la modifica?", "zh": "撤销更改？"
+      "en": "Revert change?",
+      "es": "¿Revertir cambio?",
+      "gl": "Reverter cambio?",
+      "ca": "Revertir canvi?",
+      "eu": "Aldaketa desegin?",
+      "pt": "Reverter alteração?",
+      "fr": "Annuler le changement ?",
+      "de": "Änderung rückgängig machen?",
+      "it": "Annullare la modifica?",
+      "zh": "撤销更改？"
     },
     "Restore.Revert.ConfirmOne": {
       "en": "This will revert the change applied by '{0}'.\nThe original value will be restored.",
@@ -4468,25 +4597,40 @@
       "zh": "将撤销 {0} 个待处理更改。\n此操作在 DexSuite 中无法撤销。"
     },
     "Status.RevertDone": {
-      "en": "Revert completed: {0}/{1}.", "es": "Reversión completada: {0}/{1}.",
-      "gl": "Reversión completada: {0}/{1}.", "ca": "Reversió completada: {0}/{1}.",
-      "eu": "Itzulera osatuta: {0}/{1}.", "pt": "Reversão concluída: {0}/{1}.",
-      "fr": "Annulation terminée : {0}/{1}.", "de": "Wiederherstellung abgeschlossen: {0}/{1}.",
-      "it": "Ripristino completato: {0}/{1}.", "zh": "撤销完成：{0}/{1}。"
+      "en": "Revert completed: {0}/{1}.",
+      "es": "Reversión completada: {0}/{1}.",
+      "gl": "Reversión completada: {0}/{1}.",
+      "ca": "Reversió completada: {0}/{1}.",
+      "eu": "Itzulera osatuta: {0}/{1}.",
+      "pt": "Reversão concluída: {0}/{1}.",
+      "fr": "Annulation terminée : {0}/{1}.",
+      "de": "Wiederherstellung abgeschlossen: {0}/{1}.",
+      "it": "Ripristino completato: {0}/{1}.",
+      "zh": "撤销完成：{0}/{1}。"
     },
     "Log.Event.RevertOk": {
-      "en": "Change reverted — {0} [{1}]", "es": "Cambio revertido — {0} [{1}]",
-      "gl": "Cambio revertido — {0} [{1}]", "ca": "Canvi revertit — {0} [{1}]",
-      "eu": "Aldaketa desegin da — {0} [{1}]", "pt": "Alteração revertida — {0} [{1}]",
-      "fr": "Changement annulé — {0} [{1}]", "de": "Änderung rückgängig — {0} [{1}]",
-      "it": "Modifica annullata — {0} [{1}]", "zh": "已撤销更改 — {0} [{1}]"
+      "en": "Change reverted — {0} [{1}]",
+      "es": "Cambio revertido — {0} [{1}]",
+      "gl": "Cambio revertido — {0} [{1}]",
+      "ca": "Canvi revertit — {0} [{1}]",
+      "eu": "Aldaketa desegin da — {0} [{1}]",
+      "pt": "Alteração revertida — {0} [{1}]",
+      "fr": "Changement annulé — {0} [{1}]",
+      "de": "Änderung rückgängig — {0} [{1}]",
+      "it": "Modifica annullata — {0} [{1}]",
+      "zh": "已撤销更改 — {0} [{1}]"
     },
     "Log.Event.RevertFailed": {
-      "en": "Revert failed — {0} [{1}]", "es": "Error al revertir — {0} [{1}]",
-      "gl": "Erro ao reverter — {0} [{1}]", "ca": "Error en revertir — {0} [{1}]",
-      "eu": "Errorea desegitean — {0} [{1}]", "pt": "Erro ao reverter — {0} [{1}]",
-      "fr": "Échec de l'annulation — {0} [{1}]", "de": "Wiederherstellung fehlgeschlagen — {0} [{1}]",
-      "it": "Errore nell'annullamento — {0} [{1}]", "zh": "撤销失败 — {0} [{1}]"
+      "en": "Revert failed — {0} [{1}]",
+      "es": "Error al revertir — {0} [{1}]",
+      "gl": "Erro ao reverter — {0} [{1}]",
+      "ca": "Error en revertir — {0} [{1}]",
+      "eu": "Errorea desegitean — {0} [{1}]",
+      "pt": "Erro ao reverter — {0} [{1}]",
+      "fr": "Échec de l'annulation — {0} [{1}]",
+      "de": "Wiederherstellung fehlgeschlagen — {0} [{1}]",
+      "it": "Errore nell'annullamento — {0} [{1}]",
+      "zh": "撤销失败 — {0} [{1}]"
     },
     "Log.Event.RevertAllDone": {
       "en": "Bulk revert finished — {0} reverted, {1} failed out of {2}.",
@@ -4501,11 +4645,16 @@
       "zh": "批量撤销完成 — 已撤销 {0}，失败 {1}，共 {2}。"
     },
     "Security.CardTitle": {
-      "en": "Security & integrity check", "es": "Comprobación de seguridad e integridad",
-      "gl": "Comprobación de seguridade e integridade", "ca": "Comprovació de seguretat i integritat",
-      "eu": "Segurtasuna eta osotasunaren egiaztapena", "pt": "Verificação de segurança e integridade",
-      "fr": "Vérification sécurité et intégrité", "de": "Sicherheits- und Integritätsprüfung",
-      "it": "Verifica sicurezza e integrità", "zh": "安全和完整性检查"
+      "en": "Security & integrity check",
+      "es": "Comprobación de seguridad e integridad",
+      "gl": "Comprobación de seguridade e integridade",
+      "ca": "Comprovació de seguretat i integritat",
+      "eu": "Segurtasuna eta osotasunaren egiaztapena",
+      "pt": "Verificação de segurança e integridade",
+      "fr": "Vérification sécurité et intégrité",
+      "de": "Sicherheits- und Integritätsprüfung",
+      "it": "Verifica sicurezza e integrità",
+      "zh": "安全和完整性检查"
     },
     "Security.CardDesc": {
       "en": "Run Windows Defender, SFC, DISM or MRT.\nNative tools, no extra downloads.",
@@ -4520,17 +4669,28 @@
       "zh": "运行 Windows Defender、SFC、DISM 或 MRT。\n原生工具，无需额外下载。"
     },
     "Security.RunButton": {
-      "en": "Run check", "es": "Ejecutar comprobación", "gl": "Executar comprobación",
-      "ca": "Executar comprovació", "eu": "Egiaztapena exekutatu", "pt": "Executar verificação",
-      "fr": "Lancer la vérification", "de": "Prüfung starten", "it": "Esegui verifica",
+      "en": "Run check",
+      "es": "Ejecutar comprobación",
+      "gl": "Executar comprobación",
+      "ca": "Executar comprovació",
+      "eu": "Egiaztapena exekutatu",
+      "pt": "Executar verificação",
+      "fr": "Lancer la vérification",
+      "de": "Prüfung starten",
+      "it": "Esegui verifica",
       "zh": "运行检查"
     },
     "Security.NotAvailable.Title": {
-      "en": "Tool not available", "es": "Herramienta no disponible",
-      "gl": "Ferramenta non dispoñible", "ca": "Eina no disponible",
-      "eu": "Tresna ez dago erabilgarri", "pt": "Ferramenta não disponível",
-      "fr": "Outil non disponible", "de": "Tool nicht verfügbar",
-      "it": "Strumento non disponibile", "zh": "工具不可用"
+      "en": "Tool not available",
+      "es": "Herramienta no disponible",
+      "gl": "Ferramenta non dispoñible",
+      "ca": "Eina no disponible",
+      "eu": "Tresna ez dago erabilgarri",
+      "pt": "Ferramenta não disponível",
+      "fr": "Outil non disponible",
+      "de": "Tool nicht verfügbar",
+      "it": "Strumento non disponibile",
+      "zh": "工具不可用"
     },
     "Security.NotAvailable.Message": {
       "en": "{0} is not installed on this system.",
@@ -4545,11 +4705,16 @@
       "zh": "此系统上未安装 {0}。"
     },
     "Security.Confirm.Title": {
-      "en": "Run check?", "es": "¿Ejecutar comprobación?",
-      "gl": "Executar comprobación?", "ca": "Executar comprovació?",
-      "eu": "Egiaztapena exekutatu?", "pt": "Executar verificação?",
-      "fr": "Lancer la vérification ?", "de": "Prüfung starten?",
-      "it": "Eseguire la verifica?", "zh": "执行检查？"
+      "en": "Run check?",
+      "es": "¿Ejecutar comprobación?",
+      "gl": "Executar comprobación?",
+      "ca": "Executar comprovació?",
+      "eu": "Egiaztapena exekutatu?",
+      "pt": "Executar verificação?",
+      "fr": "Lancer la vérification ?",
+      "de": "Prüfung starten?",
+      "it": "Eseguire la verifica?",
+      "zh": "执行检查？"
     },
     "Security.Confirm.DefenderQuick": {
       "en": "Run a Windows Defender quick scan?\nIt usually takes 5–10 minutes.",
@@ -4600,58 +4765,100 @@
       "zh": "运行恶意软件删除工具 (MRT /Q)？\n在后台静默运行。"
     },
     "Security.Kind.DefenderQuick": {
-      "en": "Defender · Quick scan", "es": "Defender · Análisis rápido",
-      "gl": "Defender · Análise rápida", "ca": "Defender · Anàlisi ràpida",
-      "eu": "Defender · Azterketa azkarra", "pt": "Defender · Análise rápida",
-      "fr": "Defender · Analyse rapide", "de": "Defender · Schnellprüfung",
-      "it": "Defender · Scansione rapida", "zh": "Defender · 快速扫描"
+      "en": "Defender · Quick scan",
+      "es": "Defender · Análisis rápido",
+      "gl": "Defender · Análise rápida",
+      "ca": "Defender · Anàlisi ràpida",
+      "eu": "Defender · Azterketa azkarra",
+      "pt": "Defender · Análise rápida",
+      "fr": "Defender · Analyse rapide",
+      "de": "Defender · Schnellprüfung",
+      "it": "Defender · Scansione rapida",
+      "zh": "Defender · 快速扫描"
     },
     "Security.Kind.Sfc": {
-      "en": "SFC · System File Check", "es": "SFC · Comprobador de archivos",
-      "gl": "SFC · Comprobador de ficheiros", "ca": "SFC · Comprovador d'arxius",
-      "eu": "SFC · Sistema-fitxategien egiaztapena", "pt": "SFC · Verificador de ficheiros",
-      "fr": "SFC · Vérification fichiers système", "de": "SFC · Systemdateiprüfung",
-      "it": "SFC · Verifica file di sistema", "zh": "SFC · 系统文件检查"
+      "en": "SFC · System File Check",
+      "es": "SFC · Comprobador de archivos",
+      "gl": "SFC · Comprobador de ficheiros",
+      "ca": "SFC · Comprovador d'arxius",
+      "eu": "SFC · Sistema-fitxategien egiaztapena",
+      "pt": "SFC · Verificador de ficheiros",
+      "fr": "SFC · Vérification fichiers système",
+      "de": "SFC · Systemdateiprüfung",
+      "it": "SFC · Verifica file di sistema",
+      "zh": "SFC · 系统文件检查"
     },
     "Security.Kind.Dism": {
-      "en": "DISM · Restore image", "es": "DISM · Restaurar imagen",
-      "gl": "DISM · Restaurar imaxe", "ca": "DISM · Restaurar imatge",
-      "eu": "DISM · Irudia berrezarri", "pt": "DISM · Restaurar imagem",
-      "fr": "DISM · Restaurer l'image", "de": "DISM · Image wiederherstellen",
-      "it": "DISM · Ripristina immagine", "zh": "DISM · 修复映像"
+      "en": "DISM · Restore image",
+      "es": "DISM · Restaurar imagen",
+      "gl": "DISM · Restaurar imaxe",
+      "ca": "DISM · Restaurar imatge",
+      "eu": "DISM · Irudia berrezarri",
+      "pt": "DISM · Restaurar imagem",
+      "fr": "DISM · Restaurer l'image",
+      "de": "DISM · Image wiederherstellen",
+      "it": "DISM · Ripristina immagine",
+      "zh": "DISM · 修复映像"
     },
     "Security.Kind.Mrt": {
-      "en": "MRT · Malware removal", "es": "MRT · Eliminación de malware",
-      "gl": "MRT · Eliminación de malware", "ca": "MRT · Eliminació de programari maliciós",
-      "eu": "MRT · Malwarea kentzea", "pt": "MRT · Remoção de malware",
-      "fr": "MRT · Suppression de malware", "de": "MRT · Malware-Entfernung",
-      "it": "MRT · Rimozione malware", "zh": "MRT · 恶意软件删除"
+      "en": "MRT · Malware removal",
+      "es": "MRT · Eliminación de malware",
+      "gl": "MRT · Eliminación de malware",
+      "ca": "MRT · Eliminació de programari maliciós",
+      "eu": "MRT · Malwarea kentzea",
+      "pt": "MRT · Remoção de malware",
+      "fr": "MRT · Suppression de malware",
+      "de": "MRT · Malware-Entfernung",
+      "it": "MRT · Rimozione malware",
+      "zh": "MRT · 恶意软件删除"
     },
     "Status.SecurityRunning": {
-      "en": "Running {0}…", "es": "Ejecutando {0}…", "gl": "Executando {0}…",
-      "ca": "Executant {0}…", "eu": "{0} exekutatzen…", "pt": "A executar {0}…",
-      "fr": "Exécution de {0}…", "de": "{0} läuft…", "it": "Esecuzione di {0}…",
+      "en": "Running {0}…",
+      "es": "Ejecutando {0}…",
+      "gl": "Executando {0}…",
+      "ca": "Executant {0}…",
+      "eu": "{0} exekutatzen…",
+      "pt": "A executar {0}…",
+      "fr": "Exécution de {0}…",
+      "de": "{0} läuft…",
+      "it": "Esecuzione di {0}…",
       "zh": "正在运行 {0}…"
     },
     "Status.SecurityDone": {
-      "en": "{0} completed.", "es": "{0} completado.", "gl": "{0} completado.",
-      "ca": "{0} completat.", "eu": "{0} amaitu da.", "pt": "{0} concluído.",
-      "fr": "{0} terminé.", "de": "{0} abgeschlossen.", "it": "{0} completato.",
+      "en": "{0} completed.",
+      "es": "{0} completado.",
+      "gl": "{0} completado.",
+      "ca": "{0} completat.",
+      "eu": "{0} amaitu da.",
+      "pt": "{0} concluído.",
+      "fr": "{0} terminé.",
+      "de": "{0} abgeschlossen.",
+      "it": "{0} completato.",
       "zh": "{0} 已完成。"
     },
     "Status.SecurityError": {
-      "en": "{0} finished with errors: {1}", "es": "{0} finalizó con errores: {1}",
-      "gl": "{0} rematou con erros: {1}", "ca": "{0} ha finalitzat amb errors: {1}",
-      "eu": "{0} errorez amaitu da: {1}", "pt": "{0} terminou com erros: {1}",
-      "fr": "{0} terminé avec des erreurs : {1}", "de": "{0} mit Fehlern beendet: {1}",
-      "it": "{0} terminato con errori: {1}", "zh": "{0} 出错完成：{1}"
+      "en": "{0} finished with errors: {1}",
+      "es": "{0} finalizó con errores: {1}",
+      "gl": "{0} rematou con erros: {1}",
+      "ca": "{0} ha finalitzat amb errors: {1}",
+      "eu": "{0} errorez amaitu da: {1}",
+      "pt": "{0} terminou com erros: {1}",
+      "fr": "{0} terminé avec des erreurs : {1}",
+      "de": "{0} mit Fehlern beendet: {1}",
+      "it": "{0} terminato con errori: {1}",
+      "zh": "{0} 出错完成：{1}"
     },
     "Log.Event.SecurityStarted": {
-      "en": "Security check started: {0}", "es": "Comprobación de seguridad iniciada: {0}",
-      "gl": "Comprobación de seguridade iniciada: {0}", "ca": "Comprovació de seguretat iniciada: {0}",
-      "eu": "Segurtasun-egiaztapena hasi da: {0}", "pt": "Verificação de segurança iniciada: {0}",
-      "fr": "Vérification de sécurité lancée : {0}", "de": "Sicherheitsprüfung gestartet: {0}",
-      "it": "Verifica di sicurezza avviata: {0}", "zh": "安全检查已启动：{0}"
+      "en": "Security check started: {0}",
+      "es": "Comprobación de seguridad iniciada: {0}",
+      "gl": "Comprobación de seguridade iniciada: {0}",
+      "ca": "Comprovació de seguretat iniciada: {0}",
+      "eu": "Segurtasun-egiaztapena hasi da: {0}",
+      "pt": "Verificação de segurança iniciada: {0}",
+      "fr": "Vérification de sécurité lancée : {0}",
+      "de": "Sicherheitsprüfung gestartet: {0}",
+      "it": "Verifica di sicurezza avviata: {0}",
+      "zh": "安全检查已启动：{0}"
     },
     "Log.Event.SecurityFinished": {
       "en": "Security check completed: {0} (exit {1})",
@@ -4690,9 +4897,15 @@
       "zh": "安全检查失败：{0}：{1}"
     },
     "BugReport.Button": {
-      "en": "Report a bug", "es": "Reportar un fallo", "gl": "Reportar un fallo",
-      "ca": "Reportar un error", "eu": "Akatsa jakinarazi", "pt": "Reportar um erro",
-      "fr": "Signaler un bug", "de": "Fehler melden", "it": "Segnala un bug",
+      "en": "Report a bug",
+      "es": "Reportar un fallo",
+      "gl": "Reportar un fallo",
+      "ca": "Reportar un error",
+      "eu": "Akatsa jakinarazi",
+      "pt": "Reportar um erro",
+      "fr": "Signaler un bug",
+      "de": "Fehler melden",
+      "it": "Segnala un bug",
       "zh": "报告问题"
     },
     "BugReport.Subtitle": {
@@ -4732,11 +4945,16 @@
       "zh": "自动收集的诊断信息（便于重现）："
     },
     "BugReport.Error.Title": {
-      "en": "Could not open email client", "es": "No se pudo abrir el cliente de correo",
-      "gl": "Non se puido abrir o cliente de correo", "ca": "No s'ha pogut obrir el client de correu",
-      "eu": "Ezin izan da posta-bezeroa ireki", "pt": "Não foi possível abrir o cliente de email",
-      "fr": "Impossible d'ouvrir le client de messagerie", "de": "E-Mail-Client konnte nicht geöffnet werden",
-      "it": "Impossibile aprire il client di posta", "zh": "无法打开邮件客户端"
+      "en": "Could not open email client",
+      "es": "No se pudo abrir el cliente de correo",
+      "gl": "Non se puido abrir o cliente de correo",
+      "ca": "No s'ha pogut obrir el client de correu",
+      "eu": "Ezin izan da posta-bezeroa ireki",
+      "pt": "Não foi possível abrir o cliente de email",
+      "fr": "Impossible d'ouvrir le client de messagerie",
+      "de": "E-Mail-Client konnte nicht geöffnet werden",
+      "it": "Impossibile aprire il client di posta",
+      "zh": "无法打开邮件客户端"
     },
     "BugReport.Error.Message": {
       "en": "Send your report manually to suitedex@gmail.com.\nError: {0}",
@@ -4775,9 +4993,16 @@
       "zh": "删除 %TEMP%、C:\\Windows\\Temp 和 C:\\Windows\\Prefetch 中的临时文件。\n同时清空回收站。\n不会触碰任何个人文件。"
     },
     "Home.Card.QuickClean.Title": {
-      "en": "Quick clean", "es": "Limpieza rápida", "gl": "Limpeza rápida", "ca": "Neteja ràpida",
-      "eu": "Garbiketa azkarra", "pt": "Limpeza rápida", "fr": "Nettoyage rapide",
-      "de": "Schnellbereinigung", "it": "Pulizia rapida", "zh": "快速清理"
+      "en": "Quick clean",
+      "es": "Limpieza rápida",
+      "gl": "Limpeza rápida",
+      "ca": "Neteja ràpida",
+      "eu": "Garbiketa azkarra",
+      "pt": "Limpeza rápida",
+      "fr": "Nettoyage rapide",
+      "de": "Schnellbereinigung",
+      "it": "Pulizia rapida",
+      "zh": "快速清理"
     },
     "Home.Card.QuickClean.Desc": {
       "en": "Empty temp folders and Recycle Bin.\nFree up space in seconds.",
@@ -4792,15 +5017,28 @@
       "zh": "清空临时文件夹和回收站。\n数秒内释放空间。"
     },
     "Home.Card.QuickClean.Button": {
-      "en": "Clean now", "es": "Limpiar ahora", "gl": "Limpar agora", "ca": "Netejar ara",
-      "eu": "Garbitu orain", "pt": "Limpar agora", "fr": "Nettoyer maintenant",
-      "de": "Jetzt bereinigen", "it": "Pulisci ora", "zh": "立即清理"
+      "en": "Clean now",
+      "es": "Limpiar ahora",
+      "gl": "Limpar agora",
+      "ca": "Netejar ara",
+      "eu": "Garbitu orain",
+      "pt": "Limpar agora",
+      "fr": "Nettoyer maintenant",
+      "de": "Jetzt bereinigen",
+      "it": "Pulisci ora",
+      "zh": "立即清理"
     },
     "Home.Card.WingetUpgrade.Title": {
-      "en": "Update apps", "es": "Actualizar aplicaciones", "gl": "Actualizar aplicacións",
-      "ca": "Actualitzar aplicacions", "eu": "Eguneratu aplikazioak", "pt": "Atualizar aplicações",
-      "fr": "Mettre à jour les apps", "de": "Apps aktualisieren",
-      "it": "Aggiorna le app", "zh": "更新应用"
+      "en": "Update apps",
+      "es": "Actualizar aplicaciones",
+      "gl": "Actualizar aplicacións",
+      "ca": "Actualitzar aplicacions",
+      "eu": "Eguneratu aplikazioak",
+      "pt": "Atualizar aplicações",
+      "fr": "Mettre à jour les apps",
+      "de": "Apps aktualisieren",
+      "it": "Aggiorna le app",
+      "zh": "更新应用"
     },
     "Home.Card.WingetUpgrade.Desc": {
       "en": "Update all installed apps at once.\nUses Windows Package Manager (winget).",
@@ -4815,16 +5053,28 @@
       "zh": "一次性更新所有已安装的应用。\n使用 Windows 包管理器 (winget)。"
     },
     "Home.Card.WingetUpgrade.Button": {
-      "en": "Update apps", "es": "Actualizar apps", "gl": "Actualizar apps", "ca": "Actualitzar apps",
-      "eu": "Eguneratu apps", "pt": "Atualizar apps", "fr": "Mettre à jour",
-      "de": "Apps aktualisieren", "it": "Aggiorna app", "zh": "更新应用"
+      "en": "Update apps",
+      "es": "Actualizar apps",
+      "gl": "Actualizar apps",
+      "ca": "Actualitzar apps",
+      "eu": "Eguneratu apps",
+      "pt": "Atualizar apps",
+      "fr": "Mettre à jour",
+      "de": "Apps aktualisieren",
+      "it": "Aggiorna app",
+      "zh": "更新应用"
     },
     "Winget.ConfirmTitle": {
-      "en": "Update all apps?", "es": "¿Actualizar todas las aplicaciones?",
-      "gl": "Actualizar todas as aplicacións?", "ca": "Actualitzar totes les aplicacions?",
-      "eu": "Aplikazio guztiak eguneratu?", "pt": "Atualizar todas as aplicações?",
-      "fr": "Mettre à jour toutes les apps ?", "de": "Alle Apps aktualisieren?",
-      "it": "Aggiornare tutte le app?", "zh": "更新所有应用？"
+      "en": "Update all apps?",
+      "es": "¿Actualizar todas las aplicaciones?",
+      "gl": "Actualizar todas as aplicacións?",
+      "ca": "Actualitzar totes les aplicacions?",
+      "eu": "Aplikazio guztiak eguneratu?",
+      "pt": "Atualizar todas as aplicações?",
+      "fr": "Mettre à jour toutes les apps ?",
+      "de": "Alle Apps aktualisieren?",
+      "it": "Aggiornare tutte le app?",
+      "zh": "更新所有应用？"
     },
     "Winget.ConfirmMessage": {
       "en": "This will run winget upgrade --all.\nIt may take several minutes depending on the number of pending updates.\nThe progress will be shown in the log.",
@@ -4851,24 +5101,40 @@
       "zh": "此系统上没有 Windows 包管理器 (winget)。"
     },
     "Status.WingetRunning": {
-      "en": "Updating apps…", "es": "Actualizando aplicaciones…", "gl": "Actualizando aplicacións…",
-      "ca": "Actualitzant aplicacions…", "eu": "Aplikazioak eguneratzen…", "pt": "A atualizar aplicações…",
-      "fr": "Mise à jour des apps…", "de": "Apps werden aktualisiert…",
-      "it": "Aggiornamento app in corso…", "zh": "正在更新应用…"
+      "en": "Updating apps…",
+      "es": "Actualizando aplicaciones…",
+      "gl": "Actualizando aplicacións…",
+      "ca": "Actualitzant aplicacions…",
+      "eu": "Aplikazioak eguneratzen…",
+      "pt": "A atualizar aplicações…",
+      "fr": "Mise à jour des apps…",
+      "de": "Apps werden aktualisiert…",
+      "it": "Aggiornamento app in corso…",
+      "zh": "正在更新应用…"
     },
     "Status.WingetDone": {
-      "en": "Apps updated — {0} packages.", "es": "Aplicaciones actualizadas — {0} paquetes.",
-      "gl": "Aplicacións actualizadas — {0} paquetes.", "ca": "Aplicacions actualitzades — {0} paquets.",
-      "eu": "Aplikazioak eguneratuta — {0} pakete.", "pt": "Aplicações atualizadas — {0} pacotes.",
-      "fr": "Apps mises à jour — {0} paquets.", "de": "Apps aktualisiert — {0} Pakete.",
-      "it": "App aggiornate — {0} pacchetti.", "zh": "应用已更新 — {0} 个软件包。"
+      "en": "Apps updated — {0} packages.",
+      "es": "Aplicaciones actualizadas — {0} paquetes.",
+      "gl": "Aplicacións actualizadas — {0} paquetes.",
+      "ca": "Aplicacions actualitzades — {0} paquets.",
+      "eu": "Aplikazioak eguneratuta — {0} pakete.",
+      "pt": "Aplicações atualizadas — {0} pacotes.",
+      "fr": "Apps mises à jour — {0} paquets.",
+      "de": "Apps aktualisiert — {0} Pakete.",
+      "it": "App aggiornate — {0} pacchetti.",
+      "zh": "应用已更新 — {0} 个软件包。"
     },
     "Status.WingetError": {
-      "en": "App update failed: {0}", "es": "Error al actualizar aplicaciones: {0}",
-      "gl": "Erro ao actualizar aplicacións: {0}", "ca": "Error en actualitzar aplicacions: {0}",
-      "eu": "Errorea aplikazioak eguneratzean: {0}", "pt": "Erro ao atualizar aplicações: {0}",
-      "fr": "Erreur lors de la mise à jour des apps : {0}", "de": "App-Update fehlgeschlagen: {0}",
-      "it": "Errore aggiornamento app: {0}", "zh": "更新应用失败：{0}"
+      "en": "App update failed: {0}",
+      "es": "Error al actualizar aplicaciones: {0}",
+      "gl": "Erro ao actualizar aplicacións: {0}",
+      "ca": "Error en actualitzar aplicacions: {0}",
+      "eu": "Errorea aplikazioak eguneratzean: {0}",
+      "pt": "Erro ao atualizar aplicações: {0}",
+      "fr": "Erreur lors de la mise à jour des apps : {0}",
+      "de": "App-Update fehlgeschlagen: {0}",
+      "it": "Errore aggiornamento app: {0}",
+      "zh": "更新应用失败：{0}"
     },
     "Log.Event.WingetStarted": {
       "en": "App update started (winget upgrade --all)",
@@ -4895,17 +5161,28 @@
       "zh": "应用更新完成 — 已更新 {0} 个软件包。"
     },
     "Log.Event.WingetFailed": {
-      "en": "App update failed: {0}", "es": "Error en la actualización de aplicaciones: {0}",
-      "gl": "Erro na actualización de aplicacións: {0}", "ca": "Error en l'actualització d'aplicacions: {0}",
-      "eu": "Errorea aplikazioak eguneratzean: {0}", "pt": "Erro na atualização de aplicações: {0}",
-      "fr": "Échec de la mise à jour des apps : {0}", "de": "App-Update fehlgeschlagen: {0}",
-      "it": "Aggiornamento app fallito: {0}", "zh": "应用更新失败：{0}"
+      "en": "App update failed: {0}",
+      "es": "Error en la actualización de aplicaciones: {0}",
+      "gl": "Erro na actualización de aplicacións: {0}",
+      "ca": "Error en l'actualització d'aplicacions: {0}",
+      "eu": "Errorea aplikazioak eguneratzean: {0}",
+      "pt": "Erro na atualização de aplicações: {0}",
+      "fr": "Échec de la mise à jour des apps : {0}",
+      "de": "App-Update fehlgeschlagen: {0}",
+      "it": "Aggiornamento app fallito: {0}",
+      "zh": "应用更新失败：{0}"
     },
     "QuickClean.ConfirmTitle": {
-      "en": "Run quick clean?", "es": "¿Ejecutar limpieza rápida?", "gl": "Executar limpeza rápida?",
-      "ca": "Executar la neteja ràpida?", "eu": "Garbiketa azkarra exekutatu?", "pt": "Executar limpeza rápida?",
-      "fr": "Lancer le nettoyage rapide ?", "de": "Schnellbereinigung starten?",
-      "it": "Eseguire la pulizia rapida?", "zh": "执行快速清理？"
+      "en": "Run quick clean?",
+      "es": "¿Ejecutar limpieza rápida?",
+      "gl": "Executar limpeza rápida?",
+      "ca": "Executar la neteja ràpida?",
+      "eu": "Garbiketa azkarra exekutatu?",
+      "pt": "Executar limpeza rápida?",
+      "fr": "Lancer le nettoyage rapide ?",
+      "de": "Schnellbereinigung starten?",
+      "it": "Eseguire la pulizia rapida?",
+      "zh": "执行快速清理？"
     },
     "QuickClean.ConfirmMessage": {
       "en": "This will empty the Recycle Bin and clear Windows temp folders.\nNo personal files will be touched.",
@@ -4919,13 +5196,17 @@
       "it": "Verrà svuotato il cestino e puliti i temporanei di Windows.\nNessun file personale verrà toccato.",
       "zh": "将清空回收站并清理 Windows 临时文件夹。\n不会触碰任何个人文件。"
     },
-
     "RestorePoint.ConfirmTitle": {
-      "en": "Create a restore point first?", "es": "¿Crear primero un punto de restauración?",
-      "gl": "Crear primeiro un punto de restauración?", "ca": "Crear primer un punt de restauració?",
-      "eu": "Lehenik berrezarpen-puntua sortu?", "pt": "Criar primeiro um ponto de restauração?",
-      "fr": "Créer d'abord un point de restauration ?", "de": "Zuerst einen Wiederherstellungspunkt erstellen?",
-      "it": "Creare prima un punto di ripristino?", "zh": "是否先创建还原点？"
+      "en": "Create a restore point first?",
+      "es": "¿Crear primero un punto de restauración?",
+      "gl": "Crear primeiro un punto de restauración?",
+      "ca": "Crear primer un punt de restauració?",
+      "eu": "Lehenik berrezarpen-puntua sortu?",
+      "pt": "Criar primeiro um ponto de restauração?",
+      "fr": "Créer d'abord un point de restauration ?",
+      "de": "Zuerst einen Wiederherstellungspunkt erstellen?",
+      "it": "Creare prima un punto di ripristino?",
+      "zh": "是否先创建还原点？"
     },
     "RestorePoint.ConfirmMessage": {
       "en": "Creating a restore point allows you to undo every change from Windows if anything goes wrong.\nIt only takes a few seconds.",
@@ -4940,16 +5221,29 @@
       "zh": "创建还原点可以让你在出问题时从 Windows 撤销所有更改。\n只需几秒钟。"
     },
     "RestorePoint.ConfirmYes": {
-      "en": "Yes, create it", "es": "Sí, crear", "gl": "Si, crear",
-      "ca": "Sí, crear-lo", "eu": "Bai, sortu", "pt": "Sim, criar",
-      "fr": "Oui, créer", "de": "Ja, erstellen", "it": "Sì, crearlo", "zh": "是的，创建"
+      "en": "Yes, create it",
+      "es": "Sí, crear",
+      "gl": "Si, crear",
+      "ca": "Sí, crear-lo",
+      "eu": "Bai, sortu",
+      "pt": "Sim, criar",
+      "fr": "Oui, créer",
+      "de": "Ja, erstellen",
+      "it": "Sì, crearlo",
+      "zh": "是的，创建"
     },
     "RestorePoint.ConfirmNo": {
-      "en": "No, run without it", "es": "No, continuar sin él", "gl": "Non, continuar sen el",
-      "ca": "No, continuar sense", "eu": "Ez, gabe jarraitu", "pt": "Não, continuar sem ele",
-      "fr": "Non, continuer sans", "de": "Nein, ohne fortfahren", "it": "No, continuare senza", "zh": "不，直接执行"
+      "en": "No, run without it",
+      "es": "No, continuar sin él",
+      "gl": "Non, continuar sen el",
+      "ca": "No, continuar sense",
+      "eu": "Ez, gabe jarraitu",
+      "pt": "Não, continuar sem ele",
+      "fr": "Non, continuer sans",
+      "de": "Nein, ohne fortfahren",
+      "it": "No, continuare senza",
+      "zh": "不，直接执行"
     },
-
     "Notification.RunFinished.Title": {
       "en": "DexSuite — Optimization finished",
       "es": "DexSuite — Optimización finalizada",
@@ -4986,7 +5280,6 @@
       "it": "Tentati {0} moduli — alcuni hanno riportato errori. Controlla la scheda Registro.",
       "zh": "尝试了 {0} 个模块 — 部分报告错误。请查看「日志」标签页。"
     },
-
     "Modules.Impact.TooltipDesc": {
       "en": "Performance impact level this action will have on your system.",
       "es": "Nivel de impacto que tendrá esta acción en el rendimiento del equipo.",
@@ -5019,7 +5312,6 @@
       "no": "Påvirkningsnivå denne handlingen vil ha på systemets ytelse.",
       "fi": "Toiminnon vaikutustaso järjestelmän suorituskykyyn."
     },
-
     "Specs.Summary.Title": {
       "en": "System summary",
       "es": "Resumen del sistema",

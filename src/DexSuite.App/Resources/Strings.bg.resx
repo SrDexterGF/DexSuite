@@ -1,0 +1,1588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• 19 модула, организирани по план: безплатен, напреднал и професионален. Всеки прави едно конкретно нещо.</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• Резултат за ефективност от 100 със сравнение преди/след, след като оптимизирате.</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• Всеки модул показва състоянието си в реално време: чакащ, работещ, приложен или неуспешен.</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• Виден напредък по време на изпълнение: кой модул работи, колко остава.</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• Всичко приложено се регистрира. Можете да отмените всяка промяна, когато пожелаете.</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• Разширени и професионални планове, хардуерно потвърдени. Ключът работи само на вашето устройство.</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• Приложението се актуализира само. Можете също да го минимизирате в системната област.</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• 15 цветни теми. 10-те игрални имат своя собствена секция.</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• Налични 30 езика. Превключете от Настройки и се прилага незабавно.</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>Какво е новото във v{0}</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>Дизайн и концепция</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>развитие</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>Модул за игри</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>г-н Декстър</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>Кредити</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Само за Windows · Изисква администраторски права</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite е екстремна система за оптимизация за Windows.</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>Той анализира вашия компютър, прилага силно въздействащи настройки и изтласква производителността до физическия предел.</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>Всяка версия добавя нови собствени C# модули, фокусирани върху максимизиране на FPS и намаляване на латентността.</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>Проектът</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>Изисква администратор</value>
+  </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Бъдете в течение и се свържете с нас</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Следвайте ни</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Оставете отзив</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>Технически стек</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>Отворете папката с регистрационни файлове</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>Помощни програми</value>
+  </data>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Windows до краен предел.</value>
+  </data>
+  <data name="App.Tagline" xml:space="preserve">
+    <value>РАЗМИНЕТЕ ГРАНИЦИТЕ</value>
+  </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>Автоматично събрана диагностична информация (помага ни да възпроизведем):</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>Моля, опишете какво се е случило, какво сте очаквали и стъпките за възпроизвеждане:</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>Докладвайте грешка</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>Изпратете отчета си ръчно на suitedex@gmail.com.
+Грешка: {0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>Не може да се отвори имейл клиент</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>Ако нещо не работи както трябва, пишете ми и ще го разгледам.</value>
+  </data>
+  <data name="Common.Apply" xml:space="preserve">
+    <value>Кандидатствайте</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Отказ</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>затвори</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>Никога</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>добре</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>Отворете</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>Нулиране</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>Бягай</value>
+  </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Приложено</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>Изберете игра и приложете персонализирано ощипване, фокусирано върху максимален FPS и минимално забавяне при въвеждане.</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>Профили за оптимизиране на всяка игра</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>Ръчно изработени настройки за всяка игра.</value>
+  </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Приет е отказ от отговорност за игри</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>Неуспешна оптимизация на игри ({0}): {1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>Стартира оптимизацията на игрите: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Нулиране на състоянието на оптимизация на игрите: {0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>Не може да се отвори селекторът на играта: {0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>Изберете игра за оптимизиране</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>Оптимизиране</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Връщане</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Нулирайте все пак</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Това нулира приложеното състояние за {0}. Забележка: системните настройки, направени от скрипта, не могат да бъдат автоматично отменени — използвайте точка за възстановяване на Windows, за да ги отмените напълно.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Възстановяване на оптимизацията на играта</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Игра за търсене...</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>Персонализирани настройки за върхов FPS и минимално закъснение при въвеждане.
+Всяка игра има свой собствен профил.</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>Изберете игра за оптимизиране</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>Анализирайте отново</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>Разбивка след оптимизация</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>Разбивка на първоначалния анализ</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>Анализирайте</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>Разберете къде стои компютърът ви, преди да промените нещо.</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>Анализирайте ефективността</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>Отидете на Дневник</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>Всичко, което DexSuite изпълнява, се регистрира тук.</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>Преглед на дневника</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>Отидете на Модули</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>Изберете какво искате да подобрите и оставете DexSuite да се погрижи за останалото.</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>Оптимизирайте системата</value>
+  </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>Почистете сега</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>Временни файлове, кеш, кошче.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Всичко се почиства за секунди.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>Бързо почистване</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>Актуализиране на приложения</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>Всичките ви приложения се актуализират наведнъж.</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>Актуализиране на приложения</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>Щракнете върху Анализ, за ​​да получите резултат.
+По-късно оптимизирайте и анализирайте отново, за да видите разликата.</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>Все още не сте анализирали компютъра си</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>Нулиране на резултатите</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>Първоначално състояние</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>Измерено на {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} точки</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>какво искаш да направиш</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Активирайте</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Премахване на лиценз</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Моля, поставете валиден ключ за активиране.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Неуспешно активиране: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Поставете ключа за активиране, който сте получили с покупката си.</value>
+  </data>
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Ключът е заключен към това устройство (HWID по-горе).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Ключ за активиране</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Лицензът е активиран. План: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Актуален план</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>копие</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>Хардуерен идентификатор (HWID) — изпратете го на разработчика, за да получите вашия ключ</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID е копиран в клипборда.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite използва хардуерно обвързан лиценз.</value>
+  </data>
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Ключът, който получавате, е подписан и работи само на това устройство.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Лиценз</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Разширеният план е активен.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Безплатният план е активен.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Активен професионален план.</value>
+  </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>Изпълнение</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>Приложение</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>език</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>Бързо почистване</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>Бягай</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>Актуализация</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>Изчистване на историята</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>Историята е изчистена (записите {0} са премахнати).</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>Не може да се изчисти хронологията: {0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>Ниво</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>Съобщение</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>време</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>Действията, които изпълнявате, ще се появят тук автоматично.</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>Все още няма събития</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>Базов резултат: {0} ({1}).</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>Тестът за производителност е неуспешен: {0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>Краен резултат: {0} ({1}). Вариант: {2}{3}.</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite стартира (v{0}).</value>
+  </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>Имейлът за доклад за грешка е отворен в клиента.</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>Историята е изчистена ({0} записи).</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>Езикът е променен на {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Лицензът е активиран — план {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Активирането на лиценза е отхвърлено: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Лицензът е премахнат — обратно към Безплатно.</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] — Завършено</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — Грешка: {1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — Стартира</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>Неуспешно бързо почистване: {0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>Бързо почистване: {0} MB освободени, {1} файлове премахнати.</value>
+  </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>Създадена е точка за възстановяване: {0}.</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>Точката за възстановяване е неуспешна: {0}</value>
+  </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>Груповото връщане приключи — {0} е върнато, {1} не успя да излезе от {2}.</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>Възстановяването не бе успешно — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>Промяната е отменена — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>Оптимизацията е отменена от потребителя.</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>Оптимизацията е неуспешна: {0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>Оптимизацията приключи ({0} модули).</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>Оптимизацията започна с модули {0}.</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>Проверката за сигурност е неуспешна: {0}: {1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>Проверката за сигурност е завършена: {0} (излезте {1})</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>Проверката за сигурност завърши с ненулев изход: {0} (изход {1})</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>Проверката за сигурност стартира: {0}</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>Настройките се нулират до стойностите по подразбиране.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Формулярът за предложения е отворен.</value>
+  </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>Темата е променена на {0}.</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>Активният план е променен на {0}.</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>Актуализацията на v{0} е приложена.</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>Не можа да се приложи актуализация: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>Проверката на актуализацията е неуспешна: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>Налична е нова версия: v{0}.</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>Вече е актуален (v{0}).</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>Неуспешна актуализация на приложението: {0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>Актуализацията на приложението е завършена — {0} пакетите са актуализирани.</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>Стартира актуализацията на приложението (надграждане на крило --всички)</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>Експортиране в .txt</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>Неуспешно експортиране: {0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>Историята е експортирана в {0}</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>Успех</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>Историята се зарежда...</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>Опресняване</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>Всичко, което DexSuite изпълнява, се регистрира тук.</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>История</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>Изход на живо</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>Дневник на изпълнението</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>модули</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>Демаркирайте всички</value>
+  </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>Специфични оптимизации за повишаване на производителността в игрите до абсолютния лимит.</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>EXTRA PRO · Игри</value>
+  </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>ЕКСТРЕМНО</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>Няма въздействие</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>Забележително</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>Мек</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>Силен</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>Нивото на въздействие върху производителността, което това действие ще има върху вашата система.</value>
+  </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>Изчиства Prefetch, системна и потребителска Temp, миниатюри, IconCache и DirectX шейдъри.
+Всичко се регенерира от само себе си.</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>Предварително извличане, кеш и D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>Изчиства само кеша Windows регенерира автоматично, докато използвате компютъра.
+Не засяга вашите данни или програми.</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>Изчиства старите регистрационни файлове на Windows, SoftwareDistribution, Windows Update, CBS, DISM и папката WER.</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>Системни регистрационни файлове</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>Изтрива само диагностични регистрационни файлове.
+Не засяга работата на системата или личните данни.</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>Изпразва упоритите временни папки, хронологията на последните елементи, кошчето и Windows.old, ако има такъв.</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>Временни файлове, скорошни елементи и кошче</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>Изпразва кошчето и временните файлове.
+Ако сте изпратили нещо важно в кошчето, първо го възстановете.</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>Изхвърляния при срив, опашка за печат, WMI уплътняване и изчистване на Event Viewer.
+Събитията не могат да бъдат възстановени.</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>Дълбоко почистване</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>Изчиства прегледа на събития: след като системните събития бъдат изтрити, те не могат да бъдат възстановени.
+Полезно за поверителността, но помислете.</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>Спира wuauserv и BITS, изчиства SoftwareDistribution\Download and Delivery Optimization, след което рестартира услугите.</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>Кеш на Windows Update</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>Изпразва само кеша за изтегляне на Windows Update.
+Ако актуализацията е неуспешна, този модул го коригира.</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>Премахва остарелите системни компоненти.
+Отнема 5-20 минути и е необратимо (няма да можете да деинсталирате предишни актуализации).</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>Магазин за компоненти на DISM</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>След това почистване вече не можете да деинсталирате вече приложените актуализации на Windows.
+Безопасно е, но постоянно.</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>Изчиства кеша на Edge, Chrome, Firefox, Brave, Opera и Vivaldi.
+Не пипа профили или пароли.</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>Кешове на браузъра</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>Изпразва само кеша на браузъра.
+НЕ докосва пароли, отметки, история или сесийни бисквитки.</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>Изчиства DNS кеша, регистрира машината в DNS и принуждава опресняване на групови правила.</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>Мрежа (DNS и gpupdate)</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>Опреснява само DNS кеша и груповата политика.
+Не променя постоянната мрежова конфигурация.</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>Нулира кеша на Microsoft Store, изчиства регистрационните файлове на OneDrive и кеша на Teams.</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>Store, OneDrive и Teams</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>Почиства кешовете на Microsoft Store, OneDrive и Teams.
+Вашите синхронизирани файлове и разговори се запазват.</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>Проверява защитените системни файлове и поправя изображението на Windows.
+Само за ремонт, без разрушаване.</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM (ремонт)</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>Поправя повредени системни файлове.
+Това е бавно (10-30 минути), но НЕ променя потребителските данни.</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>Деактивира ускорението на мишката, увеличава максимално клавиатурата, деактивира залепващите клавиши и чете максималния Hz на мониторите.</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>Мишка, клавиатура и монитори</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>Променя предпочитанията за мишка и клавиатура в системния регистър.
+Ако не харесвате промените, върнете се от настройките на Windows.</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>Изпълнява 'winget upgrade --all'.
+Може да отнеме известно време в зависимост от броя на приложенията. Няма отмяна по модул.</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget (актуализиране на приложения)</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>Актуализира ВСИЧКИ ваши приложения до най-новата версия.
+Ако нова версия носи нежелани промени, не можете да отмените от тук.</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>Деактивира Windows Copilot, Cortana, DiagTrack, Timeline, AdvertisingID и CEIP.</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Копилот, Cortana и телеметрия</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>Ощипва регистъра, за да деактивира Copilot, Cortana и телеметрията.
+Обратимо чрез повторно активиране на всяка опция.</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>Блокира предложени приложения, местоположение, уиджети, WPBT и деактивира по-малко полезни услуги.</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>Поверителност и услуги</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>Променя правилата за поверителност и деактивира няколко услуги на Windows.
+Обратимо, но засяга функции като Widgets или местоположение.</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>Изключено регулиране на мощността, приоритет на MMCSS, изключен режим на хибернация, включен HAGS, отметка на платформата BCD (изисква се рестартиране).</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>Производителност и латентност</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>Ощипва BCD, MMCSS, хибернация и HAGS.
+Изисква се рестартиране. Силни, но обратими промени.</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>Настройва NIC (RSS, разтоварване, EEE изключен), TCP стек (Nagle изключен, MaxUserPort 65534) и Google/Cloudflare DNS.</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet (мрежова оптимизация)</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>Променя параметрите на мрежовия адаптер и TCP стека.
+Ако загубите връзка след това, изпълнете „netsh int ip reset“.</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT, Defender бързо сканиране, SMBv1 изключен, AutoRun изключен, DEP AlwaysOn, LLMNR/NetBIOS изключен, RDP изключен, UAC ниво 2.</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>сигурност</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>Укрепва сигурността на системата.
+Деактивира RDP: ако сте го използвали за отдалечен достъп, активирайте го отново ръчно.</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>Гарантира, че TRIM е включен за NTFS/ReFS, изпълнява TRIM на открити SSD дискове и отчита SMART температура и износване.</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD (TRIM и SMART здраве)</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>Чете само SMART статус и изпълнява TRIM (стандартна SSD операция).
+Не променя данни.</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>pnputil сканира, изброява OEM драйвери и стартира Windows Update, за да търси нови драйвери.</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>Драйвери (Windows Update + pnputil)</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>Търси само драйвери.
+НЕ ги инсталира автоматично: вие решавате дали да ги актуализирате от Windows Update.</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>Отваря подбрана селекция от профили за настройка за всяка игра.
+Изберете вашето заглавие и получете персонализирана оптимизация, насочена към максимален FPS и минимално забавяне при въвеждане.</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>Оптимизация на играта</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>Прилага специфични за играта ощипвания, насочени към върхови FPS и намалена латентност.
+Върнете всяка промяна по-късно от настройките на Windows, ако е необходимо.</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>Избира най-добрите модули за текущия ви план. Безплатно: основно почистване. Разширено: добавя мрежово нулиране, кеш на приложения и поправка на системата. Pro: включва също поверителност, Ethernet и SSD TRIM. Модулите с изключително въздействие никога не се избират автоматично.</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>Грешка по време на изпълнение.</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>Все още не е приложено.</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>Работи...</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>Приложено успешно.</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>Риск</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>безопасно</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>Изберете всички</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>Препоръчва се</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>Проверете модулите, които искате да стартирате.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Задръжте курсора на значката за въздействие за повече подробности.</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>НАПРЕДЕЛИ</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>БЕЗПЛАТНО</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>PRO</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>Налични модули</value>
+  </data>
+  <data name="Navigation.About" xml:space="preserve">
+    <value>За</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>ЕКСТРИ</value>
+  </data>
+  <data name="Navigation.Home" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="Navigation.Log" xml:space="preserve">
+    <value>Дневник</value>
+  </data>
+  <data name="Navigation.Modules" xml:space="preserve">
+    <value>Модули</value>
+  </data>
+  <data name="Navigation.Panel" xml:space="preserve">
+    <value>ПАНЕЛ</value>
+  </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>Възстановяване на промените</value>
+  </data>
+  <data name="Navigation.Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>Спецификации на системата</value>
+  </data>
+  <data name="Navigation.System" xml:space="preserve">
+    <value>СИСТЕМА</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Настройка</value>
+  </data>
+  <data name="Navigation.Updates" xml:space="preserve">
+    <value>Актуализации</value>
+  </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>Модулите {0} са приложени успешно.</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite — Оптимизацията приключи</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>Опит за модули {0} — някои отчетени грешки. Проверете раздела Дневник.</value>
+  </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>Бързо почистване</value>
+  </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>Това ще изпразни кошчето и ще изчисти временните папки на Windows.
+Няма да се пипат лични файлове.</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>Бързо почистване?</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>Изтрива временни файлове от %TEMP%, C:\Windows\Temp и C:\Windows\Prefetch.
+Също така изпразва кошчето.
+Не се пипат лични файлове.</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>Приложено</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>Модул</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>Цел</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>Стартирайте модули за оптимизация, за да започнете да регистрирате промените тук.
+Всяко нативно действие се проследява автоматично за връщане с едно кликване.</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>Все още няма проследени промени</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Маркирайте като прочетено</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} чакаща промяна(и)</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>Опресняване</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>Това ще върне чакащите промени {0}.
+Операцията не може да бъде отменена в DexSuite.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>Това ще върне промяната, приложена от „{0}“.
+Първоначалната стойност ще бъде възстановена.</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Отмяна на промяната?</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>Връщане на всички</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>Връщане</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>Всяка промяна, която DexSuite прилага първоначално, се регистрира тук.
+Върнете поотделно или всички наведнъж.</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>Възстановяване на промените</value>
+  </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — преди стартиране на модули {0}</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>Създаването на точка за възстановяване ви позволява да отмените всяка промяна от Windows, ако нещо се обърка.
+Отнема само няколко секунди.</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>Не, тичай без него</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>Първо да създадете точка за възстановяване?</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>Да, създайте го</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — резервно копие за ръчна оптимизация</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>Не може да се създаде точка за възстановяване: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>Точката за възстановяване е създадена успешно.</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>Заредено от предишна сесия</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>Запазена базова линия — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>Измерено — {0}</value>
+  </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>Няма намерени настройки за «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Настройка за търсене…</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>{0} резултат(и) за «{1}»</value>
+  </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>Проверете и поправете системата си с помощта на вградените инструменти на Windows.</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>Проверка на сигурността и целостта</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>Стартиране на бързо сканиране на Windows Defender?
+Обикновено отнема 5–10 минути.</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>Стартиране на DISM /RestoreHealth?
+Поправя изображението на Windows с помощта на Windows Update. Изисква интернет и може да отнеме 10–20 минути.</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>Стартиране на инструмента за премахване на зловреден софтуер (MRT /Q)?
+Работи безшумно във фонов режим.</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>Стартиране на проверка на системни файлове (SFC /scannow)?
+Той сканира и поправя повредени системни файлове. Отнема 10–20 минути.</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>Изпълнение на проверка?</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>Защитник · Бързо сканиране</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · Възстановяване на изображение</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · Премахване на зловреден софтуер</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · Проверка на системните файлове</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>{0} не е инсталиран на тази система.</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>Инструментът не е наличен</value>
+  </data>
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Бързо сканиране: открива активен зловреден софтуер в системата.
+SFC · Проверка на системни файлове: намира и поправя повредени системни файлове.
+DISM · Възстановяване на изображение: поправя изображението на Windows, когато SFC не може.
+MRT · Премахване на злонамерен софтуер: Официалният инструмент на Microsoft срещу конкретни заплахи.</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>Бягай</value>
+  </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>Прилага се при стартиране на приложението.</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>Предварително изберете препоръчани модули при стартиране</value>
+  </data>
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Контролирайте как се държи DexSuite, когато стартирате модули или минимизирате приложението.</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>Поведение</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>Автоматично превключва изгледа, за да видите резултата от процеса.</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>Отидете до Log on run</value>
+  </data>
+  <data name="Settings.Language.Description" xml:space="preserve">
+    <value>Променете езика на приложението.
+Интерфейсът се актуализира моментално.</value>
+  </data>
+  <data name="Settings.Language.Title" xml:space="preserve">
+    <value>език</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>Когато е минимизирано, приложението се скрива в областта за уведомяване, вместо да се затваря.</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>Минимизиране в системната област</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>Показва Windows toast в Центъра за действие, когато оптимизацията приключи.</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>Уведомете, когато изпълнението приключи</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>Нулирайте настройките</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>Всеки път, когато стартирате оптимизация, DexSuite пита дали искате първо да създадете точка за възстановяване. Можете да отговорите с Да, Не или Отказ.</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>DexSuite винаги пита преди оптимизиране</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>Създавайте автоматично преди всяко изпълнение</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>Създайте точка за възстановяване сега</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>Създайте точка за възстановяване, преди да стартирате оптимизации.</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Ако трябва да отмените промените, можете да го направите от настройките на Windows.</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>Точка за възстановяване на системата</value>
+  </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Почистете сега</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Премахва временни папки за актуализация, оставени в AppData от инсталатора.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Нищо за почистване.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Премахнати {0} папки ({1} освободени).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Почистете остатъците от DexSuite</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>Всичко, което промените тук, се запазва автоматично.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Няма бутони за запазване, няма потвърждения.</value>
+  </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>Активен</value>
+  </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Очаквайте скоро</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>Направете DexSuite ваш.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Цветните теми са налични в зависимост от вашия план.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>Изисква Pro план</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>Определя кои модули можете да изпълнявате.
+Активирайте лиценз в секцията Лиценз, за ​​да отключите Advanced или Pro модули.</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>Активен план</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>Иска потвърждение преди стартиране на модули с необратими промени.</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>Предупреждавайте преди стартиране на необратими модули</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>{0} ядра / {1} логически</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>Процесор</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>{0} GB общо · {1} GB безплатно · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>Графика</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>Хардуерът се открива...</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>Операционна система</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>памет</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>{0} GB общо · {1} GB налични</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>Опресняване</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>Съхранение</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>Открит хардуер и операционна система.</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>Режимът на администратор е активен</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>Данни, прочетени от Windows.
+Използвайте бутона Обнови, за да актуализирате, ако хардуерът се промени.</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>Резюме на системата</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>Системни спецификации</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>Грешка при анализиране: {0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>Краен анализ: {0}/100 ({1}).
+Делта: {2}{3} точки.</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>Първоначален анализ: {0}/100 ({1}).
+Можете да оптимизирате сега.</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>Анализира се ефективността...</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>Отменя се...</value>
+  </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>Създава се точка за възстановяване...</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>Режим на разработка — актуализациите не са налични в тази среда.</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>Актуализацията се изтегля... {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>Изпълнява се модул(и) {0}... (можете да отмените)</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>Изпълнението е отменено от потребителя.</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>Изпълнението е завършено.
+Отидете на Начало и анализирайте отново, за да сравните.</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>Грешка: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>Не може да се отвори папката: {0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>Налична е нова версия: v{0}!
+Кликнете върху „Актуализиране сега“, за да го инсталирате.</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>Почистването приключи: {0} MB освободени, {1} файловете премахнати</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>Грешка при бързо почистване: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>Почистване на временните файлове и кошчето...</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>Готови. Изберете модули и щракнете върху Изпълнение.</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>Създадена е точка за възстановяване.</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>Точката за възстановяване е неуспешна: {0}</value>
+  </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>Възстановяването е завършено: {0}/{1}.</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>Нулиране на резултатите. Щракнете върху Анализирай, за да започнете отначало.</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>Търсят се актуализации...</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} завършен.</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>{0} завърши с грешки: {1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>Изпълнява се {0}...</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>Изберете поне един модул преди стартиране.</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>Настройките се нулират до стойностите по подразбиране.</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>Грешка при прилагане на актуализация:
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>Актуализацията е изтеглена.
+Приложението ще се рестартира автоматично.</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>Грешка при проверка на актуализации:
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>Вие сте на най-новата версия (v{0}).</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>Актуализирани приложения — {0} пакети.</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>Неуспешна актуализация на приложението: {0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>Приложенията се актуализират...</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>Опишете вашето предложение или подобрение тук:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>Предложете подобрение</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>Споделете идея или предложение.</value>
+  </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Приемам Условията</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Като щракнете върху „Приемам условията“, вие потвърждавате, че сте прочели и сте съгласни с горните условия.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Откажи</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Моля, прочетете и приемете следните условия, преди да използвате DexSuite.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite е инструмент за оптимизация на системата на Windows. Изисква администраторски привилегии за промяна на настройките на системния регистър, системните услуги и планираните задачи. Тези промени засягат поведението и производителността на системата.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Как работи приложението</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>Използването на DexSuite е на ваш собствен риск. Приложените промени могат да променят поведението на системата. Препоръчително е да създадете точка за възстановяване, преди да стартирате модули с голямо въздействие. DexSuite не предоставя гаранция за конкретни резултати и не носи отговорност за щети или загуба на данни.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Отговорност на потребителя</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Модулът за игри изтегля и изпълнява PowerShell скриптове от GitHub. DexSuite проверява тяхната цялост на SHA-256 преди изпълнение. Вие носите отговорност да прегледате какво правят скриптовете, преди да ги приложите.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Скриптове за оптимизиране на играта</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite не събира данни за употребата и не изпраща информация до външни сървъри. Всички данни (история, лиценз, настройки) се съхраняват локално на вашето устройство.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Поверителност и данни</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Условия за ползване</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>Червено + циан върху стоманено синьо</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Тактически оранжево + черно</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Тревисто зелено + земно кафяво</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>Cyberpunk циан + виолетов</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>Неутрална палитра Fluent</value>
+  </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Жълто + военно черно</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Живо синьо + жълто</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Оранжево + защитно синьо</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Златно + наситено синьо</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Премиум злато + топло черно</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>Състезателно червено + дълбоко черно</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Лилаво + митично злато</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Светло синьо + студено бяло</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Удебелено червено + костно бяло</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>Ултраминимален монохромен</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>КИБЕРНЕТИЧЕН</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>ПО ПОДРАЗБИРАНЕ</value>
+  </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>ЧЕРВЕНА ЛИНИЯ</value>
+  </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>НУЛЕВО ЗАБАВЯНЕ</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Този раздел ще бъде наличен в бъдеща актуализация.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Очаквайте скоро</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Инсталатор на приложения</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Настройка: не можа да отвори изтегляне {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Настройка: изтеглянето е отворено — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Системни настройки и бързо инсталиране на основни приложения.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Деактивирайте ускорението на мишката</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Задайте честотата на опресняване, за да наблюдавате максимално</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Задайте разделителна способност на естествена</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Системни настройки</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Настройка</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>Изтегля и инсталира нови версии във фонов режим.
+Само когато DexSuite е неактивен.</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>Актуализирайте автоматично</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>Стабилни: тествани, стабилни версии.
+Бета: по-ранни нови версии, но може да има грешки.</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>Актуализирайте канала</value>
+  </data>
+  <data name="Updates.CheckForUpdates" xml:space="preserve">
+    <value>Проверете за актуализации</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite проверява нашия сървър за издаване за нови версии и ги инсталира на място.
+Ако изпълнявате компилация за разработка, автоматичните актуализации остават деактивирани.</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>Как работят актуализациите</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>Инсталирана версия</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>Последна проверка: {0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>Налична е нова версия!</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>Версия v{0}, готова за изтегляне и инсталиране.</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>Предпочитания</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite се актуализира автоматично до най-новата версия.
+Поддържайте го актуален, за да получите всяка нова оптимизация.</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>Актуализации</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>Актуализирайте сега</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>Приемливо</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>Критичен</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>Отлично</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>добре</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>Подобряемо</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>Това ще стартира надграждане на winget --all.
+Може да отнеме няколко минути в зависимост от броя на чакащите актуализации.
+Напредъкът ще бъде показан в дневника.</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>Актуализиране на всички приложения?</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>Windows Package Manager (winget) не е наличен в тази система.
+Актуализирайте системата си или инсталирайте инсталатора на приложения от Microsoft Store.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Вижте условията за ползване</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Преди да продължите</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Оптимизирането на игра отваря конзола, където ще трябва да прочетете съобщенията, да изберете опции и да въведете път или два. Не е трудно, но внимавайте какво се показва на екрана.
+
+Профилите се изтеглят от GitHub и се изпълняват с администраторски права. Използвайте на свой собствен риск.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Не показвайте това известие отново</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>разбрах</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Отказ</value>
+  </data>
+</root>

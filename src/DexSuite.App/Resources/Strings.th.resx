@@ -1,0 +1,1588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About.Changelog.Item1" xml:space="preserve">
+    <value>• 19 โมดูลที่จัดตามแผน: ฟรี ขั้นสูง และ Pro แต่ละคนทำสิ่งที่เฉพาะเจาะจงอย่างหนึ่ง</value>
+  </data>
+  <data name="About.Changelog.Item2" xml:space="preserve">
+    <value>• คะแนนประสิทธิภาพเต็ม 100 พร้อมการเปรียบเทียบก่อน/หลังเมื่อคุณเพิ่มประสิทธิภาพ</value>
+  </data>
+  <data name="About.Changelog.Item3" xml:space="preserve">
+    <value>• แต่ละโมดูลจะแสดงสถานะแบบเรียลไทม์: อยู่ระหว่างดำเนินการ กำลังทำงาน นำไปใช้ หรือล้มเหลว</value>
+  </data>
+  <data name="About.Changelog.Item4" xml:space="preserve">
+    <value>• มองเห็นความคืบหน้าได้ระหว่างการดำเนินการ: โมดูลใดกำลังทำงานอยู่ เหลือเท่าใด</value>
+  </data>
+  <data name="About.Changelog.Item5" xml:space="preserve">
+    <value>• ทุกอย่างที่ใช้จะถูกบันทึกไว้ คุณสามารถคืนค่าการเปลี่ยนแปลงได้ทุกเมื่อที่ต้องการ</value>
+  </data>
+  <data name="About.Changelog.Item6" xml:space="preserve">
+    <value>• แผนขั้นสูงและแผน Pro ตรวจสอบด้วยฮาร์ดแวร์ รหัสใช้งานได้กับอุปกรณ์ของคุณเท่านั้น</value>
+  </data>
+  <data name="About.Changelog.Item7" xml:space="preserve">
+    <value>• แอปจะอัปเดตตัวเอง คุณสามารถย่อขนาดลงในถาดระบบได้</value>
+  </data>
+  <data name="About.Changelog.Item8" xml:space="preserve">
+    <value>• 15 ธีมสี เกมทั้ง 10 เกมมีส่วนของตัวเอง</value>
+  </data>
+  <data name="About.Changelog.Item9" xml:space="preserve">
+    <value>• มี 30 ภาษา สลับจากการตั้งค่าและใช้งานได้ทันที</value>
+  </data>
+  <data name="About.Changelog.Title" xml:space="preserve">
+    <value>มีอะไรใหม่ใน v{0}</value>
+  </data>
+  <data name="About.Credits.Design" xml:space="preserve">
+    <value>การออกแบบและแนวคิด</value>
+  </data>
+  <data name="About.Credits.Development" xml:space="preserve">
+    <value>การพัฒนา</value>
+  </data>
+  <data name="About.Credits.GamingModule" xml:space="preserve">
+    <value>โมดูลการเล่นเกม</value>
+  </data>
+  <data name="About.Credits.GamingModuleAuthor" xml:space="preserve">
+    <value>ซีเนียร์เด็กซ์เตอร์</value>
+  </data>
+  <data name="About.Credits.Title" xml:space="preserve">
+    <value>เครดิต</value>
+  </data>
+  <data name="About.Footer" xml:space="preserve">
+    <value>© 2026 DexSuite · Windows เท่านั้น · ต้องใช้สิทธิ์ของผู้ดูแลระบบ</value>
+  </data>
+  <data name="About.Project.Line1" xml:space="preserve">
+    <value>DexSuite เป็นระบบเพิ่มประสิทธิภาพสูงสุดสำหรับ Windows</value>
+  </data>
+  <data name="About.Project.Line2" xml:space="preserve">
+    <value>โดยจะวิเคราะห์พีซีของคุณ ใช้การปรับแต่งที่มีผลกระทบสูง และเพิ่มประสิทธิภาพการทำงานถึงขีดจำกัดทางกายภาพ</value>
+  </data>
+  <data name="About.Project.Line3" xml:space="preserve">
+    <value>แต่ละเวอร์ชันจะเพิ่มโมดูล C# ดั้งเดิมใหม่ที่เน้นไปที่การเพิ่ม FPS สูงสุดและเวลาในการตอบสนองที่ลดลง</value>
+  </data>
+  <data name="About.Project.Title" xml:space="preserve">
+    <value>โครงการ</value>
+  </data>
+  <data name="About.RequiresAdmin" xml:space="preserve">
+    <value>ต้องมีผู้ดูแลระบบ</value>
+  </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>ติดต่อ</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>ติดตามข่าวสารและติดต่อ</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>ติดตามเรา</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>แสดงความคิดเห็น</value>
+  </data>
+  <data name="About.Stack.Title" xml:space="preserve">
+    <value>กองเทคโนโลยี</value>
+  </data>
+  <data name="About.Utilities.OpenLogs" xml:space="preserve">
+    <value>เปิดโฟลเดอร์บันทึก</value>
+  </data>
+  <data name="About.Utilities.Title" xml:space="preserve">
+    <value>สาธารณูปโภค</value>
+  </data>
+  <data name="App.Subtitle" xml:space="preserve">
+    <value>Windows ถึงขีดจำกัด</value>
+  </data>
+  <data name="App.Tagline" xml:space="preserve">
+    <value>ก้าวข้ามขีดจำกัด</value>
+  </data>
+  <data name="BugReport.Body.AutoSection" xml:space="preserve">
+    <value>ข้อมูลการวินิจฉัยที่รวบรวมอัตโนมัติ (ช่วยให้เราทำซ้ำ):</value>
+  </data>
+  <data name="BugReport.Body.DescribePrompt" xml:space="preserve">
+    <value>โปรดอธิบายสิ่งที่เกิดขึ้น สิ่งที่คุณคาดหวัง และขั้นตอนในการทำซ้ำ:</value>
+  </data>
+  <data name="BugReport.Button" xml:space="preserve">
+    <value>รายงานข้อผิดพลาด</value>
+  </data>
+  <data name="BugReport.Error.Message" xml:space="preserve">
+    <value>ส่งรายงานของคุณด้วยตนเองไปที่ suitedex@gmail.com
+ข้อผิดพลาด: {0}</value>
+  </data>
+  <data name="BugReport.Error.Title" xml:space="preserve">
+    <value>ไม่สามารถเปิดโปรแกรมรับส่งอีเมลได้</value>
+  </data>
+  <data name="BugReport.Subtitle" xml:space="preserve">
+    <value>หากมีสิ่งผิดปกติ โปรดเขียนถึงฉันแล้วฉันจะตรวจสอบ</value>
+  </data>
+  <data name="Common.Apply" xml:space="preserve">
+    <value>นำมาใช้</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>ปิด</value>
+  </data>
+  <data name="Common.Never" xml:space="preserve">
+    <value>ไม่เคย</value>
+  </data>
+  <data name="Common.OK" xml:space="preserve">
+    <value>ตกลง</value>
+  </data>
+  <data name="Common.Open" xml:space="preserve">
+    <value>เปิด</value>
+  </data>
+  <data name="Common.Reset" xml:space="preserve">
+    <value>รีเซ็ต</value>
+  </data>
+  <data name="Common.Run" xml:space="preserve">
+    <value>วิ่ง</value>
+  </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>สมัครแล้ว</value>
+  </data>
+  <data name="Gaming.CardDesc" xml:space="preserve">
+    <value>เลือกเกมและใช้การปรับแต่งที่เน้นไปที่ FPS สูงสุดและความล่าช้าในการป้อนข้อมูลขั้นต่ำ</value>
+  </data>
+  <data name="Gaming.CardTitle" xml:space="preserve">
+    <value>โปรไฟล์การเพิ่มประสิทธิภาพต่อเกม</value>
+  </data>
+  <data name="Gaming.FooterNote" xml:space="preserve">
+    <value>การตั้งค่าที่สร้างขึ้นด้วยมือสำหรับแต่ละเกม</value>
+  </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>ยอมรับข้อจำกัดความรับผิดชอบในการเล่นเกมแล้ว</value>
+  </data>
+  <data name="Gaming.Log.Failed" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพการเล่นเกมล้มเหลว ({0}): {1}</value>
+  </data>
+  <data name="Gaming.Log.Launched" xml:space="preserve">
+    <value>เปิดตัวการเพิ่มประสิทธิภาพการเล่นเกม: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>รีเซ็ตสถานะการเพิ่มประสิทธิภาพการเล่นเกม: {0}</value>
+  </data>
+  <data name="Gaming.OpenError" xml:space="preserve">
+    <value>ไม่สามารถเปิดตัวเลือกเกม: {0}</value>
+  </data>
+  <data name="Gaming.OpenSelector" xml:space="preserve">
+    <value>เลือกเกมที่จะเพิ่มประสิทธิภาพ</value>
+  </data>
+  <data name="Gaming.OptimizeButton" xml:space="preserve">
+    <value>ปรับให้เหมาะสม</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>เปลี่ยนกลับ</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>รีเซ็ตต่อไป</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>ซึ่งจะรีเซ็ตสถานะที่ใช้สำหรับ {0} หมายเหตุ: การปรับแต่งระบบที่ทำโดยสคริปต์ไม่สามารถย้อนกลับได้โดยอัตโนมัติ - ใช้ Windows Restore Point เพื่อเลิกทำอย่างสมบูรณ์</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>คืนค่าการเพิ่มประสิทธิภาพเกม</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>เกมค้นหา...</value>
+  </data>
+  <data name="Gaming.SelectorSubtitle" xml:space="preserve">
+    <value>การปรับแต่งที่ปรับแต่งสำหรับ FPS สูงสุดและความล่าช้าในการป้อนข้อมูลขั้นต่ำ
+แต่ละเกมมีโปรไฟล์ของตัวเอง</value>
+  </data>
+  <data name="Gaming.SelectorTitle" xml:space="preserve">
+    <value>เลือกเกมที่จะเพิ่มประสิทธิภาพ</value>
+  </data>
+  <data name="Home.AnalyzeAgain" xml:space="preserve">
+    <value>วิเคราะห์อีกครั้ง</value>
+  </data>
+  <data name="Home.Breakdown.After" xml:space="preserve">
+    <value>รายละเอียดหลังจากการเพิ่มประสิทธิภาพ</value>
+  </data>
+  <data name="Home.Breakdown.Initial" xml:space="preserve">
+    <value>การวิเคราะห์เบื้องต้น</value>
+  </data>
+  <data name="Home.Card.Analyze.Button" xml:space="preserve">
+    <value>วิเคราะห์</value>
+  </data>
+  <data name="Home.Card.Analyze.Desc" xml:space="preserve">
+    <value>ค้นหาว่าพีซีของคุณยืนอยู่ตรงไหนก่อนที่จะเปลี่ยนแปลงสิ่งใด</value>
+  </data>
+  <data name="Home.Card.Analyze.Title" xml:space="preserve">
+    <value>วิเคราะห์ประสิทธิภาพ</value>
+  </data>
+  <data name="Home.Card.Log.Button" xml:space="preserve">
+    <value>ไปที่บันทึก</value>
+  </data>
+  <data name="Home.Card.Log.Desc" xml:space="preserve">
+    <value>ทุกอย่างที่ DexSuite ทำงานจะถูกบันทึกไว้ที่นี่</value>
+  </data>
+  <data name="Home.Card.Log.Title" xml:space="preserve">
+    <value>ดูบันทึก</value>
+  </data>
+  <data name="Home.Card.Optimize.Button" xml:space="preserve">
+    <value>ไปที่โมดูล</value>
+  </data>
+  <data name="Home.Card.Optimize.Desc" xml:space="preserve">
+    <value>เลือกสิ่งที่คุณต้องการปรับปรุงแล้วปล่อยให้ DexSuite จัดการส่วนที่เหลือ</value>
+  </data>
+  <data name="Home.Card.Optimize.Title" xml:space="preserve">
+    <value>ปรับระบบให้เหมาะสม</value>
+  </data>
+  <data name="Home.Card.QuickClean.Button" xml:space="preserve">
+    <value>ทำความสะอาดเลย</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
+    <value>ไฟล์ชั่วคราว แคช ถังรีไซเคิล</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>ทำความสะอาดทั้งหมดภายในไม่กี่วินาที</value>
+  </data>
+  <data name="Home.Card.QuickClean.Title" xml:space="preserve">
+    <value>ทำความสะอาดด่วน</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Button" xml:space="preserve">
+    <value>อัปเดตแอป</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Desc" xml:space="preserve">
+    <value>แอพทั้งหมดของคุณอัปเดตในคราวเดียว</value>
+  </data>
+  <data name="Home.Card.WingetUpgrade.Title" xml:space="preserve">
+    <value>อัปเดตแอป</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Message" xml:space="preserve">
+    <value>คลิกวิเคราะห์เพื่อรับคะแนน
+หลังจากนั้น ให้เพิ่มประสิทธิภาพและวิเคราะห์อีกครั้งเพื่อดูความแตกต่าง</value>
+  </data>
+  <data name="Home.NotYetAnalyzed.Title" xml:space="preserve">
+    <value>คุณยังไม่ได้วิเคราะห์คอมพิวเตอร์ของคุณ</value>
+  </data>
+  <data name="Home.ResetScores" xml:space="preserve">
+    <value>รีเซ็ตคะแนน</value>
+  </data>
+  <data name="Home.ScoreInitial.Label" xml:space="preserve">
+    <value>สถานะเริ่มต้น</value>
+  </data>
+  <data name="Home.ScoreMeasuredOn" xml:space="preserve">
+    <value>วัดเมื่อ {0:dd/MM/yyyy HH:mm}</value>
+  </data>
+  <data name="Home.ScorePoints" xml:space="preserve">
+    <value>{0} จุด</value>
+  </data>
+  <data name="Home.WhatDoYouWantTo" xml:space="preserve">
+    <value>คุณต้องการทำอะไร?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>เปิดใช้งาน</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>ลบใบอนุญาต</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>กรุณาวางรหัสเปิดใช้งานที่ถูกต้อง</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>การเปิดใช้งานล้มเหลว: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>วางรหัสเปิดใช้งานที่คุณได้รับพร้อมกับการซื้อของคุณ</value>
+  </data>
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>กุญแจล็อคอยู่กับอุปกรณ์นี้ (HWID ด้านบน)</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>รหัสเปิดใช้งาน</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>เปิดใช้งานใบอนุญาตแล้ว แผน: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>แผนปัจจุบัน</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>สำเนา</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>รหัสฮาร์ดแวร์ (HWID) — ส่งสิ่งนี้ไปยังนักพัฒนาเพื่อรับรหัสของคุณ</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID คัดลอกไปยังคลิปบอร์ดแล้ว</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite ใช้สิทธิ์การใช้งานที่ผูกกับฮาร์ดแวร์</value>
+  </data>
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>กุญแจที่คุณได้รับได้รับการลงนามและใช้งานได้บนอุปกรณ์นี้เท่านั้น</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>ใบอนุญาต</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>แผนขั้นสูงใช้งานอยู่</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>ใช้งานแผนฟรีอยู่</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>แผน Pro ใช้งานอยู่</value>
+  </data>
+  <data name="Log.Category.Analyze" xml:space="preserve">
+    <value>ผลงาน</value>
+  </data>
+  <data name="Log.Category.App" xml:space="preserve">
+    <value>แอป</value>
+  </data>
+  <data name="Log.Category.Language" xml:space="preserve">
+    <value>ภาษา</value>
+  </data>
+  <data name="Log.Category.QuickClean" xml:space="preserve">
+    <value>ทำความสะอาดด่วน</value>
+  </data>
+  <data name="Log.Category.Run" xml:space="preserve">
+    <value>วิ่ง</value>
+  </data>
+  <data name="Log.Category.Settings" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="Log.Category.Update" xml:space="preserve">
+    <value>อัปเดต</value>
+  </data>
+  <data name="Log.ClearAll" xml:space="preserve">
+    <value>ล้างประวัติ</value>
+  </data>
+  <data name="Log.Cleared" xml:space="preserve">
+    <value>ล้างประวัติแล้ว (ลบรายการ {0} แล้ว)</value>
+  </data>
+  <data name="Log.ClearError" xml:space="preserve">
+    <value>ไม่สามารถล้างประวัติ: {0}</value>
+  </data>
+  <data name="Log.Column.Category" xml:space="preserve">
+    <value>หมวดหมู่</value>
+  </data>
+  <data name="Log.Column.Level" xml:space="preserve">
+    <value>ระดับ</value>
+  </data>
+  <data name="Log.Column.Message" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="Log.Column.Time" xml:space="preserve">
+    <value>เวลา</value>
+  </data>
+  <data name="Log.Empty.Subtitle" xml:space="preserve">
+    <value>การดำเนินการที่คุณดำเนินการจะปรากฏที่นี่โดยอัตโนมัติ</value>
+  </data>
+  <data name="Log.Empty.Title" xml:space="preserve">
+    <value>ยังไม่มีกิจกรรม</value>
+  </data>
+  <data name="Log.Event.AnalyzeBaseline" xml:space="preserve">
+    <value>คะแนนพื้นฐาน: {0} ({1})</value>
+  </data>
+  <data name="Log.Event.AnalyzeFailed" xml:space="preserve">
+    <value>การทดสอบประสิทธิภาพล้มเหลว: {0}</value>
+  </data>
+  <data name="Log.Event.AnalyzeFinal" xml:space="preserve">
+    <value>คะแนนสุดท้าย: {0} ({1}) ตัวเลือกสินค้า: {2}{3}.</value>
+  </data>
+  <data name="Log.Event.AppStarted" xml:space="preserve">
+    <value>DexSuite เริ่มต้นแล้ว (v{0})</value>
+  </data>
+  <data name="Log.Event.BugReportOpened" xml:space="preserve">
+    <value>เปิดอีเมลรายงานข้อผิดพลาดในไคลเอนต์</value>
+  </data>
+  <data name="Log.Event.HistoryCleared" xml:space="preserve">
+    <value>ล้างประวัติแล้ว (รายการ {0})</value>
+  </data>
+  <data name="Log.Event.LanguageChanged" xml:space="preserve">
+    <value>ภาษาเปลี่ยนเป็น {0}</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>เปิดใช้งานใบอนุญาต — แผน {0}</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>การเปิดใช้งานใบอนุญาตถูกปฏิเสธ: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>ใบอนุญาตถูกลบออก — กลับสู่แบบฟรี</value>
+  </data>
+  <data name="Log.Event.ModuleCompleted" xml:space="preserve">
+    <value>[{0}] — เสร็จสมบูรณ์</value>
+  </data>
+  <data name="Log.Event.ModuleError" xml:space="preserve">
+    <value>[{0}] — ข้อผิดพลาด: {1}</value>
+  </data>
+  <data name="Log.Event.ModuleStarted" xml:space="preserve">
+    <value>[{0}] — เริ่มต้นแล้ว</value>
+  </data>
+  <data name="Log.Event.QuickCleanFailed" xml:space="preserve">
+    <value>การทำความสะอาดด่วนล้มเหลว: {0}</value>
+  </data>
+  <data name="Log.Event.QuickCleanFinished" xml:space="preserve">
+    <value>ทำความสะอาดอย่างรวดเร็ว: ปลดปล่อย {0} MB, ลบไฟล์ {1} แล้ว</value>
+  </data>
+  <data name="Log.Event.RestorePointCreated" xml:space="preserve">
+    <value>สร้างจุดคืนค่า: {0}</value>
+  </data>
+  <data name="Log.Event.RestorePointFailed" xml:space="preserve">
+    <value>จุดคืนค่าล้มเหลว: {0}</value>
+  </data>
+  <data name="Log.Event.RevertAllDone" xml:space="preserve">
+    <value>การย้อนกลับจำนวนมากเสร็จสิ้น — {0} เปลี่ยนกลับ {1} ล้มเหลวจาก {2}</value>
+  </data>
+  <data name="Log.Event.RevertFailed" xml:space="preserve">
+    <value>เปลี่ยนกลับล้มเหลว — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RevertOk" xml:space="preserve">
+    <value>เปลี่ยนกลับ — {0} [{1}]</value>
+  </data>
+  <data name="Log.Event.RunCancelled" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพถูกยกเลิกโดยผู้ใช้</value>
+  </data>
+  <data name="Log.Event.RunFailed" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพล้มเหลว: {0}</value>
+  </data>
+  <data name="Log.Event.RunFinished" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพเสร็จสิ้นแล้ว (โมดูล {0})</value>
+  </data>
+  <data name="Log.Event.RunStarted" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพเริ่มต้นด้วยโมดูล {0}</value>
+  </data>
+  <data name="Log.Event.SecurityFailed" xml:space="preserve">
+    <value>การตรวจสอบความปลอดภัยล้มเหลว: {0}: {1}</value>
+  </data>
+  <data name="Log.Event.SecurityFinished" xml:space="preserve">
+    <value>การตรวจสอบความปลอดภัยเสร็จสมบูรณ์: {0} (ออกจาก {1})</value>
+  </data>
+  <data name="Log.Event.SecurityFinishedWarn" xml:space="preserve">
+    <value>การตรวจสอบความปลอดภัยเสร็จสิ้นด้วยทางออกที่ไม่เป็นศูนย์: {0} (ทางออก {1})</value>
+  </data>
+  <data name="Log.Event.SecurityStarted" xml:space="preserve">
+    <value>เริ่มต้นการตรวจสอบความปลอดภัย: {0}</value>
+  </data>
+  <data name="Log.Event.SettingsReset" xml:space="preserve">
+    <value>การตั้งค่ารีเซ็ตเป็นค่าเริ่มต้น</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>เปิดแบบฟอร์มข้อเสนอแนะแล้ว</value>
+  </data>
+  <data name="Log.Event.ThemeChanged" xml:space="preserve">
+    <value>ธีมเปลี่ยนเป็น {0}</value>
+  </data>
+  <data name="Log.Event.TierChanged" xml:space="preserve">
+    <value>แผนที่ใช้งานอยู่เปลี่ยนเป็น {0}</value>
+  </data>
+  <data name="Log.Event.UpdateApplied" xml:space="preserve">
+    <value>อัปเดต v{0} แล้ว</value>
+  </data>
+  <data name="Log.Event.UpdateApplyFailed" xml:space="preserve">
+    <value>ไม่สามารถใช้การอัปเดต: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateCheckFailed" xml:space="preserve">
+    <value>การตรวจสอบการอัปเดตล้มเหลว: {0}</value>
+  </data>
+  <data name="Log.Event.UpdateFound" xml:space="preserve">
+    <value>มีเวอร์ชันใหม่แล้ว: v{0}</value>
+  </data>
+  <data name="Log.Event.UpdateNone" xml:space="preserve">
+    <value>อัปเดตแล้ว (v{0})</value>
+  </data>
+  <data name="Log.Event.WingetFailed" xml:space="preserve">
+    <value>การอัปเดตแอปล้มเหลว: {0}</value>
+  </data>
+  <data name="Log.Event.WingetFinished" xml:space="preserve">
+    <value>การอัปเดตแอปเสร็จสมบูรณ์ — อัปเดตแพ็คเกจ {0}</value>
+  </data>
+  <data name="Log.Event.WingetStarted" xml:space="preserve">
+    <value>เริ่มต้นการอัปเดตแอป (อัปเกรด winget --all)</value>
+  </data>
+  <data name="Log.Export" xml:space="preserve">
+    <value>ส่งออกเป็น .txt</value>
+  </data>
+  <data name="Log.ExportError" xml:space="preserve">
+    <value>การส่งออกล้มเหลว: {0}</value>
+  </data>
+  <data name="Log.ExportSuccess" xml:space="preserve">
+    <value>ส่งออกประวัติไปยัง {0} แล้ว</value>
+  </data>
+  <data name="Log.Level.Error" xml:space="preserve">
+    <value>ข้อผิดพลาด</value>
+  </data>
+  <data name="Log.Level.Info" xml:space="preserve">
+    <value>ข้อมูล</value>
+  </data>
+  <data name="Log.Level.Success" xml:space="preserve">
+    <value>ความสำเร็จ</value>
+  </data>
+  <data name="Log.Level.Warning" xml:space="preserve">
+    <value>คำเตือน</value>
+  </data>
+  <data name="Log.Loading" xml:space="preserve">
+    <value>กำลังโหลดประวัติ...</value>
+  </data>
+  <data name="Log.Refresh" xml:space="preserve">
+    <value>รีเฟรช</value>
+  </data>
+  <data name="Log.Subtitle" xml:space="preserve">
+    <value>ทุกอย่างที่ DexSuite ทำงานจะถูกบันทึกไว้ที่นี่</value>
+  </data>
+  <data name="Log.Tab.History" xml:space="preserve">
+    <value>ประวัติศาสตร์</value>
+  </data>
+  <data name="Log.Tab.LiveOutput" xml:space="preserve">
+    <value>เอาต์พุตสด</value>
+  </data>
+  <data name="Log.Title" xml:space="preserve">
+    <value>บันทึกการดำเนินการ</value>
+  </data>
+  <data name="Modules.CountSuffix" xml:space="preserve">
+    <value>โมดูล</value>
+  </data>
+  <data name="Modules.DeselectAll" xml:space="preserve">
+    <value>ยกเลิกการเลือกทั้งหมด</value>
+  </data>
+  <data name="Modules.Extra.Subtitle" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพเฉพาะเพื่อผลักดันประสิทธิภาพของเกมให้ถึงขีดจำกัด。</value>
+  </data>
+  <data name="Modules.Extra.Title" xml:space="preserve">
+    <value>โปรพิเศษ · การเล่นเกม</value>
+  </data>
+  <data name="Modules.Impact.Extreme" xml:space="preserve">
+    <value>สุดขีด</value>
+  </data>
+  <data name="Modules.Impact.None" xml:space="preserve">
+    <value>ไม่มีผลกระทบ</value>
+  </data>
+  <data name="Modules.Impact.Notable" xml:space="preserve">
+    <value>เด่น</value>
+  </data>
+  <data name="Modules.Impact.Soft" xml:space="preserve">
+    <value>อ่อนนุ่ม</value>
+  </data>
+  <data name="Modules.Impact.Strong" xml:space="preserve">
+    <value>แข็งแกร่ง</value>
+  </data>
+  <data name="Modules.Impact.TooltipDesc" xml:space="preserve">
+    <value>ระดับผลกระทบด้านประสิทธิภาพการดำเนินการนี้จะมีต่อระบบของคุณ</value>
+  </data>
+  <data name="Modules.M01.Description" xml:space="preserve">
+    <value>ล้างการดึงข้อมูลล่วงหน้า, ระบบและอุณหภูมิผู้ใช้, รูปขนาดย่อ, IconCache และตัวเชเดอร์ DirectX
+ทุกสิ่งเกิดขึ้นใหม่ได้ด้วยตัวเอง</value>
+  </data>
+  <data name="Modules.M01.Name" xml:space="preserve">
+    <value>ดึงข้อมูลล่วงหน้า แคช และ D3DSCache</value>
+  </data>
+  <data name="Modules.M01.SafetyReason" xml:space="preserve">
+    <value>ล้างแคชเท่านั้น Windows จะสร้างใหม่โดยอัตโนมัติเมื่อคุณใช้พีซี
+ไม่ส่งผลกระทบต่อข้อมูลหรือโปรแกรมของคุณ</value>
+  </data>
+  <data name="Modules.M02.Description" xml:space="preserve">
+    <value>ล้างบันทึก Windows เก่า, SoftwareDistribution, Windows Update, CBS, DISM และโฟลเดอร์ WER</value>
+  </data>
+  <data name="Modules.M02.Name" xml:space="preserve">
+    <value>บันทึกของระบบ</value>
+  </data>
+  <data name="Modules.M02.SafetyReason" xml:space="preserve">
+    <value>ลบไฟล์บันทึกการวินิจฉัยเท่านั้น
+ไม่ส่งผลกระทบต่อการทำงานของระบบหรือข้อมูลส่วนบุคคล</value>
+  </data>
+  <data name="Modules.M03.Description" xml:space="preserve">
+    <value>ล้างโฟลเดอร์ Temp ที่ฝังแน่น ประวัติรายการล่าสุด ถังรีไซเคิล และ Windows.old หากมี</value>
+  </data>
+  <data name="Modules.M03.Name" xml:space="preserve">
+    <value>ไฟล์ชั่วคราว รายการล่าสุด และถังรีไซเคิล</value>
+  </data>
+  <data name="Modules.M03.SafetyReason" xml:space="preserve">
+    <value>ล้างถังรีไซเคิลและไฟล์ชั่วคราว
+หากคุณส่งบางสิ่งที่สำคัญไปที่ถังขยะ ให้กู้คืนก่อน</value>
+  </data>
+  <data name="Modules.M04.Description" xml:space="preserve">
+    <value>การถ่ายโอนข้อมูลขัดข้อง คิวการพิมพ์ การบีบอัด WMI และการล้าง Event Viewer
+เหตุการณ์ไม่สามารถกู้คืนได้</value>
+  </data>
+  <data name="Modules.M04.Name" xml:space="preserve">
+    <value>ทำความสะอาดล้ำลึก</value>
+  </data>
+  <data name="Modules.M04.SafetyReason" xml:space="preserve">
+    <value>ล้าง Event Viewer: เมื่อลบกิจกรรมระบบแล้ว จะไม่สามารถกู้คืนได้
+มีประโยชน์สำหรับความเป็นส่วนตัว แต่ลองคิดดูสิ</value>
+  </data>
+  <data name="Modules.M05.Description" xml:space="preserve">
+    <value>หยุด wuauserv และ BITS ล้าง SoftwareDistribution\Download และ Delivery Optimization จากนั้นเริ่มบริการใหม่</value>
+  </data>
+  <data name="Modules.M05.Name" xml:space="preserve">
+    <value>แคชของ Windows Update</value>
+  </data>
+  <data name="Modules.M05.SafetyReason" xml:space="preserve">
+    <value>ล้างแคชดาวน์โหลด Windows Update เท่านั้น
+หากการอัปเดตล้มเหลว โมดูลนี้จะแก้ไข</value>
+  </data>
+  <data name="Modules.M06.Description" xml:space="preserve">
+    <value>ลบส่วนประกอบของระบบที่ล้าสมัย
+ใช้เวลา 5-20 นาทีและไม่สามารถย้อนกลับได้ (คุณจะไม่สามารถถอนการติดตั้งการอัปเดตก่อนหน้าได้)</value>
+  </data>
+  <data name="Modules.M06.Name" xml:space="preserve">
+    <value>ร้านค้าส่วนประกอบ DISM</value>
+  </data>
+  <data name="Modules.M06.SafetyReason" xml:space="preserve">
+    <value>หลังจากการล้างข้อมูลนี้ คุณจะไม่สามารถถอนการติดตั้งการอัปเดต Windows ที่ใช้อยู่แล้วได้อีกต่อไป
+ปลอดภัยแต่ถาวร</value>
+  </data>
+  <data name="Modules.M07.Description" xml:space="preserve">
+    <value>ล้างแคชของ Edge, Chrome, Firefox, Brave, Opera และ Vivaldi
+ไม่สัมผัสโปรไฟล์หรือรหัสผ่าน</value>
+  </data>
+  <data name="Modules.M07.Name" xml:space="preserve">
+    <value>แคชของเบราว์เซอร์</value>
+  </data>
+  <data name="Modules.M07.SafetyReason" xml:space="preserve">
+    <value>ล้างแคชของเบราว์เซอร์เท่านั้น
+ห้ามแตะรหัสผ่าน บุ๊กมาร์ก ประวัติ หรือคุกกี้เซสชัน</value>
+  </data>
+  <data name="Modules.M08.Description" xml:space="preserve">
+    <value>ล้างแคช DNS ลงทะเบียนเครื่องใน DNS และบังคับให้รีเฟรชนโยบายกลุ่ม</value>
+  </data>
+  <data name="Modules.M08.Name" xml:space="preserve">
+    <value>เครือข่าย (DNS และ gpupdate)</value>
+  </data>
+  <data name="Modules.M08.SafetyReason" xml:space="preserve">
+    <value>รีเฟรชแคช DNS และนโยบายกลุ่มเท่านั้น
+ไม่เปลี่ยนการกำหนดค่าเครือข่ายถาวร</value>
+  </data>
+  <data name="Modules.M09.Description" xml:space="preserve">
+    <value>รีเซ็ตแคชของ Microsoft Store ล้างบันทึก OneDrive และแคชของทีม</value>
+  </data>
+  <data name="Modules.M09.Name" xml:space="preserve">
+    <value>ร้านค้า, OneDrive และทีม</value>
+  </data>
+  <data name="Modules.M09.SafetyReason" xml:space="preserve">
+    <value>ทำความสะอาดแคชของ Microsoft Store, OneDrive และ Teams
+ไฟล์และการสนทนาที่ซิงค์ของคุณจะถูกเก็บรักษาไว้</value>
+  </data>
+  <data name="Modules.M10.Description" xml:space="preserve">
+    <value>ตรวจสอบไฟล์ระบบที่ได้รับการป้องกันและซ่อมแซมอิมเมจของ Windows
+ซ่อมแซมเท่านั้นไม่ทำลาย.</value>
+  </data>
+  <data name="Modules.M10.Name" xml:space="preserve">
+    <value>SFC + DISM (repair)</value>
+  </data>
+  <data name="Modules.M10.SafetyReason" xml:space="preserve">
+    <value>Repairs damaged system files.
+ทำงานช้า (10-30 นาที) แต่ไม่ได้แก้ไขข้อมูลผู้ใช้</value>
+  </data>
+  <data name="Modules.M11.Description" xml:space="preserve">
+    <value>ปิดใช้งานการเร่งความเร็วเมาส์ ขยายคีย์บอร์ดให้สูงสุด ปิดใช้งานคีย์ติดหนึบ และอ่าน Hz สูงสุดของจอภาพ</value>
+  </data>
+  <data name="Modules.M11.Name" xml:space="preserve">
+    <value>เมาส์ คีย์บอร์ด และจอภาพ</value>
+  </data>
+  <data name="Modules.M11.SafetyReason" xml:space="preserve">
+    <value>ปรับแต่งการตั้งค่าเมาส์และคีย์บอร์ดในรีจิสทรี
+หากคุณไม่ชอบการเปลี่ยนแปลง ให้เปลี่ยนกลับจากการตั้งค่า Windows</value>
+  </data>
+  <data name="Modules.M12.Description" xml:space="preserve">
+    <value>Runs 'winget upgrade --all'.
+อาจใช้เวลาสักครู่ขึ้นอยู่กับจำนวนแอป No per-module undo.</value>
+  </data>
+  <data name="Modules.M12.Name" xml:space="preserve">
+    <value>Winget (update apps)</value>
+  </data>
+  <data name="Modules.M12.SafetyReason" xml:space="preserve">
+    <value>Updates ALL your apps to the latest version.
+หากเวอร์ชันใหม่ทำให้เกิดการเปลี่ยนแปลงที่ไม่ต้องการ คุณจะไม่สามารถเลิกทำได้จากที่นี่</value>
+  </data>
+  <data name="Modules.M13.Description" xml:space="preserve">
+    <value>ปิดการใช้งาน Windows Copilot, Cortana, DiagTrack, Timeline, AdvertisingID และ CEIP</value>
+  </data>
+  <data name="Modules.M13.Name" xml:space="preserve">
+    <value>Copilot, Cortana and telemetry</value>
+  </data>
+  <data name="Modules.M13.SafetyReason" xml:space="preserve">
+    <value>ปรับแต่งรีจิสทรีเพื่อปิดการใช้งาน Copilot, Cortana และ telemetry
+Reversible by re-enabling each option.</value>
+  </data>
+  <data name="Modules.M14.Description" xml:space="preserve">
+    <value>บล็อกแอป ตำแหน่ง วิดเจ็ต WPBT ที่แนะนำ และปิดใช้งานบริการที่มีประโยชน์น้อย</value>
+  </data>
+  <data name="Modules.M14.Name" xml:space="preserve">
+    <value>Privacy and services</value>
+  </data>
+  <data name="Modules.M14.SafetyReason" xml:space="preserve">
+    <value>ปรับแต่งนโยบายความเป็นส่วนตัวและปิดใช้งานบริการ Windows หลายอย่าง
+ย้อนกลับได้ แต่ส่งผลต่อฟีเจอร์ เช่น วิดเจ็ตหรือตำแหน่ง</value>
+  </data>
+  <data name="Modules.M15.Description" xml:space="preserve">
+    <value>ปิดการควบคุมปริมาณพลังงาน, ลำดับความสำคัญ MMCSS, ปิดการไฮเบอร์เนต, เปิด HAGS, ทำเครื่องหมายบนแพลตฟอร์ม BCD (จำเป็นต้องรีบูต)</value>
+  </data>
+  <data name="Modules.M15.Name" xml:space="preserve">
+    <value>Performance and latency</value>
+  </data>
+  <data name="Modules.M15.SafetyReason" xml:space="preserve">
+    <value>ปรับแต่ง BCD, MMCSS, ไฮเบอร์เนต และ HAGS
+Reboot required. Strong but reversible changes.</value>
+  </data>
+  <data name="Modules.M16.Description" xml:space="preserve">
+    <value>ปรับ NIC (RSS, offload, EEE off), TCP stack (ปิด Nagle, MaxUserPort 65534) และ Google/Cloudflare DNS</value>
+  </data>
+  <data name="Modules.M16.Name" xml:space="preserve">
+    <value>Ethernet (network optimization)</value>
+  </data>
+  <data name="Modules.M16.SafetyReason" xml:space="preserve">
+    <value>ปรับแต่งพารามิเตอร์อะแดปเตอร์เครือข่ายและสแต็ก TCP
+หากคุณขาดการเชื่อมต่อหลังจากนี้ ให้เรียกใช้ 'การรีเซ็ต netsh int ip'</value>
+  </data>
+  <data name="Modules.M17.Description" xml:space="preserve">
+    <value>MRT, การสแกนอย่างรวดเร็วของ Defender, ปิด SMBv1, ปิดการทำงานอัตโนมัติ, DEP AlwaysOn, ปิด LLMNR/NetBIOS, ปิด RDP, UAC ระดับ 2</value>
+  </data>
+  <data name="Modules.M17.Name" xml:space="preserve">
+    <value>ความปลอดภัย</value>
+  </data>
+  <data name="Modules.M17.SafetyReason" xml:space="preserve">
+    <value>Hardens system security.
+ปิดใช้งาน RDP: หากคุณใช้สำหรับการเข้าถึงระยะไกล ให้เปิดใช้งานอีกครั้งด้วยตนเอง</value>
+  </data>
+  <data name="Modules.M18.Description" xml:space="preserve">
+    <value>ตรวจสอบให้แน่ใจว่า TRIM เปิดอยู่สำหรับ NTFS/ReFS รัน TRIM บน SSD ที่ตรวจพบ และอ่านอุณหภูมิและการสึกหรอของ SMART</value>
+  </data>
+  <data name="Modules.M18.Name" xml:space="preserve">
+    <value>SSD (สุขภาพ TRIM และ SMART)</value>
+  </data>
+  <data name="Modules.M18.SafetyReason" xml:space="preserve">
+    <value>อ่านเฉพาะสถานะ SMART และเรียกใช้ TRIM (การดำเนินการ SSD มาตรฐาน)
+Does not modify data.</value>
+  </data>
+  <data name="Modules.M19.Description" xml:space="preserve">
+    <value>การสแกน pnputil แสดงรายการไดรเวอร์ OEM และเรียกใช้ Windows Update เพื่อค้นหาไดรเวอร์ใหม่</value>
+  </data>
+  <data name="Modules.M19.Name" xml:space="preserve">
+    <value>ไดร์เวอร์ (Windows Update + pnputil)</value>
+  </data>
+  <data name="Modules.M19.SafetyReason" xml:space="preserve">
+    <value>ค้นหาเฉพาะไดรเวอร์เท่านั้น
+ไม่ติดตั้งโดยอัตโนมัติ: คุณตัดสินใจว่าจะอัปเดตจาก Windows Update หรือไม่</value>
+  </data>
+  <data name="Modules.M20.Description" xml:space="preserve">
+    <value>เปิดโปรไฟล์การปรับแต่งต่อเกมที่คัดสรรแล้ว
+เลือกชื่อของคุณและรับการเพิ่มประสิทธิภาพที่ออกแบบมาเพื่อ FPS สูงสุดและความล่าช้าในการป้อนข้อมูลขั้นต่ำ</value>
+  </data>
+  <data name="Modules.M20.Name" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพเกม</value>
+  </data>
+  <data name="Modules.M20.SafetyReason" xml:space="preserve">
+    <value>ใช้การปรับแต่งเฉพาะเกมโดยกำหนดเป้าหมาย FPS สูงสุดและลดเวลาแฝง
+คืนค่าการเปลี่ยนแปลงใด ๆ ในภายหลังจากการตั้งค่า Windows หากจำเป็น</value>
+  </data>
+  <data name="Modules.Recommended.Why" xml:space="preserve">
+    <value>เลือกโมดูลที่ดีที่สุดสำหรับแผนปัจจุบันของคุณ ฟรี: การล้างข้อมูลขั้นพื้นฐาน ขั้นสูง: เพิ่มการรีเซ็ตเครือข่าย แคชของแอป และการซ่อมแซมระบบ Pro: รวมถึงความเป็นส่วนตัว, Ethernet และ SSD TRIM โมดูลที่มีผลกระทบรุนแรงจะไม่ถูกเลือกโดยอัตโนมัติ</value>
+  </data>
+  <data name="Modules.Run.ErrorTooltip" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดระหว่างการดำเนินการ</value>
+  </data>
+  <data name="Modules.Run.IdleTooltip" xml:space="preserve">
+    <value>ยังไม่ได้สมัครเลย</value>
+  </data>
+  <data name="Modules.Run.RunningTooltip" xml:space="preserve">
+    <value>วิ่ง…</value>
+  </data>
+  <data name="Modules.Run.SuccessTooltip" xml:space="preserve">
+    <value>สมัครสำเร็จ</value>
+  </data>
+  <data name="Modules.Safety.Risk" xml:space="preserve">
+    <value>เสี่ยง</value>
+  </data>
+  <data name="Modules.Safety.Safe" xml:space="preserve">
+    <value>ปลอดภัย</value>
+  </data>
+  <data name="Modules.SelectAll" xml:space="preserve">
+    <value>เลือกทั้งหมด</value>
+  </data>
+  <data name="Modules.SelectRecommended" xml:space="preserve">
+    <value>ที่แนะนำ</value>
+  </data>
+  <data name="Modules.Subtitle" xml:space="preserve">
+    <value>ตรวจสอบโมดูลที่คุณต้องการเรียกใช้</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>เลื่อนป้ายผลกระทบเพื่อดูรายละเอียดเพิ่มเติม</value>
+  </data>
+  <data name="Modules.Tier.Advanced" xml:space="preserve">
+    <value>ขั้นสูง</value>
+  </data>
+  <data name="Modules.Tier.Free" xml:space="preserve">
+    <value>ฟรี</value>
+  </data>
+  <data name="Modules.Tier.Pro" xml:space="preserve">
+    <value>โปร</value>
+  </data>
+  <data name="Modules.Title" xml:space="preserve">
+    <value>โมดูลที่มีอยู่</value>
+  </data>
+  <data name="Navigation.About" xml:space="preserve">
+    <value>เกี่ยวกับ</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>พิเศษ</value>
+  </data>
+  <data name="Navigation.Home" xml:space="preserve">
+    <value>บ้าน</value>
+  </data>
+  <data name="Navigation.Log" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="Navigation.Modules" xml:space="preserve">
+    <value>โมดูล</value>
+  </data>
+  <data name="Navigation.Panel" xml:space="preserve">
+    <value>แผง</value>
+  </data>
+  <data name="Navigation.Restore" xml:space="preserve">
+    <value>คืนค่าการเปลี่ยนแปลง</value>
+  </data>
+  <data name="Navigation.Settings" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="Navigation.Specs" xml:space="preserve">
+    <value>ข้อมูลจำเพาะของระบบ</value>
+  </data>
+  <data name="Navigation.System" xml:space="preserve">
+    <value>ระบบ</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>การปรับแต่ง</value>
+  </data>
+  <data name="Navigation.Updates" xml:space="preserve">
+    <value>อัพเดท</value>
+  </data>
+  <data name="Notification.RunFinished.Body" xml:space="preserve">
+    <value>ใช้โมดูล {0} สำเร็จแล้ว</value>
+  </data>
+  <data name="Notification.RunFinished.Title" xml:space="preserve">
+    <value>DexSuite — การเพิ่มประสิทธิภาพเสร็จสิ้น</value>
+  </data>
+  <data name="Notification.RunFinished.WithErrors" xml:space="preserve">
+    <value>พยายามใช้โมดูล {0} — มีข้อผิดพลาดที่รายงานบางส่วน ตรวจสอบแท็บบันทึก</value>
+  </data>
+  <data name="QuickClean.Button" xml:space="preserve">
+    <value>ทำความสะอาดด่วน</value>
+  </data>
+  <data name="QuickClean.ConfirmMessage" xml:space="preserve">
+    <value>นี่จะเป็นการล้างถังรีไซเคิลและล้างโฟลเดอร์ชั่วคราวของ Windows
+จะไม่มีการสัมผัสไฟล์ส่วนบุคคล</value>
+  </data>
+  <data name="QuickClean.ConfirmTitle" xml:space="preserve">
+    <value>Run quick clean?</value>
+  </data>
+  <data name="QuickClean.Tooltip" xml:space="preserve">
+    <value>ลบไฟล์ชั่วคราวออกจาก %TEMP%, C:\Windows\Temp และ C:\Windows\Prefetch
+ล้างถังรีไซเคิลด้วย
+ไม่มีการสัมผัสไฟล์ส่วนบุคคล</value>
+  </data>
+  <data name="Restore.Column.AppliedAt" xml:space="preserve">
+    <value>สมัครแล้ว</value>
+  </data>
+  <data name="Restore.Column.Module" xml:space="preserve">
+    <value>โมดูล</value>
+  </data>
+  <data name="Restore.Column.Target" xml:space="preserve">
+    <value>เป้า</value>
+  </data>
+  <data name="Restore.Column.Type" xml:space="preserve">
+    <value>พิมพ์</value>
+  </data>
+  <data name="Restore.Empty.Message" xml:space="preserve">
+    <value>เรียกใช้โมดูลการปรับให้เหมาะสมเพื่อเริ่มบันทึกการเปลี่ยนแปลงที่นี่
+การกระทำดั้งเดิมแต่ละรายการจะถูกติดตามโดยอัตโนมัติเพื่อย้อนกลับด้วยคลิกเดียว</value>
+  </data>
+  <data name="Restore.Empty.Title" xml:space="preserve">
+    <value>ยังไม่มีการติดตามการเปลี่ยนแปลง</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>ทำเครื่องหมายว่าอ่านแล้ว</value>
+  </data>
+  <data name="Restore.PendingCount" xml:space="preserve">
+    <value>{0} รอการเปลี่ยนแปลง</value>
+  </data>
+  <data name="Restore.Refresh" xml:space="preserve">
+    <value>รีเฟรช</value>
+  </data>
+  <data name="Restore.Revert.ConfirmAll" xml:space="preserve">
+    <value>สิ่งนี้จะคืนค่า {0} การเปลี่ยนแปลงที่รอดำเนินการ
+ไม่สามารถยกเลิกการดำเนินการใน DexSuite ได้</value>
+  </data>
+  <data name="Restore.Revert.ConfirmOne" xml:space="preserve">
+    <value>สิ่งนี้จะคืนค่าการเปลี่ยนแปลงที่ใช้โดย '{0}'
+ค่าเดิมจะกลับคืนมา</value>
+  </data>
+  <data name="Restore.Revert.ConfirmTitle" xml:space="preserve">
+    <value>ยกเลิกการเปลี่ยนแปลงใช่ไหม</value>
+  </data>
+  <data name="Restore.RevertAll" xml:space="preserve">
+    <value>ย้อนกลับทั้งหมด</value>
+  </data>
+  <data name="Restore.RevertOne" xml:space="preserve">
+    <value>เปลี่ยนกลับ</value>
+  </data>
+  <data name="Restore.Subtitle" xml:space="preserve">
+    <value>ทุกการเปลี่ยนแปลงที่ DexSuite นำไปใช้จะถูกบันทึกไว้ที่นี่
+เปลี่ยนกลับเป็นรายบุคคลหรือทั้งหมดในครั้งเดียว</value>
+  </data>
+  <data name="Restore.Title" xml:space="preserve">
+    <value>คืนค่าการเปลี่ยนแปลง</value>
+  </data>
+  <data name="RestorePoint.AutoDescription" xml:space="preserve">
+    <value>DexSuite — ก่อนที่จะรันโมดูล {0}</value>
+  </data>
+  <data name="RestorePoint.ConfirmMessage" xml:space="preserve">
+    <value>การสร้างจุดคืนค่าช่วยให้คุณสามารถยกเลิกการเปลี่ยนแปลงทุกอย่างจาก Windows ได้หากมีข้อผิดพลาดเกิดขึ้น
+ใช้เวลาเพียงไม่กี่วินาที</value>
+  </data>
+  <data name="RestorePoint.ConfirmNo" xml:space="preserve">
+    <value>ไม่ วิ่งโดยไม่มีมัน</value>
+  </data>
+  <data name="RestorePoint.ConfirmTitle" xml:space="preserve">
+    <value>สร้างจุดคืนค่าก่อนหรือไม่?</value>
+  </data>
+  <data name="RestorePoint.ConfirmYes" xml:space="preserve">
+    <value>ใช่ สร้างมันขึ้นมา</value>
+  </data>
+  <data name="RestorePoint.Description" xml:space="preserve">
+    <value>DexSuite — การสำรองข้อมูลการเพิ่มประสิทธิภาพด้วยตนเอง</value>
+  </data>
+  <data name="RestorePoint.Failed" xml:space="preserve">
+    <value>ไม่สามารถสร้างจุดคืนค่า: {0}</value>
+  </data>
+  <data name="RestorePoint.Success" xml:space="preserve">
+    <value>สร้างจุดคืนค่าสำเร็จแล้ว</value>
+  </data>
+  <data name="Score.BaselineFromFile" xml:space="preserve">
+    <value>โหลดจากเซสชันที่แล้ว</value>
+  </data>
+  <data name="Score.LoadedAt" xml:space="preserve">
+    <value>พื้นฐานที่บันทึกไว้ — {0}</value>
+  </data>
+  <data name="Score.MeasuredAt" xml:space="preserve">
+    <value>วัดแล้ว — {0}</value>
+  </data>
+  <data name="Search.NoResults" xml:space="preserve">
+    <value>ไม่พบการตั้งค่าสำหรับ «{0}»</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>การตั้งค่าการค้นหา...</value>
+  </data>
+  <data name="Search.ResultsCount" xml:space="preserve">
+    <value>ผลลัพธ์ {0} สำหรับ «{1}»</value>
+  </data>
+  <data name="Security.CardDesc" xml:space="preserve">
+    <value>ตรวจสอบและซ่อมแซมระบบของคุณโดยใช้เครื่องมือในตัวของ Windows</value>
+  </data>
+  <data name="Security.CardTitle" xml:space="preserve">
+    <value>การตรวจสอบความปลอดภัยและความสมบูรณ์</value>
+  </data>
+  <data name="Security.Confirm.DefenderQuick" xml:space="preserve">
+    <value>เรียกใช้การสแกนอย่างรวดเร็วของ Windows Defender หรือไม่
+โดยปกติจะใช้เวลา 5-10 นาที</value>
+  </data>
+  <data name="Security.Confirm.Dism" xml:space="preserve">
+    <value>เรียกใช้ DISM / RestoreHealth หรือไม่
+ซ่อมแซมอิมเมจ Windows โดยใช้ Windows Update ต้องใช้อินเทอร์เน็ตและอาจใช้เวลาประมาณ 10-20 นาที</value>
+  </data>
+  <data name="Security.Confirm.Mrt" xml:space="preserve">
+    <value>เรียกใช้เครื่องมือกำจัดซอฟต์แวร์ที่เป็นอันตราย (MRT /Q) หรือไม่
+ทำงานอย่างเงียบ ๆ ในพื้นหลัง</value>
+  </data>
+  <data name="Security.Confirm.Sfc" xml:space="preserve">
+    <value>เรียกใช้ตัวตรวจสอบไฟล์ระบบ (SFC / scannow) หรือไม่
+มันสแกนและซ่อมแซมไฟล์ระบบที่เสียหาย ใช้เวลา 10-20 นาที</value>
+  </data>
+  <data name="Security.Confirm.Title" xml:space="preserve">
+    <value>วิ่งเช็ค?</value>
+  </data>
+  <data name="Security.Kind.DefenderQuick" xml:space="preserve">
+    <value>ผู้พิทักษ์·สแกนด่วน</value>
+  </data>
+  <data name="Security.Kind.Dism" xml:space="preserve">
+    <value>DISM · คืนค่าอิมเมจ</value>
+  </data>
+  <data name="Security.Kind.Mrt" xml:space="preserve">
+    <value>MRT · การกำจัดมัลแวร์</value>
+  </data>
+  <data name="Security.Kind.Sfc" xml:space="preserve">
+    <value>SFC · ตรวจสอบไฟล์ระบบ</value>
+  </data>
+  <data name="Security.NotAvailable.Message" xml:space="preserve">
+    <value>{0} ไม่ได้ถูกติดตั้งบนระบบนี้</value>
+  </data>
+  <data name="Security.NotAvailable.Title" xml:space="preserve">
+    <value>ไม่มีเครื่องมือ</value>
+  </data>
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · สแกนด่วน: ตรวจจับมัลแวร์ที่ทำงานอยู่ในระบบ
+SFC · System File Checker: ค้นหาและซ่อมแซมไฟล์ระบบที่เสียหาย
+DISM · กู้คืนอิมเมจ: ซ่อมแซมอิมเมจ Windows เมื่อ SFC ไม่สามารถทำได้
+MRT · การลบมัลแวร์: เครื่องมืออย่างเป็นทางการของ Microsoft ในการต่อต้านภัยคุกคามเฉพาะ</value>
+  </data>
+  <data name="Security.RunButton" xml:space="preserve">
+    <value>วิ่ง</value>
+  </data>
+  <data name="Settings.AutoSelect.Desc" xml:space="preserve">
+    <value>ใช้เมื่อแอปเปิดตัว</value>
+  </data>
+  <data name="Settings.AutoSelect.Title" xml:space="preserve">
+    <value>เลือกโมดูลที่แนะนำไว้ล่วงหน้าเมื่อเริ่มต้น</value>
+  </data>
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>ควบคุมวิธีการทำงานของ DexSuite เมื่อคุณเรียกใช้โมดูลหรือย่อขนาดแอป</value>
+  </data>
+  <data name="Settings.Behavior.Title" xml:space="preserve">
+    <value>พฤติกรรม</value>
+  </data>
+  <data name="Settings.JumpToLog.Desc" xml:space="preserve">
+    <value>สลับมุมมองอัตโนมัติเพื่อดูผลลัพธ์ของกระบวนการ</value>
+  </data>
+  <data name="Settings.JumpToLog.Title" xml:space="preserve">
+    <value>ข้ามไปที่การเข้าสู่ระบบ</value>
+  </data>
+  <data name="Settings.Language.Description" xml:space="preserve">
+    <value>เปลี่ยนภาษาของแอปพลิเคชัน
+อินเทอร์เฟซจะอัปเดตทันที</value>
+  </data>
+  <data name="Settings.Language.Title" xml:space="preserve">
+    <value>ภาษา</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Desc" xml:space="preserve">
+    <value>เมื่อย่อเล็กสุด แอปจะซ่อนในพื้นที่แจ้งเตือนแทนที่จะปิด</value>
+  </data>
+  <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
+    <value>ย่อเล็กสุดไปที่ถาดระบบ</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
+    <value>แสดงสัญลักษณ์ Windows ใน Action Center เมื่อการปรับให้เหมาะสมเสร็จสิ้น</value>
+  </data>
+  <data name="Settings.NotifyOnFinish.Title" xml:space="preserve">
+    <value>แจ้งเตือนเมื่อการดำเนินการเสร็จสิ้น</value>
+  </data>
+  <data name="Settings.Reset" xml:space="preserve">
+    <value>รีเซ็ตการตั้งค่า</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksMessage" xml:space="preserve">
+    <value>แต่ละครั้งที่คุณเริ่มการเพิ่มประสิทธิภาพ DexSuite จะถามว่าคุณต้องการสร้างจุดคืนค่าก่อนหรือไม่ คุณสามารถตอบใช่ ไม่ใช่ หรือยกเลิกได้</value>
+  </data>
+  <data name="Settings.RestorePoint.AlwaysAsksTitle" xml:space="preserve">
+    <value>DexSuite จะถามก่อนทำการเพิ่มประสิทธิภาพเสมอ</value>
+  </data>
+  <data name="Settings.RestorePoint.AutoLabel" xml:space="preserve">
+    <value>สร้างโดยอัตโนมัติก่อนการรันแต่ละครั้ง</value>
+  </data>
+  <data name="Settings.RestorePoint.CreateNow" xml:space="preserve">
+    <value>สร้างจุดคืนค่าทันที</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc" xml:space="preserve">
+    <value>สร้างจุดคืนค่าก่อนที่จะดำเนินการปรับให้เหมาะสม</value>
+  </data>
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>หากคุณต้องการเลิกทำการเปลี่ยนแปลง คุณสามารถทำได้จากการตั้งค่า Windows</value>
+  </data>
+  <data name="Settings.RestorePoint.Title" xml:space="preserve">
+    <value>จุดคืนค่าระบบ</value>
+  </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>ทำความสะอาดเลย</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>ลบโฟลเดอร์อัพเดตชั่วคราวที่เหลืออยู่ใน AppData โดยตัวติดตั้ง</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>ไม่มีอะไรจะทำความสะอาด</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>ลบโฟลเดอร์ {0} แล้ว (ปลดปล่อย {1})</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>ทำความสะอาด DexSuite ที่เหลือ</value>
+  </data>
+  <data name="Settings.Subtitle" xml:space="preserve">
+    <value>ทุกสิ่งที่คุณเปลี่ยนแปลงที่นี่จะถูกบันทึกโดยอัตโนมัติ</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>ไม่มีปุ่มบันทึก ไม่มีการยืนยัน</value>
+  </data>
+  <data name="Settings.Theme.Active" xml:space="preserve">
+    <value>คล่องแคล่ว</value>
+  </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>เร็วๆ นี้</value>
+  </data>
+  <data name="Settings.Theme.Description" xml:space="preserve">
+    <value>ทำให้ DexSuite เป็นของคุณ</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>ธีมสีจะพร้อมใช้งานขึ้นอยู่กับแผนของคุณ</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="Settings.Theme.LockedHint" xml:space="preserve">
+    <value>ต้องใช้แผน Pro</value>
+  </data>
+  <data name="Settings.Theme.Title" xml:space="preserve">
+    <value>ธีม</value>
+  </data>
+  <data name="Settings.Tier.Description" xml:space="preserve">
+    <value>กำหนดว่าโมดูลใดที่คุณสามารถรันได้
+เปิดใช้งานใบอนุญาตในส่วนใบอนุญาตเพื่อปลดล็อคโมดูลขั้นสูงหรือ Pro</value>
+  </data>
+  <data name="Settings.Tier.Title" xml:space="preserve">
+    <value>แผนที่ใช้งานอยู่</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Desc" xml:space="preserve">
+    <value>ขอคำยืนยันก่อนที่จะรันโมดูลที่มีการเปลี่ยนแปลงที่ไม่สามารถย้อนกลับได้</value>
+  </data>
+  <data name="Settings.WarnNonReversible.Title" xml:space="preserve">
+    <value>เตือนก่อนที่จะรันโมดูลที่ไม่สามารถย้อนกลับได้</value>
+  </data>
+  <data name="Specs.CoresLabel" xml:space="preserve">
+    <value>แกน {0} / ตรรกะ {1}</value>
+  </data>
+  <data name="Specs.CPU" xml:space="preserve">
+    <value>โปรเซสเซอร์</value>
+  </data>
+  <data name="Specs.DiskLabel" xml:space="preserve">
+    <value>รวม {0} GB · ฟรี {1} GB · {2}</value>
+  </data>
+  <data name="Specs.GPU" xml:space="preserve">
+    <value>กราฟิก</value>
+  </data>
+  <data name="Specs.Loading" xml:space="preserve">
+    <value>กำลังตรวจจับฮาร์ดแวร์...</value>
+  </data>
+  <data name="Specs.OS" xml:space="preserve">
+    <value>ระบบปฏิบัติการ</value>
+  </data>
+  <data name="Specs.RAM" xml:space="preserve">
+    <value>หน่วยความจำ</value>
+  </data>
+  <data name="Specs.RamLabel" xml:space="preserve">
+    <value>รวม {0} GB · มี {1} GB</value>
+  </data>
+  <data name="Specs.Refresh" xml:space="preserve">
+    <value>รีเฟรช</value>
+  </data>
+  <data name="Specs.Storage" xml:space="preserve">
+    <value>พื้นที่จัดเก็บ</value>
+  </data>
+  <data name="Specs.Subtitle" xml:space="preserve">
+    <value>ตรวจพบฮาร์ดแวร์และระบบปฏิบัติการ。</value>
+  </data>
+  <data name="Specs.Summary.AdminNote" xml:space="preserve">
+    <value>โหมดผู้ดูแลระบบใช้งานอยู่</value>
+  </data>
+  <data name="Specs.Summary.Note" xml:space="preserve">
+    <value>ข้อมูลที่อ่านจาก Windows
+ใช้ปุ่มรีเฟรชเพื่ออัปเดตหากฮาร์ดแวร์มีการเปลี่ยนแปลง</value>
+  </data>
+  <data name="Specs.Summary.Title" xml:space="preserve">
+    <value>สรุประบบ</value>
+  </data>
+  <data name="Specs.Title" xml:space="preserve">
+    <value>ข้อมูลจำเพาะของระบบ</value>
+  </data>
+  <data name="Status.AnalysisError" xml:space="preserve">
+    <value>กำลังวิเคราะห์ข้อผิดพลาด: {0}</value>
+  </data>
+  <data name="Status.AnalysisFinal" xml:space="preserve">
+    <value>การวิเคราะห์ขั้นสุดท้าย: {0}/100 ({1})
+เดลต้า: {2}{3} คะแนน</value>
+  </data>
+  <data name="Status.AnalysisInitial" xml:space="preserve">
+    <value>การวิเคราะห์เบื้องต้น: {0}/100 ({1})
+คุณสามารถเพิ่มประสิทธิภาพได้ทันที</value>
+  </data>
+  <data name="Status.Analyzing" xml:space="preserve">
+    <value>กำลังวิเคราะห์ประสิทธิภาพ...</value>
+  </data>
+  <data name="Status.Cancelling" xml:space="preserve">
+    <value>กำลังยกเลิก...</value>
+  </data>
+  <data name="Status.CreatingRestorePoint" xml:space="preserve">
+    <value>กำลังสร้างจุดคืนค่า...</value>
+  </data>
+  <data name="Status.DevMode" xml:space="preserve">
+    <value>โหมดการพัฒนา — การอัปเดตไม่พร้อมใช้งานในสภาพแวดล้อมนี้</value>
+  </data>
+  <data name="Status.Downloading" xml:space="preserve">
+    <value>กำลังดาวน์โหลดอัปเดต... {0}%</value>
+  </data>
+  <data name="Status.Executing" xml:space="preserve">
+    <value>กำลังรันโมดูล {0}... (คุณสามารถยกเลิกได้)</value>
+  </data>
+  <data name="Status.ExecutionCancelled" xml:space="preserve">
+    <value>การดำเนินการถูกยกเลิกโดยผู้ใช้</value>
+  </data>
+  <data name="Status.ExecutionDone" xml:space="preserve">
+    <value>การดำเนินการเสร็จสิ้น
+ไปที่หน้าแรกแล้ววิเคราะห์อีกครั้งเพื่อเปรียบเทียบ</value>
+  </data>
+  <data name="Status.ExecutionError" xml:space="preserve">
+    <value>ข้อผิดพลาด: {0}</value>
+  </data>
+  <data name="Status.FolderOpenError" xml:space="preserve">
+    <value>ไม่สามารถเปิดโฟลเดอร์: {0}</value>
+  </data>
+  <data name="Status.NewVersion" xml:space="preserve">
+    <value>มีเวอร์ชันใหม่แล้ว: v{0}!
+คลิก «อัปเดตทันที» เพื่อติดตั้ง</value>
+  </data>
+  <data name="Status.QuickCleanDone" xml:space="preserve">
+    <value>ล้างข้อมูลเสร็จสมบูรณ์: ปลดปล่อย {0} MB, ลบไฟล์ {1} แล้ว</value>
+  </data>
+  <data name="Status.QuickCleanError" xml:space="preserve">
+    <value>ข้อผิดพลาดในการทำความสะอาดด่วน: {0}</value>
+  </data>
+  <data name="Status.QuickCleaning" xml:space="preserve">
+    <value>กำลังล้างไฟล์ชั่วคราวและถังรีไซเคิล...</value>
+  </data>
+  <data name="Status.Ready" xml:space="preserve">
+    <value>พร้อม. เลือกโมดูลแล้วคลิกเรียกใช้</value>
+  </data>
+  <data name="Status.RestorePointCreated" xml:space="preserve">
+    <value>สร้างจุดคืนค่าแล้ว</value>
+  </data>
+  <data name="Status.RestorePointFailed" xml:space="preserve">
+    <value>จุดคืนค่าล้มเหลว: {0}</value>
+  </data>
+  <data name="Status.RevertDone" xml:space="preserve">
+    <value>เปลี่ยนกลับเสร็จสมบูรณ์: {0}/{1}</value>
+  </data>
+  <data name="Status.ScoresReset" xml:space="preserve">
+    <value>รีเซ็ตคะแนนแล้ว คลิกวิเคราะห์เพื่อเริ่มต้นใหม่</value>
+  </data>
+  <data name="Status.Searching" xml:space="preserve">
+    <value>กำลังค้นหาข้อมูลอัปเดต...</value>
+  </data>
+  <data name="Status.SecurityDone" xml:space="preserve">
+    <value>{0} เสร็จสมบูรณ์</value>
+  </data>
+  <data name="Status.SecurityError" xml:space="preserve">
+    <value>{0} เสร็จสิ้นโดยมีข้อผิดพลาด: {1}</value>
+  </data>
+  <data name="Status.SecurityRunning" xml:space="preserve">
+    <value>กำลังรัน {0}...</value>
+  </data>
+  <data name="Status.SelectModulesFirst" xml:space="preserve">
+    <value>เลือกอย่างน้อยหนึ่งโมดูลก่อนที่จะรัน</value>
+  </data>
+  <data name="Status.SettingsReset" xml:space="preserve">
+    <value>การตั้งค่ารีเซ็ตเป็นค่าเริ่มต้น</value>
+  </data>
+  <data name="Status.UpdateApplyError" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดในการใช้การอัปเดต:
+{0}</value>
+  </data>
+  <data name="Status.UpdateDownloaded" xml:space="preserve">
+    <value>ดาวน์โหลดอัปเดตแล้ว
+แอปพลิเคชันจะรีสตาร์ทโดยอัตโนมัติ</value>
+  </data>
+  <data name="Status.UpdateError" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดในการตรวจสอบการอัปเดต:
+{0}</value>
+  </data>
+  <data name="Status.UpToDate" xml:space="preserve">
+    <value>คุณกำลังใช้เวอร์ชันล่าสุด (v{0})</value>
+  </data>
+  <data name="Status.WingetDone" xml:space="preserve">
+    <value>อัปเดตแอปแล้ว — แพ็คเกจ {0}</value>
+  </data>
+  <data name="Status.WingetError" xml:space="preserve">
+    <value>การอัปเดตแอปล้มเหลว: {0}</value>
+  </data>
+  <data name="Status.WingetRunning" xml:space="preserve">
+    <value>กำลังอัปเดตแอป...</value>
+  </data>
+  <data name="Suggestion.Body.DescribePrompt" xml:space="preserve">
+    <value>อธิบายข้อเสนอแนะหรือการปรับปรุงของคุณที่นี่:</value>
+  </data>
+  <data name="Suggestion.Button" xml:space="preserve">
+    <value>เสนอแนะการปรับปรุงครับ</value>
+  </data>
+  <data name="Suggestion.Subtitle" xml:space="preserve">
+    <value>แบ่งปันความคิดหรือข้อเสนอแนะ</value>
+  </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>ฉันยอมรับข้อกำหนด</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>เมื่อคลิก 'ฉันยอมรับข้อกำหนด' คุณยืนยันว่าคุณได้อ่านและยอมรับเงื่อนไขข้างต้นแล้ว</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>ปฏิเสธ</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>โปรดอ่านและยอมรับข้อกำหนดต่อไปนี้ก่อนที่จะใช้ DexSuite</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite เป็นเครื่องมือเพิ่มประสิทธิภาพระบบ Windows ต้องใช้สิทธิ์ของผู้ดูแลระบบเพื่อแก้ไขการตั้งค่ารีจิสทรี บริการของระบบ และงานที่กำหนดเวลาไว้ การเปลี่ยนแปลงเหล่านี้ส่งผลต่อพฤติกรรมและประสิทธิภาพของระบบ</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>แอปพลิเคชันทำงานอย่างไร</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>การใช้ DexSuite ถือเป็นความเสี่ยงของคุณเอง การเปลี่ยนแปลงที่ใช้อาจเปลี่ยนแปลงพฤติกรรมของระบบ ขอแนะนำให้สร้างจุดคืนค่าก่อนเรียกใช้โมดูลที่มีผลกระทบสูง DexSuite ไม่รับประกันผลลัพธ์ที่เฉพาะเจาะจง และไม่รับผิดชอบต่อความเสียหายหรือการสูญหายของข้อมูล</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>ความรับผิดชอบของผู้ใช้</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>โมดูลเกมดาวน์โหลดและรันสคริปต์ PowerShell จาก GitHub DexSuite ตรวจสอบความสมบูรณ์ของ SHA-256 ก่อนดำเนินการ คุณมีหน้าที่รับผิดชอบในการตรวจสอบว่าสคริปต์ทำอะไรก่อนที่จะนำไปใช้</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>สคริปต์การเพิ่มประสิทธิภาพเกม</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite จะไม่รวบรวมข้อมูลการใช้งานหรือส่งข้อมูลไปยังเซิร์ฟเวอร์ภายนอก ข้อมูลทั้งหมด (ประวัติ ใบอนุญาต การตั้งค่า) จะถูกจัดเก็บไว้ในอุปกรณ์ของคุณ</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>ความเป็นส่วนตัวและข้อมูล</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>เงื่อนไขการใช้งาน</value>
+  </data>
+  <data name="Theme.Desc.Apex" xml:space="preserve">
+    <value>แดง + ฟ้าบนเหล็กน้ำเงิน</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>ยุทธวิธีสีส้ม + สีดำ</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>หญ้าเขียว + น้ำตาลเอิร์ธโทน</value>
+  </data>
+  <data name="Theme.Desc.Cybernetic" xml:space="preserve">
+    <value>Cyberpunk สีฟ้า + สีม่วง</value>
+  </data>
+  <data name="Theme.Desc.Default" xml:space="preserve">
+    <value>จานสี Neutral Fluent</value>
+  </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>สีเหลือง + สีดำทหาร</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>ฟ้า+เหลืองสดใส</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>สีส้ม + สีน้ำเงินป้องกัน</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>ทอง+น้ำเงินเข้ม</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>ทองพรีเมี่ยม + สีดำอบอุ่น</value>
+  </data>
+  <data name="Theme.Desc.Redline" xml:space="preserve">
+    <value>แดงเรซซิ่ง+ดำเข้ม</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>สีม่วง + ทองในตำนาน</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>สีฟ้าอ่อน + สีขาวเย็น</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>สีแดงเข้ม+กระดูกขาว</value>
+  </data>
+  <data name="Theme.Desc.ZeroLag" xml:space="preserve">
+    <value>ขาวดำน้อยมาก</value>
+  </data>
+  <data name="Theme.Name.Apex" xml:space="preserve">
+    <value>APEX</value>
+  </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
+  <data name="Theme.Name.Cybernetic" xml:space="preserve">
+    <value>ไซเบอร์เนติค</value>
+  </data>
+  <data name="Theme.Name.Default" xml:space="preserve">
+    <value>ค่าเริ่มต้น</value>
+  </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
+  <data name="Theme.Name.Redline" xml:space="preserve">
+    <value>สีแดง</value>
+  </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
+  <data name="Theme.Name.ZeroLag" xml:space="preserve">
+    <value>ไม่มีความล่าช้า</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>ส่วนนี้จะพร้อมใช้งานในการอัปเดตในอนาคต</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>เร็วๆ นี้</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>ตัวติดตั้งแอป</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>การปรับแต่ง: ไม่สามารถเปิดการดาวน์โหลด {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>การปรับแต่ง: เปิดการดาวน์โหลดแล้ว — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>ปรับแต่งระบบและติดตั้งแอพที่จำเป็นอย่างรวดเร็ว</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>ปิดการใช้งานการเร่งความเร็วของเมาส์</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>ตั้งค่าอัตราการรีเฟรชเพื่อตรวจสอบสูงสุด</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>ตั้งค่าความละเอียดเป็นเนทิฟ</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>การตั้งค่าระบบ</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>การปรับแต่ง</value>
+  </data>
+  <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
+    <value>ดาวน์โหลดและติดตั้งเวอร์ชันใหม่ในเบื้องหลัง
+เมื่อ DexSuite ไม่ได้ใช้งานเท่านั้น</value>
+  </data>
+  <data name="Updates.AutoUpdate.Title" xml:space="preserve">
+    <value>อัปเดตอัตโนมัติ</value>
+  </data>
+  <data name="Updates.Channel.Desc" xml:space="preserve">
+    <value>เสถียร: เวอร์ชันทดสอบและเสถียร
+เบต้า: เวอร์ชันใหม่ก่อนหน้านี้ แต่อาจมีข้อบกพร่อง</value>
+  </data>
+  <data name="Updates.Channel.Title" xml:space="preserve">
+    <value>อัพเดทช่อง</value>
+  </data>
+  <data name="Updates.CheckForUpdates" xml:space="preserve">
+    <value>ตรวจสอบการอัปเดต</value>
+  </data>
+  <data name="Updates.HowItWorks.Message" xml:space="preserve">
+    <value>DexSuite ตรวจสอบเซิร์ฟเวอร์รีลีสของเราเพื่อหาเวอร์ชันใหม่และติดตั้งแทนที่
+หากคุณกำลังใช้งานรุ่นการพัฒนา การอัปเดตอัตโนมัติจะถูกปิดใช้งาน</value>
+  </data>
+  <data name="Updates.HowItWorks.Title" xml:space="preserve">
+    <value>การอัปเดตทำงานอย่างไร</value>
+  </data>
+  <data name="Updates.InstalledVersion" xml:space="preserve">
+    <value>เวอร์ชันที่ติดตั้ง</value>
+  </data>
+  <data name="Updates.LastCheck" xml:space="preserve">
+    <value>ตรวจสอบล่าสุด: {0}</value>
+  </data>
+  <data name="Updates.NewVersionAvailable" xml:space="preserve">
+    <value>มีเวอร์ชันใหม่แล้ว!</value>
+  </data>
+  <data name="Updates.NewVersionReady" xml:space="preserve">
+    <value>เวอร์ชัน v{0} พร้อมให้ดาวน์โหลดและติดตั้งแล้ว</value>
+  </data>
+  <data name="Updates.Preferences" xml:space="preserve">
+    <value>การตั้งค่า</value>
+  </data>
+  <data name="Updates.Subtitle" xml:space="preserve">
+    <value>DexSuite จะอัปเดตเป็นเวอร์ชันล่าสุดโดยอัตโนมัติ
+อัปเดตให้ทันสมัยอยู่เสมอเพื่อรับการเพิ่มประสิทธิภาพใหม่ทุกครั้ง</value>
+  </data>
+  <data name="Updates.Title" xml:space="preserve">
+    <value>อัพเดท</value>
+  </data>
+  <data name="Updates.UpdateNow" xml:space="preserve">
+    <value>อัปเดตตอนนี้</value>
+  </data>
+  <data name="Verdict.Acceptable" xml:space="preserve">
+    <value>ยอมรับได้</value>
+  </data>
+  <data name="Verdict.Critical" xml:space="preserve">
+    <value>วิกฤต</value>
+  </data>
+  <data name="Verdict.Excellent" xml:space="preserve">
+    <value>ยอดเยี่ยม</value>
+  </data>
+  <data name="Verdict.Good" xml:space="preserve">
+    <value>ดี</value>
+  </data>
+  <data name="Verdict.Improvable" xml:space="preserve">
+    <value>ปรับปรุงได้</value>
+  </data>
+  <data name="Winget.ConfirmMessage" xml:space="preserve">
+    <value>สิ่งนี้จะเรียกใช้การอัพเกรด winget --all
+อาจใช้เวลาหลายนาทีขึ้นอยู่กับจำนวนการอัปเดตที่รอดำเนินการ
+ความคืบหน้าจะแสดงในบันทึก</value>
+  </data>
+  <data name="Winget.ConfirmTitle" xml:space="preserve">
+    <value>อัปเดตแอปทั้งหมดใช่ไหม</value>
+  </data>
+  <data name="Winget.NotAvailable" xml:space="preserve">
+    <value>Windows Package Manager (winget) ไม่พร้อมใช้งานบนระบบนี้
+อัปเดตระบบของคุณหรือติดตั้ง App Installer จาก Microsoft Store</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>ดูข้อกำหนดการใช้งาน</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>ก่อนที่คุณจะดำเนินการต่อ</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>การเพิ่มประสิทธิภาพเกมจะเปิดคอนโซลที่คุณจะต้องอ่านข้อความ เลือกตัวเลือก และป้อนเส้นทางหนึ่งหรือสองเส้นทาง ไม่ใช่เรื่องยาก แต่ให้ใส่ใจกับสิ่งที่ปรากฏบนหน้าจอ
+
+โปรไฟล์จะถูกดาวน์โหลดจาก GitHub และทำงานโดยมีสิทธิ์ของผู้ดูแลระบบ ใช้ความเสี่ยงของคุณเอง</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>อย่าแสดงประกาศนี้อีก</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>เข้าใจแล้ว</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+</root>

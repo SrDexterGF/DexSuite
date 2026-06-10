@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
     ConfuserEx 2 — configuración de ofuscación de DexSuite.
 
@@ -14,28 +14,40 @@
     El pipeline de release (scripts/publish-release.ps1) deja los binarios
     en ../publish/win-x64 antes de invocar a ConfuserEx.
 -->
-<project outputDir="publish\win-x64" baseDir="publish\win-x64" xmlns="http://confuser.codeplex.com">
+<project outputDir="." baseDir="publish\win-x64" xmlns="http://confuser.codeplex.com">
+  <!-- Conjunto sin 'anti tamper' (redundante con el .integrity firmado RSA y causa
+       frecuente de crash en .NET 8) ni 'resources' (cifra recursos y rompería los
+       35 idiomas). 'ctrl flow' es la protección clave contra descompilación. -->
   <rule pattern="true" inherit="false">
-    <!-- Aggressive = control flow + anti-debug + anti-tamper + anti-ildasm + ref proxy. -->
-    <protection id="anti debug" />
-    <protection id="anti dump" />
-    <protection id="anti ildasm" />
-    <protection id="anti tamper" />
+    <!-- Conjunto mínimo compatible con Velopack: ctrl flow (lo que más dificulta
+         descompilar) + constants. Se descartan rename (rompe i18n/WPF/Velopack),
+         anti-debug/anti-dump (inyectan código de arranque que rompe el hook de
+         instalación de Velopack), anti-ildasm y ref-proxy. -->
+    <protection id="rename" action="remove" />
     <protection id="constants" />
     <protection id="ctrl flow" />
     <protection id="ref proxy" />
-    <protection id="resources" />
   </rule>
 
-  <!-- Excluir Models y ViewModels del control flow agresivo: WPF necesita
-       reflexión sobre ellos. Mantener el resto de protecciones. -->
+  <!-- Punto de entrada: Velopack necesita Main + VelopackApp.Run() intactos
+       para los hooks de instalación/actualización. Sin ninguna protección. -->
+  <rule pattern="name('DexSuite.App.Program')" inherit="false" />
+
+  <!-- Models y ViewModels: WPF resuelve bindings por reflexión sobre ellos.
+       Solo 'constants' para no arriesgar el control flow sobre tipos reflejados. -->
   <rule pattern="namespace('DexSuite.App.Models') or namespace('DexSuite.App.ViewModels')"
         inherit="false">
-    <protection id="anti tamper" />
     <protection id="constants" />
-    <protection id="resources" />
   </rule>
 
+  <!-- Solo el DLL gestionado. El .exe de .NET 8 es un apphost nativo
+       (no es un ensamblado .NET) y ConfuserEx no puede procesarlo. -->
   <module path="DexSuite.App.dll" />
-  <module path="DexSuite.App.exe" />
+
+  <!-- Rutas del runtime .NET 8 compartido para resolver dependencias del framework
+       (la app es framework-dependent, no van en publish\). El pipeline regenera
+       estas rutas a la versión instalada antes de ejecutar ConfuserEx.
+       Deben ir DESPUÉS de rule y module (orden del esquema ConfuserProject). -->
+  <probePath>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.27</probePath>
+  <probePath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\8.0.27</probePath>
 </project>

@@ -81,6 +81,11 @@ public sealed record LanguageOption(string Code, string NativeName, string Engli
         "da" => "dk",
         "no" => "no",
         "fi" => "fi",
+        "bg" => "bg",
+        "hu" => "hu",
+        "pt-BR" => "br",
+        "th" => "th",
+        "zh-TW" => "tw",
         _    => Code,
     };
 

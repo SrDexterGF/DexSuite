@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Rămâneți la curent și luați legătura</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Urmați-ne</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Lasă o recenzie</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Execută</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Aplicat</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Fiecare profil aplică ajustări precise pentru FPS maxim și latență minimă.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Disclaimer pentru jocuri acceptat</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Resetarea stării de optimizare a jocurilor: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Reveni</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Resetează oricum</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Aceasta resetează starea aplicată pentru {0}. Notă: ajustările sistemului efectuate de script nu pot fi inversate automat - utilizați un punct de restaurare Windows pentru a le anula complet.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Revenire la optimizarea jocului</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Caută joc...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Ce vrei să faci?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Activa</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Eliminați licența</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Lipiți o cheie de activare validă.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Activarea a eșuat: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Lipiți cheia de activare primită la achiziție. Cheia este blocată pe acest hardware (HWID de mai sus).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Cheie de activare</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Licență activată. Plan: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Planul actual</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Copie</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>ID hardware (HWID) — trimiteți-l dezvoltatorului pentru a vă primi cheia</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID a fost copiat în clipboard.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite utilizează o licență legată de hardware. HWID-ul identifică acest PC; cheia pe care o primiți este semnată și funcționează doar aici.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Licenţă</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Plan avansat activ.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Plan gratuit activ.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Plan pro activ.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Licență activată — plan {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Activarea licenței a fost respinsă: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Licență eliminată - înapoi la Free.</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>Deselectează</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>Recomandat</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>AVANSAT</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Despre</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRA</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Acasă</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEM</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Tuning</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Actualizări</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Marcați ca citit</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Minimizați în zona de notificări</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>În curând</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Stocare</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Accept Termenii</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Făcând clic pe „Accept Termenii”, confirmați că ați citit și sunteți de acord cu condițiile de mai sus.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Declin</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Vă rugăm să citiți și să acceptați următorii termeni înainte de a utiliza DexSuite.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite este un instrument de optimizare a sistemului Windows. Este nevoie de privilegii de administrator pentru a modifica setările de registry, serviciile de sistem și activitățile programate. Aceste modificări afectează comportamentul și performanța sistemului.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Cum funcționează aplicația</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>Utilizarea DexSuite este pe propriul risc. Modificările aplicate pot modifica comportamentul sistemului. Este recomandat să creați un punct de restaurare înainte de a rula module cu impact ridicat. DexSuite nu oferă nicio garanție pentru rezultate specifice și nu este responsabil pentru nicio daune sau pierdere de date.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Responsabilitatea utilizatorului</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Modulul de jocuri descarcă și execută scripturi PowerShell din GitHub. DexSuite își verifică integritatea SHA-256 înainte de execuție. Sunteți responsabil să revizuiți ceea ce fac scripturile înainte de a le aplica.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Scripturi de optimizare a jocului</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite nu colectează date de utilizare și nu trimite informații către servere externe. Toate datele (istoric, licență, setări) sunt stocate local pe dispozitivul dvs.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Confidențialitate și date</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Termeni de utilizare</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Portocaliu tactic + negru</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Verde iarbă + maro pământ</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Galben + negru militar</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Albastru vibrant + galben</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Portocaliu + albastru protector</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Aur + albastru intens</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Auriu premium + negru cald</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Mov + aur mitic</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Albastru deschis + alb rece</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Roșu îndrăzneț + alb os</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Această secțiune va fi disponibilă într-o actualizare viitoare.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>În curând</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Instalator de aplicații</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Ajustare: nu s-a putut deschide descărcarea {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Ajustare: descărcare deschisă — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Modificări ale sistemului și instalare rapidă a aplicațiilor esențiale.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Dezactivați accelerația mouse-ului</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Setați rata de reîmprospătare pentru a monitoriza maxim</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Setați rezoluția la nativ</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Setări de sistem</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Tuning</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Cheia este blocată pe acest dispozitiv (HWID de mai sus).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Cheia pe care o primiți este semnată și funcționează numai pe acest dispozitiv.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Scanare rapidă: detectează malware activ în sistem.
+SFC · System File Checker: găsește și repară fișierele de sistem deteriorate.
+DISM · Restaurare imagine: repară imaginea Windows când SFC nu poate.
+MRT · Eliminarea programelor malware: instrumentul oficial Microsoft împotriva amenințărilor specifice.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Controlați modul în care se comportă DexSuite atunci când rulați module sau minimizați aplicația.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Vedeți termenii de utilizare</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Dacă trebuie să anulați modificările, o puteți face din Setări Windows.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Înainte de a continua</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Optimizarea unui joc deschide o consolă în care va trebui să citiți mesajele, să alegeți opțiuni și să introduceți o cale sau două. Nu este greu, dar fii atent la ceea ce apare pe ecran.
+
+Profilurile sunt descărcate de pe GitHub și rulează cu permisiuni de administrator. Utilizați pe propriul risc.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Nu mai afișa această notificare</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Am înţeles</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Anula</value>
   </data>
 </root>

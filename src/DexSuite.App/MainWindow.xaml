@@ -545,7 +545,7 @@
                         Visibility="Collapsed"/>
 
         <ui:TitleBar Grid.Row="0"
-                     Title="DexSuite — Performance Series"/>
+                     Title="DexSuite"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -681,8 +681,37 @@
                         </StackPanel>
                     </Button>
 
-                    <!-- Separador entre "Acerca de" e "Informar de un fallo" -->
-                    <Border DockPanel.Dock="Bottom" Height="1" Margin="16,8,16,6">
+                    <!-- EXTRAS: anclado al fondo para evitar espacio vacío bajo Tuning -->
+                    <RadioButton DockPanel.Dock="Bottom"
+                                 Style="{StaticResource NavItemStyle}"
+                                 GroupName="MainNav"
+                                 IsChecked="{Binding IsTuningView, Mode=OneWay}"
+                                 Command="{Binding NavigateCommand}"
+                                 CommandParameter="Tuning">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                <ui:SymbolIcon Symbol="Wrench24" Style="{StaticResource NavItemIconStyle}"/>
+                                <TextBlock Text="{loc:T Key=Navigation.Tuning}" Style="{StaticResource NavItemTextStyle}"/>
+                            </StackPanel>
+                            <ui:SymbolIcon Grid.Column="1"
+                                           Symbol="LockClosed24"
+                                           Filled="True"
+                                           FontSize="16"
+                                           Opacity="0.7"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,10,0"
+                                           ToolTip="{loc:T Key=Tuning.ComingSoon.Title}"/>
+                        </Grid>
+                    </RadioButton>
+                    <ui:TextBlock DockPanel.Dock="Bottom"
+                                  Text="{loc:T Key=Navigation.Extras}"
+                                  Style="{StaticResource SidebarCaption}"/>
+                    <Border DockPanel.Dock="Bottom" Height="1" Margin="16,14,16,6">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                                 <GradientStop Offset="0"   Color="Transparent"/>
@@ -831,58 +860,6 @@
                             </StackPanel>
                         </RadioButton>
 
-                        <!-- Separador con gradiente -->
-                        <Border Height="1" Margin="16,14,16,6">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                    <GradientStop Offset="0"   Color="Transparent"/>
-                                    <GradientStop Offset="0.3" Color="#FF2A2A4A"/>
-                                    <GradientStop Offset="0.7" Color="#FF2A2A4A"/>
-                                    <GradientStop Offset="1"   Color="Transparent"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                        </Border>
-
-                        <ui:TextBlock Text="{loc:T Key=Navigation.Extras}" Style="{StaticResource SidebarCaption}"/>
-
-                        <!-- Tuning (bloqueada con overlay Coming Soon hasta nuevo aviso).
-                             Lleva candado a la derecha para indicar el bloqueo. -->
-                        <RadioButton Style="{StaticResource NavItemStyle}"
-                                     GroupName="MainNav"
-                                     IsChecked="{Binding IsTuningView, Mode=OneWay}"
-                                     Command="{Binding NavigateCommand}"
-                                     CommandParameter="Tuning">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                    <ui:SymbolIcon Symbol="Wrench24" Style="{StaticResource NavItemIconStyle}"/>
-                                    <TextBlock Text="{loc:T Key=Navigation.Tuning}" Style="{StaticResource NavItemTextStyle}"/>
-                                </StackPanel>
-                                <ui:SymbolIcon Grid.Column="1"
-                                               Symbol="LockClosed24"
-                                               Filled="True"
-                                               FontSize="14"
-                                               Opacity="0.7"
-                                               VerticalAlignment="Center"
-                                               Margin="0,0,2,0"
-                                               ToolTip="{loc:T Key=Tuning.ComingSoon.Title}"/>
-                            </Grid>
-                        </RadioButton>
-
-                        <!-- Separador con gradiente -->
-                        <Border Height="1" Margin="16,14,16,6">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                    <GradientStop Offset="0"   Color="Transparent"/>
-                                    <GradientStop Offset="0.3" Color="#FF2A2A4A"/>
-                                    <GradientStop Offset="0.7" Color="#FF2A2A4A"/>
-                                    <GradientStop Offset="1"   Color="Transparent"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                        </Border>
                     </StackPanel>
                 </DockPanel>
             </Border>
@@ -1031,11 +1008,16 @@
                                         <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.QuickClean.Title}"
                                                       FontTypography="BodyStrong"
                                                       Margin="0,10,0,4"/>
-                                        <ui:TextBlock Grid.Row="2" Text="{loc:T Key=Home.Card.QuickClean.Desc}"
-                                                      Opacity="0.7"
-                                                      TextWrapping="Wrap"
-                                                      VerticalAlignment="Top"
-                                                      Margin="0,0,0,12"/>
+                                        <StackPanel Grid.Row="2" VerticalAlignment="Top" Margin="0,0,0,12">
+                                            <ui:TextBlock Text="{loc:T Key=Home.Card.QuickClean.Desc}"
+                                                          Opacity="0.7"
+                                                          TextWrapping="Wrap"/>
+                                            <ui:TextBlock Text="{loc:T Key=Home.Card.QuickClean.Desc.Line2}"
+                                                          FontTypography="Caption"
+                                                          Opacity="0.5"
+                                                          TextWrapping="Wrap"
+                                                          Margin="0,1,0,0"/>
+                                        </StackPanel>
                                         <ui:Button Grid.Row="3" Appearance="Secondary"
                                                    Padding="14,4,10,4"
                                                    Command="{Binding QuickCleanCommand}"
@@ -1129,16 +1111,48 @@
                                                       VerticalAlignment="Top"
                                                       Margin="0,0,0,12"/>
                                         <StackPanel Grid.Row="3" Orientation="Vertical">
-                                            <ComboBox Margin="0,0,0,8"
-                                                      HorizontalAlignment="Stretch"
-                                                      ItemsSource="{Binding AvailableSecurityChecks}"
-                                                      SelectedItem="{Binding SelectedSecurityCheck, Mode=TwoWay}">
-                                                <ComboBox.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding Converter={StaticResource SecurityKind}}"/>
-                                                    </DataTemplate>
-                                                </ComboBox.ItemTemplate>
-                                            </ComboBox>
+                                            <Grid Margin="0,0,0,8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <ComboBox Grid.Column="0"
+                                                          HorizontalAlignment="Stretch"
+                                                          ItemsSource="{Binding AvailableSecurityChecks}"
+                                                          SelectedItem="{Binding SelectedSecurityCheck, Mode=TwoWay}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Converter={StaticResource SecurityKind}}"/>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                                <Border Grid.Column="1"
+                                                        Width="22" Height="22"
+                                                        CornerRadius="11"
+                                                        Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                                                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                                        BorderThickness="1"
+                                                        VerticalAlignment="Center"
+                                                        Margin="6,0,0,0"
+                                                        Cursor="Help"
+                                                        ToolTipService.ShowDuration="30000"
+                                                        ToolTipService.InitialShowDelay="200">
+                                                    <Border.ToolTip>
+                                                        <ToolTip MaxWidth="370" Padding="12,10">
+                                                            <TextBlock Text="{Binding [Security.OptionsTooltip], Source={x:Static svc:LocalizationService.Instance}}"
+                                                                       TextWrapping="Wrap"
+                                                                       FontSize="12"
+                                                                       LineHeight="18"/>
+                                                        </ToolTip>
+                                                    </Border.ToolTip>
+                                                    <TextBlock Text="?"
+                                                               FontSize="13"
+                                                               FontWeight="Bold"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"
+                                                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                                                </Border>
+                                            </Grid>
                                             <ui:Button Appearance="Secondary"
                                                        Content="{loc:T Key=Security.RunButton}"
                                                        Icon="{ui:SymbolIcon Symbol=Play24}"
@@ -1399,6 +1413,11 @@
                                           Opacity="0.65"
                                           TextWrapping="Wrap"
                                           Margin="0,2,0,0"/>
+                            <ui:TextBlock Text="{loc:T Key=Modules.Subtitle.Line2}"
+                                          FontTypography="Caption"
+                                          Opacity="0.45"
+                                          TextWrapping="Wrap"
+                                          Margin="0,1,0,0"/>
                         </StackPanel>
                     </DockPanel>
 
@@ -2386,7 +2405,7 @@
                     <Grid MaxWidth="980" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
                             <!-- Header: título + acciones (Refresh, Revert all) -->
-                            <Grid Margin="0,0,0,8">
+                            <Grid Margin="0,0,0,16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -2406,11 +2425,17 @@
                                                Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
                                                Command="{Binding RefreshChangesCommand}"
                                                Margin="0,0,8,0"/>
+                                    <ui:Button Appearance="Secondary"
+                                               Content="{loc:T Key=Restore.MarkAsRead}"
+                                               Icon="{ui:SymbolIcon Symbol=MailRead24}"
+                                               Command="{Binding DismissChangesBadgeCommand}"
+                                               IsEnabled="{Binding HasPendingChanges}"
+                                               Margin="0,0,8,0"/>
                                     <ui:Button Appearance="Primary"
                                                Content="{loc:T Key=Restore.RevertAll}"
                                                Icon="{ui:SymbolIcon Symbol=ArrowUndo24}"
                                                Command="{Binding RevertAllChangesCommand}"
-                                               IsEnabled="{Binding HasPendingChanges}"/>
+                                               IsEnabled="{Binding HasChangesInList}"/>
                                 </StackPanel>
                             </Grid>
 
@@ -2433,7 +2458,7 @@
                                     <Style TargetType="ui:InfoBar">
                                         <Setter Property="Visibility" Value="Visible"/>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding HasPendingChanges}" Value="True">
+                                            <DataTrigger Binding="{Binding HasChangesInList}" Value="True">
                                                 <Setter Property="Visibility" Value="Collapsed"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -2446,7 +2471,7 @@
                                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                     BorderThickness="1"
                                     CornerRadius="8"
-                                    Visibility="{Binding HasPendingChanges, Converter={StaticResource BoolToVis}}">
+                                    Visibility="{Binding HasChangesInList, Converter={StaticResource BoolToVis}}">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -2622,7 +2647,12 @@
                             <ui:TextBlock Text="{loc:T Key=Settings.Subtitle}"
                                           Opacity="0.65"
                                           TextWrapping="Wrap"
-                                          Margin="0,2,0,18"/>
+                                          Margin="0,2,0,0"/>
+                            <ui:TextBlock Text="{loc:T Key=Settings.Subtitle.Line2}"
+                                          FontTypography="Caption"
+                                          Opacity="0.45"
+                                          TextWrapping="Wrap"
+                                          Margin="0,1,0,18"/>
 
                             <!-- Idioma -->
                             <Border Padding="20,16" CornerRadius="10"
@@ -2657,7 +2687,8 @@
                                     <ComboBox Grid.Column="1"
                                               Width="220"
                                               VerticalAlignment="Center"
-                                              MaxDropDownHeight="220"
+                                              MaxDropDownHeight="300"
+                                              ScrollViewer.VerticalScrollBarVisibility="Visible"
                                               ItemsSource="{Binding AvailableLanguages}"
                                               SelectedValuePath="Code"
                                               SelectedValue="{Binding CurrentLanguage, Mode=TwoWay}">
@@ -2806,13 +2837,9 @@
 
                                                     <!-- Bloque inferior: nombre + hint/desc -->
                                                     <StackPanel Grid.Row="1" Margin="10,6,10,8">
-                                                        <!-- Nombre del tema (oculto en la tarjeta placeholder Coming Soon
-                                                             porque el badge sobre los colores ya dice "Próximamente"
-                                                             y aquí se quedaba cortado). -->
                                                         <ui:TextBlock Text="{Binding NameKey, Converter={StaticResource Loc}}"
                                                                       FontTypography="BodyStrong"
-                                                                      TextTrimming="CharacterEllipsis"
-                                                                      Visibility="{Binding IsComingSoon, Converter={StaticResource InverseBoolToVis}}"/>
+                                                                      TextWrapping="Wrap"/>
                                                         <ui:TextBlock Text="{loc:T Key=Settings.Theme.LockedHint}"
                                                                       FontTypography="Caption"
                                                                       Opacity="0.7">
@@ -2833,6 +2860,7 @@
                                                         <ui:TextBlock Text="{Binding DescriptionKey, Converter={StaticResource Loc}}"
                                                                       FontTypography="Caption"
                                                                       Opacity="0.6"
+                                                                      TextWrapping="Wrap"
                                                                       Visibility="{Binding IsUnlocked, Converter={StaticResource BoolToVis}}"/>
                                                     </StackPanel>
                                                 </Grid>
@@ -2845,6 +2873,11 @@
                                                   Margin="0,0,0,4"/>
                                     <ui:TextBlock Text="{loc:T Key=Settings.Theme.Description}"
                                                   Opacity="0.7"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,0,0,1"/>
+                                    <ui:TextBlock Text="{loc:T Key=Settings.Theme.Description.Line2}"
+                                                  FontTypography="Caption"
+                                                  Opacity="0.5"
                                                   TextWrapping="Wrap"
                                                   Margin="0,0,0,14"/>
 
@@ -2899,6 +2932,10 @@
                                     <ui:TextBlock Text="{loc:T Key=License.Section.Description}"
                                                   Opacity="0.7"
                                                   TextWrapping="Wrap"
+                                                  Margin="0,0,0,4"/>
+                                    <ui:TextBlock Text="{loc:T Key=License.Section.Description2}"
+                                                  Opacity="0.7"
+                                                  TextWrapping="Wrap"
                                                   Margin="0,0,0,12"/>
 
                                     <!-- Tier actual -->
@@ -2949,6 +2986,11 @@
                                                   Opacity="0.55"
                                                   FontTypography="Caption"
                                                   TextWrapping="Wrap"
+                                                  Margin="0,0,0,2"/>
+                                    <ui:TextBlock Text="{loc:T Key=License.Activation.Help2}"
+                                                  Opacity="0.55"
+                                                  FontTypography="Caption"
+                                                  TextWrapping="Wrap"
                                                   Margin="0,0,0,8"/>
                                     <TextBox Text="{Binding ActivationKeyInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                              AcceptsReturn="False"
@@ -2984,6 +3026,10 @@
                                 <StackPanel>
                                     <ui:TextBlock Text="{loc:T Key=Settings.Behavior.Title}"
                                                   FontTypography="Subtitle"
+                                                  Margin="0,0,0,4"/>
+                                    <ui:TextBlock Text="{loc:T Key=Settings.Behavior.Desc}"
+                                                  Opacity="0.7"
+                                                  TextWrapping="Wrap"
                                                   Margin="0,0,0,8"/>
 
                                     <Grid Margin="0,6,0,6">
@@ -3119,7 +3165,11 @@
                                                           Opacity="0.55"
                                                           FontTypography="Caption"
                                                           TextWrapping="Wrap"
-                                                          Margin="0,2,0,0"/>
+                                                          Margin="0,2,0,1"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.RestorePoint.Desc2}"
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
                                         </StackPanel>
                                     </DockPanel>
 
@@ -3162,6 +3212,11 @@
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right"
                                         Margin="0,12,0,0">
+                                <ui:Button Appearance="Secondary"
+                                           Content="{loc:T Key=Settings.ShowTerms}"
+                                           Icon="{ui:SymbolIcon Symbol=Document24}"
+                                           Command="{Binding ShowTermsCommand}"
+                                           Margin="0,0,8,0"/>
                                 <ui:Button Appearance="Secondary"
                                            Content="{loc:T Key=Settings.Reset}"
                                            Icon="{ui:SymbolIcon Symbol=ArrowReset24}"
@@ -3535,6 +3590,49 @@
                                                    Icon="{ui:SymbolIcon Symbol=ArrowSync24}"
                                                    Command="{Binding CheckForUpdatesCommand}"
                                                    Margin="0,0,8,8"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- RRSS y contacto -->
+                            <Border Padding="20,16" CornerRadius="10"
+                                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                    BorderThickness="1"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <ui:TextBlock Text="{loc:T Key=About.Social.Title}"
+                                                  FontTypography="Subtitle"
+                                                  Margin="0,0,0,4"/>
+                                    <ui:TextBlock Text="{loc:T Key=About.Social.Subtitle}"
+                                                  Opacity="0.7"
+                                                  TextWrapping="Wrap"
+                                                  Margin="0,0,0,14"/>
+                                    <WrapPanel>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="{loc:T Key=About.Social.Instagram}"
+                                                   Icon="{ui:SymbolIcon Symbol=Camera24}"
+                                                   Command="{Binding OpenDownloadUrlCommand}"
+                                                   CommandParameter="https://www.instagram.com/dexsuite"
+                                                   Margin="0,0,8,8"/>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="{loc:T Key=About.Social.Linktree}"
+                                                   Icon="{ui:SymbolIcon Symbol=Link24}"
+                                                   Command="{Binding OpenDownloadUrlCommand}"
+                                                   CommandParameter="https://linktr.ee/DexSuite"
+                                                   Margin="0,0,8,8"/>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="{loc:T Key=About.Social.Email}"
+                                                   Icon="{ui:SymbolIcon Symbol=Mail24}"
+                                                   Command="{Binding OpenDownloadUrlCommand}"
+                                                   CommandParameter="mailto:suitedex@gmail.com"
+                                                   Margin="0,0,8,8"/>
+                                        <ui:Button Appearance="Secondary"
+                                                   Content="{loc:T Key=About.Social.Trustpilot}"
+                                                   Icon="{ui:SymbolIcon Symbol=Star24}"
+                                                   Command="{Binding OpenDownloadUrlCommand}"
+                                                   CommandParameter="https://www.trustpilot.com/evaluate/dexsuite.carrd.co"
+                                                   Margin="0,0,0,8"/>
                                     </WrapPanel>
                                 </StackPanel>
                             </Border>

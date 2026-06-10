@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using DexSuite.App.Models;
 using DexSuite.App.Services;
 using Microsoft.Extensions.Logging;
+using Wpf.Ui.Controls;
 
 namespace DexSuite.App.ViewModels;
 
@@ -117,5 +118,25 @@ public sealed partial class GameSelectorViewModel : ObservableObject
             await _appLog.ErrorAsync(AppLogCategory.Run,
                 string.Format(_loc.Get("Gaming.Log.Failed"), variant.DisplayName, ex.Message));
         }
+    }
+
+    [RelayCommand]
+    private async Task RevertGameAsync(GameTileViewModel? tile)
+    {
+        if (tile is null || !tile.IsConfigApplied) return;
+
+        var confirm = new Wpf.Ui.Controls.MessageBox
+        {
+            Title             = _loc.Get("Gaming.Revert.ConfirmTitle"),
+            Content           = string.Format(_loc.Get("Gaming.Revert.ConfirmMessage"), tile.Name),
+            PrimaryButtonText = _loc.Get("Gaming.Revert.ConfirmAccept"),
+            CloseButtonText   = _loc.Get("Common.Cancel"),
+        };
+        var result = await confirm.ShowDialogAsync();
+        if (result != Wpf.Ui.Controls.MessageBoxResult.Primary) return;
+
+        tile.IsConfigApplied = false;
+        await _appLog.InfoAsync(AppLogCategory.Run,
+            string.Format(_loc.Get("Gaming.Log.Reverted"), tile.Name));
     }
 }

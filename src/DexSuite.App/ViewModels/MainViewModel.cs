@@ -172,6 +172,17 @@ public partial class MainViewModel : ObservableObject
     private async Task OpenDownloadUrlAsync(string? url)
     {
         if (string.IsNullOrWhiteSpace(url)) return;
+
+        // Validar que el esquema sea seguro antes de lanzar como admin.
+        if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) ||
+            (uri.Scheme != Uri.UriSchemeHttps &&
+             uri.Scheme != Uri.UriSchemeHttp  &&
+             uri.Scheme != "mailto"))
+        {
+            _logger.LogWarning("URL rechazada por esquema no permitido: {Url}", url);
+            return;
+        }
+
         try
         {
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
@@ -374,9 +385,27 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void SelectRecommended()
     {
+        var tier = UserTierEnum;
         foreach (var m in Modules)
-            if (!m.IsLocked) m.IsEnabled = m.Module.RecommendedDefault;
+        {
+            if (m.IsLocked) { m.IsEnabled = false; continue; }
+            m.IsEnabled = IsRecommendedForTier(m.Module.Id, tier);
+        }
     }
+
+    // Conjuntos de módulos recomendados por tier.
+    // Free: limpieza segura y reversible de bajo impacto.
+    // Avanzado: añade red, caché de apps y reparación del sistema.
+    // Pro: añade privacidad, red Ethernet y TRIM de SSD.
+    // Nunca se auto-seleccionan módulos de impacto Extremo (M15) ni los
+    // que modifican drivers/seguridad de forma agresiva (M11, M13, M17, M19).
+    private static bool IsRecommendedForTier(int id, ModuleTier tier) => tier switch
+    {
+        ModuleTier.Free     => id is 1 or 2 or 5 or 7,
+        ModuleTier.Advanced => id is 1 or 2 or 5 or 7 or 8 or 9 or 10,
+        ModuleTier.Pro      => id is 1 or 2 or 5 or 7 or 8 or 9 or 10 or 14 or 16 or 18,
+        _                   => false,
+    };
 
     // Idioma
 
@@ -549,6 +578,7 @@ public partial class MainViewModel : ObservableObject
     partial void OnAutoUpdateEnabledChanged(bool value)           => PersistSettings();
     partial void OnMinimizeToTrayChanged(bool value)              => PersistSettings();
     partial void OnUpdateChannelChanged(string value)             => PersistSettings();
+    partial void OnShowGamingDisclaimerChanged(bool value)        => PersistSettings();
 
     /// <summary>
     /// Toma un snapshot del estado actual y lo manda a guardar (con debounce).
@@ -568,6 +598,7 @@ public partial class MainViewModel : ObservableObject
             NotifyOnFinish              = NotifyOnFinish,
             AutoUpdateEnabled           = AutoUpdateEnabled,
             MinimizeToTray              = MinimizeToTray,
+            ShowGamingDisclaimer        = ShowGamingDisclaimer,
         });
     }
 
@@ -689,6 +720,20 @@ public partial class MainViewModel : ObservableObject
         _ = _appLog.InfoAsync(AppLogCategory.Settings, T("Log.Event.SettingsReset"));
     }
 
+    /// <summary>
+    /// Reabre el diálogo de Terms of Use en modo solo lectura (sin aceptar/declinar).
+    /// No lee ni modifica el flag de aceptación de settings.json.
+    /// </summary>
+    [RelayCommand]
+    private void ShowTerms()
+    {
+        var terms = new DexSuite.App.TermsWindow(readOnly: true)
+        {
+            Owner = Application.Current?.MainWindow,
+        };
+        terms.ShowDialog();
+    }
+
     // Punto de restauración
 
     /// <summary>
@@ -803,6 +848,11 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Si al minimizar la ventana se oculta a la bandeja del sistema.</summary>
     [ObservableProperty]
     private bool minimizeToTray = false;
+
+    /// <summary>Si se muestra el aviso de gaming antes de abrir el selector de juegos.
+    /// Default true; el usuario puede desactivarlo desde el propio diálogo.</summary>
+    [ObservableProperty]
+    private bool showGamingDisclaimer = true;
 
     [ObservableProperty]
     private string updateChannel = "Stable";
@@ -1238,10 +1288,28 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private int pendingChangesCount;
 
-    /// <summary>True cuando hay cambios pendientes (controla el badge en sidebar).</summary>
-    public bool HasPendingChanges => PendingChangesCount > 0;
+    private bool _changesBadgeDismissed;
 
-    partial void OnPendingChangesCountChanged(int value) => OnPropertyChanged(nameof(HasPendingChanges));
+    /// <summary>True cuando hay cambios en la lista (controla visibilidad de tabla y botón Revertir todo).</summary>
+    public bool HasChangesInList => PendingChanges.Count > 0;
+
+    /// <summary>True cuando hay cambios pendientes Y el badge no ha sido descartado (controla badge sidebar).</summary>
+    public bool HasPendingChanges => PendingChangesCount > 0 && !_changesBadgeDismissed;
+
+    partial void OnPendingChangesCountChanged(int value)
+    {
+        if (value > 0) _changesBadgeDismissed = false;
+        OnPropertyChanged(nameof(HasPendingChanges));
+        OnPropertyChanged(nameof(HasChangesInList));
+    }
+
+    [RelayCommand]
+    private void DismissChangesBadge()
+    {
+        _changesBadgeDismissed = true;
+        OnPropertyChanged(nameof(HasPendingChanges));
+        // HasChangesInList no cambia: la lista sigue visible
+    }
 
     [RelayCommand]
     private async Task RefreshChangesAsync()
@@ -1253,6 +1321,7 @@ public partial class MainViewModel : ObservableObject
             PendingChanges.Clear();
             foreach (var c in list) PendingChanges.Add(c);
             PendingChangesCount = list.Count;
+            OnPropertyChanged(nameof(HasChangesInList));
         }
         catch (Exception ex)
         {
@@ -1419,10 +1488,43 @@ public partial class MainViewModel : ObservableObject
         UserTierEnum is ModuleTier.Pro or ModuleTier.Advanced;
 
     [RelayCommand(CanExecute = nameof(CanOpenGameSelector))]
-    private void OpenGameSelector()
+    private async Task OpenGameSelectorAsync()
     {
         try
         {
+            if (ShowGamingDisclaimer)
+            {
+                // Contenido custom: cuerpo del aviso + checkbox "No volver a mostrar".
+                var dontShow = new System.Windows.Controls.CheckBox
+                {
+                    Content = T("GamingDisclaimer.DontShow"),
+                    Margin  = new System.Windows.Thickness(0, 14, 0, 0),
+                };
+                var panel = new System.Windows.Controls.StackPanel();
+                panel.Children.Add(new System.Windows.Controls.TextBlock
+                {
+                    Text         = T("GamingDisclaimer.Body"),
+                    TextWrapping = System.Windows.TextWrapping.Wrap,
+                });
+                panel.Children.Add(dontShow);
+
+                var disclaimer = new Wpf.Ui.Controls.MessageBox
+                {
+                    Title             = T("GamingDisclaimer.Title"),
+                    Content           = panel,
+                    PrimaryButtonText = T("GamingDisclaimer.Confirm"),
+                    CloseButtonText   = T("GamingDisclaimer.Cancel"),
+                };
+                var result = await disclaimer.ShowDialogAsync();
+                if (result != Wpf.Ui.Controls.MessageBoxResult.Primary) return; // Cancelar
+
+                if (dontShow.IsChecked == true)
+                {
+                    ShowGamingDisclaimer = false;
+                    await _appLog.InfoAsync(AppLogCategory.App, T("Gaming.Log.DisclaimerAccepted"));
+                }
+            }
+
             var window = (Window)_services.GetService(typeof(GameSelectorWindow))!;
             window.Owner = Application.Current?.MainWindow;
             window.ShowDialog();
@@ -1563,6 +1665,7 @@ public partial class MainViewModel : ObservableObject
         UserTier                    = TierToString(_license.CurrentTier);
         AutoUpdateEnabled           = persisted.AutoUpdateEnabled;
         MinimizeToTray              = persisted.MinimizeToTray;
+        ShowGamingDisclaimer        = persisted.ShowGamingDisclaimer;
         UpdateChannel               = persisted.UpdateChannel;
         if (!string.IsNullOrWhiteSpace(persisted.Language))
             _loc.CurrentLanguage = persisted.Language;
@@ -1645,7 +1748,7 @@ public partial class MainViewModel : ObservableObject
 
         foreach (var m in catalog.GetAll())
         {
-            var vm = new ModuleItemViewModel(m, initiallyEnabled: AutoSelectRecommended && m.RecommendedDefault, _loc);
+            var vm = new ModuleItemViewModel(m, initiallyEnabled: AutoSelectRecommended && IsRecommendedForTier(m.Id, UserTierEnum), _loc);
             Modules.Add(vm);
             switch (m.Tier)
             {

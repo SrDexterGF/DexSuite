@@ -32,41 +32,46 @@ public sealed class LocalizationService : ILocalizationService
     /// </summary>
     public IReadOnlyList<LanguageOption> AvailableLanguages { get; } = new[]
     {
-        // Bloque 1 — España + originales
-        new LanguageOption("es", "Español",   "Spanish",    "🇪🇸"),
-        new LanguageOption("gl", "Galego",    "Galician",   "🇪🇸"),
-        new LanguageOption("ca", "Català",    "Catalan",    "🇪🇸"),
-        new LanguageOption("eu", "Euskara",   "Basque",     "🇪🇸"),
-        new LanguageOption("en", "English",   "English",    "🇬🇧"),
-        new LanguageOption("pt", "Português", "Portuguese", "🇵🇹"),
-        new LanguageOption("fr", "Français",  "French",     "🇫🇷"),
-        new LanguageOption("de", "Deutsch",   "German",     "🇩🇪"),
-        new LanguageOption("it", "Italiano",  "Italian",    "🇮🇹"),
-        new LanguageOption("zh", "中文 (简体)", "Chinese (Mandarin)", "🇨🇳"),
-
-        // Bloque 2 — Europa del este + asiáticos principales
-        new LanguageOption("ru", "Русский",        "Russian",    "🇷🇺"),
-        new LanguageOption("uk", "Українська",     "Ukrainian",  "🇺🇦"),
-        new LanguageOption("ar", "العربية",         "Arabic",     "🇸🇦"),
-        new LanguageOption("ja", "日本語",          "Japanese",   "🇯🇵"),
-        new LanguageOption("ko", "한국어",          "Korean",     "🇰🇷"),
-        new LanguageOption("hi", "हिन्दी",            "Hindi",      "🇮🇳"),
-        new LanguageOption("bn", "বাংলা",            "Bengali",    "🇧🇩"),
-        new LanguageOption("ur", "اردو",            "Urdu",       "🇵🇰"),
-        new LanguageOption("id", "Indonesia",      "Indonesian", "🇮🇩"),
-        new LanguageOption("tr", "Türkçe",         "Turkish",    "🇹🇷"),
-        new LanguageOption("vi", "Tiếng Việt",     "Vietnamese", "🇻🇳"),
-
-        // Bloque 3 — resto de Europa
-        new LanguageOption("nl", "Nederlands",     "Dutch",      "🇳🇱"),
-        new LanguageOption("sv", "Svenska",        "Swedish",    "🇸🇪"),
-        new LanguageOption("ro", "Română",         "Romanian",   "🇷🇴"),
-        new LanguageOption("pl", "Polski",         "Polish",     "🇵🇱"),
-        new LanguageOption("cs", "Čeština",        "Czech",      "🇨🇿"),
-        new LanguageOption("el", "Ελληνικά",       "Greek",      "🇬🇷"),
-        new LanguageOption("da", "Dansk",          "Danish",     "🇩🇰"),
-        new LanguageOption("no", "Norsk",          "Norwegian",  "🇳🇴"),
-        new LanguageOption("fi", "Suomi",          "Finnish",    "🇫🇮"),
+        // Español primero — idioma del desarrollador y principal de la app
+        new LanguageOption("es", "Español",         "Spanish",             "🇪🇸"),
+        // Europeos latino/germánico por nombre nativo
+        new LanguageOption("ca", "Català",          "Catalan",             "🇪🇸"),
+        new LanguageOption("cs", "Čeština",         "Czech",               "🇨🇿"),
+        new LanguageOption("da", "Dansk",           "Danish",              "🇩🇰"),
+        new LanguageOption("de", "Deutsch",         "German",              "🇩🇪"),
+        new LanguageOption("en", "English",         "English",             "🇬🇧"),
+        new LanguageOption("eu", "Euskara",         "Basque",              "🇪🇸"),
+        new LanguageOption("fi", "Suomi",           "Finnish",             "🇫🇮"),
+        new LanguageOption("fr", "Français",        "French",              "🇫🇷"),
+        new LanguageOption("gl", "Galego",          "Galician",            "🇪🇸"),
+        new LanguageOption("hu", "Magyar",          "Hungarian",           "🇭🇺"),
+        new LanguageOption("id", "Indonesia",       "Indonesian",          "🇮🇩"),
+        new LanguageOption("it", "Italiano",        "Italian",             "🇮🇹"),
+        new LanguageOption("nl", "Nederlands",      "Dutch",               "🇳🇱"),
+        new LanguageOption("no", "Norsk",           "Norwegian",           "🇳🇴"),
+        new LanguageOption("pl", "Polski",          "Polish",              "🇵🇱"),
+        new LanguageOption("pt", "Português",       "Portuguese",          "🇵🇹"),
+        new LanguageOption("pt-BR", "Português (Brasil)", "Portuguese (Brazil)", "🇧🇷"),
+        new LanguageOption("ro", "Română",          "Romanian",            "🇷🇴"),
+        new LanguageOption("sv", "Svenska",         "Swedish",             "🇸🇪"),
+        new LanguageOption("tr", "Türkçe",          "Turkish",             "🇹🇷"),
+        new LanguageOption("vi", "Tiếng Việt",      "Vietnamese",          "🇻🇳"),
+        // Griego y cirílico
+        new LanguageOption("el", "Ελληνικά",        "Greek",               "🇬🇷"),
+        new LanguageOption("ru", "Русский",         "Russian",             "🇷🇺"),
+        new LanguageOption("uk", "Українська",      "Ukrainian",           "🇺🇦"),
+        new LanguageOption("bg", "Български",       "Bulgarian",           "🇧🇬"),
+        // RTL
+        new LanguageOption("ur", "اردو",            "Urdu",                "🇵🇰"),
+        new LanguageOption("ar", "العربية",         "Arabic",              "🇸🇦"),
+        // Scripts asiáticos
+        new LanguageOption("hi", "हिन्दी",            "Hindi",               "🇮🇳"),
+        new LanguageOption("bn", "বাংলা",            "Bengali",             "🇧🇩"),
+        new LanguageOption("zh", "中文 (简体)",      "Chinese (Mandarin)",  "🇨🇳"),
+        new LanguageOption("zh-TW", "繁體中文",     "Chinese (Traditional)", "🇹🇼"),
+        new LanguageOption("ja", "日本語",           "Japanese",            "🇯🇵"),
+        new LanguageOption("ko", "한국어",           "Korean",              "🇰🇷"),
+        new LanguageOption("th", "ไทย",             "Thai",                "🇹🇭"),
     };
 
     public string CurrentLanguage

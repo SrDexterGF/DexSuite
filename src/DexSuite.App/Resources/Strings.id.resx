@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Kontak</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Tetap up to date dan hubungi kami</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Ikuti kami</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Tinggalkan ulasan</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Jalankan</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Terapan</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Setiap profil menerapkan penyesuaian tepat untuk FPS maksimum dan latensi minimum.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Penafian game diterima</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Reset status pengoptimalan game: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Kembali</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Tetap atur ulang</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Ini menyetel ulang status yang diterapkan untuk {0}. Catatan: perubahan sistem yang dibuat oleh skrip tidak dapat dibatalkan secara otomatis — gunakan Titik Pemulihan Windows untuk membatalkan sepenuhnya.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Kembalikan pengoptimalan game</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>permainan pencarian...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Apa yang ingin Anda lakukan?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Mengaktifkan</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Hapus lisensi</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Silakan tempelkan kunci aktivasi yang valid.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Aktivasi gagal: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Tempelkan kunci aktivasi yang Anda terima dengan pembelian Anda. Kuncinya terkunci pada perangkat keras ini (HWID di atas).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Kunci aktivasi</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Lisensi diaktifkan. Paket: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Rencana saat ini</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Menyalin</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>ID Perangkat Keras (HWID) — kirimkan ini ke pengembang untuk menerima kunci Anda</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID disalin ke papan klip.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite menggunakan lisensi yang terikat perangkat keras. HWID mengidentifikasi PC ini; kunci yang Anda terima sudah ditandatangani dan hanya berfungsi di sini.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Lisensi</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Paket lanjutan aktif.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Paket gratis aktif.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Paket Pro aktif.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Lisensi diaktifkan — paket {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Aktivasi lisensi ditolak: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Lisensi dihapus — kembali ke Gratis.</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>Batalkan pilihan</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>Direkomendasikan</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>LANJUTAN</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Tentang</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EKSTRA</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Beranda</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEM</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Penyetelan</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Pembaruan</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Tandai sebagai telah dibaca</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Perkecil ke baki sistem</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Segera hadir</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Penyimpanan</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Saya menyetujui Persyaratannya</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Dengan mengklik 'Saya menerima Persyaratan' Anda mengonfirmasi bahwa Anda telah membaca dan menyetujui ketentuan di atas.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Menolak</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Harap baca dan terima persyaratan berikut sebelum menggunakan DexSuite.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite adalah alat pengoptimalan sistem Windows. Diperlukan hak administrator untuk mengubah pengaturan registri, layanan sistem, dan tugas terjadwal. Perubahan ini mempengaruhi perilaku dan kinerja sistem.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Cara kerja aplikasi</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>Penggunaan DexSuite adalah risiko Anda sendiri. Perubahan yang diterapkan dapat mengubah perilaku sistem. Disarankan untuk membuat Restore Point sebelum menjalankan modul berdampak tinggi. DexSuite tidak memberikan jaminan atas hasil spesifik dan tidak bertanggung jawab atas segala kerusakan atau kehilangan data.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Tanggung jawab pengguna</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Modul permainan mengunduh dan menjalankan skrip PowerShell dari GitHub. DexSuite memverifikasi integritas SHA-256 sebelum dieksekusi. Anda bertanggung jawab untuk meninjau fungsi skrip sebelum menerapkannya.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Skrip pengoptimalan game</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite tidak mengumpulkan data penggunaan atau mengirimkan informasi ke server eksternal. Semua data (riwayat, lisensi, pengaturan) disimpan secara lokal di perangkat Anda.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Privasi dan data</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Ketentuan Penggunaan</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Oranye taktis + hitam</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Rumput hijau + coklat tanah</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Kuning + hitam militer</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Biru cerah + kuning</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Oranye + biru pelindung</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Emas + biru tua</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Emas premium + hitam hangat</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Ungu + emas mitis</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Biru muda + putih dingin</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Merah tebal + putih tulang</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Bagian ini akan tersedia dalam pembaruan mendatang.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Segera hadir</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Pemasang aplikasi</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Tuning: tidak dapat membuka unduhan {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Penyetelan: unduhan dibuka — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Penyesuaian sistem dan pemasangan cepat aplikasi penting.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Nonaktifkan akselerasi mouse</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Atur kecepatan refresh ke monitor maksimum</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Tetapkan resolusi ke asli</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Pengaturan sistem</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Penyetelan</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Kuncinya terkunci pada perangkat ini (HWID di atas).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Kunci yang Anda terima telah ditandatangani dan hanya berfungsi di perangkat ini.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Pemindaian cepat: mendeteksi malware aktif di sistem.
+SFC · Pemeriksa File Sistem: menemukan dan memperbaiki file sistem yang rusak.
+DISM · Pulihkan gambar: memperbaiki gambar Windows ketika SFC tidak bisa.
+MRT · Penghapusan malware: Alat resmi Microsoft melawan ancaman tertentu.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Kontrol bagaimana DexSuite berperilaku saat Anda menjalankan modul atau meminimalkan aplikasi.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Lihat ketentuan penggunaan</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Jika Anda perlu membatalkan perubahan, Anda dapat melakukannya dari Pengaturan Windows.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Sebelum Anda melanjutkan</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Mengoptimalkan permainan akan membuka konsol tempat Anda harus membaca pesan, memilih opsi, dan memasukkan satu atau dua jalur. Ini tidak sulit, tapi perhatikan apa yang muncul di layar.
+
+Profil diunduh dari GitHub dan dijalankan dengan izin administrator. Gunakan dengan risiko Anda sendiri.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Jangan tampilkan pemberitahuan ini lagi</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Mengerti</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Membatalkan</value>
   </data>
 </root>

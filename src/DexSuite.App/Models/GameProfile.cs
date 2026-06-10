@@ -7,7 +7,8 @@ namespace DexSuite.App.Models;
 /// </summary>
 /// <param name="DisplayName">Nombre legible que aparece en el desplegable.</param>
 /// <param name="ScriptRelativePath">Ruta dentro del repo Game_Configs hasta el .ps1, p. ej. "Battlefield/Battlefield 4.ps1".</param>
-public sealed record GameVariant(string DisplayName, string ScriptRelativePath);
+/// <param name="ExpectedScriptSha256">SHA-256 hex del contenido esperado del .ps1. Null = sin verificación (pendiente de poblar).</param>
+public sealed record GameVariant(string DisplayName, string ScriptRelativePath, string? ExpectedScriptSha256 = null);
 
 /// <summary>
 /// Perfil de un juego soportado por Game_Configs. Sincronizado a mano con

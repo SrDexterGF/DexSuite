@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Administratzailea behar du</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Harremanetan jarri</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Egon eguneratuta eta jarri harremanetan</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Jarrai gaitzazu</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Utzi iritzia</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Pila teknikoa</value>
   </data>
@@ -133,6 +151,9 @@ Errorea: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Exekutatu</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Aplikatua</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Aukeratu jokoa eta aplikatu neurrira egindako doikuntza, FPS gehienak eta latentzia gutxiena lortzeko.</value>
   </data>
@@ -142,11 +163,17 @@ Errorea: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Profil bakoitzak doikuntza zehatzak aplikatzen ditu FPS maximorako eta latentzia minimorako.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Onartu da jokoaren ukapena</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Errorea jokoaren optimizazioan ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Bideojokoen optimizazioa abiarazi da: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Jokoen optimizazio egoera berrezarri: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Ezin izan da jokoen hautatzailea ireki: {0}</value>
@@ -156,6 +183,21 @@ Errorea: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimizatu</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Atzera</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Berrezarri hala ere</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Honek {0}-ren aplikatutako egoera berrezartzen du. Oharra: scriptak egindako sistemaren doikuntzak ezin dira automatikoki alderantzikatu; erabili Windows Berreskuratze Puntua guztiz desegiteko.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Berrezarri jokoaren optimizazioa</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Bilatu jokoa...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Doikuntza zehatzak FPS gehienak eta latentzia gutxiena lortzeko.
@@ -207,8 +249,10 @@ Abiarazi garbiketa eta doikuntzak.</value>
     <value>Garbitu orain</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Aldi baterako karpetak eta zakarrontzia hustu.
-Espazioa askatzen du segundotan.</value>
+    <value>Aldi baterako karpetak eta zakarrontzia hustu.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Espazioa askatzen du segundotan.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Garbiketa azkarra</value>
@@ -355,9 +399,6 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug-aren txostena posta-bezeroan ireki da.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Historia garbitu da ({0} sarrera).</value>
   </data>
@@ -429,6 +470,9 @@ Gero optimizatu eta berriz analizatu desberdintasuna ikusteko.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Ezarpenak balio lehenetsietara berrezarri dira.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Gaia {0}-ra aldatu da.</value>
@@ -507,7 +551,7 @@ Denbora errealean eguneratzen da exekuzioan.</value>
     <value>Kendu denak</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Joko-errendimendua muga absolutura eramateko optimizazio espezifikoak</value>
+    <value>Joko-errendimendua muga absolutura eramateko optimizazio espezifikoak.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Jokoak</value>
@@ -766,8 +810,10 @@ Aurreratu edo pro ezarpenak aztertu aurretik, abiapuntu onena dira.</value>
     <value>Gomendatua</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Markatu exekutatu nahi dituzun moduluak.
-Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
+    <value>Markatu exekutatu nahi dituzun moduluak.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>AURRERATUA</value>
@@ -783,6 +829,9 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Honi buruz</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>GEHIGARRIAK</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Hasiera</value>
@@ -807,6 +856,9 @@ Pasa sagua Seguru/Arrisku txipean zergatik jakiteko.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEMA</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Afinazioa</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Eguneraketak</value>
@@ -853,6 +905,9 @@ Akzio natibo bakoitza automatikoki jarraitzen da klik bakar batez desegiteko.</v
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>Oraindik ez dago aldaketarik erregistratuta</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Markatu irakurritako gisa</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} aldaketa zain</value>
@@ -1001,21 +1056,6 @@ Interfazea berehala eguneratzen da.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Sistema-erretilura txikitu</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Windows-en oharra erakusten du Jarduera Zentroan optimizazioa amaitzean.</value>
   </data>
@@ -1043,16 +1083,41 @@ Interfazea berehala eguneratzen da.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>Sistemaren berrezarpen-puntua</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Aukerak berehala aplikatzen dira.
-Zure hobespenak automatikoki gordetzen dira.</value>
+    <value>Aukerak berehala aplikatzen dira.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Zure hobespenak automatikoki gordetzen dira.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Aktibo</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Laster</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Aplikazioaren itxura.
-Gai esklusiboak Pro erabiltzaileentzat.</value>
+    <value>Aplikazioaren itxura.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Gai esklusiboak Pro erabiltzaileentzat.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Pro plana behar du</value>
@@ -1107,7 +1172,7 @@ Desblokeatu Advanced edo Pro moduluak Lizentzia atalean lizentzia bat aktibatuz.
     <value>Biltegiratzea</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Hautemandako hardware eta sistema eragilea</value>
+    <value>Hautemandako hardware eta sistema eragilea.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administratzaile modua aktibo</value>
@@ -1243,8 +1308,53 @@ Aplikazioa automatikoki berrabiaraziko da.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Baldintzak onartzen ditut</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>&quot;Baldintzak onartzen ditut&quot; sakatuz, goiko baldintzak irakurri eta onartu dituzula berresten duzu.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Gainbehera</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Mesedez, irakurri eta onartu baldintza hauek DexSuite erabili aurretik.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite Windows sistema optimizatzeko tresna bat da. Administratzaile-pribilegioak behar ditu erregistroaren ezarpenak, sistema-zerbitzuak eta programatutako zereginak aldatzeko. Aldaketa hauek sistemaren portaeran eta errendimenduan eragiten dute.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Aplikazioak nola funtzionatzen duen</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>DexSuite erabiltzea zure ardurapean dago. Aplikatutako aldaketek sistemaren portaera alda dezakete. Eragin handiko moduluak exekutatu aurretik Berreskuratze Puntua sortzea gomendatzen da. DexSuite-k ez du emaitza zehatzen bermerik ematen eta ez du inolako kalte edo datu-galeren erantzule.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Erabiltzailearen erantzukizuna</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Joko moduluak PowerShell script-ak deskargatzen eta exekutatzen ditu GitHub-etik. DexSuite-k bere SHA-256 osotasuna egiaztatzen du exekutatu aurretik. Scriptek aplikatu aurretik zer egiten duten berrikusteaz arduratzen zara.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Jokoa optimizatzeko gidoiak</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite-k ez du erabilera-daturik biltzen edo kanpoko zerbitzarietara informaziorik bidaltzen. Datu guztiak (historia, lizentzia, ezarpenak) lokalean gordetzen dira zure gailuan.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Pribatutasuna eta datuak</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Erabilera-baldintzak</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Urre premium + beltz beroa</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Taktikoa laranja + beltza</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Belar berdea + lurra marroia</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk ziano + bioleta</value>
@@ -1252,8 +1362,32 @@ Aplikazioa automatikoki berrabiaraziko da.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Fluent paleta neutroa</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Horia + beltza militarra</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Urdin bizia + horia</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Laranja + babes urdina</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Urrea + urdin sakona</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Premium urrea + beltz beroa</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Lasterketako gorria + beltz sakona</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Morea + urre mitikoa</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Urdin argia + zuri hotza</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Gorri lodia + hezur zuria</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Monokromo ultraminimalista</value>
@@ -1261,17 +1395,80 @@ Aplikazioa automatikoki berrabiaraziko da.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Atal hau etorkizuneko eguneratze batean egongo da eskuragarri.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Laster</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Aplikazioaren instalatzailea</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Sintonizazioa: ezin izan da deskarga ireki {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Sintonizazioa: deskarga irekita - {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Sistemaren doikuntzak eta funtsezko aplikazioen instalazio azkarra.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Desgaitu saguaren azelerazioa</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Ezarri freskatze tasa maximoa kontrolatzeko</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Ezarri bereizmena jatorrizko moduan</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Sistemaren ezarpenak</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Afinazioa</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Bertsio berriak atzeko planoan deskargatu eta instalatzen ditu.
@@ -1347,5 +1544,54 @@ Aurrerapena erregistroan ikusiko da.</value>
   </data>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windowsen pakete-kudeatzailea (winget) ez dago erabilgarri sistema honetan.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Gakoa blokeatuta dago gailu honetan (goian HWID).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Jasotzen duzun giltza sinatuta dago eta gailu honetan bakarrik funtzionatzen du.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Azterketa azkarra: malware aktiboa detektatzen du sisteman.
+SFC · System File Checker: kaltetutako sistemaren fitxategiak aurkitzen eta konpontzen ditu.
+DISM · Restore image: Windows-en irudia konpontzen du SFC ezin denean.
+MRT · Malwarea kentzea: Microsoft-en mehatxu zehatzen aurkako tresna ofiziala.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Kontrolatu DexSuite-k nola jokatzen duen moduluak exekutatzen dituzunean edo aplikazioa minimizatzen duzunean.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Ikusi erabilera baldintzak</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Aldaketak desegin behar badituzu, Windows ezarpenetatik egin dezakezu.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Before you continue</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Joko bat optimizatzeak kontsola bat irekitzen du, non mezuak irakurri, aukerak aukeratu eta bide bat edo bi sartu beharko dituzun. Ez da zaila, baina arreta jarri pantailan agertzen denari.
+
+Profilak GitHub-etik deskargatzen dira eta administratzaileen baimenekin exekutatzen dira. Erabili zure ardurapean.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Ez erakutsi ohar hau berriro</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Lortu</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Utzi</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Zůstaňte v obraze a kontaktujte nás</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Sledujte nás</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Zanechat recenzi</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Spustit</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Aplikovaný</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Každý profil aplikuje přesné úpravy pro maximální FPS a minimální latenci.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>Odmítnutí odpovědnosti ohledně her přijato</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Resetování stavu herní optimalizace: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Vrátit zpět</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Každopádně resetovat</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Tím se resetuje použitý stav pro {0}. Poznámka: Úpravy systému provedené skriptem nelze automaticky vrátit zpět – použijte bod obnovení Windows k jejich úplnému vrácení.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Vrátit optimalizaci hry</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Hledání hry...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>Co chcete udělat?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>Aktivovat</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>Odebrat licenci</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>Vložte prosím platný aktivační klíč.</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>Aktivace se nezdařila: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>Vložte aktivační klíč, který jste obdrželi při nákupu. Klíč je uzamčen na tomto hardwaru (výše HWID).</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>Aktivační klíč</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>Licence aktivována. Plán: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>Aktuální plán</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>Kopie</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>Hardware ID (HWID) – odešlete jej vývojáři, aby obdržel váš klíč</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID zkopírováno do schránky.</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite používá hardwarově vázanou licenci. HWID identifikuje tento počítač; klíč, který obdržíte, je podepsaný a funguje pouze zde.</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>Pokročilý plán je aktivní.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>Volný plán je aktivní.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>Pro plán aktivní.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>Licence aktivována — plán {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>Aktivace licence zamítnuta: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>Licence odstraněna — zpět na Free.</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>Zrušit výběr</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>Doporučeno</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>POKROČILÝ</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>O aplikaci</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRAS</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Domů</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SYSTÉM</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Ladění</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Aktualizace</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Označit jako přečtené</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Minimalizovat do systémové lišty</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Již brzy</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>Úložiště</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Souhlasím s podmínkami</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>Kliknutím na „Souhlasím s podmínkami“ potvrzujete, že jste si přečetli výše uvedené podmínky a souhlasíte s nimi.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Pokles</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Před použitím DexSuite si prosím přečtěte a přijměte následující podmínky.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite je nástroj pro optimalizaci systému Windows. K úpravě nastavení registru, systémových služeb a naplánovaných úloh vyžaduje oprávnění správce. Tyto změny ovlivňují chování a výkon systému.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Jak aplikace funguje</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>Používání DexSuite je na vaše vlastní riziko. Aplikované změny mohou změnit chování systému. Před spuštěním vysoce účinných modulů se doporučuje vytvořit bod obnovení. DexSuite neposkytuje žádnou záruku na konkrétní výsledky a nenese odpovědnost za žádné poškození nebo ztrátu dat.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Odpovědnost uživatele</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>Herní modul stahuje a spouští skripty PowerShell z GitHubu. DexSuite před spuštěním ověří jejich integritu SHA-256. Jste odpovědní za kontrolu toho, co skripty dělají, než je použijete.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Skripty pro optimalizaci hry</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite neshromažďuje údaje o používání ani neodesílá informace na externí servery. Všechna data (historie, licence, nastavení) jsou uložena lokálně ve vašem zařízení.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Soukromí a data</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Podmínky použití</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Taktická oranžová + černá</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Trávově zelená + zemitě hnědá</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Žlutá + vojenská černá</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Zářivá modrá + žlutá</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Oranžová + ochranná modrá</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Zlatá + tmavě modrá</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Prémiová zlatá + teplá černá</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Fialová + mýtické zlato</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Světle modrá + studená bílá</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Výrazná červená + kostěná bílá</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Tato sekce bude k dispozici v budoucí aktualizaci.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Již brzy</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Instalátor aplikace</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Ladění: nelze otevřít stahování {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Ladění: stahování otevřeno — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Vylepšení systému a rychlá instalace základních aplikací.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Zakázat akceleraci myši</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Nastavte obnovovací frekvenci na maximum</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Nastavte rozlišení na nativní</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Nastavení systému</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Ladění</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>Klíč je uzamčen k tomuto zařízení (HWID výše).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>Klíč, který obdržíte, je podepsaný a funguje pouze na tomto zařízení.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Rychlá kontrola: detekuje aktivní malware v systému.
+SFC · Kontrola systémových souborů: najde a opraví poškozené systémové soubory.
+DISM · Obnovit bitovou kopii: opraví bitovou kopii Windows, když to SFC nedokáže.
+MRT · Odstranění malwaru: Oficiální nástroj společnosti Microsoft proti konkrétním hrozbám.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Ovládejte chování DexSuite při spouštění modulů nebo minimalizujte aplikaci.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Zobrazit podmínky použití</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Pokud potřebujete vrátit změny, můžete to udělat v Nastavení systému Windows.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Než budete pokračovat</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>Optimalizací hry se otevře konzola, kde si budete muset přečíst zprávy, vybrat možnosti a zadat cestu nebo dvě. Není to těžké, ale věnujte pozornost tomu, co se objeví na obrazovce.
+
+Profily se stahují z GitHubu a spouštějí se s oprávněními správce. Použití na vlastní nebezpečí.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>Toto upozornění již nezobrazovat</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Rozumím</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Zrušit</value>
   </data>
 </root>

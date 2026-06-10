@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>需要管理员权限</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>接触</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>了解最新动态并保持联系</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>跟着我们</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>发表评论</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>技术栈</value>
   </data>
@@ -133,6 +151,9 @@
   <data name="Common.Run" xml:space="preserve">
     <value>执行</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>应用</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>选择游戏并应用为最大 FPS 和最低输入延迟量身定制的调优。</value>
   </data>
@@ -142,11 +163,17 @@
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>每个配置文件应用精确调整，以实现最高 FPS 和最低延迟。</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>接受游戏免责声明</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>游戏优化失败（{0}）：{1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>已启动游戏优化：{0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>游戏优化状态重置：{0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>无法打开游戏选择器：{0}</value>
@@ -156,6 +183,21 @@
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>优化</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>无论如何都要重置</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>这将重置 {0} 的应用状态。注意：脚本所做的系统调整无法自动撤销 - 使用 Windows 还原点完全撤消它们。</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>恢复游戏优化</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>搜索游戏...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>为峰值 FPS 与最低延迟量身定制的调整。
@@ -207,8 +249,10 @@
     <value>立即清理</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>清空临时文件夹和回收站。
-数秒内释放空间。</value>
+    <value>清空临时文件夹和回收站。</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>数秒内释放空间。</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>快速清理</value>
@@ -355,9 +399,6 @@
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>已在客户端中打开错误报告邮件。</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>历史记录已清空（{0} 条）。</value>
   </data>
@@ -429,6 +470,9 @@
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>已将设置恢复为默认值。</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>主题已切换为 {0}。</value>
@@ -507,7 +551,7 @@
     <value>取消全选</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>将游戏性能推向绝对极限的专项优化</value>
+    <value>将游戏性能推向绝对极限的专项优化。</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · 游戏</value>
@@ -766,8 +810,10 @@
     <value>推荐</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>勾选要运行的模块。
-将鼠标悬停在「安全 / 风险」标签上以了解原因。</value>
+    <value>勾选要运行的模块。</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>将鼠标悬停在「安全 / 风险」标签上以了解原因。</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>高级</value>
@@ -783,6 +829,9 @@
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>关于</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>额外</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>主页</value>
@@ -807,6 +856,9 @@
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>系统</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>调音</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>更新</value>
@@ -853,6 +905,9 @@
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>暂无已记录的更改</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>标记为已读</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} 个待处理更改</value>
@@ -1001,21 +1056,6 @@
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>最小化到系统托盘</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>优化完成时在「操作中心」显示 Windows 通知。</value>
   </data>
@@ -1043,16 +1083,41 @@
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>系统还原点</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>选项即时生效。
-你的偏好会自动保存。</value>
+    <value>选项即时生效。</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>你的偏好会自动保存。</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>已启用</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>即将推出</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>应用视觉标识。
-专属主题仅限 Pro 用户。</value>
+    <value>应用视觉标识。</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>专属主题仅限 Pro 用户。</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>需要 Pro 套餐</value>
@@ -1107,7 +1172,7 @@
     <value>存储</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>检测到的硬件和操作系统</value>
+    <value>检测到的硬件和操作系统。</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>管理员模式已激活</value>
@@ -1243,8 +1308,53 @@
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>我接受条款</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>单击“我接受条款”即表示您确认已阅读并同意上述条件。</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>衰退</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>在使用 DexSuite 之前，请阅读并接受以下条款。</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite是一款Windows系统优化工具。它需要管理员权限才能修改注册表设置、系统服务和计划任务。这些更改会影响系统行为和性能。</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>应用程序如何运作</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>使用 DexSuite 的风险由您自行承担。应用的更改可能会改变系统行为。建议在运行高影响模块之前创建一个还原点。 DexSuite 不提供特定结果的保证，也不对任何损坏或数据丢失承担责任。</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>用户责任</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>游戏模块从 GitHub 下载并执行 PowerShell 脚本。 DexSuite 在执行前验证其 SHA-256 完整性。您有责任在应用脚本之前检查它们的用途。</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>游戏优化脚本</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite 不会收集使用数据或将信息发送到外部服务器。所有数据（历史记录、许可证、设置）都存储在您的设备本地。</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>隐私和数据</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>使用条款</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>尊享金 + 暖黑</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>战术橙+黑</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>草绿+土棕</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>赛博朋克：青 + 紫</value>
@@ -1252,8 +1362,32 @@
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>中性 Fluent 配色</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>黄色+军黑</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>活力蓝+黄色</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>橙色+防护蓝</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>金色+深蓝色</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>尊贵金+暖黑</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>赛道红 + 深邃黑</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>紫色+神话金</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>浅蓝+冷白</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>粗红+骨白</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>极简单色</value>
@@ -1261,17 +1395,80 @@
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>此部分将在未来的更新中提供。</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>即将推出</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>应用程序安装程序</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>调整：无法打开下载 {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>调音：下载已打开 — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>系统调整和基本应用程序的快速安装。</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>禁用鼠标加速</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>将刷新率设置为监控最大值</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>将分辨率设置为原始分辨率</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>系统设置</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>调音</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>在后台下载并安装新版本。
@@ -1347,5 +1544,54 @@ Beta：更早获得新版本，但可能存在问题。</value>
   </data>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>此系统上没有 Windows 包管理器 (winget)。</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>密钥已锁定到该设备（上面的 HWID）。</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>您收到的密钥已签名并且仅适用于该设备。</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · 快速扫描：检测系统上的活动恶意软件。
+SFC·系统文件检查器：查找并修复损坏的系统文件。
+DISM · 恢复映像：当 SFC 无法修复 Windows 映像时。
+MRT · 恶意软件清除：微软针对特定威胁的官方工具。</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>控制运行模块或最小化应用程序时 DexSuite 的行为方式。</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>查看使用条款</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>如果您需要撤消更改，可以通过 Windows 设置进行操作。</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>在继续之前</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>优化游戏会打开一个控制台，您需要在其中阅读消息、选择选项并输入一两个路径。这并不难，但要注意屏幕上显示的内容。
+
+配置文件从 GitHub 下载并以管理员权限运行。使用风险自负。</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>不再显示此通知</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>知道了</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>取消</value>
   </data>
 </root>

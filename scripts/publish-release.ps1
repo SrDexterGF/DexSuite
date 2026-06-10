@@ -35,8 +35,9 @@ $Repo        = "SrDexterGF/DexSuite"
 # F7 — Sistema de licencias: rutas del pipeline de seguridad.
 $KeyGenProj    = Join-Path $Root "tools\DexSuite.KeyGen\DexSuite.KeyGen.csproj"
 $ConfuserProj  = Join-Path $Root "Confuser.crproj"
-# ConfuserEx 2 se instala como dotnet tool global. Si no está, el paso se salta.
-$ConfuserExe   = "ConfuserEx"   # dotnet tool: 'dotnet tool install -g ConfuserEx.CLI'
+# ConfuserEx 2 (fork mkaring) — CLI portable en tools\ConfuserEx\.
+# Descargado de github.com/mkaring/ConfuserEx/releases (v1.6.0). Si no está, el paso se salta.
+$ConfuserExe   = Join-Path $Root "tools\ConfuserEx\Confuser.CLI.exe"
 
 Write-Output ""
 Write-Output "=========================================================="
@@ -60,28 +61,49 @@ $csprojText = [regex]::Replace($csprojText, '<Version>[^<]+</Version>', "<Versio
 Write-Output ""
 Write-Output "[2/6] Publicando binarios (dotnet publish)..."
 if (Test-Path $PublishDir) { Remove-Item $PublishDir -Recurse -Force }
+# PublishReadyToRun=false OBLIGATORIO: ConfuserEx reescribe el IL y el código
+# nativo precompilado de R2R quedaría desincronizado → crash al cargar (rompe el
+# hook de instalación de Velopack). Sin R2R el arranque es marginalmente más lento
+# pero la app funciona y se puede ofuscar.
 & dotnet publish $Csproj `
     -c Release `
     -r win-x64 `
     --self-contained false `
     -o $PublishDir `
     /p:Version=$Version `
-    /p:PublishReadyToRun=true
+    /p:PublishReadyToRun=false
 if ($LASTEXITCODE -ne 0) { throw "dotnet publish falló con código $LASTEXITCODE" }
 
 # 3) Ofuscación con ConfuserEx 2 (CAPA 3). Si no está instalado, se omite
 #    con un warning — la app sigue funcionando pero sin la capa de ofuscación.
 Write-Output ""
 Write-Output "[3/6] Ofuscando con ConfuserEx 2..."
-$confuserCmd = Get-Command $ConfuserExe -ErrorAction SilentlyContinue
-if (-not $confuserCmd) {
-    Write-Warning "ConfuserEx 2 no encontrado en PATH. Instala con:"
-    Write-Warning "  dotnet tool install -g ConfuserEx.CLI"
-    Write-Warning "Se omite la ofuscación; la build seguirá adelante sin CAPA 3."
+if (-not (Test-Path $ConfuserExe)) {
+    Write-Warning "ConfuserEx no encontrado en $ConfuserExe."
+    Write-Warning "Descarga ConfuserEx-CLI.zip de github.com/mkaring/ConfuserEx/releases"
+    Write-Warning "y extráelo en tools\ConfuserEx\. Se omite la ofuscación (sin CAPA 3)."
 } elseif (-not (Test-Path $ConfuserProj)) {
     Write-Warning "$ConfuserProj no existe. Se omite la ofuscación."
 } else {
-    & $confuserCmd $ConfuserProj
+    # Resolver la versión instalada del runtime .NET 8 y reescribir los <probePath>
+    # del .crproj (la app es framework-dependent; ConfuserEx necesita esas rutas
+    # para resolver las dependencias del framework). Evita hardcodear la versión.
+    $netCore = Get-ChildItem "C:\Program Files\dotnet\shared\Microsoft.NETCore.App" -Directory `
+        | Where-Object { $_.Name -like "8.*" } | Sort-Object Name -Descending | Select-Object -First 1
+    $netWpf  = Get-ChildItem "C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App" -Directory `
+        | Where-Object { $_.Name -like "8.*" } | Sort-Object Name -Descending | Select-Object -First 1
+    if ($netCore -and $netWpf) {
+        $crproj = Get-Content $ConfuserProj -Raw -Encoding UTF8
+        $crproj = $crproj -replace '(<probePath>).*Microsoft\.NETCore\.App.*(</probePath>)',        ('${1}' + $netCore.FullName + '${2}')
+        $crproj = $crproj -replace '(<probePath>).*Microsoft\.WindowsDesktop\.App.*(</probePath>)', ('${1}' + $netWpf.FullName  + '${2}')
+        Set-Content $ConfuserProj -Value $crproj -Encoding UTF8 -NoNewline
+        Write-Output "  probePath -> $($netCore.Name)"
+    } else {
+        Write-Warning "No se encontró el runtime .NET 8 compartido; ConfuserEx puede fallar al resolver dependencias."
+    }
+
+    # -n (no pause): sin él, ConfuserEx CLI espera 'press any key' y colgaría el pipeline.
+    & $ConfuserExe -n $ConfuserProj
     if ($LASTEXITCODE -ne 0) { throw "ConfuserEx falló con código $LASTEXITCODE" }
 }
 
@@ -113,6 +135,10 @@ if ($LASTEXITCODE -ne 0) {
 Write-Output ""
 Write-Output "[5/6] Empaquetando con vpk pack..."
 if (-not (Test-Path $ReleasesDir)) { New-Item -ItemType Directory -Path $ReleasesDir | Out-Null }
+# --framework: Velopack comprueba en la instalación si el .NET 8 Desktop Runtime
+# está presente. Si falta, lo descarga del sitio oficial de Microsoft y lo instala
+# automáticamente (con su propio aviso) antes de arrancar DexSuite. Evita el error
+# en PCs sin el runtime. La app sigue publicándose como framework-dependent (ligera).
 & vpk pack `
     --packId DexSuite `
     --packVersion $Version `
@@ -120,6 +146,7 @@ if (-not (Test-Path $ReleasesDir)) { New-Item -ItemType Directory -Path $Release
     --mainExe "DexSuite.App.exe" `
     --packTitle "DexSuite" `
     --packAuthors "Sr. Dexter" `
+    --framework "net8.0-desktop" `
     --channel $Channel `
     --outputDir $ReleasesDir
 if ($LASTEXITCODE -ne 0) { throw "vpk pack falló con código $LASTEXITCODE" }

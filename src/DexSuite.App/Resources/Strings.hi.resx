@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requires administrator</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>संपर्क</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>अपडेट रहें और संपर्क में रहें</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>हमारे पर का पालन करें</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>समीक्षा लिखें</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>चलाएं</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>लागू</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Pick a game and apply a tailored tweak focused on max FPS and minimum input lag.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>प्रत्येक प्रोफ़ाइल अधिकतम FPS और न्यूनतम विलंब के लिए सटीक समायोजन लागू करती है।</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>गेमिंग अस्वीकरण स्वीकार किया गया</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Gaming optimization failed ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Gaming optimization launched: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>गेमिंग अनुकूलन स्थिति रीसेट: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>Could not open game selector: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimize</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>फिर लौट आना</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>फिर भी रीसेट करें</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>यह {0} के लिए लागू स्थिति को रीसेट करता है। ध्यान दें: स्क्रिप्ट द्वारा किए गए सिस्टम बदलावों को स्वचालित रूप से उलटा नहीं किया जा सकता है - उन्हें पूरी तरह से पूर्ववत करने के लिए विंडोज रिस्टोर प्वाइंट का उपयोग करें।</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>गेम अनुकूलन वापस लाएं</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>गेम खोजें...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Tailored tweaks for peak FPS and minimum input lag.
@@ -207,8 +249,10 @@ Launch cleanup and tweaks.</value>
     <value>Clean now</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Empty temp folders and Recycle Bin.
-Free up space in seconds.</value>
+    <value>Empty temp folders and Recycle Bin.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Free up space in seconds.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Quick clean</value>
@@ -243,6 +287,54 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Home.WhatDoYouWantTo" xml:space="preserve">
     <value>आप क्या करना चाहते हैं?</value>
+  </data>
+  <data name="License.Activation.Activate" xml:space="preserve">
+    <value>सक्रिय करें</value>
+  </data>
+  <data name="License.Activation.Deactivate" xml:space="preserve">
+    <value>लाइसेंस हटाएं</value>
+  </data>
+  <data name="License.Activation.Empty" xml:space="preserve">
+    <value>कृपया एक वैध सक्रियण कुंजी चिपकाएँ।</value>
+  </data>
+  <data name="License.Activation.Failed" xml:space="preserve">
+    <value>सक्रियण विफल: {0}</value>
+  </data>
+  <data name="License.Activation.Help" xml:space="preserve">
+    <value>आपको प्राप्त सक्रियण कुंजी को अपनी खरीदारी के साथ चिपकाएँ। कुंजी इस हार्डवेयर (ऊपर HWID) पर लॉक है।</value>
+  </data>
+  <data name="License.Activation.Label" xml:space="preserve">
+    <value>सक्रियण कुंजी</value>
+  </data>
+  <data name="License.Activation.Success" xml:space="preserve">
+    <value>लाइसेंस सक्रिय किया गया. योजना: {0}</value>
+  </data>
+  <data name="License.CurrentTier.Label" xml:space="preserve">
+    <value>वर्तमान योजना</value>
+  </data>
+  <data name="License.Hwid.Copy" xml:space="preserve">
+    <value>प्रतिलिपि</value>
+  </data>
+  <data name="License.Hwid.Label" xml:space="preserve">
+    <value>हार्डवेयर आईडी (HWID) - अपनी कुंजी प्राप्त करने के लिए इसे डेवलपर को भेजें</value>
+  </data>
+  <data name="License.HwidCopied" xml:space="preserve">
+    <value>HWID को क्लिपबोर्ड पर कॉपी किया गया।</value>
+  </data>
+  <data name="License.Section.Description" xml:space="preserve">
+    <value>DexSuite हार्डवेयर-बाउंड लाइसेंस का उपयोग करता है। HWID इस पीसी की पहचान करता है; आपको प्राप्त कुंजी हस्ताक्षरित है और केवल यहीं काम करती है।</value>
+  </data>
+  <data name="License.Section.Title" xml:space="preserve">
+    <value>लाइसेंस</value>
+  </data>
+  <data name="License.Status.Advanced" xml:space="preserve">
+    <value>उन्नत योजना सक्रिय.</value>
+  </data>
+  <data name="License.Status.Free" xml:space="preserve">
+    <value>निःशुल्क योजना सक्रिय.</value>
+  </data>
+  <data name="License.Status.Pro" xml:space="preserve">
+    <value>प्रो योजना सक्रिय.</value>
   </data>
   <data name="Log.Category.Analyze" xml:space="preserve">
     <value>Performance</value>
@@ -307,14 +399,20 @@ Later, optimize and analyze again to see the difference.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Bug report email opened in client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>History cleared ({0} entries).</value>
   </data>
   <data name="Log.Event.LanguageChanged" xml:space="preserve">
     <value>Language changed to {0}.</value>
+  </data>
+  <data name="Log.Event.LicenseActivated" xml:space="preserve">
+    <value>लाइसेंस सक्रिय - योजना {0}।</value>
+  </data>
+  <data name="Log.Event.LicenseActivationFailed" xml:space="preserve">
+    <value>लाइसेंस सक्रियण अस्वीकृत: {0}</value>
+  </data>
+  <data name="Log.Event.LicenseDeactivated" xml:space="preserve">
+    <value>लाइसेंस हटा दिया गया - वापस निःशुल्क पर।</value>
   </data>
   <data name="Log.Event.ModuleCompleted" xml:space="preserve">
     <value>[{0}] — Completed</value>
@@ -372,6 +470,9 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Settings reset to defaults.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Theme changed to {0}.</value>
@@ -450,7 +551,7 @@ Updates in real time while running.</value>
     <value>अचयन करें</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Specific optimizations to push gaming performance to the absolute limit</value>
+    <value>Specific optimizations to push gaming performance to the absolute limit.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Gaming</value>
@@ -709,8 +810,10 @@ They are the best starting point before diving into advanced or pro settings.</v
     <value>अनुशंसित</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Check the modules you want to run.
-Hover the Safe/Risk chip to know why.</value>
+    <value>Check the modules you want to run.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>उन्नत</value>
@@ -726,6 +829,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>के बारे में</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>एक्स्ट्रा कलाकार</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>होम</value>
@@ -750,6 +856,9 @@ Hover the Safe/Risk chip to know why.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>सिस्टम</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>ट्यूनिंग</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>अपडेट</value>
@@ -796,6 +905,9 @@ Each native action is tracked automatically for one-click revert.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>No tracked changes yet</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>पढ़े हुए का चिह्न</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} pending change(s)</value>
@@ -944,21 +1056,6 @@ The interface updates instantly.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>सिस्टम ट्रे में छोटा करें</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Shows a Windows toast in the Action Center when the optimization finishes.</value>
   </data>
@@ -986,16 +1083,41 @@ The interface updates instantly.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>System restore point</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Options apply instantly.
-Your preferences are saved automatically.</value>
+    <value>Options apply instantly.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Your preferences are saved automatically.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>जल्द आ रहा है</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Visual identity of the app.
-Exclusive themes for Pro users.</value>
+    <value>Visual identity of the app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Exclusive themes for Pro users.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requires Pro plan</value>
@@ -1050,7 +1172,7 @@ Activate a license in the License section to unlock Advanced or Pro modules.</va
     <value>स्टोरेज</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Detected hardware and operating system</value>
+    <value>Detected hardware and operating system.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Administrator mode active</value>
@@ -1186,8 +1308,53 @@ The application will restart automatically.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>मैं शर्तें मंज़ूर करता हूँ</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>'मैं शर्तें स्वीकार करता हूं' पर क्लिक करके आप पुष्टि करते हैं कि आपने उपरोक्त शर्तों को पढ़ लिया है और उनसे सहमत हैं।</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>गिरावट</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>कृपया DexSuite का उपयोग करने से पहले निम्नलिखित शर्तों को पढ़ें और स्वीकार करें।</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite एक विंडोज़ सिस्टम ऑप्टिमाइज़ेशन टूल है। रजिस्ट्री सेटिंग्स, सिस्टम सेवाओं और निर्धारित कार्यों को संशोधित करने के लिए इसे व्यवस्थापकीय विशेषाधिकारों की आवश्यकता होती है। ये परिवर्तन सिस्टम व्यवहार और प्रदर्शन को प्रभावित करते हैं।</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>एप्लिकेशन कैसे काम करता है</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>DexSuite का उपयोग आपके अपने जोखिम पर है। लागू परिवर्तन सिस्टम व्यवहार को बदल सकते हैं। उच्च-प्रभाव वाले मॉड्यूल चलाने से पहले एक पुनर्स्थापना बिंदु बनाने की अनुशंसा की जाती है। DexSuite विशिष्ट परिणामों की कोई वारंटी नहीं देता है और किसी भी क्षति या डेटा हानि के लिए उत्तरदायी नहीं है।</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>उपयोगकर्ता की जिम्मेदारी</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>गेमिंग मॉड्यूल GitHub से PowerShell स्क्रिप्ट को डाउनलोड और निष्पादित करता है। DexSuite निष्पादन से पहले उनकी SHA-256 अखंडता की पुष्टि करता है। स्क्रिप्ट लागू करने से पहले उसकी समीक्षा करना आपकी ज़िम्मेदारी है।</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>खेल अनुकूलन स्क्रिप्ट</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite उपयोग डेटा एकत्र नहीं करता है या बाहरी सर्वर को जानकारी नहीं भेजता है। सभी डेटा (इतिहास, लाइसेंस, सेटिंग्स) आपके डिवाइस पर स्थानीय रूप से संग्रहीत किया जाता है।</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>गोपनीयता और डेटा</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>उपयोग की शर्तें</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Premium gold + warm black</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>सामरिक नारंगी + काला</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>घास हरी + धरती भूरी</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cyan + violet</value>
@@ -1195,8 +1362,32 @@ The application will restart automatically.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Neutral Fluent palette</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>पीला + सैन्य काला</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>जीवंत नीला + पीला</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>नारंगी + सुरक्षात्मक नीला</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>सोना + गहरा नीला</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>प्रीमियम सोना + गर्म काला</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Racing red + deep black</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>बैंगनी + पौराणिक सोना</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>हल्का नीला + ठंडा सफेद</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>गहरा लाल + हड्डी सफेद</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Ultraminimal monochrome</value>
@@ -1204,17 +1395,80 @@ The application will restart automatically.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>यह अनुभाग भविष्य के अपडेट में उपलब्ध होगा.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>जल्द आ रहा है</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>ऐप इंस्टॉलर</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>ट्यूनिंग: डाउनलोड {0} — {1} नहीं खुल सका</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>ट्यूनिंग: डाउनलोड खुला - {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>सिस्टम में बदलाव और आवश्यक ऐप्स की त्वरित स्थापना।</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>माउस त्वरण अक्षम करें</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>अधिकतम मॉनिटर करने के लिए ताज़ा दर सेट करें</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>रिज़ॉल्यूशन को मूल पर सेट करें</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>सिस्टम सेटिंग्स</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>ट्यूनिंग</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Downloads and installs new versions in the background.
@@ -1291,5 +1545,54 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>कुंजी इस डिवाइस पर लॉक है (ऊपर HWID)।</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>आपको प्राप्त कुंजी हस्ताक्षरित है और केवल इस डिवाइस पर काम करती है।</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>डिफेंडर · त्वरित स्कैन: सिस्टम पर सक्रिय मैलवेयर का पता लगाता है।
+एसएफसी · सिस्टम फाइल चेकर: क्षतिग्रस्त सिस्टम फाइलों को ढूंढता है और उनकी मरम्मत करता है।
+DISM · छवि पुनर्स्थापित करें: जब SFC नहीं कर पाता तो Windows छवि की मरम्मत करता है।
+एमआरटी · मैलवेयर हटाना: विशिष्ट खतरों के खिलाफ माइक्रोसॉफ्ट का आधिकारिक उपकरण।</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>नियंत्रित करें कि जब आप मॉड्यूल चलाते हैं या ऐप को छोटा करते हैं तो डेक्ससुइट कैसे व्यवहार करता है।</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>उपयोग की शर्तें देखें</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>यदि आपको परिवर्तनों को पूर्ववत करने की आवश्यकता है, तो आप इसे विंडोज़ सेटिंग्स से कर सकते हैं।</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>इससे पहले कि आप जारी रखें</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>गेम को अनुकूलित करने से एक कंसोल खुलता है जहां आपको संदेशों को पढ़ना होगा, विकल्प चुनना होगा और एक या दो पथ दर्ज करने होंगे। यह कठिन नहीं है, लेकिन स्क्रीन पर जो दिखता है उस पर ध्यान दें।
+
+प्रोफ़ाइल GitHub से डाउनलोड की जाती हैं और व्यवस्थापक अनुमतियों के साथ चलती हैं। अपने जोखिम पर उपयोग करें।</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>यह नोटिस दोबारा न दिखाएं</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>समझ गया</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>रद्द करना</value>
   </data>
 </root>

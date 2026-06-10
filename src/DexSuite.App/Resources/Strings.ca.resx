@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -75,6 +75,24 @@
   <data name="About.RequiresAdmin" xml:space="preserve">
     <value>Requereix administrador</value>
   </data>
+  <data name="About.Social.Email" xml:space="preserve">
+    <value>Contacte</value>
+  </data>
+  <data name="About.Social.Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="About.Social.Linktree" xml:space="preserve">
+    <value>Linktree</value>
+  </data>
+  <data name="About.Social.Subtitle" xml:space="preserve">
+    <value>Estigues al dia i posa't en contacte</value>
+  </data>
+  <data name="About.Social.Title" xml:space="preserve">
+    <value>Segueix-nos</value>
+  </data>
+  <data name="About.Social.Trustpilot" xml:space="preserve">
+    <value>Deixa una ressenya</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Stack tècnic</value>
   </data>
@@ -133,6 +151,9 @@ Error: {0}</value>
   <data name="Common.Run" xml:space="preserve">
     <value>Executa</value>
   </data>
+  <data name="Gaming.Applied" xml:space="preserve">
+    <value>Aplicat</value>
+  </data>
   <data name="Gaming.CardDesc" xml:space="preserve">
     <value>Tria un joc i aplica un ajust a mida per a FPS màxims i latència mínima.</value>
   </data>
@@ -142,11 +163,17 @@ Error: {0}</value>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Cada perfil aplica ajustos precisos per al màxim FPS i la mínima latència.</value>
   </data>
+  <data name="Gaming.Log.DisclaimerAccepted" xml:space="preserve">
+    <value>S'ha acceptat l'exempció de responsabilitat del joc</value>
+  </data>
   <data name="Gaming.Log.Failed" xml:space="preserve">
     <value>Error en l'optimització del joc ({0}): {1}</value>
   </data>
   <data name="Gaming.Log.Launched" xml:space="preserve">
     <value>Optimització de videojocs llançada: {0}</value>
+  </data>
+  <data name="Gaming.Log.Reverted" xml:space="preserve">
+    <value>Restabliment de l'estat d'optimització de jocs: {0}</value>
   </data>
   <data name="Gaming.OpenError" xml:space="preserve">
     <value>No s'ha pogut obrir el selector de jocs: {0}</value>
@@ -156,6 +183,21 @@ Error: {0}</value>
   </data>
   <data name="Gaming.OptimizeButton" xml:space="preserve">
     <value>Optimitza</value>
+  </data>
+  <data name="Gaming.Revert.Button" xml:space="preserve">
+    <value>Revertir</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmAccept" xml:space="preserve">
+    <value>Restableix de totes maneres</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmMessage" xml:space="preserve">
+    <value>Això restableix l'estat aplicat per a {0}. Nota: els ajustaments del sistema fets per l'script no es poden revertir automàticament; utilitzeu un punt de restauració de Windows per desfer-los completament.</value>
+  </data>
+  <data name="Gaming.Revert.ConfirmTitle" xml:space="preserve">
+    <value>Revertir l'optimització del joc</value>
+  </data>
+  <data name="Gaming.SearchPlaceholder" xml:space="preserve">
+    <value>Cerca joc...</value>
   </data>
   <data name="Gaming.SelectorSubtitle" xml:space="preserve">
     <value>Ajustos a mida per a FPS màxims i latència mínima.
@@ -207,8 +249,10 @@ Llença la neteja i els ajustos.</value>
     <value>Netejar ara</value>
   </data>
   <data name="Home.Card.QuickClean.Desc" xml:space="preserve">
-    <value>Buida carpetes temporals i paperera.
-Allibera espai en segons.</value>
+    <value>Buida carpetes temporals i paperera.</value>
+  </data>
+  <data name="Home.Card.QuickClean.Desc.Line2" xml:space="preserve">
+    <value>Allibera espai en segons.</value>
   </data>
   <data name="Home.Card.QuickClean.Title" xml:space="preserve">
     <value>Neteja ràpida</value>
@@ -355,9 +399,6 @@ Després podràs optimitzar i analitzar de nou per veure la diferència.</value>
   <data name="Log.Event.BugReportOpened" xml:space="preserve">
     <value>Correu d'informe de bug obert al client.</value>
   </data>
-  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
-    <value>Suggestion form opened.</value>
-  </data>
   <data name="Log.Event.HistoryCleared" xml:space="preserve">
     <value>Historial buidat ({0} entrades).</value>
   </data>
@@ -429,6 +470,9 @@ Després podràs optimitzar i analitzar de nou per veure la diferència.</value>
   </data>
   <data name="Log.Event.SettingsReset" xml:space="preserve">
     <value>Configuració restablerta als valors per defecte.</value>
+  </data>
+  <data name="Log.Event.SuggestionOpened" xml:space="preserve">
+    <value>Suggestion form opened.</value>
   </data>
   <data name="Log.Event.ThemeChanged" xml:space="preserve">
     <value>Tema canviat a {0}.</value>
@@ -507,7 +551,7 @@ S'actualitza en temps real mentre s'executa.</value>
     <value>Desmarca-ho tot</value>
   </data>
   <data name="Modules.Extra.Subtitle" xml:space="preserve">
-    <value>Optimitzacions específiques per portar el rendiment en jocs al límit absolut</value>
+    <value>Optimitzacions específiques per portar el rendiment en jocs al límit absolut.</value>
   </data>
   <data name="Modules.Extra.Title" xml:space="preserve">
     <value>EXTRA PRO · Videojocs</value>
@@ -766,8 +810,10 @@ Són el millor punt de partida abans d'explorar els ajustos avançats o pro.</va
     <value>Recomanat</value>
   </data>
   <data name="Modules.Subtitle" xml:space="preserve">
-    <value>Marca els mòduls que vulguis executar.
-Passa el ratolí pel xip Segur/Risc per saber per què.</value>
+    <value>Marca els mòduls que vulguis executar.</value>
+  </data>
+  <data name="Modules.Subtitle.Line2" xml:space="preserve">
+    <value>Passa el ratolí pel xip Segur/Risc per saber per què.</value>
   </data>
   <data name="Modules.Tier.Advanced" xml:space="preserve">
     <value>AVANÇAT</value>
@@ -783,6 +829,9 @@ Passa el ratolí pel xip Segur/Risc per saber per què.</value>
   </data>
   <data name="Navigation.About" xml:space="preserve">
     <value>Quant a</value>
+  </data>
+  <data name="Navigation.Extras" xml:space="preserve">
+    <value>EXTRAS</value>
   </data>
   <data name="Navigation.Home" xml:space="preserve">
     <value>Inici</value>
@@ -807,6 +856,9 @@ Passa el ratolí pel xip Segur/Risc per saber per què.</value>
   </data>
   <data name="Navigation.System" xml:space="preserve">
     <value>SISTEMA</value>
+  </data>
+  <data name="Navigation.Tuning" xml:space="preserve">
+    <value>Afinació</value>
   </data>
   <data name="Navigation.Updates" xml:space="preserve">
     <value>Actualitzacions</value>
@@ -853,6 +905,9 @@ Cada acció nativa es registra automàticament per revertir amb un clic.</value>
   </data>
   <data name="Restore.Empty.Title" xml:space="preserve">
     <value>Encara no hi ha canvis registrats</value>
+  </data>
+  <data name="Restore.MarkAsRead" xml:space="preserve">
+    <value>Marca com a llegit</value>
   </data>
   <data name="Restore.PendingCount" xml:space="preserve">
     <value>{0} canvi(s) pendent(s)</value>
@@ -1001,21 +1056,6 @@ La interfície s'actualitza a l'instant.</value>
   <data name="Settings.MinimizeToTray.Title" xml:space="preserve">
     <value>Minimitzar a la safata del sistema</value>
   </data>
-  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
-    <value>Clean now</value>
-  </data>
-  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
-    <value>Removes temporary update folders left in AppData by the installer.</value>
-  </data>
-  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
-    <value>Nothing to clean.</value>
-  </data>
-  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
-    <value>Removed {0} folders ({1} freed).</value>
-  </data>
-  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
-    <value>Clean DexSuite leftovers</value>
-  </data>
   <data name="Settings.NotifyOnFinish.Desc" xml:space="preserve">
     <value>Mostra un avís de Windows al Centre d'activitat quan finalitza l'optimització.</value>
   </data>
@@ -1043,16 +1083,41 @@ La interfície s'actualitza a l'instant.</value>
   <data name="Settings.RestorePoint.Title" xml:space="preserve">
     <value>Punt de restauració del sistema</value>
   </data>
+  <data name="Settings.SelfCleanup.Button" xml:space="preserve">
+    <value>Clean now</value>
+  </data>
+  <data name="Settings.SelfCleanup.Desc" xml:space="preserve">
+    <value>Removes temporary update folders left in AppData by the installer.</value>
+  </data>
+  <data name="Settings.SelfCleanup.NothingToClean" xml:space="preserve">
+    <value>Nothing to clean.</value>
+  </data>
+  <data name="Settings.SelfCleanup.Result" xml:space="preserve">
+    <value>Removed {0} folders ({1} freed).</value>
+  </data>
+  <data name="Settings.SelfCleanup.Title" xml:space="preserve">
+    <value>Clean DexSuite leftovers</value>
+  </data>
   <data name="Settings.Subtitle" xml:space="preserve">
-    <value>Les opcions s'apliquen a l'instant.
-Les teves preferències es desen automàticament.</value>
+    <value>Les opcions s'apliquen a l'instant.</value>
+  </data>
+  <data name="Settings.Subtitle.Line2" xml:space="preserve">
+    <value>Les teves preferències es desen automàticament.</value>
   </data>
   <data name="Settings.Theme.Active" xml:space="preserve">
     <value>Actiu</value>
   </data>
+  <data name="Settings.Theme.ComingSoon" xml:space="preserve">
+    <value>Aviat</value>
+  </data>
   <data name="Settings.Theme.Description" xml:space="preserve">
-    <value>Identitat visual de l'app.
-Temes exclusius per a usuaris Pro.</value>
+    <value>Identitat visual de l'app.</value>
+  </data>
+  <data name="Settings.Theme.Description.Line2" xml:space="preserve">
+    <value>Temes exclusius per a usuaris Pro.</value>
+  </data>
+  <data name="Settings.Theme.GameThemesHeader" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="Settings.Theme.LockedHint" xml:space="preserve">
     <value>Requereix pla Pro</value>
@@ -1107,7 +1172,7 @@ Activa una llicència a la secció Llicència per desbloquejar els mòduls Advan
     <value>Emmagatzematge</value>
   </data>
   <data name="Specs.Subtitle" xml:space="preserve">
-    <value>Maquinari i sistema operatiu detectats</value>
+    <value>Maquinari i sistema operatiu detectats.</value>
   </data>
   <data name="Specs.Summary.AdminNote" xml:space="preserve">
     <value>Mode administrador actiu</value>
@@ -1243,8 +1308,53 @@ L'aplicació es reiniciarà automàticament.</value>
   <data name="Suggestion.Subtitle" xml:space="preserve">
     <value>Share an idea or suggestion.</value>
   </data>
+  <data name="Terms.AcceptButton" xml:space="preserve">
+    <value>Accepto les Condicions</value>
+  </data>
+  <data name="Terms.AcceptNote" xml:space="preserve">
+    <value>En fer clic a &quot;Accepto els Termes&quot;, confirmeu que heu llegit i acceptat les condicions anteriors.</value>
+  </data>
+  <data name="Terms.DeclineButton" xml:space="preserve">
+    <value>Declinar</value>
+  </data>
+  <data name="Terms.Intro" xml:space="preserve">
+    <value>Si us plau, llegiu i accepteu els termes següents abans d'utilitzar DexSuite.</value>
+  </data>
+  <data name="Terms.Section1.Body" xml:space="preserve">
+    <value>DexSuite és una eina d'optimització del sistema de Windows. Requereix privilegis d'administrador per modificar la configuració del registre, els serveis del sistema i les tasques programades. Aquests canvis afecten el comportament i el rendiment del sistema.</value>
+  </data>
+  <data name="Terms.Section1.Title" xml:space="preserve">
+    <value>Com funciona l'aplicació</value>
+  </data>
+  <data name="Terms.Section2.Body" xml:space="preserve">
+    <value>L'ús de DexSuite és sota el vostre propi risc. Els canvis aplicats poden alterar el comportament del sistema. Es recomana crear un punt de restauració abans d'executar mòduls d'alt impacte. DexSuite no ofereix cap garantia de resultats específics i no es fa responsable de cap dany o pèrdua de dades.</value>
+  </data>
+  <data name="Terms.Section2.Title" xml:space="preserve">
+    <value>Responsabilitat de l'usuari</value>
+  </data>
+  <data name="Terms.Section3.Body" xml:space="preserve">
+    <value>El mòdul de jocs baixa i executa scripts de PowerShell de GitHub. DexSuite verifica la seva integritat SHA-256 abans de l'execució. Sou responsable de revisar què fan els scripts abans d'aplicar-los.</value>
+  </data>
+  <data name="Terms.Section3.Title" xml:space="preserve">
+    <value>Scripts d'optimització de jocs</value>
+  </data>
+  <data name="Terms.Section4.Body" xml:space="preserve">
+    <value>DexSuite no recopila dades d'ús ni envia informació a servidors externs. Totes les dades (historial, llicència, configuració) s'emmagatzemen localment al vostre dispositiu.</value>
+  </data>
+  <data name="Terms.Section4.Title" xml:space="preserve">
+    <value>Privadesa i dades</value>
+  </data>
+  <data name="Terms.Title" xml:space="preserve">
+    <value>Condicions d'ús</value>
+  </data>
   <data name="Theme.Desc.Apex" xml:space="preserve">
     <value>Or premium + negre càlid</value>
+  </data>
+  <data name="Theme.Desc.Counter" xml:space="preserve">
+    <value>Taronja tàctica + negre</value>
+  </data>
+  <data name="Theme.Desc.Crafter" xml:space="preserve">
+    <value>Verd herba + marró terra</value>
   </data>
   <data name="Theme.Desc.Cybernetic" xml:space="preserve">
     <value>Cyberpunk cian + violeta</value>
@@ -1252,8 +1362,32 @@ L'aplicació es reiniciarà automàticament.</value>
   <data name="Theme.Desc.Default" xml:space="preserve">
     <value>Paleta Fluent neutra</value>
   </data>
+  <data name="Theme.Desc.Divers" xml:space="preserve">
+    <value>Groc + negre militar</value>
+  </data>
+  <data name="Theme.Desc.Fortress" xml:space="preserve">
+    <value>Blau + groc vibrant</value>
+  </data>
+  <data name="Theme.Desc.Guardian" xml:space="preserve">
+    <value>Taronja + blau protector</value>
+  </data>
+  <data name="Theme.Desc.Legends" xml:space="preserve">
+    <value>Daurat + blau profund</value>
+  </data>
+  <data name="Theme.Desc.Midas" xml:space="preserve">
+    <value>Daurat premium + negre càlid</value>
+  </data>
   <data name="Theme.Desc.Redline" xml:space="preserve">
     <value>Vermell cursa + negre profund</value>
+  </data>
+  <data name="Theme.Desc.Rivals" xml:space="preserve">
+    <value>Lila + or mític</value>
+  </data>
+  <data name="Theme.Desc.Tenno" xml:space="preserve">
+    <value>Blau clar + blanc fred</value>
+  </data>
+  <data name="Theme.Desc.Valor" xml:space="preserve">
+    <value>Vermell negre + blanc os</value>
   </data>
   <data name="Theme.Desc.ZeroLag" xml:space="preserve">
     <value>Monocrom ultraminimalista</value>
@@ -1261,17 +1395,80 @@ L'aplicació es reiniciarà automàticament.</value>
   <data name="Theme.Name.Apex" xml:space="preserve">
     <value>APEX</value>
   </data>
+  <data name="Theme.Name.Counter" xml:space="preserve">
+    <value>COUNTER</value>
+  </data>
+  <data name="Theme.Name.Crafter" xml:space="preserve">
+    <value>CRAFTER</value>
+  </data>
   <data name="Theme.Name.Cybernetic" xml:space="preserve">
     <value>CYBERNETIC</value>
   </data>
   <data name="Theme.Name.Default" xml:space="preserve">
     <value>DEFAULT</value>
   </data>
+  <data name="Theme.Name.Divers" xml:space="preserve">
+    <value>DIVERS</value>
+  </data>
+  <data name="Theme.Name.Fortress" xml:space="preserve">
+    <value>FORTRESS</value>
+  </data>
+  <data name="Theme.Name.Guardian" xml:space="preserve">
+    <value>GUARDIAN</value>
+  </data>
+  <data name="Theme.Name.Legends" xml:space="preserve">
+    <value>LEGENDS</value>
+  </data>
+  <data name="Theme.Name.Midas" xml:space="preserve">
+    <value>MIDAS</value>
+  </data>
   <data name="Theme.Name.Redline" xml:space="preserve">
     <value>REDLINE</value>
   </data>
+  <data name="Theme.Name.Rivals" xml:space="preserve">
+    <value>RIVALS</value>
+  </data>
+  <data name="Theme.Name.Tenno" xml:space="preserve">
+    <value>TENNO</value>
+  </data>
+  <data name="Theme.Name.Valor" xml:space="preserve">
+    <value>VALOR</value>
+  </data>
   <data name="Theme.Name.ZeroLag" xml:space="preserve">
     <value>ZERO LAG</value>
+  </data>
+  <data name="Tuning.ComingSoon.Message" xml:space="preserve">
+    <value>Aquesta secció estarà disponible en una actualització futura.</value>
+  </data>
+  <data name="Tuning.ComingSoon.Title" xml:space="preserve">
+    <value>Aviat</value>
+  </data>
+  <data name="Tuning.Installer.Title" xml:space="preserve">
+    <value>Instal·lador d'aplicacions</value>
+  </data>
+  <data name="Tuning.Log.UrlFailed" xml:space="preserve">
+    <value>Afinació: no s'ha pogut obrir la descàrrega {0} — {1}</value>
+  </data>
+  <data name="Tuning.Log.UrlOpened" xml:space="preserve">
+    <value>Afinació: descàrrega oberta — {0}</value>
+  </data>
+  <data name="Tuning.Subtitle" xml:space="preserve">
+    <value>Ajustos del sistema i instal·lació ràpida d'aplicacions essencials.</value>
+  </data>
+  <data name="Tuning.System.MouseAccel" xml:space="preserve">
+    <value>Desactiva l'acceleració del ratolí</value>
+  </data>
+  <data name="Tuning.System.RefreshRate" xml:space="preserve">
+    <value>Estableix la freqüència d'actualització per controlar el màxim</value>
+  </data>
+  <data name="Tuning.System.Resolution" xml:space="preserve">
+    <value>Estableix la resolució com a nativa</value>
+  </data>
+  <data name="Tuning.System.Title" xml:space="preserve">
+    <value>Configuració del sistema</value>
+  </data>
+  <data name="Tuning.Title" xml:space="preserve">
+    <value>Afinació</value>
   </data>
   <data name="Updates.AutoUpdate.Desc" xml:space="preserve">
     <value>Descarrega i instal·la noves versions en segon pla.
@@ -1347,5 +1544,54 @@ El progrés es mostrarà al registre.</value>
   </data>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>El Gestor de paquets de Windows (winget) no està disponible en aquest sistema.</value>
+  </data>
+
+  <data name="License.Activation.Help2" xml:space="preserve">
+    <value>La clau està bloquejada en aquest dispositiu (HWID a dalt).</value>
+  </data>
+
+  <data name="License.Section.Description2" xml:space="preserve">
+    <value>La clau que rebeu està signada i només funciona en aquest dispositiu.</value>
+  </data>
+
+  <data name="Security.OptionsTooltip" xml:space="preserve">
+    <value>Defender · Escaneig ràpid: detecta programari maliciós actiu al sistema.
+SFC · System File Checker: cerca i repara els fitxers del sistema danyats.
+DISM · Restaura la imatge: repara la imatge de Windows quan SFC no pot.
+MRT · Eliminació de programari maliciós: eina oficial de Microsoft contra amenaces específiques.</value>
+  </data>
+
+  <data name="Settings.Behavior.Desc" xml:space="preserve">
+    <value>Controleu com es comporta DexSuite quan executeu mòduls o minimitzeu l'aplicació.</value>
+  </data>
+
+  <data name="Settings.ShowTerms" xml:space="preserve">
+    <value>Consulta les condicions d'ús</value>
+  </data>
+
+  <data name="Settings.RestorePoint.Desc2" xml:space="preserve">
+    <value>Si necessiteu desfer els canvis, podeu fer-ho des de la configuració de Windows.</value>
+  </data>
+
+  <data name="GamingDisclaimer.Title" xml:space="preserve">
+    <value>Abans de continuar</value>
+  </data>
+
+  <data name="GamingDisclaimer.Body" xml:space="preserve">
+    <value>L'optimització d'un joc obre una consola on haureu de llegir els missatges, triar opcions i introduir un camí o dos. No és difícil, però presta atenció al que apareix a la pantalla.
+
+Els perfils es baixen de GitHub i s'executen amb permisos d'administrador. Feu servir sota el vostre propi risc.</value>
+  </data>
+
+  <data name="GamingDisclaimer.DontShow" xml:space="preserve">
+    <value>No torneu a mostrar aquest avís</value>
+  </data>
+
+  <data name="GamingDisclaimer.Confirm" xml:space="preserve">
+    <value>Ho entenc</value>
+  </data>
+
+  <data name="GamingDisclaimer.Cancel" xml:space="preserve">
+    <value>Cancel·la</value>
   </data>
 </root>
