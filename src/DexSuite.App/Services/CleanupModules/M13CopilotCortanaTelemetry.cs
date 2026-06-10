@@ -18,59 +18,75 @@ public sealed class M13CopilotCortanaTelemetry : ModuleExecutorBase
     protected override string ModuleName => "Copilot, Cortana y Telemetría";
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("Copilot, Cortana y Telemetría");
 
-        yield return Step("Desactivando Windows Copilot");
-        TrackedSetDword(@"HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
-        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowCopilotButton", 0);
-        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Search",            "BingSearchEnabled", 0);
-        yield return Ok("Copilot desactivado");
+        if (Want(enabledSubOps, "M13_copilot"))
+        {
+            yield return Step("Desactivando Windows Copilot");
+            TrackedSetDword(@"HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot",       "TurnOffWindowsCopilot", 1);
+            TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowCopilotButton", 0);
+            TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Search",            "BingSearchEnabled", 0);
+            yield return Ok("Copilot desactivado");
+        }
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Desactivando Cortana");
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortana", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortanaAboveLock", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowSearchToUseLocation", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "DisableWebSearch", 1);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "ConnectedSearchUseWeb", 0);
-        KillProcess("Cortana.exe");
-        yield return Ok("Cortana desactivada");
+        if (Want(enabledSubOps, "M13_cortana"))
+        {
+            yield return Step("Desactivando Cortana");
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortana", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortanaAboveLock", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowSearchToUseLocation", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "DisableWebSearch", 1);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search", "ConnectedSearchUseWeb", 0);
+            KillProcess("Cortana.exe");
+            yield return Ok("Cortana desactivada");
+        }
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Telemetría a nivel 0 (mínimo posible)");
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection",                "AllowTelemetry", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", "AllowTelemetry", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", "MaxTelemetryAllowed", 0);
-        yield return Ok("Telemetría configurada al nivel 0");
+        if (Want(enabledSubOps, "M13_telemetry"))
+        {
+            yield return Step("Telemetría a nivel 0 (mínimo posible)");
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection",                "AllowTelemetry", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", "AllowTelemetry", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection", "MaxTelemetryAllowed", 0);
+            yield return Ok("Telemetría configurada al nivel 0");
+        }
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Desactivando los servicios de telemetría");
-        TrackedSetServiceStartMode("DiagTrack", "Disabled"); StopService("DiagTrack");
-        TrackedSetServiceStartMode("dmwappushservice", "Disabled"); StopService("dmwappushservice");
-        TrackedSetServiceStartMode("diagnosticshub.standardcollector.service", "Disabled");
-        TrackedSetServiceStartMode("WerSvc", "Disabled"); StopService("WerSvc");
-        yield return Ok("Servicios de telemetría desactivados");
+        if (Want(enabledSubOps, "M13_telemetry_svc"))
+        {
+            yield return Step("Desactivando los servicios de telemetría");
+            TrackedSetServiceStartMode("DiagTrack", "Disabled"); StopService("DiagTrack");
+            TrackedSetServiceStartMode("dmwappushservice", "Disabled"); StopService("dmwappushservice");
+            TrackedSetServiceStartMode("diagnosticshub.standardcollector.service", "Disabled");
+            TrackedSetServiceStartMode("WerSvc", "Disabled"); StopService("WerSvc");
+            yield return Ok("Servicios de telemetría desactivados");
+        }
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Desactivando Timeline, AdvertisingID y CEIP");
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "AITEnable", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "DisableInventory", 1);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "DisablePCA", 1);
-        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Privacy",
-            "TailoredExperiencesWithDiagnosticDataEnabled", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "PublishUserActivities", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "UploadUserActivities", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "EnableActivityFeed", 0);
-        TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo", "Enabled", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo", "DisabledByGroupPolicy", 1);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows", "CEIPEnable", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\SQMClient\Windows", "CEIPEnable", 0);
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting", "Disabled", 1);
-        TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting", "Disabled", 1);
-        yield return Ok("Timeline, AdvertisingID y CEIP desactivados");
+        if (Want(enabledSubOps, "M13_timeline"))
+        {
+            yield return Step("Desactivando Timeline, AdvertisingID y CEIP");
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "AITEnable", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "DisableInventory", 1);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat", "DisablePCA", 1);
+            TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\Privacy",
+                "TailoredExperiencesWithDiagnosticDataEnabled", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "PublishUserActivities", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "UploadUserActivities", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\System", "EnableActivityFeed", 0);
+            TrackedSetDword(@"HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo", "Enabled", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo", "DisabledByGroupPolicy", 1);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows", "CEIPEnable", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\SQMClient\Windows", "CEIPEnable", 0);
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting", "Disabled", 1);
+            TrackedSetDword(@"HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting", "Disabled", 1);
+            yield return Ok("Timeline, AdvertisingID y CEIP desactivados");
+        }
 
         yield return Done("M13 completado");
         await Task.CompletedTask;

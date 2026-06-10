@@ -271,6 +271,7 @@
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
+                <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -571,6 +572,56 @@
                         </ui:SymbolIcon>
                     </Border>
                 </Grid>
+
+                <!-- Vista avanzada: sub-opciones individuales del módulo.
+                     Visible solo cuando IsAdvancedModuleView=true Y el módulo tiene sub-opciones. -->
+                <Border Margin="32,10,0,2" Padding="14,10"
+                        CornerRadius="8"
+                        Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                        BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding HasSubOptions}" Value="True"/>
+                                        <Condition Binding="{Binding DataContext.IsAdvancedModuleView, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <ItemsControl ItemsSource="{Binding SubOptions}"
+                                  IsEnabled="{Binding IsEnabled}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,4,0,4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0"
+                                              IsChecked="{Binding IsEnabled, Mode=TwoWay}"
+                                              VerticalAlignment="Top"
+                                              Margin="0,1,10,0"/>
+                                    <StackPanel Grid.Column="1">
+                                        <ui:TextBlock Text="{Binding Name}"
+                                                      FontTypography="Body"/>
+                                        <ui:TextBlock Text="{Binding Description}"
+                                                      FontTypography="Caption"
+                                                      Opacity="0.6"
+                                                      TextWrapping="Wrap"
+                                                      Margin="0,1,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
+                </StackPanel>
             </Border>
         </DataTemplate>
 
@@ -1648,6 +1699,19 @@
                             </Button>
                         </Grid>
                     </Border>
+
+                    <!-- Selector de vista: simple (agrupada) / avanzada (ajustes individuales) -->
+                    <DockPanel Margin="24,0,24,10">
+                        <ui:ToggleSwitch DockPanel.Dock="Right"
+                                         VerticalAlignment="Center"
+                                         IsChecked="{Binding IsAdvancedModuleView, Mode=TwoWay}"
+                                         Content="{loc:T Key=Modules.AdvancedView}"/>
+                        <ui:TextBlock Text="{loc:T Key=Modules.AdvancedView.Hint}"
+                                      FontTypography="Caption"
+                                      Opacity="0.55"
+                                      VerticalAlignment="Center"
+                                      TextWrapping="Wrap"/>
+                    </DockPanel>
                     </StackPanel>
 
                     <ScrollViewer Grid.Row="1"
@@ -3317,6 +3381,22 @@
                                         </StackPanel>
                                         <ui:ToggleSwitch Grid.Column="1"
                                                          IsChecked="{Binding JumpToLogOnRun, Mode=TwoWay}"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,6,0,6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <ui:TextBlock Text="{loc:T Key=Settings.ModuleView.Title}"/>
+                                            <ui:TextBlock Text="{loc:T Key=Settings.ModuleView.Desc}"
+                                                          Opacity="0.55"
+                                                          FontTypography="Caption"
+                                                          TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <ui:ToggleSwitch Grid.Column="1"
+                                                         IsChecked="{Binding IsAdvancedModuleView, Mode=TwoWay}"/>
                                     </Grid>
 
                                     <Grid Margin="0,6,0,6">

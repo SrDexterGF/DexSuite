@@ -16,6 +16,7 @@ public sealed class M06DismComponentStore : ModuleExecutorBase
     public override int ModuleId => 6;
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("DISM - Component Store");
@@ -31,26 +32,32 @@ public sealed class M06DismComponentStore : ModuleExecutorBase
             yield break;
         }
 
-        yield return Step("Analizando el Component Store");
-        await foreach (var line in StreamProcessAsync(
-            dism, "/Online /Cleanup-Image /AnalyzeComponentStore", ct: ct))
+        if (Want(enabledSubOps, "M06_analyze"))
         {
-            if (ct.IsCancellationRequested) yield break;
-            if (!string.IsNullOrWhiteSpace(line))
-                yield return Info(line);
+            yield return Step("Analizando el Component Store");
+            await foreach (var line in StreamProcessAsync(
+                dism, "/Online /Cleanup-Image /AnalyzeComponentStore", ct: ct))
+            {
+                if (ct.IsCancellationRequested) yield break;
+                if (!string.IsNullOrWhiteSpace(line))
+                    yield return Info(line);
+            }
+            yield return Ok("Análisis completado");
         }
-        yield return Ok("Análisis completado");
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Eliminando componentes obsoletos");
-        await foreach (var line in StreamProcessAsync(
-            dism, "/Online /Cleanup-Image /StartComponentCleanup", ct: ct))
+        if (Want(enabledSubOps, "M06_cleanup"))
         {
-            if (ct.IsCancellationRequested) yield break;
-            if (!string.IsNullOrWhiteSpace(line))
-                yield return Info(line);
+            yield return Step("Eliminando componentes obsoletos");
+            await foreach (var line in StreamProcessAsync(
+                dism, "/Online /Cleanup-Image /StartComponentCleanup", ct: ct))
+            {
+                if (ct.IsCancellationRequested) yield break;
+                if (!string.IsNullOrWhiteSpace(line))
+                    yield return Info(line);
+            }
+            yield return Ok("Limpieza del Component Store completada");
         }
-        yield return Ok("Limpieza del Component Store completada");
 
         yield return Done("M6 completado");
     }

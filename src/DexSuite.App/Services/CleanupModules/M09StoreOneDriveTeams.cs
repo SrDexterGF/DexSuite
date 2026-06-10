@@ -17,6 +17,7 @@ public sealed class M09StoreOneDriveTeams : ModuleExecutorBase
     public override int ModuleId => 9;
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("Store, OneDrive y Teams");
@@ -27,72 +28,81 @@ public sealed class M09StoreOneDriveTeams : ModuleExecutorBase
         var appData  = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         var system32 = Environment.GetFolderPath(Environment.SpecialFolder.System);
 
-        yield return Step("Reseteando la cache de Microsoft Store");
-        var wsreset = Path.Combine(system32, "wsreset.exe");
-        if (File.Exists(wsreset))
+        if (Want(enabledSubOps, "M09_store"))
         {
-            string? wsErr = null;
-            bool started = false;
-            Process? p = null;
-            try
+            yield return Step("Reseteando la cache de Microsoft Store");
+            var wsreset = Path.Combine(system32, "wsreset.exe");
+            if (File.Exists(wsreset))
             {
-                p = Process.Start(new ProcessStartInfo
+                string? wsErr = null;
+                bool started = false;
+                Process? p = null;
+                try
                 {
-                    FileName        = wsreset,
-                    Arguments       = "-i",
-                    UseShellExecute = false,
-                    CreateNoWindow  = true,
-                    WindowStyle     = ProcessWindowStyle.Hidden,
-                });
-                started = p != null;
-            }
-            catch (Exception ex) { wsErr = ex.Message; }
-
-            if (started && p != null)
-            {
-                try { await p.WaitForExitAsync(ct).ConfigureAwait(false); }
+                    p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName        = wsreset,
+                        Arguments       = "-i",
+                        UseShellExecute = false,
+                        CreateNoWindow  = true,
+                        WindowStyle     = ProcessWindowStyle.Hidden,
+                    });
+                    started = p != null;
+                }
                 catch (Exception ex) { wsErr = ex.Message; }
-                finally { p.Dispose(); }
+
+                if (started && p != null)
+                {
+                    try { await p.WaitForExitAsync(ct).ConfigureAwait(false); }
+                    catch (Exception ex) { wsErr = ex.Message; }
+                    finally { p.Dispose(); }
+                }
+
+                yield return wsErr is not null
+                    ? Warn($"wsreset falló: {wsErr}")
+                    : started
+                        ? Ok("Microsoft Store reseteada")
+                        : Warn("wsreset no se pudo iniciar");
             }
-
-            yield return wsErr is not null
-                ? Warn($"wsreset falló: {wsErr}")
-                : started
-                    ? Ok("Microsoft Store reseteada")
-                    : Warn("wsreset no se pudo iniciar");
+            else yield return Warn("wsreset.exe no encontrado");
         }
-        else yield return Warn("wsreset.exe no encontrado");
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Logs de OneDrive");
-        var oneDrive = Path.Combine(localApp, "Microsoft", "OneDrive");
-        if (Directory.Exists(oneDrive))
+        if (Want(enabledSubOps, "M09_onedrive"))
         {
-            var (lf, lb) = PurgeDirectory(Path.Combine(oneDrive, "logs"), ct);
-            var (sf, sb) = PurgeDirectory(Path.Combine(oneDrive, "setup", "logs"), ct);
-            totalFiles += lf + sf; totalBytes += lb + sb;
-            yield return Ok($"Logs de OneDrive borrados ({lf + sf} archivos)");
-        }
-        else yield return Info("OneDrive no instalado, omitido");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Cache de Microsoft Teams");
-        var teams = Path.Combine(appData, "Microsoft", "Teams");
-        if (Directory.Exists(teams))
-        {
-            var subdirs = new[] { "Cache", "blob_storage", "databases", "GPUCache",
-                                  "IndexedDB", "Local Storage", "tmp" };
-            int tf = 0; long tb = 0;
-            foreach (var sd in subdirs)
+            yield return Step("Logs de OneDrive");
+            var oneDrive = Path.Combine(localApp, "Microsoft", "OneDrive");
+            if (Directory.Exists(oneDrive))
             {
-                if (ct.IsCancellationRequested) yield break;
-                var (f, b) = PurgeDirectory(Path.Combine(teams, sd), ct);
-                tf += f; tb += b;
+                var (lf, lb) = PurgeDirectory(Path.Combine(oneDrive, "logs"), ct);
+                var (sf, sb) = PurgeDirectory(Path.Combine(oneDrive, "setup", "logs"), ct);
+                totalFiles += lf + sf; totalBytes += lb + sb;
+                yield return Ok($"Logs de OneDrive borrados ({lf + sf} archivos)");
             }
-            totalFiles += tf; totalBytes += tb;
-            yield return Ok($"Cache de Teams borrada ({tf} archivos, {FormatBytes(tb)})");
+            else yield return Info("OneDrive no instalado, omitido");
         }
-        else yield return Info("Teams no instalado, omitido");
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M09_teams"))
+        {
+            yield return Step("Cache de Microsoft Teams");
+            var teams = Path.Combine(appData, "Microsoft", "Teams");
+            if (Directory.Exists(teams))
+            {
+                var subdirs = new[] { "Cache", "blob_storage", "databases", "GPUCache",
+                                      "IndexedDB", "Local Storage", "tmp" };
+                int tf = 0; long tb = 0;
+                foreach (var sd in subdirs)
+                {
+                    if (ct.IsCancellationRequested) yield break;
+                    var (f, b) = PurgeDirectory(Path.Combine(teams, sd), ct);
+                    tf += f; tb += b;
+                }
+                totalFiles += tf; totalBytes += tb;
+                yield return Ok($"Cache de Teams borrada ({tf} archivos, {FormatBytes(tb)})");
+            }
+            else yield return Info("Teams no instalado, omitido");
+        }
 
         yield return Done($"M9 completado — {totalFiles} archivos, {FormatBytes(totalBytes)} liberados");
     }

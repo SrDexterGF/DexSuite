@@ -19,48 +19,58 @@ public sealed class M08NetworkReset : ModuleExecutorBase
     private static extern uint DnsFlushResolverCache();
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("Red y Directivas de Grupo");
 
-        yield return Step("Vaciando cache DNS");
-        bool dnsOk = false;
-        try { dnsOk = DnsFlushResolverCache() != 0; }
-        catch { /* dnsapi.dll falló */ }
-
-        if (dnsOk)
-            yield return Ok("Cache DNS vaciada");
-        else
+        if (Want(enabledSubOps, "M08_dns_flush"))
         {
-            // Fallback a ipconfig si la P/Invoke devuelve 0.
-            var rc = await RunProcessAsync(
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ipconfig.exe"),
-                "/flushdns", ct);
-            yield return rc == 0 ? Ok("Cache DNS vaciada (fallback ipconfig)") : Warn("No se pudo vaciar la cache DNS");
-        }
+            yield return Step("Vaciando cache DNS");
+            bool dnsOk = false;
+            try { dnsOk = DnsFlushResolverCache() != 0; }
+            catch { /* dnsapi.dll falló */ }
 
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Registrando equipo en DNS");
-        var ipconfig = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ipconfig.exe");
-        var rcReg = await RunProcessAsync(ipconfig, "/registerdns", ct);
-        yield return rcReg == 0 ? Ok("DNS registrado") : Warn($"ipconfig /registerdns ExitCode={rcReg}");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Forzando actualización de directivas de grupo");
-        var gpupdate = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "gpupdate.exe");
-        if (File.Exists(gpupdate))
-        {
-            await foreach (var line in StreamProcessAsync(gpupdate, "/force", ct: ct))
+            if (dnsOk)
+                yield return Ok("Cache DNS vaciada");
+            else
             {
-                if (ct.IsCancellationRequested) yield break;
-                if (!string.IsNullOrWhiteSpace(line))
-                    yield return Info(line);
+                // Fallback a ipconfig si la P/Invoke devuelve 0.
+                var rc = await RunProcessAsync(
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ipconfig.exe"),
+                    "/flushdns", ct);
+                yield return rc == 0 ? Ok("Cache DNS vaciada (fallback ipconfig)") : Warn("No se pudo vaciar la cache DNS");
             }
-            yield return Ok("Directivas de grupo actualizadas");
         }
-        else
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M08_dns_register"))
         {
-            yield return Warn("gpupdate.exe no encontrado");
+            yield return Step("Registrando equipo en DNS");
+            var ipconfig = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ipconfig.exe");
+            var rcReg = await RunProcessAsync(ipconfig, "/registerdns", ct);
+            yield return rcReg == 0 ? Ok("DNS registrado") : Warn($"ipconfig /registerdns ExitCode={rcReg}");
+        }
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M08_gpupdate"))
+        {
+            yield return Step("Forzando actualización de directivas de grupo");
+            var gpupdate = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "gpupdate.exe");
+            if (File.Exists(gpupdate))
+            {
+                await foreach (var line in StreamProcessAsync(gpupdate, "/force", ct: ct))
+                {
+                    if (ct.IsCancellationRequested) yield break;
+                    if (!string.IsNullOrWhiteSpace(line))
+                        yield return Info(line);
+                }
+                yield return Ok("Directivas de grupo actualizadas");
+            }
+            else
+            {
+                yield return Warn("gpupdate.exe no encontrado");
+            }
         }
 
         yield return Done("M8 completado");

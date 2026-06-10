@@ -21,5 +21,11 @@ public interface IModuleExecutor
     /// <summary>
     /// Lanza el módulo. Tiene que ser idempotente y respetar cancelación.
     /// </summary>
-    IAsyncEnumerable<ModuleProgress> ExecuteAsync(CancellationToken ct = default);
+    /// <param name="enabledSubOps">
+    /// Conjunto de Ids de sub-operaciones a ejecutar (vista avanzada). Si es
+    /// null, el módulo ejecuta TODAS sus sub-operaciones (vista simple).
+    /// </param>
+    IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
+        CancellationToken ct = default);
 }

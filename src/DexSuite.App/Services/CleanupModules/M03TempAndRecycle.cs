@@ -23,6 +23,7 @@ public sealed class M03TempAndRecycle : ModuleExecutorBase
     private const uint SHERB_NOSOUND        = 0x00000004;
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("Temporales, Recientes y Papelera");
@@ -35,55 +36,68 @@ public sealed class M03TempAndRecycle : ModuleExecutorBase
         var profile  = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
         // Borrado agresivo de carpetas Temp (la app ya corre como admin, no necesita takeown).
-        yield return Step("Borrando carpetas Temp con permisos extendidos");
-        var tempPaths = new[]
+        if (Want(enabledSubOps, "M03_temp_aggressive"))
         {
-            Path.GetTempPath(),
-            Path.Combine(windir, "Temp"),
-            Path.Combine(localApp, "Temp"),
-            Path.Combine(profile, "AppData", "Local", "Temp"),
-        };
-        foreach (var p in tempPaths.Distinct(StringComparer.OrdinalIgnoreCase))
-        {
-            if (ct.IsCancellationRequested) yield break;
-            var (f, b) = PurgeDirectory(p, ct);
-            totalFiles += f; totalBytes += b;
+            yield return Step("Borrando carpetas Temp con permisos extendidos");
+            var tempPaths = new[]
+            {
+                Path.GetTempPath(),
+                Path.Combine(windir, "Temp"),
+                Path.Combine(localApp, "Temp"),
+                Path.Combine(profile, "AppData", "Local", "Temp"),
+            };
+            long tempBytes = 0; int tempFiles = 0;
+            foreach (var p in tempPaths.Distinct(StringComparer.OrdinalIgnoreCase))
+            {
+                if (ct.IsCancellationRequested) yield break;
+                var (f, b) = PurgeDirectory(p, ct);
+                totalFiles += f; totalBytes += b; tempFiles += f; tempBytes += b;
+            }
+            yield return Ok($"Temporales borradas ({tempFiles} archivos, {FormatBytes(tempBytes)})");
         }
-        yield return Ok($"Temporales borradas ({totalFiles} archivos, {FormatBytes(totalBytes)})");
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Historial de archivos recientes");
-        var (rf, rb) = PurgeDirectory(Path.Combine(appData, "Microsoft", "Windows", "Recent"), ct);
-        totalFiles += rf; totalBytes += rb;
-        yield return Ok($"Historial reciente limpiado ({rf} archivos)");
+        if (Want(enabledSubOps, "M03_recent"))
+        {
+            yield return Step("Historial de archivos recientes");
+            var (rf, rb) = PurgeDirectory(Path.Combine(appData, "Microsoft", "Windows", "Recent"), ct);
+            totalFiles += rf; totalBytes += rb;
+            yield return Ok($"Historial reciente limpiado ({rf} archivos)");
+        }
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Papelera de Reciclaje");
-        string? recycleErr = null;
-        try
+        if (Want(enabledSubOps, "M03_recycle"))
         {
-            SHEmptyRecycleBin(IntPtr.Zero, null,
-                SHERB_NOCONFIRMATION | SHERB_NOPROGRESSUI | SHERB_NOSOUND);
+            yield return Step("Papelera de Reciclaje");
+            string? recycleErr = null;
+            try
+            {
+                SHEmptyRecycleBin(IntPtr.Zero, null,
+                    SHERB_NOCONFIRMATION | SHERB_NOPROGRESSUI | SHERB_NOSOUND);
+            }
+            catch (Exception ex) { recycleErr = ex.Message; }
+            yield return recycleErr is null
+                ? Ok("Papelera vaciada")
+                : Warn($"No se pudo vaciar la papelera: {recycleErr}");
         }
-        catch (Exception ex) { recycleErr = ex.Message; }
-        yield return recycleErr is null
-            ? Ok("Papelera vaciada")
-            : Warn($"No se pudo vaciar la papelera: {recycleErr}");
 
         // Windows.old — instalación anterior; puede pesar varios GB.
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Carpeta Windows.old (instalación anterior de Windows)");
-        var windowsOld = "C:\\Windows.old";
-        if (Directory.Exists(windowsOld))
+        if (Want(enabledSubOps, "M03_windows_old"))
         {
-            var (wf, wb) = PurgeDirectory(windowsOld, ct);
-            try { Directory.Delete(windowsOld, recursive: true); } catch { /* en uso */ }
-            totalFiles += wf; totalBytes += wb;
-            yield return Ok($"Windows.old eliminado ({wf} archivos, {FormatBytes(wb)})");
-        }
-        else
-        {
-            yield return Info("Windows.old no encontrado, nada que hacer");
+            yield return Step("Carpeta Windows.old (instalación anterior de Windows)");
+            var windowsOld = "C:\\Windows.old";
+            if (Directory.Exists(windowsOld))
+            {
+                var (wf, wb) = PurgeDirectory(windowsOld, ct);
+                try { Directory.Delete(windowsOld, recursive: true); } catch { /* en uso */ }
+                totalFiles += wf; totalBytes += wb;
+                yield return Ok($"Windows.old eliminado ({wf} archivos, {FormatBytes(wb)})");
+            }
+            else
+            {
+                yield return Info("Windows.old no encontrado, nada que hacer");
+            }
         }
 
         yield return Done($"M3 completado — {totalFiles} archivos, {FormatBytes(totalBytes)} liberados");

@@ -25,6 +25,7 @@ public sealed class NativeModuleRunner : INativeModuleRunner
 
     public async IAsyncEnumerable<ModuleProgress> RunAsync(
         IReadOnlyList<int> selectedModuleIds,
+        IReadOnlyDictionary<int, IReadOnlySet<string>>? subOptionsByModule = null,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         foreach (var id in selectedModuleIds.OrderBy(i => i))
@@ -38,8 +39,12 @@ public sealed class NativeModuleRunner : INativeModuleRunner
                 continue;
             }
 
+            // null → vista simple (ejecuta todo). Set vacío o con ids → vista avanzada.
+            IReadOnlySet<string>? subOps = null;
+            subOptionsByModule?.TryGetValue(id, out subOps);
+
             ModuleProgress? lastEvent = null;
-            await foreach (var p in executor.ExecuteAsync(ct).WithCancellation(ct))
+            await foreach (var p in executor.ExecuteAsync(subOps, ct).WithCancellation(ct))
             {
                 lastEvent = p;
                 yield return p;

@@ -14,7 +14,13 @@ public interface INativeModuleRunner
     /// Ejecuta los módulos seleccionados en orden ascendente de id.
     /// Si un id no tiene executor registrado, se omite con un Warn.
     /// </summary>
+    /// <param name="subOptionsByModule">
+    /// Mapa opcional moduleId → conjunto de sub-operaciones a ejecutar (vista
+    /// avanzada). Si es null, o si un módulo no aparece en el mapa, ese módulo
+    /// ejecuta TODAS sus sub-operaciones (vista simple).
+    /// </param>
     IAsyncEnumerable<ModuleProgress> RunAsync(
         IReadOnlyList<int> selectedModuleIds,
+        IReadOnlyDictionary<int, IReadOnlySet<string>>? subOptionsByModule = null,
         CancellationToken ct = default);
 }

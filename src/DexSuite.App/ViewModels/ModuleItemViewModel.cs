@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DexSuite.App.Models;
 using DexSuite.App.Services;
@@ -38,6 +39,10 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
         _loc = loc;
         isEnabled = initiallyEnabled;
 
+        SubOptions = new ObservableCollection<ModuleSubOptionViewModel>(
+            (module.SubOptions ?? Array.Empty<ModuleSubOption>())
+                .Select(s => new ModuleSubOptionViewModel(s, loc)));
+
         _languageChangedHandler = (_, _) =>
         {
             OnPropertyChanged(nameof(Name));
@@ -48,6 +53,12 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
         };
         _loc.LanguageChanged += _languageChangedHandler;
     }
+
+    /// <summary>Sub-opciones individuales del módulo (vista avanzada). Vacío si el módulo no se subdivide.</summary>
+    public ObservableCollection<ModuleSubOptionViewModel> SubOptions { get; }
+
+    /// <summary>True si el módulo tiene sub-opciones que mostrar en la vista avanzada.</summary>
+    public bool HasSubOptions => SubOptions.Count > 0;
 
     public int Id => Module.Id;
     public string Name => _loc.Get(Module.NameKey);
@@ -137,5 +148,6 @@ public partial class ModuleItemViewModel : ObservableObject, IDisposable
     public void Dispose()
     {
         _loc.LanguageChanged -= _languageChangedHandler;
+        foreach (var s in SubOptions) s.Dispose();
     }
 }

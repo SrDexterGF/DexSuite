@@ -15,6 +15,11 @@ namespace DexSuite.App.Models;
 /// <param name="RecommendedDefault">Si arranca marcado al abrir la app.</param>
 /// <param name="Reversible">true = se puede deshacer / no daña datos; false = cambios persistentes o destructivos.</param>
 /// <param name="SafetyReasonKey">Clave i18n del texto que explica por qué es Seguro o Riesgo.</param>
+/// <param name="SubOptions">
+/// Sub-operaciones atómicas del módulo, para la vista avanzada. Cada una es un
+/// ajuste individual que el usuario puede activar/desactivar por separado. Si es
+/// null, el módulo se ejecuta como un bloque único (sin vista avanzada).
+/// </param>
 public sealed record CleanupModule(
     int Id,
     string NameKey,
@@ -24,4 +29,5 @@ public sealed record CleanupModule(
     bool RecommendedDefault,
     bool Reversible,
     string SafetyReasonKey,
-    ImpactLevel Impact = ImpactLevel.None);
+    ImpactLevel Impact = ImpactLevel.None,
+    IReadOnlyList<ModuleSubOption>? SubOptions = null);

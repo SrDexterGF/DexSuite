@@ -16,6 +16,7 @@ public sealed class M07BrowserCache : ModuleExecutorBase
     public override int ModuleId => 7;
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("Cache de Navegadores");
@@ -25,52 +26,70 @@ public sealed class M07BrowserCache : ModuleExecutorBase
         var localApp = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         var appData  = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        yield return Step("Microsoft Edge");
-        var (ef, eb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Microsoft", "Edge", "User Data", "Default"), ct);
-        totalFiles += ef; totalBytes += eb;
-        yield return Ok($"Edge limpiado ({ef} archivos, {FormatBytes(eb)})");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Google Chrome");
-        var (cf, cb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Google", "Chrome", "User Data", "Default"), ct);
-        totalFiles += cf; totalBytes += cb;
-        yield return Ok($"Chrome limpiado ({cf} archivos, {FormatBytes(cb)})");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Mozilla Firefox");
-        var ffProfiles = Path.Combine(localApp, "Mozilla", "Firefox", "Profiles");
-        int ffFiles = 0; long ffBytes = 0;
-        if (Directory.Exists(ffProfiles))
+        if (Want(enabledSubOps, "M07_edge"))
         {
-            foreach (var prof in Directory.EnumerateDirectories(ffProfiles))
-            {
-                if (ct.IsCancellationRequested) yield break;
-                var (a, b) = PurgeDirectory(Path.Combine(prof, "cache2"), ct);
-                var (c, d) = PurgeDirectory(Path.Combine(prof, "startupCache"), ct);
-                ffFiles += a + c; ffBytes += b + d;
-            }
+            yield return Step("Microsoft Edge");
+            var (ef, eb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Microsoft", "Edge", "User Data", "Default"), ct);
+            totalFiles += ef; totalBytes += eb;
+            yield return Ok($"Edge limpiado ({ef} archivos, {FormatBytes(eb)})");
         }
-        totalFiles += ffFiles; totalBytes += ffBytes;
-        yield return Ok($"Firefox limpiado ({ffFiles} archivos, {FormatBytes(ffBytes)})");
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Brave");
-        var (bf, bb) = PurgeChromiumLikeCache(Path.Combine(localApp, "BraveSoftware", "Brave-Browser", "User Data", "Default"), ct);
-        totalFiles += bf; totalBytes += bb;
-        yield return Ok($"Brave limpiado ({bf} archivos, {FormatBytes(bb)})");
+        if (Want(enabledSubOps, "M07_chrome"))
+        {
+            yield return Step("Google Chrome");
+            var (cf, cb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Google", "Chrome", "User Data", "Default"), ct);
+            totalFiles += cf; totalBytes += cb;
+            yield return Ok($"Chrome limpiado ({cf} archivos, {FormatBytes(cb)})");
+        }
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Opera y Opera GX");
-        var (of_, ob) = PurgeDirectory(Path.Combine(appData, "Opera Software", "Opera Stable", "Cache", "Cache_Data"), ct);
-        var (og, ogb) = PurgeDirectory(Path.Combine(appData, "Opera Software", "Opera GX Stable", "Cache", "Cache_Data"), ct);
-        totalFiles += of_ + og; totalBytes += ob + ogb;
-        yield return Ok($"Opera / Opera GX limpiados ({of_ + og} archivos)");
+        if (Want(enabledSubOps, "M07_firefox"))
+        {
+            yield return Step("Mozilla Firefox");
+            var ffProfiles = Path.Combine(localApp, "Mozilla", "Firefox", "Profiles");
+            int ffFiles = 0; long ffBytes = 0;
+            if (Directory.Exists(ffProfiles))
+            {
+                foreach (var prof in Directory.EnumerateDirectories(ffProfiles))
+                {
+                    if (ct.IsCancellationRequested) yield break;
+                    var (a, b) = PurgeDirectory(Path.Combine(prof, "cache2"), ct);
+                    var (c, d) = PurgeDirectory(Path.Combine(prof, "startupCache"), ct);
+                    ffFiles += a + c; ffBytes += b + d;
+                }
+            }
+            totalFiles += ffFiles; totalBytes += ffBytes;
+            yield return Ok($"Firefox limpiado ({ffFiles} archivos, {FormatBytes(ffBytes)})");
+        }
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Vivaldi");
-        var (vf, vb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Vivaldi", "User Data", "Default"), ct);
-        totalFiles += vf; totalBytes += vb;
-        yield return Ok($"Vivaldi limpiado ({vf} archivos)");
+        if (Want(enabledSubOps, "M07_brave"))
+        {
+            yield return Step("Brave");
+            var (bf, bb) = PurgeChromiumLikeCache(Path.Combine(localApp, "BraveSoftware", "Brave-Browser", "User Data", "Default"), ct);
+            totalFiles += bf; totalBytes += bb;
+            yield return Ok($"Brave limpiado ({bf} archivos, {FormatBytes(bb)})");
+        }
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M07_opera"))
+        {
+            yield return Step("Opera y Opera GX");
+            var (of_, ob) = PurgeDirectory(Path.Combine(appData, "Opera Software", "Opera Stable", "Cache", "Cache_Data"), ct);
+            var (og, ogb) = PurgeDirectory(Path.Combine(appData, "Opera Software", "Opera GX Stable", "Cache", "Cache_Data"), ct);
+            totalFiles += of_ + og; totalBytes += ob + ogb;
+            yield return Ok($"Opera / Opera GX limpiados ({of_ + og} archivos)");
+        }
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M07_vivaldi"))
+        {
+            yield return Step("Vivaldi");
+            var (vf, vb) = PurgeChromiumLikeCache(Path.Combine(localApp, "Vivaldi", "User Data", "Default"), ct);
+            totalFiles += vf; totalBytes += vb;
+            yield return Ok($"Vivaldi limpiado ({vf} archivos)");
+        }
 
         yield return Done($"M7 completado — {totalFiles} archivos, {FormatBytes(totalBytes)} liberados");
         await Task.CompletedTask;

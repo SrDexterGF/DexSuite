@@ -18,6 +18,7 @@ public sealed class M19Drivers : ModuleExecutorBase
     public override int ModuleId => 19;
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("Drivers - Verificación y actualización");
@@ -26,61 +27,74 @@ public sealed class M19Drivers : ModuleExecutorBase
         var pnputil  = Path.Combine(system32, "pnputil.exe");
         var usoclient = Path.Combine(system32, "UsoClient.exe");
 
-        yield return Step("Refrescando catálogo de hardware (pnputil /scan-devices)");
-        if (File.Exists(pnputil))
+        if (Want(enabledSubOps, "M19_scan_devices"))
         {
-            await RunProcessAsync(pnputil, "/scan-devices", ct);
-            yield return Ok("Catálogo de hardware refrescado");
-        }
-        else yield return Warn("pnputil.exe no encontrado");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Listando drivers OEM instalados");
-        int oemCount = 0;
-        if (File.Exists(pnputil))
-        {
-            try
+            yield return Step("Refrescando catálogo de hardware (pnputil /scan-devices)");
+            if (File.Exists(pnputil))
             {
-                var psi = new ProcessStartInfo
-                {
-                    FileName               = pnputil,
-                    Arguments              = "/enum-drivers",
-                    UseShellExecute        = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow         = true,
-                    StandardOutputEncoding = Encoding.UTF8,
-                };
-                using var p = Process.Start(psi);
-                if (p is not null)
-                {
-                    string? line;
-                    while ((line = await p.StandardOutput.ReadLineAsync(ct).ConfigureAwait(false)) is not null)
-                    {
-                        if (line.Contains("oem", StringComparison.OrdinalIgnoreCase) &&
-                            line.Contains(".inf", StringComparison.OrdinalIgnoreCase))
-                            oemCount++;
-                    }
-                    await p.WaitForExitAsync(ct).ConfigureAwait(false);
-                }
+                await RunProcessAsync(pnputil, "/scan-devices", ct);
+                yield return Ok("Catálogo de hardware refrescado");
             }
-            catch { /* ignora */ }
+            else yield return Warn("pnputil.exe no encontrado");
         }
-        yield return Info($"Total entradas oem*.inf detectadas: {oemCount}");
-        yield return Ok("Resumen mostrado");
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Lanzando Windows Update para drivers (puede tardar varios minutos)");
-        StartService("wuauserv");
-        if (File.Exists(usoclient))
-            await RunProcessAsync(usoclient, "ScanInstallWait", ct);
-        yield return Ok("Windows Update lanzado para drivers");
+        if (Want(enabledSubOps, "M19_enum_drivers"))
+        {
+            yield return Step("Listando drivers OEM instalados");
+            int oemCount = 0;
+            if (File.Exists(pnputil))
+            {
+                try
+                {
+                    var psi = new ProcessStartInfo
+                    {
+                        FileName               = pnputil,
+                        Arguments              = "/enum-drivers",
+                        UseShellExecute        = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow         = true,
+                        StandardOutputEncoding = Encoding.UTF8,
+                    };
+                    using var p = Process.Start(psi);
+                    if (p is not null)
+                    {
+                        string? line;
+                        while ((line = await p.StandardOutput.ReadLineAsync(ct).ConfigureAwait(false)) is not null)
+                        {
+                            if (line.Contains("oem", StringComparison.OrdinalIgnoreCase) &&
+                                line.Contains(".inf", StringComparison.OrdinalIgnoreCase))
+                                oemCount++;
+                        }
+                        await p.WaitForExitAsync(ct).ConfigureAwait(false);
+                    }
+                }
+                catch { /* ignora */ }
+            }
+            yield return Info($"Total entradas oem*.inf detectadas: {oemCount}");
+            yield return Ok("Resumen mostrado");
+        }
 
-        yield return Step("Recordatorio sobre drivers de fabricante");
-        yield return Info("Algunos drivers requieren instalador oficial del fabricante:");
-        yield return Info("  - NVIDIA  : nvidia.com/Download");
-        yield return Info("  - AMD     : amd.com/support");
-        yield return Info("  - Intel   : intel.com/content/www/us/en/download-center");
-        yield return Ok("Recordatorio mostrado");
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M19_wu_drivers"))
+        {
+            yield return Step("Lanzando Windows Update para drivers (puede tardar varios minutos)");
+            StartService("wuauserv");
+            if (File.Exists(usoclient))
+                await RunProcessAsync(usoclient, "ScanInstallWait", ct);
+            yield return Ok("Windows Update lanzado para drivers");
+        }
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M19_reminder"))
+        {
+            yield return Step("Recordatorio sobre drivers de fabricante");
+            yield return Info("Algunos drivers requieren instalador oficial del fabricante:");
+            yield return Info("  - NVIDIA  : nvidia.com/Download");
+            yield return Info("  - AMD     : amd.com/support");
+            yield return Info("  - Intel   : intel.com/content/www/us/en/download-center");
+            yield return Ok("Recordatorio mostrado");
+        }
 
         yield return Done("M19 completado");
     }

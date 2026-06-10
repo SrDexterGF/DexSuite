@@ -18,6 +18,7 @@ public sealed class M18SsdTrim : ModuleExecutorBase
     public override int ModuleId => 18;
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("SSD - TRIM y salud SMART");
@@ -26,14 +27,23 @@ public sealed class M18SsdTrim : ModuleExecutorBase
         var fsutil   = Path.Combine(system32, "fsutil.exe");
         var defrag   = Path.Combine(system32, "defrag.exe");
 
-        yield return Step("Asegurando que TRIM está activado a nivel sistema");
-        if (File.Exists(fsutil))
+        if (Want(enabledSubOps, "M18_trim_enable"))
         {
-            await RunProcessAsync(fsutil, "behavior set DisableDeleteNotify NTFS 0", ct);
-            await RunProcessAsync(fsutil, "behavior set DisableDeleteNotify ReFS 0", ct);
-            yield return Ok("TRIM activado para NTFS y ReFS");
+            yield return Step("Asegurando que TRIM está activado a nivel sistema");
+            if (File.Exists(fsutil))
+            {
+                await RunProcessAsync(fsutil, "behavior set DisableDeleteNotify NTFS 0", ct);
+                await RunProcessAsync(fsutil, "behavior set DisableDeleteNotify ReFS 0", ct);
+                yield return Ok("TRIM activado para NTFS y ReFS");
+            }
+            else yield return Warn("fsutil.exe no encontrado");
         }
-        else yield return Warn("fsutil.exe no encontrado");
+
+        if (!Want(enabledSubOps, "M18_trim_smart"))
+        {
+            yield return Done("M18 completado");
+            yield break;
+        }
 
         yield return Info("El TRIM puede tardar entre 10 y 60 segundos por SSD.");
 

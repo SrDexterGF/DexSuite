@@ -19,8 +19,10 @@ public sealed class M12WingetUpgrade : ModuleExecutorBase
     public M12WingetUpgrade(IWingetService winget) => _winget = winget;
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
+        // M12 es una sola acción atómica (winget upgrade --all): no se subdivide.
         yield return Header("Actualizando todas las apps");
 
         if (!_winget.IsAvailable)

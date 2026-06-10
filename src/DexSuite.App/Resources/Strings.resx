@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -1587,5 +1587,599 @@ The progress will be shown in the log.</value>
   <data name="Winget.NotAvailable" xml:space="preserve">
     <value>Windows Package Manager (winget) is not available on this system.
 Update your system or install the App Installer from the Microsoft Store.</value>
+  </data>
+  <data name="Modules.Sub.M01_prefetch.Name" xml:space="preserve">
+    <value>Prefetch</value>
+  </data>
+  <data name="Modules.Sub.M01_prefetch.Desc" xml:space="preserve">
+    <value>Clears the Windows Prefetch folder.</value>
+  </data>
+  <data name="Modules.Sub.M01_win_temp.Name" xml:space="preserve">
+    <value>Windows Temp</value>
+  </data>
+  <data name="Modules.Sub.M01_win_temp.Desc" xml:space="preserve">
+    <value>Empties the Windows Temp folder.</value>
+  </data>
+  <data name="Modules.Sub.M01_user_temp.Name" xml:space="preserve">
+    <value>User Temp folders</value>
+  </data>
+  <data name="Modules.Sub.M01_user_temp.Desc" xml:space="preserve">
+    <value>Empties your user account's Temp folders.</value>
+  </data>
+  <data name="Modules.Sub.M01_thumb_icon.Name" xml:space="preserve">
+    <value>Thumbnail and icon cache</value>
+  </data>
+  <data name="Modules.Sub.M01_thumb_icon.Desc" xml:space="preserve">
+    <value>Clears Explorer's thumbnail and icon cache.</value>
+  </data>
+  <data name="Modules.Sub.M01_d3ds.Name" xml:space="preserve">
+    <value>DirectX shader cache</value>
+  </data>
+  <data name="Modules.Sub.M01_d3ds.Desc" xml:space="preserve">
+    <value>Clears the DirectX shader cache (D3DSCache).</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_root.Name" xml:space="preserve">
+    <value>Logs in the Windows root</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_root.Desc" xml:space="preserve">
+    <value>Deletes .log files in the Windows folder.</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_sys32.Name" xml:space="preserve">
+    <value>System32 logs</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_sys32.Desc" xml:space="preserve">
+    <value>Deletes .log files in System32.</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_softwdist.Name" xml:space="preserve">
+    <value>Windows Update logs</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_softwdist.Desc" xml:space="preserve">
+    <value>Deletes SoftwareDistribution and Windows Update logs.</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_inf.Name" xml:space="preserve">
+    <value>Driver install logs</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_inf.Desc" xml:space="preserve">
+    <value>Deletes driver install logs (INF folder).</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_cbs.Name" xml:space="preserve">
+    <value>CBS and DISM logs</value>
+  </data>
+  <data name="Modules.Sub.M02_logs_cbs.Desc" xml:space="preserve">
+    <value>Deletes CBS, DISM, Windows Update and MoSetup logs.</value>
+  </data>
+  <data name="Modules.Sub.M02_wer.Name" xml:space="preserve">
+    <value>Error reports (WER)</value>
+  </data>
+  <data name="Modules.Sub.M02_wer.Desc" xml:space="preserve">
+    <value>Empties the Windows Error Reporting folders.</value>
+  </data>
+  <data name="Modules.Sub.M03_temp_aggressive.Name" xml:space="preserve">
+    <value>Temp folders</value>
+  </data>
+  <data name="Modules.Sub.M03_temp_aggressive.Desc" xml:space="preserve">
+    <value>Clears system and user Temp folders.</value>
+  </data>
+  <data name="Modules.Sub.M03_recent.Name" xml:space="preserve">
+    <value>Recent files</value>
+  </data>
+  <data name="Modules.Sub.M03_recent.Desc" xml:space="preserve">
+    <value>Clears the recently opened files history.</value>
+  </data>
+  <data name="Modules.Sub.M03_recycle.Name" xml:space="preserve">
+    <value>Recycle Bin</value>
+  </data>
+  <data name="Modules.Sub.M03_recycle.Desc" xml:space="preserve">
+    <value>Empties the Recycle Bin without confirmation.</value>
+  </data>
+  <data name="Modules.Sub.M03_windows_old.Name" xml:space="preserve">
+    <value>Windows.old folder</value>
+  </data>
+  <data name="Modules.Sub.M03_windows_old.Desc" xml:space="preserve">
+    <value>Deletes Windows.old, leftovers from the previous install.</value>
+  </data>
+  <data name="Modules.Sub.M04_crash_dumps.Name" xml:space="preserve">
+    <value>Crash dumps</value>
+  </data>
+  <data name="Modules.Sub.M04_crash_dumps.Desc" xml:space="preserve">
+    <value>Removes minidumps and memory dump files from crashes.</value>
+  </data>
+  <data name="Modules.Sub.M04_spooler.Name" xml:space="preserve">
+    <value>Print queue</value>
+  </data>
+  <data name="Modules.Sub.M04_spooler.Desc" xml:space="preserve">
+    <value>Clears the print queue and restarts the Spooler service.</value>
+  </data>
+  <data name="Modules.Sub.M04_wmi.Name" xml:space="preserve">
+    <value>WMI database</value>
+  </data>
+  <data name="Modules.Sub.M04_wmi.Desc" xml:space="preserve">
+    <value>Compacts the system's WMI repository.</value>
+  </data>
+  <data name="Modules.Sub.M04_event_log.Name" xml:space="preserve">
+    <value>Event Viewer</value>
+  </data>
+  <data name="Modules.Sub.M04_event_log.Desc" xml:space="preserve">
+    <value>Clears all Event Viewer logs.</value>
+  </data>
+  <data name="Modules.Sub.M05_stop_services.Name" xml:space="preserve">
+    <value>Stop Update services</value>
+  </data>
+  <data name="Modules.Sub.M05_stop_services.Desc" xml:space="preserve">
+    <value>Stops Windows Update services before cleaning.</value>
+  </data>
+  <data name="Modules.Sub.M05_cache_dl.Name" xml:space="preserve">
+    <value>Download cache</value>
+  </data>
+  <data name="Modules.Sub.M05_cache_dl.Desc" xml:space="preserve">
+    <value>Deletes the Windows Update download folder.</value>
+  </data>
+  <data name="Modules.Sub.M05_restart_services.Name" xml:space="preserve">
+    <value>Restart Update services</value>
+  </data>
+  <data name="Modules.Sub.M05_restart_services.Desc" xml:space="preserve">
+    <value>Restarts the Windows Update services.</value>
+  </data>
+  <data name="Modules.Sub.M05_delivery_opt.Name" xml:space="preserve">
+    <value>Delivery Optimization</value>
+  </data>
+  <data name="Modules.Sub.M05_delivery_opt.Desc" xml:space="preserve">
+    <value>Clears the Delivery Optimization cache.</value>
+  </data>
+  <data name="Modules.Sub.M06_analyze.Name" xml:space="preserve">
+    <value>Analyze Component Store</value>
+  </data>
+  <data name="Modules.Sub.M06_analyze.Desc" xml:space="preserve">
+    <value>Analyzes the component store with DISM.</value>
+  </data>
+  <data name="Modules.Sub.M06_cleanup.Name" xml:space="preserve">
+    <value>Clean obsolete components</value>
+  </data>
+  <data name="Modules.Sub.M06_cleanup.Desc" xml:space="preserve">
+    <value>Removes obsolete Windows components with DISM.</value>
+  </data>
+  <data name="Modules.Sub.M07_edge.Name" xml:space="preserve">
+    <value>Microsoft Edge</value>
+  </data>
+  <data name="Modules.Sub.M07_edge.Desc" xml:space="preserve">
+    <value>Clears the Microsoft Edge cache.</value>
+  </data>
+  <data name="Modules.Sub.M07_chrome.Name" xml:space="preserve">
+    <value>Google Chrome</value>
+  </data>
+  <data name="Modules.Sub.M07_chrome.Desc" xml:space="preserve">
+    <value>Clears the Google Chrome cache.</value>
+  </data>
+  <data name="Modules.Sub.M07_firefox.Name" xml:space="preserve">
+    <value>Mozilla Firefox</value>
+  </data>
+  <data name="Modules.Sub.M07_firefox.Desc" xml:space="preserve">
+    <value>Clears the cache of all Firefox profiles.</value>
+  </data>
+  <data name="Modules.Sub.M07_brave.Name" xml:space="preserve">
+    <value>Brave</value>
+  </data>
+  <data name="Modules.Sub.M07_brave.Desc" xml:space="preserve">
+    <value>Clears the Brave browser cache.</value>
+  </data>
+  <data name="Modules.Sub.M07_opera.Name" xml:space="preserve">
+    <value>Opera and Opera GX</value>
+  </data>
+  <data name="Modules.Sub.M07_opera.Desc" xml:space="preserve">
+    <value>Clears the Opera and Opera GX cache.</value>
+  </data>
+  <data name="Modules.Sub.M07_vivaldi.Name" xml:space="preserve">
+    <value>Vivaldi</value>
+  </data>
+  <data name="Modules.Sub.M07_vivaldi.Desc" xml:space="preserve">
+    <value>Clears the Vivaldi browser cache.</value>
+  </data>
+  <data name="Modules.Sub.M08_dns_flush.Name" xml:space="preserve">
+    <value>Flush DNS cache</value>
+  </data>
+  <data name="Modules.Sub.M08_dns_flush.Desc" xml:space="preserve">
+    <value>Flushes the DNS resolver cache.</value>
+  </data>
+  <data name="Modules.Sub.M08_dns_register.Name" xml:space="preserve">
+    <value>Register in DNS</value>
+  </data>
+  <data name="Modules.Sub.M08_dns_register.Desc" xml:space="preserve">
+    <value>Re-registers the computer in DNS.</value>
+  </data>
+  <data name="Modules.Sub.M08_gpupdate.Name" xml:space="preserve">
+    <value>Update group policies</value>
+  </data>
+  <data name="Modules.Sub.M08_gpupdate.Desc" xml:space="preserve">
+    <value>Forces a group policy update.</value>
+  </data>
+  <data name="Modules.Sub.M09_store.Name" xml:space="preserve">
+    <value>Microsoft Store cache</value>
+  </data>
+  <data name="Modules.Sub.M09_store.Desc" xml:space="preserve">
+    <value>Resets the Microsoft Store cache.</value>
+  </data>
+  <data name="Modules.Sub.M09_onedrive.Name" xml:space="preserve">
+    <value>OneDrive logs</value>
+  </data>
+  <data name="Modules.Sub.M09_onedrive.Desc" xml:space="preserve">
+    <value>Deletes OneDrive log files.</value>
+  </data>
+  <data name="Modules.Sub.M09_teams.Name" xml:space="preserve">
+    <value>Microsoft Teams cache</value>
+  </data>
+  <data name="Modules.Sub.M09_teams.Desc" xml:space="preserve">
+    <value>Clears the Microsoft Teams cache.</value>
+  </data>
+  <data name="Modules.Sub.M10_sfc.Name" xml:space="preserve">
+    <value>SFC (repair files)</value>
+  </data>
+  <data name="Modules.Sub.M10_sfc.Desc" xml:space="preserve">
+    <value>Scans and repairs system files with SFC.</value>
+  </data>
+  <data name="Modules.Sub.M10_dism.Name" xml:space="preserve">
+    <value>DISM (repair image)</value>
+  </data>
+  <data name="Modules.Sub.M10_dism.Desc" xml:space="preserve">
+    <value>Repairs the Windows image with DISM RestoreHealth.</value>
+  </data>
+  <data name="Modules.Sub.M11_mouse_accel.Name" xml:space="preserve">
+    <value>Mouse acceleration</value>
+  </data>
+  <data name="Modules.Sub.M11_mouse_accel.Desc" xml:space="preserve">
+    <value>Disables mouse pointer acceleration.</value>
+  </data>
+  <data name="Modules.Sub.M11_double_click.Name" xml:space="preserve">
+    <value>Double-click speed</value>
+  </data>
+  <data name="Modules.Sub.M11_double_click.Desc" xml:space="preserve">
+    <value>Sets double-click to a faster response (200 ms).</value>
+  </data>
+  <data name="Modules.Sub.M11_keyboard.Name" xml:space="preserve">
+    <value>Keyboard response</value>
+  </data>
+  <data name="Modules.Sub.M11_keyboard.Desc" xml:space="preserve">
+    <value>Sets keyboard delay to minimum and speed to maximum.</value>
+  </data>
+  <data name="Modules.Sub.M11_monitor_hz.Name" xml:space="preserve">
+    <value>Detect monitor Hz</value>
+  </data>
+  <data name="Modules.Sub.M11_monitor_hz.Desc" xml:space="preserve">
+    <value>Detects each monitor's maximum refresh rate (info only).</value>
+  </data>
+  <data name="Modules.Sub.M11_mouse_curve.Name" xml:space="preserve">
+    <value>Linear pointer curve</value>
+  </data>
+  <data name="Modules.Sub.M11_mouse_curve.Desc" xml:space="preserve">
+    <value>Applies a 1:1 pointer curve for linear movement.</value>
+  </data>
+  <data name="Modules.Sub.M13_copilot.Name" xml:space="preserve">
+    <value>Disable Copilot</value>
+  </data>
+  <data name="Modules.Sub.M13_copilot.Desc" xml:space="preserve">
+    <value>Disables Windows Copilot and its taskbar button.</value>
+  </data>
+  <data name="Modules.Sub.M13_cortana.Name" xml:space="preserve">
+    <value>Disable Cortana</value>
+  </data>
+  <data name="Modules.Sub.M13_cortana.Desc" xml:space="preserve">
+    <value>Disables Cortana and system web search.</value>
+  </data>
+  <data name="Modules.Sub.M13_telemetry.Name" xml:space="preserve">
+    <value>Minimum telemetry</value>
+  </data>
+  <data name="Modules.Sub.M13_telemetry.Desc" xml:space="preserve">
+    <value>Sets Windows telemetry to the lowest possible level.</value>
+  </data>
+  <data name="Modules.Sub.M13_telemetry_svc.Name" xml:space="preserve">
+    <value>Telemetry services</value>
+  </data>
+  <data name="Modules.Sub.M13_telemetry_svc.Desc" xml:space="preserve">
+    <value>Disables telemetry services (DiagTrack and others).</value>
+  </data>
+  <data name="Modules.Sub.M13_timeline.Name" xml:space="preserve">
+    <value>Timeline and ads</value>
+  </data>
+  <data name="Modules.Sub.M13_timeline.Desc" xml:space="preserve">
+    <value>Disables Timeline, advertising ID and CEIP.</value>
+  </data>
+  <data name="Modules.Sub.M14_silent_apps.Name" xml:space="preserve">
+    <value>Suggested apps</value>
+  </data>
+  <data name="Modules.Sub.M14_silent_apps.Desc" xml:space="preserve">
+    <value>Disables silent install of suggested apps.</value>
+  </data>
+  <data name="Modules.Sub.M14_location.Name" xml:space="preserve">
+    <value>Location tracking</value>
+  </data>
+  <data name="Modules.Sub.M14_location.Desc" xml:space="preserve">
+    <value>Disables system location tracking.</value>
+  </data>
+  <data name="Modules.Sub.M14_widgets.Name" xml:space="preserve">
+    <value>Taskbar widgets</value>
+  </data>
+  <data name="Modules.Sub.M14_widgets.Desc" xml:space="preserve">
+    <value>Removes the taskbar Widgets.</value>
+  </data>
+  <data name="Modules.Sub.M14_store_search.Name" xml:space="preserve">
+    <value>Store in search</value>
+  </data>
+  <data name="Modules.Sub.M14_store_search.Desc" xml:space="preserve">
+    <value>Removes Store results from Windows search.</value>
+  </data>
+  <data name="Modules.Sub.M14_wpbt.Name" xml:space="preserve">
+    <value>WPBT (BIOS)</value>
+  </data>
+  <data name="Modules.Sub.M14_wpbt.Desc" xml:space="preserve">
+    <value>Disables WPBT to stop BIOS reinstalling bloatware.</value>
+  </data>
+  <data name="Modules.Sub.M14_services.Name" xml:space="preserve">
+    <value>Unneeded services</value>
+  </data>
+  <data name="Modules.Sub.M14_services.Desc" xml:space="preserve">
+    <value>Disables unneeded remote and maps services.</value>
+  </data>
+  <data name="Modules.Sub.M14_svchost.Name" xml:space="preserve">
+    <value>SvcHost tuning</value>
+  </data>
+  <data name="Modules.Sub.M14_svchost.Desc" xml:space="preserve">
+    <value>Tunes the SvcHost threshold to the installed RAM.</value>
+  </data>
+  <data name="Modules.Sub.M14_ps7_telemetry.Name" xml:space="preserve">
+    <value>PowerShell 7 telemetry</value>
+  </data>
+  <data name="Modules.Sub.M14_ps7_telemetry.Desc" xml:space="preserve">
+    <value>Disables PowerShell 7 telemetry if installed.</value>
+  </data>
+  <data name="Modules.Sub.M14_sticky_keys.Name" xml:space="preserve">
+    <value>Sticky Keys</value>
+  </data>
+  <data name="Modules.Sub.M14_sticky_keys.Desc" xml:space="preserve">
+    <value>Disables sticky keys and annoying accessibility shortcuts.</value>
+  </data>
+  <data name="Modules.Sub.M15_power_throttle.Name" xml:space="preserve">
+    <value>Power Throttling</value>
+  </data>
+  <data name="Modules.Sub.M15_power_throttle.Desc" xml:space="preserve">
+    <value>Disables CPU power throttling.</value>
+  </data>
+  <data name="Modules.Sub.M15_mmcss.Name" xml:space="preserve">
+    <value>MMCSS for games</value>
+  </data>
+  <data name="Modules.Sub.M15_mmcss.Desc" xml:space="preserve">
+    <value>Gives top priority to games and multimedia (MMCSS).</value>
+  </data>
+  <data name="Modules.Sub.M15_gamemode.Name" xml:space="preserve">
+    <value>Game Mode</value>
+  </data>
+  <data name="Modules.Sub.M15_gamemode.Desc" xml:space="preserve">
+    <value>Enables Windows Game Mode.</value>
+  </data>
+  <data name="Modules.Sub.M15_fse.Name" xml:space="preserve">
+    <value>Fullscreen optimizations</value>
+  </data>
+  <data name="Modules.Sub.M15_fse.Desc" xml:space="preserve">
+    <value>Disables Full Screen Optimizations.</value>
+  </data>
+  <data name="Modules.Sub.M15_timeouts.Name" xml:space="preserve">
+    <value>System timeouts</value>
+  </data>
+  <data name="Modules.Sub.M15_timeouts.Desc" xml:space="preserve">
+    <value>Reduces system timeouts when closing apps.</value>
+  </data>
+  <data name="Modules.Sub.M15_maintenance.Name" xml:space="preserve">
+    <value>Automatic maintenance</value>
+  </data>
+  <data name="Modules.Sub.M15_maintenance.Desc" xml:space="preserve">
+    <value>Keeps automatic maintenance on (needed for TRIM).</value>
+  </data>
+  <data name="Modules.Sub.M15_hibernate.Name" xml:space="preserve">
+    <value>Hibernation</value>
+  </data>
+  <data name="Modules.Sub.M15_hibernate.Desc" xml:space="preserve">
+    <value>Disables hibernation and frees hiberfil.sys.</value>
+  </data>
+  <data name="Modules.Sub.M15_sync.Name" xml:space="preserve">
+    <value>Account sync</value>
+  </data>
+  <data name="Modules.Sub.M15_sync.Desc" xml:space="preserve">
+    <value>Disables settings sync with the Microsoft account.</value>
+  </data>
+  <data name="Modules.Sub.M15_transparency.Name" xml:space="preserve">
+    <value>Transparency effects</value>
+  </data>
+  <data name="Modules.Sub.M15_transparency.Desc" xml:space="preserve">
+    <value>Disables interface transparency effects.</value>
+  </data>
+  <data name="Modules.Sub.M15_bg_apps.Name" xml:space="preserve">
+    <value>Background apps</value>
+  </data>
+  <data name="Modules.Sub.M15_bg_apps.Desc" xml:space="preserve">
+    <value>Disables apps running in the background.</value>
+  </data>
+  <data name="Modules.Sub.M15_input_telemetry.Name" xml:space="preserve">
+    <value>Typing and voice data</value>
+  </data>
+  <data name="Modules.Sub.M15_input_telemetry.Desc" xml:space="preserve">
+    <value>Disables typing and voice data collection.</value>
+  </data>
+  <data name="Modules.Sub.M15_hags.Name" xml:space="preserve">
+    <value>Hardware GPU scheduling</value>
+  </data>
+  <data name="Modules.Sub.M15_hags.Desc" xml:space="preserve">
+    <value>Enables hardware GPU scheduling (HAGS; needs restart).</value>
+  </data>
+  <data name="Modules.Sub.M15_diag_svc.Name" xml:space="preserve">
+    <value>Diagnostic services</value>
+  </data>
+  <data name="Modules.Sub.M15_diag_svc.Desc" xml:space="preserve">
+    <value>Tunes or disables unneeded diagnostic services.</value>
+  </data>
+  <data name="Modules.Sub.M15_bcd.Name" xml:space="preserve">
+    <value>Hardware timer (BCD)</value>
+  </data>
+  <data name="Modules.Sub.M15_bcd.Desc" xml:space="preserve">
+    <value>Pins the hardware timer to reduce jitter.</value>
+  </data>
+  <data name="Modules.Sub.M16_nic.Name" xml:space="preserve">
+    <value>Ethernet adapters</value>
+  </data>
+  <data name="Modules.Sub.M16_nic.Desc" xml:space="preserve">
+    <value>Configures advanced properties of Ethernet adapters.</value>
+  </data>
+  <data name="Modules.Sub.M16_tcp_global.Name" xml:space="preserve">
+    <value>Global TCP</value>
+  </data>
+  <data name="Modules.Sub.M16_tcp_global.Desc" xml:space="preserve">
+    <value>Tunes TCP autotuning and global settings.</value>
+  </data>
+  <data name="Modules.Sub.M16_tcp_nagle.Name" xml:space="preserve">
+    <value>Nagle and instant ACK</value>
+  </data>
+  <data name="Modules.Sub.M16_tcp_nagle.Desc" xml:space="preserve">
+    <value>Disables Nagle and forces immediate ACK.</value>
+  </data>
+  <data name="Modules.Sub.M16_ip_stack.Name" xml:space="preserve">
+    <value>IP stack parameters</value>
+  </data>
+  <data name="Modules.Sub.M16_ip_stack.Desc" xml:space="preserve">
+    <value>Tunes ports, TIME_WAIT and IP stack tables.</value>
+  </data>
+  <data name="Modules.Sub.M16_qos.Name" xml:space="preserve">
+    <value>QoS reservation</value>
+  </data>
+  <data name="Modules.Sub.M16_qos.Desc" xml:space="preserve">
+    <value>Removes the 20% QoS bandwidth reservation.</value>
+  </data>
+  <data name="Modules.Sub.M16_dns.Name" xml:space="preserve">
+    <value>Fast DNS</value>
+  </data>
+  <data name="Modules.Sub.M16_dns.Desc" xml:space="preserve">
+    <value>Sets Google and Cloudflare DNS on Ethernet adapters.</value>
+  </data>
+  <data name="Modules.Sub.M16_cache_clear.Name" xml:space="preserve">
+    <value>Clear network caches</value>
+  </data>
+  <data name="Modules.Sub.M16_cache_clear.Desc" xml:space="preserve">
+    <value>Flushes the ARP, NetBIOS and DNS caches.</value>
+  </data>
+  <data name="Modules.Sub.M17_mrt.Name" xml:space="preserve">
+    <value>MRT (antimalware)</value>
+  </data>
+  <data name="Modules.Sub.M17_mrt.Desc" xml:space="preserve">
+    <value>Runs the Malicious Software Removal Tool.</value>
+  </data>
+  <data name="Modules.Sub.M17_defender_sig.Name" xml:space="preserve">
+    <value>Defender signatures</value>
+  </data>
+  <data name="Modules.Sub.M17_defender_sig.Desc" xml:space="preserve">
+    <value>Updates Windows Defender virus signatures.</value>
+  </data>
+  <data name="Modules.Sub.M17_defender_scan.Name" xml:space="preserve">
+    <value>Defender scan</value>
+  </data>
+  <data name="Modules.Sub.M17_defender_scan.Desc" xml:space="preserve">
+    <value>Runs a quick scan with Windows Defender.</value>
+  </data>
+  <data name="Modules.Sub.M17_smbv1.Name" xml:space="preserve">
+    <value>Disable SMBv1</value>
+  </data>
+  <data name="Modules.Sub.M17_smbv1.Desc" xml:space="preserve">
+    <value>Disables SMBv1, an attack vector like WannaCry.</value>
+  </data>
+  <data name="Modules.Sub.M17_firewall.Name" xml:space="preserve">
+    <value>Firewall on</value>
+  </data>
+  <data name="Modules.Sub.M17_firewall.Desc" xml:space="preserve">
+    <value>Enables the Windows firewall on all profiles.</value>
+  </data>
+  <data name="Modules.Sub.M17_autorun.Name" xml:space="preserve">
+    <value>Disable AutoRun</value>
+  </data>
+  <data name="Modules.Sub.M17_autorun.Desc" xml:space="preserve">
+    <value>Disables AutoRun and AutoPlay on all drives.</value>
+  </data>
+  <data name="Modules.Sub.M17_dep.Name" xml:space="preserve">
+    <value>DEP always on</value>
+  </data>
+  <data name="Modules.Sub.M17_dep.Desc" xml:space="preserve">
+    <value>Enables Data Execution Prevention in AlwaysOn mode.</value>
+  </data>
+  <data name="Modules.Sub.M17_llmnr.Name" xml:space="preserve">
+    <value>Disable LLMNR</value>
+  </data>
+  <data name="Modules.Sub.M17_llmnr.Desc" xml:space="preserve">
+    <value>Disables LLMNR name resolution.</value>
+  </data>
+  <data name="Modules.Sub.M17_netbios.Name" xml:space="preserve">
+    <value>Disable NetBIOS</value>
+  </data>
+  <data name="Modules.Sub.M17_netbios.Desc" xml:space="preserve">
+    <value>Disables NetBIOS over TCP/IP on all adapters.</value>
+  </data>
+  <data name="Modules.Sub.M17_pua.Name" xml:space="preserve">
+    <value>PUA protection</value>
+  </data>
+  <data name="Modules.Sub.M17_pua.Desc" xml:space="preserve">
+    <value>Enables protection against potentially unwanted apps.</value>
+  </data>
+  <data name="Modules.Sub.M17_rdp.Name" xml:space="preserve">
+    <value>Disable Remote Desktop</value>
+  </data>
+  <data name="Modules.Sub.M17_rdp.Desc" xml:space="preserve">
+    <value>Disables Remote Desktop (RDP).</value>
+  </data>
+  <data name="Modules.Sub.M17_uac.Name" xml:space="preserve">
+    <value>Recommended UAC</value>
+  </data>
+  <data name="Modules.Sub.M17_uac.Desc" xml:space="preserve">
+    <value>Sets User Account Control to the recommended level.</value>
+  </data>
+  <data name="Modules.Sub.M18_trim_enable.Name" xml:space="preserve">
+    <value>Enable TRIM</value>
+  </data>
+  <data name="Modules.Sub.M18_trim_enable.Desc" xml:space="preserve">
+    <value>Ensures TRIM is enabled at system level.</value>
+  </data>
+  <data name="Modules.Sub.M18_trim_smart.Name" xml:space="preserve">
+    <value>TRIM and SMART health</value>
+  </data>
+  <data name="Modules.Sub.M18_trim_smart.Desc" xml:space="preserve">
+    <value>Runs TRIM on each SSD and reads its SMART health.</value>
+  </data>
+  <data name="Modules.Sub.M19_scan_devices.Name" xml:space="preserve">
+    <value>Scan hardware</value>
+  </data>
+  <data name="Modules.Sub.M19_scan_devices.Desc" xml:space="preserve">
+    <value>Refreshes the system hardware catalog.</value>
+  </data>
+  <data name="Modules.Sub.M19_enum_drivers.Name" xml:space="preserve">
+    <value>List OEM drivers</value>
+  </data>
+  <data name="Modules.Sub.M19_enum_drivers.Desc" xml:space="preserve">
+    <value>Lists installed OEM drivers (info only).</value>
+  </data>
+  <data name="Modules.Sub.M19_wu_drivers.Name" xml:space="preserve">
+    <value>Drivers via Windows Update</value>
+  </data>
+  <data name="Modules.Sub.M19_wu_drivers.Desc" xml:space="preserve">
+    <value>Triggers Windows Update to look for drivers.</value>
+  </data>
+  <data name="Modules.Sub.M19_reminder.Name" xml:space="preserve">
+    <value>Manufacturer reminder</value>
+  </data>
+  <data name="Modules.Sub.M19_reminder.Desc" xml:space="preserve">
+    <value>Reminds where to download official manufacturer drivers.</value>
+  </data>
+  <data name="Modules.AdvancedView" xml:space="preserve">
+    <value>Advanced view</value>
+  </data>
+  <data name="Modules.AdvancedView.Hint" xml:space="preserve">
+    <value>Toggle each setting on its own so no single click applies more than one change.</value>
+  </data>
+  <data name="Settings.ModuleView.Title" xml:space="preserve">
+    <value>Advanced module view by default</value>
+  </data>
+  <data name="Settings.ModuleView.Desc" xml:space="preserve">
+    <value>When opening Modules, show every individual setting instead of the grouped options.</value>
   </data>
 </root>

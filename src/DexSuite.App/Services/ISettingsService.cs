@@ -34,6 +34,10 @@ public sealed class AppSettings
 
     public bool AutoSelectRecommended { get; set; } = false;
     public bool JumpToLogOnRun { get; set; } = false;
+
+    // Vista de módulos: false = simple (agrupada), true = avanzada (ajustes individuales).
+    public bool IsAdvancedModuleView { get; set; } = false;
+
     public bool WarnBeforeNonReversible { get; set; } = true;
     public bool CreateRestorePointBeforeRun { get; set; } = false;
     public bool NotifyOnFinish { get; set; } = true;

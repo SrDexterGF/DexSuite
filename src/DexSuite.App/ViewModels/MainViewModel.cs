@@ -407,6 +407,26 @@ public partial class MainViewModel : ObservableObject
         _                   => false,
     };
 
+    /// <summary>
+    /// Construye el mapa moduleId → sub-opciones marcadas para pasarlo al runner.
+    /// En vista simple devuelve null (cada módulo ejecuta todas sus operaciones).
+    /// En vista avanzada, por cada módulo seleccionado con sub-opciones, recoge
+    /// solo las que el usuario dejó marcadas.
+    /// </summary>
+    private IReadOnlyDictionary<int, IReadOnlySet<string>>? BuildSubOptionsMap(IReadOnlyList<int> selected)
+    {
+        if (!IsAdvancedModuleView) return null;
+
+        var map = new Dictionary<int, IReadOnlySet<string>>();
+        foreach (var m in Modules.Where(m => m.IsEnabled && m.HasSubOptions && selected.Contains(m.Id)))
+        {
+            var enabled = m.SubOptions.Where(s => s.IsEnabled).Select(s => s.Id)
+                .ToHashSet(StringComparer.Ordinal);
+            map[m.Id] = enabled;
+        }
+        return map;
+    }
+
     // Idioma
 
     /// <summary>Idiomas disponibles en la app (10).</summary>
@@ -433,6 +453,13 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Si al pulsar Ejecutar saltamos automáticamente a la vista de Registro.</summary>
     [ObservableProperty]
     private bool jumpToLogOnRun = false;
+
+    /// <summary>
+    /// Vista de módulos por defecto: false = simple (opciones agrupadas),
+    /// true = avanzada (cada ajuste individual seleccionable por separado).
+    /// </summary>
+    [ObservableProperty]
+    private bool isAdvancedModuleView = false;
 
     /// <summary>Avisar antes de ejecutar módulos no reversibles (futuro).</summary>
     [ObservableProperty]
@@ -603,6 +630,7 @@ public partial class MainViewModel : ObservableObject
 
     partial void OnAutoSelectRecommendedChanged(bool value)       => PersistSettings();
     partial void OnJumpToLogOnRunChanged(bool value)              => PersistSettings();
+    partial void OnIsAdvancedModuleViewChanged(bool value)        => PersistSettings();
     partial void OnWarnBeforeNonReversibleChanged(bool value)     => PersistSettings();
     partial void OnCreateRestorePointBeforeRunChanged(bool value) => PersistSettings();
     partial void OnNotifyOnFinishChanged(bool value)              => PersistSettings();
@@ -630,6 +658,7 @@ public partial class MainViewModel : ObservableObject
             AutoUpdateEnabled           = AutoUpdateEnabled,
             MinimizeToTray              = MinimizeToTray,
             ShowGamingDisclaimer        = ShowGamingDisclaimer,
+            IsAdvancedModuleView        = IsAdvancedModuleView,
         });
     }
 
@@ -1687,6 +1716,7 @@ public partial class MainViewModel : ObservableObject
         var persisted = _settingsService.Load();
         AutoSelectRecommended       = persisted.AutoSelectRecommended;
         JumpToLogOnRun              = persisted.JumpToLogOnRun;
+        IsAdvancedModuleView        = persisted.IsAdvancedModuleView;
         WarnBeforeNonReversible     = persisted.WarnBeforeNonReversible;
         CreateRestorePointBeforeRun = persisted.CreateRestorePointBeforeRun;
         NotifyOnFinish              = persisted.NotifyOnFinish;
@@ -2076,7 +2106,11 @@ public partial class MainViewModel : ObservableObject
                 T("Log.Event.RunStarted", selected.Count),
                 modulesStr);
 
-            await foreach (var progress in _runner.RunAsync(selected, ct).WithCancellation(ct))
+            // En vista avanzada, construimos el mapa moduleId → sub-opciones marcadas.
+            // En vista simple pasamos null (cada módulo ejecuta todo).
+            var subMap = BuildSubOptionsMap(selected);
+
+            await foreach (var progress in _runner.RunAsync(selected, subMap, ct).WithCancellation(ct))
             {
                 var line = FormatProgressLine(progress);
                 lock (_bufferLock) _pendingBuffer.AppendLine(line);

@@ -28,93 +28,116 @@ public sealed class M16Ethernet : ModuleExecutorBase
         @"HKLM\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318}";
 
     public override async IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
         [EnumeratorCancellation] CancellationToken ct = default)
     {
         yield return Header("Ethernet - Optimización Máxima");
 
-        yield return Step("Detectando y configurando adaptadores Ethernet activos");
-        var ethernetAdapters = NetworkInterface.GetAllNetworkInterfaces()
-            .Where(i => i.NetworkInterfaceType == NetworkInterfaceType.Ethernet
-                     && i.OperationalStatus == OperationalStatus.Up)
-            .ToList();
-
-        foreach (var nic in ethernetAdapters)
-        {
-            if (ct.IsCancellationRequested) yield break;
-            yield return Info($"Adaptador encontrado: {nic.Name}");
-            ApplyAdvancedProperties(nic.Id);
-        }
-        yield return Ok($"NIC configurada en {ethernetAdapters.Count} adaptador(es)");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("TCP Stack - Autotuning y configuración global");
         var netsh = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.System), "netsh.exe");
-        if (File.Exists(netsh))
+
+        if (Want(enabledSubOps, "M16_nic"))
         {
-            await RunProcessAsync(netsh, "int tcp set global autotuninglevel=normal", ct);
-            await RunProcessAsync(netsh, "int tcp set global chimney=disabled", ct);
-            await RunProcessAsync(netsh, "int tcp set global dca=enabled", ct);
-            await RunProcessAsync(netsh, "int tcp set global ecncapability=disabled", ct);
-            await RunProcessAsync(netsh, "int tcp set global rss=enabled", ct);
-            await RunProcessAsync(netsh, "int tcp set global nonsackrttresiliency=disabled", ct);
-            yield return Ok("TCP: Autotuning Normal, DCA activado, ECN desactivado");
+            yield return Step("Detectando y configurando adaptadores Ethernet activos");
+            var ethernetAdapters = NetworkInterface.GetAllNetworkInterfaces()
+                .Where(i => i.NetworkInterfaceType == NetworkInterfaceType.Ethernet
+                         && i.OperationalStatus == OperationalStatus.Up)
+                .ToList();
+
+            foreach (var nic in ethernetAdapters)
+            {
+                if (ct.IsCancellationRequested) yield break;
+                yield return Info($"Adaptador encontrado: {nic.Name}");
+                ApplyAdvancedProperties(nic.Id);
+            }
+            yield return Ok($"NIC configurada en {ethernetAdapters.Count} adaptador(es)");
         }
-        else yield return Warn("netsh.exe no encontrado");
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("TCP - Nagle off y ACK inmediato en todas las interfaces");
-        if (File.Exists(netsh))
+        if (Want(enabledSubOps, "M16_tcp_global"))
         {
-            await RunProcessAsync(netsh, "int tcp set global timestamps=disabled", ct);
-            await RunProcessAsync(netsh, "int tcp set global initialRto=2000", ct);
+            yield return Step("TCP Stack - Autotuning y configuración global");
+            if (File.Exists(netsh))
+            {
+                await RunProcessAsync(netsh, "int tcp set global autotuninglevel=normal", ct);
+                await RunProcessAsync(netsh, "int tcp set global chimney=disabled", ct);
+                await RunProcessAsync(netsh, "int tcp set global dca=enabled", ct);
+                await RunProcessAsync(netsh, "int tcp set global ecncapability=disabled", ct);
+                await RunProcessAsync(netsh, "int tcp set global rss=enabled", ct);
+                await RunProcessAsync(netsh, "int tcp set global nonsackrttresiliency=disabled", ct);
+                yield return Ok("TCP: Autotuning Normal, DCA activado, ECN desactivado");
+            }
+            else yield return Warn("netsh.exe no encontrado");
         }
-        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters", "TcpMaxSynRetransmissions", 2);
-        const string tcpInterfaces = @"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces";
-        TrackedSetDword(tcpInterfaces, "TcpAckFrequency", 1);
-        TrackedSetDword(tcpInterfaces, "TcpNoDelay", 1);
-        foreach (var sub in EnumerateSubKeys(tcpInterfaces))
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M16_tcp_nagle"))
         {
-            TrackedSetDword($@"{tcpInterfaces}\{sub}", "TcpAckFrequency", 1);
-            TrackedSetDword($@"{tcpInterfaces}\{sub}", "TcpNoDelay", 1);
+            yield return Step("TCP - Nagle off y ACK inmediato en todas las interfaces");
+            if (File.Exists(netsh))
+            {
+                await RunProcessAsync(netsh, "int tcp set global timestamps=disabled", ct);
+                await RunProcessAsync(netsh, "int tcp set global initialRto=2000", ct);
+            }
+            TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters", "TcpMaxSynRetransmissions", 2);
+            const string tcpInterfaces = @"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces";
+            TrackedSetDword(tcpInterfaces, "TcpAckFrequency", 1);
+            TrackedSetDword(tcpInterfaces, "TcpNoDelay", 1);
+            foreach (var sub in EnumerateSubKeys(tcpInterfaces))
+            {
+                TrackedSetDword($@"{tcpInterfaces}\{sub}", "TcpAckFrequency", 1);
+                TrackedSetDword($@"{tcpInterfaces}\{sub}", "TcpNoDelay", 1);
+            }
+            yield return Ok("Nagle desactivado, ACK inmediato en todas las interfaces");
         }
-        yield return Ok("Nagle desactivado, ACK inmediato en todas las interfaces");
 
         if (ct.IsCancellationRequested) yield break;
-        yield return Step("Parámetros del stack IP");
-        const string tcpipParams = @"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters";
-        TrackedSetDword(tcpipParams, "MaxUserPort", 65534);
-        TrackedSetDword(tcpipParams, "TcpTimedWaitDelay", 30);
-        TrackedSetDword(tcpipParams, "MaxFreeTcbs", 65536);
-        TrackedSetDword(tcpipParams, "MaxHashTableSize", 65536);
-        TrackedSetDword(tcpipParams, "MaxDupAcksForFastRetransmit", 2);
-        yield return Ok("MaxUserPort=65534, TIME_WAIT=30s, MaxFreeTcbs=65536");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("QoS - Eliminando la reserva del 20% de ancho de banda");
-        TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched", "NonBestEffortLimit", 0);
-        TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Psched\Parameters", "NonBestEffortLimit", 0);
-        yield return Ok("QoS reserva = 0%");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Configurando DNS: Google primario + Cloudflare terciario");
-        yield return Info("DNS 1: 8.8.8.8 (Google) / DNS 2: 8.8.4.4 (Google) / DNS 3: 1.1.1.1 (Cloudflare)");
-        int dnsApplied = SetDnsOnEthernetAdapters(new[] { "8.8.8.8", "8.8.4.4", "1.1.1.1" });
-        yield return Ok($"DNS configurado en {dnsApplied} adaptador(es) Ethernet");
-
-        if (ct.IsCancellationRequested) yield break;
-        yield return Step("Vaciando cache ARP, NetBIOS y DNS");
-        var arp      = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "arp.exe");
-        var nbtstat  = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "nbtstat.exe");
-        var ipconfig = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ipconfig.exe");
-        if (File.Exists(arp))      await RunProcessAsync(arp, "-d *", ct);
-        if (File.Exists(nbtstat))
+        if (Want(enabledSubOps, "M16_ip_stack"))
         {
-            await RunProcessAsync(nbtstat, "-R", ct);
-            await RunProcessAsync(nbtstat, "-RR", ct);
+            yield return Step("Parámetros del stack IP");
+            const string tcpipParams = @"HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters";
+            TrackedSetDword(tcpipParams, "MaxUserPort", 65534);
+            TrackedSetDword(tcpipParams, "TcpTimedWaitDelay", 30);
+            TrackedSetDword(tcpipParams, "MaxFreeTcbs", 65536);
+            TrackedSetDword(tcpipParams, "MaxHashTableSize", 65536);
+            TrackedSetDword(tcpipParams, "MaxDupAcksForFastRetransmit", 2);
+            yield return Ok("MaxUserPort=65534, TIME_WAIT=30s, MaxFreeTcbs=65536");
         }
-        if (File.Exists(ipconfig)) await RunProcessAsync(ipconfig, "/flushdns", ct);
-        yield return Ok("Cachés de red vaciadas");
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M16_qos"))
+        {
+            yield return Step("QoS - Eliminando la reserva del 20% de ancho de banda");
+            TrackedSetDword(@"HKLM\SOFTWARE\Policies\Microsoft\Windows\Psched", "NonBestEffortLimit", 0);
+            TrackedSetDword(@"HKLM\SYSTEM\CurrentControlSet\Services\Psched\Parameters", "NonBestEffortLimit", 0);
+            yield return Ok("QoS reserva = 0%");
+        }
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M16_dns"))
+        {
+            yield return Step("Configurando DNS: Google primario + Cloudflare terciario");
+            yield return Info("DNS 1: 8.8.8.8 (Google) / DNS 2: 8.8.4.4 (Google) / DNS 3: 1.1.1.1 (Cloudflare)");
+            int dnsApplied = SetDnsOnEthernetAdapters(new[] { "8.8.8.8", "8.8.4.4", "1.1.1.1" });
+            yield return Ok($"DNS configurado en {dnsApplied} adaptador(es) Ethernet");
+        }
+
+        if (ct.IsCancellationRequested) yield break;
+        if (Want(enabledSubOps, "M16_cache_clear"))
+        {
+            yield return Step("Vaciando cache ARP, NetBIOS y DNS");
+            var arp      = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "arp.exe");
+            var nbtstat  = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "nbtstat.exe");
+            var ipconfig = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "ipconfig.exe");
+            if (File.Exists(arp))      await RunProcessAsync(arp, "-d *", ct);
+            if (File.Exists(nbtstat))
+            {
+                await RunProcessAsync(nbtstat, "-R", ct);
+                await RunProcessAsync(nbtstat, "-RR", ct);
+            }
+            if (File.Exists(ipconfig)) await RunProcessAsync(ipconfig, "/flushdns", ct);
+            yield return Ok("Cachés de red vaciadas");
+        }
 
         yield return Done("M16 completado");
     }

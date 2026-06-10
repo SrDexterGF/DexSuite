@@ -22,7 +22,16 @@ namespace DexSuite.App.Services.CleanupModules;
 public abstract class ModuleExecutorBase : IModuleExecutor
 {
     public abstract int ModuleId { get; }
-    public abstract IAsyncEnumerable<ModuleProgress> ExecuteAsync(CancellationToken ct = default);
+    public abstract IAsyncEnumerable<ModuleProgress> ExecuteAsync(
+        IReadOnlySet<string>? enabledSubOps,
+        CancellationToken ct = default);
+
+    /// <summary>
+    /// True si la sub-operación debe ejecutarse: o bien estamos en vista simple
+    /// (enabled == null → todo), o bien el usuario la marcó en la vista avanzada.
+    /// </summary>
+    protected static bool Want(IReadOnlySet<string>? enabled, string subOpId)
+        => enabled is null || enabled.Contains(subOpId);
 
     /// <summary>
     /// Servicio de auditoría/reversión. Es opcional: los módulos de limpieza
