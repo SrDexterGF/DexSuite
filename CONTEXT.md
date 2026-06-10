@@ -1,5 +1,5 @@
 # PROJECT CONTEXT
-> Generado el 2026-06-10. Versión actual publicada: **v0.2.36**
+> Generado el 2026-06-10. Versión actual publicada: **v0.2.37**
 > Propósito: memoria técnica completa para reanudar el desarrollo desde cero.
 
 ## Cómo reanudar sesión
@@ -278,41 +278,18 @@ DexSuite (App)/
 
 ## 5. Estado actual — Qué falta por hacer
 
-### Bloque 1 — Fixes de UI (6 items)
-1. **Tarjeta Coming Soon texto inferior**: el texto descriptivo de la tarjeta Coming Soon en el selector de temas se corta o no se muestra correctamente
-2. **Botón "marcar como leído" en Revertir cambios**: falta un botón que permita marcar entradas individuales como leídas/descartadas sin revertirlas
-3. **Eliminar separador duplicado bajo Tuning**: hay un separador extra visible bajo el ítem Tuning en la sidebar
-4. **Altura GameSelectorWindow = ventana principal (900px)**: la ventana modal de selección de juegos debe tener la misma altura que la ventana principal
-5. **Icono bandeja condicional (solo cuando ventana oculta) + más opciones menú contextual**: actualmente el icono es siempre visible cuando `MinimizeToTray=true`; debería aparecer solo cuando la ventana está oculta. Además el menú contextual tiene solo 2 ítems, se necesitan más opciones
-6. **Scroll en selector de idiomas + orden alfabético**: el ComboBox de idiomas en Settings no tiene scroll habilitado correctamente y los idiomas no están en orden alfabético (actualmente en orden de adición)
-
-### Bloque 2 — Gaming
-1. **Descargo de responsabilidad antes de abrir GameSelectorWindow**: mostrar un diálogo de aviso legal/disclaimer antes de la primera apertura de la ventana de juegos
-2. **Botón Revertir por juego**: en cada `GameTileViewModel`, mostrar un botón Revertir visible cuando `IsConfigApplied=true` que permita deshacer la optimización del juego concreto
-
-### Bloque 3 — Selector "Recomendado" adaptativo
-- El botón "Seleccionar recomendados" (`SelectRecommended`) actualmente usa `m.Module.RecommendedDefault` fijo. Debe ser adaptativo según el plan: seleccionar diferentes conjuntos de módulos según si el usuario es Free, Avanzado o Pro
-
-### Bloque 4 — Sección Acerca de
-- Implementar contenido completo de la sección About:
-  - Instagram: `@DexSuite`
-  - Linktree: `https://linktr.ee/DexSuite`
-  - Email: `suitedex@gmail.com`
-  - Botones de RRSS con iconos
-  - Changelog localizado de la versión actual
-
-### Bloque 5 — GitHub
+### Bloque 1 — GitHub
 - Vaciar el README del repo público (ocultar información técnica)
 - Vaciar o limpiar las notas de las releases publicadas
 
-### Bloque 6 — Auditorías pendientes
+### Bloque 2 — Auditorías pendientes
 1. **Seguridad**: revisar permisos, superficies de ataque, validaciones de entrada
 2. **Traducciones**: verificar que los 30 idiomas tienen todas las claves completas, sin `[key]` visibles en producción
 3. **Calidad visual**: revisión de UI en todos los temas, especialmente los de gaming
 4. **Referencias obsoletas**: limpiar código muerto, servicios no usados, comentarios desactualizados
 5. **Código muerto**: `ModuleStatus` en `ModuleItemViewModel` marcado como "legacy no usado por la UI nueva"
 
-### Bloque 7 — UX / Textos (pendiente de implementar)
+### Bloque 3 — UX / Textos (pendiente de implementar)
 Ver prompt detallado generado en sesión 2026-06-03. Resumen de bloques:
 - **A**: Comportamiento — corregir "Marcar como leído" (no debe vaciar la lista), scrollbar visual en idiomas, reordenar idiomas (es primero, luego latino-europeo, luego cirílico, luego RTL/asiático)
 - **B**: Menú juegos — eliminar subtítulos de tiles, reescribir footer
@@ -321,7 +298,7 @@ Ver prompt detallado generado en sesión 2026-06-03. Resumen de bloques:
 - **E**: Acerca de — reescribir changelog (menos técnico), reescribir BugReport.Subtitle
 - **F**: Layout — reducir espacio bajo Tuning en sidebar, separar botón Actualizar de descripción en Revertir, evaluar/cambiar título "Performance Series"
 
-### Bloque 8 — Nuevos idiomas (paridad con Steam)
+### Bloque 4 — Nuevos idiomas (paridad con Steam)
 Añadir los siguientes idiomas que Steam soporta y DexSuite no tiene aún:
 - `zh-TW` — 繁體中文 (chino tradicional)
 - `th` — ไทย (tailandés)
@@ -330,7 +307,7 @@ Añadir los siguientes idiomas que Steam soporta y DexSuite no tiene aún:
 - `pt-BR` — Português do Brasil (variante separada de pt-PT)
 Requiere: nuevos .resx, actualizar LocalizationService.cs, ComboBox de idiomas y pipeline de traducciones.
 
-### Bloque 9 — Deuda técnica futura
+### Bloque 6 — Deuda técnica futura
 - Auditoría general de la app (UI, código, flujos)
 - Auditoría completa de traducciones (errores, localización, formatos, coherencia de IU)
 - Dividir módulos en opciones individuales (un ajuste por opción, no conjuntos)
@@ -429,22 +406,13 @@ Durante el constructor de `MainViewModel`, se hidratan todos los ObservablePrope
 
 ## 8. Próximos pasos
 
-### Inmediatos (UI / UX — menor esfuerzo, mayor impacto visual)
-1. **Bloque 1 completo** (6 fixes de UI descritos en sección 5)
-2. **Sección About** con RRSS e info de contacto (Bloque 4)
-
-### Funcionalidad nueva
-3. **Disclaimer gaming** (Bloque 2, item 1) — diálogo previo a `GameSelectorWindow`
-4. **Revertir por juego** (Bloque 2, item 2) — botón en `GameTileViewModel` cuando `IsConfigApplied=true`
-5. **Selector Recomendado adaptativo** (Bloque 3) — 3 conjuntos según tier
+### Inmediatos
+1. **GitHub**: limpiar README y notas de release (Bloque 1)
+2. **Auditorías**: traducciones, seguridad, visual, referencias obsoletas, código muerto (Bloque 2)
 
 ### Legal / Confianza
-6. **Pantalla de bienvenida legal** (Terms of Use, primera ejecución) — persiste flag en `settings.json`
-7. **Trustpilot**: resolver la verificación de dominio; mientras tanto, botón estático "Dejar reseña" en About que abra la URL de Trustpilot en navegador
-
-### Limpieza / Calidad
-8. **Bloque 6 — Auditorías**: traducciones, seguridad, visual, referencias obsoletas, código muerto
-9. **GitHub**: limpiar README y notas de release (Bloque 5)
+3. **Pantalla de bienvenida legal** (Terms of Use, primera ejecución) — persiste flag en `settings.json`
+4. **Trustpilot**: resolver la verificación de dominio; botón estático "Dejar reseña" en About
 
 ### Infraestructura futura
 10. **Web DexSuite — pendientes**: comprar dominio (`dexsuite.com` como principal, opcional `.es`/`.app`); configurar dominio propio en Resend para emails desde `@dexsuite.com`; test e2e completo del webhook de Stripe en test mode (el flujo de activación ya está verificado, el webhook+email es integración estándar sin probar a fondo). Ver memoria `project_dexsuite_web_fase4.md`.
