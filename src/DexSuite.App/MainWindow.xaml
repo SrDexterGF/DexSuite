@@ -978,14 +978,14 @@
                         <StackPanel>
 
                             <!-- Hero: logo centrado (clic → web) -->
-                            <Button HorizontalAlignment="Center" Margin="0,0,0,24"
+                            <Button HorizontalAlignment="Center" Margin="0,0,0,16"
                                     Background="Transparent" BorderThickness="0" Padding="0"
                                     Cursor="Hand"
                                     Command="{Binding OpenDownloadUrlCommand}"
                                     CommandParameter="https://dexsuite-web.vercel.app/">
                                 <StackPanel>
                                     <Image Source="pack://application:,,,/Assets/AppIcon.png"
-                                           Width="220" Height="220"
+                                           Width="110" Height="110"
                                            Stretch="Uniform"
                                            RenderOptions.BitmapScalingMode="HighQuality"
                                            SnapsToDevicePixels="True"
@@ -993,7 +993,7 @@
                                     <ui:TextBlock Text="{loc:T Key=App.Subtitle}"
                                                   Opacity="0.7"
                                                   HorizontalAlignment="Center"
-                                                  Margin="0,8,0,0"/>
+                                                  Margin="0,6,0,0"/>
                                 </StackPanel>
                             </Button>
 
@@ -3830,7 +3830,13 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.GamingModule}" Opacity="0.6"/>
-                                        <ui:TextBlock Grid.Column="1" Text="{loc:T Key=About.Credits.GamingModuleAuthor}"/>
+                                        <Button Grid.Column="1" Background="Transparent" BorderThickness="0"
+                                                Padding="0" HorizontalAlignment="Left" Cursor="Hand"
+                                                Command="{Binding OpenDownloadUrlCommand}"
+                                                CommandParameter="https://dexsuite-web.vercel.app/">
+                                            <ui:TextBlock Text="{loc:T Key=About.Credits.GamingModuleAuthor}"
+                                                          Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                        </Button>
                                     </Grid>
                                 </StackPanel>
                             </Border>
@@ -3946,10 +3952,13 @@
                                                    Margin="0,0,8,8"/>
                                         <ui:Button Appearance="Primary"
                                                    Content="{loc:T Key=About.Social.Website}"
-                                                   Icon="{ui:SymbolIcon Symbol=Globe24}"
                                                    Command="{Binding OpenDownloadUrlCommand}"
                                                    CommandParameter="https://dexsuite-web.vercel.app/"
-                                                   Margin="0,0,0,8"/>
+                                                   Margin="0,0,0,8">
+                                            <ui:Button.Icon>
+                                                <ui:ImageIcon Source="pack://application:,,,/Assets/AppIcon.png"/>
+                                            </ui:Button.Icon>
+                                        </ui:Button>
                                     </WrapPanel>
                                 </StackPanel>
                             </Border>

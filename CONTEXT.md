@@ -1,5 +1,5 @@
 # PROJECT CONTEXT
-> Generado el 2026-06-10. Versión actual publicada: **v0.2.34**
+> Generado el 2026-06-10. Versión actual publicada: **v0.2.36**
 > Propósito: memoria técnica completa para reanudar el desarrollo desde cero.
 
 ## Cómo reanudar sesión
