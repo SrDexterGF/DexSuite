@@ -630,6 +630,183 @@
             </Border>
         </DataTemplate>
 
+        <!-- Template compacto para vista avanzada — estilo WinUtil (Chris Titus) -->
+        <DataTemplate x:Key="AdvancedModuleCardTemplate">
+            <StackPanel Margin="0,0,0,10">
+                <!-- Fila del módulo: checkbox + nombre + estado + ? + lock -->
+                <Grid Margin="0,0,0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox Grid.Column="0"
+                              IsChecked="{Binding IsEnabled, Mode=TwoWay}"
+                              IsEnabled="{Binding CanToggle}"
+                              VerticalAlignment="Center"
+                              Margin="0,0,10,0"/>
+
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontWeight="SemiBold" FontSize="13"
+                               VerticalAlignment="Center"/>
+
+                    <!-- Estado: spinner / check / error -->
+                    <Grid Grid.Column="2" Width="18" Height="18" VerticalAlignment="Center" Margin="6,0,0,0">
+                        <ui:ProgressRing IsIndeterminate="True" Width="15" Height="15">
+                            <ui:ProgressRing.Style>
+                                <Style TargetType="ui:ProgressRing">
+                                    <Setter Property="Opacity" Value="0"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Applying">
+                                            <Setter Property="Opacity" Value="1"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:ProgressRing.Style>
+                        </ui:ProgressRing>
+                        <ui:SymbolIcon Symbol="CheckmarkCircle24" FontSize="16" Foreground="#FF00C853">
+                            <ui:SymbolIcon.Style>
+                                <Style TargetType="ui:SymbolIcon">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Applied">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:SymbolIcon.Style>
+                        </ui:SymbolIcon>
+                        <ui:SymbolIcon Symbol="Warning24" FontSize="16" Foreground="#FFFF6E40">
+                            <ui:SymbolIcon.Style>
+                                <Style TargetType="ui:SymbolIcon">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding VisualState}" Value="Error">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:SymbolIcon.Style>
+                        </ui:SymbolIcon>
+                    </Grid>
+
+                    <!-- Botón ? con tooltip completo -->
+                    <Border Grid.Column="3"
+                            Width="18" Height="18" CornerRadius="9"
+                            Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            VerticalAlignment="Center" Margin="4,0,0,0"
+                            Cursor="Help"
+                            ToolTipService.ShowDuration="30000"
+                            ToolTipService.InitialShowDelay="200">
+                        <Border.ToolTip>
+                            <ToolTip MaxWidth="370" Padding="12,10">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13" Margin="0,0,0,8"/>
+                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" Margin="0,0,0,10"/>
+                                    <Separator Margin="0,0,0,8"/>
+                                    <TextBlock Text="{Binding SafetyReason}" TextWrapping="Wrap" FontSize="11" Opacity="0.75"/>
+                                </StackPanel>
+                            </ToolTip>
+                        </Border.ToolTip>
+                        <TextBlock Text="?" FontSize="11" FontWeight="Bold"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"/>
+                    </Border>
+
+                    <!-- Badge de lock por tier -->
+                    <Border Grid.Column="4"
+                            Width="18" Height="18" CornerRadius="9"
+                            VerticalAlignment="Center" Margin="4,0,0,0"
+                            BorderThickness="1">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Visibility"  Value="Collapsed"/>
+                                <Setter Property="Background"  Value="#1500B8D9"/>
+                                <Setter Property="BorderBrush" Value="#3500B8D9"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsLocked}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsLocked}" Value="True"/>
+                                            <Condition Binding="{Binding Tier}" Value="Pro"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background"  Value="#1A9D4EDD"/>
+                                        <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Border.ToolTip>
+                            <ToolTip Padding="10,8">
+                                <TextBlock Text="{Binding TierLabel}" FontWeight="SemiBold" FontSize="12"/>
+                            </ToolTip>
+                        </Border.ToolTip>
+                        <ui:SymbolIcon Symbol="LockClosed24" FontSize="10"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ui:SymbolIcon.Style>
+                                <Style TargetType="ui:SymbolIcon">
+                                    <Setter Property="Foreground" Value="#FF00D9FF"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Tier}" Value="Pro">
+                                            <Setter Property="Foreground" Value="#FFB026FF"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ui:SymbolIcon.Style>
+                        </ui:SymbolIcon>
+                    </Border>
+                </Grid>
+
+                <!-- Sub-opciones en cuadrícula de 3 columnas — estilo WinUtil -->
+                <ItemsControl ItemsSource="{Binding SubOptions}"
+                              IsEnabled="{Binding IsEnabled}"
+                              Margin="28,2,0,4">
+                    <ItemsControl.Style>
+                        <Style TargetType="ItemsControl">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasSubOptions}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ItemsControl.Style>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,3,8,3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0"
+                                          IsChecked="{Binding IsEnabled, Mode=TwoWay}"
+                                          VerticalAlignment="Top"
+                                          Margin="0,1,6,0"/>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding Name}"
+                                           FontSize="12"
+                                           TextWrapping="Wrap"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </DataTemplate>
+
         <!-- Card de categoría del test de rendimiento -->
         <DataTemplate x:Key="CategoryRowTemplate">
             <Border Margin="0,0,0,6"
@@ -696,15 +873,16 @@
                             Margin="14,14,14,8"
                             Padding="10,10"
                             CornerRadius="10"
-                            BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
-                            BorderThickness="1"
                             Cursor="Hand">
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}"/>
+                                <Setter Property="Background"      Value="Transparent"/>
+                                <Setter Property="BorderBrush"     Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="1"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+                                        <Setter Property="Background"  Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+                                        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -736,114 +914,99 @@
                         </Button>
                     </Border>
 
-                    <!-- Footer: versión + badge PRO -->
-                    <Border DockPanel.Dock="Bottom" Margin="14,6,14,16">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                                <ui:SymbolIcon Symbol="CheckmarkCircle24"
-                                               FontSize="13"
-                                               Foreground="#FF00B8D9"
-                                               VerticalAlignment="Center"
-                                               Margin="0,0,5,0"/>
-                                <ui:TextBlock Text="{Binding CurrentVersion, StringFormat='v{0}'}"
-                                              FontTypography="Caption"
-                                              Foreground="#FF00B8D9"
-                                              VerticalAlignment="Center"/>
-                            </StackPanel>
-                            <Border Grid.Column="1"
-                                    Padding="6,2" CornerRadius="4"
-                                    BorderThickness="1">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <!-- Default: Free — verde igual que los módulos -->
-                                        <Setter Property="Background"  Value="#1500C853"/>
-                                        <Setter Property="BorderBrush" Value="#3500C853"/>
-                                        <Style.Triggers>
-                                            <!-- Advanced: cyan -->
-                                            <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
-                                                <Setter Property="Background"  Value="#1400B8D9"/>
-                                                <Setter Property="BorderBrush" Value="#3200B8D9"/>
-                                            </DataTrigger>
-                                            <!-- Pro: violeta -->
-                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
-                                                <Setter Property="Background"  Value="#1A9D4EDD"/>
-                                                <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-                                <ui:TextBlock Text="{Binding UserTier}"
-                                              FontTypography="Caption"
-                                              FontWeight="Bold">
-                                    <ui:TextBlock.Style>
-                                        <Style TargetType="ui:TextBlock">
-                                            <!-- Default: Free — verde -->
-                                            <Setter Property="Foreground" Value="#FF00C853"/>
-                                            <Style.Triggers>
-                                                <!-- Advanced: cyan -->
-                                                <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
-                                                    <Setter Property="Foreground" Value="#FF00D9FF"/>
-                                                </DataTrigger>
-                                                <!-- Pro: violeta -->
-                                                <DataTrigger Binding="{Binding UserTier}" Value="Pro">
-                                                    <Setter Property="Foreground" Value="#FFB026FF"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ui:TextBlock.Style>
-                                </ui:TextBlock>
+                    <!-- Franja inferior unificada: versión+tier + iconos de acción -->
+                    <Border DockPanel.Dock="Bottom" Margin="10,0,10,10">
+                        <StackPanel>
+                            <!-- Separador sutil -->
+                            <Border Height="1" Margin="4,0,4,10">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                        <GradientStop Offset="0"   Color="Transparent"/>
+                                        <GradientStop Offset="0.3" Color="#FF2A2A4A"/>
+                                        <GradientStop Offset="0.7" Color="#FF2A2A4A"/>
+                                        <GradientStop Offset="1"   Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
                             </Border>
-                        </Grid>
-                    </Border>
 
-                    <!-- EXTRAS: fila compacta de iconos — Tuning / Bug / Sugerir -->
-                    <Border DockPanel.Dock="Bottom" Margin="8,0,8,6" Padding="0,2">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <RadioButton Style="{StaticResource NavItemStyle}"
-                                         GroupName="MainNav"
-                                         IsChecked="{Binding IsTuningView, Mode=OneWay}"
-                                         Command="{Binding NavigateCommand}"
-                                         CommandParameter="Tuning"
-                                         Margin="2" Padding="10"
-                                         ToolTip="{loc:T Key=Navigation.Tuning}">
-                                <Grid Width="22" Height="22">
-                                    <ui:SymbolIcon Symbol="Wrench24" FontSize="18" Margin="0"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    <ui:SymbolIcon Symbol="LockClosed24" Filled="True" FontSize="9"
-                                                   HorizontalAlignment="Right" VerticalAlignment="Top"
-                                                   Opacity="0.75" Margin="0"/>
+                            <!-- Pastilla combinada: versión + tier -->
+                            <Border Padding="10,6" CornerRadius="8" BorderThickness="1" Margin="0,0,0,6"
+                                    Background="{DynamicResource SubtleFillColorSecondaryBrush}"
+                                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <ui:SymbolIcon Symbol="CheckmarkCircle24" FontSize="12"
+                                                       Foreground="#FF00B8D9" VerticalAlignment="Center"
+                                                       Margin="0,0,5,0"/>
+                                        <ui:TextBlock Text="{Binding CurrentVersion, StringFormat='v{0}'}"
+                                                      FontTypography="Caption" Foreground="#FF00B8D9"
+                                                      VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                    <Border Grid.Column="1" Padding="6,2" CornerRadius="4" BorderThickness="1">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Background"  Value="#1500C853"/>
+                                                <Setter Property="BorderBrush" Value="#3500C853"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                        <Setter Property="Background"  Value="#1400B8D9"/>
+                                                        <Setter Property="BorderBrush" Value="#3200B8D9"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                        <Setter Property="Background"  Value="#1A9D4EDD"/>
+                                                        <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <ui:TextBlock Text="{Binding UserTier}" FontTypography="Caption" FontWeight="Bold">
+                                            <ui:TextBlock.Style>
+                                                <Style TargetType="ui:TextBlock">
+                                                    <Setter Property="Foreground" Value="#FF00C853"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                            <Setter Property="Foreground" Value="#FF00D9FF"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                            <Setter Property="Foreground" Value="#FFB026FF"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ui:TextBlock.Style>
+                                        </ui:TextBlock>
+                                    </Border>
                                 </Grid>
-                            </RadioButton>
-                            <Button Style="{StaticResource NavButtonStyle}"
-                                    Command="{Binding ReportBugCommand}"
-                                    Margin="2" Padding="10"
-                                    ToolTip="{loc:T Key=BugReport.Button}">
-                                <ui:SymbolIcon Symbol="Bug24" FontSize="18" Margin="0"/>
-                            </Button>
-                            <Button Style="{StaticResource NavButtonStyle}"
-                                    Command="{Binding SuggestFeatureCommand}"
-                                    Margin="2" Padding="10"
-                                    ToolTip="{loc:T Key=Suggestion.Button}">
-                                <ui:SymbolIcon Symbol="Lightbulb24" FontSize="18" Margin="0"/>
-                            </Button>
+                            </Border>
+
+                            <!-- 3 iconos de acción centrados -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <RadioButton Style="{StaticResource NavItemStyle}"
+                                             GroupName="MainNav"
+                                             IsChecked="{Binding IsTuningView, Mode=OneWay}"
+                                             Command="{Binding NavigateCommand}"
+                                             CommandParameter="Tuning"
+                                             Margin="2" Padding="10"
+                                             ToolTip="{loc:T Key=Navigation.Tuning}">
+                                    <ui:SymbolIcon Symbol="Wrench24" FontSize="18" Margin="0"/>
+                                </RadioButton>
+                                <Button Style="{StaticResource NavButtonStyle}"
+                                        Command="{Binding ReportBugCommand}"
+                                        Margin="2" Padding="10"
+                                        ToolTip="{loc:T Key=BugReport.Button}">
+                                    <ui:SymbolIcon Symbol="Bug24" FontSize="18" Margin="0"/>
+                                </Button>
+                                <Button Style="{StaticResource NavButtonStyle}"
+                                        Command="{Binding SuggestFeatureCommand}"
+                                        Margin="2" Padding="10"
+                                        ToolTip="{loc:T Key=Suggestion.Button}">
+                                    <ui:SymbolIcon Symbol="Lightbulb24" FontSize="18" Margin="0"/>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
-                    </Border>
-                    <ui:TextBlock DockPanel.Dock="Bottom"
-                                  Text="{loc:T Key=Navigation.Extras}"
-                                  Style="{StaticResource SidebarCaption}"/>
-                    <Border DockPanel.Dock="Bottom" Height="1" Margin="16,14,16,6">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                <GradientStop Offset="0"   Color="Transparent"/>
-                                <GradientStop Offset="0.3" Color="#FF2A2A4A"/>
-                                <GradientStop Offset="0.7" Color="#FF2A2A4A"/>
-                                <GradientStop Offset="1"   Color="Transparent"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
                     </Border>
 
                     <StackPanel>
@@ -1916,7 +2079,7 @@
                                 </Grid>
                             </Border>
                             <ItemsControl ItemsSource="{Binding FreeModules}"
-                                          ItemTemplate="{StaticResource ModuleCardTemplate}"
+                                          ItemTemplate="{StaticResource AdvancedModuleCardTemplate}"
                                           Margin="0,0,0,20"/>
 
                             <!-- AVANZADO -->
@@ -1958,7 +2121,7 @@
                                 </Grid>
                             </Border>
                             <ItemsControl ItemsSource="{Binding AdvancedModules}"
-                                          ItemTemplate="{StaticResource ModuleCardTemplate}"
+                                          ItemTemplate="{StaticResource AdvancedModuleCardTemplate}"
                                           Margin="0,0,0,20"/>
 
                             <!-- PRO -->
@@ -2000,7 +2163,7 @@
                                 </Grid>
                             </Border>
                             <ItemsControl ItemsSource="{Binding ProModules}"
-                                          ItemTemplate="{StaticResource ModuleCardTemplate}"/>
+                                          ItemTemplate="{StaticResource AdvancedModuleCardTemplate}"/>
                         </StackPanel>
 
                         <!-- Extra Pro: Gaming -->

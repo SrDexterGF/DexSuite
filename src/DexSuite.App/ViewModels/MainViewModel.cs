@@ -1552,37 +1552,20 @@ public partial class MainViewModel : ObservableObject
     {
         try
         {
-            if (ShowGamingDisclaimer)
             {
-                // Contenido custom: cuerpo del aviso + checkbox "No volver a mostrar".
-                var dontShow = new System.Windows.Controls.CheckBox
-                {
-                    Content = T("GamingDisclaimer.DontShow"),
-                    Margin  = new System.Windows.Thickness(0, 14, 0, 0),
-                };
-                var panel = new System.Windows.Controls.StackPanel();
-                panel.Children.Add(new System.Windows.Controls.TextBlock
-                {
-                    Text         = T("GamingDisclaimer.Body"),
-                    TextWrapping = System.Windows.TextWrapping.Wrap,
-                });
-                panel.Children.Add(dontShow);
-
                 var disclaimer = new Wpf.Ui.Controls.MessageBox
                 {
                     Title             = T("GamingDisclaimer.Title"),
-                    Content           = panel,
+                    Content           = new System.Windows.Controls.TextBlock
+                    {
+                        Text         = T("GamingDisclaimer.Body"),
+                        TextWrapping = System.Windows.TextWrapping.Wrap,
+                    },
                     PrimaryButtonText = T("GamingDisclaimer.Confirm"),
                     CloseButtonText   = T("GamingDisclaimer.Cancel"),
                 };
                 var result = await disclaimer.ShowDialogAsync();
-                if (result != Wpf.Ui.Controls.MessageBoxResult.Primary) return; // Cancelar
-
-                if (dontShow.IsChecked == true)
-                {
-                    ShowGamingDisclaimer = false;
-                    await _appLog.InfoAsync(AppLogCategory.App, T("Gaming.Log.DisclaimerAccepted"));
-                }
+                if (result != Wpf.Ui.Controls.MessageBoxResult.Primary) return;
             }
 
             var window = (Window)_services.GetService(typeof(GameSelectorWindow))!;

@@ -164,18 +164,18 @@ Error: {0}</value>
     <value>Per-game optimization profiles</value>
   </data>
   <data name="GamingDisclaimer.Title" xml:space="preserve">
-    <value>Before you continue</value>
+    <value>Execution confirmation</value>
   </data>
   <data name="GamingDisclaimer.Body" xml:space="preserve">
-    <value>Optimizing a game opens a console where you'll need to read the messages, choose options and enter a path or two. It's not hard, but pay attention to what shows up on screen.
+    <value>Game optimization requires direct interaction with a system console. You will need to read the messages displayed, select the desired options, and enter any requested paths.
 
-Profiles are downloaded from GitHub and run with administrator permissions. Use at your own risk.</value>
+Optimization profiles are retrieved from a public GitHub repository and executed with administrator privileges. Proceed only if you accept responsibility for the changes applied to your system.</value>
   </data>
   <data name="GamingDisclaimer.DontShow" xml:space="preserve">
     <value>Don't show this notice again</value>
   </data>
   <data name="GamingDisclaimer.Confirm" xml:space="preserve">
-    <value>Got it</value>
+    <value>Continue</value>
   </data>
   <data name="GamingDisclaimer.Cancel" xml:space="preserve">
     <value>Cancel</value>
