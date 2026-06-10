@@ -3956,7 +3956,8 @@
                                                    CommandParameter="https://dexsuite-web.vercel.app/"
                                                    Margin="0,0,0,8">
                                             <ui:Button.Icon>
-                                                <ui:ImageIcon Source="pack://application:,,,/Assets/AppIcon.png"/>
+                                                <ui:ImageIcon Source="pack://application:,,,/Assets/AppIcon.png"
+                                                              Width="16" Height="16"/>
                                             </ui:Button.Icon>
                                         </ui:Button>
                                     </WrapPanel>

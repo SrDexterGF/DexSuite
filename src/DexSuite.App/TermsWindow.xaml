@@ -6,9 +6,9 @@
     xmlns:loc="clr-namespace:DexSuite.App.Markup"
     Title="DexSuite — Términos de Uso"
     Width="760"
-    Height="680"
+    Height="820"
     MinWidth="640"
-    MinHeight="580"
+    MinHeight="720"
     ResizeMode="NoResize"
     UseLayoutRounding="True"
     TextOptions.TextFormattingMode="Display"
@@ -34,16 +34,16 @@
             <StackPanel>
 
                 <!-- Logo + título -->
-                <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
+                <StackPanel HorizontalAlignment="Center" Margin="0,0,0,14">
                     <Image Source="pack://application:,,,/Assets/AppIcon.png"
-                           Width="72" Height="72"
+                           Width="52" Height="52"
                            Stretch="Uniform"
                            RenderOptions.BitmapScalingMode="HighQuality"
                            SnapsToDevicePixels="True"/>
                     <ui:TextBlock Text="{loc:T Key=Terms.Title}"
                                   FontTypography="TitleLarge"
                                   HorizontalAlignment="Center"
-                                  Margin="0,10,0,4"/>
+                                  Margin="0,8,0,4"/>
                     <ui:TextBlock Text="{loc:T Key=Terms.Intro}"
                                   Opacity="0.7"
                                   HorizontalAlignment="Center"
