@@ -164,12 +164,12 @@ Error: {0}</value>
     <value>Per-game optimization profiles</value>
   </data>
   <data name="GamingDisclaimer.Title" xml:space="preserve">
-    <value>Execution confirmation</value>
+    <value>Before you continue</value>
   </data>
   <data name="GamingDisclaimer.Body" xml:space="preserve">
-    <value>Game optimization requires direct interaction with a system console. You will need to read the messages displayed, select the desired options, and enter any requested paths.
+    <value>This feature requires manual interaction with a system console: reading messages, choosing options, and entering paths. It's not complicated, but it needs your attention.
 
-Optimization profiles are retrieved from a public GitHub repository and executed with administrator privileges. Proceed only if you accept responsibility for the changes applied to your system.</value>
+Settings are applied with administrator permissions. Use at your own risk.</value>
   </data>
   <data name="GamingDisclaimer.DontShow" xml:space="preserve">
     <value>Don't show this notice again</value>
@@ -179,6 +179,12 @@ Optimization profiles are retrieved from a public GitHub repository and executed
   </data>
   <data name="GamingDisclaimer.Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Gaming.Locked.Title" xml:space="preserve">
+    <value>PRO exclusive feature</value>
+  </data>
+  <data name="Gaming.Locked.Desc" xml:space="preserve">
+    <value>Activate your PRO license to access per-game optimization profiles</value>
   </data>
   <data name="Gaming.FooterNote" xml:space="preserve">
     <value>Hand-crafted settings for each game.</value>

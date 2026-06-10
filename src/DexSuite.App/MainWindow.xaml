@@ -982,30 +982,36 @@
                                 </Grid>
                             </Border>
 
-                            <!-- 3 iconos de acción centrados -->
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <!-- 3 iconos de acción en cuadrícula uniforme para spacing exacto -->
+                            <UniformGrid Columns="3">
                                 <RadioButton Style="{StaticResource NavItemStyle}"
                                              GroupName="MainNav"
                                              IsChecked="{Binding IsTuningView, Mode=OneWay}"
                                              Command="{Binding NavigateCommand}"
                                              CommandParameter="Tuning"
-                                             Margin="2" Padding="10"
+                                             Margin="2,0" Padding="8"
+                                             HorizontalAlignment="Center"
+                                             HorizontalContentAlignment="Center"
                                              ToolTip="{loc:T Key=Navigation.Tuning}">
                                     <ui:SymbolIcon Symbol="Wrench24" FontSize="18" Margin="0"/>
                                 </RadioButton>
                                 <Button Style="{StaticResource NavButtonStyle}"
                                         Command="{Binding ReportBugCommand}"
-                                        Margin="2" Padding="10"
+                                        Margin="2,0" Padding="8"
+                                        HorizontalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
                                         ToolTip="{loc:T Key=BugReport.Button}">
                                     <ui:SymbolIcon Symbol="Bug24" FontSize="18" Margin="0"/>
                                 </Button>
                                 <Button Style="{StaticResource NavButtonStyle}"
                                         Command="{Binding SuggestFeatureCommand}"
-                                        Margin="2" Padding="10"
+                                        Margin="2,0" Padding="8"
+                                        HorizontalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
                                         ToolTip="{loc:T Key=Suggestion.Button}">
                                     <ui:SymbolIcon Symbol="Lightbulb24" FontSize="18" Margin="0"/>
                                 </Button>
-                            </StackPanel>
+                            </UniformGrid>
                         </StackPanel>
                     </Border>
 
@@ -1184,24 +1190,43 @@
                         <StackPanel>
 
                             <!-- Hero: logo centrado (clic → web) -->
-                            <Button HorizontalAlignment="Center" Margin="0,0,0,16"
-                                    Background="Transparent" BorderThickness="0" Padding="0"
-                                    Cursor="Hand"
-                                    Command="{Binding OpenDownloadUrlCommand}"
-                                    CommandParameter="https://dexsuite-web.vercel.app/">
-                                <StackPanel>
-                                    <Image Source="pack://application:,,,/Assets/AppIcon.png"
-                                           Width="110" Height="110"
-                                           Stretch="Uniform"
-                                           RenderOptions.BitmapScalingMode="HighQuality"
-                                           SnapsToDevicePixels="True"
-                                           UseLayoutRounding="True"/>
-                                    <ui:TextBlock Text="{loc:T Key=App.Subtitle}"
-                                                  Opacity="0.7"
-                                                  HorizontalAlignment="Center"
-                                                  Margin="0,6,0,0"/>
-                                </StackPanel>
-                            </Button>
+                            <Border HorizontalAlignment="Center" Margin="0,0,0,16"
+                                    Padding="20,14" CornerRadius="12" Cursor="Hand">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background"      Value="Transparent"/>
+                                        <Setter Property="BorderBrush"     Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background"  Value="{DynamicResource SubtleFillColorSecondaryBrush}"/>
+                                                <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Button Background="Transparent" BorderThickness="0" Padding="0"
+                                        Command="{Binding OpenDownloadUrlCommand}"
+                                        CommandParameter="https://dexsuite-web.vercel.app/">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <ContentPresenter/>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                    <StackPanel>
+                                        <Image Source="pack://application:,,,/Assets/AppIcon.png"
+                                               Width="110" Height="110"
+                                               Stretch="Uniform"
+                                               RenderOptions.BitmapScalingMode="HighQuality"
+                                               SnapsToDevicePixels="True"
+                                               UseLayoutRounding="True"/>
+                                        <ui:TextBlock Text="{loc:T Key=App.Subtitle}"
+                                                      Opacity="0.7"
+                                                      HorizontalAlignment="Center"
+                                                      Margin="0,6,0,0"/>
+                                    </StackPanel>
+                                </Button>
+                            </Border>
 
                             <ui:TextBlock Text="{loc:T Key=Home.WhatDoYouWantTo}"
                                           FontTypography="Subtitle"
@@ -1263,7 +1288,7 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                        <ui:SymbolIcon Grid.Row="0" Symbol="Broom24" FontSize="28"
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="AppsList24" FontSize="28"
                                                        HorizontalAlignment="Left"
                                                        Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
                                         <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.Optimize.Title}"
@@ -2166,132 +2191,125 @@
                                           ItemTemplate="{StaticResource AdvancedModuleCardTemplate}"/>
                         </StackPanel>
 
-                        <!-- Extra Pro: Gaming -->
-                        <Border Margin="0,18,0,0"
-                                CornerRadius="10"
-                                BorderThickness="1"
-                                BorderBrush="#3A00C853"
-                                Background="#0A0F0A">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
+                        <!-- Extra Pro: Gaming — tarjeta hero rediseñada -->
+                        <Border Margin="0,20,0,0" CornerRadius="12" BorderThickness="1"
+                                BorderBrush="#28009933">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Offset="0" Color="#0A001A00"/>
+                                    <GradientStop Offset="1" Color="#0500120A"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel>
 
-                                <!-- Header gaming -->
-                                <Border Grid.Row="0"
-                                        Padding="14,12"
-                                        CornerRadius="9,9,0,0"
-                                        Background="#1500C853">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
+                                <!-- Header: icono + título + badge PRO -->
+                                <Grid Margin="18,16,18,12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                                        <!-- Icono gaming -->
-                                        <ui:SymbolIcon Grid.Column="0"
-                                                       Symbol="Games24"
-                                                       FontSize="22"
-                                                       Foreground="#FF00C853"
-                                                       VerticalAlignment="Center"
-                                                       Margin="0,0,14,0"/>
+                                    <!-- Icono destacado en pastilla -->
+                                    <Border Grid.Column="0"
+                                            Width="44" Height="44" CornerRadius="10"
+                                            Background="#1400C853" BorderBrush="#2A00C853" BorderThickness="1"
+                                            VerticalAlignment="Center" Margin="0,0,14,0">
+                                        <ui:SymbolIcon Symbol="Games24" FontSize="24" Foreground="#FF00C853"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
 
-                                        <!-- Título y descripción -->
-                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                            <ui:TextBlock Text="{loc:T Key=Modules.Extra.Title}"
-                                                          FontTypography="BodyStrong"
-                                                          Foreground="#FF00C853"/>
-                                            <ui:TextBlock Text="{loc:T Key=Modules.Extra.Subtitle}"
-                                                          FontTypography="Caption"
-                                                          Opacity="0.65"
-                                                          TextWrapping="Wrap"
-                                                          Margin="0,2,0,0"/>
-                                        </StackPanel>
+                                    <!-- Título y subtítulo -->
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Extra.Title}"
+                                                      FontTypography="BodyStrong" Foreground="#FF00C853"/>
+                                        <ui:TextBlock Text="{loc:T Key=Modules.Extra.Subtitle}"
+                                                      FontTypography="Caption" Opacity="0.55"
+                                                      TextWrapping="Wrap" Margin="0,3,0,0"/>
+                                    </StackPanel>
 
-                                        <!-- Badge PRO + candado/check -->
-                                        <StackPanel Grid.Column="2"
-                                                    Orientation="Horizontal"
-                                                    VerticalAlignment="Center">
-                                            <Border Padding="6,2" CornerRadius="4"
-                                                    Background="#1A9D4EDD"
-                                                    BorderBrush="#3A9D4EDD"
-                                                    BorderThickness="1"
-                                                    Margin="0,0,10,0">
-                                                <ui:TextBlock Text="PRO"
-                                                              FontTypography="Caption"
-                                                              Foreground="#FFB026FF"
-                                                              FontWeight="Bold"/>
-                                            </Border>
-                                            <!-- Candado: visible cuando tier ≠ Pro -->
-                                            <ui:SymbolIcon Symbol="LockClosed24"
-                                                           FontSize="17"
-                                                           Foreground="#FF00C853"
-                                                           VerticalAlignment="Center">
-                                                <ui:SymbolIcon.Style>
-                                                    <Style TargetType="ui:SymbolIcon">
+                                    <!-- Badge PRO -->
+                                    <Border Grid.Column="2" Padding="8,3" CornerRadius="6"
+                                            Background="#1A9D4EDD" BorderBrush="#3A9D4EDD" BorderThickness="1"
+                                            VerticalAlignment="Center">
+                                        <ui:TextBlock Text="PRO" FontTypography="Caption"
+                                                      Foreground="#FFB026FF" FontWeight="Bold"/>
+                                    </Border>
+                                </Grid>
+
+                                <!-- Separador sutil -->
+                                <Border Height="1" Margin="18,0,18,12" Background="#1500C853"/>
+
+                                <!-- Estado: desbloqueado (PRO) -->
+                                <Grid Margin="16,0,16,16">
+                                    <!-- Panel de acción — solo cuando es PRO -->
+                                    <Border Padding="14,12" CornerRadius="10"
+                                            Background="#0C00C853" BorderBrush="#2500C853" BorderThickness="1">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Pro">
                                                         <Setter Property="Visibility" Value="Visible"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
-                                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </ui:SymbolIcon.Style>
-                                            </ui:SymbolIcon>
-                                            <!-- Check: visible solo cuando tier = Pro -->
-                                            <ui:SymbolIcon Symbol="CheckmarkCircle24"
-                                                           FontSize="17"
-                                                           Foreground="#FF00C853"
-                                                           VerticalAlignment="Center">
-                                                <ui:SymbolIcon.Style>
-                                                    <Style TargetType="ui:SymbolIcon">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </ui:SymbolIcon.Style>
-                                            </ui:SymbolIcon>
-                                        </StackPanel>
-                                    </Grid>
-                                </Border>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,12,0">
+                                                <ui:TextBlock Text="{loc:T Key=Gaming.CardTitle}"
+                                                              FontTypography="BodyStrong" Foreground="#FF00C853"/>
+                                                <ui:TextBlock Text="{loc:T Key=Gaming.CardDesc}"
+                                                              FontTypography="Caption" Opacity="0.6"
+                                                              TextWrapping="Wrap" Margin="0,3,0,0"/>
+                                            </StackPanel>
+                                            <ui:Button Grid.Column="1"
+                                                       Appearance="Primary"
+                                                       VerticalAlignment="Center"
+                                                       Padding="14,8"
+                                                       Icon="{ui:SymbolIcon Symbol=Games24}"
+                                                       Content="{loc:T Key=Gaming.OpenSelector}"
+                                                       Command="{Binding OpenGameSelectorCommand}"/>
+                                        </Grid>
+                                    </Border>
 
-                                <!-- Acceso a la ventana modal de selección de juegos -->
-                                <Border Grid.Row="1" Margin="14,10,14,14"
-                                        Padding="14,12"
-                                        CornerRadius="8"
-                                        Background="#0F00C853"
-                                        BorderBrush="#3A00C853"
-                                        BorderThickness="1">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                            <ui:TextBlock Text="{loc:T Key=Gaming.CardTitle}"
-                                                          FontTypography="BodyStrong"
-                                                          Foreground="#FF00C853"/>
-                                            <ui:TextBlock Text="{loc:T Key=Gaming.CardDesc}"
-                                                          Opacity="0.7"
-                                                          FontTypography="Caption"
-                                                          TextWrapping="Wrap"
-                                                          Margin="0,3,12,0"/>
+                                    <!-- Panel bloqueado — visible para Free y Advanced -->
+                                    <Border Padding="16,14" CornerRadius="10"
+                                            Background="#08000000" BorderBrush="#18FFFFFF" BorderThickness="1">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Border Width="32" Height="32" CornerRadius="8"
+                                                    Background="#1A9D4EDD" BorderBrush="#289D4EDD" BorderThickness="1"
+                                                    VerticalAlignment="Center" Margin="0,0,12,0">
+                                                <ui:SymbolIcon Symbol="LockClosed24" FontSize="15"
+                                                               Foreground="#88B026FF"
+                                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <StackPanel VerticalAlignment="Center">
+                                                <ui:TextBlock Text="{loc:T Key=Gaming.Locked.Title}"
+                                                              FontTypography="Body" Opacity="0.65"/>
+                                                <ui:TextBlock Text="{loc:T Key=Gaming.Locked.Desc}"
+                                                              FontTypography="Caption" Opacity="0.4"
+                                                              TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                            </StackPanel>
                                         </StackPanel>
-                                        <ui:Button Grid.Column="1"
-                                                   Appearance="Primary"
-                                                   VerticalAlignment="Center"
-                                                   Padding="14,8"
-                                                   Icon="{ui:SymbolIcon Symbol=Games24}"
-                                                   Content="{loc:T Key=Gaming.OpenSelector}"
-                                                   Command="{Binding OpenGameSelectorCommand}"/>
-                                    </Grid>
-                                </Border>
-                            </Grid>
+                                    </Border>
+                                </Grid>
+
+                            </StackPanel>
                         </Border>
 
                         </StackPanel>
@@ -3547,12 +3565,38 @@
                                         <ui:TextBlock Grid.Column="0"
                                                       Text="{loc:T Key=License.CurrentTier.Label}"
                                                       VerticalAlignment="Center"/>
-                                        <Border Grid.Column="1"
-                                                Padding="10,4" CornerRadius="6"
-                                                Background="{DynamicResource AccentFillColorDefaultBrush}">
-                                            <ui:TextBlock Text="{Binding UserTier}"
-                                                          Foreground="White"
-                                                          FontWeight="SemiBold"/>
+                                        <Border Grid.Column="1" Padding="10,4" CornerRadius="6" BorderThickness="1">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background"  Value="#1500C853"/>
+                                                    <Setter Property="BorderBrush" Value="#3500C853"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                            <Setter Property="Background"  Value="#1400B8D9"/>
+                                                            <Setter Property="BorderBrush" Value="#3200B8D9"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                            <Setter Property="Background"  Value="#1A9D4EDD"/>
+                                                            <Setter Property="BorderBrush" Value="#3A9D4EDD"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ui:TextBlock Text="{Binding UserTier}" FontWeight="Bold">
+                                                <ui:TextBlock.Style>
+                                                    <Style TargetType="ui:TextBlock">
+                                                        <Setter Property="Foreground" Value="#FF00C853"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding UserTier}" Value="Advanced">
+                                                                <Setter Property="Foreground" Value="#FF00D9FF"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding UserTier}" Value="Pro">
+                                                                <Setter Property="Foreground" Value="#FFB026FF"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ui:TextBlock.Style>
+                                            </ui:TextBlock>
                                         </Border>
                                     </Grid>
 
@@ -4135,15 +4179,51 @@
                                                   FontTypography="Subtitle"
                                                   Margin="0,0,0,8"/>
                                     <StackPanel Margin="0,2,0,2">
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item1}"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item2}" TextWrapping="Wrap"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item3}"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item4}"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item5}" TextWrapping="Wrap"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item6}"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item7}"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item8}" TextWrapping="Wrap"/>
-                                        <ui:TextBlock Text="{loc:T Key=About.Changelog.Item9}" TextWrapping="Wrap"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item1}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item2}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item3}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item4}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item5}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item6}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item7}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item8}" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <Border Width="5" Height="5" CornerRadius="3" VerticalAlignment="Center"
+                                                    Background="#6600B8D9" Margin="4,0,10,0"/>
+                                            <ui:TextBlock Text="{loc:T Key=About.Changelog.Item9}" TextWrapping="Wrap"/>
+                                        </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
@@ -4311,7 +4391,7 @@
                                                    Command="{Binding OpenDownloadUrlCommand}"
                                                    CommandParameter="https://www.trustpilot.com/evaluate/dexsuite.carrd.co"
                                                    Margin="0,0,8,8"/>
-                                        <ui:Button Appearance="Secondary"
+                                        <ui:Button Appearance="Primary"
                                                    Content="{loc:T Key=About.Social.Website}"
                                                    Command="{Binding OpenDownloadUrlCommand}"
                                                    CommandParameter="https://dexsuite-web.vercel.app/"

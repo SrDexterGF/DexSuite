@@ -1545,7 +1545,7 @@ public partial class MainViewModel : ObservableObject
     /// correspondiente del repo SrDexterGF/Game_Configs.
     /// </summary>
     private bool CanOpenGameSelector() =>
-        UserTierEnum is ModuleTier.Pro or ModuleTier.Advanced;
+        UserTierEnum is ModuleTier.Pro;
 
     [RelayCommand(CanExecute = nameof(CanOpenGameSelector))]
     private async Task OpenGameSelectorAsync()
