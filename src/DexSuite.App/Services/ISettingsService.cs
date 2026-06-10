@@ -41,4 +41,8 @@ public sealed class AppSettings
     public bool MinimizeToTray { get; set; } = false;
     public bool ShowGamingDisclaimer { get; set; } = true;
     public bool TermsAccepted { get; set; } = false;
+
+    // Rate limiting: activación de licencia
+    public int LicenseFailedAttempts { get; set; } = 0;
+    public string? LicenseLockedUntil { get; set; } = null;
 }

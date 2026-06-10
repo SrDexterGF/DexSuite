@@ -77,7 +77,11 @@
                                     BorderBrush="Transparent"
                                     BorderThickness="1"
                                     CornerRadius="8"
+                                    RenderTransformOrigin="0.5,0.5"
                                     Padding="{TemplateBinding Padding}">
+                                <Border.RenderTransform>
+                                    <ScaleTransform/>
+                                </Border.RenderTransform>
                                 <ContentPresenter HorizontalAlignment="Left"
                                                   VerticalAlignment="Center"/>
                             </Border>
@@ -104,6 +108,41 @@
                                 <Setter TargetName="Bd" Property="Background" Value="#2000E5FF"/>
                                 <Setter TargetName="Bd" Property="BorderBrush" Value="#4800E5FF"/>
                             </MultiTrigger>
+                            <!-- Press: scale 0.97 feedback táctil -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                             To="0.97" Duration="0:0:0.09">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                             To="0.97" Duration="0:0:0.09">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                             To="1.0" Duration="0:0:0.18">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                             To="1.0" Duration="0:0:0.18">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -128,7 +167,11 @@
                                 BorderBrush="Transparent"
                                 BorderThickness="1"
                                 CornerRadius="8"
+                                RenderTransformOrigin="0.5,0.5"
                                 Padding="{TemplateBinding Padding}">
+                            <Border.RenderTransform>
+                                <ScaleTransform/>
+                            </Border.RenderTransform>
                             <ContentPresenter HorizontalAlignment="Left"
                                               VerticalAlignment="Center"/>
                         </Border>
@@ -138,7 +181,38 @@
                                 <Setter TargetName="Bd" Property="BorderBrush" Value="#2800B8D9"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Bd" Property="Background" Value="#1A00B8D9"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                             To="0.97" Duration="0:0:0.09">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                             To="0.97" Duration="0:0:0.09">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                             To="1.0" Duration="0:0:0.18">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetName="Bd"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                             To="1.0" Duration="0:0:0.18">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -160,8 +234,9 @@
 
         <Style x:Key="SidebarCaption" TargetType="ui:TextBlock">
             <Setter Property="Margin" Value="22,14,16,4"/>
-            <Setter Property="Opacity" Value="0.4"/>
+            <Setter Property="Opacity" Value="0.55"/>
             <Setter Property="FontTypography" Value="Caption"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
 
         <!-- Estilo compartido para botones de barra superior.
@@ -180,8 +255,8 @@
 
         <!-- Card de módulo: acción + badge de impacto + "?" con tooltip completo -->
         <DataTemplate x:Key="ModuleCardTemplate">
-            <Border Margin="0,0,0,5"
-                    Padding="10,9"
+            <Border Margin="0,0,0,8"
+                    Padding="13,11"
                     CornerRadius="8"
                     Background="{DynamicResource ControlFillColorDefaultBrush}"
                     BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -560,29 +635,35 @@
                     BorderThickness="0,0,1,0">
                 <DockPanel LastChildFill="True">
 
-                    <!-- Header: mini-logo + nombre -->
+                    <!-- Header: mini-logo + nombre (clic → web) -->
                     <Border DockPanel.Dock="Top"
                             Margin="14,14,14,8"
                             Padding="10,10"
                             CornerRadius="10"
                             Background="{DynamicResource ControlFillColorDefaultBrush}"
                             BorderBrush="#4400B8D9"
-                            BorderThickness="1">
-                        <StackPanel Orientation="Horizontal">
-                            <Border Width="38" Height="38" CornerRadius="7" ClipToBounds="True">
-                                <Image Source="pack://application:,,,/Assets/AppIcon.png"
-                                       Stretch="UniformToFill"
-                                       RenderOptions.BitmapScalingMode="HighQuality"
-                                       RenderOptions.EdgeMode="Aliased"
-                                       SnapsToDevicePixels="True"/>
-                            </Border>
-                            <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
-                                <ui:TextBlock Text="DexSuite" FontTypography="BodyStrong"/>
-                                <ui:TextBlock Text="{loc:T Key=App.Tagline}"
-                                              FontTypography="Caption"
-                                              Opacity="0.55"/>
+                            BorderThickness="1"
+                            Cursor="Hand">
+                        <Button Background="Transparent" BorderThickness="0" Padding="0"
+                                HorizontalContentAlignment="Stretch"
+                                Command="{Binding OpenDownloadUrlCommand}"
+                                CommandParameter="https://dexsuite-web.vercel.app/">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="38" Height="38" CornerRadius="7" ClipToBounds="True">
+                                    <Image Source="pack://application:,,,/Assets/AppIcon.png"
+                                           Stretch="UniformToFill"
+                                           RenderOptions.BitmapScalingMode="HighQuality"
+                                           RenderOptions.EdgeMode="Aliased"
+                                           SnapsToDevicePixels="True"/>
+                                </Border>
+                                <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                                    <ui:TextBlock Text="DexSuite" FontTypography="BodyStrong"/>
+                                    <ui:TextBlock Text="{loc:T Key=App.Tagline}"
+                                                  FontTypography="Caption"
+                                                  Opacity="0.55"/>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
+                        </Button>
                     </Border>
 
                     <!-- Footer: versión + badge PRO -->
@@ -871,31 +952,69 @@
                 <!-- Vista Inicio -->
                 <ScrollViewer Visibility="{Binding IsHomeView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer.Style>
+                        <Style TargetType="ScrollViewer">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsHomeView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ScrollViewer.Style>
                     <Grid MaxWidth="980" HorizontalAlignment="Center" Margin="32,28,32,24">
                         <StackPanel>
 
-                            <!-- Hero: logo centrado (el PNG ya incluye el texto "DexSuite") -->
-                            <StackPanel HorizontalAlignment="Center" Margin="0,0,0,24">
-                                <Image Source="pack://application:,,,/Assets/AppIcon.png"
-                                       Width="220" Height="220"
-                                       Stretch="Uniform"
-                                       RenderOptions.BitmapScalingMode="HighQuality"
-                                       SnapsToDevicePixels="True"
-                                       UseLayoutRounding="True"/>
-                                <ui:TextBlock Text="{loc:T Key=App.Subtitle}"
-                                              Opacity="0.7"
-                                              HorizontalAlignment="Center"
-                                              Margin="0,8,0,0"/>
-                            </StackPanel>
+                            <!-- Hero: logo centrado (clic → web) -->
+                            <Button HorizontalAlignment="Center" Margin="0,0,0,24"
+                                    Background="Transparent" BorderThickness="0" Padding="0"
+                                    Cursor="Hand"
+                                    Command="{Binding OpenDownloadUrlCommand}"
+                                    CommandParameter="https://dexsuite-web.vercel.app/">
+                                <StackPanel>
+                                    <Image Source="pack://application:,,,/Assets/AppIcon.png"
+                                           Width="220" Height="220"
+                                           Stretch="Uniform"
+                                           RenderOptions.BitmapScalingMode="HighQuality"
+                                           SnapsToDevicePixels="True"
+                                           UseLayoutRounding="True"/>
+                                    <ui:TextBlock Text="{loc:T Key=App.Subtitle}"
+                                                  Opacity="0.7"
+                                                  HorizontalAlignment="Center"
+                                                  Margin="0,8,0,0"/>
+                                </StackPanel>
+                            </Button>
 
                             <ui:TextBlock Text="{loc:T Key=Home.WhatDoYouWantTo}"
                                           FontTypography="Subtitle"
                                           Margin="0,0,0,12"/>
-                            <Border Margin="0,0,0,28">
-                            <UniformGrid Columns="3" Margin="0,0,-8,-8">
+                            <Grid Margin="0,0,0,28">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
-                                <Border Margin="0,0,8,8"
-                                        Padding="18,16" CornerRadius="10"
+                                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                        Margin="0,0,4,4"
+                                        Padding="22,20" CornerRadius="10"
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
                                         BorderThickness="1">
@@ -906,7 +1025,7 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                        <ui:SymbolIcon Grid.Row="0" Symbol="Pulse24" FontSize="28"
+                                        <ui:SymbolIcon Grid.Row="0" Symbol="Pulse24" FontSize="32"
                                                        HorizontalAlignment="Left"
                                                        Foreground="{DynamicResource SystemFillColorSuccessBrush}"/>
                                         <ui:TextBlock Grid.Row="1" Text="{loc:T Key=Home.Card.Analyze.Title}"
@@ -925,7 +1044,8 @@
                                     </Grid>
                                 </Border>
 
-                                <Border Margin="0,0,8,8"
+                                <Border Grid.Row="1" Grid.Column="2"
+                                        Margin="4,4,0,0"
                                         Padding="18,16" CornerRadius="10"
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -957,7 +1077,8 @@
                                     </Grid>
                                 </Border>
 
-                                <Border Margin="0,0,8,8"
+                                <Border Grid.Row="0" Grid.Column="2"
+                                        Margin="4,0,0,4"
                                         Padding="18,16" CornerRadius="10"
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -990,7 +1111,8 @@
                                 </Border>
 
                                 <!-- Card: Limpieza rápida -->
-                                <Border Margin="0,0,8,8"
+                                <Border Grid.Row="1" Grid.Column="0"
+                                        Margin="0,4,4,0"
                                         Padding="18,16" CornerRadius="10"
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -1054,7 +1176,8 @@
                                 </Border>
 
                                 <!-- Card: Actualizar aplicaciones (winget) -->
-                                <Border Margin="0,0,8,8"
+                                <Border Grid.Row="1" Grid.Column="1"
+                                        Margin="4,4,4,0"
                                         Padding="18,16" CornerRadius="10"
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -1087,7 +1210,8 @@
                                 </Border>
 
                                 <!-- Card: Comprobación de seguridad (Defender / SFC / DISM / MRT) -->
-                                <Border Margin="0,0,8,8"
+                                <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                                        Margin="0,4,0,0"
                                         Padding="18,16" CornerRadius="10"
                                         Background="{DynamicResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
@@ -1161,8 +1285,7 @@
                                         </StackPanel>
                                     </Grid>
                                 </Border>
-                            </UniformGrid>
-                            </Border>
+                            </Grid>
 
                             <ui:InfoBar Severity="Informational"
                                         Title="{loc:T Key=Home.NotYetAnalyzed.Title}"
@@ -1305,6 +1428,28 @@
 
                 <!-- Vista Módulos -->
                 <Grid Visibility="{Binding IsModulesView, Converter={StaticResource BoolToVis}}">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsModulesView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -1924,6 +2069,28 @@
 
                 <!-- Vista Registro -->
                 <Grid Visibility="{Binding IsLogView, Converter={StaticResource BoolToVis}}">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsLogView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -2187,6 +2354,28 @@
                 <!-- Vista Especificaciones -->
                 <ScrollViewer Visibility="{Binding IsSpecsView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer.Style>
+                        <Style TargetType="ScrollViewer">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSpecsView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ScrollViewer.Style>
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
 
@@ -2402,6 +2591,28 @@
                 <!-- Vista Revertir Cambios -->
                 <ScrollViewer Visibility="{Binding IsRestoreView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer.Style>
+                        <Style TargetType="ScrollViewer">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsRestoreView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ScrollViewer.Style>
                     <Grid MaxWidth="980" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
                             <!-- Header: título + acciones (Refresh, Revert all) -->
@@ -2558,6 +2769,28 @@
 
                 <!-- Vista Puesta a Punto (bloqueada con overlay Coming Soon) -->
                 <Grid Visibility="{Binding IsTuningView, Converter={StaticResource BoolToVis}}">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsTuningView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
                     <!-- Contenido planificado (no funcional aún, queda tras el overlay) -->
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
@@ -2641,6 +2874,28 @@
                 <!-- Vista Ajustes -->
                 <ScrollViewer Visibility="{Binding IsSettingsView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer.Style>
+                        <Style TargetType="ScrollViewer">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSettingsView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ScrollViewer.Style>
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
                             <ui:TextBlock Text="{loc:T Key=Settings.Title}" FontTypography="TitleLarge"/>
@@ -3229,6 +3484,28 @@
                 <!-- Vista Actualizaciones -->
                 <ScrollViewer Visibility="{Binding IsUpdatesView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer.Style>
+                        <Style TargetType="ScrollViewer">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsUpdatesView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ScrollViewer.Style>
                     <Grid MaxWidth="780" HorizontalAlignment="Center" Margin="32,24,32,32">
                         <StackPanel>
                             <ui:TextBlock Text="{loc:T Key=Updates.Title}" FontTypography="TitleLarge"/>
@@ -3379,6 +3656,28 @@
                 <!-- Vista Acerca De -->
                 <ScrollViewer Visibility="{Binding IsAboutView, Converter={StaticResource BoolToVis}}"
                               VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer.Style>
+                        <Style TargetType="ScrollViewer">
+                            <Setter Property="Opacity" Value="0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsAboutView}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.22">
+                                                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard><Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0"/>
+                                        </Storyboard></BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ScrollViewer.Style>
                     <Grid MaxWidth="860" HorizontalAlignment="Center" Margin="32,28,32,32">
                         <StackPanel>
 
@@ -3503,7 +3802,13 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.Design}" Opacity="0.6"/>
-                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter"/>
+                                        <Button Grid.Column="1" Background="Transparent" BorderThickness="0"
+                                                Padding="0" HorizontalAlignment="Left" Cursor="Hand"
+                                                Command="{Binding OpenDownloadUrlCommand}"
+                                                CommandParameter="https://dexsuite-web.vercel.app/">
+                                            <ui:TextBlock Text="Sr. Dexter"
+                                                          Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                        </Button>
                                     </Grid>
                                     <Grid Margin="0,0,0,6">
                                         <Grid.ColumnDefinitions>
@@ -3511,7 +3816,13 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <ui:TextBlock Grid.Column="0" Text="{loc:T Key=About.Credits.Development}" Opacity="0.6"/>
-                                        <ui:TextBlock Grid.Column="1" Text="Sr. Dexter"/>
+                                        <Button Grid.Column="1" Background="Transparent" BorderThickness="0"
+                                                Padding="0" HorizontalAlignment="Left" Cursor="Hand"
+                                                Command="{Binding OpenDownloadUrlCommand}"
+                                                CommandParameter="https://dexsuite-web.vercel.app/">
+                                            <ui:TextBlock Text="Sr. Dexter"
+                                                          Foreground="{DynamicResource AccentFillColorDefaultBrush}"/>
+                                        </Button>
                                     </Grid>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -3632,6 +3943,12 @@
                                                    Icon="{ui:SymbolIcon Symbol=Star24}"
                                                    Command="{Binding OpenDownloadUrlCommand}"
                                                    CommandParameter="https://www.trustpilot.com/evaluate/dexsuite.carrd.co"
+                                                   Margin="0,0,8,8"/>
+                                        <ui:Button Appearance="Primary"
+                                                   Content="{loc:T Key=About.Social.Website}"
+                                                   Icon="{ui:SymbolIcon Symbol=Globe24}"
+                                                   Command="{Binding OpenDownloadUrlCommand}"
+                                                   CommandParameter="https://dexsuite-web.vercel.app/"
                                                    Margin="0,0,0,8"/>
                                     </WrapPanel>
                                 </StackPanel>

@@ -1,5 +1,5 @@
 # PROJECT CONTEXT
-> Generado el 2026-06-09. Versión actual publicada: **v0.2.34**
+> Generado el 2026-06-10. Versión actual publicada: **v0.2.34**
 > Propósito: memoria técnica completa para reanudar el desarrollo desde cero.
 
 ## Cómo reanudar sesión
@@ -178,7 +178,12 @@ DexSuite (App)/
 - Creada base `../DexSuite (Web)/` para la web oficial como proyecto hermano de la app: Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui, next-intl ES/EN, rutas principales, sitemap/robots y `.env.example`.
 - Implementada fase 1: layout global, header/footer, navegación responsive, selector ES/EN, botón base, preview visual de app, fondo Cybernetic y asset real `public/images/dexsuite-icon.png`.
 - Implementada fase 2: contenido ES/EN para Inicio, DexSuite, Servicios, Descarga y Reseñas; componentes `FeatureGrid`, `SectionHeading`, `PlanCards`, `CtaBand`; datos visuales en `src/config/content.ts`.
-- Pendiente instalar dependencias y validar build cuando Node.js/npm esten disponibles en la shell.
+- Implementada fase 3 — compra → licencia (desplegada en Vercel, repo `https://github.com/SrDexterGF/dexsuite-web`):
+  - **Flujo de activación end-to-end verificado**: Stripe Checkout (live) → webhook emite token de activación firmado (HMAC-SHA256) con email+tier → email al comprador vía Resend con link a `/activar` → comprador introduce su HWID → `/api/activate` valida el token y firma la **licencia RSA-2048 definitiva** (misma verificación que la app de escritorio).
+  - `src/lib/license-sign.ts`: `signLicense(hwid, tier)` (RSA-SHA256 PKCS1 sobre bytes UTF-8 del JSON, compatible con `LicenseService.VerifyBlob` de la app) + `createActivationToken`/`verifyActivationToken` (HMAC base64url).
+  - `src/app/api/activate/route.ts`: runtime Node.js, valida token+HWID, firma licencia, la reenvía por email (best-effort) y la devuelve en la respuesta.
+  - **Variables en Vercel** (encriptadas, NUNCA en Git): `LICENSE_PRIVATE_KEY_PEM` (clave privada RSA exportada de KeyGen, acepta PEM o Base64), `ACTIVATION_SECRET` (hex 32 bytes, secreto dedicado para el HMAC del token — NO reutilizar `STRIPE_SECRET_KEY` porque Vercel lo encripta y no es legible), `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`.
+- Implementada fase 4 — pulido de diseño (commit `4b3a3d9`, skills impeccable/design-taste/emil): eliminados patrones prohibidos (grid de cards idénticas en `FeatureGrid`, side-stripe `border-l-2` en `AppPreview`, eyebrow `uppercase tracking-wide` en `SectionHeading` y hero); añadido movimiento intencional (entrada `@starting-style` del hero, float del preview, scroll-reveal con stagger en feature items vía CSS scroll-driven animations); `text-pretty` en cuerpos.
 
 ### Arquitectura y ciclo de vida
 - Arranque en 3 pasos: `VelopackApp.Build().Run()` → UAC elevation → WPF (`Program.cs`)
@@ -442,7 +447,7 @@ Durante el constructor de `MainViewModel`, se hidratan todos los ObservablePrope
 9. **GitHub**: limpiar README y notas de release (Bloque 5)
 
 ### Infraestructura futura
-10. **Web DexSuite fase 3**: implementar formulario de contacto con Resend.
+10. **Web DexSuite — pendientes**: comprar dominio (`dexsuite.com` como principal, opcional `.es`/`.app`); configurar dominio propio en Resend para emails desde `@dexsuite.com`; test e2e completo del webhook de Stripe en test mode (el flujo de activación ya está verificado, el webhook+email es integración estándar sin probar a fondo). Ver memoria `project_dexsuite_web_fase4.md`.
 11. **Sección Tuning real**: cuando se desbloquee, cambiar `TuningComingSoon = false` en `MainViewModel` y añadir handlers para resolución, frecuencia, aceleración de ratón, etc. Cada cambio debe usar `IChangeTrackingService` para aparecer en Revertir cambios.
 12. **Revert de archivos**: implementar backup pre-módulo para soportar `ChangeType.File` en el sistema de reversión.
 

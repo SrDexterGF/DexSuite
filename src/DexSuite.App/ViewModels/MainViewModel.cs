@@ -502,6 +502,9 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+    private const int LicenseMaxAttempts  = 5;
+    private const int LicenseLockMinutes  = 15;
+
     private bool CanActivateLicense() => !IsActivatingLicense;
 
     [RelayCommand(CanExecute = nameof(CanActivateLicense))]
@@ -513,6 +516,17 @@ public partial class MainViewModel : ObservableObject
             return;
         }
 
+        // Rate limiting: comprobar si hay bloqueo activo
+        var settings = _settingsService.Load();
+        if (settings.LicenseLockedUntil is string lockedStr &&
+            DateTime.TryParse(lockedStr, null, System.Globalization.DateTimeStyles.RoundtripKind, out var lockedUntil) &&
+            DateTime.UtcNow < lockedUntil)
+        {
+            var mins = (int)Math.Ceiling((lockedUntil - DateTime.UtcNow).TotalMinutes);
+            LicenseStatusMessage = T("License.Activation.RateLimited", mins);
+            return;
+        }
+
         IsActivatingLicense = true;
         ActivateLicenseCommand.NotifyCanExecuteChanged();
         try
@@ -520,6 +534,10 @@ public partial class MainViewModel : ObservableObject
             var result = await _license.ActivateAsync(ActivationKeyInput);
             if (result.Success)
             {
+                settings.LicenseFailedAttempts = 0;
+                settings.LicenseLockedUntil = null;
+                _settingsService.ScheduleSave(settings);
+
                 LicenseStatusMessage = T("License.Activation.Success", TierToString(result.Tier));
                 ActivationKeyInput = string.Empty;
                 await _appLog.SuccessAsync(AppLogCategory.Settings,
@@ -527,7 +545,20 @@ public partial class MainViewModel : ObservableObject
             }
             else
             {
-                LicenseStatusMessage = T("License.Activation.Failed", result.Message ?? "?");
+                settings.LicenseFailedAttempts++;
+                if (settings.LicenseFailedAttempts >= LicenseMaxAttempts)
+                {
+                    settings.LicenseLockedUntil = DateTime.UtcNow.AddMinutes(LicenseLockMinutes).ToString("O");
+                    settings.LicenseFailedAttempts = 0;
+                    LicenseStatusMessage = T("License.Activation.RateLimited", LicenseLockMinutes);
+                }
+                else
+                {
+                    var remaining = LicenseMaxAttempts - settings.LicenseFailedAttempts;
+                    LicenseStatusMessage = T("License.Activation.FailedWithAttempts",
+                        result.Message ?? "?", remaining);
+                }
+                _settingsService.ScheduleSave(settings);
                 await _appLog.WarningAsync(AppLogCategory.Settings,
                     T("Log.Event.LicenseActivationFailed", result.Message ?? "?"));
             }

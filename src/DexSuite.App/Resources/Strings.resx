@@ -93,6 +93,9 @@
   <data name="About.Social.Trustpilot" xml:space="preserve">
     <value>Leave a review</value>
   </data>
+  <data name="About.Social.Website" xml:space="preserve">
+    <value>Website</value>
+  </data>
   <data name="About.Stack.Title" xml:space="preserve">
     <value>Tech stack</value>
   </data>
@@ -313,6 +316,12 @@ Later, optimize and analyze again to see the difference.</value>
   </data>
   <data name="License.Activation.Failed" xml:space="preserve">
     <value>Activation failed: {0}</value>
+  </data>
+  <data name="License.Activation.FailedWithAttempts" xml:space="preserve">
+    <value>Activation failed: {0} ({1} attempts left)</value>
+  </data>
+  <data name="License.Activation.RateLimited" xml:space="preserve">
+    <value>Too many failed attempts. Try again in {0} min.</value>
   </data>
   <data name="License.Activation.Help" xml:space="preserve">
     <value>Paste the activation key you received with your purchase.</value>
